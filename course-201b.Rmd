@@ -1,0 +1,150 @@
+# 201b Schedule  {#schedule-201b  .unnumbered}
+
+## Week 1: Resampling
+
+#### Review readings  
+[[G&H 2: stats overview](pdf/Gelman.ch-02.basic-stats.pdf)] 
+[[G&H 3: linear regression](pdf/Gelman.ch-03.linear-regression.pdf)]
+
+#### Resampling Readings (a bit technical)  
+[[Shalizi 5,6](http://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/)]   
+[[Hesterberg 16](pdf/Hesterberg.ch-16.bootstrap.pdf)]   
+
+#### Tuesday   
+[[slides](slides/201ab.resampling-1.pdf)]
+
+#### Wednesday
+
+Randomization & bootstrapping [[code](labs/201b-2021/01/lab1.Rmd)] [[answers](labs/201b-2021/01/lab1-ans.Rmd)]
+
+#### Thursday
+[[slides](slides/201ab.resampling-cv.pdf)]   
+[[code](code/live-hsq.R)]  (note that this has corrected `polym` code.) 
+
+
+## Week 2: Likelihood and MLE
+
+[[Etz](pdf/Etz.Likelihood.pdf)]   
+[[Gelman](GHV.waic.pdf)]
+
+
+#### Tuesday   
+[[slides](slides/201ab.likelihood-a.pdf)]
+
+#### Wednesday
+
+MLE & cross-validation [[code](labs/201b-2021/02/lab2.Rmd)] [[answers](labs/201b-2021/02/lab2-ans.Rmd)]
+
+#### Thursday   
+[[slides](slides/201ab.likelihood-b.pdf)]   
+[[code](code/live/L-mle.R)] (edited to be more educational and pithy than the live experience of me trying to fit sinusoidal parameters.)   
+
+## Week 3: Generalized linear models
+
+[[G&H 4](pdf/Gelman.ch-04.regression-transformations.pdf)]
+[[G&H 5](pdf/Gelman.ch-05.logistic-regression.pdf)]
+[[G&H 6](pdf/Gelman.ch-06.generalized-linear-models.pdf)]
+
+
+#### Tuesday (logistic regression)   
+[[slides](slides/201ab.glm-logistic.pdf)]   
+[[code](code/live/L-glm-logistic.R)]
+
+#### Wednesday    
+
+MLE 2 & logistic regression [[code](labs/201b-2021/03/lab3.Rmd)] [[answers](labs/201b-2021/03/lab3-ans.Rmd)]
+
+#### Thursday
+[[slides](slides/201ab.glm-poisson.pdf)]
+
+
+## Week 4: Linear mixed effect models
+
+[[G&H 11](pdf/Gelman.ch-11.multilevel-structures.pdf)]  
+[[G&H 12](pdf/Gelman.ch-12.basic-multilevel-models.pdf)]  
+[[G&H 13](pdf/Gelman.ch-13.more-multilevel-models.pdf)]
+
+
+#### Tuesday (lmer)   
+[[slides](slides/201ab.lmer-A.pdf)]   
+
+#### Wednesday    
+
+Poisson regression & linear mixed-effects model [[code](labs/201b-2021/04/lab4.Rmd)] [[answers](labs/201b-2021/04/lab4-ans.Rmd)]
+
+#### Thursday (glmer)   
+[[slides](slides/201ab.glmer-A.pdf)]    
+[[cod](code/live/L-glmnet-cv.R)]
+
+## Week 5: catchup and midterm
+
+## Week 6: Regularization
+
+[[HTF 3](pdf/HTF.ch-3.regularization.pdf)]
+
+
+#### Tuesday   
+[[slides](slides/201ab.regularization-a.pdf)]   
+
+#### Wednesday    
+
+Regularization [[code](labs/201b-2021/05/lab5.Rmd)] [[answers](labs/201b-2021/05/lab5-ans.Rmd)]
+
+#### Thursday   
+[[slides](slides/201ab.regularization-b.pdf)]   
+
+
+## Week 7: Stan, introduction
+
+#### Tuesday   
+[[slides](slides/201ab.dimensionality-reduction.pdf)]  
+
+
+#### Thursday  
+[[slides](slides/201ab.posterior-inference.pdf)]   
+[[stan-basics](code/live/L-stan.R)] [[lm.stan](code/live/lm.stan)] [[lm-prior.stan](code/live/lm-prior.stan)]
+
+
+
+## Week 8: Stan, richer models
+
+#### Tuesday (models in stan)   
+[[slides](slides/201ab.stan-models.pdf)]  
+
+
+#### Wednesday    
+
+Basic Stan [[code](labs/201b-2021/06/lab6.Rmd)] [[answers](labs/201b-2021/06/lab6-ans.Rmd)] [[model0](labs/201b-2021/06/model0.stan)] [[model1](labs/201b-2021/06/model1.stan)] [[model2](labs/201b-2021/06/model2.stan)]
+
+
+#### Thursday (IRT models in stan)   
+[[slides](slides/201ab.stan-IRT.pdf)] 
+[[R code](code/irt.R)] 
+[[stan: 2PL IRT](code/IRT-2pl-noll.stan)] 
+
+
+## Week 9: Psychometric models
+
+
+#### Tuesday (structural equation models)   
+[[slides](slides/201ab.SEM.pdf)]  
+
+#### Thursday 
+[[slides](slides/201ab.how-to-start.pdf)]    [[live code](code/L-review.R)]
+
+## Week 10: Review
+
+#### Tuesday (stan example)
+[[signaling.R](code/signaling.R)]   
+[[take1.stan](code/take1.stan)]   
+[[take2.stan](code/take2.stan)]   
+[[take3.stan](code/take3.stan)]   
+[[take4.stan](code/take4.stan)]  
+
+
+#### Thursday (review)
+
+[[code](code/live/L-review-2.R)]
+
+
+

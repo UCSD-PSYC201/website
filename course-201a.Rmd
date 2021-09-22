@@ -1,0 +1,222 @@
+# 201a Schedule  {#schdeule-201a  .unnumbered}
+
+## Week 0: Introduction 
+
+#### Readings   
+
+**Basic introduction to R / Rstudio**: R4DS: [1](http://r4ds.had.co.nz/introduction.html), [4](http://r4ds.had.co.nz/workflow-basics.html), [6](http://r4ds.had.co.nz/workflow-scripts.html), [8](http://r4ds.had.co.nz/workflow-projects.html)  
+
+#### Homework
+
+[basic R syntax tutorial](http://vulstats.ucsd.edu/hw/) 
+
+#### Thursday
+
+[slides: intro](slides/L00.a-introduction.pdf)   
+[slides: administrative](slides/L00.b-administrivia.pdf)   
+[slides: overview](slides/L00.c-birds-eye.pdf)   
+[slides: advice](slides/L00.d-practical-suggestions.pdf)   
+
+## Week 1: Data
+
+#### Readings
+
+**Working with data**: R4DS: [5](http://r4ds.had.co.nz/transform.html), [7](http://r4ds.had.co.nz/exploratory-data-analysis.html), [11](http://r4ds.had.co.nz/data-import.html), [12](http://r4ds.had.co.nz/tidy-data.html)   
+**Descriptive stats**: [[notes](notes/descriptive.html)]   
+**Cleaning data example (code)**: [[notes](notes/data-cleaning.html)]  
+
+#### Homework
+
+[data cleaning](http://vulstats.ucsd.edu/hw/) Due: 2020-10-14 
+
+#### Tuesday   
+[slides: data questions](slides/L01.data.pdf)   
+[slides: projects](slides/L01.projects.pdf)   
+[code: basics](code/live/L01.R)
+
+#### Wednesday  
+More R [[code](labs/201a-2020/01/lab1.R)] [[data](labs/201a-2020/01/lab1.csv)]
+
+#### Thursday   
+[code: summary stats, tidyverse](code/live/L02.R)
+
+
+
+## Week 2: Visualization
+
+#### Readings
+[[notes](notes/visualizations.html)]   
+R4DS: [2](http://r4ds.had.co.nz/explore-intro.html), [3](http://r4ds.had.co.nz/data-visualisation.html)    
+socviz: [make a plot](https://socviz.co/makeplot.html) (the rest of this book may also be useful, but we don't have time for a thorough treatment.)
+
+#### Homework
+
+[data visualization](http://vulstats.ucsd.edu/hw/) Due: 2020-10-21
+
+#### Tuesday   
+[slides: visualization](slides/L03.visualization.pdf)   
+[code: ggplot](code/live/L03.R)
+
+#### Wednesday  
+ggplot practice [[code](labs/201a-2020/02/Lab2.Rmd)] [[answers](labs/201a-2020/02/Lab2_ans.Rmd)]
+
+#### Thursday   
+
+
+
+## Week 3: Theoretical foundations of classical statistics
+
+#### Readings
+
+**Probability notes:**   
+[terms](notes/prob-terms.html)   
+[basics](notes/prob-foundations.html)   
+[conditional](notes/prob-conditional.html) [monte-carlo](notes/prob-monte-carlo.html)   
+[random-variables](notes/prob-rv.html)   
+[distribution functions](notes/prob-rv-functions.html)  
+[expectation](notes/prob-expectation.html)   
+[central limit theorem, normal](notes/prob-clt-normal.html) 
+
+**NHST notes:**   
+[via simulation](notes/nhst-simulation.html)    
+[sampling distribution](notes/nhst-sampling-distribution.html)   
+[basic NHST via normal](notes/nhst-basics-normal.html)     
+[power, effects](notes/nhst-theory-normal.html)     
+[bonus: via binomial](notes/theory-binomial.html) 
+
+#### Homework
+
+[NHST probability](http://vulstats.ucsd.edu/hw/) Due: 2020-10-28
+
+#### Tuesday   
+[slides: probability](slides/L04.probability.pdf)   
+
+#### Wednesday
+
+Probability [[code](labs/201a-2020/03/lab3.Rmd)] [[answers](labs/201a-2020/03/lab3-ans.Rmd)]
+
+#### Thursday
+[slides: NHST](slides/L05.classical-stats.pdf)   
+
+## Week 4: Linear model: Regression
+
+#### Notes
+[t-distribution](notes/nhst-t-distribution.html)   
+[t-tests](notes/nhst-t-tests.html) (*note: some of this will be covered in week 6 and week 10*)    
+[bivariate data](notes/bivariate.html)    
+[anscombe's quartet](notes/bivariate-anscombe.html)    
+[covariance](notes/bivariate-covariance.html)   
+[correlation](notes/bivariate-correlation.html)   
+[ordinary least-squares regression](notes/bivariate-ols.html)   
+[y~x,x~y,pca](notes/bivariate-lines.html)   
+[coefficient of determination](notes/bivariate-determination.html)    
+[significance testing of these measures](notes/bivariate-significance.html)
+[prediction](notes/bivariate-prediction.html)   
+[regression diagnostics](notes/bivariate-ols-diagnostics.html)   
+
+#### Homework
+
+[Regression](http://vulstats.ucsd.edu/hw/) Due: 2020-11-04
+
+#### Tuesday   
+[slides](slides/L-regression-1.pdf)
+
+#### Wednesday
+
+Regression [[code](labs/201a-2020/04/lab4.Rmd)] [[answers](labs/201a-2020/04/lab4-ans.Rmd)]
+
+#### Thursday   
+[slides](slides/L-regression-2.pdf)
+
+## Week 5: Linear model: Multiple regression
+
+#### Notes  
+[multiple regression](notes/multiple-regression.html)  
+
+#### Tuesday
+[slides](slides/L-mr-a.pdf)   
+[code](code/live/L-mr.R)
+
+#### Wednesday
+
+Multiple regression [[code](labs/201a-2020/05/lab5.Rmd)] [[answers](labs/201a-2020/05/lab5-ans.Rmd)]
+
+#### Thursday
+[slides](slides/L-mr-b.pdf)   
+
+## Week 6: Linear model: Categorical predictors
+
+#### Readings / Notes
+[Notes on t-tests](notes/nhst-t-tests.html)   
+[[howell ch.13 on ANOVA](pdf/howell.ch-13.pdf)]
+[[howell ch.16 on ANCOVA](pdf/howell.ch-16.pdf)]   
+
+#### Homework
+
+[Multiple regression](http://vulstats.ucsd.edu/hw/) Due: 2020-11-20
+
+#### Tuesday
+[slides](slides/L-lm-cat-a.pdf)   
+
+
+#### Thursday
+[slides](slides/L-lm-cat-b.pdf)   
+
+
+## Week 7: Linear model: ANCOVA, diagnostics
+
+#### Homework
+
+[ANOVA & ANCOVA](http://vulstats.ucsd.edu/hw/) Due: 2020-11-30
+
+#### Tuesday
+[slides](slides/L-lm-ancova.pdf)   
+
+#### Wednesday
+ANOVA [[code](labs/201a-2020/06/Lab6.Rmd)] [[answers](labs/201a-2020/06/Lab6-ans.Rmd)]
+
+#### Thursday
+[slides](slides/L-lm-diagnostics.pdf)   
+
+
+## Week 8: Linear model: Linearizing transforms
+
+#### Homework
+
+[Linearizing transforms](http://vulstats.ucsd.edu/hw/) Due: 2020-12-03
+
+#### Tuesday
+[slides](slides/L-lm-transforms.pdf)   
+
+## Week 9: Covarying errors (repeated measures / random effects)
+
+#### Readings:  
+I don't like either of these.... I am still on the hunt for a pithy conceptual overview of repeated measures designs and analyses:   
+This is simpler:  [Howell, ch. 14](pdf/Howell.ch-14.repeated-measures.pdf)     
+This is mathier:  [Kutner ch. 27](pdf/Kutner.ch-27.repeated-measures.pdf)
+
+
+#### Tuesday
+[slides](slides/L-repeated-measures.pdf)   
+
+#### Wednesday
+
+Repeated measures [[code](labs/201a-2020/07/lab7.Rmd)] [[answers](labs/201a-2020/07/lab7-ans.Rmd)]
+
+#### Readings
+[[Howell (basic)](pdf/Howell.ch-14.repeated-measures.pdf)]    
+[[Kutner (mathy)](pdf/Kutner.ch-27.repeated-measures.pdf)] 
+
+## Week 10: Review and preview
+
+#### Tuesday
+- Mixed effects model brief    
+- Project Q&A, Review Q&A
+[slides](slides/L-lmer.pdf)
+
+#### Wednesday
+- R Review (for final)   
+
+#### Thursday
+- Review
+

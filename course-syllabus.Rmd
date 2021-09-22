@@ -1,0 +1,45 @@
+# (PART) Course {-}
+
+# Syllabus {#syllabus-intro  .unnumbered}
+
+## Instructors
+**Ed Vul**  
+**Wenhao (James) Qi**  
+
+## Class meetings
+
+## Grading
+
+**PSYC 201 / CSS 205**: Homework (25%), Midterm (25%), Final (25%), Project (25%).
+
+**PSYC 193**: Homework (75%), Project (25%).  (no midterm or final)
+
+Details:
+  
+*Homework*:  These are entirely in R, on our [online system](hw/).  It makes sense to seek help from other students when you get stuck, but make sure you do everything yourself, so that you will be able to do it on your own in exams, and more importantly, real life. 
+
+*Exams*: Midterm and Final (both take home). Working together on exams is prohibited.
+
+*Group project*: You will analyze some data, write a final report, and make a presentation. [Details here](201ab-projects.html).
+
+## Resources
+
+- *Class Slack*:  Sign up [**here**](https://join.slack.com/t/ucsdpsych201/shared_invite/zt-kde18907-LQ3Rl1SUHk_bWZlzQDYj~Q).  All class communication will be here.
+
+- *Anonymous feedback form*: [**here**](https://goo.gl/forms/nwngZDCZiTvoAGor2)   
+Please tell us how we are doing (lectures, labs, assignments, etc.) What are we doing well? What can we do better? What are we are spending too much or too little time on? What are you having trouble with?  Etc.
+
+- *Homework assignments*:   [**login**](http://vulstats.ucsd.edu/hw/)  
+Login is your ucsd username, password is full student ID, including letter.
+
+- *Readings*:  Generally we will draw on a number of sources, and our own notes, as needed for whatever we are covering.    
+   
+- *Software*:  We are using [R](https://www.r-project.org/) and the [Rstudio](https://www.rstudio.com/) IDE.
+   - We wrote some instructions on [installing these](notes/R-setup.html)    
+   - Here we provide a list of [potentially helpful resources](notes/R-intro.html) to get you started.
+   
+- *Tutorials*: In addition to various links from the schedule, here are a few general pointers:
+   - [tryr.codeschool.com](http://tryr.codeschool.com/) is a nice interactive tutorial to learn basic R.
+   - [Datacamp](https://www.datacamp.com/) offers great tutorials on R, etc.
+   - [Khan Academy](https://www.khanacademy.org/) has excellent brief lessons to help you recall high school math you may be rusty on (like exponents, logarithms, etc.)  
+   

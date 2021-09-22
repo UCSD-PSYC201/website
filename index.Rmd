@@ -1,0 +1,23 @@
+--- 
+title: "UCSD Psyc 201ab / CSS 205 / Psyc 193"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  This is the class website and lecture notes for psyc 201ab and CSS 205
+link-citations: yes
+github-repo: UCSD-PSYC201/website
+---
+
+# Welcome {-}
+
+This is the website for Psych 201a, 201b; they are presumed to be taken as a series with 201a in the fall, and 201b in the winter.  201a is also offered as an advanced undergraduate course (Psych 193), and will be crosslisted as the core stats class for the Computational Social Science MS program (CSS 205).    
+
+201a covers statistical graphics, probability, classical statistical methods, with an emphasis on the general linear model, and their implementation in R.     
+
+201b covers more advanced models and methods, including generalized linear models, multilevel/hierarchical regression, and computational approaches such as numerical optimization, Monte Carlo, and resampling.  
+
+**201b is not offered in the 2021-2022 academic year**
+
