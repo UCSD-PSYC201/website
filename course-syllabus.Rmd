@@ -3,12 +3,15 @@
 # Syllabus {#course-syllabus  .unnumbered}
 
 ## Instructors
-**Ed Vul**   
-**Wenhao (James) Qi**  Thursdays 10am
+
+| Instructor | Office hours |
+| ----- | ------ |
+| **Ed Vul** | TBD |
+| **Wenhao (James) Qi** |  Thursdays 10am in 3509 Mandler |
 
 ## Class meetings
 
-Class meetings will be in 1350 McGill Hall.   
+Class meetings will be in 3545 Mandler Hall.  
 Lectures are Tuesday / Thursday 2-4.  
 Labs are Wednesdays 5-7.  
 Attendance is not required, but is generally helpful.
