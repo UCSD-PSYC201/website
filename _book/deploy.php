@@ -11,12 +11,12 @@
     $commands = array(
         'echo $PWD',
         'whoami',
-        'cd /var/website',
-        'git pull',
-        'git status',
-        'git submodule sync',
-        'git submodule update',
-        'git submodule status',
+        'git -C /var/website/ status',
+        'echo $PWD',
+        'git -C /var/website/ pull',
+        'git -C /var/website/ submodule sync',
+        'git -C /var/website/ submodule update',
+        'git -C /var/website/ submodule status',
         'cp -r /var/website/_book/* /var/www/.'
     );
 
