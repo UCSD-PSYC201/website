@@ -1,0 +1,27 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Probability
+
+Probability is a formalism for quantifying and reasoning under uncertainty.  While references to ideas from probability are pervasive in everyday speech, here we will aim to become fluent with the mathematical rules of probability, to understand how they are used as the foundation of statistics.
+
+This includes:    
+0. [Probability terms](terms.html)    
+1. [Foundations and basic properties](foundations.html)   
+2. [Conditional probability and Bayes theorem](conditional.html)    
+3. [Random variables and probability distributions.](random-variables.html)    
+4. [Probability distribution functions (PDF, CDF, quantile)](distribution-functions.html)    
+5. [Expectation](expectation.html)   
+6. [Central limit theorem and the Normal distribution](normal.html)
+
+## Philosophical interpretation
+
+While the rules of probability are stated in math, the *interpretation* of probability is a bit contentious.  The **frequentist** interpretation of probability is that probabilities are long-run frequencies: if an "experiment"" were repeated infinitely many times, the probability of event $A$ corresponds to the proportion of the time that $A$ occurred.  The **subjective** interpretation of probability is in terms of degrees-of-belief: probability is how an observer allocates their beliefs about the possible outcome of an experiment.  This distinction is philosophical, but it has an influence on how we can approach inference in statistics.  For the most part, we will deal with frequentist interpretations of probability, and thus classical frequentist statistics, but Bayesian statistics is a very useful tool and we will touch upon this topic as well at a later point.  
+
+
+## Other useful sources.
+The best brief formal description I've seen is Larry Wasserman's *All of Statistics* probability chapter.  The Grinstead and Snell *Introduction to Probability* is freely available online, providing a useful, thorough discussion of probability.  For a more theoretical and philosophical view, I like Jaynes *Probability Theory, the Logic of Science*.  Wikipedia entries for various parts of probability theory tend to be very good and highly recommended (although they tend to get rather technical).  This [cheatsheet](http://www.wzchen.com/probability-cheatsheet/) is useful albeit technical.
+
+

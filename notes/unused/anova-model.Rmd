@@ -1,0 +1,128 @@
+---
+  output: 
+    html_document:
+      toc: true
+      theme: readable
+      highlight: tango
+---
+  
+```{r child = '../header.Rmd'}
+```
+
+# Analysis of Variance
+
+We now dive into the mainstay of statistical analysis in social and behavioral science: the analysis of variance (ANOVA).  All of the varieties of ANOVA are nothing more than linear regression with a number of qualitative/nominal explanatory variables in various arrangement to capture the structure presumed to be in the data, so we will start with a brief introduction of how to deal with qualitative explanatory variables.
+
+## Qualitative/Nominal explanatory variables in a regression
+
+Let's say we measure height in men and women, and decide to assess whether the means are different.  
+
+We have learned how to do this simple analysis via a t-test.  For a t-test, we treat all the heights of men as a vector of data ($m_1$...$m_{n_m}$), and the heights of women as another vector of data ($w_1$...$w_{n_w}$), then we compute the sample mean and standard deviations of $m$ and $w$ ($\bar n$, $s_{m}$, $\bar m$, $s_{w}$), and then use one of the t-test formulas to ascertain how likely the observed difference in sample means is to have arisen under the null hypothesis where the populations means are the same ($H_0$: $\mu_{m} = \mu_{w}$).
+
+To ask this same question via linear regression, we would no longer treat the male and female data as two separate vectors, but would lump them into a single vector; e.g.,  by concatenating them into $y$, such that \\
+$y_{1...n_{m}} = m_{1...n_{m}}$, and \\
+$y_{n_{m}+1...n_{m}+n_{w}}=w_{1...n_{w}}$.\\
+We would then construct a regression matrix which captures the structure of the data: here the structure is that some data points are men, and others are women.  There are a number of ways to do this; some of them are easier to work with than others, and some of them are simply wrong (they will not work).
+
+\subsection{Control plus treatment regressors}
+
+One way to set up the regression matrix is to treat one group as a baseline ``control" and the other group as the ``treatment".  This makes more sense in, say, a drug trial where we have a placebo and a treatment condition, but it can be applied in any setting with no statistical consequences, and only a semantic difference in the interpretation of the model.
+
+To set up these regressors we would set a constant intercept\\
+$\forall_{j=1}^{n_{m}+n_{w}}:  x^{(0)}_{j} = 1$,\footnote{I'm using this notation to indicate that for all data points (indexed by $j$), the regressor $x^{(0)}$ is equal to 1.}\\
+and a regressor which is 0 for the control group, and 1 for the treatment group:\\
+$\forall_{j=1}^{n_{m}}: x^{(1)}_{j} = 0$ (here we are treating men as the control group...)\\
+$\forall_{j=n_{m}+1}^{n_{m}+n_{w}}: x^{(0)}_{j} = 1$ (...and women as the treatment)
+
+So if we take the fifth man from our data: \\
+$j=5$\\
+$y_5 = 70$ (made up)\\
+$x^{(0)}_{5} = 1$ \\
+$x^{(1)}_{5} = 0$ \\
+and the fifth women in our data will be:\\
+$j=n_{m}+5$\\
+$y_{n_{m}+5} = 68$ (made up)\\
+$x^{(0)}_{n_{m}+5} = 1$ \\
+$x^{(1)}_{n_{m}+5} = 1$
+
+Given the usual linear model,\\
+$y_j = B_0 x^{(0)}_{j} + B_1 x^{(0)}_{j} + \varepsilon_j$, \\
+it is clear that our model for the height of man $j$ reduces to:\\
+$y_j = B_0 + \varepsilon_j$  (Because $x^{(0)}=1$ and $x^{(1)}=0$ for all men)\\
+while the height of woman $j$ will be:\\
+$y_{n_m+j} = B_0 + B_1 + \varepsilon_{n_m+j}$  (Because $x^{(0)}=1$ and $x^{(1)}=1$ for all women)\\
+
+So the model sets the mean of men's heights as $\bar m = B_0$, and the mean of women's heights as $\bar w = B_0+B_1$.  Furthermore, the regression coefficient $B_1$ corresponds to the difference in the sample means, and a t-test for the significance of the $B_1$ regression coefficient corresponds to the t-test for the difference between sample means (and will have the same statistics and p-values).  We can also run the corresponding F-test by comparing a model with just $x^{(0)}$ to a model that contains $x^{(0)}$ and $x^{(1)}$. 
+
+(Note that the interpretation of $B_1$ as the slope as a function of $x^{(1)}$, remains valid in this qualitative case, it just so happens that there are only two values to $x^{(1)}$: 0 and 1, so the slope is just the difference in means between all values where $x^{(1)}=0$ and those where $x^{(1)}=1$).
+
+\subsubsection{Stupid, but statistically valid, variations}
+
+Instead of setting $x^{(1)} = 1$ for women, we could have set it to $x^{(1)}=2$ for women (and $x^{(1)}=0$ for men).  We can still perform the linear regression, except $B_1$ will now be equal to one half of the difference in the means: (because now, $\bar w = B_0+2*B_1$).  The standard error of $B_1$ will change accordingly (since the variance of $x^{(1)}$ is taken into account in this calculation) and the associated t-test and F-tests will yield exactly the same statistics and p-values.  So, this is statistically valid, in that everything will work out fine, and you will get the same answer, but stupid, because $B_1$ no longer has a straight-forward interpretation.
+
+\subsection{Mid-point plus contrast}
+
+Another common way to set up this same regression would be to set a constant intercept as before ($x^{(0)}=1$), but to set $x^{(1)}=-0.5$ for all men, and $x^{(1)}=0.5$ for all women:\\
+$\forall_{j=1}^{n_{m}}: x^{(1)}_{j} = -0.5$\\
+$\forall_{j=n_{m}+1}^{n_{m}+n_{w}}: x^{(0)}_{j} = 0.5$
+
+Under this set of regressors: $\bar m = B_0 - 0.5 B_1$ and $\bar w = B_0 + 0.5 B_1$\\
+$B_0$ is thus the mid-point between the male and female means\footnote{Note that it is {\em not} the mean of all data, because if we have many more men than women, the mean of all the data will skew towards the mean of male heights, but $B_0$ will remain in the middle.} and $B_1$ corresponds to the difference between the means.  All of the same statistical tests can be used on $B_1$ as before to ascertain a difference between the means.
+
+\subsubsection{More stupid, but statistically valid, variations}
+
+Just as before, we can adopt stupid, but statistically valid variations of the regressors (we can do this because our model is linear): \\
+if $x^{(1)}=-1$ for men, and $x^{(1)}=1$ for women, again $B_1$ will be half of the distance between means.\\
+if $x^{(1)}=-2$ for men, and $x^{(1)}=1$ for women, $B_1$ will be one third of the distance between means, while $B_0$ will be two thirds of the way between the mean of men and the mean of women.\\ 
+
+Even if $x^{(1)}=100$ for men and $x^{(1)}=100.1$ for women, the model still works statistically, and will yield the same t-tests and F-tests, but the coefficients will be idiotic ($B_1$ will be ten times the difference between the means of men and women, but $B_0$ will be very far away from the mean heights of men and women -- I leave you to think through why).
+
+\subsection{Indicator variables for each category}
+
+A rather different way to build a regression model for these data would be to drop the intercept term (so: do not include $x^{(0)}$), set $x^{(1)}=1$ for men, and $x^{(1)}=0$ for women, while $x^{(2)}=0$ for men, and $x^{(2)}=1$ for women.  (Once we get to ANOVAs, this is not an uncommon way to set up the model -- what the Kutner book refers to as the ``cell means" model).
+
+In this case $B_1$ will be equal to the sample mean of men, $B_2$ will be equal to the sample mean of women (and $B_0$ will not exist).  From this starting point, it is possible to construct a t-test for the means (to test whether $B_1=B_2$), but it is more complicated than merely doing a t-test for the slope, or doing an F-test for the addition of a men-women indicator variable.  
+
+Here is how we would perform this test (described in detail in ch. 17 of Kutner): \\
+take $s_\varepsilon^2$ as the sample variance of the residuals (computed in the usual linear regression fashion: sum of squares of error divided by the error degrees of freedom).  \\
+Because our linear model assumes that the variance is constant for all data points, that means that the variance of a given group will be equal to the variance of the errors; and we are necessarily assuming equal variance; so the ``equal variance" t-test would be the corresponding statistic.\\
+Recall that the standard error of the difference in means for an equal variance t-test is:
+$\sqrt{s^2(1/n_1+1/n_2)}$, so in our case a confidence interval on the difference between male heights and female heights obtained from the regression will be:\\
+$(B_1-B_2) \pm t_{\text{crit}}*\sqrt{s_\varepsilon^2 (1/n_m + 1/n_w)}$\\
+(for a 95\% confidence interval, $t_{\text{crit}} = qt(0.975, n_m+n_w-2)$
+
+This will give you the same confidence interval as any of the statistically valid methods described above.  The calculation we just described is a special case of a ``linear contrast", which we will talk about in a bit more detail later.
+
+\subsubsection{Invalid model}
+
+Although the stupid variations we described before are statistically valid, when we set up indicator variables for each category, there is an opportunity to make a statistically invalid model by including a common intercept term as well.  Specifically, if $x^{(0)}=1$ for all data points, $x^{(1)}=1$ for men, and $x^{(2)}=1$ for women, then $x^{(0)}$ is co-linear with $x^{(1)}$ and $x^{(2)}$; meaning that $x^{(0)}$ is a linear combination of $x^{(1)}$ and $x^{(2)}$, here simply $x^{(0)} = x^{(1)} + x^{(2)}$.  This is not statistically valid, and depending on the software package, it will either tell you so and not provide you with an answer, or it will give you a warning, and then provide a meaningless answer.  (Or it might even figure out the right thing to do, and ignore one of the regressors; however, don't count on it -- set up your model validly to begin with.)
+
+\section{Analysis of Variance - one factor}
+
+So far so good, but let's say we have more than two groups; let's say we have measures of the vertical leap height for white men, black men, asian men, and hispanic men (because we were inspired to test the claim of the cinema classic ``white men can't jump").
+
+Again, because we are dealing with linear regression, there are many equivalent ways to set up the regressors, but let's focus on the ``cell means" method which sets up a separate indicator variable for each category:\\
+$x^{(1)} = 1$ for white men, and $x^{(1)}=0$ for everyone else\\
+$x^{(2)} = 1$ for black men, and $x^{(2)}=0$ for everyone else\\
+$x^{(3)} = 1$ for asian men, and $x^{(3)}=0$ for everyone else\\
+$x^{(4)} = 1$ for hispanic men, and $x^{(4)}=0$ for everyone else\\
+The regression coefficients, $B_1$, $B_2$, $B_3$, and $B_4$ will be the sample means of the white, black, asian, and hispanic cells, respectively (and $x^{(0)}$ and $B_0$ do not exist).
+
+In this case with many groups, we might ask a few kinds of questions:\\
+(1) are there differences among groups?\\
+(2) is one group different from another?\\
+(3) is some combination of groups different from a different combination?
+
+The standard procedure is to demonstrate (1) before moving on to tests of more specific hypotheses like (2) and (3).
+
+To figure out if there are any differences among groups, we would do an F-test: if we reduce the sum of squares error more than expected by chance by modeling each group with a different mean, that indicates that the group means are not all the same.  The F-test in this case is the same as it was for our simple linear regression:
+
+$F = \frac{(\text{SSE[reduced] - SSE[full]})/(\text{df[reduced]-df[full]}}{\text{SSE[full]/df[full]}}$
+
+Here the ``reduced" model is the null model, with a single intercept and no other regressors, so SSE[reduced]=SSTotal.  df[reduced] will be the number of total observations minus 1 (the one parameter being the common intercept).
+
+$L = \sum_{i=1}^r c_i \mu_i$
+
+$s^2\{\hat L\} = MSE \sum_{i=1}^r \frac{c_i^2}{n_i}$
+
+$df_L = n_T-r$

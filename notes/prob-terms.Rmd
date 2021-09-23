@@ -1,0 +1,56 @@
+---
+output: 
+    html_document
+---
+
+# Absolute probability statements
+
+A **probability** of something is a number between 0 and 1: $p \in [0,1]$.  
+
+In epidemilogy probability of some outcome of a particular group/behavior is also called **risk**.    
+e.g., if smokers have a 0.125 probability of getting lung cancer, their risk of cancer is 0.125.
+
+The corresponding **percent** is between 0 and 100 = $p*100$.   
+e.g., a 12.5% chance of lung cancer for smokers.
+
+The corresponding **odds** are the ratio of the probability of thing happening, and the probability of it not happening: $\mbox{odds} = p/(1-p)$.   
+E.g., odds of a smoker getting lung cancer is 0.125/(1-0.125) = 1/7 (often expressed as 1:7).
+
+The corresponding **log-odds** are the logarithm of the odds: $\mbox{log-odds} = \log(\mbox{odds})$.    
+e.g., log odds of lung cancer for smokers is -0.845.
+
+From this we can get a number of relationships:
+
+$p = \mbox{odds}/(1+\mbox{odds})$
+
+$\mbox{odds} = \exp(\mbox{log-odds})$
+
+$\mbox{log-odds} = \log\left({\frac{p}{1-p}}\right)$ (this is known as the [logit](https://en.wikipedia.org/wiki/Logit) transform, going from probability to log-odds)
+
+$p = \frac{1}{1+\exp(-\mbox{log-odds})}$ (this is the [logistic](https://en.wikipedia.org/wiki/Logistic_function) transform, going from log-odds to probability)
+
+A **proportion** is a [descriptive statistic](../introduction/descriptive.html) if $k$ of my $n$ observations were "fish", then I can say that the proportion of fish in my sample is $k/n$.  These proportions are also often treated directly as probabilities, risks and converted into percents, odds, etc.  
+
+A **hazard rate** (also failure rate, or hazard function) is a time-varying probability associated with some [survival](https://en.wikipedia.org/wiki/Survival_analysis) function: what is the probability that someone will die right now, given that they have survived up to now?
+
+
+# Probability comparisons
+
+The **relative risk** is a ratio of two probabilities, usually some "treatment" and some "baseline".  For instance risk of lung cancer for smokers is 0.125, for non-smokers it is 0.003, so the relative risk of lung cancer for smoking is 0.125/0.003 = 41.
+
+The **odds ratio** is the ratio of odds between some treatment and baseline.    
+for instance, the odds ratio of lung cancer for smoking (compared to not) is (0.125/(1-0.125)) / (0.003/(1-0.003)) = 47.5.
+
+The **log odds ratio** is the same as the difference in log odds:
+log((0.125/(1-0.125)) / (0.003/(1-0.003))) = log(0.125/(1-0.125)) - log(0.003/(1-0.003)) = 1.67
+
+We might also calculate the linear difference in probabilities (or more often) percent; in this case, we should make it clear that we are talking about a difference in **percentage points**:    
+e.g., the chance of lung cancer among smokers (12.5%) is 12.2 percentage points higher than in non-smokers (0.3%).
+
+# Proportional magnitudes and confusion
+
+Unfortunately, we use the language of "proportions" not only to describe the sample statistic corresponding to a probability estimate, but we also use it when describing the relative magnitudes of two quantities. For instance, my dog's weight is 50 lbs, my weight is 160 lbs.  So, proportional to my weight, my dog is 5/16ths, or 0.3 times, or 30% of my weight, we might also say my dog weighs 70% less than me. My weight is 16/5ths, or 3.2 times, or 320% of my dogs weight, and we might say that I weight 220% more than my dog.
+
+The unfortunate similarities between the words used for probabilities and the words used for proportional magnitude comparisons, along with the natural tendency to compare the proportional magnitudes of probabilities (e.g., relative risk, odds ratio), tends to create a bit of a mess when probabilities are discussed in public.  Watch out for confusing statements like "the chance is x% higher".  Does the x% refer to a linear difference in percentage points, or a claim about the magnitude of relative risk?
+
+

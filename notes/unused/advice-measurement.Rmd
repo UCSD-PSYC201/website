@@ -1,0 +1,125 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Measurement
+
+> **TL;DR:** Measurements vary in  
+> - Amount of intervention to obtain measurements (observation / survey / experiments)
+> - Meaning and values of measurements (nominal / ordinal / interval / ratio)
+> - Psychometric properties (fidelity / reliability / validity)
+
+Science starts with observing and documenting phenomena in the world, so it must start with *measuring the world*. Your data are your measurements of the world, so all data analysis and statistical conclusions you might draw rely on how you measured the world to produce your data. 
+
+It is useful to categorize measurements, and the resulting data, along a few different (but somewhat correlated) dimensions:  
+
+- Intervention by the researcher during measurement procedure  
+
+- Measurement scale / Data type  
+
+- Psychometric properties of the measurements
+
+(an interesting, alternate perspective on how to classify measurements presumed to reflect latent properties may be found in chapter 2 of [this book on psychometrics](http://www.personality-project.org/r/book/))
+
+## Researcher intervention during measurement procedure
+Typically, measurement procedures are divided into three categories: *observation*, *surveys*, and *experiments*.  The difference between these is the amount of intervention required from the researcher to obtain this type of measurement.  
+
+### Observation studies
+Observation studies typically involve passively observing the world and recording these observations in a manner that does not disturb the natural behavior of the world.  For instance, if we look at the log files of a wireless router that you are connected to, we can observe your browsing habits, but we would not disturb your browsing in any way: those log files are created by your browsing whether we observe them or not, so the measurement (looking at those log files) is completely invisible to the research subjects.  Similarly, if we hide an underwater camera pointing toward a coral reef, and record the coming and going of fish, we observe their feeding habits without interfering in any way.  
+
+### Surveys  
+Surveys intervene on the world to make measurements because those measured properties are not otherwise observable.  For instance, we might ask you to fill out a questionnaire about which websites you visit most often.  Or we might radioactively tag different types of fish-food to be able to track it as it passes through the coral ecosytem. In these cases, we might not be able to get the kind of data we want from mere observation, so we have to intervene a little on the world, to be able to make the measurements of interest.  Thus, surveys offer us more control of what we measure, but they also offer the opportunity that the measurement process interferes with the data.  (Your reported browsing habits may differ from your actual browsing habits; consumption of radioactively-tagged food may differ from untagged food).  Surveys also put us in control of how the measurements sample the world (e.g., we can choose who to survey about browsing habits). 
+
+### Experiments  
+Experiments attempt to manipulate and control natural variation in the world.  For instance, some people browse the internet on public computers, and other use private computers.  In our Observation and Survey studies of browsing habits, we just accepted this as natural variation, and recorded browsing habits without considering it.  In an experiment, we might try to manipulate this possible source of variation in browsing habits by putting some people in public rooms, others in private rooms, and recording what websites they access in these different conditions.  Explicitly intervening on natural variations allows us to assess causal influences, not just correlation.  
+
+### Pros and cons of intervention  
+Generally, less intervention to obtain measurements make the data less costly to get (in time, money, effort, etc.), so generally you can get more data when it requires less intervention.  Furthermore, less intervention yields more "naturalistic" measurements, and more intervention yields measurements of more artificial behaviors.  On the other hand, more intervention allows you more control: more control to measure the the things you care about and better ascertain causal relationships.  
+
+- Observation studies give you lots of measurements of hte unfettered behavior of the world, but are subject to sampling and selection biases, complicated real-world causal mechanisms, and your measurements may be only tangentially related to what you care about.  
+
+- Surveys allow you to measure what you want, and adopt strategic sampling strategies, but you still cannot ascertain causality.
+
+- Experiments allow you to measure what you want, and intervene on the causal structure of the world to measure causality, but at the cost of less naturalistic observations and more effortful data collection.  Nonetheless, these are the gold standard for causal inference.
+
+
+## Measurement scale / Data type
+Regardless of our level of intervention, our measurements can also be classified based on the values they might take on, and the meaning of those values.  This sort of classification will influence which statistical procedures are possible and make sense.  There are two (highly correlated) categorization schemes that it is useful to consider:  
+
+- Coarse categorization of measurements as either qualitative or quantitative.  
+
+- SS Stevens' [levels of measurement](https://en.wikipedia.org/wiki/Level_of_measurement) classify based on the meaning of relationships between different values that the measurement might take on.  
+
+- [Simple data type](https://en.wikipedia.org/wiki/Statistical_data_type) classifies based on their [support](https://en.wikipedia.org/wiki/Support_(mathematics)#In_probability_and_measure_theory): the set of values they can take on.  
+
+### Qualitative
+Qualitative measurements are those that amount to classifying observations into distinct types.  Such measurements include sex, ethnicity, species, part of speech, etc.  Stevens' refers to qualitative measurements as the "Nominal" scale.
+
+**Nominal scale**   
+We we work out a scheme for naming or categorizing our observations, and then see which categories are observed.      
+For instance, we might sit in a forest and count the number of "birds", "squirrels", and "chipmunks".  Or we might ask high school students whether they have ever been drunk ("yes", or "no").   
+Since there is no explicit relationship between different names, all we know is whether two measurements are the same, or different.  Consequently, the mathematical operations that have any meaning on such measurements are limited to equality and various set membership operations.  Statistical summaries for nominal data are limited to the [mode](https://en.wikipedia.org/wiki/Mode_(statistics)) for central tendency, and esoteric, information-theoretic quantities for dispersion ([entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory))).  
+There are two data types associated with Nominal scale measurements: **Binary** (taking on one of two arbitrary labels), or **Categorical** (taking on one arbitrary label out of a set larger than two).
+
+### Quantitative / Numerical
+Quantitative or numerical measurements are those that have a number with some kind of meaningful relationship between different numbers (at the very least, we should be able to say that one number is bigger than another).  
+
+Stevens' distinguishes among three types of numerical scales depending on what kinds of measurements make sense to compare differences between two values.  Statistical data type further distinguishes among numerical measurements based on the set of values they can take on (their "support").
+
+**Ordinal scale**   
+Any given measurement is a rank order.  We know which ranks are higher or lower (1st, 2nd 3rd, etc.), but we don't know by how much, so the relationship between the differences of two ranks are meaningless (the difference between 1st and 3rd has no particular relationship to the difference between 11th and 12th).    
+For instance, SAT scores: we can say that 800 is more than 700, which is more than 540, but we do not know whether the difference between 800 and 700 is bigger or smaller than the difference between 700 and 540.  Obviously, a difference of 100 is numerically bigger than 160, but we can't say that the difference in underlying "scholastic aptitude" is bigger between 700 and 540 than 800 and 700.  Another common example in psychology is a "Likert" scale, where you might be asked how much you agree with the statement "I am happy to study statistics" on a scale of -5 (Vehemently disagree) to 5 (Vehemently agree).  Another example: star ratings on Amazon, Yelp, or other review sites .   
+Since numerical differences between ranks have no meaning, only percentile based mathematical operations and summary statistics make sense: [median](https://en.wikipedia.org/wiki/Median) (50th percentile) for central tendency, and range or [interquartile range](https://en.wikipedia.org/wiki/Interquartile_range) for dispersion.  Although the meaninglessness of numerical differences between ranks means that arithmetic means and standard deviations are inappropriate, it is not uncommon to ignore this issue. 
+Measurements on the ordinal scale are simply called **ordinal** data.
+
+**Interval scale**    
+Interval measurements have meaningful differences but no meaningful ratios, as they have no absolute zero.    
+The canonical example is Fahrenheit or Celsius temperature scales: the physical meaning of "10 degrees more" is the same regardless of where you are on the scale; however, ratios are not permissible: 50 degrees is not "half as hot" as 100 degrees (contrast this with Kelvin scale which has an absolute 0, rendering ratios meaningful).  Similarly, locations in time or space (calendar date, map coordinates) have constant, meaningful intervals (the difference between May 3 and May 6 and May 9 are the same), but do not have an absolute zero point so ratios are meaningless (May 6 is not "twice" May 3); contrast with *distances* and *durations*; e.g., "I moved 2 miles", or "I waited 20 minutes", which have an absolute 0, and ratios are meaningful).    
+Since arithmetic differences have meaning, we can use the [mean]() (for central tendency) and [standard deviation]() or [variance]() as measures of dispersion.  However, since ratios of such measurements do not make sense, it would not make much sense to consider the [geometric mean]() or other logarithmic summary statistics.  
+Measurements on the interval scale are usually **additive**, *continuous* data, which can take on positive as well as negative values; however some *discrete*, positive numeric variables are also often well-described as an interval scale measurement, like **binomial** data describing the number of successes out of a fixed number of attempts.      
+
+**Ratio scale**   
+Ratio measurements have an absolute zero.  These include most physical properties: height, weight, temperature (in Kelvin), speed, time, etc.  All of these have an absolute zero (0 height, 0 weight, etc.), therefore a given measurement is the distance between absolute zero and that measurement, so we can take their ratio and say that something is twice as tall/heavy/hot/slow as something else.    
+Accordingly, many measurements in psychophysics are on a ratio scale, as they are in physical units with an absolute zero: threshold luminance, threshold contrast, threshold velocity, etc.  Response times, counts, and estimated numerosity are also on a ratio scale.   
+Since it makes sense to consider proportional differences for ratio scales, we can meaningfully consider the geometric mean, or calculate the "coefficient of variation" (how standard deviation scales with the mean) on such data; we can also meaningfully use a logarithmic transform on the data to convert it to an interval scale or evaluate multiplicative effects additively (much more later).   
+Ratio scale measurements are typically **multiplicative**, *continuous* data, which do not take on negative values, although discrete **count** data is also on the ratio scale.  (Note that [*count*](https://en.wikipedia.org/wiki/Count_data) data differ from *binomial* data: counts have no theoretical upper bound, while *binomial* data do.)
+
+Generally, it is worth aspiring to the "highest" level of measurement you can.  If you are measuring height, measure it in physical units (e.g., meters) on a ratio scale, rather than some arbitrary interval scale (e.g., difference in height from John), or an ordinal scale (rank order of height in the classroom), or a categorical scale ("taller than a breadbox" vs "shorter than a breadbox").  Taking a higher level of measurement makes your measurements more useful in a statistical sense (since more statistical methods are available to you), and more informative, both in a technical sense (having a higher bit-rate) and in a practical sense (it is easier to objectively evaluate and compare higher level scales across labs and experiments).
+
+## Psychometric properties of measurement
+
+Besides categorizing measurements based on how they were obtained (observation/survey/experiment) and the mathematical properties of the measurement, it is also useful to consider the [Psychometric]() properties of the measurements.  By Psychometric properties, I mean: how well does this measurement (and measurement procedure) actually measure the property of the world we care about.  The properties of the world we care about in social science (like intelligence, happiness, well-being of the economy, political attitudes, education quality, etc.) are convenient constructs to think about the world, but we have no way of measuring any physical entity that corresponds to them, instead we make up measurements we *can* take, that we hope are (or have been argued to be) related to these constructs (like an IQ test, a happiness survey, the GDP/capita, etc.).  To some extent this is true in most science.  For instance, in medicine we can't measure someone's "risk for a heart attack", but we can measure serum cholesterol, which seems to be correlated, so we use that; in physics, we can't measure the influence of the sun's gravity on the curvature of space-time, but we can see if light from stars is deflected around the sun during a solar eclipse (and we have pretty good theory that relates these two things).  Since in general we are not measuring the latent propeties of the world directly, but rather their manifestations and correlates, we have to figure out how well the stuff we measure, relates to the stuff we care about.  Psychometric properties of measurements describe some aspects of the quality of the measurement.
+
+Let's say we want to measure the height of an individual, but we live in a world where we don't have any rulers, measuring tape, or even units of length (like centimeters or inches).   This may seem idiotic, but but besides the obvious ways to measure height, there are a number of less obvious (and much dumber) ways to do so:  
+
+1. We could make the person stand next to our friend Jane, and simply jot down whether the measured person is taller or shorter than Jane. Let's call this measurement "Jane-height".
+
+2. We could instead take off our shoe, and try to figure out how many shoe-lengths tall the person is.  Let's call this "Shoe-height".
+
+3. We could simply ask the person what their shoe-size is, and since shoe-size tends to relate to height, we can adopt that as a proxy.  Let's call this "Shoe-size".
+
+4. We could line up a bunch of people in order of increasing height, and figure out the rank order, or percentile, of the person's height compared to the group.  Let's call this "Rank-height".  
+
+5. We can ask the person how often they have to duck under a door-frame when entering a building.  Let's call this "Duck-height".  
+
+We can surely come up with many more strategies, but let's start with those.
+
+There are three properties of a measurement that I would like to call its psychometric properties.  Fidelity, or resolution, is not classically considered a psychometric property, but I find it useful to think about in this setting nonetheless.
+
+**Fidelity/resolution**   
+What is the resolution of our measurement?  How many different values might this measurement take on to discriminate different levels of the property?  "Jane-height" only takes on two levels (Jack is taller/shorter than Jane).  "Shoe-height" can take on many different values, especially so if we allow ourselves to record fractional increments of shoes, like Jack is 6.5 shoe-lengths tall.  The fidelity of "rank-height" depends on how big a group we use to obtain the measurement: with a group of 10, Jack's rank-height is one of 10 values, but with a group of 1000, it is a much higher-resolution measurement.  Generally, measurements with greater fidelity/resolution are better, as they allow us to detect finer differences and changes in the property.  
+
+**Reliability**   
+The reliability of a measurement is how consistent it is when we measure the same thing using the same measurement procedure multiple times (this is known as test-retest reliability).  "Jane-height" will be fairly reliable, if we always use the same Jane, and she is already an adult (so no longer growing).  "Shoe-height" will not be as reliable, since different shoes will yield different measurements.  "Rank-height" will vary based on what group we use to establish the rank.  Generally, higher fidelity measurements will have lower "absolute" reliability, in the sense that they are less likely to give us exactly the same answer, but may still offer us more information: Rank-height with 1000 people will be less absolutely reliable than Jane-height, but the disrepancy in ranks between multiple measurements will be relatively small compared to the gain in resolution.  (For those technically inclined, it is useful to combine fidelity and reliability into a single measure of [information gain](https://en.wikipedia.org/wiki/Information_gain_in_decision_trees)).
+
+**Validity**    
+The validity of a measurement is how well the measurement tracks the latent property of interest.  "Jane-height" has high validity, in that comparisons to Jane are directly a function of the person's physical height.  "Shoe-size" has lower validity -- although shoe size is highly correlated with physical height, there are tall people with smaller feet, and short people with big feet, so shoe size reflects other aspects of the person besides their height, and thus has lower validity.  Similarly, "Duck-height" will reflect not ony the person's height, but also which buildings they tend to go into, so it may reflect where they live more than their height, and thus could have very low validity.  In general, assessing validity is hard: how can we tell how IQ measures intelligence?  The strategies adopted include "face validity" (does the IQ testing procedure map on to our intuitions about intelligence?), and various external correlations (does IQ correlate with academic performance? income? and other stuff that we think should relate to intelligence?).
+
+Generally we want more resolution, more reliability, more validity (that is, we want to maximize how much information we gain about the property of interest), and we want the measurement to be fast and cheap (so altogether, we want to maximize the [bit rate](https://en.wikipedia.org/wiki/Bit_rate) of our measurements, where the bits are measuring information gain).  Unfortunately, geting lots of data (storage bits) per second, doesn't mean we're getting lots of information about the thing we care about (informatin gain bits): we can get lots of data from an fMRI machine, but it's still an open question how much information all of this data gives us about, say, a person's political preferences.
+
+### Improving measurements
+
+Since everything we do in data analysis, and science in general, hinges on the quality of our measurements, improvements in measurements yield lots of progress and reward.  Developing higher resolution, or higher reliability measurements isn't as difficult as it seems.   We can increase the fidelity/resolution of measurements by adopting different instruments: take larger groups to obtain "Rank-height" measurements, thus increasing their resolution (or adopt a 100-point Likert scale or a continuous slider, instead of a simple "agree/disagree" option).  We can increase reliability by eliminating sources of measurement variability: Buy lots of the same pair of shoes and distribute them to all people making height measurements, thus greatly increasing the reliability of "Shoe-height" measures (more practically, we might use many different test items and average them together, rather than asking a single question, thus eliminating variability due to question interpretation). We can try to increase the validity of measurements by eliminating large extraneous influences on them: we might ask participants to walk through a particular building to estimate "Duck-height", thus eliminating differences in which buildings people tend to walk through (practically though, increasing validity is hard, and might often lead us to adopt completely different measurements altogether, rather than tinkering with an old one).  Coming up with good novel ways to measure things we care about is perhaps the most useful contribution to science one might make (Imagine the impact of a high fidelity/reliability/validity ratio scale for intelligence.)
+
+

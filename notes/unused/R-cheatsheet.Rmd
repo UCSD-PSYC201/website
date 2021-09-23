@@ -1,0 +1,177 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+<<<<<<< HEAD
+<!--
+  
+  ## Handy functions
+  
+  ### R
+  - ?, ??
+- is.*: numeric, logical, etc.
+- mode(), typeof(), class() (use class)
+- str(), dplyr::glimpse()
+- as.*: character, numeric, etc.
+- names(), row.names() and indexing
+- which()
+- c() for vector
+- lists() hold anything; [[]] to get thing, [] to get list with thing.
+- unique()
+- desc(), rank(), match()
+- write() and dev.print()
+
+### functional
+- lapply, mapply, outer, sapply, vapply
+- Map, mclApply, mcMap
+
+### Reading
+- read.table(), read.csv()
+- file.path()
+- setwd(), getwd()
+- grep() and variants for string pattern matching & replacement
+- tolower(), toupper()-change letter case
+
+### Data.frames
+- str(), head(), tail(), names, ncol, nrow, length, rownames, dim
+- summary(), table()
+- \$ index
+- subset(gapminder, subset = country == "Uganda")
+- with() for weird functions that don't take data arguments
+- never attach()
+- refer by name.
+- identical()
+
+### Data manipulation
+- tidyr::gather and spread()
+- tidyr::separate() / unite()
+- tidyr::extract()
+=======
+# Useful functions
+>>>>>>> origin/master
+
+In [Intro-R](intro-r.html) we provided some pointers to lessons in R.  Here we provide a somewhat organized list of helpful functions.  Whenever the function comes from a non-standard library, we will make that explicit by writing it as `library::function()`.  
+
+**This list is horribly disorganized.  We are working on it.**
+  
+## Getting help  
+`?` bring up help for function.  e.g. `?rbind`  
+`??` search for functions that make some reference to this. e.g., `??data.frame`    
+`example()` show an example of the function in use (not always available).  e.g., `example(cbind)`    
+`browseVignettes()` to show demos of packages.   
+
+## Getting oriented   
+`ls()` list objects currently in workspace    
+`apropos()` find objects by name    
+`mode()`, `typeof()`, `class()`  figure out what kind of object something is.   
+`str()` to show structure of an object.   
+`is.*` e.g., `is.na()`, `is.numeric()`, `is.logical()`, etc.  (try `is.`[tab] to see a list)   
+
+## Vectors    
+`c()` Combines values, generally into a vector.  All elements of the vector are of the same type, so `c(3, "a")` will cast 3 as a character.  can also be used to append or prepend: `c(c(1,2,3),4)`   
+`x[1]` index vector by number   
+`x[x>4]` index vector by logical vector of same length    
+`names(x)<-c('bob', ...)` name elements of the vector.    
+`x['bob']` index vector by name.    
+`which(x>4)` return indexes of logical true values of vector.  
+`which.min(x)` and `which.max(x)` is short for e.g.,  `which(x==max(x))`  
+`sort(x)`   
+`rep()`, `replicate()`
+
+## Lists    
+`list()` make a list  
+`lst[1]` pull out nth element of a list, but returns it as a list of one.    
+`lst[[1]]` pull out nth element of list (returns not a list if it is not a list)  
+
+## Reading data   
+`read.table()`  read table, provides lots of options, basis of the next two   
+`read.csv()`    read comma separated    
+`read.tsv()`    read tab separated    
+`read.fwf()`    read fixed width    
+lots of other filetype specific reading functions available, google what you need.    
+`readr` package may be a bit neater.    
+
+
+
+## Data frames
+`df = data.frame('a'=1:10, 'b'=rnorm(10))`  Create a data frame.  A data frame is a special kind of list in which all sublists are the same length.  
+
+### Getting oriented with a data frame
+`str()` check out structure   
+`dplyr::glimpse()` better version of `str()`   
+`head()`, `tail()` look at first/last rows of data frame.   
+`names()`, `colnames()`, `rownames()` get column or row names (names is colnames() by default)    
+`dim()`, `ncol()`, `nrow()` get dimensions of data frame.  `length()` returns `ncol()` for a data frame    
+
+### Fixing data types   
+`as.factor()`, `as.character()` etc.
+
+### Factors
+`factor()`    
+`levels()` and `nlevels()`    
+`reorder()`   
+`droplevels()`
+`revalue()`, `mapvalues()`, `recode()`    
+
+### plyr/dplyr   
+plyr/dplyr -- dplyr is generally better, more consistent syntax.      
+http://www.slideshare.net/jenniferbryan5811/cm009-data-aggregation   
+https://cran.r-project.org/web/packages/dplyr/vignettes/   
+http://www.dataschool.io/dplyr-tutorial-for-faster-data-manipulation-in-r/   
+- rbind_list() and rbind_all()  and plyr::rbind.fill() (adds cols)   
+- tbl_df() -- improved data frame for large datasets, better printing at least   
+- glimpse() (like str)   
+- filter() to subset rows and slice()   
+- distinct() -- like unique() but faster.   
+- sample_n() and sample_frac()   
+- select() to subset columns   
+- %>% magic pipe   
+- mutate() to add/change variables like base transform() but back ref new cols   
+- arrange()   
+- group_by() n obs into groups (df with grouping info)   
+- summarize() n obs into 1, respecting groups (tally()) n(), n_distinct()   
+- summarize_each() -- summarize() for multiple variables, applying same function   
+- top_n()   
+- "window functions"   
+- two table join functions     http://stat545-ubc.github.io/bit001_dplyr-cheatsheet.html   
+- connecting to databases.   
+- select() and rename()   
+
+
+- desc(), rank(), match()   
+- write() and dev.print()   
+   
+### functional   
+- lapply, mapply, outer, sapply, vapply   
+- Map, mclApply, mcMap   
+=
+### Data.frames   
+- summary(), table()   
+- \$ index   
+- subset(gapminder, subset = country == "Uganda")   
+- with() for weird functions that don't take data arguments   
+- never attach()   
+- refer by name.   
+- identical()   
+
+### Data manipulation   
+- tidyr::gather and spread()    
+- tidyr::separate() / unite()   
+- tidyr::extract()    
+
+- reshape2::melt and cast
+
+### ggplot    
+https://github.com/jennybc/ggplot2-tutorial   
+- ggsave() (and scale! for relative text size changes)    
+- filled circle opar <- par(pch = 19) (original in opar)    
+- palette() for color palette()   
+- colors()    
+- library(RColorBrewer) and library(colorspace)   
+- for bubble plots reorder by neg size so small things plotted last   
+- lots of reshaping often needed()    
+- facets with scales="free_y" or whatever.    
+- arrangeGrob()   
+- data, aes, geom, scale, stat, facet   
+

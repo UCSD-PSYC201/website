@@ -12,5 +12,6 @@ rmd_files:
     "course-201a.Rmd",
 # "201b.Rmd",
     "course-projects.Rmd",
+    "notes/R-start.Rmd",
   ]
 

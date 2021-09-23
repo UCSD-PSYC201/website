@@ -1,0 +1,61 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# 2x Numerical ~ 0
+
+If we have two numerical variables and want to show their distribution, the obvious answer is a scatterplot.
+
+```{r}
+library(ggplot2)
+
+df = data.frame(iq=round(rnorm(1000, 100, 15)),
+                age=round(18+rgamma(1000, 2, 1)*7))
+```
+
+### Scatterplot
+
+The scatterplot is straight-forward: one variable on x, another on y, one point for each datapoint.
+
+```{r}
+ggplot(df, aes(x=age, y=iq))+geom_point()
+```
+
+It is often useful to add some transparency to the points to make density differences apparent in high density areas.
+
+```{r}
+ggplot(df, aes(x=age, y=iq))+geom_point(alpha=0.2, size=5)
+```
+
+### 2D histogram (heat map)
+
+We can render a 2D histogram by converting counts into colors, and binning along both x and y. 
+
+```{r}
+ggplot(df, aes(x=age, y=iq))+geom_bin2d()
+```
+
+Note that this leaves out any tiles with no observations, to avoid this, we'd need to make a new data-frame with counts for each bin, and zeros for any unobserved bins.
+
+### 2D density plot
+
+This is the 2D version of the density plot we saw for distributions of one numerical variable -- it smoothes data in both x and y, and then yields a contour plot.
+
+````{r}
+ggplot(df, aes(x=age, y=iq))+geom_density2d()
+```
+
+We can use the stat_density2d function directly to produce a filled density plot rather than a contour plot.
+
+````{r}
+ggplot(df, aes(x=age, y=iq))+stat_density2d(aes(fill=..level..), geom='polygon')
+```
+
+With a bit more manipulation, we can fill the whole plot area with color, if we so desire:
+
+````{r}
+ggplot(df, aes(x=age, y=iq))+stat_density2d(aes(fill=..density..), geom='tile', contour = FALSE)
+```
+
+

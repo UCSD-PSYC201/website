@@ -1,0 +1,96 @@
+---
+output: 
+    html_document
+---
+
+# Central limit theorem and the normal distribution
+
+The [central limit theorem](https://en.wikipedia.org/wiki/Central_limit_theorem) shows that the mean of many independent (and roughly identically) distributed random variables will be (roughly) normally distributed.  We are not going to prove this, but we can get a sense for it.
+
+Here we take the mean of 1, 2, 4, 8, ... 256 samples from distributions with very different shapes (chosen to have the same mean and standard deviation, for graphical convenience), and plot a histogram of those sample means.  As we see, when the sample size increases, they all converge to a normal-looking distribution of sample means.
+
+````{r fig.width=10, fig.height=8}
+samplers= list()
+samplers[['beta']] = function(n){(rbeta(n, 0.2, 0.2)-0.5)/0.423}
+samplers[['unif']] = function(n){(runif(n, 0, 1)-0.5)/0.29}
+samplers[['exp']] = function(n){(rexp(n, 2)-0.5)/0.5}
+
+ns = c(1, 2, 4, 8, 16, 32, 64, 128, 256)
+
+k =10000
+
+df = data.frame()
+for(dist in names(samplers)){
+  for(n in ns){
+    df = rbind(df, data.frame(dist=dist, 
+                              n=n, 
+                              mean=replicate(k, mean(samplers[[dist]](n)))))
+  }
+}
+
+library(ggplot2)
+ggplot(df, aes(x=mean, color=dist, fill=dist))+
+  facet_wrap(~n, scales ="free")+
+  geom_density(alpha=0.2)
+````
+
+A similar intuition can be obtained from our handy [expectation](prob-expectation.html) identities.  The mean of $n$ *independent* random variables ${X_1, ..., X_n}$ all *identically distributed* as $X$: will have the following properties:
+
+  $\operatorname{Mean}\left[\frac{1}{n}\sum_{i=1}^n X_i\right]= \operatorname{Mean}\left[X\right]$  
+  
+  $\operatorname{SD}\left[\frac{1}{n}\sum_{i=1}^n X_i\right]=\frac{1}{\sqrt{n}} \operatorname{SD}\left[X\right]$  
+  
+  $\operatorname{Skew}\left[\frac{1}{n}\sum_{i=1}^n X_i\right]=\frac{1}{\sqrt{n}}\operatorname{Skew}\left[X\right]$  
+  
+  $\operatorname{Kurt}\left[\frac{1}{n}\sum_{i=1}^n X_i\right]=\frac{1}{n^2}\operatorname{Kurt}\left[X\right]$. 
+
+What this tells us is that as $n$ (the number of variables that go into our mean) increases, the mean stays the same, the standard deviation decreases with $\sqrt{n}$, the skew decreases with $n$ (towards 0 -- the skew of a normal), and the (excess) kurtosis decreases with $n^2$ (towards 0 -- the kurtosis of a normal).  Thus, the various higher-order parameters of the shape decrease toward the values of the Normal as sample size increases.
+
+All in all: as sample size goes up, the distribution of the arithmetic mean goes to a Normal (provided the original distributions have finite variance).
+
+### Requirements for CLT to hold
+
+A few things must hold for the central limit theorem to apply to specific measurements.  
+
+First, for the CLT to hold, the measurement has to arise from the *sum* of lots of little, roughly homogenous, perturbations.  For instance, lots of little genetic and environmental factors contribute additively to height, and (within gender) the distribution of heights is very close to being Normal.  However, this is not true of everything.  Many natural properties are not the sum of little perturbations, but rather the *product*.  For instance, if you consider the worth of your variable-rate savings account, every time period it grows by some variable percentage (your interest rate). Your account balance is not the sum of all the interest rates, but the product: it grows exponentially (geometrically), not additively, and therefore it will not follow a Normal distribution.  Lots of processes in finance, nature, etc. are actually exponential growth processes, and they end up being distributed not as a Normal distribution, but as a Log-Normal.  (Note that the product of many perturbations is equivalent to the sum of the logarithms of those perturbations -- hence log-normal.  Note also that one way that [Benford's law](https://en.wikipedia.org/wiki/Benford%27s_law) might arise is from such random exponential growth processes.)
+
+Second, for the CLT to hold, the measurement has to arise from the sum of lots of little *roughly homogenous* perturbations.  If we look at height within gender, no one factor contributes a disproportionately large amount of the variance; so the CLT holds and the distribution of within-gender heights is Normal.  However, if we look at the distribution of heights *across* genders, we see that one factor contributes a huge amount of the variance: the gender of the person -- men are quite a bit taller than women on average.  Consequently, the distribution of heights across genders is not normally distributed, because that distribution is dominated by the gender variance.  (One could describe the across-gender height distribution as a mixture model of two Normal distributions -- we will talk about mixture models much later).
+
+When we take the *sample mean* of a bunch of measurements, both of the properties above always hold; thus the central limit theorem always applies to the sample mean, so many of our statistical procedures (which assume a Gaussian distribution of the sample mean) will work in many situations.  
+
+However, another word of caution: while the central limit theorem always applies for the sample mean, it does not guarantee that $n$ will be large enough for the mean to really be sufficiently close to Normal.  In the previous section we described how quickly the Skew and Kurtosis decline to 0, but sometimes the starting Skew is very large indeed, and even a reasonably large $n$ does not yield a normal distribution.  The log-normal distribution, for instance, can have a very large skew, and in those cases, rarely is $n$ large enough for the sample mean to end up Normal.  In those cases, it is often advisable to transform the data to get rid of some of the skew.  (We will talk about these sort of transformations and link functions later).
+
+Caveats aside, the CLT applies often enough that most conventional statistical procedures are based on it.  We will spend a great deal of time on Z-tests, t-tests, linear regression, ANOVA, etc, all of which assume either that the errors, or that the sample means, are normally distributed, and this assumption is often valid because of the CLT.
+
+## Normal distribution
+
+Since in so many cases the mean from a sufficiently large sample will be normally distributed, much of classical statistics relies on this asymptotic normality of sample means.  
+
+```{r fig.width=8, fig.height=3}
+x = seq(-5,5,by=0.01)
+ggplot(data.frame(x=x, dens=dnorm(x,0,1)), aes(x=x,y=dens))+geom_area()
+```
+
+In R, we would get the probability density function of a normal with `dnorm`, its cumulative probability function with `pnorm`, and the quantile function with `qnorm`.
+
+### Properties of normal distribution 
+
+Let's say $X \sim \operatorname{Normal}(\mu_x, \sigma_x)$.  For instance, $X$ may be IQ scores from the population, in which case $X \sim \operatorname{Normal}(100,15)$.
+
+The basic properties of a Normal distribution include:   
+
+(1) the mean, median, and mode are all the same     
+(2) the mean ($\mu$) is the location parameter which slides the distribution along the X axis   
+(3) the standard deviation ($\sigma$) is the scale/dispersion parameter.    
+
+The basic rules of expectations apply to the means and standard deviations of transformations of Normal variables:
+
+If $X \sim \operatorname{Normal}(\mu_x, \sigma_x)$, the following identities hold:  
+
+- if $Y = a+X$, then $Y \sim \operatorname{Normal}(\mu_x+a, \sigma_x)$    
+- if $Y = aX$, then $Y \sim \operatorname{Normal}(a \mu_x, a \sigma_x)$   
+- so if $Y = aX+b$, then $Y \sim \operatorname{Normal}(a \mu_x+b, a \sigma_x)$
+
+From these rules, we can easily see that if $X \sim \operatorname{Normal}(\mu, \sigma)$, and we define Z as  $Z = (X-\mu)/\sigma$, then $Z \sim \operatorname{Normal}(0,1)$.  If this is not obvious, convince yourself using the rules above that this will be true.  This is the very common, and very useful "z-transformation", which will take any normally distributed variable and convert it to have a "standard normal distribution" (which just means it is a normal distribution with mean = 0, and standard deviation = 1).
+
+

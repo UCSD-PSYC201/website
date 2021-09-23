@@ -1,0 +1,50 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# 2 Categorical ~ 0
+
+There is a subtle but important conceptual distinction between showing the joint distribution of two categorical variables with no explanatory variables (this page), and showing how the distribution of one categorical variable changes with another, explanatory, categorical variable: [C ~ C](C-C.html).  The latter assumes that the relative proportions of the explanatory categories does not matter, and that we only care about how the response categorical variable changes with the explanatory category; these assumptions imply that the response variable is the consequence of the causal explanatory variable.  Showing the joint distribution, in contrast, conveys the relative frequencies of both variables and does not make such a causal insinuation; thus it is more appropriate if both categorical variables were observations without any experimental manipulation.
+
+Let's start by generating some fake bi-variate categorical data:
+
+````{R}
+library(ggplot2)
+
+df.eth = data.frame(ethnicity = sample(c("white", "black", "hispanic", "asian", "native/islander"), 
+                                       140, replace=T, prob=c(0.5, 0.2, 0.1, 0.15, 0.05)),
+                    major = sample(c("Psychology", "Cog Sci", "Linguistics", "Business"),
+                                       140, replace=T, prob=c(0.3, 0.1, 0.2, 0.4))
+                    )
+
+table(df.eth$ethnicity, df.eth$major)
+````
+
+### Adjacent stacked area bars
+
+One obvious way to plot a joint distribution is to show adjacent stacked area bars by making one bar per category in one variable, and stacking the categories of another.  This strategy is perhaps best reserved for [C~C](C-C.html) plots, because the variable chosen to lie along the x-axis is implied to be explanatory and causal, even if its frequency is represented.
+
+````{r}
+ggplot(df.eth, aes(x=major,fill=ethnicity))+geom_bar(width=0.5, stat='bin')
+````
+
+### Heat-map histogram.
+
+A better alternative would be to plot a heat-map, with one variable on x, another on y, and the color of each tile proportional to the frequency.  Choosing a color scale for frequency is quite important, as there is a lot of room for the color scale to mislead.
+
+````{R}
+ggplot(df.eth, aes(x=major, y=ethnicity))+stat_bin2d()
+````
+
+(note, you could also add `aes(fill=(..count..)/sum(..count..))` to display relative frequencies.)
+
+### Jittered scatter.
+
+Perhaps the most clear way to show such a joint density along with its sample size is with a scatter-plot, which shows you a single point per observation.  Adding jitter is necessary so that the points don't just end up on top of each other, thus obscuring the density.
+
+````{r}
+ggplot(df.eth, aes(x=major, y=ethnicity))+geom_point(position=position_jitter(w=0.25,h=0.25))
+
+`````
+

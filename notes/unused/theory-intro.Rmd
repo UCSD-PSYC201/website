@@ -1,0 +1,20 @@
+---
+output: 
+    html_document
+---
+
+# From probability to statistics
+
+It is useful to work through the relationship between all the probability we learned, and all the statistical procedures we will cover.  In general, this works as follows: the rules of probability connect our statistical model of the population to our observed data, thus allowing us to make probabilistic [inferences about the population from the sample](population-samples.html).
+
+There are a few different approaches we might take to illustrating how the logic of probability yields statistical procedures.
+
+The approach that is most important and relevant for classical statistics (our focus this term) considers:
+
+(1) The [sampling distribution of the sample mean](sampling-distribution.html), and how it yields procedures for   
+(2) [Conventional statistics via the Normal distribution](normal-statistics.html) 
+(3) And further details of power, and probability interpretations [in normal null hypothesis tests](normal-nhst.html)
+
+The logic of null hypothesis testing, confidence intervals, and sampling distributions, can also be fruitfully illustrated with [statistical procedures via resampling](sampling-statistics.html).
+
+To really make the connection to probability very explicit (and to allow us to go over more advanced topics like the difference between Bayesian and frequentist estimation and model selection) it is useful to work through statistics applied to simple coin flips via the [Binomial distribution](binomial-statistics.html).  (Warning: This section will get a bit mathy!)

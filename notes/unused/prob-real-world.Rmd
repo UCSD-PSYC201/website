@@ -1,0 +1,48 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Probability applications: Risk, Uncertainty, Choice
+
+I have a number of pet peeves about how probability is treated in the popular press, in public policy advocacy, etc.
+
+## Anecdotes and neglecting rates/probability altogether.
+
+Scott Alexander offers a great example and discussion of reliance on anecdotes [by assessing how evil cardiologists are](http://slatestarcodex.com/2015/09/16/cardiologists-and-chinese-robbers/).  
+
+If you take any sufficiently large group, among them you will find jerks, idiots, criminals, and generally very bad people; you will find people who are kind, smart, upstanding, and self-less; you will find people who are doing well or are improving, and people who are doing poorly and declining.  Unfortunately, we find anecdotes compelling, and are eager to generalize from them when they are carefully selected.  !!
+
+## Confusion between relative and absolute risk/probability
+
+## Single-minded focus on detection or false-alarm rates
+
+## Striving for probability zero
+
+My impression is that generally, changing the percentile/probability/rate of something requires effort/cost/burden that is linear in log odds.  
+
+This is intuitive when we're considering percentiles on some metric of personal performance: Going from the 35th percentile to the 65th percentile in, say, running speed will take some effort, but is quite doable -- just a bit of training and practice will probably get you there (given that the majority of people don't really care about their running speed and aren't trying to improve it).  Going from the 65th percentile to the 95th percentile will be much harder, as the higher percentiles are occupied by people who are also training to run faster.  Going from the 95th percentile to the 99th percentile might be doable with an all-consuming effort, but maybe not, due to variation in biological predisposition for running.  Getting to the 99.999999th percentile is generally not attainable: that upper tail of the distribution is occupied by people who not only are genetically predisposed to have bodies very well suited for running, but have also dedicated their entire lives to becoming world-class runners.  Unless you are one of them, chances are you will not get there even if you do dedicate your entire life to the pursuit.  This kind of pattern may be well captured in the abstract by a log-odds (logit) transform: The closer we want to get to the 100th percentile, the more effort is required to get just a little bit closer.
+
+```{r}
+logit = function(p){log(p/(1-p))}
+logistic = function(x){1/(1+exp(-x))}
+percentile = logistic(seq(-0.6,20,by=0.1))
+library(ggplot2)
+ggplot(data.frame(percentile=percentile*100, effort=logit(percentile)), aes(x=percentile, y=effort))+geom_line()
+```
+
+It might help to consider the effort it takes to go up 1 percentile, as a function of where you are starting:
+
+```{r}
+percentile = seq(0.3,0.98,by=0.01)
+ggplot(data.frame(percentile = percentile, effort.01=log(diff(logit(c(percentile, 0.99))))), aes(percentile, effort.01))+geom_point()
+```
+
+```{r}
+percentile = seq(0.01,0.49,by=0.01)
+ggplot(data.frame(percentile = percentile, effort.01=log(diff(logit(c(percentile, 0.5))))), aes(percentile, effort.01))+geom_point()
+```
+
+So if the probability of something happening is 50%, and we want to lower it to 27% that would cost roughly $\log(0.27/0.73) - \log(0.5/0.5)$=`r log(0.27/0.73) - log(0.5/0.5)`.  
+
+## Confusion between conditional probabilities

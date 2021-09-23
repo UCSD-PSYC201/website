@@ -1,0 +1,235 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# ggplot
+
+We will teach you to use [ggplot](http://ggplot2.org/) for data visualization.
+
+It has a number of advantages once you are familiar with it.  However, it has a somewhat steep learning curve.
+
+Making plots entirely by writing code will seem weird at first -- you will want to interact with the plot by clicking on it in various ways, and you can't.  However, the advantage of writing code to make your plots is that once the data changes (you get more, or you decide to filter it one way or another, or adopt one transformation or another), you will not need to recreate the plots manually.  This will seem like a negligible advantage to you now, but trust me, this will save you time in the end.
+
+Generally, many of the things we cover are described a bit differently in this [ggplot tutorial](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/) and on the [ggplot cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/08/ggplot2-cheatsheet.pdf).  Lots more resources may be found by googling.
+
+### Installation.
+
+If you do not already have ggplot installed, install it with 
+
+````{r eval=FALSE}
+install.packages('ggplot2')
+````
+
+You will need to load the ggplot library (and also grid, and gridExtra):
+
+````{r}
+library(ggplot2)
+library(grid)
+library(gridExtra)
+````
+
+### Basic overview.
+
+**ggplot works on *data frames***: you give it a data frame and tell it how the various columns of the data frame should be mapped on to display properties.
+
+**We specify the *aesthetic* mapping** using the `aes()` to say how various data.frame columns should be used to generate a display.  For instance, the x coordinate is one aesthetic property, the color is another property, as is size, or fill, or style of point.
+
+**We then specify what kinds of geometric entities to add to the plot**, which will follow the aesthetic mapping we described.
+
+Thus, to produce a scatter plot of two vectors x and y, instead of running a scatterplot(x,y) command of some sort, we would need to put them into a data frame, specify that ggplot should use that data frame, should map the x column on to x, and the y column on to y, and then add a "point" geometric entity.
+
+````{r}
+x = rnorm(100)
+y = 0.5*x + rnorm(100)*0.25
+
+df.xy = data.frame(x=x, y=y)
+
+ggplot(data = df.xy, mapping = aes(x=x, y=y)) + geom_point()
+````
+
+The `ggplot(data = df.xy, mapping = aes(x=x, y=y)) + geom_point()` line is doing a few things:  
+`ggplot(data = df.xy, ` tells ggplot to use df.xy as the data frame (the `data=` part can often be dropped)  
+`mapping = aes(x=x, y=y))` specifies that the x coordinate should be obtained from the x column of the data frame, and the y coordinate from the y column.  
+`+ geom_point()`  says that we should add points that follow that aesthetic mapping.  
+
+If we change the geometric entity from `geom_point`, we will produce a different graph.  For instance, `geom_line()` will connect the points with lines:
+
+````{r}
+ggplot(data = df.xy, mapping = aes(x=x, y=y)) + geom_line()
+````
+
+And we can add multiple geometric entities all following the same aesthetic mapping: 
+
+````{r}
+ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point() + 
+  geom_line()
+````
+
+Note that here we did two things to make the code eaiser to read.  (1) we dropped the `data = ` and `mapping = ` part, as the order is sufficient to indicate which input to `ggplot()` is the data frame, and which is the mapping), and (2) we made the command span multiple lines by entering line breaks after the +s.  While this is not strictly necessary, it makes the code easier to work with.
+
+### Changing labels.
+
+We can add a title, and change the x and y label text.
+
+````{r}
+ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point() + 
+  geom_line() +
+  ggtitle("Variable y as a function of variable x")+
+  xlab("This is the x variable") +
+  ylab("This is the y variable")
+````
+
+### Themes and elements and properties.
+
+We can change the way in which various aspects of the display look, which ggplot refers to as the [theme](http://docs.ggplot2.org/current/theme.html) of the plot.
+
+There are many properties to the theme that are *hierarchically organized*.  For instance the `title` property applies to all title text in the plot, including the plot title (`plot.title`), the axis titles (`axis.title`), the legend title (`legend.title`); thus if we were to set the title property to have green font, that would apply to all titles (unless we issued specific instructions to override this for more specific titles).
+
+Changing such theme properties is achieved with the `theme()` command, in which we specify which property of the plot we want to alter, and we set it by invoking a particular element type, initiated with whatever we want to change.  Titles are text, so we change them by setting `title=element_text(...)` where the stuff in `...` includes the  [element_text](http://docs.ggplot2.org/current/element_text.html) properties and the values we set them to.  Such a command will override the properties that we set, but preserve the ones we did not set.
+
+````{r}
+ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point() + 
+  geom_line() +
+  ggtitle("Variable y as a function of variable x")+
+  xlab("This is the x variable") +
+  ylab("This is the y variable") +
+  theme(title = element_text(color="green"))
+````
+
+Despite the fact that this is hideous, a few things are worth noting: (a) by setting the color of the `title` property, we influenced the color of the plot title, the x axis title, and the y axis title, and (b) we only changed the *color* of all of those, and they retained their differences in font size.  The values we set at a particular level of the plot hierarchy propagate down to all children, but this only influences the property that we changed.
+
+The [theme properties](http://docs.ggplot2.org/current/theme.html) can be partitioned into properties of the axes (`axis.*`, like `axis.text` for the labels for axis tick marks, `axis.title` for axis title, or more specific ones like `axis.title.x`), properties of the legend (`legend.*`), properties of the graph area (`panel.*`), properties of the whole image (`plot.*`), and properties of the "strip" that gives identifying information in multi-panel plots (`strip.*`).  
+
+A fairly decent publication-grade plot theme can be created by simply invoking the black and white theme (`theme_bw()`):
+
+````{r}
+ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point() + 
+  geom_line() +
+  ggtitle("Variable y as a function of variable x")+
+  xlab("This is the x variable") +
+  ylab("This is the y variable") + 
+  theme_bw()
+````
+
+Generally, I like somewhat larger axis text and titles, and no grid lines, so I might favor something like:  
+
+````{r}
+ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point() + 
+  geom_line() +
+  ggtitle("Variable y as a function of variable x")+
+  xlab("This is the x variable") +
+  ylab("This is the y variable") + 
+  theme_bw() + 
+  theme(panel.grid = element_blank(), 
+        axis.text = element_text(size=12),
+        title = element_text(size=16),
+        axis.title = element_text(size=14))
+````
+
+We can also save a particular theme to reuse later:
+
+```{r}
+eds_theme <- theme_bw() + 
+  theme(panel.grid = element_blank(), 
+        axis.text = element_text(size=12),
+        title = element_text(size=16),
+        axis.title = element_text(size=14))
+
+ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point() + 
+  geom_line() +
+  ggtitle("Variable y as a function of variable x")+
+  xlab("This is the x variable") +
+  ylab("This is the y variable") + 
+  eds_theme
+````
+
+### Changing display properties of plotted elements.
+
+We can also change properties like size and color of the plot elements.  There are two ways to do so: we might make those properties vary with some aspect of the data by including them in `aes()`, or we can make them be fixed by including them outside of `aes()`.
+
+For instance, if we want the size and color of the points to vary with the y value, we might write:
+
+```{r}
+ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point(aes(color=y, size=y)) + 
+  eds_theme
+````
+
+But if we wanted to simply set a particular size and color for those points, we would note it outside of the aesthetic mapping in `aes()`:
+
+```{r}
+ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point(color="red", size=6) + 
+  eds_theme
+````
+
+Other notable properties of `geom_point()` include their [shape](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/), their border color and fill color (for shapes 21-25), and their transparency (alpha).  Besides color, width ("size"), and transparency ("alpha"), `geom_line()` has a ['linetype'](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) property.
+
+So we can make quite a crazy plot by manipulating them all (and this is without even mapping them to data values in aes!)
+
+```{r}
+ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point(color="navy", size=10, alpha=0.5, shape=22, fill="steelblue") + 
+  geom_line(color="green", size=2, linetype="dotdash", alpha=0.5) +
+  eds_theme
+````
+
+### Other geometric elements.
+
+Besides `geom_line` and `geom_point`, there are many other geometric elements we might plot (enumerated on the main [reference page](http://docs.ggplot2.org/current/)).  We will cover these as we need to as we go over specific visualization types.
+
+### Assembling multiple plots in one figure
+
+Often we want to make a few plots and attach them together.  For instance, we might want to see the histograms of x, y, and their scatterplot.  This can be accomplished with the `gridExtra` package, which you can install with `install.packages('gridExtra')`.
+
+The strategy is to define the various plots, and save them to variables, then put them together with `grid.arrange()`.
+
+```{r}
+library(gridExtra)
+
+hx <- ggplot(df.xy, aes(x=x)) + 
+  geom_histogram(fill='green') + 
+  theme_bw()
+
+hy <- ggplot(df.xy, aes(x=y)) + 
+  geom_histogram(fill='purple') + 
+  theme_bw()
+
+xy <- ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point(color="red", size=6) + 
+  theme_bw()
+
+grid.arrange(hx,hy,xy,ncol=3)
+```
+
+We might rather want the x and y histograms to align with the x and y axes of the scatter plot, so we might want to arrange this as a 2x2 grid, while flipping the coordinates of the y histogram (note that we need a blank panel for the upper right).
+
+```{r}
+hx <- ggplot(df.xy, aes(x=x)) + 
+  geom_histogram(fill='green') + 
+  theme_bw()
+
+hy <- ggplot(df.xy, aes(x=y)) + 
+  geom_histogram(fill='purple') + 
+  coord_flip() +                              # this flips the histogram sideways.
+  theme_bw()
+
+xy <- ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point(color="red", size=3) + 
+  theme_bw()
+
+grid.arrange(hx,
+             grid.rect(gp=gpar(col="white")),  # this is just a white blank.
+             xy,
+             hy, 
+             ncol=2)
+```
+
+There is still lots left to fix here, and I will walk through the process of making this figure presentable [here](tinkering.html).  In the meantime, lets move on.

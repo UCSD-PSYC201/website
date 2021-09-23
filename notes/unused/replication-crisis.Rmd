@@ -1,0 +1,40 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Replication crisis.
+
+There's a "replication crisis" in psychology specifically, and in science more broadly. You can learn a great deal about the observations that have led to the declaration of a crisis, and witness lots of heated discussion, with some googling.
+
+## My own suggestions
+
+1. Do not take things published in the literature for granted, especially when they are one-off results.  Many reported phenomena are not consistent enough to serve as a solid foundation for your own experiments or theories.  A few things follow:  
+    - If you are following up on some reported phenomenon, work a literal replication of the original into your own experiment. (The goal here is not to debunk, but to debug -- it will be much easier to sort out what happened in your follow-up if you know whether the original replicated.)   
+    - Replicate directly if you want to use a reported phenomenon as an explanatory mechanism or theoretical building block.  
+
+2. Follow the advice in Feynman's excellent piece on ["cargo cult science"](http://neurotheory.columbia.edu/~ken/cargo_cult.html):   
+"The first principle is that you must not fool yourself -- and you are the easiest person to fool. So you have to be very careful about that. After you've not fooled yourself, it's easy not to fool other scientists. You just have to be honest in a conventional way after that."   
+This basically means: it is your job to be the most skeptical of your own work.  Not fooling yourself is hard.  It requires having ample expertise in the domain of interest to know about likely confounds and measurement problems.  It requires fluency in statistics to know what your data do and do not imply.  It requires expressing your theories sufficiently objectively to remove  subjective interpretation linking theories to experimental predictions.  It requires thinking very hard about why you might be wrong.
+
+3. There are lots of attempts to come up with procedural checklists to decrease the odds that you will fool yourself with your own data. These will all help, but they are no replacement for genuinely wanting to not fool yourself.  In some sense, the "rule-book" approach to experiment design and analysis is counterproductive in that it absolves individual researchers of responsibility for not fooling themselves: the implication is that if you tick all the boxes in such a checklist, you did your due diligence, and you are not at fault if your conclusions are faulty.  This is wrong: you have the ultimate responsibility for ensuring that you do not deceive yourself or others with your results.  If you tick all the boxes and still get the wrong answer, its still your job to catch it.  If you fail to do so, it doesn't mean you were malicious or devious, but it does mean that you failed in your primary task of not fooling yourself.  So, although the checklists and rule-books are helpful to catch common errors and avoid common mistakes, but do not treat them as sufficient.  With that said, here is one such checklist:   
+    - Make your goal be precise, quantitative measurements/estimates, rather than a finding of p<0.05.  This makes your data useful even if your hypothesis did not pan out.  It motivates clean, quantitative measurements, large samples.  It discourages fishing for significance. Etc.   
+    - Pre-register, at least with yourself by writing down exactly what your analysis will be ahead of time.  This is helpful for debugging experiment designs, and is also a good way to keep yourself honest so that you will know exactly when you start deviating from your original plan and start making data-driven analysis decisions (meandering down the [garden of forking paths](http://www.stat.columbia.edu/~gelman/.../p_hacking.pdf).   
+    - Make everything open by default (e.g., by storing projects on osf, or github; or by making them public after publication).  This is not only useful for other scientists, but it creates the right impetus to be clean and clear in your data and analysis code.   
+    - Look at your data carefully before launching into testing hypotheses.  This is the first step in finding oddities, grasping the variability, etc.   
+    - If you didn't predict an effect in your data, replicate it.   
+    - Ask yourself: how much would you bet on your result replicating?  If you are not confident enough to bet, you should not be confident enough to advertise the result to others.
+    
+```{r echo=FALSE}
+# <!----
+#**Some assorted links on replication**    
+#(these are sampled randomly, )
+#- http://babieslearninglanguage.blogspot.com/2015/08/a-moderates-view-of-reproducibility.html   
+#- http://babieslearninglanguage.blogspot.ie/2015/08/the-slower-harder-ways-to-increase.html   
+#- http://andrewgelman.com/2015/09/02/to-understand-the-replication-crisis-imagine-a-world-in-which-everything-was-published/   
+#---->
+
+#<!----
+# *Power* As we will learn, power is determined by (a) how much your manipulation influences your measurement, relative to (b) the variability of your measurements, and (c) the number of observations.  Although there are various rules of thumb for getting a large enough sample size to achieve adequate power, these tend to overlook various subtleties.  First: what kind of variability matters for estimating your effect in your experiment design? There will be variation due to subjects (some are faster, more accurate, etc than others), there will be variation due to subject-condition interactions (the influence of a condition on one subject may differ from its influence on another subject), there will be variation due to items (e.g., some stimuli are processed faster/better than others), there will be variation due to item-condition interactions (stimuli will be influenced differently by the conditions), there will be variation due to specific subject-item-condition interactions, and there will be variation due to error in specific measurements.
+#--->
+```

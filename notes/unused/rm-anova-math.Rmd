@@ -1,0 +1,167 @@
+# Repeated measures and mixed models
+
+The F-distribution is the probability distribution of the ratio of two sample variances, each estimating the same population variance, but computed with different degrees of freedom.  The logic of an ANOVA is that we will employ the F-distribution to compare the ratio of the sample variance across group means, to the sample variance of the measurements within groups.  Under the null hypothesis the variance across group population means will be zero, thus the sample variance across group means will just correspond to the measurement error associated with our sample means (determined by the sampling variability of the individual measurements that go into our estimate of the group mean).
+
+\subsection{1-factor between subject ANOVA}
+
+Let's say we have $a$ groups (we call these ``levels" of factor A), each with $n$ measurements ($y_{i,j}$, where $i$ indexes the $a$ groups, and $j$ indexes the $n$ independent measurements within each group).  Our model of these measurements is:
+
+$y_{i,j} = \mu + \alpha_i + \varepsilon_{i,j}$\\
+$\sum \alpha_i = 0$\\
+$\varepsilon \sim N(0,\sigma)$
+
+The $\alpha$s are the fixed factor A effects, and the $\varepsilon$s are the measurement errors.  We assume that the measurement errors (the difference between each measurement and the mean of that group) are normally distributed with a mean of 0, and a variance of $\sigma^2$.  Under the standard null hypothesis, we assume that the population means of all groups are equal, or equivalently, that the factor effects are all 0: $\alpha_1 = \alpha_2 = ... = \alpha_a = 0$.  Thus, under the null hypothesis, the true population variance across group means is zero ($\sigma_\alpha^2 = 0$).
+
+Since we are going to be estimating the various terms associated with our model, we should expect some error.
+
+We can calculate an estimate of the mean of everything by taking the sample mean of everything:\\
+$\hat \mu = \bar y_{\cdot,\cdot} = \sum_{i=1}^a \sum_{j=1}^n y_{i,j}/(na)$
+
+To obtain an estimate of the factor effect of group $i$ ($\alpha_i$), we average all the measurements in group $i$, and subtract the mean of everything: \\
+$\hat \alpha_i = \bar y_{i,\cdot} - \bar y_{\cdot,\cdot} = \sum_{j=1}^n y_{i,j} / n - \bar y_{\cdot,\cdot}$.\\
+Our expected error, associated with the mean of the group is expected to be $\sigma / \sqrt n$ (the standard error of the mean).  Thus, the variance across group sample means under the null hypothesis (where the means are all the same) will just be the variance of the errors associated with our estimates of the means: $\sigma^2 / n$.
+
+Our estimate of the variability across group means will be the sample variance of the group means:\\
+$\frac{\sum_{i=1}^a \bar \alpha_i^2}{a-1} = \frac{\sum_{i=1}^a (\bar y_{i,\cdot} - \bar y_{\cdot,\cdot})^2}{a-1}$\\
+This quantity will be equal to the true population variance of the group means plus the error associated with the estimation: $\sigma_\alpha^2 + \sigma^2 / n$.  Under the null model, $\sigma_\alpha^2 = 0$ so our expected value of this quantity is $\sigma^2 / n$.  If we multiply this quantity by $n$, we will get $n \sigma_\alpha^2 + \sigma^2$, or just $\sigma^2$ under the null hypothesis.  \\
+This is precisely what we do when we compute MSA:\\
+$MSA = n\frac{\sum_{i=1}^a (\bar y_{i,\cdot} - \bar y_{\cdot,\cdot})^2}{a-1} = \frac{\sum_{i=1}^a n (\bar y_{i,\cdot} - \bar y_{\cdot,\cdot})^2}{a-1}$\\
+Note that the numerator of the second fraction is usually called the ``sum of squares of factor A" (SSA), and the denominator is the degrees of freedom of factor A, or the degrees of freedom associated with our estimate of the variance across A group means.
+
+Our estimate of $\sigma$ will be given by the sample variance of the measurements around their group means: \\
+$\text{MSE} = s^2 = \hat \sigma^2 = \frac{\sum_{i=1}^a \sum_{j=1}^n (y_{i,j} - \bar y_{i,\cdot})^2}{an-a}$\\
+Where we usually call the numerator the ``sum of squares error" or SSE, and the denominator is the degrees of freedom error -- the degrees of freedom associated with our estimate $\hat \sigma^2$: $an$ is the total number of data points across groups, and we lose $a$ degrees of freedom because we estimated $a$ means -- one for each group.
+
+Thus, when we divide MSA by MSE to compute the F statistic, we are dividing two sample variances, the first with dfA degrees of freedom, the second with dfE degrees of freedom.  Under the null hypothesis, both of these sample variances are expected to be equal to $\sigma^2$.  In so far as the null hypothesis is false --- if there is any true variability between group population means ($\sigma_\alpha^2 \neq 0$) --- then our F ratio will be larger than we expect it to be by chance.    Thus, we can compare our F statistic to the F distribution (with dfA and dfE degrees of freedom), to see how likely an F statistic as large as (or larger than) ours is to arise under the null hypothesis of no variance across group population effects.  This probability is the p-value obtained from the F test.  
+
+Every F test and every F statistic calculated in every ANOVA is doing some version of this; the only difference is that more complicated ANOVA designs result in different errors contributing to different estimates.
+
+If we instead have a multi-way ANOVA, with factors A,B,C, with $a$, $b$, $c$ levels of each factor, and $n$ independent measurements in each AxBxC condition.  We will have $nabc$ total observations, and we can compute interaction terms, etc.  However, our error calculation will remain the same, and our F ratios remain the same.  Moreover, if all of these factors are between subjects, then under the null hypothesis, all the MS[treatment] values are expected to be equal to $\sigma^2$.
+
+\section{One-factor repeated measures / blocked error}
+
+Let's say we now have a repeated measures design.  We have $n$ subjects, and measure each subject $a$ times (once in each of $a$ levels of factor A), yielding a total of $na$ measurements: ($y_{i,j}$, where $i$ indexes the level of factor A, and $j$ indexes the subject$).  
+
+Our basic repeated measures model is that each subject may be a bit different from every other subject, and this difference results in an additive change to the final measurement, we call this a ``random effect" of subjects.  We can write the model as:\\
+$y_{i,j} = \mu + \alpha_i + \rho_j + \varepsilon_{i,j}$\\
+where\\
+$\sum \alpha_i = 0$\\
+$\rho \sim N(0,\sigma_S)$\\
+$\varepsilon \sim N(0, \sigma_E)$\\
+$\mu$ is the grand mean of everything, the $\alpha$s are the factor effects, the $\rho$s are the random subject effects, and the $\varepsilon$s are the measurement errors.  We assume that the subject effects are distributed normally, with mean 0 and variance $\sigma_S^2$, and the measurement errors are normal with mean 0 and variance $\sigma_E^2$.
+
+We can estimate the mean of everything by taking the mean of every data point:\\
+$\hat \mu = \bar y_{\cdot,\cdot} = \sum_{i=1}^a \sum_{j=1}^n y_{i,j} / (na)$\\
+
+We can estimate the factor effect of group $i$ ($\alpha_i$), by averaging all the measurements in group $i$, and subtract the mean of everything: \\
+$\hat \alpha_i = \bar y_{i,\cdot} - \bar y_{\cdot,\cdot} = \sum_{j=1}^n y_{i,j} / n - \bar y_{\cdot,\cdot}$.\\
+Since the $\rho$s (subject effects) sum to 0, and they are fully crossed with each level of A, they will not contribute to the error associated with $\bar y_{i,\cdot}$.  However, the error associated with individual measurements will contribute.  Thus the standard error of our estimate $\bar y_{i,\cdot}$ will be $\sigma_E / \sqrt n$.  When we calculate the sample variance of the $\hat \alpha$s, we find the same expectation values as we did previously:\\
+$\frac{\sum_{i=1}^a \bar \alpha_i^2}{a-1} = \frac{\sum_{i=1}^a (\bar y_{i,\cdot} - \bar y_{\cdot,\cdot})^2}{a-1}$\\
+Is expected to be $\sigma_\alpha^2 + \sigma_E^2 / n$, and multiplying by n we get  $n \sigma_\alpha^2 + \sigma_E^2$, which under the null hypothesis will be $\sigma_E^2$.  Again, this is how we calculate MSA:\\
+$MSA = n\frac{\sum_{i=1}^a (\bar y_{i,\cdot} - \bar y_{\cdot,\cdot})^2}{a-1} = \frac{\sum_{i=1}^a n (\bar y_{i,\cdot} - \bar y_{\cdot,\cdot})^2}{a-1}$\\
+The second term contains the sum of squares of A in the numerator, and the degrees of freedom of A in the denominator.
+
+We can estimate the individual effects of each subject as:\\
+$\hat \rho_j = \bar y_{\cdot,j} - \bar y_{\cdot,\cdot} = \sum_{i=1}^a y_{i,j} / a - \bar y_{\cdot,\cdot}$.\\
+Because the levels of A are perfectly crossed with subjects, and sum to zero, the error associated with each $\bar y_{\cdot,j}$ will just be $\sigma_E / \sqrt a$.  When we calculate the sample variance of the subject factors:\\
+$\frac{\sum_{j=1}^n \bar \rho_j^2}{n-1} = \frac{\sum_{j=1}^n (\bar y_{\cdot,j} - \bar y_{\cdot,\cdot})^2}{n-1}$\\
+We expect this quantity to be equal to $\sigma_S^2 + \sigma_E^2 / a$.  If we multiply this $a$ we get a quantity that should equal $a \sigma_S^2 + \sigma_E^2$\\
+$MSS = a \frac{\sum_{j=1}^n (\bar y_{\cdot,j} - \bar y_{\cdot,\cdot})^2}{n-1} = \frac{\sum_{j=1}^n a (\bar y_{\cdot,j} - \bar y_{\cdot,\cdot})^2}{n-1}$.\\
+If there is no effect of subjects, then we expect this quantity to be equal to $\sigma_E^2$ (and we can compute an F-ratio to test for this subject effect).
+
+We can estimate $\sigma_E^2$ by computing the difference between each data point, and the prediction from our estimates $\hat \mu$, $\hat \alpha_i$, $\hat \rho_j$:\\
+$\hat \varepsilon_{i,j} = y_{i,j} - \hat \mu - \hat \alpha_i - \hat \rho_j$, and we can then compute the sample variance of these estimates:\\
+$MSE = \hat \sigma_E^2 = \frac{sum_{i=1}^a \sum_{j=1}^n \hat \varepsilon_{i,j}^2}{na-n-a}$\\
+(note that our degrees of freedom here are the total number of observations ($na$) minus the number of parameters used to capture the effects of subjects, factor A, and the grand mean ($n+a$).)\\
+Usually we will just write this calculation by referring to the individual means:\\
+$MSE = \hat \sigma_E^2 = \frac{sum_{i=1}^a \sum_{j=1}^n (y_{i,j}-\bar y_{i,\cdot} - \bar y_{\cdot,j} + \bar y{\cdot,\cdot})^2}{na-n-a+1}$.\\
+These statements are equivalent.
+
+We can now compute F ratios between MSA/MSE, or MSS/MSE, as under the null hypotheses (of no factor effects, and no subject effects, respectively), these quantities are all expected to be equal to $\sigma_E^2$.  Note that in this case, the addition of a blocking factor (here the subject random effect), will have absorbed some of the sum of squares error, without complicating the F ratio.  This is not always the case.
+
+We can scale this up to a multi-way within-subject ANOVA, with factors A,B,C with $a$, $b$, $c$ levels of each factor, and we have $n$ subjects each contribute one measurement to each AxBxC condition.  We will have $nabc$ total observations, and we can compute interaction terms, etc.  However, our error calculation will remain the same, and our F ratios are still constructed the same way.
+
+\section{Nested designs and mixed ANOVAs}
+
+Let's take a more complicated scenario, where we have a between-subject factor A (with $a$ levels, each one has $n$ subjects), and a within-subject factor B (with $b$) levels.  Thus we have a total of $na$ subjects, and $nab$ measurements.  We will refer to each measurement as $y_{i,(j),k}$, where $i$ indexes the levels of between subject factor A, $k$ indexes the within-subject  factor B, and $j$ indexes each subject in each $a$ condition.  We write $(j)$ in parentheses to make it clear that the $j$th subject in the first level of factor A (condition $i=1$) is not the same as the $j$th subject in the second level of factor A ($i=2$).  
+
+Our model now becomes a bit more complicated:\\
+$y_{i,(j),k} = \mu + \alpha_i+ \beta_k + \alpha\beta_{i,k}  + \rho_{i,(j)} + \varepsilon_{i,(j),k}$\\
+where,\\
+$\sum \alpha_i = 0$\\
+$\sum \beta_j = 0$\\
+$\sum \alpha\beta_{i,k} = 0$ \\
+$\rho_{i,(j)} \sim N(0,\sigma_S)$\\
+$\varepsilon_{i,(j),k} \sim N(0,\sigma_E)$\\
+$\mu$ is the mean of everything; $\alpha$s capture the effects of factor A; $\beta$s capture the effect of factor B, $\rho$s capture the random effects of subjects; $\varepsilon$s capture the remaining variability in measurements.
+
+Because this gets hairy, let's first talk about estimating particular means.
+
+The mean of a given subject is: \\
+$\bar y_{i,(j),\cdot} = \sum_{k=1}^b y_{i,(j),k} / b$\\
+With error variance $\sigma_E^2 / b$.
+
+The mean of a given factor A level is: \\
+$\bar y_{i,(\cdot),\cdot} = \sum_{j=1}^n \sum_{k=1}^b y_{i,(j),k} / nb$\\
+With error variance $\sigma_S^2/n + \sigma_E^2/bn$.
+
+The mean of a given factor B level is: \\
+$\bar y_{\cdot,(\cdot),k} = \sum_{i=1}^a \sum_{j=1}^n y_{i,(j),k} / na$\\
+With error variance $\sigma_S^2/an + \sigma_E^2/an$ \\
+(however, note that the $\sigma_S^2/an$ variance component is perfectly correlated across all factor B conditions, because each subject contributes to each factor equally.  Thus, when we calculate the $\beta_k$ effects, we subtract the subject means, thus this error term ends up canceling out).
+
+The mean of a given AxB cell is: \\
+$\bar y_{i,(\cdot),k} = \sum_{j=1}^n y_{i,(j),k} / n$\\
+With error variance $\sigma_S^2/n + \sigma_E^2/n$ \\
+
+The grand mean is: \\
+$\bar y_{\cdot,(\cdot),\cdot} = \sum_{i=1}^a \sum_{j=1}^n  \sum_{k=1}^b y_{i,(j),k} / nab$\\
+With error variance $\sigma_S^2/an +\sigma_E^2/nab$
+
+As before, we can estimate $\mu$ as:\\
+$\hat \mu = \bar y_{\cdot,\cdot,\cdot}$
+
+Again, because levels of B are fully crossed with levels of A, we can estimate $\alpha_i$ as: \\
+$\hat \alpha_i = \bar y_{i,(\cdot),\cdot} - \bar y_{\cdot,(\cdot),\cdot}$\\
+The sample variance of $\hat \alpha$s will be:\\
+$\frac{\sum_{i=1}^a \hat \alpha_i^2}{a-1} = \frac{\sum_{i=1}^a (\bar y_{i,(\cdot),\cdot} - \bar y_{\cdot,(\cdot),\cdot})^2}{a-1}$\\
+Under the null hypothesis all $\alpha_i=0$ so the only variability contributing to this sample variance will be the variability of the error of the individual A means, so we expect this quantity to be: $\sigma_S^2/n + \sigma_E^2/bn$.  When we multiply it by $bn$, we get MSA, which we expect to be $b \sigma_S^2 + \sigma_E^2$ under the null hypothesis:
+$MSA = \frac{\sum_{i=1}^a bn(\bar y_{i,(\cdot),\cdot} - \bar y_{\cdot,(\cdot),\cdot})^2}{a-1}$
+
+Because of the crossed design, we can estimate $\beta_k$ as:\\
+$\hat \beta_k = \bar y_{\cdot,(\cdot),k} - \bar y_{\cdot,(\cdot),\cdot}$\\
+Note that all subjects contribute to each $k$ mean, as well as the grand mean; thus the the subject variance component ($\sigma_S^2/an$) is perfectly correlated, and gets subtracted out.  Consequently, the error variance of the $\beta_k$s will be just $\sigma_E^2/an$\\
+The sample variance of the $\beta$s will be:\\
+$\frac{\sum_{k=1}^b \beta_k^2}{b-1} = \frac{\sum_{k=1}^b (\bar y_{\cdot,(\cdot),k} - \bar y_{\cdot,(\cdot),\cdot})^2}{b-1}$\\
+Because the ``subject variance" component is cancelled out, under the null hypothesis (when all $\beta_k=0$), their sample variance will be equal to $\sigma_E^2/an$.\\
+When we calculate MSB, we multiply this sample variance by the number of contributing data points ($na$), thus we expect MSB to be $\sigma_E^2$ under the null hypothesis:\\
+$MSB = \frac{\sum_{k=1}^b an(\bar y_{\cdot,(\cdot),k} - \bar y_{\cdot,(\cdot),\cdot})^2}{b-1}$\\
+
+We can estimate $\alpha\beta_{i,k}$ as:\\
+$\hat {\alpha\beta}_{i,k} = \bar y_{i,\cdot,k} - \bar y_{i,(\cdot),\cdot} - \bar y_{\cdot, (\cdot), k} + \bar y_{\cdot, (\cdot), \cdot}$\\
+Tracking the expected error variance through this calculation is trickier, but here's the intuition behind what happens, roughly speaking: the subject variance component ($\sigma_S^2/n$) is shared between the mean of a given AxB cell and the corresponding A row. When we subtract the A-factor-level mean to calculate the interaction term we remove the subject variance component.  Thus when we calculate the sample variance of $\hat{\alpha\beta}_{i,k}$, we expect it to be just $\sigma_E^2/n$ under the null hypothesis:\\
+$\frac{\sum_{i=1}^a \sum_{k=1}^b \hat{\alpha\beta}_{i,k}^2}{(a-1)(b-1)}$\\
+And when this is multiplied by $n$ to calculate MSAB, we expect the value to be just $\sigma_E^2$, under the null hypothesis:\\
+$MSAB = \frac{\sum_{i=1}^a \sum_{k=1}^b n \hat{\alpha\beta}_{i,k}^2}{(a-1)(b-1)}$\\
+
+We can estimate $\rho_{i,(j)}$ as:\\
+$\hat \rho_{i,(j)} = \bar y_{i,(j),\cdot} - \bar y_{i,(\cdot),\cdot}$\\
+The error variance of each $\rho$ will be  $\sigma_E^2 / b$, so when we calculate the sample variance of the $\rho$s it will be $\sigma_S^2 + \sigma_E^2 / b$:\\
+$\frac{\sum_{i=1}^a \sum_{j=1}^n \hat{\rho}_{i,(j)}^2}{(n-1)(a)}$\\
+And when we multiply by $b$ to calculate MSS (mean squares subjects), we expect the value to be $b \sigma_S^2 + \sigma_E^2$\\
+$MSS = \frac{\sum_{i=1}^a \sum_{j=1}^n b \hat{\rho}_{i,(j)}^2}{(n-1)(a)}$.
+
+We can estimate $\varepsilon_{i,(j),k}$ as:\\
+$\hat \varepsilon_{i,(j),k} = y_{i,(j),k} - \hat \mu - \hat \alpha_i - \hat \beta_k - \hat{\alpha\beta}_{i,k} - \hat \rho_{i,(j)}$\\
+Obviously, we expect the variance of the $\varepsilon$s (or MSE) to be $\sigma_E^2$:\\
+$MSE = \frac{\sum_{i=1}^a \sum_{j=1}^n \sum_{k=1}^b \hat{\varepsilon}_{i,(j),k}^2}{nab-ab-a(n-1)}$.\\
+(to be clear: the degrees of freedom for this error term arise from the total number of measurements ($nab$) minus the number of parameters used to describe all the cell means ($ab$), and the number of parameters used to describe all the subjects ($a(n-1)$).
+
+Now when we think about which error term (MSS or MSE) we should use as the denominator of the F statistic, we need only ask, which error term should be equal to which ``treatment" term under the null hypothesis.
+
+Under the null hypothesis, we expect MSA (the between subject factor) to be $b \sigma_S^2 + \sigma_E^2$, and we expect MSS (the between subject error term) to be $b \sigma_S^2 + \sigma_E^2$.  Thus, under the null hypothesis, their ratio should be distributed according to the F distribution.  So the F statistic for A will be MSA/MSS.
+
+We expect MSB (the within subject factor) to be $\sigma_E^2$ under the null hypothesis -- which is what MSE will be.  Thus the F statistic for factor B will be MSB/MSE.
+
+Similarly, MSAB should be equal to $\sigma_E^2$ under the null hypothesis.  Thus the F statistic for the AxB interaction will be MSAB/MSE.
+

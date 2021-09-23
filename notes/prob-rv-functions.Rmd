@@ -1,0 +1,80 @@
+---
+output: 
+    html_document
+---
+
+# Distribution functions: PDF, CDF, Quantile
+
+> tl;dr;    
+> `d*` gives the probability mass/density, (e.g., `dnorm`)  
+> `p*` gives the cumulative probability, (e.g., `pnorm`)  
+> `q*` gives the quantile (inverse cdf) (e.g., `qnorm`)
+
+[Random variables](prob-rv.html) are defined by their probability distributions which describe the probability with which that variable will take on any of its possible values.  Random variables may be categorized by which values they can take on: **discrete** random variables take on only a countable number of values (e.g., integers: 1, 2, 3, 4), while **continuous** random variables take on an uncountable number of values (e.g., rational numbers: 1, 1.01, 1.001, 1.0001, ...).
+
+## Probability distribution (mass and density) functions (p.d.f.)
+
+*Discrete* random variables have **probability mass functions** which assign some amount of probability to each possible value: $P(X=x) = f_X(x)$. In `R` these are prefixed with `d`, as in `dbinom`.  
+
+In contrast, *Continuous* random variables have infinitely many possible values, and the probability associated with each one of them is effectively nil.  Consequently, they have **probability density functions** (PDF) which describe the *density* of probability at each value.  Consequently, probability can only be defined for a possible *interval* of values, which is calculated by integrating the probability density within that interval $P(a < X < b) = \int_a^b f_X(x) dx$.  In `R` these are also prefixed with `d`, as in `dnorm`.
+
+```{r}
+x = seq(-3,3,by=0.001)
+library(ggplot2)
+ggplot(data.frame(x=x, dens=dnorm(x,0,1)), aes(x,dens))+geom_line()+ggtitle('Probability density function of standard normal')
+```
+
+For discrete variables, each candidate value has some non-zero probability assigned to it; hence we talk about the probability "mass" at each value.   However, continuous variables do not take on a countable number of alternatives.  For instance, the interval $[0,1]$ has uncountably many alternatives: 0.8, 0.83, 0.836, 0.8362, ... etc.  If we distribute probability over each of these alternatives, each one will get infinitesimally little probability mass (0).  So, it doesn't make sense to talk about the distribution of probability mass over these alternatives.  Instead, we talk about the *density* of probability at a given point.  Actual probability values are obtained by integrating the density over some interval.  (Usually, it is most convenient to deal with the cumulative distribution of a continuous variable.)
+
+## Cumulative distribution functions (c.d.f.)
+
+The **cumulative distribution function** (CDF) at $x$ gives the probability that the random variable is less than or equal to $x$: $F_X(x) = P(X \leq x)$, calculated as the sum of the *probability mass function* (for discrete variables) or integral of the *probability density function* (for continuous variables) from $-\infty$ to $x$.    
+For discrete: $F_X(x) = \sum_{x' \leq x} f_X(x')$.   
+For continuous: $F_X(x) = \int_{-\infty}^x f_X(t)dt$.
+
+In `R` CDFs are prefixed with `p`, as in `pnorm`.  
+
+```{r}
+x = seq(-3,3,by=0.001)
+ggplot(data.frame(x=x, cumulative=pnorm(x,0,1)), aes(x,cumulative))+geom_line()+ggtitle('Cumulative distribution function of standard normal')
+```
+
+
+For instance, IQ is normally distributed with mean 100 and standard deviation 15. The cumulative distribution of IQ at 100 is 0.50, because half of the IQ scores are less than or equal to 100, by definition.  We can assess the cumulative distribution of such normal variables with `pnorm()`, for instance, the cumulative probability at IQ=120 is given by `pnorm(120,100,15)`=`r pnorm(120,100,15)`.  This tells us that 120 is the `r 100*pnorm(120,100,15)`th percentile of IQ.   In other words the percentile of $x$ is $100\cdot P(X \leq x) \%$, or $100 \cdot F_X(x) \%$.
+
+### Slight technicality for discrete random variables
+
+By our basic rules of probability, we should see that $P(X \geq x) = 1 - P(X < x)$ (since all X values that are not greater or equal to x must be smaller than x).  
+
+For continuous random variables, we can take a bit of a shortcut, and calculate $P(X \geq x) = 1 - P(X \leq x)$, because for continuous variables $P(X=x)$ is infinitesimally small, so the fact that we are counting $X=x$ (rather than counting only $X<x$) makes no difference, since exactly x has zero probability.  Consequently, we can calculate the probability that IQ will be greater or equal to 120 as `1-pnorm(120,100,15)`.  
+
+In contrast, for discrete variables, $P(X = x)$ has some non-zero probability, so we cannot simply calculate $P(X \geq x)$ as $1-P(X \leq x)$.  For instance, if we consider the number of coins that come up heads out of 10 fair flips (which is given by the binomial(10,0.5) distribution).  The probability of getting 7 or more heads can be calculated as `sum(dbinom(seq(7,10),10,0.5))`=`r sum(dbinom(seq(7,10),10,0.5))`.  However, we get the wrong answer if we try to calculate it as `1-pbinom(7,10,0.5)` = `r 1-pbinom(7,10,0.5)`.  Instead, we must calculate it as $P(X \geq x) = 1-P(X < x)$: `1-pbinom(6,10,0.5)` = `r 1-pbinom(6,10,0.5)`.     
+Put another way: $P(X \leq 7)=0.95$ and $P(X \geq 7)=0.17$ sum to more than 1.0 because they double-count $P(X=7)=0.12$.  $P(X < 7)=P(X \leq 6)=0.83$ and $P(X \geq 7)=0.17$ do sum to 1.0.
+
+In short: be careful when calculating the *upper* cumulative distribution tail of discrete distributions.
+
+## Quantile functions (inverse CDF).
+
+If we want to know what IQ score one would need to have to be in the 95th percentile, we want to find the IQ score such that the cumulative probability at that score is 0.95.  These sorts of questions ask about the *inverse cumulative distribution function*, or the **quantile** function.  In R we can calculate this with `q*` functions.  For instance, to get the 95th percentile IQ: `qnorm(0.95, 100, 15)` = `r qnorm(0.95, 100, 15)`.  We generally write the quantile function as $F^{-1}_X(q)$, and this quantile function is defined in terms of the cumulative probability: $F^{-1}_X(q) = x \mbox{ iff } F_X(x)=q$.  Thus the `q*` (quantile) and `p*` (cumulative probability) functions are inverses of each other:  
+`pnorm(qnorm(0.8, 100, 15), 100, 15)`=`r pnorm(qnorm(0.8, 100, 15), 100, 15)`   and   
+`qnorm(pnorm(75, 100, 15), 100, 15)`=`r qnorm(pnorm(75, 100, 15), 100, 15)`
+
+
+```{r}
+q = seq(0.001,0.999,by=0.001)
+ggplot(data.frame(cumulative=q, x=qnorm(q,0,1)), aes(cumulative,x))+geom_line()+ggtitle('Quantile function of standard normal')
+```
+
+### Special named quantiles.
+
+Quantiles place points evenly along the c.d.f., effectively dividing the c.d.f. into even intervals.  The $q$-quantiles tesselate the full c.d.f. range (0 to 1) in intervals of $1/q$.  The kth q-quantile refers to the value of $x$ such that $F_X(x)=k/q$.  For instance, a 4-quantile (usually called a quartile) places four points along the c.d.f., the first at 0.25, the second at 0.5, the third at 0.75, the fourth at 1.0.  There are names for various common quantile splits.  'quartiles' ($q=4$), 'quintiles' ($q=5$), 'deciles' ($q=10$), 'percentiles' ($q=100$). You will see these special names in the literature, but we will tend to just refer to quantiles by their corresponding probability.
+
+While a given quantile typically refers to the exact $x$ value, it is often used to refer to the interval below that point. For instance, I might say that I scored in the "bottom" quartile, meaning that my score was somewhere between the lowest score and the score that corresponds to the first quartile (my percentile is somewhere between 0 and 25).  Or that I was in the third quartile (my percentile was somewhere between 50 and 75), etc. 
+
+### Quantiles for discrete variables.
+
+```{r}
+data.frame(x=0:10, cdf=pbinom(0:10, 10, 0.5))
+```
+
+For discrete variables, it may be the case that a particular quantile cannot be specified exactly .  For instance, the 0.5th quantile in the distribution of coin flips above falls somewhere between 5 and 6.  There are a number of ways to interpolate between 5 and 6 to produce an estimate of what that quantile "really" is.  Generally if you need to find a given quantile and you can't specify it exactly, be conservative (i.e., pick the number that is less favorable to whatever it is you are trying to do).

@@ -1,0 +1,90 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Numerical ~ Numerical
+
+Showing how one numerical variable influences another can be accomplished via the same plots that we used to show the [joint distribution of two numerical variables](2N-0.html); however, here where one of these variables is explanatory, we have the possibility of adding line graphs of the mean to highlight such effects.
+
+```{r}
+library(ggplot2)
+
+df = data.frame(iq=round(rnorm(100, 100, 15)),
+                age=round(18+rgamma(100, 2, 1)*7))
+```
+
+### Line graphs
+
+We've all seen line graphs: they show the mean of the y variable as it changes across values of x.  Generally, this requires binning along y.  Often, in experiments, this is done automatically by virtue of the fact that the experiment explicitly manipulated x, and thus only a few values of x appeared (e.g., we varied the stimulus onset asynchrony of two stimuli to be 0, 100, 200, 400, or 800 msec).  More generally though, we can bin any numerical variable to produce a line graph, just as we would bin it to produce a histogram.  
+
+GGplot does not make it easy to create lineplots via arbitrary binning of x values and then averaging the corresponding y values.  The ggplot designers seem to prefer [loess](https://en.wikipedia.org/wiki/Local_regression) smoothing, which I think tends to mislead with small, noisy data sets.  The general approach is to create the bins yourself.  We can do this with `cut`
+
+````{r}
+df$age.bin = as.numeric(as.character(cut(df$age, breaks=seq(0, 120, by=10), labels = seq(5, 115, by=10))))
+````
+
+Here we create a new column `age.bin`, which is the mid-point of 10-year age bin that the age falls into.
+
+Now let's make a simple line plot:
+
+````{r}
+ggplot(df, aes(x=age.bin, y=iq))+stat_summary(fun.y = function(x){mean(x)}, 
+                                              geom="line")
+````
+
+A more useful plot would also add the corresponding error bars for the individual points, to indicate what points are being connected with the lineplot
+
+````{r}
+ggplot(df, aes(x=age.bin, y=iq))+stat_summary(fun.y = function(x){mean(x)}, 
+                                              fun.ymax = function(x){mean(x) + sd(x)/sqrt(length(x))},
+                                              fun.ymin = function(x){mean(x) - sd(x)/sqrt(length(x))},
+                                              geom="pointrange")+
+                                stat_summary(fun.y = function(x){mean(x)}, 
+                                              geom="line")
+````
+
+We can improve the line plot further by showing the underlying distribution:
+
+````{r}
+ggplot(df, aes(x=age.bin, y=iq))+geom_point(aes(x=age), alpha=0.5) + 
+                                stat_summary(fun.y = function(x){mean(x)}, 
+                                              fun.ymax = function(x){mean(x) + sd(x)/sqrt(length(x))},
+                                              fun.ymin = function(x){mean(x) - sd(x)/sqrt(length(x))},
+                                              size=1.25,
+                                              geom="pointrange")+
+                                stat_summary(fun.y = function(x){mean(x)}, size=1.25,
+                                              geom="line")
+````
+
+Or we could superimpose this line plot on a 2d density plot:
+
+````{r}
+ggplot(df, aes(x=age.bin, y=iq)) + stat_density2d(aes(x=age, fill=..density..), geom='tile', contour = FALSE) + 
+                                stat_summary(fun.y = function(x){mean(x)}, 
+                                              fun.ymax = function(x){mean(x) + sd(x)/sqrt(length(x))},
+                                              fun.ymin = function(x){mean(x) - sd(x)/sqrt(length(x))},
+                                              size=1.25,
+                                              geom="pointrange")+
+                                stat_summary(fun.y = function(x){mean(x)}, size=1.25,
+                                              geom="line")
+````
+
+### Smoothing
+
+The built-in way to create a 'line plot' by binning and averaging different x values is to smooth with geom_smooth, which generally uses some form of local regression by default.  This produces a pretty curve, but in my experience (a) statistics with loess regression is hairy, and (b) the smoothed curves produces by loess are too sensitive to noise and outliers, and tend to make us perceive signal in noise.  So I recommend using such smoothing very carefully.
+
+````{r}
+ggplot(df, aes(x=age, y=iq))+geom_point(alpha=0.5) + geom_smooth()
+````
+
+## N ~ N + C
+
+If we have a numerical and categorical explanatory variable, the natural choice of plot would be line plots that differ in color, such that color varies with category, and x is the numerical explanatory variable.  With another categorical variable, we might map it onto shape or line type, but it might get too busy, and [facets](facets.html) may be preferable. 
+
+## N ~ 2N
+
+If we have two or more numerical explanatory variables, besides x, we can map them onto size (a "bubble chart", made famous by [gapminder](http://www.gapminder.org/)), or color (to create a smooth color scale).  Which mapping is most illuminating becomes a rather subjective decision here, depends on smoothness and stratification of the response variable.
+
+With just two numerical explanatory variables, another option is to produce a heatmap, or a 3D surface plot, but those tend to require either a lot of data, or particularly smooth variation of the response variable as a function of the explanatory variables.
+

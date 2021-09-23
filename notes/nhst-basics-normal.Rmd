@@ -1,0 +1,493 @@
+---
+output: 
+    html_document
+---
+
+# Statistics via the Normal distribution
+
+Based on the [central limit theorem](prob-clt-normal.html) and our derivation of the properties of the [sampling distribution of the sample mean](nhst-sampling-distribution.html), we can undertake some classical (frequentist) statistics.
+
+When we calculate the mean of $n$ independent samples from a population with mean $\mu_X$ and standard deviation $\sigma_X$, the "sampling distribution of the sample mean" will follow roughly a Normal distribution, centered on the population mean, and with the standard deviation reduced by a factor of $\sqrt{n}$:
+
+$\bar x^{(n)} \sim \operatorname{Normal}\left({\mu_X, \frac{\sigma_X}{\sqrt{n}}}\right)$
+
+If we calculate instead the sampling distribution of the error between the sample and population means, we get:
+
+$(\bar x^{(n)}-\mu_X) \sim \operatorname{Normal}\left({0, \frac{\sigma_X}{\sqrt{n}}}\right)$
+
+We use the convenient phrase **standard error of the sample mean** to refer to the standard deviation of the sampling distribution of the sample mean (and also the standard deviation of the sampling distribution of the error -- the deviation of the sample mean from the population mean).  This standard error of the sample mean (or more accurately, its estimate) is something that you will often see as error bars in graphs (and the axis label or figure caption will say something like "mean $\pm$ s.e.m.").
+
+## (Normal) Null hypothesis significance testing (NHST)
+ 
+Let's say we go back in time to carefully study the case of [Phineas Gage](https://en.wikipedia.org/wiki/Phineas_Gage).  We compose a battery to measure emotional decision-making, assemble a large number of normal/healthy patients, and administer this battery to all of them.  We find that the emotional-decision making scores are distributed in the healthy population as a Normal distribution with mean=50, sd=5.  We then measure Phineas Gage, and find he has a score of 39.  
+
+The NHST approach postulates a null hypothesis (H0): a statistical model of our data if the effect we care about does not exist in the world.  In this case, our null model might be described as "Gage's emotional decision-making score is a random sample from the distribution of those scores in the normal population":  $x_{\text{Gage}} \sim \operatorname{Normal}(50, 5)$.  
+
+We would then calculate a "test statistic" on our data.  Let's start by just using Gage's score as our test statistic: $x_{\text{Gage}}$.
+
+From the null model, we can obtain the "sampling distribution of the test statistic under the null hypothesis", in this case, it is just the distribution of emotional decision-making scores in the healthy population: $\operatorname{Normal}(50, 5)$
+
+Now we want to assess whether the observed test statistic was sufficiently extreme compared to its null hypothesis distribution.  In general this is done by assessing whether a statistic *at least as extreme* as the one we saw will occur with a probability smaller than $\alpha$ under the null hypothesis.  The value of $\alpha$ indicates how often we are willing to *falsely reject the null hypothesis* (that is, reject the null hypothesis when our observation came from the null hypothesis); generally, folks use $\alpha=0.05$, meaning we are content to falsely reject the null 1 out of 20 times.
+
+We can do this in several ways:   
+(1) define "critical" (cut-off) values which correspond to the $\alpha$ value.   
+(2) compare our observed test statistic directly to the null distribution to obtain a *p-value* and see if it is less than alpha.  
+
+Let's work through such a Z-test to see if Gage's score was significantly lower (a one-tailed test) compared to the distribution of population scores.
+
+```{r fig.width=10, fig.height=5}
+gage = 39
+H0.mu = 50
+H0.sd = 5
+alpha = 0.05
+
+# Calculate a critical score such that p(score <= crit.score | H0) = alpha
+crit.score = qnorm(alpha, H0.mu, H0.sd)
+
+# plot things.
+library(ggplot2)
+xs = seq(20,70,by=0.1)
+ggplot(data.frame(x = xs, 
+                  dens = dnorm(xs, H0.mu, H0.sd), 
+                  reject=ifelse(xs <= crit.score, "reject H0", "do not reject")),
+       aes(x=x, y=dens, fill=reject))+geom_ribbon(aes(ymin=0, ymax=dens))+
+  geom_vline(xintercept=gage, size=2, color="blue")+
+  geom_vline(xintercept=crit.score, size=1, color="black")
+```
+
+This plot shows Gage's score (blue line), the "critical score" such that P(score $\leq$ crit.score | H0)=$\alpha$ (black line), and the null hypothesis distribution colored based on whether or not it is above or below the critical value.  The area under the curve below the critical value is equal to $\alpha$ (in this case 0.05).  The area under the curve at smaller values than Gage's score (not shaded specially) corresponds to the "p-value".  It should be clear that if Gage's score is more extreme than (in this case, below) the critical value, then the p-value will be smaller than $\alpha$; thus whether we choose to compare our test statistic to the critical value, or the p-value directly to $\alpha$, we will get the same answer.
+
+```{r}
+# see if gage's score is lower than the critical score:
+gage < crit.score
+
+# calculte p-value for gage's score by evaluating P(score <= gage | H0)
+p.value = pnorm(gage, H0.mu, H0.sd)
+p.value
+
+# compare p.value to alpha
+p.value < alpha
+```
+
+### Two-tailed tests
+
+So far we have done a "one-tailed" test, in the sense that we were only testing whether Gage's score was really low, compared to the normal population.  In general, you should favor two-tailed tests, which can reject the null hypothesis whether the score is too extreme in either the positive or negative direction.  You should favor two-tailed tests when they are possible, since there are few cases when you would actually ignore an extremely high score even though you expected an extremely low one (which is what a one-tailed test presumes). 
+
+To run a two-tailed test on a Normal distribution we need to define two critical values (a positive and a negative one), such that P(score $\leq$ low.crit | H0) = $\alpha/2$ and P(score $\geq$ high.crit ) = $\alpha/2$.  Note that we are "distributing" our $\alpha$ probability across both high and low tails, to maintain the same rate of falsely rejecting the null hypothesis.
+
+```{r fig.width=10, fig.height=5}
+gage = 39
+H0.mu = 50
+H0.sd = 5
+alpha = 0.05
+
+# Calculate a critical score such that p(score <= crit.score | H0) = alpha
+low.crit = qnorm(alpha/2, H0.mu, H0.sd)
+high.crit = qnorm((1-alpha/2), H0.mu, H0.sd)
+
+
+# plot things.
+ggplot(data.frame(x = xs, 
+                  dens = dnorm(xs, H0.mu, H0.sd), 
+                  reject=ifelse(xs<=low.crit, "reject low", ifelse(xs>=high.crit, "reject high", "do not reject"))),
+       aes(x=x, y=dens, fill=reject, group=reject))+geom_ribbon(aes(ymin=0, ymax=dens))+
+  geom_vline(xintercept=gage, size=2, color="blue")+
+  geom_vline(xintercept=low.crit, size=1, color="black")+
+  geom_vline(xintercept=high.crit, size=1, color="black")
+```
+
+This plot shows Gage's score (blue line), the high and low critical scores (black lines), and the null hypothesis distribution colored based on whether or not it would be rejected (by being either below the low critical score, or above the high critical score).  The total area under the curve past the critical values is equal to $\alpha$.  
+
+
+```{r}
+# see if gage's score is lower than the low critical score, or higher than the high critical score.
+gage <= low.crit | gage >= high.crit
+
+# calculte p-value for gage's score by taking the minimum of the lower and upper tails, and multiplying by 2 (to get symmetric 2-tailed p-value)
+p.value.low = pnorm(gage, H0.mu, H0.sd)
+p.value.high = 1-pnorm(gage, H0.mu, H0.sd)
+p.value = 2*min(p.value.low, p.value.high)
+p.value
+
+# compare p.value to alpha
+p.value <= alpha
+```
+
+Note that for the two tailed test, we see if the score is more extreme than either the low or high critical value, and we calculate a p-value by taking the minimum of the lower and upper tail probabilities, and multiplying by 2 (because of the symmetry of the Normal).
+
+So what is this p-value that we've been calculating?  It is the probability that a score *sampled from the null hypothesis* will be at least as as "extreme" as the one we observed.  When we calculate a one-tailed test, "at least as extreme" corresponds to extremeness in the direction of the tail we are testing.  When it is a two-tailed test, we need to figure out what the corresponding "extreme" score at the other tail would be (for a Normal, this is easy, as they are symmetric, so we can just multiply by 2).
+
+What a p-value is **not** the probability that the null hypothesis is true (this requires the Bayesian calculation of P(H0 | data), rather than integrating over P(data | H0), as we have done).
+
+## Normal tests with sample means
+
+Imagine that instead of having one Phineas Gage, there was an epidemic of exploding, scull-piercing tamping irons all piercing the frontal lobes of many railroad workers.  You can administer your test to 5 such unlucky "Gages", and you want to compare their average to the population.  To do this, you will need to calculate their mean, and you will need to calculate the sampling distribution of the sample mean under the null hypothesis (that these individuals' scores are samples from the overall population).
+
+
+```{r fig.width=10, fig.height=5}
+gages = c(39, 44, 38, 40, 51)
+H0.mu = 50
+H0.sd = 5
+alpha = 0.05
+
+# Calculate sample statistics: mean, and n
+n = length(gages)
+x.bar = mean(gages)
+
+# Calculate mean and sd of sampling distribution of the sample mean under null
+H0.xbar.mu = H0.mu
+H0.xbar.sd = H0.sd/sqrt(n)
+
+# Calculate a critical score such that p(score <= crit.score | H0) = alpha
+low.crit = qnorm(alpha/2, H0.xbar.mu, H0.xbar.sd)
+high.crit = qnorm((1-alpha/2), H0.xbar.mu, H0.xbar.sd)
+
+# plot things.
+ggplot(data.frame(x = xs, 
+                  dens = dnorm(xs, H0.xbar.mu, H0.xbar.sd), 
+                  reject=ifelse(xs<=low.crit, "reject low", ifelse(xs>=high.crit, "reject high", "do not reject"))),
+       aes(x=x, y=dens, fill=reject, group=reject))+geom_ribbon(aes(ymin=0, ymax=dens))+
+  geom_vline(xintercept=x.bar, size=2, color="blue")+
+  geom_vline(xintercept=low.crit, size=1, color="black")+
+  geom_vline(xintercept=high.crit, size=1, color="black")
+```
+
+Note that here we used our derived [sampling distribution for the sample mean](nhst-sampling-distribution.html), consequently, the null distribution is skinnier.  Otherwise, all the other calculations of p-values, critical statistic values, etc. is exactly the same:
+
+```{r}
+# see if mean score of gages is lower than the low critical score, or higher than the high critical score.
+x.bar <= low.crit | x.bar >= high.crit
+
+# calculte p-value for mean score of gages by taking the minimum of the lower and upper tails, and multiplying by 2 (to get symmetric 2-tailed p-value)
+p.value.low = pnorm(x.bar, H0.xbar.mu, H0.xbar.sd)
+p.value.high = 1-pnorm(x.bar, H0.xbar.mu, H0.xbar.sd)
+p.value = 2*min(p.value.low, p.value.high)
+p.value
+
+# compare p.value to alpha
+p.value <= alpha
+```
+
+## Z-scores and Z-tests
+
+As we see, we now have enough machinery in place to do null hypothesis tests with the normal distribution.  However, it is useful to introduce the notion of a **z-score**, as most classical instruction in statistics use such "standardized" statistics (rather than the raw scores and means as we have).
+
+If $x \sim \operatorname{Normal}(\mu_x, \sigma_X)$, and we apply a linear transformation to obtain a new variable $z = (x-\mu_X)/\sigma_X$ we have calculated a z-score.  Following our rules about expectations, we can show that this z-score will have a **standard normal distribution**, meaning it will be distributed with a mean of 0 and a standard deviation of 1:
+
+$z \sim \operatorname{Normal}(0,1)$
+
+Because such standardization is so easy to do, and yields the same standard Normal distribution whenever we apply it, it serves as the backbone of most classical statistical methods (which were developed at a time when calculating cumulative probabilities for arbitrary distributions was hard, and by standardizing our procedure, we could simply calculate the cumulative probability and quantile tables for just the standard distribution).
+
+It is critical to note that whenever we calculate a z-score, we do so relative to some distribution.  We *can* z-score someone's height relative to the IQ distribution (e.g., $(69-100)/15$), but that would be weird and useless.  One warning sign that this is weird and useless is to consider the *units* of the resulting number.  Normally, z-scores are *unitless*: they take a measurement in one unit (say inches), subtracts some mean in those units (yielding a difference in inches), and divides by the standard deviation of such measurements (also in inches), and thus we get a number that has no units.  However, if we take height in inches, and divide by the standard deviation of IQ, we get a number in units of inches/IQ -- such "[unit analyses](https://en.wikipedia.org/wiki/Dimensional_analysis)" are a good way to catch ourselves doing something incoherent.
+
+Generally, we want to z-score some value relative to the (presumed) *sampling distribution* of that value.  If we have an IQ score, we z-score it to the assumed sampling distribution of IQ.  If we have the mean of 10 IQ scores, we z-score that sample mean to the sampling distribution of the sample mean of 10 IQ scores.  Such z-scores will serve as our "test statistics" for Z-tests, and also will be used to estimate Normal confidence intervals.
+
+## Z-tests
+
+To run the "Z-test" to assess whether the mean of our 5 Gages' scores was sufficiently different from the null hypothesis distribution of the mean of 5 regular person scores we would first Z-transform it: subtract the mean of the sampling distribution of the sample mean, and divide by the standard deviation of the sampling distribution of the sample mean:   
+$Z_{\bar x} = (\bar x - \mu_{\bar x})/\sigma_{\bar x}$    
+$Z_{\bar x} = (42.4 - 50)/2.236 = -3.4$
+
+We can now do the same null hypothesis calculation procedures we carried out earlier, but for the *sampling distribution of the (appropriate) z-score*:
+
+```{r fig.width=10, fig.height=5}
+gages = c(39, 44, 38, 40, 51)
+H0.mu = 50
+H0.sd = 5
+alpha = 0.05
+
+# Calculate sample statistics: mean, and n
+n = length(gages)
+x.bar = mean(gages)
+
+# Calculate mean and sd of sampling distribution of the sample mean under null
+H0.xbar.mu = H0.mu
+H0.xbar.sd = H0.sd/sqrt(n)
+
+Z.xbar = (x.bar - H0.xbar.mu)/H0.xbar.sd
+H0.z.mu = 0   # we worked this out earlier: z scores ~ Normal(0,1)
+H0.z.sd = 1
+
+# Calculate a critical score such that p(score <= crit.score | H0) = alpha
+low.crit = qnorm(alpha/2, H0.z.mu, H0.z.sd)
+high.crit = qnorm((1-alpha/2), H0.z.mu, H0.z.sd)
+
+# plot things.
+zs = seq(-5,5,by=0.01)
+ggplot(data.frame(z = zs, 
+                  dens = dnorm(zs, H0.z.mu, H0.z.sd), 
+                  reject=ifelse(zs<=low.crit, "reject low", ifelse(zs>=high.crit, "reject high", "do not reject"))),
+       aes(x=z, y=dens, fill=reject, group=reject))+geom_ribbon(aes(ymin=0, ymax=dens))+
+  geom_vline(xintercept=Z.xbar, size=2, color="blue")+
+  geom_vline(xintercept=low.crit, size=1, color="black")+
+  geom_vline(xintercept=high.crit, size=1, color="black")
+```
+
+Since here we are using the sampling distribution of the z-score, the null distribution is Normal with mean 0 and standard deviation of 1.  Otherwise, all the other calculations of p-values, critical statistic values, etc. is exactly the same, but we use the z-score of the sample mean as a test statistic:
+
+```{r}
+# see if z-score of mean score of gages is lower than the low critical z-score, or higher than the high critical z-score.
+Z.xbar <= low.crit | x.bar >= high.crit
+
+# calculte p-value for z-score of mean score of gages by taking the minimum of the lower and upper tails, and multiplying by 2 (to get symmetric 2-tailed p-value)
+p.value.low = pnorm(Z.xbar, H0.z.mu, H0.z.sd)
+p.value.high = 1-pnorm(Z.xbar, H0.z.mu, H0.z.sd)
+p.value = 2*min(p.value.low, p.value.high)
+p.value
+
+# compare p.value to alpha
+p.value <= alpha
+```
+
+Note that if we do this z-transformation, and consider a two-tailed test, we can take a number of shortcuts:
+
+Because the z-score distribution is symmetric around 0, the low.crit score is the high.crit score multiplied by negative 1, so we can consider just the absolute critical score.  Similarly, we need only consider the absolute value of our calculated z-scores to calculate two-tailed p-values.  Moreover, we need not refer to the sampling distribution mean and standard deviation explicitly, since all the `*norm` functions in R assume that the default is the standard normal (z-score) distribution with mean=0 and sd=1.
+
+```{r}
+# Check for significance by comparing absolute z score to critical z-score
+abs.crit = abs(qnorm(alpha/2))
+abs(Z.xbar) >= abs.crit 
+
+# Calculate (2-tailed) p-value using absolute z-score
+p.value = 2*(1-pnorm(abs(Z.xbar)))
+p.value
+
+# Check for significance by comparing p.value to alpha
+p.value <= alpha
+```
+
+Hopefully, it is clear at this point that these procedures are all doing the same thing, just with slight mathematical transformations that make some things less transparent, but other things more convenient.  They all yield the same answer.
+
+## (Normal) Confidence intervals on the sample mean
+
+Recall that the sampling distribution of the *deviation of the sample mean from the population mean* -- the sampling distribution of the error of our sample mean -- is given by:
+
+$(\bar x^{(n)}-\mu_X) \sim \operatorname{Normal}\left({0, \sigma_{\bar x^{(n)}}}\right)$
+
+It is helpful to calculate this as a z-score:
+
+$\frac{\bar x^{(n)}-\mu_X}{\sigma_{\bar x^{(n)}}} \sim \operatorname{Normal}\left({0, 1}\right)$
+
+So the difference between our sample mean, and the population mean, *in units of standard errors of the mean*, will have a standard Normal distribution.
+
+So if we want to define an interval around our sample mean, such that an interval defined this way will contain the true population mean 95% of the time, we can do so by finding a z-score interval that contains 95% of the z-scores, and then transforming these z-scores back into the units of sample means.  One z-score range that will include 95% of the means can be constructed based on the z-score such that 2.5% of the z-scores are smaller than it, and the z-score such that 2.5% are larger than it (thus 95% of z-scores are between them):
+
+```{r}
+low.z.crit = qnorm(0.025, 0, 1)
+high.z.crit = qnorm(1-0.025, 0, 1)
+c(low.z.crit, high.z.crit)
+```
+
+We can convert these z-scores back to their original units by multiplying by the standard deviation, and adding the mean (reversing the calculation that yields z scores for specific x values):
+
+$x = z*\sigma + \mu$
+
+```{r}
+x.bar = mean(gages)
+sd.xbar = H0.sd/sqrt(length(gages))
+xbar.range = c(low.z.crit, high.z.crit)*sd.xbar + x.bar
+xbar.range
+```
+
+Here we called it "sd.xbar" because it is the standard deviation of the sampling distribution of the sample mean, but typically we will just refer to it as the standard error of the mean, or "se.xbar".
+
+Because the z-score distribution is symmetric, and by convention we chose to define a symmetric confidence interval, the low and high z scores are symmetric, and we typically calculate just the absolute value:
+
+```{r}
+q = 0.95 # desired confidence interval
+z.crit = abs(qnorm((1-q)/2, 0, 1))
+xbar.range = x.bar + c(-1, 1)*z.crit*sd.xbar
+```
+
+In short, we can define the (z-score) confidence interval on the sample mean as:
+
+$$\bar x \pm Z_{\alpha/2}^*\sigma_{\bar x}$$
+
+Where $\alpha = 1-q$, and $q$ is the confidence interval percentile; $Z_{\alpha/2}^*=$ `abs(qnorm(alpha/2,0,1))`.  So for a 99% confidence interval, $q=0.99$, $\alpha=0.01$, and $Z_{\alpha/2}^*=$ `abs(qnorm(0.01/2,0,1))` = `r abs(qnorm(0.01/2,0,1))`.
+
+## Relationship between confidence intervals and null hypothesis tests.
+
+The use of $\alpha$ as the critical value in a null hypothesis test, and as the interim calculation in confidence intervals is no accident.
+
+We declare a (2-tailed) z-test as significant when the p-value is lower than $\alpha$, in other words, when (the absolute value of) the difference between the sample mean and the null mean, in units of standard errors of the mean, is greater than $Z_{\alpha/2}^*$:
+
+$\lvert\frac{\bar x - \mu_X^{H0}}{\sigma_{\bar x}}\rvert \geq Z_{\alpha/2}^*$
+
+With a bit of algebra, we can show that this means that we declare something as significant when:
+
+$\mu_X^{H0} \geq \bar x + \sigma_{\bar x} Z_{\alpha/2}^*$ OR   
+$\mu_X^{H0} \leq \bar x - \sigma_{\bar x} Z_{\alpha/2}^*$
+
+And as we recall, the limits of a q% confidence interval are given by:
+
+$\bar x \pm \sigma_{\bar x} Z_{\alpha/2}^*$
+
+Thus, we see that if the null hypothesis mean does not fall in the $(1-\alpha)$ confidence interval, then we can reject that null hypothesis mean with a two-tailed significance test with a Type I error rate of $\alpha$.  So, checking whether the p-value for a null hypothesis z-test is less than $\alpha=0.05$ is equivalent to checking whether the null hypothesis mean falls outside of the 95% confidence interval.
+
+## Special critical Z-values
+
+Everyone using statistics would benefit from knowing a few special Z-scores, since they make back-of-the-envelope calculations easy when you want to evaluate some results in a talk or a poster.  
+
+(1) $P(Z \leq -1.96) = P(Z \geq 1.96) = 0.025$.  In other words, 95% of the normal distribution is less than 1.96 standard deviations away from the mean.  This means that a 95% confidence interval on a mean is $\bar x \pm 1.96 \sigma_{\bar x}$.  This also means that to pass a two-tailed Z-test with $\alpha = 0.05$, the sample mean has to be more than 1.96 standard errors away from the null hypothesis mean.
+
+(2) $P(Z \leq -0.6745) = P(Z \geq 0.6745) = 0.25$.  50% of the normal distribution is less than 0.67 standard deviations away from the mean; the first and third quartiles are the mean plus/minus 0.67 standard deviations.  The interquartile range of a normal distribution will be 1.35 standard deviations.
+
+(3) $P(Z \leq -1.645) = P(Z \geq 1.645) = 0.05$.  This defines the 90% confidence intervals, and correspond to the critical Z-value for a one-tailed test with $\alpha = 0.05$.
+
+(4) $P(Z \leq 1) = P(Z \geq 1) = 0.15866$.  About 16% of a normal distribution is more than 1 standard deviation away from the mean in either direction, meaning that 68.3% of the normal distribution is less than 1 standard deviation away from the mean.
+
+These numbers can all be easily obtained via `pnorm()` and `qnorm()` in R, but often you might benefit from having them in your head.
+
+# Rarity of Z-tests and Z- confidence intervals
+
+R doesn't have a z-test function built in (although a few libraries offer one).  This is because z-tests are so rarely done in practice, because carrying out a z-test requires that we **know the population standard deviation**.  Consequently, when we reject the null hypothesis in a z-test, we reject the null of *a particular population mean **and** and a particular population standard deviation*.  This is very rarely what we want, so we use t-tests instead (which assume that we estimate the standard deviation from the sample).
+
+Furthermore, using z-tests to define confidence intervals is even more rare, because when we define a confidence interval, we do not want to assume particular parameters of the population distribution (like its mean, and standard deviation).  In the vast majority of cases, we will use the t-distribution, rather than the Normal Z-distribution for our null hypothesis tests and confidence intervals on the mean.
+
+## What are these percents and probabilities?
+
+It is important to consider what these percents and probabilities are.  This interpretation of confidence intervals and probabilities will be the same for every single confidence interval and p value we calculate.  So we will keep reiterating it.
+
+### So what is a p-value?  
+
+We obtained the p value by calculating the probability with the following logic: we calculated the sampling distribution of the test statistic if we were to take many samples (of the same size as ours) from the null hypothesis population, calculate the test statistic on each of those samples, then look at the histogram of those samples.  The proportion of those samples that are more extreme than the test-statistic we saw in our *actual* sample, is the p-value.   
+
+Let's do this explicitly:
+
+```{r}
+gages = c(39, 44, 38, 40, 51)
+H0.mu = 50
+H0.sd = 5
+
+# A function to calculate the z statistic for a sample mean given H0 mean and sd
+z.stat = function(sample){(mean(sample)-H0.mu)/(H0.sd/sqrt(length(sample)))}
+
+# our z statistic.
+(our.z.stat = z.stat(gages))
+
+# a function to sample n data points from the H0 distribution
+sample.from.H0 = function(n){rnorm(n,H0.mu,H0.sd)}
+
+# one sample of the same size as ours from the H0 distribution
+(one.H0.sample = sample.from.H0(length(gages)))
+
+# the z-statistic for the H0 sample.
+(one.H0.z.stat = z.stat(one.H0.sample))
+
+# sample lots of z statistics from the H0 distribution
+many.H0.z.stats = replicate(10000, z.stat(sample.from.H0(length(gages))))
+
+# show a histogram of these H0-sampled z statistics.
+ggplot(data.frame(z = many.H0.z.stats, 
+                  z.vs.ours=ifelse(abs(many.H0.z.stats)>=abs(our.z.stat),
+                                   "more extreme", 
+                                   "less extreme")), 
+       aes(x=z, fill=z.vs.ours))+
+  geom_histogram()+
+  geom_vline(xintercept=our.z.stat, color="blue")
+
+# our p value calculated by asking what fraction of H0-sampled z-statistics 
+# are larger than ours (in absolute value)
+(p.value = sum(abs(many.H0.z.stats)>=abs(our.z.stat))/length(many.H0.z.stats))
+```
+
+Of course, when we do a z-test, we generally do this analytically, rather than numerically as we have here (by literally simulating a bunch of possible samples from the null hypothesis), which eliminates the need for sluggish computation.  However, the logic of what we did is the same: we calculated the p-value as the proportion of samples from the null hypothesis that would be at least as extreme as the one we saw.
+
+So what does the p-value mean?  It tells us what fraction of null hypothesis samples would be at least as extreme as ours, given our test statistic.  It is a calculation based on $P(\mbox{data} \mid \mbox{H0})$.  More generally, it tells us something about how this procedure is expected to behave when applied to the null hypothesis: if this procedure were applied to samples from some null hypothesis model, this is what we expect to see.  Similarly, $\alpha$ tells us: if we reject the null based on this significance procedure, we expect the procedure to reject samples from the null hypothesis $(100*\alpha)$% of the time.  
+
+### What does the "percent" in a confidence interval mean?
+
+We calculated a confidence interval based on the sampling distribution of the error of the mean from the population mean.  
+
+Let's simulate this procedure by picking some random *true* population mean, *true* population sd, and some sample size.  Then we simulate a sample from that population, and calculate a confidence interval from that sample.
+
+```{r}
+# a function to get the critical z value for a 100q% interval
+z.crit = function(q){abs(qnorm((1-q)/2))}
+# a function to calculate the standard error of the mean for a given
+# sample and null hypothesis sd.
+sem = function(x,H0.sd){H0.sd/sqrt(length(x))}
+
+# a function to get the mean and confidence interval (min, max)
+get.CI = function(x, q, H0.sd){
+  return(
+  c("min"=(mean(x)-z.crit(q)*sem(x,H0.sd)),
+    "mean"=mean(x),
+    "max"=(mean(x)+z.crit(q)*sem(x,H0.sd)))
+  )}
+
+# a hypothetical true mean.
+true.mean = rnorm(1,0,5)
+# a hypothetical true standard deviation
+H0.sd = exp(rnorm(1,1,0.5))
+# a hypothetical sample size:
+n = rgeom(1,0.2)+2
+
+# a hypothetical sample of size n from this "true distribution"
+x = rnorm(n,true.mean,H0.sd)
+# the sample mean and 90% confidence interval for this sample
+(ci = get.CI(x, 0.9, H0.sd))
+```
+
+So this is one such randomly generated sample mean and resulting confidence interval.
+
+Now, we can ask whether the *true* population mean was contained within that confidence interval:
+
+```{r}
+# let's define a function to tell us whether the true mean is inside the confidence interval
+mean.in.ci = function(true.mean, ci){
+  ci['min'] <= true.mean & true.mean <= ci['max']
+}
+
+# is the true mean inside the confidence interval? (ignore the vector name "min" carryover)
+(mean.in.ci(true.mean, ci))
+```
+
+So any one confidence interval either includes, or does not include, the true population mean.
+
+So what does the percent in a confidence interval mean?  It's a statement not about the current data, or the current population mean in question.  It is a statement about the confidence interval *procedure*.  Specifically, it tells us what fraction of all confidence intervals generated this way, in all experiments, will contain their respective population mean.  Let's simulate this.
+
+
+```{r, fig.width=6, fig.height=12}
+# Now let's consider many different true populations, samples from them, and the resulting CI
+results = data.frame()
+for(i in 1:100){
+  true.mean = rnorm(1,0,5)
+  H0.sd = exp(rnorm(1,1,0.5))
+  n = rgeom(1,0.2)+2
+  x = rnorm(n,true.mean,H0.sd)
+  ci = get.CI(x, 0.9, H0.sd)
+  results = rbind(results, 
+                  data.frame("experiment" = i,
+                             "mean"=ci['mean'],
+                             "ci.min"=ci['min'],
+                             "ci.max"=ci['max'],
+                             "true.mean"=true.mean,
+                            "mean.in.ci"=mean.in.ci(true.mean, ci)))
+}
+
+ggplot(results, aes(x=as.factor(experiment), 
+                    y=mean, 
+                    ymin=ci.min, 
+                    ymax=ci.max, 
+                    color=mean.in.ci))+
+  geom_pointrange()+
+  geom_point(aes(y=true.mean), size=2, color="black")+
+  coord_flip()
+```
+
+Here, each horizontal line represents a particular experiment, with a particular true population mean (black dot), some H0 standard deviation, and some random sample.  That random sample is used to define a mean and a 90% confidence interval (point+range).  If the confidence interval contains the true mean, it is blue, otherwise it is red.
+
+So what fraction of these intervals contained the true population mean?
+
+```{r}
+# fraction of confidence intervals that include the true mean
+(sum(results$mean.in.ci)/nrow(results))
+```
+
+Note that the result of "how many of our 100 sampled intervals include their true mean" will be subject to sampling variation (binomial with n=100, p=q=0.9, here).  If we increase the number of sampled experiments and intervals, we will be less likely to deviate much from 0.9.
+
+So, the percent in a confidence interval describes the probability that an interval constructed using this method will include the corresponding value (provided the distribution assumptions are met).
+
+All frequentist probabilities and percents have this sort of interpretation: they are statements about the procedure -- how often will the procedure reject a sample from the null, how often will a confidence interval calculated in this way contain the true mean, etc.
+

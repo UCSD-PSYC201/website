@@ -1,0 +1,55 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Data handling
+
+You have data: great!  The first thing to do is look at it.  You'll need to read it in, format it, perhaps clean it up, and then you'll probably want to [plot it somehow](../visualization/visualization.html), calculate some [summary statistics](../introduction/descriptive.html), and try to estimate effects of interest by eye.  The first steps involve reading data and making it conducive to all the subsequent steps.
+
+While I will go over some basics here, you might find more thorough tutorials available on:   
+
+- [R data loading](http://blog.datacamp.com/r-data-import-tutorial/)    
+- Dealing with [data frame problems](http://blog.datacamp.com/15-easy-solutions-data-frame-problems-r/)   
+- [Data wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) cheat sheet    
+
+## Getting access to your data
+
+**Read data** generally, if you followed the instructions on [how to store data](practice.html), you can read the data using `read.csv(file)`.
+
+**Entering data** If you have to do data entry, manually entering data into a computer, I recommend using a spreadsheet then saving as a csv file.
+
+**Loading from other formats** If your data are not in csv format, you have a few options:   
+
+- save as csv from the other software, then read in the csv file.   
+- use some R libraries for different file formats.  [Many](http://blog.revolutionanalytics.com/2015/04/new-packages-for-reading-data-into-r-fast.html) [are](https://github.com/hadley/haven) [available](https://cran.r-project.org/web/packages/foreign/index.html).  There are libraries for many conventional file formats; if you have a particular one in mind, I recommend you google "reading * into R" replacing * either with the conventional extension for the file format from that software (e.g., "xlsx") or the name of the software (e.g., "excel data"), and go from there.
+
+**Fixing weird text formatting** Often your data might be in a poor (failed) attempt to record a proper data table (often due to failures of being [a rectangle](http://kbroman.org/dataorg/pages/rectangle.html)).  If you need to fix such aspects of the data file, I recommend opening it in some spreadsheet software, fix it, and then save as csv.  (remember, don't change the original data file!).  If your files are particularly large or plentiful, you will want to do this via programming.  R is suitable for this task, but if you have a lot of text-wrangling to do, python might be better.
+
+## Correcting data formatting.
+
+There are many ways in which your data may be poorly formatted when you get them into R.  Some of the most common things you will need to do:
+
+- Make sure qualitative factors are factors. `as.factor( df$column )`
+
+- Make sure numbers are numbers. `as.numeric(as.character( df$column ))`
+
+- Rename columns something concise and helpful `names(df) <- c('subject', 'condition', 'trial', 'response', 'major')`
+
+- Rename factor level names to something meaningful `levels(df$department) <- c('psychology', 'cog.sci', 'linguistics')`
+
+
+## Cleaning/verifying data
+
+Raw data is messy.  It will contain faulty data due to recording or procedural errors, missing values, mislabeled variables, incoherent abbreviations, etc. While every data set will have its own unique complications, there are a few general heuristics to follow to find and fix such problems.
+
+It's important to not confuse *faulty* data (what we want to clean up now) with *weird* data.  Faulty data are data that do not reflect measurements of the world: for instance, if someone mistypes a woman's height as 664 inches rather than the measured 64.  Weird data reflect actual, correct measurements of the world, but the world was doing something weird when it was measured: for instance, the measured woman is a dwarf, and is 46" tall. By "the world was doing something weird" I mean it was engaged in a qualitatively different, low-probability process for generating data.  We want to correct faulty data where possible, but we need to be much more careful with weird data.  We're not going to deal with weird data right now -- that's not a matter of cleaning data, but of specifying statistical models that can handle the weirdness of the world, and we will deal with that later.
+
+You can check for faulty data by verifying that the data is of the correct type (if it should be a number, make sure someone didn't type in "five"), and takes on values in the expected set (e.g., there is an expected range for human heights, response times, etc.; if you are looking for US States encoded as two-letter abbreviations, look for anything that doesn't match, like "California" -- which you might correct, or "QS" -- which is just garbage) 
+
+
+[**You can follow along with one such data cleaning example here.**](data-cleaning.html)
+
+
+
+

@@ -1,0 +1,104 @@
+---
+  output: 
+    html_document
+---
+  
+# Regression prediction.
+
+We will start our discussion of prediction intervals with the same fake IQ-GPA data that we covered in [OLS regression](ols.html).
+
+```{r}
+library(ggplot2)
+IQ = rnorm(50, 100, 15)
+GPA = pmax(1, pmin(4.3, round((IQ-100)/15*0.5+2.8+rnorm(length(IQ),0,0.7), 1)))
+iq.gpa = data.frame(iq=IQ, gpa=GPA)
+g1 = ggplot(iq.gpa, aes(iq,gpa))+
+      geom_point(size=2)
+
+( lm.fit = lm(data = iq.gpa, gpa~iq) )
+```
+
+Now that we have estimated the best fitting intercept ($B_0$) and slope ($B_1$), we can ask what y values we predict for an arbitrary x.
+
+There are two kinds of predictions we might make: a prediction for the **mean y value** at a given x, and a prediction for a **new data point** at a given x.
+
+## Predicting mean y given x.
+
+Our uncertainty about the slope and our uncertainty about the mean of y will combine to give us uncertainty about the y value that the line will pass through at a given x.  This line describes the mean of y at each x; consequently, our uncertainty about the line, is our uncertainty about mean y at a given x.  
+
+Two sources of uncertainty contribute to our error in estimating the y value at a given x: (1) uncertainty about the mean of y, which contributes a constant amount of error regardless of which x we are talking about, and (2) extrapolation uncertainty, due to our uncertainty about the slope -- this source of error grows the further from the mean of x we try to predict a new y value.  These combine into the net error in predicted y values as:
+
+$s\{\hat y \mid x\} = s_e \sqrt{\frac{1}{n} + \frac{(x-\bar x)^2}{s_x^2 (n-1)}}$
+
+To calculate this error in R, and get a corresponding confidence interval, we use the `predict` function, which yields this standard error, the confidence interval on the y value of the line at a given x, which is defined by: 
+
+$(\hat y \mid x) \pm t^*_{alpha} s\{\hat y \mid x\}$ 
+
+```{r}
+predict(lm.fit, newdata = data.frame(iq=160), se.fit = T, interval = "confidence", level=0.95)
+```
+
+We can do this calculation manually:
+
+```{r}
+n = nrow(iq.gpa)
+m.x = mean(iq.gpa$iq)
+m.y = mean(iq.gpa$gpa)
+s.x = sd(iq.gpa$iq)
+s.y = sd(iq.gpa$gpa)
+r.xy = cor(iq.gpa$iq, iq.gpa$gpa)
+b1 = r.xy*s.y/s.x
+b0 = m.y - b1*m.x
+s.e = sqrt(sum((iq.gpa$gpa - (iq.gpa$iq*b1 + b0))^2)/(n-2))
+
+new.x = 160
+s.yhat.x = function(new.x){s.e*sqrt(1/n + (new.x - m.x)^2/(s.x^2*(n-1)))}
+( s.yhat.160 = s.yhat.x(new.x) )
+t.crit = qt((1-0.95)/2,n-2)
+y.hat = b0 + b1*new.x
+( y.hat + c(1,-1)*t.crit*s.yhat.x(new.x) )
+```
+
+
+## Predicting new y given x.
+
+If instead of putting confidence intervals on mean y at a given x, we want confidence intervals on a new data point, we have to add to our uncertainty about the mean, our uncertainty about where data points are relative to the mean.  Since our data do not fall exactly on the line, there is some spread of data around the line, and we have to take that into account when predicting a new data point.  We do so by adding the variance of the residuals (the spread of data around the mean), to the variance of the line position (described in the previous section).
+
+$s\{y \mid x\} = \sqrt{s_e^2 + s\{\hat y \mid x\}^2}$
+
+In R this is called a "prediction" interval, and we can get it with the `predict` function as well.  Note that the "standard error" `predict` returns is still just the standard error of the line (same as the previous section), but the confidence intervals are defined by further incorporating the standard deviation of data points around the line (the standard deviation of the residuals).
+
+```{r}
+predict(lm.fit, newdata = data.frame(iq=160), se.fit = T, interval = "predict", level=0.95)
+```
+
+To do this manually, we just need to add the variance of the residuals to the variance of the line:
+
+```{r}
+new.x = 160
+s.y.x = function(new.x){sqrt(s.e^2 + s.yhat.x(new.x)^2)}
+( s.y.160 = s.y.x(new.x) )
+t.crit = qt((1-0.95)/2,n-2)
+y.hat = b0 + b1*new.x
+( y.hat + c(1,-1)*t.crit*s.y.x(new.x) )
+```
+
+## Visualizing the difference
+
+It is useful to see how these two kinds of prediction confidence intervals change as a function of x.  We see that the interval for predicting a new data point (gray) is much wider, due to the considerable amount of variability of data points around the line.  The interval on the line is narrower and is also very saliently inhomogenous -- it grows the further from the mean we are.  Technically, the prediction (gray) interval also grows, but often this is not easily detectable by eye because so much of that variability is swamped by the variance of the data points around the line.  
+
+```{r}
+iq = seq(40,160)
+y.x = function(x){b0+b1*x}
+t.crit = qt(0.05,n-2)
+pred.df = data.frame(iq=iq,
+                     gpa = y.x(iq),
+                     s.yhat.x = s.yhat.x(iq),
+                     s.y.x = s.y.x(iq))
+ggplot(pred.df, aes(x=iq, y=gpa))+
+  geom_ribbon(aes(ymax=gpa+s.y.x, ymin=gpa-s.y.x), fill="gray")+
+  geom_ribbon(aes(ymax=gpa+s.yhat.x, ymin=gpa-s.yhat.x), fill="blue")+
+  geom_line(aes(x=iq, y=gpa), color="red", size=1.5)
+```
+
+As we look at this plot, another salient feature should jump out: for very large or very small iq values, our predicted GPA is not contained in a reasonable range of GPAs.  This is a problem of relying too much on a linear fit to a fundamentally non-linear relationship: the IQ-GPA relationship cannot be linear, because GPA has a lower and an upper bound.  Consequently, if we extrapolate too far outside the range we studied, we will get predictions outside the reasonable bound (and we will also get very wide confidence intervals).

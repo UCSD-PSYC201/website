@@ -1,0 +1,260 @@
+---
+output: 
+    html_document
+---
+
+```{r Setup, include=FALSE, results='hide', warning=FALSE}
+library(knitr)
+opts_chunk$set(dev=c("png","pdf"),
+               fig.width=10,
+               fig.height=5,
+               dpi=300,
+               fig.show="hold",
+               fig.lp="fig:",
+               cache=TRUE,
+               par=TRUE,
+               echo=TRUE,
+               message=FALSE,
+               warning=FALSE)
+library(ggplot2)
+my_theme <- theme_bw() + 
+  theme(panel.grid = element_blank(), 
+        panel.background = element_rect(fill = "transparent", color=NA),
+        plot.background = element_rect(fill="transparent", color=NA),
+        axis.text = element_text(size=14),
+        title = element_text(size=18),
+        axis.title = element_text(size=16))
+```
+
+# (Student's) t-tests
+
+We use t-tests when we calculate the standard error based on the sample standard deviation.  The logic of why we must use the t-distribution in these cases is described when we consider the [sampling distribution of the sample variance, and the t statistic](nhst-t-distribution.html).  Read that first, and then we can quickly cover the slightly different t-test varieties we can use to compare sample means.
+
+## 1-sample t-test
+
+So if we have a sample, which we assume to be normally distributed with unknown population mean and variance, and want to test whether that sample has a mean different from some null hypothesis mean ($\mu_0$).  We would proceed as follows: estimate the sample mean and sample variance, and then compute a t-statistic:
+
+$t_x = (\bar x - \mu_0) / (s_x / \sqrt n)$
+
+Under the null hypothesis this t statistic will follow a t distribution with one parameter, the degrees of freedom: $df = n-1$.  
+
+The degrees of freedom parameter changes the t-distribution depending on our certainty in our estimated sample variance.  If $n$ is very large, then we should be very certain that our estimated sample variance will not be very different from the population variance.  Consequently, the t-statistic when $n$ is large will be distributed no differently than a z-statistic: it will follow a normal distribution.  However, when $n$ is small, we have substantial uncertainty about the estimated sample variance, so the distribution of the t-statistic will take on a different shape.  Specifically, it will have heavier tails (it will have greater kurtosis), this should be intuitive because if we underestimate the population standard deviation, our t-statistic (which has estimated standard deviation in the denominator) might be quite large by chance -- hence the heavier tails.
+
+Anyway, so to compute a p-value for a t-test, you would look up your t-statistic in the cumulative t-distribution (just as p-values for a z-test are obtained from a cumulative standard normal distribution), with $n-1$ degrees of freedom:
+
+For a conventional two-tailed test, we would calculate the p-value as:
+
+`2*pt(-abs(tx),n-1)` (notice that we are merely substituting `pt` for `pnorm`)
+
+If the degrees of freedom are small, the p value from the t distribution may be considerably larger than for a normal distribution:
+
+`2*pt(-abs(3),2)`=`r 2*pt(-abs(3),2)`   
+compare to   
+`2*pnorm(-abs(3))`=`r 2*pnorm(-abs(3))`   
+
+However, in `R` we can do this quickly using the `t.test` command.
+
+```{r}
+df = data.frame(our.iqs = rnorm(15, 103,15))
+(test.results = t.test(df$our.iqs, mu = 100))
+```
+
+We can access the various aspects of the test result as:
+
+```{r}
+test.results$statistic # the t statistic
+test.results$parameter # the degrees of freedom
+test.results$p.value   # the p-value
+```
+
+## Paired / repeated-measures t-test
+
+In other cases we might have two measurements from a single source.  The canonical example of this would be "before" and "after" measurements.  e.g., for each person we measure their weight before they go on our new-fangled diet, and after 3 months of being on the diet, so for each person we have two measurements: before and after the 3 months of dieting.  We might then want to see whether people lost weight, or gained weight, or didn't change between the two tests.
+
+This scenario offers us an opportunity to reduce person-to-person variability by calculating the difference of before and after scores, and then calculating a 1-sample t-test on the difference, comparing them to a mean of 0:
+
+```{r}
+x = rnorm(10, 170, 10)
+df = data.frame(before = x+rnorm(10, 5, 2),
+                after = x+rnorm(10, 0, 2))
+df$difference = df$after - df$before
+(test.results = t.test(df$difference, mu=0))
+```
+
+By calculating the before-after difference, we can effectively get rid of the across-subject variation, which will be manugest in both the before and after weights.  This is the virtue of repeated-measures designs in general.  For t-tests, such a design only makes sense if we have a "paired" design (such that our data come in pairs; here: before/after).
+
+## 2-sample, presumed equal variance, t-test
+
+Another setting is that we have two independent samples ($x$ and $y$) and want to know if they differ in their means, under the assumption that they have the same standard deviation.  This kind of setting may arise if we have a sample of males and a sample of females, and want to see if their heights are systematically different:
+
+In R this can be run quickly as:
+
+```{r}
+df = rbind(data.frame(height = rnorm(10, 70, 5), sex="male"),
+           data.frame(height = rnorm(18, 65, 5), sex="female"))
+(test.results = t.test(df$height[df$sex=="male"], 
+                       df$height[df$sex=="female"], 
+                       var.equal = T))
+```
+
+Note that:
+
+(a) we must specify that we assume the variances are equal (the `var.equal=T` portion)    
+(b) the degrees of freedom are equal to $n_x + n_y -2$.   
+(c) the standard error is calculated by pooling variance around the mean of x and the mean of y.   
+
+
+## 2-sample, unequal variance, t-test
+
+The final model we might have of our 2 samples of data is that they come from normal distributions with different means and (*potentially*) different variances, and we are interested in testing whether their means are equal.
+
+If we do not assume equal variances, we can run the "Welch's t-test".  This is the default behavior of R's t.test function:
+
+
+```{r}
+df = rbind(data.frame(val = rnorm(10, 105, 20), variable="x"),
+           data.frame(val = rnorm(18, 98, 10), variable="y"))
+(test.results = t.test(df$val[df$variable=="x"], df$val[df$variable=="y"]))
+```
+
+Note that:
+
+(a) we must specify that the default is to *not* assume the variances are equal (default is `var.equal=F`; this is the deault behavior in R)    
+(b) the degrees of freedom is some weird non-integer value         
+
+It is worth getting an intuition for what the degrees of freedom are doing in a Welch's t-test:     
+The unequal variance degrees of freedom are somewhere between $n - 1$ and $n_x + n_y -2$, where $n$ is the size of the sample with the larger standard error of the mean).  What this does is return roughly the two-sample equal-variance degrees of freedom ($df =  n_x + n_y -2$) when the standard errors are approximately equal (since in that case you are essentially doing an equal-variance t-test), and returns the one-sample degrees of freedom ($n-1$), when one variance is much larger than the other.  The latter should make sense: one sample is much more variable than another, there is no sampling variability in the precise sample, so we are effectively comparing the noisy sample to a determinate value -- a one-sample t-test.
+
+## Power calculations.
+
+Instead of doing algebra to calculate power for a t-test, as we did for a normal, we will just use the `pwr::` library.
+
+```{r}
+library(pwr)
+# get power for a particular sample size...
+
+# for a 1 sample (or repeated measures) t-test
+pwr::pwr.t.test(n = 20, d=0.5, sig.level=0.05, type = 'one')
+
+# for a 2 sample t-test (equal sample sizes, each group has sample size n)
+pwr::pwr.t.test(d=0.5, n=10, sig.level=0.05, type='two')
+
+# for a 2 sample t-test (unequal sample sizes)
+pwr::pwr.t2n.test(d=0.5, n1=10, n2=10, sig.level=0.05)
+
+# get sample size for a particular level of power
+
+# fir a 1 sample (or repeated measures) t-test
+pwr::pwr.t.test(d = 0.5, power = 0.8, sig.level=0.05, type = 'one')
+
+# for a 2 sample t-test (find one sample size for both groups)
+pwr::pwr.t.test(d=0.5, power=0.8, sig.level=0.05, type='two')
+```
+
+
+## Summary of tests for the mean and effect sizes
+
+| Test  |	test statistic | d.f. | effect size |   
+|:------|:----:|:----:|:----:|          
+| Z-test |  $z = \frac{\bar x - \mu_0}{\sigma_0 / \sqrt n}$ | na | $\hat d = \frac{\bar x - \mu_0}{\sigma_0}$ |   
+| t-test | $t = \frac{\bar x - \mu_0}{s_x / \sqrt n}$ | $n-1$ | $\hat d = \frac{\bar x - \mu_0}{s_x}$ |    
+| paired t-test | $t = \frac{\bar d - \mu_0}{s_d / \sqrt n}$ | n-1 | $\hat d = \frac{\bar d - \mu_0}{s_d}$ |    
+| eq. var t-test | $t = \frac{\bar y - \bar x}{s_p \sqrt{1/n_x + 1/n_y}}$ | $n_x+n_y-2$ | $\hat d = \frac{\bar y - \bar x}{s_p}$ |    
+| uneq. var t-test | $t = \frac{\bar y - \bar x}{\sqrt{s_x^2/n_x + s_y^2/n_y}}$ | \*\* | $\hat d = \frac{\bar y - \bar x}{\sqrt{s_x^2 + s_y^2}}$ |
+
+\*\* The degrees of freedom for an unequal variance t-test are given by the following long expression (which you should not try to learn):    
+$df = \frac{(s_x^2/n_x + s_y^2 / n_y)^2}{sx^4/(n_x^2(n_x-1)) + s_y^4/(n_y^2(n_y-1))}$
+
+## Math.
+
+This section is here for thoroughness, but there is no particularly good reason to commit this stuff to memory.
+
+### Math behind 2-sample equal variance t-test
+
+Specifically, our model is:
+
+$x \sim \text{Normal}(\mu_x, \sigma)$     
+$y \sim \text{Normal}(\mu_y, \sigma)$
+
+Note that here we have assumed that x and y have the same standard deviation.  For reasons that become clear later, this assumption is usually made when running a t-test, especially when calculating one by hand.
+
+Under this assumption, our expected distributions for the sample means will be:   
+$\bar x \sim \text{Normal}(\mu_x, \sigma / (\sqrt n_x))$    
+$\bar y \sim \text{Normal}(\mu_y, \sigma / (\sqrt n_y))$
+
+And the distribution of the difference between the means ($\bar y - \bar x$), will be:    
+$(\bar y - \bar x) \sim \text{Normal}(\mu_y - \mu_x, \sqrt{\frac{\sigma^2}{n_x} + \frac{\sigma^2}{n_y}})$     
+(the random variable corresponding to the difference of $\bar x$ and $\bar y$ will have a variance equal to the sum of the variances $\sigma^2_{\bar x} = \sigma^2/n_x$ and $\sigma^2_{\bar y} = \sigma^2/n_x$)
+
+The standard deviation of the sampling distribution of the difference of the means (this is the "standard error" of the difference between two means), $\sqrt{\frac{\sigma^2}{n_x} + \frac{\sigma^2}{n_y}}$, can be simplified to: $\sigma \sqrt{1/n_x + 1/n_y}$.
+
+In this case, as usual, we want to test a null hypothesis, and here the null hypothesis is specified as the difference between the two means $H_0 = (\mu_{y_0} - \mu_{x_0})$.  This is usually 0: our null hypothesis is usually that the two means do not differ.  
+
+Since we do not know the shared standard deviation, $\sigma$, we have to estimate it.  To do so, we have to "pool" information from both $x$ and $y$, since they should both inform our estimate of the shared $\sigma$.
+
+We can compute $\bar x$ and $\bar y$, as well as $s_x$ and $s_y$, however, our estimate of the common $\sigma$ must pool $s_x$ and $s_y$.  This pooled estimate is usually written as $s_p$, and is a *weighted average* of sample variances:
+
+$s_p^2 = \frac{\sum_i (n_i - 1) s_i^2}{\sum_i (n_i -1)}$
+
+Since we only have two groups here, this general statement about how to pool variances boils down to:
+
+$s_p^2 = \frac{(n_x-1) s^2_x + (n_y-1) s^2_y}{n_x + n_y - 2}$
+
+(Note that these equations refer to pooled *variance*, so the pooled standard deviation would be the square root of these!)
+
+Since this is our estimated variance, we can use the standard error formula we derived before to compute the estimated standard error of the difference between two means:
+
+$s_{\bar y - \bar x} = s_p \sqrt{1/n_x + 1/n_y}$.
+
+Once we have obtained a standard error, we can compute a t-statistic.
+
+$t_{\bar y - \bar x} = \frac{(\bar y - \bar x) - (\mu_{y0} - \mu_{x0})}{s_{\bar y - \bar x}}$
+
+Sometimes, for clarity, this is written out as the equivalent expression:
+
+$t_{\bar y - \bar x} = \frac{(\bar y - \bar x) - (\mu_{y0} - \mu_{x0})}{s_p \sqrt{1/n_x + 1/n_y}}$
+
+Usually, the null hypothesis $(\mu_{y0} - \mu_{x0})$ is 0: meaning that the difference between the means ought to be 0, so the t-statistic ends up being shortened to:
+
+$t_{\bar y - \bar x} = \frac{(\bar y - \bar x)}{s_p \sqrt{1/n_x + 1/n_y}}$
+
+This t-statistic will follow the t-distribution with degrees of freedom matching the denominator in the pooled sample variance calculation:   
+
+$df = n_x + n_y -2$ 
+
+#### Special case of equal sample sizes
+
+Sometimes textbooks present special formulas for cases where $n=n_x=n_y$ (where the sample sizes are equal), but those formulas can be calculated directly from the more general formulas that assume unequal sample sizes by plugging $n$ in for both $n_x$ and $n_y$:     
+$df = 2n-2$   
+$s_p^2 = (s_x^2 + s_y^2)/2$   
+$s_{\bar y - \bar x} = s_p \sqrt{2/n}$
+
+### Math behind unequal variance t-test
+
+Specifically, the model we consider is:
+  
+$x \sim \text{Normal}(\mu_x, \sigma_x)$   
+$y \sim \text{Normal}(\mu_y, \sigma_y)$
+
+Under this assumption, our expected distributions for the sample means will be:   
+$\bar x \sim \text{Normal}(\mu_x, \sigma_x / (\sqrt n_x))$    
+$\bar y \sim \text{Normal}(\mu_y, \sigma_y / (\sqrt n_y))$
+
+And the distribution of the difference between the means ($\bar y - \bar x$), will be:    
+$(\bar y - \bar x) \sim \text{Normal}(\mu_y - \mu_x, \sqrt{\frac{\sigma_x^2}{n_x} + \frac{\sigma_y^2}{n_y}})$
+
+So we can proceed to calculate $\bar x$, $\bar y$, $s_x$, $s_y$, and plug these in to get a t-statistic:
+
+$t_{\bar y - \bar x} = \frac{(\bar y - \bar x)}{\sqrt{s_x^2/n_x + s_y^2/n_y}}$.
+
+(Again we have dropped the $ - ($\mu_{y0} - \mu_{x0}$)$ from the numerator because in most cases in which this test is applied $(\mu_{y0} - \mu_{x0})=0$.)
+
+However, the trickiness comes in defining the degrees of freedom for this t-test.  The trickiness arises from the fact that we have two estimated standard deviations; how do we represent the sampling variability associated with both?
+
+This was a hairy problem when folks were first dealing with t-tests, until the reasonably accurate approximation via ``Welch's t-test", which defines the degrees of freedom for this test statistic as:
+
+$df = \frac{(s_x^2/n_x + s_y^2 / n_y)^2}{sx^4/(n_x^2(n_x-1)) + s_y^4/(n_y^2(n_y-1))}$
+
+This unwieldy definition of the degrees of freedom generates all the desirable properties for the t-test.  Intuitively, what this formula does is return    
+$n -1 \leq df \leq n_x + n_y -2$    
+(where $n$ is the size of the sample with the larger sample variance).  Intuitively, what this does is return roughly $df =  n_x + n_y -2$ when $s_x$ and $s_y$ are approximately equal (since in that case you are essentially doing an equal-variance t-test), and this formula returns $n_x-1$ when $s_x$ is much larger than $s_y$ (and vice versa; this should make sense: when $s_x$ is really big compared to $s_y$, this t-test is equivalent to doing a 1-sample t-test of $x$ vs the point-null hypothesis of $\mu_0 = \mu_y$).

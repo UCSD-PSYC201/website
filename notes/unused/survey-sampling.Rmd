@@ -1,0 +1,60 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Surveys
+
+> **TL; DR:** Sampling is critical for survey design  
+> - Aim for unbiased random sampling of population, or sampling with a known (and correctable) bias.
+
+[Survey methods](http://en.wikipedia.org/wiki/Statistical_survey) highlight the importance of [sampling](https://en.wikipedia.org/wiki/Sampling_(statistics)): which things do you measure?  Generally, the goal of a survey is to estimate some general property of a "population" by measuring a subset of it.  For instance, if we want to estimate the political beliefs of US adults by measuring a subset of them, the population is the set of US adults, and the subset we measure is the sample.
+
+## Survey / sampling failures we want to avoid
+
+There are a few mechanisms that might subvert our ability to accurately estimate population properties from a survey sample.
+
+### Uncorrectable sample bias
+
+A *biased* sampling procedure chooses members of a population in a manner that makes some (not representative) members more likely to be sampled than others.  For instance, in voter exit polling, if we just poll voters exiting a single booth in a poor neighborhood in Tampa, our sample will be bias because the folks that go to that voting booth are likely to be quite different from folks in other booths across the country.  The [1936 presidential election polls](https://en.wikipedia.org/wiki/The_Literary_Digest#Presidential_poll) offer a classic example of uncorrected sample bias: *Literary Digest* predicted a landslide victory for Landon, based on a poll that heavily over-represented their own, wealthy readers; while Gallup gained recognition not only by correctly predicting the Roosevelt victory, but also predicting the bias of the *Literary Digest* poll.  
+
+Some sampling procedures intentionally introduce a systematic bias to ensure representativeness, but these procedures should "know" the probability of sampling particular individuals, thus allowing for the bias to be corrected.  Thus, a known sampling bias can still yield an *unbiased* estimate of the population, if it can be statistically corrected.
+
+### Not representative sample
+
+A theoretically unbiased sampling procedure may, nevertheless, yield biased estimates because the sample is not representative.  For instance, if we have a population of 50% men and 50% women, and take a random sample of size 2, half the time our sample will be made entirely of men or women, and thus will not be representative, even though the procedure was theoretically unbiased.  This problem is exacerbated when we are measuring some "heavy-tailed" property (a small proportion has extreme values), and alleviated when we have larger samples.
+
+### Non-response and drop-out
+
+An unbiased sampling procedure with a large sample size can be rendered non-representative by systematic non-response or drop-out.  If a particular group is not likely to participate in a survey when asked to participate, this would yield a *non-response* bias (for instance, if some folks are less likely to answer their telephone when called from a random-number poll).  If some groups are more likely to *drop-out* of the survey than others, this might also yield an unrepresentative sample (for instance, if an early question in my survey upsets Christians, they might close the webpage and not complete the survey).  Either way, the final data in the sample is not representative and will yield biased estimates of the population.
+
+### Response bias
+
+Although not a sampling failure, response bias can subvert the validity of our survey insofar as people are inclined to not be entirely truthful when explicitly asked.  For instance, men on dating sites tend to [lie about their height](http://blog.okcupid.com/index.php/the-biggest-lies-in-online-dating/), so even if dating sites offered a representative sample of the male population, population height estimates from those sites would be wrong.  
+
+## Non-random sampling strategies
+
+There are a number of non-random sampling strategies that strike different tradeoffs between ease/feasibility and sample bias / representativeness.
+
+Exhaustive sampling 
+:   Exhaustive sampling may not be considered sampling at all:  You literally measure the entire population.  Although this yields a maximally unbiased and representative sample, it is nearly always infeasible.  
+
+Convenience sampling
+:    Convenience sampling is the exact opposite: you sample whatever is most convenient (e.g., the psychology undergraduates who wander into your lab in return for course credit).  Convenience samples are very feasible and easy, but they are often biased and not representative of the population of interest.
+
+Snowball sampling
+:    Snowball sampling is a strategy to increase the sample size when the target population is rare: you find a few members of the population, and ask them to recruit more folks that they know.  (e.g., To sample male-to-female transsexuals, you might go to a local group and ask them to pass on your recruitment to others they might know.)  While this sampling strategy is going to be biased and unrepresentative because you only sample members of the population with relatively close social-network links to your original seed sample, such a strategy is often the only feasible way to get a sample of any considerable size of a rare population.
+
+## Gold standard: probability sampling
+
+Probability sampling means that every member of a population has some non-zero probability of being selected by the sampling procedure, and that probability can be accurately determined for any given member.  Insofar as this is true, we can use our sample to estimate the properties of the population by correcting for the known biases of the sampling procedure.  If this is not true, then our sample is biased in unknown ways that we cannot correct for.
+
+Simple, or *uniform*, random sampling:    
+:    Every unit of a population has an equal probability of being selected, so there is no bias in the sampling procedure, and no correction is even necessary since a uniform weighting of samples is sufficient.   
+:    This is a great strategy but is rarely feasible.  To randomly sample voters from the US voting population, you would need to randomly choose people from all over the country, with no regard for their geographic location.  You can't fly from one city to another randomly chosen city every few minutes to obtain a new random sample; and it is impractical to sample just one person per city / polling booth.  Thus, uniform sampling is usually infeasible.
+
+Stratified sampling   
+:    Stratified sampling aims to reduce problems of "representativeness" when your population is comprised of sub-groups that are likely to be quite different from each other (e.g., males and females): You would sample the specific sub-groups to ensure representativeness and coverage and then correct for this sampling bias by taking into acount the base-rate of each group in the population.  
+
+Cluster sampling    
+:    Cluster sampling aims to make sampling of a large population easier by exploiting convenient groups in the population that are each fairly homogenous and representative of the population as a whole (e.g., different cities): You randomly sample a set of "clusters" and then sample more thoroughly within each cluster (rather than sampling thoroughly across the whole population).  Insofar as each cluster is representative of the population as a whole, this strategy makes it much more feasible to get a representative sample of the population than simple random sampling (e.g., you sample a few cities, and many folks inside each city, rather than flying across the whole country, randomly sampling with no concern to geography).  Some correction is necessary to adjust for the probability of members of a particular cluster being sampled based on the size of that cluster relative to the whole population.

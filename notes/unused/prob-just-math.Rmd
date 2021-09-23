@@ -1,0 +1,67 @@
+# Just definitions.
+
+> A **random variable** is a variable 
+
+- A **partition** $\mathcal{Q}$ is a family of disjoint events ($A \cap B = \emptyset \mbox{ for all } A,B \in \mathcal{Q} \mbox{ and } A \neq B$) that covers the sample space: $\cup_{A \in \mathcal{Q}} = \Omega$
+
+- The values of a **random variable** constitute a *partition* of the sample space, meaning that every possible outcome maps on to one and only one possible value for the random variable.
+
+- The **probability distribution function** ($f_X(x) = P(X=x)$) of a random variable (e.g., $X$), describing the probability that the variable will take on any of its possible outcomes, may be calculated from its partition and the rules of probability.
+
+- A **Bernoulli** random variable takes on one value ("success", denoted 1) with probability $p$ and a second value (denoted 0) with probability $(1-p)$:  $X \sim \operatorname{Bernoulli}(p)$ meaning $f_X(x) = P(X=x) =$.
+
+- The **Binomial coefficient** "n choose k" is the number of unique sets of size $k$ chosen from $n$ options: $n \choose k = \frac{n!}{k!(n-k)!}$.
+
+- A **Binomial** random variable is the number of *Bernoulli* successes out of $n$ attempts.  If $Y = \sum_{i=1}^n x_i  \mbox{ where } x_i \sim \operatorname{Bernoulli}(p)$, then $Y \sum \opertatorname{Binomial}(n,p)$, meaning $f_Y(y) = P(Y=y) = n \choose y p^y(1-p)^{n-y}$.
+
+
+
+
+## Common discrete random variables include:
+
+Bernoulli
+:    Distributes probability over two alternatives, one with probability $p$, the other with probability $(1-p)$.  (e.g., the outcome of one flip of a coin that comes up heads with probability $p$):  `[d/p/q]binom(1,p)` 
+
+Binomial
+:  Distributes probability over the number of successes out of $n$ attempts each succeeding with probability $p$.  (e.g., the number of heads obtained after $n$ flips of a coin that comes up heads with probability $p$)  `[d/p/q]binom(n,p)` 
+
+Hypergeometric
+:   Analogous to the binomial distribution, but without replacement.  For instance, if an urn contains $m$ balls, $k$ of them are black, and you draw $n$ at random, how many black balls will you draw?  `[d/p/q]hyper` 
+
+Multinomial
+:    Generalization of the binomial to more than two outcomes, parameterized by a vector of probabilities $\alpha$ (e.g., ask people to name a letter of the alphabet, which letter people tend to name will follow some multinomial -- 26 alternatives -- probability distribution).
+
+Discrete uniform
+:     Distributes probability uniformly over integers between between $a$ and $b$.
+
+Geometric
+:    If you flip a coin that comes up heads with probability $p$, how many times will you need to flip it before it comes up heads?
+
+Poisson
+:    The distribution of the number of rare events occurring in some interval.  E.g., How many people will walk into a store on a sunday.
+
+
+## Common continuous random variables
+
+For discrete variables it makes sense to talk about the probability mass distributed to each of a countable number of alternatives. 
+
+Beta
+:    Distributes probability over the interval $[0,1]$, with two parameters $\alpha$ and $\beta$.
+
+Uniform
+:    Distributes probability evenly over all values within an interval $[a,b]$.
+
+Normal (aka Gaussian)
+:    Distributes probability over $(-\infty,\infty)$, with some mean, $\mu$, and variance, $\sigma^2$.
+
+Pareto (power law distribution)
+:    Distributes probability over the interval $(0,\infty)$, with probability falling off monotonically (with a power law) as values increase.
+
+Von Mises
+:    Distributes probability over a circle.
+- The **quantile function** (or inverse CDF) at $q \in [0,1]$ gives the value $x$ of the random variable such that the cumulative distribution at $x$ equals $q$ ($P(X \leq x)=q$).  $x=F_X^{-1}(q) \implies F_X(x)=q$.  In `R` these are prefixed with `q`, as in `qnorm`.
+
+## PDFs: Probability mass and density functions.
+
+### Discrete variables: Probability mass functions (pmf)
+

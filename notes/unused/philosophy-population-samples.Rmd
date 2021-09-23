@@ -1,0 +1,19 @@
+---
+output: 
+    html_document
+---
+
+# Populations and samples
+
+
+> **TL; DR:** 
+> We aim to estimate properties of the population from a sample.
+
+Inferential statistics is often described as the process by which you can make "inferences"" about the properties of a *population* from a small *sample*.  For instance, you want to estimate the average IQ of incoming UCSD freshmen (that's the population) based on measured IQ scores of 100 of those students that you randomly selected.  The mean IQ of the 100 sampled students would be the sample mean, and the average IQ of all incoming UCSD freshmen is the population mean.  Since you can't measure every freshman, you can't obtain the population mean, but you can make a guess based on the 100 students you sampled.  
+
+This way of describing the distinction between sample and population is fairly straight forward, and makes a lot of sense in situations where the population is a well defined, finite set; such as exists in census, polling, or demographic applications (e.g., in exit booth polling the set of all voters who voted in this building today; in the census: the set of all residents of a country; in our toy example: the set of all freshmen).  
+
+However, this definition of a population is a bit puzzling for most social science research because the populations we are interested in ire not well-defined finite sets.  When I run an experiment, I am not interested in all current UCSD students, nor all current college students nationwide, nor in even in all current people alive in the world.  Instead, I hope that my findings will apply to yet unborn and long-dead generations as well.  The population we are interested in might be defined as "all people ever", thus the conventional notion of the "population mean" as the mean obtained from measuring every single person ever, seems crazy.  
+
+I find it more useful to think about a population as a random process in the world that generates my data: people are born, they get some kind of education and life experience, and eventually they wind up in my lab and contribute some data to a given experiment.  The "population" as far as I am concerned is this complicated process itself, and characterizing the population amounts to describing this process.  A simple model of such a random process might be "it generates data according to a normal distribution with some mean and variance", thus the population parameters (like the population mean), is effectively the mean of the normal distribution that I assume generates my data.  We would of course aspire to conjure up a more sophisticated model of this process, and in that case the mean may prove to be less relevant than other model parameters.
+

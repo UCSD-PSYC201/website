@@ -1,0 +1,83 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+# R homework
+
+You will have homework roughly every week.  
+
+Assignments will be submitted through the [homework interface](vulstats.ucsd.edu/hw/). On this page you will find a list of the current and past R assignments - this will tell you (a) whether it is complete, incomplete, or past due, and (b) when it is due. Typically (but not always), assignments will be due half an hour before the lab: 5:00pm on Wednesday. This will not always be the case, so be sure to check the statistics server or assignment pages.
+
+You may only submit assignments in the period that they are assigned - typically they open immediately after the relevant lab. You may find assignments posted on this website before they are open - I put these here to give you a sense of what you need to know, but I reserve the right to make changes until it is posted on the statistics server. So just because it can be found here does not mean that you can submit your homework yet.
+
+### Grading
+
+The R assignments are criterion-based: you need to get a certain percentage of the questions correct before you get credit (this percentage varies and is noted on the statistics server). If you fail to reach this cutoff, you are allowed to resubmit as many times as you would like until the deadline. Once you meet the criterion, you get a 100% for that assignment.
+
+We also want to encourage generalizability of your scripts - after all, the reason to use R scripts is so that you can repeat the analysis easily, including if you get more data or your assumptions change. In each assignment you will be asked to load in some data - make sure that you use the variables and data you loaded rather than hard-coding any numbers. When your assignment is graded, you will be notified of what your answer is versus the correct answer for that data. However, your assignment will also be tested against another dataset, for which you will only be told if your code extends correctly or not. You need your code to work for both datasets in order to get an answer right.
+
+### Collaboration
+
+Working with other people will make learning R easier and more fun (unless you pick a bad group...) - thus collaboration is encouraged on these assignments. However, we want you to learn how to use R, not just your friends. Thus the script you submit should be your own - you are not allowed to write a script as a group and each submit that.
+
+Instead, for maximal learning, we suggest you first attempt the assignment on your own. If you can't get it by yourself, then get together with a group to discuss it. But don't write code as a group - instead, take notes and write your own code afterward.
+
+In addition, there is lots of R code on the internet for many different tasks. You are allowed to use this code, provided you (a) credit the original authors, and (b) can explain how it works - yes, I will know if you use outside code, even if you don't cite it, and yes I will quiz you on it.
+
+As a final warning: submitting a script that is not your own or contains outside code without citations is a violation of the honor code. Don't violate the honor code.
+
+## Submitting R Assignments
+
+R assignments are submitted through the homework interface: [vulstats.ucsd.edu/hw/](vulstats.ucsd.edu/hw/)
+
+### Writing R scripts
+
+The first step in submitting an assignment is writing it. In order for the server to grade your homework, you need to write it so that:   
+  1) The code is error-free   
+  2) Any data or files you load are saved in the same folder as your script (don't use the setwd() function)   
+  3) You don't use any outside packages - only ones that have been discussed in class   
+  4) You have answered every question - all ans variables you are asked to fill in are set   
+
+The easiest way to check whether your code has errors is to:   
+  1) Restart RStudio   
+  2) Clear all extraneous variables (use the broom icon in your workspace)   
+  3) Source the script
+
+If you don't get any errors after doing this, and you have answered all of the questions (all of the answer variables are filled), then you should go ahead and submit your assignment.
+
+### Submitting your assignment
+
+To submit R assignments, sign in to the statistics server, and go to the bottom of the page. Under the R assignments section
+you will find a list of past and present assignments. Each assignment is color coded: if it is red, you still need to do it; if it is green, you have finished it; if it is black, it is past due. You can also get information about each assignment, including the assignment name, the percent correct you need for that assignment, when it is due, how many times you have attempted it, and when it was completed (if it is done).
+
+Find the assignment you want to submit, then click on the upload button (as below)
+
+![Upload](img/R-submit.1.upload.png)
+
+Next, you will be able to upload your script. To do so, click on the 'Choose File' button as shown below.
+
+![Choose file](img/R-submit.2.png)
+
+This will open a file browser. Find your R script for the current assignment, select it, then press 'Open'.
+
+![Choose file](img/R-submit.3.png)
+
+When you get back, the Filename field should display the name of your R script. Click 'Submit' to upload and submit.
+
+![Submit](img/R-submit.4.png)
+
+You may see the following screen if your script takes a long time to run. Don't close your browser or go back. If your script takes too long, you will get an error - if so, check your script for things that might be taking up too much time (e.g. running ten-millions simulations instead of ten-thousand).
+
+![Running](img/R-submit.5.png)
+
+Assuming all is successful, you will see a screen similar to the one below. However, you may also get an error if something goes wrong. If you are having trouble figuring out what the error is, check here.
+
+![Success](img/R-submit.6.png)
+
+The top of this final page will tell you whether you have passed the homework or not. You can get more details about the individual answers in the table below. Each row corresponds to a single answer variable, and each cell is color-coded.
+
+If the 'Answer' column is green, your script gets the right answer for the data you were given, and the extension test data.
+
+'Your answer' and 'Correct answer' come from the data you were given - this lets you know how close you got. Both cells will be green if you got the right answer here.
+
+The 'Works on test?' column lets you know whether your script extends to the test data - it will be green if so. If you get the correct answer on the given data but the wrong answer on the extension test data, you should check for any numbers you may have hard coded.

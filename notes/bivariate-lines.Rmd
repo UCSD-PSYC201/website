@@ -1,0 +1,97 @@
+---
+  output: 
+    html_document
+---
+  
+
+# y~x vs x~y vs principle component line
+
+Let's consider the fake IQ-GPA from our overview of [OLS regression](ols.html) again.
+
+
+```{r}
+library(ggplot2)
+IQ = rnorm(50, 100, 15)
+GPA = pmax(1, pmin(4.3, round((IQ-100)/15*0.5+2.8+rnorm(length(IQ),0,0.7), 1)))
+iq.gpa = data.frame(iq=IQ, gpa=GPA)
+g1 = ggplot(iq.gpa, aes(iq,gpa))+
+      geom_point(size=2)
+g1
+```
+
+We can do two sorts of regression here:   GPA as a function of IQ, or IQ as a function of GPA:
+
+```{r}
+( lm.g.i = lm(data=iq.gpa, gpa~iq) )
+
+( lm.i.g = lm(data=iq.gpa, iq~gpa) )
+```
+
+Note that the slopes are different, and critically, they are not inverses of each other.  You might imagine that the IQ/GPA slope will be the inverse of the GPA/IQ slope, but they are not:
+
+```{R}
+c(1/coef(lm.g.i)['iq'], coef(lm.i.g)['gpa'])
+```
+
+Why are they different?
+
+$B\{\frac{y}{x}\} = r_{xy}\frac{s_y}{s_x}$
+
+$B\{\frac{x}{y}\} = r_{xy}\frac{s_x}{s_y}$
+
+Consequently, the slopes will be inverses of each other only if the correlation is 1.  But why is this so?
+
+Remember, the y~x regression line is the line that minimizes squared error **in y**, and considers there to be no error in x.  Similarly, the x~y regression line minimizes squared error **in x** and considers there to be no error in y.  This discrepancy yields potentially very different slopes.
+
+Let's look at the two lines, along with the "principle component" line that minimizes squared error *orthogonal* to the line (which is the intuitive line of best fit for most people).
+
+```{r, fig.height=6, fig.width=6}
+m.y = mean(iq.gpa$gpa)
+m.x = mean(iq.gpa$iq)
+s.y = sd(iq.gpa$gpa)
+s.x = sd(iq.gpa$iq)
+
+b1.y.x = coef(lm.g.i)['iq']
+b0.y.x = coef(lm.g.i)['(Intercept)']
+
+b1.x.y = 1/coef(lm.i.g)['gpa']
+b0.x.y = m.y - b1.x.y*m.x
+
+pc.load = prcomp(iq.gpa, scale=T, retx=T)
+b1.yx = pc.load$rotation[2,1]/pc.load$rotation[1,1]*s.y/s.x
+b0.yx = m.y - b1.yx*m.x
+
+iq.gpa$yh.y.x = b1.y.x*iq.gpa$iq + b0.y.x
+iq.gpa$xh.x.y = coef(lm.i.g)['gpa']*iq.gpa$gpa + coef(lm.i.g)['(Intercept)']
+iq.gpa$xh.yx  = pc.load$x[,1]*pc.load$rotation[2,1]*s.x+m.x
+iq.gpa$yh.yx  = pc.load$x[,1]*pc.load$rotation[1,1]*s.y+m.y
+
+
+ggplot(iq.gpa, aes(x=iq, y=gpa))+
+  geom_abline(intercept = b0.y.x, slope=b1.y.x, color="blue", size=1.5)+
+  geom_abline(intercept = b0.x.y, slope=b1.x.y, color="red", size=1.5)+
+  geom_abline(intercept = b0.yx, slope=b1.yx, color="gray", size=1.5)+
+  geom_point(size=2.5)
+```
+
+Here the blue line shows the gpa~iq fit, the red line shows iq~gpa, and the gray line shows the principle component line (which is the intuitive line most people would draw to describe the best fit).  
+
+Why are they different?  They are minimizing different squared errors.  The gpa~iq line minimizes error in gpa, the iq~gpa line minimizes error in iq, and the principle component line minimizes error orthogonal to the line (counting both iq and gpa deviations as error).
+
+```{r, fig.height=3, fig.width=10}
+g2 <- ggplot(iq.gpa, aes(x=iq, y=gpa))+
+  geom_abline(intercept = b0.y.x, slope=b1.y.x, color="blue", size=1.5)+
+  geom_segment(aes(x=iq, y=gpa, xend=iq, yend=yh.y.x), color="blue")+
+  geom_point(size=2.5)
+g3 <- ggplot(iq.gpa, aes(x=iq, y=gpa))+
+  geom_abline(intercept = b0.x.y, slope=b1.x.y, color="red", size=1.5)+
+  geom_segment(aes(x=iq, y=gpa, yend=gpa, xend=xh.x.y), color="red")+
+  geom_point(size=2.5)
+g4 <- ggplot(iq.gpa, aes(x=iq, y=gpa))+
+  geom_abline(intercept = b0.yx, slope=b1.yx, color="gray", size=1.5)+
+  geom_segment(aes(x=iq, y=gpa, yend=yh.yx, xend=xh.yx), color="gray")+
+  geom_point(size=2.5)
+
+library(gridExtra)
+grid.arrange(g2,g3,g4,ncol=3)
+```

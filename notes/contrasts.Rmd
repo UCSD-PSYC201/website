@@ -1,0 +1,114 @@
+---
+  output: 
+    html_document
+---
+  
+# Linear contrasts
+
+Significant effects in ANOVAs leave a lot of ambiguity.  A significant main effect of A tells us that means vary across levels of A.  However, this does not identify a particular pattern of means as the culprit.  Often we want to test for more specific patterns of means or interactions, and thus we turn to contrasts.  In the lecture slides, we described the math involved in setting up a linear contrast and calculating its standard error.  Here we will talk about how to do this in R using the `lsmeans` package.
+
+
+First, some arbitrary code to generate a 4x3 anova:
+
+```{r echo=F, message=FALSE}
+library(dplyr)
+library(emmeans)
+z.score = function(x){(x-mean(x))/sd(x)}
+data.n = 10
+noise.sd = 2
+fctr.k = c('A'=4, 'B'=3)
+fctr.sd = c('A'=1,'B'=0.5)
+fctr.names = list()
+fctr.efx = list()
+for(n in names(fctr.k)){
+  fctr.names[[n]] = paste0(n,1:fctr.k[n])
+  fctr.efx[[paste0('d.',n)]] = z.score(rnorm(fctr.k[n]))*fctr.sd[n]
+}
+df <- cbind(expand.grid(fctr.names), expand.grid(fctr.efx)) %>%
+  slice(rep(1:n(), each=data.n)) %>% 
+  mutate(y=rnorm(n(),0,noise.sd)+rowSums(select(., contains("d.")))) %>%
+  select(everything(), -contains("d."))
+```
+```{r}
+M <- lm(data = df, y~A*B)
+anova(M)
+```
+
+Now, let's walk through some examples of linear contrasts:
+
+```{r}
+#library(lsmeans)
+
+# case 1: just get CI on each cell mean
+lsmeans(M, ~A*B)
+
+# case 2: get CI on marginal factor level means
+lsmeans(M, ~A)
+lsmeans(M, ~B)
+
+# case 3: get pairwise cell comparison:
+pairs(lsmeans(M, ~A*B))
+
+# woah, that's a lot of comparisons.  let's do a more focused test:
+M.means = lsmeans(M, ~A*B)
+contrast(M.means, list(A1B1.v.A2B2 = c(1, 0,0,0,0,-1,0,0,0,0,0,0)))
+
+# describing the full contrast weights as a single vector is hard to read and specify.  instead, we can think of this more intuitively by considering the contrast matrix:
+C <- matrix(0, nrow=4,ncol=3)
+rownames(C) <- paste0('A',1:4)
+colnames(C) <- paste0('B',1:3)
+C['A1','B1'] = 1
+C['A2','B2'] = -1
+C
+# and then casting it as a vector:
+as.vector(C)
+contrast(M.means, list(A1B1.v.A2B2 = as.vector(C)))
+# but this is really unwieldy just for a pairwise contrast, given that we can get them all with pairs()
+# except pairs does the multiple comparisons correction for us on the p-value... and if we were only after one pairwise comparison...
+# for now, let's just stick to getting contrast means/standard errors and we can worry about how to obtain corrected p-values later
+
+# case 4: comparing marginal factor level means, to the average of some other levels.
+lsmeans(M, ~A) # this yields just the marginal means of A
+lsmeans(M, ~A) %>%
+  contrast('trt.vs.ctrl', ref=c(2:3)) # now we compare levels of A to the average of the second and third level
+
+
+# case 5: interactions as differences of differences
+# this yields conditional means of A at each B -- it's like 'grouping' in dplyr
+lsmeans(M, ~A|B) 
+
+
+lsmeans(M, ~A|B) %>% 
+  contrast('trt.vs.ctrl', ref=c(2:4)) # this yields A1-avg(A2,A3,A4)
+
+
+lsmeans(M, ~A|B) %>% 
+  contrast('trt.vs.ctrl', ref=c(2:4)) %>%
+  update(by=NULL) # this undoes the 'conditioning', to collapse them all into one list.
+
+# And finally, this runs a contrast along B, on the output of the contrast along A for each level of B.
+lsmeans(M, ~A|B) %>% 
+  contrast('trt.vs.ctrl', ref=c(2:4)) %>%
+  update(by=NULL) %>%
+  contrast('trt.vs.ctrl', ref=c(2:3))
+
+# we can generate the same contrast by element-wise multiplying the contrasts along A and B
+a.contr = c(1,-1/3,-1/3,-1/3) # effect of A we are interested
+b.contr = c(1, -1/2, -1/2)    # and how it changes as a function of B...
+C = a.contr%*%t(b.contr) # this is matrix multiplication, but for two vectors, so we just get pairwise multiplication,
+# can also be accomplished by:
+C = outer(a.contr, b.contr, function(a,b)a*b)
+rownames(C) <- paste0('A',1:4)
+colnames(C) <- paste0('B',1:3)
+C
+# so that series of contrasts we set up in a long sequence of operations should be the same as here:
+contrast(lsmeans(M, ~A*B), list(I=as.vector(C)))
+
+# perhaps more intuitively, without constructing a whole contrast matrix ourselves, we can do something like this:
+lsmeans(M, ~A|B) %>%    # get conditional means of A for each B level
+  contrast(list(A1v234=a.contr)) %>%  # for each B level calculate the contrast of interest
+  update(by=NULL) %>% # ungroup to yield list of A1v2345 x B
+  contrast(list(B1v23=b.contr)) # calculate B contrast.
+
+# so we have three ways of calculating a contrast of contrasts.  They all do the same thing, but the syntax is a bit different.  I tend to think of the contrasts in terms of the cell-weights, and thus in terms of the contrast matrix C, but the lsmeans library makes it a bit easier to think about them as sequential contrasts on particular values.
+```

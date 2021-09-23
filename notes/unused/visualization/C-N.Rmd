@@ -1,0 +1,26 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Categorical ~ Numerical
+
+It's not uncommon that we may want to show how the distribution of a categorical response variable changes with some numerical variable (for instance, political party affiliation changing with age).  Generally, this sort of display requires a lot of data, otherwise it will demand very coarse binning of the numerical variable, and it might as well be presented as a [C ~ C](C-C.html) plot.
+
+Let's start by generating the same fake data:
+
+````{r}
+library(ggplot2)
+
+df.age = data.frame(age = sample(18:100, 10000, replace=T))
+# arbitrary, hacky scheme for party affiliation changing with age
+df.age$party = ifelse(runif(length(df.age$age))<(0.1+0.8*(1/(1+exp((df.age$age-40)/15)))), 'democrat', 'republican')
+````
+
+### Stacked area chart
+
+This is the same stacked area plot we used before, and now "binning" divides the numerical age variable into several discrete bins (30 by default).  The more data you have, the more fine-grained your bins can be.  If you had a skewed age distribution, you might find that there are many bins with no data.  
+
+````{r}
+ggplot(df.age, aes(x=age, fill=party))+geom_bar(stat='bin', position='fill')
+````

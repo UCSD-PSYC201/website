@@ -1,0 +1,104 @@
+# Concepts
+[Learn the command line](https://www.codecademy.com/en/courses/learn-the-command-line?utm_campaign=lcl_release&utm_source=hackernews)
+
+
+[minard data](https://vincentarelbundock.github.io/Rdatasets/doc/HistData/Minard.temp.html)
+
+
+
+
+\section{Some important ideas}
+
+## History
+
+- It was recognized as early as the 5th century BC that one can use a small subset to estimate the properties of a larger group.  In the 5th century BC, the Greeks estimated the height of a wall by counting bricks in an unplastered section and multiplying by the height of a single brick.  Similarly, in an Indian epic, estimating number of fruit and leaves by counting those of a single twig, and multiplying by the number of twigs.  Since 12th century, purity of coins from the Royal minted are tested by assessing a sample.
+
+- In the 9th century: frequency analysis used to decypher encrypted messages; thus establishing early the link between cryptography, probability, and statistics.
+
+- In the 16th century, the arithmetic mean proved useful to aggregating some imperfect measurements (astronomical measurements), while the median was advocated for some other measurements (compass readings).
+
+- As early as the 17th century: taking stock of demographic and economic properties of a state to guide governance via census methods.  Hence "stat(e)"-istics.  This use of statistical methods kicked off the field of demography.  These data also yielded mortality tables, which eventually formed actuarial science and the basis of risk analysis and insurance.
+
+- Probability was first developed to provide a mathematical treatment of games of chance (like dice) in the 16th and 17th centuries.
+
+- The 18th century saw great strides with the development of the Normal distribution, maximum likelihood estimation, strategies for estimating unknown quantities, and visualization methods like histograms, bar, and line charts.
+
+- The start of the 19th century yielded least squares estimation for fitting lines and curves.
+
+- The 19th century yielded the foundations of modern statistics, including: Quetelet's concept of the "average man", to Laplace's mathematical foundations for various probability distributions, Peirce's advancement of frequentist statistics, randomization and optimal experiment design, and Galton's "correlation".
+
+- The early 20th century, yielded what we now consider "classical" statistics, introducing statistical procedures like the t-test (Gosset), analysis of variance (Fisher), and the basic notion of null hypothesis significance testing via an amalgamation of the work of Peason, Neyman, and Fisher.
+
+- Bayesian statistics have been rapidly developing since the 1950s, greatly expedited by the introduction of computational methods from statistical mechanics.
+
+- Increasing computer power made resampling methods feasible in the 1980s.
+
+- An abundance of data at the internet scale heralded the rise of methods commonly associated with with machine learning.
+
+
+
+
+%\subsection{Related fields}
+
+%There are a number of related fields, that often aim to solve the same problems but in different domains, and perhaps at different scales.  In `machine learning' folks develop algorithms that can learn to exploit structure in the data to better guide decisions and make better predictions; this sounds a lot like statistics, because it is a lot like statistics: the problems being solved are very similar, but the methods often differ because machine learning is typically more concerned with efficient algorithms that can run quickly on a computer, and statistical methods are typically concerned with specifying a general, mathematically justified approach.  `Econometrics' is the application of math and statistics to economic data; while some jargon may differ between statistics and econometrics courses, they are really quite similar; econometrics tends to be more interested in time series data than your average statistics course.
+
+
+
+### Classification by probability distribution.
+
+The classification of numerical measurements into types of random variables considers slightly different (but often related) properties than Stevens' classification.  We generally want to know what is the support -- that is, what set of values can the measurement take on, and the shape of the probability distribution of measurements over those possible values.
+
+When considering support, two things matter.  
+First, what is the [interval](), or range, of values the random variable might take on: Is it bounded to some interval, perhaps being able to take on values only between 0 and 1 ($x \in [0, 1]$), like the proportion of points earned on an exam?  Is it bounded only at one end (typically zero), such that it can take on only positive values ($x \in [0, \infty)$]), like hourly wage -- no one has a negative hourly wage, but there is no upper bound as to how much someone might be paid for an hour of work?  Or can it take on negative as well as positive numbers ($x \in (-\infty, +\infty)$), like net worth, which may well be very negative for those with lots of debt?  Other numerical variables may be more complex (e.g., multivariate vectors, like geospatial coordinates), but let's ignore those for now.  
+Second, are the values the variable may take on *discrete* -- meaning they only some numbers are permitted (like a head-count, which is restricted to whole integers), or *continuous* -- meaning that any [real]() number within the interval is fair game (like time, which may be described with a number of infinitely many decimal points indicating seconds, milliseconds, microseconds, nanoseconds, etc.).  Of course, for real-world measurements, such infinite precision is illusory, but mathematically, the random variable is allowed to take on all of those values.
+
+For any given support, there are many types of random variables that have different probability distributions.  For instance, a measurement that takes on integers between 0 and infinity might have a probability distribution we might call [geometric](), [poisson](), [negative binomial](), and many others.  It doesn't make sense to go into any detail at this point about the properties of any particular probability distribution, but it is worth noting that different distributions imply a different kind of process in the world that may underlie the data, thus the choice of probability distribution when building a statistical model makes an assumption about how the world behaves.
+
+
+There are a number of random variable types for categorical data depending on how many categories there are, how many observations we made, and how multiple observations relate:  
+[Bernoulli](https://en.wikipedia.org/wiki/Bernoulli_distribution)
+:    for individual two-category observations.  e.g., the outcome of a coin flip, or a single person's sex.
+[Categorical](https://en.wikipedia.org/wiki/Categorical_distribution)
+:    for individual multi-category observations. e.g., a single person's nationality.
+[Binomial](https://en.wikipedia.org/wiki/Binomial_distribution)
+:    for counts of multiple independent two-category observations. e.g., the number of males and females in a class.
+[Multinomial](https://en.wikipedia.org/wiki/Multinomial_distribution)
+:    for counts of multiple independent multi-category observations. e.g., the number of times different parts of speech were used in a document.
+[(Multivariate) Hypergeometric](https://en.wikipedia.org/wiki/Hypergeometric_distribution#Multivariate_hypergeometric_distribution) 
+:    for counts obtained by sampling without replacement.  e.g., the number of males and females selected into a group of 10 from a class with 9 males and 14 females.
+
+
+
+## Social science: seeking clarity amidst controversy.
+
+:TODO:
+
+It doesn't take much before social science research manages to find itself amidst controversy.  We needn't even tackle anything controversial, like implicit stereotypes and biases; simply comparing cognition among groups, considering friendship formation, or the processes of learning, we will quickly run into many strong opinions, vested interests, public policy implications, and quite a bit of public disagreement.  We can't simply avoid these topics, because they tend to be the most broadly interesting and important.  This presents two challenges: first, we need to navigate the minefield of public opinion, but more importantly, we need to try to separate our own prejudices from our science.  Fortunately, addressing the second will help us deal with the first.
+
+### Coming to grips with our values
+We have strong views on our society: its properties, successes, and shortcomings, as well as changes we might want to make.  Our investment in these opinions has grown to the point that they are now the primary grouping mechanism in American society -- our opinions drive who we like, listen to, etc.  In some respects, this is a good thing: Opinions about society are surely a preferable sorting mechanism to race, creed, wealth, or other traits we may have little control over. However, sorting by opinion has a downside: insofar as we have preferences about how we are sorted, we face a pressure to adjust our opinions to our preferred group.  Thus, we might find ourselves holding opinions only because they are the opinions of our group, and we might feel pressure for our scientific inquiries to yield results consistent with the views of our preferred group.  This is quite bad.  How do we avoid this?  I think the best strategy is to unbundle our beliefs.
+
+### Unbundling beliefs and values.
+I suggest that we should try to unbundle our views, both by considering different aspects of society independently (uncorrelating our views on abortion and tax policy), and by drawing clear distinctions in our beliefs about how we want the world to be (values), how it actually is (empirical facts), why it is that way (putative causes), and how we might change it (policies).
+
+
+### Unbundling beliefs
+Lots of views seem to be rather arbitrarily bundled in society due to our group identification and membership (why else would opinions about abortion and tax policy be so correlated?)  Some views, however, seem bundled for fairly transparent reasons: belief in anthropogenic global warming, disastrous outcomes due to global warming, and support of cutting carbon emissions seem to be obviously related, so it makes sense that they would co-occur.  Similarly, beliefs about whether all groups are equally qualified for all careers, whether certain groups are discriminated against in certain careers, and whether affirmative action is a good policy seem naturally to go hand in hand.  I want to encourage you to actively unbundle these beliefs, so that you can assess them independently using science.
+
+
+How can we make sense of such correlations in the world?  It seems to me that they arise from some odd family of constraints imposed by our social and political system.  With a two-party system, the set of all possible political disagreements collapses onto the republican/democrat distinction when it comes time to vote; thus we might infer from our own behavior that our views are more consistent with the party we chose (if I voted for democrats, I must endorse all of their policies; ignoring the fact that I voted for them because I endorse their views on a few specific issues I really care about).  Another mechanism for such bizarre ideological correlations is signaling and group-affiliation: if I want to identify as a democrat, I should be more like the other democrats, so I should adopt more of their views.  Mechanisms that alter our beliefs via social pressure are effective at building communities and political coalitions, but they are counterproductive for science, where our goal is to figure out what the world is like, not to parrot back our in-group conventions.  
+
+Women over-represented: dental hygenists, kindergarden teachers, speech pathologists, nurses, bookkeeping clerks, hairdressers
+Men over-represented: construction laborers, electricians, mechanics, grounds maintenance, aircraft pilots, firefighters
+Blacks under-represented: chiropracters, farmers, drywall installers
+Blacks over-represented: barbers, postal workers, taxi drivers
+Asians over-represented: Miscellaneous personal appearance workers, medical scientists, software developers
+Asians under-represented: firefighters, roofers, aircraft pilots
+Hispanic under-represented: technical writers, fundraisers, statisticians
+Hispanic over-represented: drywall installers, roofers, agricultural workers
+Whites over-represented: tool and die makers, pilots, farmers, medical transcriptionists, veterinerians, chiropracters
+Whites under-represented: sewing machine operators, laundry & dry-cleaning, barbers, butchers, micellaneous personal appearance workers
+
+
+
+The practice of bundling views may lead us astray 

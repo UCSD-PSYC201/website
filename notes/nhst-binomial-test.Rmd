@@ -1,0 +1,121 @@
+---
+output: 
+    html_document
+---
+
+```{r Setup, include=FALSE, results='hide', warning=FALSE}
+library(knitr)
+opts_chunk$set(dev=c("png","pdf"),
+               fig.width=10,
+               fig.height=5,
+               dpi=300,
+               fig.show="hold",
+               fig.lp="fig:",
+               cache=TRUE,
+               par=TRUE,
+               echo=TRUE,
+               message=FALSE,
+               warning=FALSE)
+library(ggplot2)
+my_theme <- theme_bw() + 
+  theme(panel.grid = element_blank(), 
+        panel.background = element_rect(fill = "transparent", color=NA),
+        plot.background = element_rect(fill="transparent", color=NA),
+        axis.text = element_text(size=14),
+        title = element_text(size=18),
+        axis.title = element_text(size=16))
+```
+
+
+# Binomial test.
+
+If we have two possible categories (e.g., "pass"/"fail", "female"/"male", etc.), we can use the Binomial test to see if their proportions deviate from some null hypothesis proportion.  We talked about this via problem [via sampling](nhst-simulation.html), but that served to explain the logic, rather than provide practical advice.  We also talked about this in the advanced notes going from [probability to statistics via the binomial](theory-binomial.html), but that section was broad, mathy and complicated.  Here let's just be practical.
+
+If you have binary categorical data:
+
+```{r}
+df = data.frame(sex = sample(c('male', 'female'), size = 50, replace = T, prob = c(0.6, 0.4)))
+table(df$sex)
+```
+
+And we want to know if the rates of one outcome deviate from some null hypothesis probability 
+
+```{r}
+H0.p.female = 0.52
+```
+
+We can run a binomial test:
+
+```{r}
+binom.test(x=sum(df$sex=="female"), # number of one of two outcomes.
+           nrow(df), # total number of observations
+           p = H0.p.female) # probability of that outcome under the null
+```
+
+Thus we test the null hypothesis that our counts deviate from some null probability, using the Binomial distribution.
+
+
+## Estimating proportions.
+
+If we have some categorical observations, generally we will want to report the proportion of different outcomes.  How do we estimate this proportion and put confidence intervals on it?
+
+I think it's useful to learn the confidence interval defined by the Normal approximation to the binomial proportion (although there are many other alternatives).
+
+If I flip $n$ coins and get $k$ heads, my estimated probability that we will get heads is $\hat p = k/n$.
+
+The standard error of $\hat p$ will be $s_{\hat p}=\sqrt{\hat p (1-\hat p) / n}$
+
+If our sample size ($n$) is large, and $p$ is not too close to 0 or 1, $\hat p$ will follow a normal distribution with standard deviation equal to the standard error of $\hat p$.  Consequently, we can use z-scores to put confidence intervals on $p$:
+
+$$\hat p \pm z_{\alpha/2} \sqrt{\frac{1}{n} \hat p (1-\hat p)}$$
+
+This Z-score based confidence interval on a proportion is sufficient for most purposes.
+
+It is fairly easy to calculate in R:
+
+```{r}
+k.women = 14
+n.people = 23
+p.hat = k.women/n.people
+
+q = 0.95 # 95% confidence interval
+se.p.hat = sqrt(p.hat*(1-p.hat)/n.people)
+z.crit = abs(qnorm((1-q)/2))
+
+(CI.p.hat = p.hat + c(-1,1)*z.crit*se.p.hat)
+```
+
+There are [many suggested intervals](https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval) for the binomial proportion, and the `binom.test` gives you a different interval than the one calculated via the normal approximation (it uses Clopper & Pearson).   
+
+The interval based on the Normal distribution seems the easiest to use quickly for rough calculations, so it seems more useful to know exactly.
+
+## Sign test, test for percentiles
+
+The binomial test is also useful to test for a specific quantile (usually the median), in numerical data.
+
+Let's say we have some weird looking data on changes in performance (delta):
+
+```{r}
+df = data.frame(delta = c(-1000, rnorm(20,1.5,1)))
+ggplot(df, aes(x=delta))+geom_histogram()+my_theme
+```
+
+Note that the crazy outlier makes us unable to detect that improvement is actually positive:
+
+```{r}
+t.test(df$delta, mu=0)
+```
+
+Testing for the mean, using the standard deviation is very sensitive to outliers.  Testing for the median, on the other hand, is not.  
+
+We can test to see if the median is 0 by calculating the proportion of improvement scores that are greater than 0.  If 0 is really the median, this should be about half.  Thus we have a binomial test situation: what proportion of scores are greater than zero, compared to the null distribution of them being binomially distributed with probability 0.5
+
+```{r}
+binom.test(x=sum(df$delta > 0), # number greater than null median
+          n=sum(df$delta != 0), # number that are not equal to zero -- should be all
+          p=0.5)   # null distribution of fraction of data that should be above the mean.
+```
+
+Note that we count as the possible total number all values that are not equal to the hypothetical median.  Generally, with continuous data, you will never get numbers exactly equal to the null median, but if you do, you should not count them as being either above or below the median (thus they get dropped from the binomial test analysis).
+
+This use of a binomial test for a particular percentile is often called a sign test, and can be generalized to test for percentiles other than the median (e.g., the 75th percentile), although I never see them used that way.

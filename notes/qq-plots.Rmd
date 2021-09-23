@@ -1,0 +1,215 @@
+---
+output: 
+    html_document
+---
+
+# Quantile-quantile (QQ) plots
+
+QQ plots are a very useful tool for comparing two distributions.  They are most often used to compare some empirical distribution to some theoretical distribution (for example, to check if some data are normally distributed).  However, these plots are also very useful when we need to see if two data distributions differ in their shape (we have better tools to assess if they differ in their means).
+
+## What is a quantile?
+
+Let's take a distribution, say the normal distribution with mean=100, sd=15, which by definition is the distribution of IQ:
+
+````{r fig.width=8, fig.height=3.5}
+library(ggplot2)
+ggplot(data.frame(iq=rnorm(10000,100,15)), aes(iq))+geom_density(fill="blue", alpha=0.5)
+````
+
+As we saw when learning about [probability distributions](prob-rv-functions.html), we can assess the *cumulative probability* of this probability distribution with `pnorm(x,100,15)`, for instance, the probability that someone will have an IQ less than or equal to 120 might be written as $F_{\mbox{IQ}}(120) = P(\mbox{IQ} \leq 120)$ which we can calculate as `pnorm(120, 100, 15)` = `r pnorm(120, 100, 15)`.
+
+We can assess the *quantile function* of the IQ distribution with `qnorm(q,100,15)`, for instance, if we want to know what IQ we would need to have to be in the top 1\% (i.e., the 99th percentile, or the 0.99th quantile), we want to know the value $x$ such that $x = F^{-1}_{\mbox{IQ}}(0.99)$ or $P(\mbox{IQ} \leq x)=0.99$.  We can find this 0.99th quantile with `qnorm(0.99, 100, 15)` = `r qnorm(0.99, 100, 15)`.
+
+We can look at the whole quantile function by evaluating it as a bunch of different quantiles:
+
+````{r}
+qs = seq(0.001, 0.999, by=0.001)
+ggplot(data.frame(quantile.P=qs, quantile.Value=qnorm(qs,100,15)), aes(quantile.P,quantile.Value))+geom_line(size=1.5)
+````
+
+There is some opportunity for terminological confusion.  Technically [quantile](https://en.wikipedia.org/wiki/Quantile) refers to division of the unit interval into some number of fixed intervals, and we refer to specific divisions with specific names, for instance, we might refer to the 3rd "quartile", which means the third division of the unit interval into four equal parts.  We will just refer to this as the 0.75th quantile.  (Other special named quantiles are "deciles", "percentiles", etc.).  The other opportunity for confusion is that a particular quantile has a probability associated with it (0.99 for 0.99th quantile), and a value associated with it when applied to a particular distribution (0.99th quantile for IQ distribution is ~135).
+
+## Quantile-Quantile plots.
+
+A QQ plot shows a function that plots the quantile values from one distribution against the quantile values from another distribution: $(F^{-1}_A(q), F^{-1}_B(q))$.  Let's say we want to compare two distributions: $A \sim \operatorname{Normal}(100,15)$ and $B \sim \operatorname{Normal}(90,15)$.
+
+We can look at their two quantile functions side by side:
+
+````{r}
+qs = seq(0.001, 0.999, by=0.001)
+df = data.frame(quantile.P=qs, q.value.A=qnorm(qs,100,15), q.value.B=qnorm(qs,90,15))
+ggplot(df, aes(quantile.P))+
+  geom_line(aes(y=q.value.A), col='red', size=1.5)+
+  geom_line(aes(y=q.value.B), col='blue', size=1.5)+
+  ylab('quantile Value')
+````
+
+A QQ-plot makes comparisons somewhat easier by plotting the two quantile functions against each other.  We nearly always want to include the identity line (line where $y=0+1*x$), to make it easier to figure out what is happening in the QQ plot.
+
+````{r}
+ggplot(df, aes(q.value.A, q.value.B))+
+  geom_point(col="magenta", cex=2)+
+  geom_line(col='magenta', size=0.75)+
+  geom_abline(position="identity")
+````
+
+Here we see that the QQ plot is a straight line with a slope of 1, that is below the identity line.  This means that the shape of the two distributions is identical, except the distribution plotted along X is shifted to larger values than the distribution plotted along Y (being below the identity line means that the quantile value on X is larger than the corresponding quantile value on Y.)
+
+## Empirical quantiles.
+
+So far we estimated "theoretical" quantiles based on the mathematical expression for the probability distribution of a random variable.  Usually though, we want to compare an empirical distribution to a theoretical one, or two empirical distributions.  To get empirical quantile values from *samples* of some random variable, we can use the `quantile()` function.
+
+Let's generate a weird random variable:
+````{r}
+df = data.frame(x = rnorm(1000, 100, 15)+rexp(1000,0.1)-10)
+ggplot(df, aes(x))+geom_density(fill="blue", alpha=0.5)
+````
+
+We can get particular quantiles of X, say the 99th percentile, as `quantile(df$x, 0.99)`=`r quantile(df$x, 0.99)`.  We can plot the whole empirical quantile function for x as follows:
+
+````{r}
+qs = seq(0.001, 0.999, by=0.001)
+df.qs = data.frame(quantile.P = qs, q.value.X = quantile(df$x, qs))
+ggplot(df.qs, aes(quantile.P,q.value.X))+geom_line(size=1.5)
+````
+
+## Comparing empirical to theoretical quantiles.
+
+Let's say we think that our random variable X should be normally distributed.  If we think it should have a particular mean and standard deviation, we could compare the quantiles of X to the quantiles of a normal distribution with that mean and SD.  More often, we think that X is normally distributed, but with some unknown mean and standard deviation.  In that case, we would estimate the mean and SD from X, then compare X quantiles to the theoretical ones.  We usually plot the theoretical quantiles along X, and the empirical quantiles along Y.
+
+````{r}
+qs = seq(0.001, 0.999, by=0.001)
+df.qs = data.frame(quantile.P = qs,
+                   q.val.Normal = qnorm(qs,mean(df$x),sd(df$x)),
+                   q.val.X = quantile(df$x,qs))
+ggplot(df.qs, aes(q.val.Normal, q.val.X))+
+  geom_point(col="magenta", cex=2)+
+  geom_line(col='magenta', size=0.75)+
+  geom_abline(position="identity")
+````
+
+## Comparing empirical quantiles of two samples
+
+Let's say we have two samples with the same mean and variance, and we want to see how their shapes differ.
+
+````{r}
+A = ifelse(runif(1000)<0.7, rnorm(1000,100,15), rexp(1000,0.01)) # mixture of gaussian and exponential
+B = rnorm(800, 100, 15)+rexp(800,0.01)                         # sum of gaussian and exponential
+# Make data frame while ensuring A and B have the same mean and sd.
+df = rbind(data.frame(var='A', value=(A-mean(A))/sd(A)*15+100),
+           data.frame(var='B', value=(B-mean(B))/sd(B)*15+100))
+
+ggplot(df, aes(x=value, fill=var))+geom_density(alpha=0.3)
+````
+
+We can make more subtle comparisons between the shapes of A and B by plotting their quantiles against one another:
+
+````{r}
+qs = seq(0.001, 0.999, by=0.001)
+df.qs = data.frame(quantile.P = qs,
+                   q.val.A = quantile(df$value[df$var=='A'],qs),
+                   q.val.B = quantile(df$value[df$var=='B'],qs))
+ggplot(df.qs, aes(q.val.A, q.val.B))+
+  geom_point(col="magenta", cex=2)+
+  geom_line(col='magenta', size=0.75)+
+  geom_abline(position="identity")
+````
+
+## Interpreting QQ plots
+
+Making sense of QQ plots is not particularly intuitive.  Points that are below the identity line indicate that the X variable at that quantile is larger than the Y variable, and the converse is true, for points above the identity line.
+
+### Difference in means, all else constant.
+
+A pure difference in means looks like a constant offset from the identity line in the QQ plot.  If the QQ plot is always below the identity line, that means that the variable plotted on X is larger than Y by a constant offset.
+
+````{r fig.width=10, fig.height=5}
+library(gridExtra)
+x = seq(-5,5,by=0.01)
+p.dens <- ggplot(data.frame(x = x), aes(x))+
+  geom_area(aes(y=dnorm(x,0.25,1)), fill="blue", alpha=0.3)+
+  geom_area(aes(y=dnorm(x,-0.25,1)), fill="red", alpha=0.3)
+
+qs = seq(0.001, 0.999, by=0.001)
+p.quant <- ggplot(data.frame(q.blue = qnorm(qs,0.25,1),
+                             q.red = qnorm(qs,-0.25,1)), 
+                  aes(q.blue, q.red))+
+  geom_point(col="magenta", cex=2)+
+  geom_line(col='magenta', size=0.75)+
+  geom_abline(position="identity")
+
+grid.arrange(p.dens,p.quant,ncol=2)
+````
+
+### Difference in variance, all else constant.
+
+A pure difference in variance will manifest as a slope that differs from 1.  For instance, if X has the same mean, but higher variance than Y, then the upper quantiles (those close to 1) of X will be larger than those of Y (so the QQ plot will be below the identity line at the right of the plot), and the lower quantiles (those near 0) of X will be smaller than those of Y (so the QQ points will be above the identity line at the left of the plot).  Consequently, if X has a larger variance than Y, then the QQ plot will have a slope less than 1; a slope greater than 1 indicates the opposite -- that Y has a larger variance than X.
+
+````{r fig.width=10, fig.height=5}
+x = seq(-5,5,by=0.01)
+p.dens <- ggplot(data.frame(x = x), aes(x))+
+  geom_area(aes(y=dnorm(x,0,1)), fill="blue", alpha=0.3)+
+  geom_area(aes(y=dnorm(x,0,2)), fill="red", alpha=0.3)
+
+qs = seq(0.001, 0.999, by=0.001)
+p.quant <- ggplot(data.frame(q.blue = qnorm(qs,0,1),
+                             q.red = qnorm(qs,0,2)), 
+                  aes(q.blue, q.red))+
+  geom_point(col="magenta", cex=2)+
+  geom_line(col='magenta', size=0.75)+
+  geom_abline(position="identity")
+
+grid.arrange(p.dens,p.quant,ncol=2)
+````
+
+### Difference in skew, all else constant.
+
+A difference in skew, with constant mean and variance means that one distribution will have a heavier tail in one direction than the other.  Thus, if X has a more positive skew than Y, then upper quantiles of X will be larger than those of Y, and the lower quantiles of Y will be smaller than those of X, but the *middle* quantiles of X will be roughly matched to those of Y.  Consequently, we will get a curved shape: the qq plot will be below the identity line at the left and right of the plot, and at or above the identity line in the middle -- a shape that is concave down. If X has a more negative skew, we will get a curved shape that is concave up.
+
+````{r fig.width=10, fig.height=5}
+library(PearsonDS)
+x = seq(-5,5,by=0.01)
+p.dens <- ggplot(data.frame(x = x), aes(x))+
+  geom_area(aes(y=dpearson(x,moments=c(0, 1, -0.5, 3))), fill="blue", alpha=0.3)+
+  geom_area(aes(y=dpearson(x,moments=c(0, 1, +0.5, 3))), fill="red", alpha=0.3)
+
+qs = seq(0.001, 0.999, by=0.001)
+p.quant <- ggplot(data.frame(q.blue = qpearson(qs,moments=c(0, 1, -0.5, 3)),
+                             q.red = qpearson(qs,moments=c(0, 1, +0.5, 3))), 
+                  aes(q.blue, q.red))+
+  geom_point(col="magenta", cex=2)+
+  geom_line(col='magenta', size=0.75)+
+  geom_abline(position="identity")
+
+grid.arrange(p.dens,p.quant,ncol=2)
+````
+
+### Difference in kurtosis, all else constant
+
+A difference in kurtosis with constant skew, variance, and mean would make the higher kurtosis distribution have heavier tails at the extremes, but lighter tails at less extreme points.  Thus the QQ plot will look like a quadratic squiggle.  If X has a greater kurtosis than Y, then its the extreme positive quantiles will be larger, and its extreme negative quantiles will be smaller than Y, thus the left and right ends of the qq plot will be above and below the identity line, respectively, but this pattern will reverse near the middle.  (And the converse will be true if X has a lower kurtosis than Y.)
+
+````{r fig.width=10, fig.height=5}
+library(PearsonDS)
+x = seq(-5,5,by=0.01)
+p.dens <- ggplot(data.frame(x = x), aes(x))+
+  geom_area(aes(y=dpearson(x,moments=c(0, 1, 0, 2.5))), fill="blue", alpha=0.3)+
+  geom_area(aes(y=dpearson(x,moments=c(0, 1, 0, 4.5))), fill="red", alpha=0.3)
+
+qs = seq(0.001, 0.999, by=0.001)
+p.quant <- ggplot(data.frame(q.blue = qpearson(qs,moments=c(0, 1, 0, 2.5)),
+                             q.red = qpearson(qs,moments=c(0, 1, 0, 4.5))), 
+                  aes(q.blue, q.red))+
+  geom_point(col="magenta", cex=2)+
+  geom_line(col='magenta', size=0.75)+
+  geom_abline(position="identity")
+
+grid.arrange(p.dens,p.quant,ncol=2)
+````
+
+### Differences in qq plots in practice.
+
+Comparing real distributions in QQ plots is tricky because they tend to have (at least slight) differences in mean, variance, skew, and kurtosis; thus all these isolated differences we discussed will stack on top of each other.
+
+## Error of empirical quantiles
+
+Empirical quantiles based on samples will deviate from the quantiles of the population due to sampling variability, so -- like any other statistic -- it makes sense that we would want to know what is the error of our empirical quantile estimates?  This is especially true if we want to make some inferences based on the quantile function or QQ-plot.  We will not cover standard error calculation for empirical quantiles in this class, but there are a few useful suggestions that can be found online.  Generally, I would advocate boot-strapping methods.  Vague rules of thumb are that errors of empirical quantiles will be larger for quantiles closer to 0 or 1, larger when sample sizes are smaller, and the sample size will also limit the resolution of the quantiles you might estimate.

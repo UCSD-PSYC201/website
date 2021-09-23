@@ -1,0 +1,48 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Practical suggestions for producing and cleaning data.
+
+In this section  we offer some suggestions for [reading/cleaning data in R](data.html) and go through a detailed example of [checking and cleaning a dataset](data-cleaning.html).
+
+Before we start though, it is worth going over some suggestions for how to *record* data, which  will make your data analysis life much easier.
+
+1) record everything    
+Variables that you could have recorded, but didn't, end up being of interest surprisingly often.  This might be something like "what was the actual randomly generated stimulus subjects saw on each trial?" when you only care about performance for a particular *class* of randomly generated trials, or "how long did it take people to respond?" (when you only care what their response was) or "what was their actual response?" (when you only care whether they got it right or wrong.)  Record everything, it might come in handy later, and you can always ignore it (modulo certain situations where you might be creating gigabytes of data).
+
+2) automate recording   
+Make the computer record and save responses as much as possible.  Administering a survey?  Make them fill out the survey on a computer/tablet that saves their input, so you don't need to do manual data entry and introduce errors that way.
+
+3) save in a universal, machine-readable format: ascii text   
+You may be using matlab, or eprime, or something else to make your experiment, and there may be a convenient way to save data in some software specific format (like a .mat file).  Don't do it!  Take the time to write your data to a text file, to ensure that you will be able to read it in 10 years (when the software you are using is defunct, and the binary file format it uses by default is no longer supported by any software that can run on your machine.)
+
+4) one row per measurement (all identifiers present in each row)    
+Store one measurement per line of your text file, along with all the identifiers for that measurement (subject, trial number, condition, etc.).  It may be really redundant to put the subject number on every line of your subject-specific data file, but it will save you a lot of time later (and storage is cheap).
+
+5) conventional coding (so a stranger can understand it with no explanation)      
+Recording someone's sex?  Use "male" and "female".  Voila, now everyone understands what it means.  Do not use "0" and "1", or some other clever coding scheme: you will forget what it is, and then have to waste a bunch of time trying to figure it out.
+
+6) coherent file naming   
+What is stored in "MX18b-514.csv"?  I have no idea.  Perhaps someone just generated random characters?  Or perhaps some information was supposed to be conveyed, like this is experiment "X" out of a set of experiments on "M"emory, this is subject 18, session b, recorded on May 14th?  I recommend adopting some intuitive naming conventions, like "ExperimentName.S18.b.2015-05-14.csv".  These are longer to read, but they intuitively make sense, and are informative.  So if the file is misplaced, you know what it pertains to.  Don't underestimate the value of making your data easy to sort out.
+
+7) use directories liberally    
+Some people start out organizing their files by dumping them all in the same directory.  Don't do it.  Create folders for projects, sub-folders for specific experiments.  I like to organize each experiment with directories for `./src/` (source code the actual experiment), `./stimuli/` (insofar as there are images, text, etc. that are used as stimuli), `./data/` (where the recorded data are saved), `./Ranalysis/` (for the R code to do the analysis), `./results/` (for some condensed results, usually in powerpoint slides that can be assembled into presentations as needed).  Usually it is also helpful to have a `./summary.txt` that briefly describes what the experiment is about, and a few other files like `status.txt` to keep track of the experiment status.
+
+8) make a text file describing where the data came from (design, procedure, what are the columns, rows?   
+Somewhere in your data or experiment directory, you want to create a file that offers a summary of the experiment and the data that it records, describing what the various columns are, and any obscure coding for those columns there might be.
+
+9) don't ever touch the raw data after it was collected.    
+Once you have recorded some data, **NEVER CHANGE THE RAW DATA**.  You will inevitably have to process the data, perhaps remove some of it, recode it, etc.  You should do all of that, but do so on *new* files (perhaps stored in `./data-cleaned/`.  Never change the original data.
+
+10) Write a script to do your data cleaning.    
+All that data cleaning you had to do to produce clean/recoded data suitable for your analysis?  Do all of it in code, so you have a record of it, and can reproduce it as necessary.
+
+For further guidance on data formatting and style, take a look at [Karl Broman's tutorial](http://kbroman.org/dataorg/) and Wickham's [tidy data paper](http://vita.had.co.nz/papers/tidy-data.pdf).
+
+
+Now, take a look at some suggestions for [reading/cleaning data in R](data.html) and go through a detailed example of [checking and cleaning a dataset](data-cleaning.html).
+
+
+

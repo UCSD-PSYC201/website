@@ -1,0 +1,208 @@
+---
+  output: 
+    html_document
+---
+  
+# Multiple regression
+
+We introduced [ordinary least squares regression](bivariate-ols.html): in which you have one explanatory variable ($x$) and one response variable ($y$), and you aim to describe the *linear* relationship between them by assuming a model of the form: $y_i = B_0 + B_1 x_i + e_i$ where the error terms ($e_i$) are assumed to be independent and identically distributed according to a normal distribution with a mean of 0 and some standard deviation of the "residuals": $e_i \sim \operatorname{Normal}(0,\sigma_e)$.  
+
+In *multiple* regression, we retain many of these assumptions, but we will now add more than one explanatory variable, which we identify with a parenthetical superscript:
+
+$$y_i = B_0 + B_1 x^{(1)}_i  + B_2 x^{(2)}_i  + B_3 x^{(3)}_i + \ldots  + B_k x^{(k)}_i + e_i$$
+
+$$e_i \sim \operatorname{Normal}(0, \sigma_e)$$
+
+Estimating regression coefficients for multiple explanatory variables jointly, rather than doing each one in isolation, gives us some advantages, and also creates some difficulties.  
+
+The **advantages** we gain from modeling multiple predictors together are three-fold:  
+
+(1) We can better predict y by taking many predictors into account.  We can't just combine predictions from multiple independent regressions with just one variable each, so we have to do a regression with all of the predictors simultaneously.    
+(2) Even if we are interested in the effect of just one predictor, we may be able to estimate it more precisely by explaining some of the residual error with the additional predictors; thus shrinking our standard errors on the coefficient for the predictor of interest.   
+(3) We can figure out how much "credit" any given predictor gets, and -- relatedly -- we can estimate the effect of a predictor while statistically "controlling" for the other predictors.   
+
+The **difficulties** we face when modelling multiple predictors jointly all are manifestations of *multicolinearity*: correlations between the predictor variables.  We will discuss these as we get to them, but they all amount to the difficulty of assigning credit to different predictors that are all correlated with the same changes in y.
+
+## Multiple regression with `lm()`
+
+Doing multiple regression in R is very straight-forward, we use the same `lm` function as we used in simple regression, but we will add more predictors to the formula.
+
+First, let's generate some data with multiple predictors: daughter's height as a function of father's and mother's height.
+
+```{r}
+n = 50
+normalize = function(x)((x-mean(x))/sd(x))
+z = rnorm(n)
+z.m = (0.5*z+0.5*rnorm(n))
+z.f = (0.5*z+0.5*rnorm(n))
+z.d = (z.m/3 + z.f/3 + 1/3*rnorm(n))
+heights = data.frame(mother = round(64+4*normalize(z.m),1),
+                     father = round(70+4*normalize(z.f),1),
+                     daughter = round(64+4*normalize(z.d),1))
+
+str(heights)
+```
+
+With these data, we can model daughter height as a multiple linear regression including both mother and father height as predictors by writing the formula as `daughter ~ mother + father`.
+
+```{r}
+lm.fit = lm(data=heights, daughter ~ mother + father)
+summary(lm.fit)
+```
+
+This gives us coefficients for the model   
+
+$$\text{daughter}_i = B_{\text{intercept}} + \text{mother}_i * B_{\text{mother}} + \text{father}_i * B_{\text{father}} + \text{residual}_i$$   
+
+We also get an estimate of the standard deviation of the residuals ("residual standard error"): $s_{\text{residual}}$ given the assumption that 
+
+$$\text{residual}_i \sim \operatorname{Normal}(0, s_{\text{residual}})$$
+
+## Interpeting multiple regression coefficients
+
+Multiple regression coefficients are often called "partial" regression coefficients.  The coefficient $B_j$ correspond to the *partial* effect of $x^{(j)}$ on $y$, holding all other predictors constant.  For instance, the "mother" coefficient indicates the partial slope of daughter's height as a function of mother's height, holding father's height constant; i.e., $B_{\text{mother}}$ tells us how much the mean height of daughters changes when mother's height increases 1 inch, assuming that all of these daughters have fathers of exactly the same height.  Thus, it is the partial effect of mother's height on daughter's height "controlling" for father's height.
+
+The consequence of coefficients in multiple regression being "partial" is that they change depending on what other variables are included in the regression.  The coefficient on mother in a single variable regression of `daughter ~ mother` differs from the coefficient on mother in the multiple regression of `daughter ~ mother + father`.  In this case, it is closer to zero in the multiple regression because mother and father are correlated, as a consequence, we have a *credit assignment* problem. Daughters' heights increase with a correlated increase in both mother's and father's heights, should we assign that increment to the mother coefficient, or the father coefficient?  When only mother is in the regression, then the mother coefficient gets credit for all of it; but when mother and father are both in the regression, the best credit assignment splits the allocation between mother and father (and is sensitive to some random noise); thus the mother coefficient gets less credit.
+
+```{r}
+coef(lm(data=heights, daughter~mother))
+coef(lm(data=heights, daughter~mother+father))
+```
+
+Another tricky part of partial regression coefficients is their interpretation of "change in y per unit change in x holding all else constant"  The trickiness is that such an interpretation is weird because often manipulating one variable without also manipulating another variable is not possible.  For instance, people tend to mate assortitatively based on height, so mothers and fathers heights are correlated, so in the set of real-world couples, we can't manipulate one without manipulating the other.
+
+## Significance in multiple regression
+
+Recall, when considering [significance for simple regression](bivariate-significance.html), the t-test for the significance of the pairwise correlation between $x$ and $y$, the t-test for the significance of the slope of $y \sim x$, and the ANOVA F-test for the proportion of variance in $y$ accounted for by $x$ all gave us the same result.  This is not the case in multiple regression, as they all ask subtly different questions.
+
+The pairwise correlation test assesses whether there is a relationship between $y$ and $x^{(j)}$, ignoring entirely the existence of other possible predictors.  In this case, we can measure whether father's and daughter's height are related, ignoring entirely that mother's heights might play a role:
+
+```{r}
+cor.test(heights$father, heights$daughter)
+```
+
+The test for the significance of the coefficient $B_j$ asks whether the partial effect of $x^{(j)}$ is significantly different from zero while *controlling for all other predictors*.  So, in the case below, the test for the "father" coefficient asks whether the partial effect of father, holding mother's height constant, is significant.  Or, another way to phrase this: the t-test on the partial regression coefficient for fathers' height asks whether we are sure that we should assign non-zero credit to fathers' heights, given the ambiguity of credit assignment across mothers and gathers.  This is a different question than the test for the pairwise correlation.
+
+```{r}
+summary(lm(data=heights, daughter ~ mother + father))
+```
+
+Note that the t-statistic and p-value for the father coefficient differs from the statistic and p-value for the pairwise correlation test.
+
+The F-statistic in the summary output above asks yet another question: does the complete ("omnibus") regression model account for significantly more variance than you would expect by chance.  In this case: can we account for some non-zero amount of variance in daughter's heights via a regression including both mother's and father's heights?
+
+Finally, the ANOVA F-test for "father" asks two more, different, questions depending on the order in which we provide the predictors to the `lm` formula.  This difference arises from our strategy for partioning variance in $y$ to the different predictors.  R's default strategy (known as "Type I" sums of squares) proceeds as follows when run on a linear model of the form `y ~ a + b`: First, estimate how much variance in $y$ can be explained by a linear relationship with $a$; second, estimate how much of the *left over* variance in $y$ can be explained by $b$, third, describe the rest of the variance as 'residuals'.  If $a$ and $b$ are correlated, then they will account for *some of the same variance* in $y$; consequently, whichever one comes first in the formula will get credit for all the variance that they can both account for, and the one that is second in the formula will only get credit for the variance that it can *uniquely* account for.  This means that in our case, if our formula is `daughter ~ mother + father`, the "mother" term will take credit for the variance both mothers and fathers can account for, and the "father" term will get credit only for that which "father" can account for uniquely; if instead we use the formula `daughter ~ father + mother`, the "father" term gets credit for all that common variance, and the "mother" term will get less.  Therefore, we will get different sums of squares, F values, and p-values for the "father" term depending on the order of the formula.  Neither of these correspond to either the pairwise correlation significance, or the significance of the coefficient.  Instead, these ask, in the case of `daughter ~ mother + father`: does adding "father" as a predictor once we have already accounted for mother's height add a significant amount of predictive power?  And in the case `daughter ~ father + mother`: does fathers height have a significant amount of predictive power if we do not consider mother's height.  The latter question sounds a bit like the question for the pairwise correlation, but the subtle difference is that for the purely isolated pairwise correlation, all the variance that mother could account for looks like random error, but in the `daughter ~ father + mother` ANOVA, it is accounted for by the "mother" term.
+
+```{r}
+anova(lm(data=heights, daughter ~ mother + father))
+
+anova(lm(data=heights, daughter ~ father + mother))
+```
+
+## Variance partitioning in multiple regression
+
+As you might recall from ordinary regression, we try to [partition variance](bivariate-ols-determination.html) in $y$ ($\operatorname{SS}[y]$ -- the variance of the residuals from the regression $y = B_0 + e$ -- the variance around the mean of $y$) into that which we can attribute to a linear function of $x$ ($\operatorname{SS}[\hat y]$), and the variance of the residuals $\operatorname{SS}[y-\hat y]$ (the variance left over from the regression $Y = B_0 + B_1 *x + e$).  We do so by calculating different sums of squares:
+
+$\operatorname{SS}[y] = \operatorname{SS}[\hat y] + \operatorname{SS}[y-\hat y]$
+
+In multiple regression, this variance partitioning is a bit more subtle, because we can do the partioning in different ways.
+
+Let's call the sum of squares of y SST (for total sum of squares), for a given regression model we will consider the sum of squares of the regression and the sum of squares of error.  For instance $\operatorname{SSR}[m,f]$ is the sum of squares of the regression that includes both mothers' and fathers' heights, and $\operatorname{SSE}[m,f]$ is the sum of squares of the residuals arising from that regression.  
+
+Since different regressions including different predictors all are partitioning the same variance in y, they are all related:
+
+$$\operatorname{SST} = \operatorname{SSR}[m,f] + \operatorname{SSE}[m,f] = \operatorname{SSR}[m] + \operatorname{SSE}[m] = \operatorname{SSR}[f] + \operatorname{SSE}[f]$$
+
+The following relationships will hold
+
+$\operatorname{SSR}[m,f] \geq \operatorname{SSR}[m]$, so  $\operatorname{SSE}[m,f] \leq \operatorname{SSE}[m]$, and    
+$\operatorname{SSR}[m,f] \geq \operatorname{SSR}[f]$, so  $\operatorname{SSE}[m,f] \leq \operatorname{SSE}[f]$   
+
+Moreover, unless mothers and fathers heights are perfectly uncorrelated, 
+
+$\operatorname{SSR}[m,f] \leq (\operatorname{SSR}[m] + \operatorname{SSR}[f])$
+
+We can define the **extra sums of squares** of the regression we get by adding one variable to a regression that already includes another.  For instance, the extra sums of squares explained by adding mothers' heights to a regression that already includes fathers' heights:
+
+$\operatorname{SSR}[m \mid f] = \operatorname{SSR}[m,f] - \operatorname{SSR}[f] = \operatorname{SSE}[f] - \operatorname{SSE}[m,f]$
+
+So now we see the many ways we can partition the total variance:
+
+$\operatorname{SST} = \operatorname{SSR}[m,f] + \operatorname{SSE}[m,f]$    
+$\operatorname{SST} = \operatorname{SSR}[m] + \operatorname{SSE}[m]$   
+$\operatorname{SST} = \operatorname{SSR}[f] + \operatorname{SSE}[f]$    
+$\operatorname{SST} = \operatorname{SSR}[m] + \operatorname{SSR}[f \mid m] + \operatorname{SSE}[m,f]$   
+$\operatorname{SST} = \operatorname{SSR}[f] + \operatorname{SSR}[m \mid f] + \operatorname{SSE}[m,f]$   
+
+For each of these partitions, we can run at least one ANOVA F-test, and each of them will test for different things.
+
+The **omnibus** ANOVA compares $\operatorname{SSR}[m,f]$ to $\operatorname{SSE}[m,f]$ to test whether a regression that includes all predictors (both mother and father) can account for more variability than expected by chance.
+
+To test for an **isolated** non-zero effect of mother, you could either compare $\operatorname{SSR}[m]$ to $\operatorname{SSE}[m]$ (if we consider all variability not accounted for by mothers as error), or to $\operatorname{SSE}[m,f]$, which would generally yield a more powerful test by not considering variability explained by fathers as "error".  The same logic applies to testing for an overall non-zero effect of father: compare $\operatorname{SSR}[f]$ to $\operatorname{SSE}[f]$ or to $\operatorname{SSE}[m,f]$.
+
+To test for the **additional** effect of adding mother to a regression that already includes father, you would compare $\operatorname{SSR}[m \mid f]$ to $\operatorname{SSE}[m,f]$.  This comparison effectively asks if mothers' height can explain variability in daughters' heights over and above the variability explained by fathers.  You can also think of this as testing for the predictive efficacy of mothers' heights while "statistically controlling" for fathers' heights.  Of course, you can do the same to ask if fathers' heights offer additional predictive power over and above mothers' heights by comparing $\operatorname{SSR}[f \mid m]$ to $\operatorname{SSE}[m,f]$.
+
+```{r}
+# The F statistic provided in the lm summary is the omnibus test for the whole regression.
+summary(lm(data=heights, daughter~mother+father))
+# test for isolated effect of mother treating all other variance as error
+anova(lm(data=heights, daughter~mother))
+# test for isolated effect of father treating all other variance as error
+anova(lm(data=heights, daughter~father))
+# this anova table shows the isolated effect of mother (compared to error unexplained by mother and father)
+# as well as the additional (extra) effect of father over mother
+anova(lm(data=heights, daughter~mother+father))
+# this anova table shows the isolated effect of father (compared to error unexplained by mother and father)
+# as well as the additional (extra) effect of mother over father
+anova(lm(data=heights, daughter~father+mother))
+```
+
+## F-statistic
+
+ANOVA tests rely on the F-statistic.  The F-statistic is a ratio of two sample variances calculated with different degrees of freedom.  Under the null hypothesis of the two variances being the same, this ratio will follow the (central) F distribution which we can evaluate in R using the functions `pf` (cumulative probability), `df` (probability density), `qf` (quantile), and sample with `rf`.  The central F distribution has two parameters: the degrees of freedom we had in estimating the variance in the numerator, and the degrees of freedom for the variance in the denominator.
+
+We needn't go over the math used to justify the following calculations, but we should understand what they are doing.  When we partition variance in $y$ into some attributable to a regression (or a portion of a regression), and that which is left to the error, we get two sums of squares terms that correspond to variances scaled by the sample size.  Under the null hypothesis model, in which the predictor variable(s) have no systematic relationship with the response variables, we would still expect *some* variance to be attributed to the regression by chance alone.  It turns out that the sum of squares of the regression we expect by chance will be $k$ times the variance of the residuals, where $k$ is the number of parameters we *added* to the model we are considering above the null model (which is used to calculate the variance being partitioned).  Consequently, under the null hypothesis, we expect that $\operatorname{SSR}/k$ will be an estimate of the residual variance with $k$ degrees of freedom.  We will thus compare *this* estimate of the residual variance to our actual estimate of the residual variance in an F ratio:
+
+$F_{(df_R, df_E)} = \frac{\operatorname{SSR}/df_R}{\operatorname{SSE}/df_E}$
+
+Under the null hypothesis, we expect this ratio to follow the F distribution with $df_R$ degrees of freedom in the numerator, and $df_E$ degrees of freedom in the denominator:
+
+```{r}
+library(ggplot2)
+F.stat = seq(0,10,by=0.025)
+df.F.dist = data.frame(F=F.stat, dF = df(F.stat, 3, 10))
+ggplot(df.F.dist, aes(x=F, y=dF))+geom_line(size=1.5)
+```
+
+However, if the predictors have some systematic linear relationship with the response variable, then the sums of squares of the regression will be larger, and the numerator of the F ratio will be larger than expected under the null.  Consequently, we will do an upper-tail test with the F statistic to see if the regression has predictive power greater than chance.  
+
+```{r}
+df.numerator = 3
+df.denominator = 10
+my.F = 5
+p.val = 1-pf(my.F, df.numerator, df.denominator)
+df.F.dist$greater = df.F.dist$F >= my.F
+ggplot(df.F.dist, aes(x=F, y=dF, fill=greater))+geom_area()
+```
+
+Just like with the chi-squared test, systematically *little* variance can be tested with the lower tail of the F distribution, but it asks a fundamentally different question: are the predictors suspiciously *uncorrelated* with the response variable -- this kind of analysis has been used to test for faked data.
+
+```{r}
+# We can get a p value for an F statistic via pf (looking at upper tail)
+1-pf(my.F, df.numerator, df.denominator)
+```
+
+## Correlated predictors and multicolinearity
+
+All the difficulties (and most of the advantages) of multiple regression arise because multiple predictors are (usually) not linearly independent.  This is known as "multicolinearity", which means that a linear combination of some of our predictors can explain some of the variance in another predictor; the most straight-forward version of this scenario arises when two predictors have a substantial correlation.  In our example, mothers' and fathers' heights are correlated, consequently, some portion of the variance explained in daughters' heights by mothers and fathers will be explained by the *shared* variance of mothers and fathers.  This causes a *credit assignment* challenge: should the mother or the father predictor get credit for the predictive power of their shared variance?
+
+This challenge has a number of consequences:
+
+- Regression coefficients **changes with the addition of new predictors**: since credit is being split among the existing and newly added predictors, the slopes will change, as the existing predictors used to get all the credit, and now they only get some.  If the predictors are positively correlated, slopes will decrease, if they are negatively correlated (but have the same directional relationship with response variable), coefficients will increase in magnitude.
+
+- **Variance inflation**:  Adding largely uncorrelated predictors will decrease the variance of the residuals, and thus will decrease the standard errors of the slope.  In contrast, adding correlated predictors will not have much of an effect on the variance of the residuals, but will create ambiguity about credit assignment, thus the *marginal* standard errors for individual coefficients will increase, as they are the standard errors for how much credit *this specific predictor* gets: since there is ambiguity about how to assign credit, this ambiguity will manifest in uncertainty about the value of a specific coefficient.
+
+- **Noise sensitivity**: The ambiguity of how much credit to assign to each of two highly correlated predictors will be sensitive to random noise, particularly random noise in observations that have a lot of *leverage* in the direction orthogonal to the principle component line of the two predictors.  e.g., if mothers and fathers heights are positively correlated with a principle component line of mothers=1*fathers, observations in which the difference between mother and father heights is large will have a lot of leverage on the assignment of credit to mothers and fathers.  
+
+- **Different significance tests give different results** (as discussed above.)
+

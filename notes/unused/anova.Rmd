@@ -1,0 +1,36 @@
+---
+  output: 
+    html_document:
+      toc: true
+      theme: readable
+      highlight: tango
+---
+  
+```{r child = '../header.Rmd'}
+```
+
+# Analysis of Variance
+
+<!--
+http://xkcd.com/simplewriter/
+
+Thing explainer: ANOVA
+We can check if two groups have different centers by running a two-group "t-test" that looks at the distance between the group centers.  But what if we have more than two groups and want to know if they have different centers?  We could look at the distance between centers of every pair of groups, but that would take a long time, give us many different answers, and none of them would answer the question we asked.  So, instead of looking at the distance between two group centers at a time, we will look at the spread of centers across groups.  This is known as the "analysis of variance".  We will ask if the spread of centers across groups is bigger than we would expect from the spread of single numbers within groups (around the group center).
+
+Thing explainer: t-test
+We often want to check if a number is very far from some expected center.  If we have one number and want to see if it is different from some known center with a known spread of numbers around it, we will do a "z-test".  However, if we don't know what spread to expect around the center we're thinking about, then we must do a "t-test".  When this happens, we will guess the spread around the center by looking at the spread of the things we saw.  This is something we do very often, with many different numbers.  Sometimes the things we see come from one group, in which case the number we ask about is the center of the things we saw, and we check if it is very far from the center we expected (a "one-sample t-test").  At other times, we have two groups, and the number we ask about is the distance between the centers of one group and the other; we usually check if this distance is bigger than nothing (a "two-sample t-test").  These numbers are our best guesses about something (the center of a group, the distance between group centers), and we can do the same thing for many other guesses. When we fit a line to some things and get a number that is our best guess about the direction of the line, we will also check to see if that line-direction-number is different from what we expect by doing a "t-test".
+
+Thing explainer: regression
+If we have many pairs of numbers, we often want to know if the first and second numbers of each pair go up and down together.  We can get a picture of this by drawing a point with its left-right position given by the first number of the pair ("x") and its up-down position given by the second number of the pair ("y").  We want to get one number that tells us how the first and second numbers change together across all pairs.  One number that does this tells us the direction of the line that goes through the cloud of all the points we drew; we call this number the "slope".  We can also get a number that tells us how spread out the cloud is around this line, and whether the line goes up or down (but nothing more about the line's direction); we call this number the "correlation".  
+
+Thing explainer: Bayesian probability
+Let's say we have a garden with many trees that grow many leaves.  One third of the leaves are good to eat, the other two thirds of the leaves are bad to eat.  Half of the good leaves are red (and the other half are green).  One out of five bad leaves are red (and the other four of every five are green).  How many of the red leaves are good to eat?  This question asks us to use a law called "Bayes rule".  To figure it out, we count how many leaves are both good and red (one half out of one third: 1 out of 6) and how many leaves are both bad and red (one out of five out of two thirds: 2 out of 15).  Putting these two numbers together tells us how many of the leaves are red: add good and red (5 out of 30) and bad and red (4 out of 30), to get the number of red (9 out of 30).  So we see that out of every 9 red leaves, 5 of them were good, and that's our answer: 5 out of 9 red leaves are good to eat.  That is all there is to these kinds of questions, but they will get hairy and the numbers will be harder when we have many more kinds of things.
+
+Thing explainer:
+-->
+
+If we have two groups and want to see if they differ in their means, we run a two-sample [t-test](../t-tests/t-tests.html).  Another way to think about this is that a t-test allows us to test whether some numerical response variable is influenced by the value of a binary categorical explanatory variable.  We will call such categorical explanatory variables "factors", and the category values they might take on factor "levels".
+
+If we have a two-level explanatory factor, we can test the difference between means via a t-test, but if we have more than two levels, a t-test isn't going to work -- it will only allow us to make pairwise comparisons.  For instance, if our factor has four levels (A, B, C, D), we could compare A-B, A-C, A-D,... a total of 3*2=6 different t-tests.  That's neither practical nor effective if our goal is simply to ask "does factor level influence the response variable?".  To ask this question, we turn to the "analysis of variance".
+
+Technically, 

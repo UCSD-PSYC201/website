@@ -1,0 +1,41 @@
+---
+  output: 
+    html_document
+---
+  
+```{r, echo=F, fig.width=6, fig.height=6}
+library(ggplot2)
+library(MASS) # for the mvrnorm() function
+means = c(175, 26)
+covariance = matrix(c(156,18,18,4), 2, 2)
+xy = mvrnorm(n=500, means, covariance)
+df.cm = data.frame(xy)
+names(df.cm) <- c('height', 'foot')
+ggplot(df.cm, aes(x=height, y=foot))+geom_point()
+```
+
+# Correlation
+
+The correlation is a scaled/normalized [covariance](covariance.html), which we calculate by dividing the covariance of x and y by their standard deviations.  The population correlation (usually referred to as the greek letter "rho" $\rho_{XY}$) can be calculated from the population covariance ($\sigma_{XY}$), and population standard deviations of X and Y ($\sigma_X$, $\sigma_Y$):
+
+$\rho_{XY} = \frac{\sigma_{XY}}{\sigma_X\,\sigma_Y}$
+
+And we can calculate the sample correlation ($r_{XY}$) -- which we use as the estimator of population correlation -- the same way, using the sample covariance and sample standard deviations:
+
+$\hat \rho_{XY} = r_{XY} = \frac{s_{XY}}{s_X\,s_Y}$
+
+In `R`, we just use the `cor` function to calculate the sample correlation.
+
+```{r}
+(r.hf = cor(df.cm$height, df.cm$foot))
+```
+
+The correlation is a scale-free measure of covariance -- since we calculate it by dividing by the standard deviations of X and Y, it has lost any units X and Y had.  This has some benefits and costs.  The benefits are: The correlation will not care what units X was measured in (centimeters? inches? parsecs?), so we get a measure of the strength and direction of the linear relationship that abstracts away from these units.  The cost is that we got rid of the physical units and thus our measure is further removed from reality.
+
+## Correlation as the slope of z-scores
+
+One helpful way to think about the correlation is as the slope of the z-scores, or the slope in standard deviations.  If the correlation between x and y is 0.8, that means that for an x that is 1 sd above the mean of x, we expect the y to be 0.8 sds above the mean of y.  (more on this in [OLS regression](bivariate-ols.html)
+
+## Coefficient of determination
+
+If we square the correlation, we get "R-squared", or the "coefficient of determination", which roughly describes what proportion of the overall variance is shared (more on this when we get to regression).

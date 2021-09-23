@@ -1,0 +1,196 @@
+# Resampling
+
+\chapter{Resampling}
+
+All of the specific tests and procedures we covered up till now gained popularity and became common when computers were slow or nonexistent.  Because computers were slow, procedures for calculating sampling distributions, p-values, and confidence intervals needed to be analytically tractable \footnote{meaning: they needed to be solvable using symbolic math: algebra, calculus, etc.}.  Many such procedures are now available, using specific summary/test statistics and specific distributional assumptions. 
+
+For instance, consider a t-test.  We assume that our data are normally distributed around the null hypothesis mean ($\mu_0$) with an unknown variance.  And we adopt Student's t test-statistic ($t=(\bar x-\mu_0)/s_x\sqrt(n)$).  This combination of distributional assumption and test-statistic yields a known sampling distribution for the test-statistic under the null hypothesis: the t distribution.  We can then compare the test-statistic we get from our real data to the t-distribution to figure out how often a t-statistic computed from a sample from the null hypothesis will be as extreme as the one we obtained from our data (this is the p-value).
+
+With modern computers, we no longer need to constrain our tests and confidence intervals to specific statistics, and we no longer need to make specific assumptions about the distribution of our data.  Instead, we can numerically calculate the sampling distribution of whatever statistic we like, making only the assumption that the probability distribution of the data is well approximated by the sample we obtained.  This class of numerical methods are known as resampling.  
+\footnote{These are part of a broader class of procedures known as ``non-parametric" statistics, which have this name because they generally do not rely on convenient assumptions that the data follow a simple parametric distribution.}
+We deal with two specific resampling methods: permutation/randomization tests (or random shuffling) -- to test specific null hypotheses, and bootstrapping -- to build confidence intervals (and if you like, use those to reject some null hypotheses).
+
+\subsection{When to use resampling methods?}
+
+You can use resampling methods whenever you like, provided you keep in mind their limitations.\footnote{Mostly these are caveats pertaining to how the fidelity of resampling-based p-values and confidence intervals is limited by the number of data points in your initial sample, there are further caveats for specific kinds of test-statistics that one might compute.}
+
+However, it's not a good idea to use permutation tests or bootstrapping where conventional tests/confidence intervals will do, because (a) you will confuse the audience -- ``what's a permutation test?  why not just do a t-test?", (b) they will suspect something is fishy -- ``if they didn't do a simple t-test, perhaps it didn't work... I shouldn't believe these results", and (c) you will look silly.
+
+You {\emph should} do resampling if one of two conditions hold:
+
+(1) the test statistic you are interested in is not one of the simple ones for which you have known, analytical sampling distributions.  For instance, if you want to compare the difference in skew of the response times between groups, you can calculate a test statistic that is skew(group1)-skew(group2), but you do not know what the sampling distribution of this test-statistic will be under the null hypothesis of no difference.  Or, let's say the test statistic you are interested in requires some elaborate transformation of the data (e.g., the best fitting number of clusters from an adaptive clustering algorithm, or the area under the ROC curve: $A'$ -- ``a-prime", etc.)  
+
+(2) your data have elaborate structure that is irrelevant to the null hypothesis you want to test, but that structure has an influence on the sampling distribution.  For instance, if you want to calculate the semantic similarity of words to the cue that people produce while free associating, you can compute the average similarity, but you do not know what the null hypothesis similarity will be because all words tend to be somewhat related to one another; as such, to compute the null hypothesis distribution, you need to build one that respects the complex relationships in your data (all are somewhat related to varying degrees, not all words are equally frequent, etc.).
+
+\section{Permutation/Randomization: \\``Shuffling" tests}
+
+\textbf{In a general sense, a null hypothesis is an assertion of some properties that the population distribution should have.}  For instance, we might say that our null hypothesis is that the mean of the population is ($\mu_0$).  Or we might adopt a null hypothesis that variability around the mean is symmetric (to say that there is no skew or other odd higher-order moments in the distribution).  Or: group A has the same distribution as group B (no difference between groups).  Or: x and y are independent (e.g., no correlation, etc.).  Or: the residuals of y as a function of x do not differ across groups (e.g., the null hypothesis of an ANCOVA).  Or: the residuals of y as a linear combination of factor A and factor B are distributed identically across all cells (e.g.: there is no interaction).
+
+\textbf{Each of these null hypotheses amounts to an assertion of some symmetry, or invariance in our sample.}  For instance, if we assert that x and y are independent, then our specific sampled set of $(x_i,y_i)$ pairs was just as likely as any rearranged set of $(x_i,y_j)$ pairs that includes the same elements, but shuffled around, so that $i$ does not have to equal $j$.  
+
+Note that we do not need to assume any specific shape to the population distribution: all we need to assume is that (a) our data are a sample from the population distribution, and (b) given the invariance/symmetry we assume to be present in the population distribution under the null, there are a number of other samples from the population distribution that are just as likely as the one that we obtained.
+
+\textbf{Thus, we can shuffle our data to impose the kind of symmetry that we think ought to be present in the population distribution under the null hypothesis, to obtain ``samples" from a population distribution just like our sample, but with the specific invariance we asserted to be true under the null hypothesis built in.}  Each of these shufflings gives us a ``sample" from the null hypothesis distribution that is as closely matched to our data as it can be while maintaining the symmetry present in the null.
+
+Usually, our goal is to reject the null hypothesis; thus \textbf{we should choose a test-statistic that measures the structure or asymmetry we assume should not be present under the null}.  Following the example above, if we assert that under the null hypothesis x and y are independent, we should choose a test-statistic to measure (in)dependence.   For instance, a correlation or covariance between x and y (if we want to test specifically for a linear relationship), or the mutual information between x and y (if we want to test for a very generic sort of dependence), any number of other statistics are possible.  For now, let's just assume we will measure the correlation: $r(x,y)$.
+
+So, following our example of trying to reject the null hypothesis that x and y are independent, we will do the following:\\
+(1) choose a shuffling scheme that yields the symmetry the null hypothesis assumes: here we randomly re-pair xs with ys.\\
+(2) choose a test statistic to measure the structure we think is present: the correlation coefficient.\\
+(3) compute the test statistic on the real data: $R = \text{correlation}(x,y)$.\\
+(4) reshuffle the data to obtain a new sample: $(x^*, y^*)_{i...n}$\\
+(5) compute the test statistic on the shuffled data: $R^* = \text{correlation}(x^*,y^*)$\\
+(6) repeat steps 4 and 5 many times to obtain many samples of the test-statistic on shuffled data\\
+(7) to calculate a (e.g., positive one-tailed) p value, count the number of $R^*$s that are equal to or greater than $R$ (the real test statistic), divide by the total number of $R^*$s.  This is the frequency with which a random sample from the null hypothesis will have a test-statistic equal to or greater than the one you obtained for your data: the p-value. 
+
+\clearpage
+To write this out in the most generic pseudocode:  \footnote{Here I used ``abs()" to denote the absolute value  (e.g., abs(-8.3) = $|-8.3|$ = 8.3, abs(8.3) = $|8.3|$ = 8.3).  Note that the ``two-tailed" p value only makes sense if the test statistic is meaningfully symmetric around 0.  For instance, a t-statistic: 2.2, and -2.2 both denote an equally large deviation from the null hypothesis mean, in one direction, or the other.  $\chi^2$ statistics are not symmetric in this sense, for two reasons: (a) they cannot be negative, so they are certainly not symmetric around 0, and (b) the interpretation of very large values is different from the interpretation of very small values:  very large $\chi^2$ values indicate that differences from the null hypothesis are too large to be expected from simple sampling variability (suggesting that the null hypothesis is false), while very small values indicate too little variability around the null hypothesis, suggesting some kind of weird process that gives homogenous results (e.g., vote rigging, or mean reversion, or dampening).}
+
+\begin{verbatim}
+Q_real = teststatistic(real_data)
+for i = 1 to nshuffles
+     shuffled_data = shuffle(real_data)
+     Q_shuffled(i) = teststatistic(shuffled_data)
+
+p_positive_tail = count(Q_shuffled >= Q_real)/nshuffles
+p_negative_tail = count(Q_shuffled <= Q_real)/nshuffles
+p_two_tailed = count(abs(Q_shuffled) >= abs(Q_real))/nshuffles
+\end{verbatim}
+
+This pseudocode obscures the complexity of randomization tests, since often, the conceptually difficult part of constructing such a test is coming up with a shuffling scheme (and corresponding function), and a test-statistic.  However, all randomization tests will have this structure.
+
+In a literal ``permutation" test, often called an ``exact" test, we do not shuffle the data randomly.  Instead, to do a literal permutation test, you would use every possible permutation of the data given the imposed symmetry, and calculate the test statistic for each of those permutations.  That is usually impractical, because the number of data points is often quite large and there are $n!$ ($n$ factorial) possible permutations of $n$ data points\footnote{If we are comparing some order-invariant summary statistic across groups (e.g., the mean), then we need to shuffle group assignments, not literally permute the data, and the number of group assignments is much smaller than the number of permutations.  For instance if we have $n_1$ data points in group 1 and $n_2$ data points in group 2, then we have $(n_1+n_2)!$ possible data permutations, but only $(n_1+n_2)!/(n_1! n_2!)$ possible group assignments.  So if $n_1=n_2=5$, then there are 3628800 possible permutations of the data, but only 252 unique group assignments.  It is useful to think about these quantities, so that you know the maximum resolution for a p-value you can obtain by resampling the same data.}  Thus, in practice, most ``permutation" tests are not literally permutation tests, but are randomization tests as I described above.  However, when $n$ is small, it makes sense to do the exact permutation test.
+
+There are innumerably many possible null hypotheses and corresponding shuffling schemes.  In the next few sections I will give some examples of null hypotheses one might test, and the shuffling schemes that presume that null hypothesis.  
+
+!! add examples:\\
+simple shuffling -- difference in angle when sampling coordinates?\\
+constrained shuffling -- preserve some group structure, destroy other\\
+residual shuffling\\
+studentized residual shuffling
+
+\section{Bootstrapping}
+
+Bootstrapping is a resampling procedure for building sampling distributions (and thus confidence intervals) for arbitrary statistics (usually estimators) without assuming a particular parametric distribution of the data.  
+
+Let's say we want a confidence interval for the sample mean.  Usually we obtain such a confidence interval by assuming that the data are normally distributed; on this assumption we can analytically calculate the sampling distribution of the sample mean, and build confidence intervals from this distribution. 
+
+In bootstrapping, instead of assuming a particular parametric form for the population distribution the data came from, we only make the assumption that the data we obtained are a good approximation of the population distribution.  If this is the case, we can treat our data as the population.  For instance, if our sample were: $[3, 4, 1, 2, 3, 2, 3, 1, 4, 5]$, we would assume that the population probability distribution of the data is: \\
+$P(x=1)=0.2$, \\
+$P(x=2)=0.2$, \\
+$P(x=3)=0.3$, \\
+$P(x=4)=0.2$, \\
+$P(x=5)=0.1$.  \\
+Thus, we can obtain samples from our best estimate of the population distribution by sampling from our data (with replacement!).
+
+\begin{verbatim}
+for i = 1 to nsamples
+     resamp_data = resample(real_data)
+     Q_bootstrap(i) = teststatistic(resamp_data)
+
+alpha = 0.5
+CI_lower = empirical_cdf(Q_bootstrap, alpha/2)
+CI_upper = empirical_cdf(Q_bootstrap, 1-alpha/2)
+\end{verbatim}
+
+Just as in the case of randomization tests, this very simple algorithm obscures the sophistication and complexity that might be buried in the resampling and test-statistic functions.
+
+\subsection{Case resampling}
+
+The easiest way to write a resampling function is known as \textbf{case resampling}: you sample from an empirical data distribution by simply sampling elements from the data vector ($x$).  For instance, in the case above, we have $n=10$, so each bootstrap sample of the data ($x^*$) would also be a data vector with length $n=10$.  The $i$th element of the bootstrapped data vector ($x^*_i$) would be chosen as follows:\\
+(1) choose a random  integer from the set 1 to $n$, call this randomly selected index $j$\\
+(2) set $x^*_i$ to $x_j$.\\
+Note that this procedure samples with replacement, we could sample the same $x_j$ multiple times.
+
+Here is a pseudocode representation of case resampling, in case this is still unclear:\\
+ The \verb#sample(n)# function samples uniformly from the set of integers between 1 and n, and we can refer to specific elements of a vector \verb#x# (1 indexed) using square brackets: \verb#x[2]# would be the second element of vector \verb#x#.
+
+\begin{verbatim}
+function x_sample = caseresample(x)
+     n = length(x)
+     for i = 1 to n
+          x_sample[i] = x[sample(n)]
+     return x_sample
+\end{verbatim}
+
+\subsection{Smoothed bootstrap}
+
+Note that the assumption we make for case resampling is that the population distribution includes the data we observed with the same frequency as we observed in our sample.  However, usually we would consider this to be a rather silly assumption, especially if our data are continuous.  For instance, if our sample is:\\
+$[3.325, 4.012, 1.765, 2.198, 3.378, 2.879, 3.259, 1.843, 4.752, 5.591]$\\
+we would usually not assume that the probability of observing 3.326 is equal to 0 (even though that exact number was not in our data).  Thus, resampling cases from the data vector is silly and violates our assumption about smoothness in the population distribution.  The solution in this case, is to do \textbf{smoothed resampling}. 
+
+For smoothed resampling we proceed as in case resampling (by sampling data points from our data vector with replacement), but we also add some Gaussian noise to each sampled data point:\\
+(1) choose a random  integer from the set 1 to $n$, call this randomly selected index $j$\\
+(2) set $x^*_i$ to $x_j$+$e^*_i$, where $e^*_i$ is randomly sampled from a Gaussian with mean=0, and standard deviation=$\sigma$. 
+\footnote{For those familiar with the non-parametric density estimation, this amounts to the assumption that the population distribution can be well approximated as a kernel density estimate from our data: that the population distribution can be approximated as a mixture of Gaussians, each with a fixed standard deviation, and centered in one of our data points.  In other words, we assume that the population probability density  over possible values of the data $y$, is given by:\\
+$P(y) = \sum_{i=1}^n \frac{1}{n} N(y | \mu=x_i,\sigma)$, \\
+where $x_i$ is the $i$th data point in our data (of $n$ total), $N(y|\mu,\sigma)$ is the probability density at $y$ for a normal distribution with mean=$\mu$, and standard deviation=$\sigma$.}
+
+Or in pseudocode:
+\begin{verbatim}
+function x_sample = smoothresample(x)
+     n = length(x)
+     for i = 1 to n
+          x_sample[i] = x[sample(n)] + rnorm(mean=0, sd=sigma)
+     return x_sample
+\end{verbatim}
+
+One might wonder: how should I choose $\sigma$?  Wikipedia recommends using $\sigma=1/\sqrt{n}$, which doesn't make much sense to me (because it should depend on the dispersion of the data).  If you want a rule of thumb, I would suggest something like $\sigma = s_x / \sqrt{n}$, where $s_x$ is the sample standard deviation of your data.  However, in practice, I would suggest starting with a small $\sigma$, and looking at the histogram of your bootstrapped samples: if it looks too sharp and jagged, increase $\sigma$ to smooth it further.  Note that as $\sigma$ increases, you are adding more and more variance to the population distribution, thus increasing the breadth of your bootstrapped confidence interval.
+
+Note that smoothing by adding gaussian noise will not work for data that are not linear and continuous -- it will yield nonsense.
+
+
+\section{Pivoted bootstrap}
+
+We might make an assumption of certain kinds of symmetry in the population distribution data (like those assumptions that we use to build null hypothesis distribution in permutation/randomization tests).  Most often, these assumptions will take the form of some sort of pivot point: for instance, we might assume that the variation around the mean is symmetric, thus an $x$ value 3 points higher than the mean should be just as likely as an $x$ value 3 points lower than the mean.  If we make this assumption, we might choose to resample the pivoted residuals.
+
+To do so, we would first partition the data we see to the ''predicted" value (from some estimated model), and the residual: $x_i = \hat x_i + e_i$ (this should be familiar from linear regression, where we estimate the residual values of $y$ by subtracting the linear regression prediction from the actual data point).  Then we would resample the residuals, and randomly choose to pivot the data around 0 (by multiplying the residual either by 1 or -1 with 50\% probability), then we would add those values back in.  To obtain the $i$th element of the bootstrapped data sample, do the following:\\
+(1) choose a random  integer from the set 1 to $n$, call this randomly selected index $j$\\
+(2) choose $c$ to be either 1 or -1 with probability 0.5.
+(3) set $x^*_i$ to $x_i$+$c*e_j$.
+
+Or in pseudocode:\\
+\begin{verbatim}
+function x_sample = pivotedresample(x)
+     n = length(x)
+     x_hat = model_predictions(x)
+     x_err = x - x_hat
+     
+     for i = 1 to n
+          sign = sample([1,-1])
+          idx = sample(n)
+          x_sample[i] = x[i] + sign*x_err[idx]
+     return x_sample
+\end{verbatim}
+
+\section{Parametric bootstrap}
+
+We can also bootstrap data by assuming that the data we saw came from a distribution with a specific parametric form.  In this case, we would fit a distribution to the data, then obtain bootstrap samples from the best fitting distribution.  Given the motivation for bootstrapping -- to obtain a sampling distribution for a test statistic without assuming a parametric form for the data -- parametric bootstrapping may seem like a completely stupid idea; however, it does serve some useful functions.  Specifically, there are cases when the test statistic we are interested in does not yield an analytical distribution, even if we assume a parametric form for the distribution of the data.  
+
+!! add useful examples -- e.g. angles from a bivariate gaussian on x and y coordinates.
+
+\section{Resampling parameter estimates for prediction}
+
+Let's say you want to obtain a confidence interval on the prediction of a logistic regression.  You have already run the regression, and you have estimates $B_0$ and $B_1$ and their associated standard errors.  You also know that to make a prediction for the probability of $y=1$ when $x=50$ you would calculate $z_{50} = B_0 + B_1 * 50$, and $p_{50} = logistic(z_{50}) = \frac{1}{1+exp[-z_{50}]}$.
+
+So far so good, but how do you estimate a confidence interval on $p_{50}$, given that you have error associated with the $B$ coefficients?
+
+One approach is a parametric bootstrap: assume that the $B$ coefficients are normally distributed with mean equal to the maximum likelihood estimate of the coefficient ($B_0$, or $B_1$), and standard deviation equal to the standard error.  Thus, you can sample possible coefficient values, and build a histogram of predictions about $p_{50}$:
+
+\begin{verbatim}
+function z_hat = line(x, b0, b1)
+     z_hat = b0 + b1*x
+
+function p = logistic(z)
+     p = 1/(1+exp(-z))
+     
+function p_sample = sampleprediction(b0, sb0, b1, sb1, x)
+     b0_sample = rnorm(mean=b0, sd=sb0)
+     b1_sample = rnorm(mean=b1, sd=sb1)
+     z_hat_sample = line(x, b0_sample, b1_sample)
+     p_sample = logistic(z_hat_sample)
+\end{verbatim}
+
+
+
+

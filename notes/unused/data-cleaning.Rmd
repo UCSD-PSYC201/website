@@ -1,0 +1,388 @@
+---
+output: 
+    html_document
+---
+
+# Data cleaning -- worked example
+
+We will practice reading and cleaning data using the published race data for the California "10 20" running event (10 miles, 20 bands).  These data were scraped from the official race website, then fixed up a bit and saved as a *tab delimited text file*.  This text file can be found [here](http://vulstats.ucsd.edu/data/cal10202.txt).
+
+We will use the various tidyverse packages to carry out this cleaning.
+
+```{r}
+library(tidyverse)
+```
+
+## Read file with readr
+
+First, let's read the data in using `readr::read_tsv`, creating a data-frame saved as `cal1020`.  "tsv" generally refers to "tab separated values", which is what we have.
+
+````{r}
+cal1020 = readr::read_tsv('http://vulstats.ucsd.edu/data/cal10202.txt')
+````
+
+The `readr` functions (such as read_csv, read_tsv, etc.) are very similar to the base R functions (read.csv), but they have more sensible defaults, and also save the data as a "tibble", which works just like a data frame, but has a few added bells and whistles. 
+
+## First glimpse at the data.
+
+What's in this data frame?  We can check with `str()`, or a slightly neater display using the `dplyr::glimpse()` function.
+
+````{r}
+glimpse(cal1020)
+````
+
+From this we learn lots of things, the most immediately relevant are:
+
+1. the names of the variables (columns); we could have gotten just this part by running `names(cal1020)`)
+
+1. cal1020 is a data frame with 22 variables (columns) and 3252 observations (rows); we could have gotten just this part by running `dim(cal1020)`
+
+1. all the variables are saved as either a "chr" (a character string), an "int" (an integer), or a "time" variable.  (if we had used the base R read.tsv, many of the strings would have been converted to factors, and the variables recognized as "time" would have been treated as strings as well).  
+
+Before we work on fixing this, let's look at some of the rows in the data.  Looking at 3252 observations at once is silly, so let's just look at the first 10 using the `head()` command.  Because there are 22 variables, the printout doesn't fit.  In R markdown we get a fancy scrollable table, but in the console you would just get a truncated list (this behavior differs slightly between data frames and "tibbles", with tibbles yielding more legible console output).
+
+````{r}
+head(cal1020, n = 10)
+````
+
+## What we want to do
+
+1. rename some poorly named columns
+
+1. convert variables saved as time objects into numbers (in seconds)
+
+1. extract the runner's sex from the "Division" string, or other clues
+
+1. extract the runner's "corral" number from the bib number
+
+1. fix the age column, which, for some reason is a "character", which means that some entries could not be parsed as numbers.
+
+1. get time out of the somewhat mangled 5.25 and 10.mile columns (the pace columns are really mangled for 10 miles, so we will recalculate them ourselves).
+
+1. get rid of unnecessary columns.
+
+1. calculate any other convenience variables
+
+## rename columns
+
+To rename columns, we will use the dplyr `rename` function. 
+
+```{r}
+cal1020 <- rename(cal1020, 
+                  time.mile.5.25 = `5.25.mile.time`,
+                  time.mile.10 = `10.mile.time`)
+```
+
+There's lots more columns to rename, but let's worry about those later, after we drop all the columns we won't use.  I wanted to rename these now, to avoid dealing working with the backticks when converting these two columns into seconds.
+
+## convert time columns into seconds.
+
+The time.gun and time.chip columns seem to have been correctly parsed into time objects, so we can just cast them as.numeric to get the number of seconds they measure.
+
+We will use the `dplyr::mutate` function to change these columns (if we used a new column name, this command would just make a new column, but since those names exist, it assigns new values to them).
+
+```{r}
+cal1020 <- mutate(cal1020, 
+       time.gun = as.numeric(time.gun),
+       time.chip = as.numeric(time.chip))
+```
+
+The times recorded part of the way through the race are kind of messed up, so they could not be parsed into time objects automatically.  Let's try to figure out exactly how they are messed up.
+
+Three asides here: 
+
+1. we use the dplyr `%>%` pipe operator to pass the output of one command as the first input into the next command.  so the command above is equivalent to `glimpse(select(cal1020, starts_with("time.mile")))`, but is much easier to read.
+
+2. we use the dplyr `select()` function to choose a subset of columns, by name.
+
+3. we use the dplyr `starts_with()` command to identify column names that start with "time.mile"
+
+So, this allows us to just look at those two columns of interest.
+
+```{r}
+cal1020 %>% select(starts_with("time.mile")) %>% glimpse()
+```
+
+So, the 5.25 mile time measurement seems to have recorded minutes in the first part, then seconds, then zeros.  the 10 mile time measurement seems to have done something similar, but dropped the zeros for some cases.  
+
+However, these are just the first few people we are looking at, if we look at the `tail()` of the data, we see that this coding seems to change for people who took more than an hour!
+
+```{r}
+cal1020 %>% select(starts_with("time.mile")) %>% tail()
+```
+
+So, to these strings are sometimes "?" (missing data), sometimes in a "mm:ss:00" format, sometimes in a "mm:ss" format, and sometimes in a "hh:mm:ss" format.  To convert these into seconds, we will need to detect whether the string is missing, which format is being used, and do the appropriate calculation.  We do this in a later section, as it is a bit more complicated than everything else we are undertaking...
+
+## Extract sex from division, and other clues
+
+We do not yet have an explicit coding of runner sex, but the division column gives us a pretty big hint.  Let's look at the unique division names:
+
+```{r}
+unique(cal1020$Division)
+```
+
+It seems that if the Division name includes " M " (with spaces!), we are talking about a male.  If it includes " F ", we are talking about a female.  We can use the `stringr::str_detect` command to do this.  We will assign these two values independently, to make sure we didn't overlook something, before merging them into one column.
+
+```{r}
+cal1020 <- cal1020 %>%
+  mutate(is.male = stringr::str_detect(cal1020$Division, " M "),
+         is.female = stringr::str_detect(cal1020$Division, " F "),
+         sex = case_when(
+           is.male & is.female ~ "both",
+           is.male ~ "male",
+           is.female ~ "female", 
+           TRUE ~ "neither"))
+```
+
+Now let's see how many of each category we have.  In theory, we should have only "male" and "female" labels (not because of some claim about transgender folks in the world at large, but because that's how the division sex categorization works in this data set).  We use the `dplyr::count(X)` command, which is a shortcut for `group_by(X) %>% summarize(n=n())`.
+
+```{r}
+cal1020 %>% count(sex)
+```
+
+Ok, so we don't have any folks who were categorized as both male and female, but we have 18 folks who were not categorized as either based on division name.  Who are they, and can we figure out their sex?
+
+```{r}
+cal1020 %>% 
+  filter(sex == 'neither') %>% 
+  select(Overall.Place, name.first, Division, Sex.tot) %>%
+  head(18)
+```
+
+These people all have really high placements, and Division names that reflect that they were in a special Division (professionals, masters, etc).  We can try to guess their sex based on their name, but we can also notice that the "Sex.tot" column seems to be correlated with sex.  It should, since it should tell us exactly how many competitors there were of the same sex as a particular runner.  Let's check:
+
+```{r}
+cal1020 %>% count(sex,Sex.tot)
+```
+
+So, those that were labeled as female (based on division name), have either 2 or 2060 as Sex.tot, and males have either 5, 11, or 1179.  This is a bit weird.  Let's try to figure out what these different Sex.tot groups mean.
+
+```{r}
+cal1020 %>% 
+  filter(Sex.tot %in% c(2, 5, 11)) %>% 
+  select(Sex.tot, name.first, Division, sex) %>%
+  arrange(Sex.tot) %>%
+  head(20)
+```
+
+Ok, so Sex.tot=2 are the female Wheelchair racers, Sex.tot=11 are the male Wheelchair racers, Sex.tot=5 are some class of weird male runners who are missing a bunch of information, sex.tot=1179 is just male runners, and Sex.tot 2060 is female runners.  Let's assign a new sex column based on Sex.tot, and compare the two, to make sure we didn't mess anything up.
+
+```{r}
+cal1020 <- cal1020 %>%
+  mutate(sex.2 = case_when(
+Sex.tot %in% c(2, 2060) ~ 'female',
+Sex.tot %in% c(11, 5, 1179) ~ 'male',
+TRUE ~ 'neither'))
+
+cal1020 %>% count(sex, sex.2, match=sex==sex.2)
+```
+
+So: we get exactly the same categorization from Sex.tot, except we can also correctly classify the folks who could not be identified from the Division name.  Great, let's reassign the sex.2 column to sex.  While we are at it, let's make a column that tells us whether someone was a wheelchair racer.
+
+```{r}
+cal1020 <- cal1020 %>%
+  mutate(sex = sex.2,
+         wheelchair = stringr::str_detect(Division, "Wheelchair"))
+```
+
+
+
+
+## Get corral from bib number
+
+We are told that bib numbers correspond to starting corral, such that numbers 0-999 are in the first corral, 1000-1999 are in the second, etc.  Let's make a new column indicating corral number:
+
+```{r}
+cal1020 <- mutate(cal1020, corral = as.integer(floor(cal1020$bib/1000)))
+```
+
+## fix the age column (which is a string for some reason)
+
+Let's see what's happening with the age column, because it is a character, that means that at least some elements could not be interpreted as a number.  If we force the age column to be a number, they will show up as NAs.  So let's see what information we would be throwing out by converting to NA:
+
+```{r}
+cal1020 %>% filter(is.na(as.numeric(Age))) %>% select(Age, name.first)
+```
+
+Ah, so the only problem are the missing values, so we can just convert age to a number, since we want the "?" cells to be NA.
+
+```{r}
+cal1020 <- mutate(cal1020, Age = as.numeric(Age))
+```
+
+
+## Get time out of the mangled 5.25 and 10 mile columns.
+
+```{r}
+cal1020 %>% select(starts_with("time.mile")) %>% tail()
+```
+
+Remember, these strings are in a weird format: either "?" (missing data), "mm:ss:00" , "mm:ss", or "hh:mm:ss".  We need to detect the format, and do the appropriate calculation.  The function below does exactly that.
+
+```{r}
+parseWeirdTime <- function(string){
+  if(string == "?"){
+    return(NA)
+  } else {
+    sub.strings <- as.numeric(stringr::str_split(string, ":")[[1]])
+    if((length(sub.strings) == 2) || (sub.strings[3]==0 & sub.strings[1]>15)){
+      # we are either in "mm:ss" or "mm:ss:00" format
+      hours = 0
+      minutes <- sub.strings[1]
+      seconds <- sub.strings[2]
+    } else if(sub.strings[1] < 5) {
+      # we are in "hh:mm:ss" format
+      hours <- sub.strings[1]
+      minutes <- sub.strings[2]
+      seconds <- sub.strings[3]
+    } else {
+      # if we see a number like 07:34:00, 
+      # it doesn't make sense as either hh:mm:ss (too much time)
+      # nor as mm:ss (too short for running ~5 miles)
+      stop(paste0("string format doesn't make sense:", string))
+    }
+    return(hours*60*60 + minutes*60 + seconds)
+  }
+}
+parseWeirdTime("?")
+parseWeirdTime("30:44:00")
+parseWeirdTime("30:44")
+parseWeirdTime("2:30:44")
+parseWeirdTime("14:30:00")
+```
+
+How does this work?    
+1. it takes a string, and checks if it is equal to "?", if so, it returns `NA`, which is a special R data type that means "not available", and indicates that the data are missing.  
+2. `stringr::str_split(string, ":")` splits strings into vectors of strings using ":" as a separator.   
+3. however, that function returns a list of vectors, and we just want the first element of that list with `[[1]]` (since our function is written to operate on just one string at a time)   
+4. `as.numeric` converts the individual strings to numbers.   
+5. we check if those numbers make sense as either "mm:ss" or as "hh:mm:ss", and assign hours/minutes/second accordingly.   
+6. we then calculate seconds from the hours, minutes, seconds, and return it.   
+
+Now we want to run this function on each element of the "time.mile" columns.  However, this function is not "vectorized", so we have to apply it to each element in isolation.  the various "map" and "apply" functions are very well suited for this task.  we use purr::map_dbl, to apply our function to a particular column, and return a list of numbers.
+
+```{r}
+cal1020 <- mutate(cal1020, 
+         time.mile.5.25 = map_dbl(cal1020$time.mile.5.25, parseWeirdTime),
+         time.mile.10 = map_dbl(cal1020$time.mile.10, parseWeirdTime))
+glimpse(cal1020)
+```
+
+Let's now check if this gave us sensible results.  In theory, time for the first 5.25 miles, and the time between mile 5.25 and mile 10, should add up to the total time (time.chip; modulo some rounding error).  If they do not, something is wrong.
+
+```{r}
+off.by.2sec = abs((cal1020$time.mile.5.25 + cal1020$time.mile.10) - cal1020$time.chip) > 2
+sum(is.na(off.by.2sec)) # number of rows with missing data which precluded calculation
+sum(!(off.by.2sec), na.rm=T)     # number of rows where we were not off by more than 2 seconds
+sum((off.by.2sec), na.rm=T)     # number of rows where we were off by more than 2 seconds
+```
+
+So it looks like everything worked out!
+
+
+## Get rid of some unnecessary columns
+
+So, here's where we are now:
+
+```{r}
+glimpse(cal1020)
+```
+
+Let's get rid of the redundant columns, to make this more manageable.  Here are the columns I don't think we need:
+
+```{r}
+drop <- c('time.gun',
+          'bib',
+          'Class.Position',
+          'Overall.Place',
+          'Sex.place',
+          'Div.tot',
+          'Sex.tot',
+          'AG.tot',
+          '5.25.mile.rank',
+          '5.25.mile.pace',
+          '10.mile.rank',
+          '10.mile.pace',
+          'is.male',
+          'is.female',
+          'sex.2')
+cal1020 <- cal1020 %>% select(-one_of(drop))
+```
+
+Let's also convert all the names to lower case.
+
+```{r}
+names(cal1020) <- tolower(names(cal1020))
+
+glimpse(cal1020)
+```
+
+## Getting new columns from simple transformations
+
+Let's specify that time is in seconds in the column name, and calculate the pace and speed for the total race, and each half.
+
+**min/mile from time in seconds** We can get total pace over the 10 miles via division:
+
+````{r}
+cal1020 <- cal1020 %>% 
+  mutate(time.sec = time.chip,
+                   speed.mph = 10/(time.sec/60/60),
+                   pace.min = (time.sec/60)/10,
+                   speed.mph.first = 5.25/(time.mile.5.25/60/60),
+                   speed.mph.second= (10-5.25)/(time.mile.10/60/60),
+                   pace.min.first = (time.mile.5.25/60)/5.25,
+                   pace.min.second = (time.mile.10/60)/(10-5.25)) %>%
+  select(-time.chip)
+                   
+glimpse(cal1020)
+````
+
+
+## Fixing states.
+
+There are a few puzzling things remaining; the states look weird.
+
+```{r}
+sort(unique(cal1020$state))
+```
+
+
+We can clearly have some redundant coding, and a few mysterious things like "AP" and "B.C.N."  Let's make a dictionary to remap these values.  BCN is likely Baja -- let's call it MEXICO.  BC is likely british columbia -- call it CANADA. AB is probably alberta, ON is ontario, NL is newfoundland/labrador (zip code makes sense), "AP" is us military in the pacific... let's call that NA.
+
+```{r}
+state.rename = c("ARIZONA" = "AZ",
+                 "CALIFORNIA" = "CA",
+                 "FLORIDA" = "FL",
+                 "NEBRASKA" = "NE",
+                 "NEVADA" = "NV",
+                 "NEW JERSEY" = "NJ",
+                 "VIRGINIA" = "VA",
+                 "WASHINGTON" = "WA",  # could be DC, but zipcode indicates WA state.
+                 "B.C.N" = "MEXICO",
+                 "BC" = "CANADA",
+                 "AB" = "CANADA",
+                 "NL" = "CANADA",
+                 "ON" = "CANADA",
+                 "AP" = NA,
+                 "UTAH" = "UT",
+                 "EUR" = "EUROPE",
+                 "?" = NA)
+
+cal1020 <- cal1020 %>% 
+  mutate(state = ifelse(state %in% names(state.rename),
+                        state.rename[state],
+                        state))
+
+sort(unique(cal1020$state))
+```
+
+Well, we fixed most of them.  Perhaps a more thorough check of zipcode-state consistency would make sense if we really cared about state of origin.
+
+## Save the cleaned data.
+
+Note: we save this both as a csv file (to be easy to read by all other software), and as an 'RData' file, which is only useful in R, but preserves all the "data types" we defined.
+
+````{r eval=FALSE}
+write.csv(cal1020, file="cal1020.cleaned.csv")
+save(list = "cal1020", file="cal1020.cleaned.Rdata")
+````

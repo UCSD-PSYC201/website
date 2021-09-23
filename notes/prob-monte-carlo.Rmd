@@ -1,0 +1,125 @@
+---
+  output: 
+    html_document
+---
+  
+# Sampling and Monte Carlo.
+
+Sampling is a very helpful tool to understand probability.
+
+When I say that the probability of a die coming up x is P(x), it implies that P(x) is the long-run frequency of the outcome: how often x would happen if we rolled this die many times.  So, instead of going through the math to calculate various properties of this die-roll, we can *simulate* die rolls, and work on those simulations.
+
+This works on account of various "laws of large numbers", and in particular, the "Monte Carlo" theorem, which basically says: if you want to calculate the expectation of some function on a random variable, you can calculate it by averaging that function's output on a bunch of samples drawn with frequency proportional to their probability under the random variable.
+
+Let's start by setting up the same die probabilities we worked with when discussing the [foundations of probability](prob-foundations.html):
+
+```{r}
+library(dplyr)
+
+outcomes <- c('1', '2', '3', '4', '5', '6')
+unnormalized = c(2, 1, 1, 1, 1, 1)
+p.outcomes = unnormalized/sum(unnormalized)
+names(p.outcomes) <- outcomes
+p.outcomes
+```
+
+### Sampling, long-run frequency, and the law of large numbers.
+
+Another way to think about this probability is as the long-run frequency of a given outcome.  So we can set up a function that rolls a die and returns the side that it landed on.  In this case, we can implement such sampling with the `sample` function.
+
+```{R}
+roll.die = function(){
+  return(sample(outcomes, 1, replace=T, prob = p.outcomes))
+}
+```
+
+Every time we roll the die, we get a random outcome, we would call this a *sample*
+
+```{R}
+roll.die()
+roll.die()
+```
+
+[Borel's law of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers#Borel.27s_law_of_large_numbers) is the intuitive rule that if we repeat a random experiment many many times, the proportion of those times that had a particular outcome occur will match the probability of that outcome occurring in any one run of the experiment.  In our case, we can generate many rolls of the die, then calculate what fraction of them yielded a particular outcome:
+
+```{R}
+rolls = replicate(10000,roll.die())
+( p.1 = sum(rolls==1)/length(rolls) )
+( p.4 = sum(rolls==4)/length(rolls) )
+( p.8 = sum(rolls==8)/length(rolls) )
+```
+
+## Sampling to estimate event probabilities.
+
+An event in probability theory is a subset of outcomes.  For instance, for our rolled die, we might define an event as "getting an even roll".  It is useful to us to think of an event as a predicate, which we apply to the outcomes to see whether or not they fit into the event.  To make these kinds of calculations explicit, we can make a data frame listing all outcomes, their probabilities, and whether or not they are included in a particular event:
+
+```{R}
+is.even = function(outcome){
+  return((as.numeric(outcome) %% 2)==0)  # x %% y is the modulus operator which returns the remainder after dividing x by y.
+}
+```
+
+Just as we can calculate the probability of a particular outcome from samples, we can do the same with an event.  We generate many samples, see which fall in an event, and estimate their relative frequency:
+
+```{R}
+die.samples = data.frame(outcome = replicate(10000, roll.die()), stringsAsFactors = FALSE)
+die.samples$even = is.even(die.samples$outcome)
+head(die.samples)
+( p.even = sum(die.samples$even) / nrow(die.samples) )
+```
+
+Note that this formulation of the explicit probability calculation (data frame of outcomes with associated probabilities, or data frame of samples) makes it clear what the relationship is.  Basically, we treat the probability of each sampled outcome as 1/n where n is the number of samples.
+
+## Probability of a conjunction of events
+
+The conjunction of events A and B may be thought of as another event -- another subset of the outcomes that is the *set intersection* of A and B.  Alternatively, we can just think of it as a conjunction predicate that returns true if both events are true of this outcome.  
+
+First let's define a second event "greater than 3" (which is the subset 4,5,6 of dice outcomes).
+
+```{R}
+is.greaterthan3 = function(outcome){
+  return(outcome > 3)
+}
+die.samples$greaterthan3 = is.greaterthan3(die.samples$outcome)
+head(die.samples,10)
+```
+
+Now we can define the conjunction event, which we can calculate in two ways -- either by defining a new conjunction predicate, or by simply taking the logical conjunction of our two event columns.
+
+```{R}
+is.even.n.greaterthan3 = function(outcome){
+  return( is.even(outcome) & is.greaterthan3(outcome) )
+}
+die.samples$even.n.greaterthan3 = is.even.n.greaterthan3(die.samples$outcome)
+
+( p.even.n.greaterthan3 = mean(die.samples$even.n.greaterthan3) )
+```
+
+Note that here we take the shortcut of taking the mean of the logical vector `even.n.greaterthan3` to calculate the proportion that is true. This works because true=1, false=0, consequently sum(TF) = n.true, and mean(TF) = n.true/n.total -- the proportion that were true.
+
+### Sampling to get probability of disjunction
+
+```{R}
+is.even.or.greaterthan3 = function(outcome){
+  return( is.even(outcome) | is.greaterthan3(outcome) )
+}
+die.samples$even.or.greaterthan3 = is.even.or.greaterthan3(die.samples$outcome)
+( p.even.or.greaterthan3 = mean(die.samples$even.or.greaterthan3) )
+```
+
+### Sampling to calculate conditional probability
+
+We can calculate a conditional probability in two ways (say, P('even' | 'greater than 3'))
+
+1) We can make a subset of the samples, for which the condition is true, and do our regular calculations on it.
+
+```{R}
+( p.even_greaterthan3 = filter(die.samples, greaterthan3 == TRUE) %>% summarize(p.even = mean(even)) )
+```
+
+2) Or we can take the shortcut from our understanding the definition of conditional probability (P(A|B) = P(A&B)/P(B))
+
+```{r}
+( p.even_greaterthan3 = sum(die.samples$even.n.greaterthan3)/sum(die.samples$greaterthan3) )
+```
+

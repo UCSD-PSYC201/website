@@ -1,0 +1,72 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Uses of statistical models.
+
+> *TL;DR:*
+> Doing science involves building (usually) statistical models of the world, and comparing them to real data.  This is done with probability and statistics.  "Probability" is the branch of mathematics that we will use to specify models and obtain model predictions; "statistics" is a set of tools (either directly derived from, or based on, probability), that allow us to compare data to models. 
+
+A *statistical model*
+:    is a mathematical description of our assumptions about the data-generating process.   In that sense, it is a "formal representation of a theory".  This formal representation is constructed using the language of probability to describe how various unobservable and observable (like data) *random variables* relate to one another.
+
+## Statistics, probability, and science.
+
+The goal of science is to figure out how the world works, so that we can predict what will happen (e.g., do certain cholesterol measurements predict heart attacks?) and design interventions that achieve some desired ends (e.g., what drug will decrease the rate of heart attacks?).  This is engineering -- this is what happens when science has succeeded.  "How the world works" usually takes the shape of a model of varying complexity, and (especially in social science), these models do not yield exact predictions, but offer a range of probable outcomes, along with their relative probabilities.  Thus, probability is often central to specifying models, obtaining their predictions, and forming decisions based on those predictions.
+
+Of course, before we get to apply our science, we need to actually do science, which amounts to formulating theories, gathering data, revising or rejecting theories in light of the data, and formalizing those theories so that they might predict what's going to happen in the future.  Gathering (good) data requires clever [measurement techniques](measurement.html) and artful [experiment design](experiments.html).  Building (testable) [theories](theories.html) usually requires some rigorous formalism.  In the social, behavioral, and neural sciences we have only a coarse understanding of the processes underlying the observations; therefore measurements are noisy and highly variable, while theories tend to be imprecise; so the entire process of science in these fields relies heavily on probability and statistics. 
+
+It is useful to think in these terms: The world generates data via our measurements.  Our goal is to characterize how it does so as best as we can.  A scientific theory is a model of this process.  Since our measurements tend to be coarse aggregates of many complicated processes, we formulate our theories as statistical models of stochastic processes. Probability theory is the mathematical formalism by which such statistical models can be used to predict future data (and to predict how various manipulations might alter how the data will turn out).  Statistics is the set of procedures and principles that allows us to use the data to make inferences about the data generating process by choosing among statistical models and inferring the parameters of those models. 
+
+We use (statistical) models throughout science and engineering, for slightly different purposes, which we might divide into "different classes of statistical problems"
+
+## Descriptive statistics
+
+There are a few different types of problems that one might aim to tackle using statistics.  The simplest is to simply extract some numerical or graphical summary of the data -- this is known as "descriptive statistics" because we ostensibly merely aim to describe the data we obtained, without carrying out any inferences about how the world works.  A 'statistic' means simply "some function of the data", thus any function (arithmetic mean, smallest number, 3rd largest even number, etc.) could be considered a 'statistic'.  Of course, not all statistics are equally useful for describing or summarizing the data we observe, and even useful statistics differ in what information they convey.  Thus, although in theory descriptive statistics are neutral with respect to potential models of the data, in practice the choice of descriptive statistic is driven by model assumptions (often using ``estimators" for model parameters as descriptive statistics -- more on this later).  We can (and pretty much always *should*) also provide graphical displays of the data and our descriptive statistics.  We will cover this in more detail later.
+
+![Models in descriptive statistics](figures/L1-descriptive.png)
+
+Descriptive statistics aims to summarize the data either graphically, or with some numbers.  Descriptive statistics are ostensibly neutral with respect to models, but that is rarely the case in practice.
+
+
+## Null Hypothesis Significance Testing
+
+Classically, the converse of "descriptive statistics" is "inferential statistics": sets of procedures that aim to make inferences about our models of the world.  We will later discuss the more traditional framing of inferential statistics, but in the meantime, I will continue with my narrative.
+
+The most common set of inferential procedures in our field is called "Null hypothesis significance testing" (NHST).  In NHST, we conjure up a simplistic ('null') model of the world that lacks some structure that we want to demonstrate actually is present.  We then obtain some measurements, and calculate a 'test statistic' -- some function of the data that is sensitive to the structure of interest.  We then compare the test statistic we obtain from our data to the probability distribution of that test statistic under our 'null' model -- the 'null distribution'.  If the statistic is sufficiently extreme relative to the null distribution, we can then reject the null model, and pronounce that the structure we were looking for is 'statistically significant'.  
+
+We will describe all of this in much greater detail later.  For now, consider a brief example: we flip a coin six times and obtain six heads.  Can we then reject the null hypothesis that the coin is fair (comes up heads 50% of the time)?  Well, the probability of obtaining our test statistic (five heads), under this null hypothesis is is $0.5^6 = 0.016$, which under some criteria would be a sufficiently low probability, and we would reject the null.  There will be lots of subtleties to consider later.
+
+![Models in null hypothesis significance testing](figures/L1-nhst.png)
+
+In null hypothesis significance testing, we set up a simple 'null' model that lacks some structure we believe may be present, and we then compare a test statistic that measures this structure that we obtain from the data, to the distribution of this test statistic predicted by the null model.  If our test statistic is sufficiently extreme, we can `reject' the null model to find evidence that the structure suspected really is present.
+
+## Estimation 
+
+Another common scenario is that we have a candidate model of the world with some parameters that we do not know the values of, so then our goal is to estimate these parameters.  Here we won't discuss the large number of methods for estimating model parameters, but we should make a distinction between 'point estimates' and 'interval estimates'.  A point estimate is a single number (e.g., I estimate acceleration under Earth's gravity to be $10 m/s^2$); however, there is always some error and variability in our data, thus any point estimate is not going to be exactly right.  Thus, we often obtain an interval estimate, which specifies a range of plausible parameter values (e.g., Earth's gravity is between $9.7$ and $10.1 m/s^2$ with 95% probability).  Interval estimates are vastly preferable to point estimates because they convey not only a `best guess' about the parameter value, but also come measure of confidence and precision of that guess.  
+
+Instead of carrying out null hypothesis significance testing, it is often preferable to use the interval estimate of a parameter that includes the null hypothesis as one of many possible values (for instance, if our null hypothesis is that gravity does not exist, the `acceleration' parameter that we measured would be 0).  Thus, we can often reject the null hypothesis using simply an interval estimate, by demonstrating that the range of values that a parameter is likely to be does not include the null hypothesis value.
+
+![Models in statistical estimation](figures/L1-estimation.png)
+
+We often have an assumed model of the world, but out goal is to *estimate* some parameter of this model.  Usually, we obtain an interval estimate that describes the range of likely values of this parameter. 
+
+## Model Selection
+
+The range of model selection methods is vast, but all of them compare how well a model with some number of  parameters 'fits' the data, and their goal is to find the model that has the best balance of parsimony (not too much flexibility, meaning the model can't just fit *all* data due to having many parameters) and data fit.  Usually 'data fit' is calculated using something like retrospective prediction: if I get to use the data to estimate parameters that make model predictions as close to the data as possible, how close can I get?  
+
+Another (and often preferable) approach is to use some variant of 'cross-validation': using one portion of the data to estimate parameters, and another portion to see how closely the model predictions align with the data.  Cross-validation methods aim to solve the problem of 'overfitting' a model with too many parameters to the data.  If one uses cross-validation, then the model 'fit' is not 'overfit', and one can often compare models without trying to correct for their parsimony (since the cross-validation effectively does that).
+
+![Model selection](figures/L1-models.png)
+
+In model selection we aim to choose one of a few candidate models based on which one is most consistent with the data; unlike null hypothesis significant testing, we do not aim to reject one bad model, but to choose among a few plausible candidates.
+
+## Engineering.
+
+Once we have obtained sufficiently accurate models of the world, usually taking the form of quantitative theories, we can make predictions, about world outcomes given different starting conditions and interventions.  Thus we can choose interventions to get some desired outcome in the world.  This is engineering.
+
+![Models in engineering](figures/L1-engineering.png)
+
+
+

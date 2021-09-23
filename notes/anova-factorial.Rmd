@@ -1,0 +1,32 @@
+---
+  output: 
+    html_document
+---
+  
+# Factorial ANOVA
+
+A "factorial" ANOVA is a linear model with 2 or more categorical predictors (and zero numerical predictors).  Basically, it's when we have measurement/sampling units that are categorized in two different ways: we have people, we measure their heights, and we record their sex and their country of birth.  Now we can try to figure out how mean height varies across sex and across countries (with sex and country being the two categorical predictors of the height response). 
+
+In principle, nothing dramatic changes when we add a second categorical predictor to a ["one-way" ANOVA](anova.html) to make it into a 2-way, factorial anova.  However, there are a few complications that are added:
+
+## Multicolinearity
+
+When we went from single variable regression to multiple regression our interpretation of coefficients and of the sums of squares got more complicated because of the "credit assignment" problem with correlated (colinear) predictors.  The same thing happens when we add multiple categorical predictors in an **unbalanced** design.  Unbalanced here means: sample sizes differ across different cells (combinations of factor A and factor B).  e.g., if we have 10 men from the US, 5 men from South Korea, 5 women from US, and 10 women from South Korea, we have an unbalanced design.  This imbalance means that the dummy variables that code for 'is american' and 'is male' are now correlated; consequently, we have a credit assignment problem.  
+
+As a consequence, the sums of squares assigned to the two factors will differ depending on order (in the sequential, Type I sums of squares), and will differ across Type I, II, and III sums of squares (we will talk about this in class, but difference between these are not critical to remember).
+
+## Interactions
+
+In a one way anova, we can encode a unique mean for each of $a$ levels of factor A with $a-1$ coefficients (plus the intercept).  In a two-way anova, we will still have those $a-1$ coefficients for factor A, and we will have another $b-1$ to encode differences among levels of factor B.  But this doesn't allow us to capture a unique mean for each of the $a*b$ cells.  Specifically, let's say factor A is country (with 5 levels) and factor B is sex (with 2 levels).  Between the intercept, factor A coefficients, and factor B coefficients, we have $1+4+1=6$ coefficients total.  But we have $5*2=10$ cells.  Thus we cannot possibly encode each cell mean with just offsets for each level.  
+
+Consequently, we will introduce $(a-1)*(b-1)$ 'interaction' terms, which will code for the extra left-over bit.  In the country-sex example, we will have 4 coefficients to encode the interaction.  
+
+Given R's default factor coding scheme, the specific coefficients will be    
+- (intercept): mean of first level of factor A and first level of factor B (e.g., australian females)   
+- factor A coefficients: difference between intercept (mean of australian females) and mean of canadian, dutch, etc. females.   
+- factor B coefficients: difference between mean of australian females and mean of autralian males    
+- interactions A:B coefficients: difference between mean of e.g., canadian males, and the mean predicted by taking the intercept, and adding the two main effects (canadian - australian) and (male-female).   
+
+When we partition sums of squares, we will assign some credit to factor A (we call this the main effect of A), some to factor B (the main effect of B), and some to the interactions of A and B.
+
+

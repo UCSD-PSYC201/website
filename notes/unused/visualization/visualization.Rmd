@@ -1,0 +1,59 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Data visualization
+
+## General rules for scientific data visualization.
+
+The order of these rules indicates their priority (as I see it): rules further down are superceded by higher up rules if they are in conflict.
+
+1. Everything should be labeled, and interpretable without consulting a figure caption or having to solve a puzzle.
+
+1. Graphs should facilitate *relevant* quantitative interpretation and comparisons.
+
+1. Graphs should represent variability and uncertainty to permit inferential statistics by eye
+
+1. Graphs should follow conventions for the kind of information/data being presented.
+
+1. Graphs should not waste ink and should otherwise look pretty.
+
+For an alternate perspective, you might find useful the following pointers on making graphs:   
+
+- [figure checklist](http://buddhabaki.tumblr.com/post/44143989765/top-20-figure-checklist)
+
+- An analysis of why that Tufte-famous [Napoleon march chart](https://robots.thoughtbot.com/analyzing-minards-visualization-of-napoleons-1812-march) is considered good  
+
+- Steps to improve the aesthetics of a [bar graph](http://stat545-ubc.github.io/img/less-is-more-darkhorse-analytics.gif)
+
+
+
+## Organization.
+
+First we introduce [ggplot](ggplot.html)
+
+You can then consider a complicated worked example of [tinkering with a plot](tinkering.html) to make it look nice.
+
+The rest of this section is organized by the data being represented.  **N** will stand for numerical data, and **C** for categorical, while **~** will mean "as a function of".  So the section about displaying numerical data as a function of one categorical variable is called **N~C**.  Sometimes we have multiple variables on either side, for instance, we might want to know how numerical measurements vary as a function of two categorical variables and one numerical variable; this will appear in section **N ~ 2C + N**.  If we are interested in the distribution of some data, without any "explanatory" variables, this would be denoted as **2C ~ 0**, display the distribution of two categorical variables.
+
+|             | **C ~ ...** | **2C ~ ...** | **N ~ ...** | **2N ~ ...** |   
+|-------------|-------------|-------------|-------------|-------------|   
+| **... ~ 0** | [C ~ 0](C-0.html) | [2C ~ 0](2C-0.html) | [N ~ 0](N-0.html) | [2N ~ 0](2N-0.html) |    
+| **... ~ C** | [C ~ C](C-C.html) | 2C ~ 0 with [facets](facets.html) |  [N ~ C](N-C.html) | 2N ~ 0 with  [facets](facets.html) |    
+| **... ~ N** | [C ~ N](C-N.html) | ?binning? | [N ~ N](N-N.html) | ?binning? |
+
+The cells marked as ?binning? in the above table, indicate that I'm honestly not sure what is a good way to display such a relationship, the best alternative I can think of would be to treat the numerical explanatory variable as categorical by binning it.
+
+If we want to explore a large space of variables, a good place to start is a [pairwise correlation plot](pairwise.html).  A useful, although technical, plot to compare the distributions of two numerical variables is the [QQ-plot](qq-plots.html).
+
+I think it is particularly useful to consider how to plot the distribution of a [single numerical variable](N-0.html), and thus how to structure displays of one [numerical variable explained by a few categorical variables](N-C.html).  It is also useful to learn about [facets](facets.html).  
+
+**A few sampled external resources**      
+http://rvisualization.com/r-scripts/      
+http://flowingdata.com/category/tutorials/    
+http://flowingdata.com/2015/08/11/real-chart-rules-to-follow/   
+http://stat545-ubc.github.io/   
+http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/    
+
+

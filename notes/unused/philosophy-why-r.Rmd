@@ -1,0 +1,86 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Why R?
+
+> **TL; DR:** We are teaching you R because we think:  
+> - Learning statistical software is important  
+> - R allows you to do more than JMP/SPSS  
+> - R is better suited for data analysis than Matlab/Python/etc  
+> - Learning to program will make you a better and more efficient scientist
+
+## Why are we teaching statistical software at all?
+
+Statistics requires getting your hands dirty with noisy data, and doing stuff by hand is wildly impractical, so you will need to use some software. Moreover, we know that learning statistical software is hard, and therefore we want to teach you to use it, rather than leaving you to figure it out for yourselves.
+
+## Why are we teaching *R*?
+
+Every year I've taught 201, someone is dissatisfied with our choice of [R](http://www.r-project.org/) (specifically the [RStudio](http://www.rstudio.com/) interface).  There is usually a loud minority who would much prefer user-friendly software like [JMP](http://www.jmp.com/) or [SPSS](http://www-01.ibm.com/software/analytics/spss/), or even just a spreadsheet like [Excel](http://office.microsoft.com/en-us/excel/).  Sometimes there is a smaller, quieter minority who would rather we use [Matlab](http://www.mathworks.com/products/matlab/) or [Python](http://pandas.pydata.org/). Of course, there are many other options like [Mathematica](http://www.wolfram.com/mathematica/), [Julia](http://julialang.org/), [SAS](http://www.sas.com/en_us/home.html), etc.  So, why **R**?
+
+### Why a numerical/statistical programming language (like R, Matlab, Python), rather than point-and-click software (like JMP, SPSS, etc.)?
+
+While JMP/SPSS make easy methods very easy, they make advanced methods nearly impossible. In R or Matlab it is possible to do any analysis you may need to, many of which you simply could not do in SPSS/JMP. For the most part, the methods we will be learning in this class, can be done in SPSS and JMP as well, however, there will come a point in your research when you need to do something advanced and with a familiarity with R you will have the prerequisites to implement the new complicated analysis (knowing only SPSS/JMP, you will simply not be able to start).  I have tried to illustrate this below using made up lines (note: that graph was made in R).
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+source('xkcd.R')
+
+data <- NULL
+data$x <- seq(0, 2, by=0.01)
+data$r <- data$x^(1/2)+0.4
+data$gui <- data$x^(4)+0.2
+data$spreadsheet <- (data$x+0.4)^(6)
+data$y2 <- data$x^(6)
+data <- as.data.frame(data)
+
+p <- ggplot(data=data, aes(x=x, y=r))+
+  xkcd_line(aes(y=r), "red")+
+  xkcd_line(aes(y=gui), "blue")+
+  xkcd_line(aes(y=spreadsheet), rgb(0, 0.8, 0))+
+  xkcdaxis(range(data$x), c(0, 4))+
+  geom_text(family=xkcd_font, x=1.35, y=3, size=6, angle=70,
+            colour="blue", 
+            label="GUI: JMP, SPSS, etc.")+
+  geom_text(family=xkcd_font, x=1.5, y=1.5, size=6, angle=7,
+            colour="red", 
+            label="Code: R, Matlab, etc.")+
+  geom_text(family=xkcd_font, x=0.72, y=2.8, size=6, angle=77, 
+            colour=rgb(0, 0.8, 0), 
+            label="Spreadsheet: Excel, etc.")+
+  scale_x_continuous(breaks=c())+
+  scale_y_continuous(breaks=c())+
+  labs(x="Complexity of what you want to do", y="Time and effort to do it")+
+  theme_xkcd
+
+p
+```
+
+### Why R instead of Matlab, Python, Julia, Mathematica, etc.
+
+This is a tough call. R has a number of advantages: it is free and open-source (so everyone can repeat your analysis); it has more, and more useful, built-in functions for data analysis; it is the tool of choice for many statisticians, so it has a vast array of packages for different sorts of procedures, and new procedures are usually first distributed as R packages.  Of course, all of these tools have advantages over others in specific domains: Matlab is better for signal processing (so is more useful for lots of neuroscience data), linear algebra, and general numerical computation, Python is far better for dealing with unstructured data (like text corpora) and general purpose programming, Mathematica can do symbolic math.  However, on the whole, I think the stuff that is easier in R is more commonly needed for data analysis.
+
+## Why learn to program?
+
+Even if there were no benefit to learning R because of the statistical procedures that it makes available to you, I believe that simply learning to program is very valuable and worthwhile.  
+
+Why is it valuable?  My experience has been that if you can get a computer to do your bidding, you can save yourself an enormous amount of time, and your productivity goes up very quickly.  In psychology, if you can code up an amazon mechanical turk experiment, you can get a few hundred survey respondents within a day, rather than having to wait for half a quarter for these same subjects to filter in through the campus subject pool.  If you have to make stimuli by extracting words or pictures from some website, you can so so within a few minutes if you can program a screen-scraper to do it, rather than spending hours trying to copy those same materials by hand.  If you can tell a computer to recode your data according to some complicated rule, you can save yourself hours of data-entry time.  The list goes on and on.  Being proficient at programming makes you more productive, which is why most faculty in our department want their students to learn to program.  
+
+> "These machines have no common sense; they have not yet learned to 'think', and they do exactly as they are told, no more and no less.  This fact is the hardest concept to grasp when one first tries to use a computer."  
+> ***Donald Knuth** (TAOCP)*
+
+Because simply learning how to explicitly tell a computer what to do is the primary stumbling block for most people first learning to program, there is a lot of transfer from one programming language to another.  Consequently, learning some programming basics using R is a good place for you to start.
+
+### Programming allows you to do new things
+
+*Doing stuff by hand is like walking*: you can get just about anywhere you want using skills you already have, but it might take a very long time.  *Prepackaged graphical user interface software is like a subway*: it can quickly take you from A to B so long as both are right by a subway stop (i.e., your task matches the use cases for which that software was designed); however, if you're starting or going far from the subway line, you're in for a very long walk.  In contrast, *programming is more like driving a car*: it requires training to attempt and even then you might get stuck in traffic, but for all but the shortest trips it is much faster than walking and it gives you access to much more of the world than the subway system.
+
+This analogy holds for implementing experiments, typesetting papers, analyzing data, and just about everything else. When implementing experiments, a quick survey of a few people can be quickly completed manually; a larger survey would be a huge pain to take on by hand, fortunately, [Qualtrics](http://www.qualtrics.com/) and other pre-packaged survey systems make it easy to automate a simple survey and administer it to many people; finally, if your survey needs a particular randomization scheme Qualtrics does not have built in, you will either need to do it manually, or you will need to write some code (in, e.g., PHP) to implement an automated survey to your specifications.  When typesetting papers, you could try to do it by hand, but that's a huge pain; instead you most likely use MS Word, which makes most common typesettings tasks very easy; however, WYSIWYG editors run into problems in more demanding tasks, and you will either have to accept sub-par results, or use [LaTeX](http://www.latex-project.org/) for polished, professional typesetting.  Similarly, you can do simple analyses by hand (or in Excel, which is close enough to "by hand" for our purposes) very quickly; somewhat more complicated, but standard, analyses can be done much faster with GUI statistics software like JMP, SPSS, etc.; however, more complicated, non-standard analyses and data processing will require some sort of programming.
+
+Just like the practicality of transit options in different cities, *the practicality of doing stuff by hand, using prepackaged software, or writing your own code varies from domain to domain*.  LaTeX is rarely practical for writing papers for psychology journals -- they do the typesetting for you (in contrast, papers written for computer science conferences are often typeset by the authors, so LaTeX is the norm).  
+
+However, this is not the case for experiment design.  I have seen researchers implement clearly suboptimal, faulty, even confounded designs because Qualtrics did not let them randomize their questions/stimuli as they needed. The researchers knew what their design should be, but they settled on the design that was feasible in Qualtrics. I found this disturbing: If the researchers learned to program their own experiments, they could have done the right experiment, but instead they opted to be lazy and do bad science.  Learn to program and avoid this outcome.
+
+Similarly, GUI statistical software puts many common analyses just a button-press away, and so long as you just need to do those common analyses, it seems wasteful to invest in learning something like R.  Unfortunately, it seems that *researchers often constrain the set of questions they consider to those that can be easily answered with a button press in their software*.  While not a disaster, constraining your questions in this manner limits how much you can innovate scientifically: lots of progress in science comes from folks using more sophisticated tools and asking more sophisticated questions.
+
+In short: **programming allows you to do many things that would be impossible by hand or using pre-packaged software.  All too often, folks become wedded to impoverished tools and *modify their goals* to make them tractable with those tools. You want to avoid this, so learn to program.**

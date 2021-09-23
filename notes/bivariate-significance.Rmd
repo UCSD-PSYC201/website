@@ -1,0 +1,89 @@
+---
+  output: 
+    html_document
+---
+  
+# Significance of linear relationship.
+
+Here we will work with the fake IQ-GPA data we generated when talking about [Ordinary Least-Squares (OLS) Regression](bivariate-ols.html).
+
+```{r}
+library(ggplot2)
+IQ = rnorm(50, 100, 15)
+GPA = pmax(1, pmin(4.3, round((IQ-100)/15*0.5+2.8+rnorm(length(IQ),0,0.7), 1)))
+iq.gpa = data.frame(iq=IQ, gpa=GPA)
+g1 = ggplot(iq.gpa, aes(iq,gpa))+
+      geom_point(size=2)
+print(g1)
+
+( lm.fit = lm(data = iq.gpa, gpa~iq) )
+```
+
+
+There are many **equivalent** ways to ascertain whether a single-variable ordinary least-squares regression is "significant".  
+
+## Significance of slope.
+
+We already saw that we can test whether the slope is significantly different from 0 by calculating a t statistic by using the estimated slope and its standard error: 
+
+$t_{n-2} = \frac{B_1}{s\{B_1\}}$.
+
+This is the statistic R calculates when estimating the significance of the coefficient from the [linear model](ols.html) summary:
+
+```{r}
+coef(summary(lm.fit))['iq',]
+```
+
+## Significance of pairwise correlation
+
+Similarly, we can obtain this same t statistic via the pairwise [correlation](correlation.html) via:
+
+$t_{n-2} = r_{xy}\sqrt{\frac{n-2}{1-r_{xy}^2}}$
+
+We can obtain this test of the significance of a pairwise correlation via the `cor.test` function:
+
+```{r}
+cor.test(iq.gpa$iq, iq.gpa$gpa)
+```
+
+## Significance of variance partition.
+
+Finally, we can calculate an F statistic based on the [partition of the variance](determination.html) attributable to the regression as:
+
+$F_{(1,n-2)} = \frac{\operatorname{SS}[\hat y]}{\operatorname{SS}[error]/(n-2)}$
+
+This is the statistic we get from the `anova` command:
+
+```{r}
+anova(lm.fit)['iq',]
+```
+
+Which we can calculate manually as:
+
+```{r}
+SS.yhat = anova(lm.fit)['iq', 'Sum Sq']
+SS.error = anova(lm.fit)['Residuals', 'Sum Sq']
+df.1 = 1 # anova(lm.fit)['iq', 'Df']
+df.2 = nrow(iq.gpa)-2 # anova(lm.fit)['Residuals', 'Df']
+( F = (SS.yhat/df.1) / (SS.error/df.2) )
+( p = 1-pf(F, df.1, df.2) )
+```
+
+## Isomorphism with one response and one predictor
+
+In this special case of a linear regression with just one explanatory variable, all of these are equivalent.  The t statistic for the correlation is the t-statistic for the coefficient, and that t-value squared is the F value from the analysis of variance.  The resulting p-values are also the same.
+
+```{r}
+# t statistics from slope and correlation
+(ts = c(coef(summary(lm.fit))['iq', 't value'], 
+        cor.test(iq.gpa$iq, iq.gpa$gpa)$statistic) )
+# squared t statistics and anova F value
+c(ts^2, anova(lm.fit)['iq', 'F value'])
+
+# p values from slope, correlation, and anova
+c(coef(summary(lm.fit))['iq', 'Pr(>|t|)'], 
+  cor.test(iq.gpa$iq, iq.gpa$gpa)$p.value,
+  anova(lm.fit)['iq', 'Pr(>F)'])
+```
+
+This isomorphism between the test for the pairwise correlation (`cor.test(x,y)`), the test of the estimated regression slope (`summary(lm(y~x))`), and the test for the variance in y attributable to x (`anova(lm(y~x))`), is specific to the simple case of one response and one explanatory variable.  With multiple explanatory variables (multiple regression) these will all yield different results (as they all ask subtly different questions -- more on this when we get to multiple regression).

@@ -1,0 +1,92 @@
+---
+  output: 
+    html_document
+---
+
+
+```{r, echo=F, fig.width=6, fig.height=6}
+# library(MASS) # for the mvrnorm() function
+library(ggplot2)
+means = c(175, 26)
+covariance = matrix(c(156,18,18,4), 2, 2)
+xy = MASS::mvrnorm(n=500, means, covariance)
+df.cm = data.frame(xy)
+names(df.cm) <- c('height', 'foot')
+ggplot(df.cm, aes(x=height, y=foot))+geom_point()
+```
+
+# Covariance
+
+Generally, bivariate numerical data are often summarized in terms of their mean and [*covariance matrix*](https://en.wikipedia.org/wiki/Covariance_matrix).  Since we are avoiding dealing with linear algebra in this class, we will not deal with this matrix directly.  Instead we will consider the different components of a covariance matrix for a bivariate distribution.
+
+The elements of a covariance matrix (usually denoted with a capital sigma: $\Sigma$) for two variables $x$ and $y$ are $\sigma_x^2$ (the variance of $x$), $\sigma_y^2$ (the variance of $y$), and $\sigma_{xy}$ the **covariance** of $x$ and $y$.
+
+$\Sigma_{xy} = \begin{bmatrix}\sigma_x^2 & \sigma_{xy} \\ \sigma_{xy} & \sigma_y^2\end{bmatrix}$
+
+The covariance of two random variables ($\sigma_{xy}$) is defined as the expectation of the products of deviations from the mean:
+
+$\sigma_{XY} = \operatorname{Cov}[X,Y] = \mathbb{E}\left[{(X-\mu_X)(Y-\mu_Y)}\right] = \int\limits_X \int\limits_Y (X-\mu_X)(Y-\mu_Y) P(X,Y) \, dX \, dY$
+
+It is worth noting the similarity between the definition of the *variance* and the definition of the covariance:
+
+$\operatorname{Var}[X] = \mathbb{E}\left[{(X-\mu_X)^2}\right]= \mathbb{E}\left[{(X-\mu_X)(X-\mu_X)}\right]$
+
+The similarity here is that the variance of $X$ can be thought of as the covariance of $X$ with itself:   
+$\operatorname{Var}[X] = \operatorname{Cov}[X,X]$
+
+What will the definition of $\operatorname{Cov}[X,Y]$ do?   
+
+- $(X-\mu_X)(Y-\mu_Y)$ will be positive for combinations of X and Y that both deviate in the same direction from their respective means (either both higher, or both lower, than their means)   
+- $(X-\mu_X)(Y-\mu_Y)$ will be negative for combinations of X and Y that deviate in different directions from their means (X is higher than its mean, Y is lower)   
+- Consequently, if combinations of X and Y that deviate in the same direction are more common than those that deviate in different directions, the covariance will be positive; vice versa for negative; and same-direction and different-direction deviation pairs are equally common, the covariance will be zero.
+
+```{r, fig.height=4}
+cvs = c(-0.8, 0, 0.8)
+df = data.frame()
+for(cv in cvs){
+  df = rbind(df, data.frame(MASS::mvrnorm(n=500, c(0,0), matrix(c(1, cv, cv, 1), 2, 2)),
+                            Covariance=as.character(cv)))
+}
+ggplot(df, aes(X1,X2))+facet_grid(.~Covariance)+geom_point()
+```
+
+- If the overall variance of X or Y changes, the scale of the scared deviations of them from their means will change, and consequently, so will the covariance.  This means that the covariance measures both the strength of the linear relationship between X and Y, as well as the overall spread of X and Y.
+
+#### Covariance decomposed into shared variance.
+
+One helpful way to think about the "covariance" is as arising from some shared variable.
+
+$W \sim \operatorname{Normal}(0,\sigma_W)$   
+$X = \mu_X + aW + U \text{, where  } U \sim \operatorname{Normal}(0,\sigma_U)$   
+$Y = \mu_Y + bW + V  \text{, where  } V \sim \operatorname{Normal}(0,\sigma_V)$   
+
+In this case, the variance of $X$ will be $\sigma_X^2 = a^2 \sigma_W^2 + \sigma_U^2$,     
+the variance of $Y$ will be $\sigma_Y^2 = b^2 \sigma_W^2 + \sigma_V^2$, and       
+the covariance of $X$ and $Y$ will be $\sigma_{XY} = a\,b\,\sigma_W^2$.
+
+In short, the covariance arises from some shared variance.
+
+## Estimating covariance.
+
+We estimate the variance from a sample by summing up the squared deviations to yield a "sum of squares", which we divide by n-1 to obtain an estimator for the variance ($s_X^2$):
+
+$s_X^2 = \frac{\sum\limits_{i=1}^n (x_i - \bar x)(x_i - \bar x)}{n-1}$
+
+```{r}
+n = nrow(df.cm)
+(SS.h = sum((df.cm$height - mean(df.cm$height))^2))
+c(SS.h/(n-1), var(df.cm$height))
+```
+
+Similarly, we calculate the sample covariance by calculating the "sum of products" of the deviations of X and Y from their respective means, then dividing by n-1.
+
+```{r}
+n = nrow(df.cm)
+(SP.hf = sum((df.cm$height - mean(df.cm$height))*
+             (df.cm$foot - mean(df.cm$foot))))
+c(SP.hf/(n-1), cov(df.cm$height, df.cm$foot))
+```
+
+You might wonder: why are we dividing by n-1, when we estimate two parameters (mean of x and mean of y).  The answer comes from thinking about each observation as a two element vector (x,y), we have n of these vectors, and we estimate the mean the mean of those vectors -- a two element mean.
+
+As discussed earlier, the covariance scales with the variance of X and Y.  Generally, though, we want a measure of association that is scaled to the spread of the two variables, scaling the covariance yields the [correlation](correlation.html).

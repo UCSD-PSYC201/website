@@ -1,0 +1,67 @@
+---
+output: html_document
+---
+
+# Categorical ~ 0  
+
+Showing the distribution of one categorical variable with no explanatory variables.  There are many ways to show the distribution of a categorical variable.  Perhaps the most common way (a pie chart) is probably the worst.  
+
+Let's start by making up some categorical data, importing [ggplot](ggplot.html).  Generally, I would also suggest setting up a theme and [tinkering](tinkering.html) with the details of the visuals, but here we will just describe the strategy.
+
+````{r}
+df.eth = data.frame(ethnicity = sample(c("white", "black", "hispanic", "asian", "native/islander"), 
+                                      140, replace=T, prob=c(0.5, 0.2, 0.1, 0.15, 0.05)))
+
+# Show the distribution numerically.
+table(df.eth$ethnicity) 
+
+# load ggplot
+library(ggplot2)
+````
+
+There are two main distinctions among visualizations of the distribution of a categorical variable: frequency plots that also somehow convey sample size, and proportion plots that that normalize frequencies and just show "relative frequency"" or proportion.  Generally (and especially when sample sizes are small) I would suggest that frequency plots should be preferred when sample sizes are small to make it clear just how susceptible the observed proportions are to sampling variation.
+
+## Frequency plots
+
+These show the number of observations in each category, not just the proportion.
+
+### Histogram
+
+The classic distribution plot is a histogram: one bar per category, usually arranged along the x-axis, with the y-axis shoeing frequencies.
+
+````{r}
+ggplot(df.eth, aes(x=ethnicity, fill=ethnicity)) + geom_bar()
+````
+
+### Stacked area
+
+Another option, which better connects to methods of plotting a categorical distribution as a function of some other variables (e.g., [C ~ N](C-N.html), [C ~ C](C-C.html) ).  This plot stacks the individual histogram bars on top of each other, and adds a distinct color to each one.
+
+````{r}
+ggplot(df.eth, aes(x=factor(1),fill=ethnicity))+geom_bar(width=1, stat='count')
+````
+(you can, in principle leave the `stat='bin'` part out, as it will be filled in by default.)
+
+## Proportion plots
+
+These show the relative frequencies of categories, and obscure the raw numbers of observations.  This is a fine strategy, especially when dealing with some explanatory variables with unequal sample sizes.
+
+### Normalized x axes in histogram and stacked area
+
+Just add `aes(y = (..count..)/sum(..count..))` to the `geom_bar` or `geom_histogram` call.  (Unfortunately, `..density..` doesn't work appropriately for categorical variables.)
+
+````{r}
+ggplot(df.eth, aes(x=ethnicity)) + geom_bar(aes(y = (..count..)/sum(..count..)))
+````
+
+````{r}
+ggplot(df.eth, aes(x=factor(1),fill=ethnicity))+geom_bar(aes(y = (..count..)/sum(..count..)), width=1, stat='count')
+````
+
+### Pie chart
+
+You can think of a pie chart as just a normalized stacked area plot converted to polar coordinates (so it maps y values onto the angle).  That's exactly how we make one in ggplot.  (Although, pie charts are generally [frowned upon](http://www.businessinsider.com/pie-charts-are-the-worst-2013-6), so you better have a really good reason to use them.)
+
+````{R}
+ggplot(df.eth, aes(x=factor(1),fill=ethnicity))+geom_bar(aes(y = (..count..)/sum(..count..)), width=1, stat='count')+coord_polar(theta="y")
+````

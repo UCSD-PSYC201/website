@@ -1,0 +1,107 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# data.frame()
+
+<!--
+  
+  ## Handy functions
+  
+  ### R
+- ?, ??, apropos(), example()
+- mode(), typeof(), class() (use class)
+- str(), dplyr::glimpse()
+- is.*: numeric, logical, etc.
+- as.*: character, numeric, etc.
+- names(), row.names() and indexing
+- which()
+- c() for vector
+- lists() hold anything; [[]] to get thing, [] to get list with thing.
+- desc(), rank(), match()
+- write() and dev.print()
+
+### functional
+- lapply, mapply, outer, sapply, vapply
+- Map, mclApply, mcMap
+
+### Reading
+- read.table(), read.csv()
+- file.path()
+
+### Data.frames
+- str(), head(), tail(), names, ncol, nrow, length, rownames, dim
+- summary(), table()
+- \$ index
+- subset(gapminder, subset = country == "Uganda")
+- with() for weird functions that don't take data arguments
+- never attach()
+- refer by name.
+- identical()
+
+### Data manipulation
+- tidyr::gather and spread()
+- tidyr::separate() / unite()
+- tidyr::extract()
+
+- reshape2::melt and cast
+
+### Factors
+- factor()
+- levels()
+- reorder()
+- nlevels()
+- droplevels()
+- revalue(), mapvalues(), recode()
+- avoid c() for factor levels.
+- rename() (dplyr)
+
+### plyr/dplyr
+plyr/dplyr -- dplyr is generally better, more consistent syntax.
+http://www.slideshare.net/jenniferbryan5811/cm009-data-aggregation
+https://cran.r-project.org/web/packages/dplyr/vignettes/
+http://www.dataschool.io/dplyr-tutorial-for-faster-data-manipulation-in-r/
+- rbind_list() and rbind_all()  and plyr::rbind.fill() (adds cols)
+- tbl_df() -- improved data frame for large datasets, better printing at least
+- glimpse() (liek str)
+- filter() to subset rows and slice()
+- distinct() -- like unique() but faster.
+- sample_n() and sample_frac()
+- select() to subset columns
+- %>% magic pipe
+- mutate() to add/change variables like base transform() but back ref new cols
+- arrange()
+- group_by() n obs into groups (df with grouping info)
+- summarize() n obs into 1, respecting groups (tally()) n(), n_distinct()
+- summarize_each() -- summarize() for multiple variables, applying same function
+- top_n()
+- "window functions"
+- two table join functions  http://stat545-ubc.github.io/bit001_dplyr-cheatsheet.html
+- connecting to databases.
+
+### Timeseries
+- lag()
+[what is code](http://www.bloomberg.com/graphics/2015-paul-ford-what-is-code/)
+http://www.cookbook-r.com/
+
+### ggplot
+https://github.com/jennybc/ggplot2-tutorial
+- ggsave() (and scale! for relative text size changes)
+- filled circle opar <- par(pch = 19) (original in opar)
+- palette() for color palette()
+- colors()
+- library(RColorBrewer) and library(colorspace)
+- for bubble plots reorder by neg size so small things plotted last
+- lots of reshaping often needed()
+- facets with scales="free_y" or whatever.
+- arrangeGrob()
+- data, aes, geom, scale, stat, facet
+
+-->
+
+
+## Style guides
+
+
+

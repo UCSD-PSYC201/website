@@ -1,0 +1,165 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Numerical ~ Categorical
+
+Probably the most common plot we see in social science is one aiming to portray how some numerical outcome variable changes as a function of one or more categorical variables.  Unfortunately, this is usually done via barplots, which are not an efficient use of ink, and even worse, without error bars.  There are many superior alternatives.
+
+Let's start with some fake data (which we can use for both N ~ C and N ~ 2C)
+````{r}
+library(ggplot2)
+
+df.gpa = data.frame(ethnicity = sample(c("white", "black", "hispanic", "asian", "native/islander"), 
+                                       140, replace=T, prob=c(0.35, 0.2, 0.15, 0.15, 0.15)),
+                    major = sample(c("Psychology", "Cog Sci", "Linguistics", "Business"),
+                                       140, replace=T, prob=c(0.3, 0.2, 0.2, 0.2)),
+                    GPA = pmin(4, pmax(0, rnorm(140, 2.7, 0.8)))
+                    )
+````
+
+## Bar plots
+
+The conventional bar plot shows the mean for each category.
+
+```{r}
+ggplot(df.gpa, aes(x=major, y=GPA))+
+  stat_summary(fun.y = function(x){mean(x)}, 
+               geom="bar", 
+               fill="gray")
+```
+
+Here we will stick to using the stat_summary function in ggplot, rather than calculating means and standard errors outside of ggplot.  Note that although it is possible to simply provide `fun.y = "mean"`, I prefer to specify the summary statistic function explicitly.
+
+We have two categorical variables, so we probably want to plot both of them together.
+
+```{r, fig.width=12}
+ggplot(df.gpa, aes(x=major, fill=ethnicity, y=GPA))+
+  stat_summary(fun.y = function(x){mean(x)}, 
+               geom="bar", 
+               position=position_dodge())
+  
+```
+
+Here we indicate position=dodge, to prevent the different ethnicity bars from obscuring one another.
+
+We should definitely improve these by adding error bars.
+
+```{r, fig.width=12}
+ggplot(df.gpa, aes(x=major, fill=ethnicity, y=GPA))+
+  stat_summary(fun.y = function(x){mean(x)}, 
+               geom="bar", 
+               position=position_dodge())+
+  stat_summary(fun.y = function(x){mean(x)}, 
+               fun.ymin = function(x){mean(x) - sd(x)/sqrt(length(x))},
+               fun.ymax = function(x){mean(x) + sd(x)/sqrt(length(x))},
+               geom="errorbar", 
+               position=position_dodge())
+  
+```
+
+(note that this strategy will show *no* error bars if a given group has only 1 observation, and will omit the bar entirely if that group has no data.)
+
+## Improving on the bargraph
+
+The bargraph offers a lot of room for improvement because it wastes a lot of space by filling the bar with ink, and that ink conveys no additional information.  To make this clear, let's plot this as a point (Note that here we needed to specify a width for position_dodge, because ggplot doesn't know how to dodge pointranges (unlike bars)):
+
+```{r, fig.width=12}
+ggplot(df.gpa, aes(x=major, color=ethnicity, fill=ethnicity, y=GPA))+
+  stat_summary(fun.y = function(x){mean(x)}, 
+               fun.ymin = function(x){mean(x) - sd(x)/sqrt(length(x))},
+               fun.ymax = function(x){mean(x) + sd(x)/sqrt(length(x))},
+               geom="pointrange", 
+               position=position_dodge(width=0.75),
+               size=1)+
+  ylim(c(0,4))
+```
+
+We have so much space, and this contains all the information that was conveyed in the bar plot.  I rather prefer this to the bargraphs, but we can now go further to add a sense of the overall distribution.  For instance, we might add all the individual data points:
+
+```{r, fig.width=12}
+ggplot(df.gpa, aes(x=major, color=ethnicity, fill=ethnicity, y=GPA))+
+  geom_point(shape=4, cex=5, position=position_dodge(width=0.75))+
+  stat_summary(fun.y = function(x){mean(x)}, 
+               fun.ymin = function(x){mean(x) - sd(x)/sqrt(length(x))},
+               fun.ymax = function(x){mean(x) + sd(x)/sqrt(length(x))},
+               geom="pointrange", 
+               position=position_dodge(width=0.75),
+               size=1)+
+  ylim(c(0,4))
+```
+
+Or we might add the violin plots:
+
+```{r, fig.width=12}
+ggplot(df.gpa, aes(x=major, color=ethnicity, fill=ethnicity, y=GPA))+
+  geom_violin(position=position_dodge(width=0.75), alpha=0.2)+
+  stat_summary(fun.y = function(x){mean(x)}, 
+               fun.ymin = function(x){mean(x) - sd(x)/sqrt(length(x))},
+               fun.ymax = function(x){mean(x) + sd(x)/sqrt(length(x))},
+               geom="pointrange", 
+               position=position_dodge(width=0.75),
+               size=1)+
+  ylim(c(0,4))
+```
+
+Or box plots.
+
+```{r, fig.width=12}
+ggplot(df.gpa, aes(x=major, color=ethnicity, fill=ethnicity, y=GPA))+
+  geom_boxplot(position=position_dodge(width=0.75), alpha=0.2)+
+  stat_summary(fun.y = function(x){mean(x)}, 
+               fun.ymin = function(x){mean(x) - sd(x)/sqrt(length(x))},
+               fun.ymax = function(x){mean(x) + sd(x)/sqrt(length(x))},
+               geom="pointrange", 
+               position=position_dodge(width=0.75),
+               size=1)+
+  ylim(c(0,4))
+```
+
+
+The key point here is that we can remove the bars from a bar plot and replacing them with something far more informative of the overall distribution (like any of the vertical distribution displays from [N ~ 0](N-0.html)).  This is preferable to just putting a solid rectangle in the plot.
+
+### Heatmaps.
+
+Thus far we have considered a 5x5 design, which is roughly the limit of what I think can be conveniently plotted by arranging all combinations along the x-axis, as we have done with our variations on grouped bar charts.  If we have more categories than that, such plots will become impenetrably busy, and a somewhat better alternative would be to use a heat map.
+
+````{r}
+ggplot(df.gpa, aes(x=major, y=ethnicity, fill=GPA))+geom_tile(stat_summary=function(x){mean(x)})
+````
+
+Such heatmaps always make it difficult to show variability, and patterns in them are only apparent if they are very smooth (because of the ordering and similarity of the factors, and a lack of interactions), or if they are very sparse (such that every CxC combination is the same, except for one or two that are clearly outliers).  Generally such plots require a lot of data, as otherwise, the variability in means due to sampling will mislead and make it difficult to discern whatever signal is present.
+
+### Showing differences in variance and shape.
+
+Barplots, and all the improved barplots we saw, focus on showing differences in means across groups; however, sometimes we might be interested in other aspects of the distribution, such as the variance, the skew, or the extreme values.  There are a few plots that help various aspects of this.
+
+Let's generate some data with identical means but different distributions.
+
+````{r}
+df = data.frame(class='a', val=rnorm(125,100,15))
+b = rgamma(220, 1, 1)
+b = (b-mean(b))/sd(b)*15+100
+df = rbind(df, data.frame(class='b', val=b))
+````
+
+### Overlayed histograms / densities
+
+Overlaying histograms generally does not make it particularly easy to compare the means (although that is still possible); however, it does make it much easier to compare the spread and shapes of the two distributions.   Although this is not as effective at highlighting differences in the tails as showing the empirical cumulative densities (next section), it is far more intuitive.  Generally, if you are comparing more than three distributions, overlaying their histograms will be very tricky to parse.
+
+````{r}
+ggplot(df, aes(x=val, fill=class))+geom_density(alpha=0.2)
+```
+
+### Cumulative densities.
+
+Cumulative densities are far less intuitive than histograms or densities, but they make differences in the tails far more apparent.  Here you see that the 'b' distribution clearly has a lighter left (negative) tail, and a heavier right (positive) tail.  These plots are most effective when the distributions are indistinguishable outside of the tails (otherwise mean/variance differences will make it difficult to identify differences in shape).
+
+````{r}
+ggplot(df, aes(x=val, color=class))+stat_ecdf(geom="line", size=1.5)
+````
+
+### QQ plots
+
+A very general, and useful method for comparing **two** distributions is a [quantile-quantile plot](qq-plots.html).

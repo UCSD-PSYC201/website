@@ -1,0 +1,187 @@
+---
+output: 
+    html_document
+---
+
+# Sampling distributions
+
+## TL; DR.
+
+- Frequentist statistics are based on the distribution of statistics we might expect to see if we were to run the experiment many times.  These are called 'sampling distributions'.
+
+- The most common one is the "sampling distribution of the sample mean", which is Normal (assuming the central limit theorem holds), has a mean equal to the mean of the underlying population, and has a standard deviation equal to the standard deviation of the underlying population divided by the square root of n (the sample size).  This standard deviation of the sampling distribution of the sample mean is often called the "standard error of the mean".
+
+## Logic
+
+Our data are a sample.  If we were to rerun the experiment, we would get a different sample.  The sampling distribution of something (technically, of a random variable) is the probability distribution describing the probability that this random variable will take on any possible value when we sample it.  For instance, let's consider a measurement of a sampled person's IQ.  Although we actually got some measurement, from the perspective of frequentist statistics, we must consider what other measurements we could have seen -- so we say that the sampling distribution of a measurement of IQ is Normal with a mean of 100 and a standard deviation of 15 (this is how IQ is defined).  
+
+Just as it makes sense to talk about sampling distributions for measurements, or sets of measurements, it also makes sense to consider sampling distributions for [statistics](descriptive.html).  For instance, we got a particular sample of 10 people's IQs, and calculated the sample mean.  Even though we saw one particular sample mean, we must consider what other sample means we could have seen (and their probability distribution) from carrying out our procedure of sampling 10 people and averaging their IQs (this is the sampling distribution of the sample mean).  We can mathematically derive the probability distributions for sampling distributions of various statistics by relying on the *statistical model* we assume underlies our data.
+
+```{r}
+library(ggplot2)
+
+# here is a sampling function that generates a single sample iq.
+sample.iq = function(){round(rnorm(1,100,15))}
+
+# we can run it once to get one sample
+sample.iq()
+
+# or 10 times to generate a sample of 10 iqs:
+replicate(10, sample.iq())
+
+# or 1000 times to get a sample of 1000 iqs
+iqs.1000 = replicate(1000, sample.iq())
+ggplot(data.frame(iq = iqs.1000), aes(x=iq))+geom_bar()
+
+# we can generalize this to write a function that generates a sample of n iqs
+sample.iqs = function(n){replicate(n, sample.iq())}
+
+# Here is one possible sample mean of 10 sampled iqs
+mean(sample.iqs(10))
+
+# We can generate 5 means of samples of 10 iqs:
+replicate(5, mean(sample.iqs(10)))
+
+# or a sample of 1000 sample means of 10 sampled iqs
+iq.means.1000 = replicate(1000, mean(sample.iqs(10)))
+ggplot(data.frame(mean.iq = iq.means.1000), aes(x=mean.iq))+geom_bar()
+
+# we can write a function that samples n iqs, and returns their mean:
+sample.iq.mean = function(n){mean(sample.iqs(n))}
+
+# now we can see how this Sampling Distribution of the Sample Mean changes as we change the sample size
+df = rbind(data.frame(n=4, mean.iq = replicate(1000, sample.iq.mean(4))),
+           data.frame(n=16, mean.iq = replicate(1000, sample.iq.mean(16))),
+           data.frame(n=64, mean.iq = replicate(1000, sample.iq.mean(64))),
+           data.frame(n=256, mean.iq = replicate(1000, sample.iq.mean(256))))
+           
+ggplot(df, aes(x=mean.iq, color=as.factor(n), fill=as.factor(n)))+geom_density(alpha=0.2)
+```
+
+What this is designed to illustrate is that if we take a step back from the data we *actually have* and consider the data we *could have had*, we see that many different samples are possible, and many different sample means are possible.  Which sample means are more or less likely depends on the size of our sample, and the sampling distribution of the individual data points.  The resulting probability distribution of sample means we could have seen is the "sampling distribution of the sample mean".  Such sampling distributions exist for every statistic we could conjure up (sample standard deviation, sample kurtosis, etc.).
+
+## Expectation about the sampling distribution of the sample mean.
+
+Formally, we assume that a sample of size $n$ corresponds to $n$ random variables independently and identically distributed according to the sampling distribution of the data:
+
+$\{x_1, ... x_n\} \sim P(X)$
+
+We can think of them all as different (independent) instantiations of the same random variable $X$ -- the random variable of a single data point.
+
+We might not know the details of the probability distribution of $X$, but we assume that it has some defined mean and variance (here we use these to refer to the properties of the *random variable*, obtained by [expectation](../prob-expectation.html), *not the sample*):
+
+$\mu_X = \operatorname{Mean}\left[X\right] = \mathbb{E}[X] = \int\limits_{x \in X} x P(X=x) dx$
+
+$\sigma_X^2 = \operatorname{Var}\left[X\right] = \mathbb{E}\left[{(X-\mu_X)^2}\right] = \int\limits_{x \in X} (x-\mu_X)^2 P(X=x) dx$
+
+The probability distribution of $X$, which we might call the sampling distribution of a single data point, will also have some skewness, kurtosis, and higher order moments describing its shape.  
+
+The mean of $n$ data points is defined as:
+
+$\bar x^{(n)} = \frac{1}{n}\sum\limits_{i=1}^n x_i$, (here we superscript x-bar with $(n)$ to make it explicit that this is the mean of a sample of size $n$).
+
+What can we say about the sampling distribution of this sample mean?  That is, what do we know about $P(\bar x^{(n)})$?
+
+The [central limit theorem](../prob-clt-normal.html) tells us that if $n$ is large enough, skewness, kurtosis, and higher order moments will all shrink towards their values under a normal distribution.  So if $n$ is large enough:
+
+$P(\bar x^{(n)}) = \operatorname{Normal}(\operatorname{Mean}[\bar x^{(n)}], \sqrt{\operatorname{Var}[\bar x^{(n)}]})$
+
+In other words, if $n$ is large enough the sampling distribution of the sample mean will be approximately normal, with some mean and variance.  What will the mean and variance of this distribution be?
+
+To figure this out, we need to remember a few useful [expectation](../prob-expectation.html) identities:
+
+- For the sum of $n$ *independent* random variables ${X_1, ..., X_n}$ all *identically distributed* as $X$:  
+
+    - $\operatorname{Mean}\left[\sum_{i=1}^n X_i\right]=n \operatorname{Mean}\left[X\right]$  
+
+    - $\operatorname{Var}\left[\sum_{i=1}^n X_i\right]=n \operatorname{Var}\left[X\right]$  
+
+- For the outcome of multiplying by a constant $a$:  
+
+    - $\operatorname{Mean}\left[a X\right]=a \operatorname{Mean}\left[X\right]$  
+  
+    - $\operatorname{Var}\left[a X\right]=a^2 \operatorname{Var}\left[X\right]$  
+
+From this we can figure out the mean of the sampling distribution of the sample mean. 
+
+$\operatorname{Mean}[\bar x^{(n)}] = \operatorname{Mean}\left[\frac{1}{n}\sum\limits_{i=1}^n x_i\right]$
+
+Note that for clarity, we can break this up a bit by defining an intermediate variable: the sum of $n$ samples: $U^{(n)}$
+
+$\bar x^{(n)} = \frac{1}{n} U^{(n)}$, where   
+
+$U^{(n)} = \sum\limits_{i=1}^n x_i$
+
+Now what can we say about the mean and variance of $U^{(n)}$?  From our expectation rules about the sums of $n$ iid variables, we get:
+
+$\operatorname{Mean}[U^{(n)}] = \operatorname{Mean}\left[\sum\limits_{i=1}^n x_i\right] = n*\operatorname{Mean}[X] = n*\mu_X$
+
+$\operatorname{Var}[U^{(n)}] = \operatorname{Var}\left[\sum\limits_{i=1}^n x_i\right] = n*\operatorname{Var}[X] = n*\sigma_X^2$
+
+And using our expectation rules about multiplying a random variable by a constant we get:
+
+$\operatorname{Mean}[\bar x^{(n)}] = \operatorname{Mean}\left[\frac{1}{n} U^{(n)}\right] = \frac{1}{n} \operatorname{Mean}[U^{(n)}] = \frac{1}{n}*n*\mu_X = \mu_X$
+
+$\operatorname{Var}[\bar x^{(n)}] = \operatorname{Var}\left[\frac{1}{n} U^{(n)}\right] = \left(\frac{1}{n}\right)^2 \operatorname{Var}[U^{(n)}] = \left(\frac{1}{n}\right)^2*n*\sigma_X^2 = \frac{1}{n} \sigma_X^2$
+
+So, we learned that mean and variance of the sampling distribution of the sample mean are given by:
+
+$\operatorname{Mean}[\bar x^{(n)}] = \mu_X$
+
+$\operatorname{Var}[\bar x^{(n)}] = \frac{1}{n} \sigma_X^2$
+
+From our calculation of the variance of the sampling distribution of the sample mean, we can get the standard deviation:
+
+$\operatorname{SD}[\bar x^{(n)}] = \sqrt{\frac{1}{n} \sigma_X^2} = \frac{\sigma_X}{\sqrt{n}}$
+
+Let's see if all this hard work paid off by checking our answer with some simulations:
+
+```{r}
+n = 20
+mu.x = 100
+sigma.x = 15
+
+mu.xbar = mu.x
+sigma.xbar = sigma.x/sqrt(n)
+
+# so we expect the mean and standard deviation of the sample mean (xbar) to be:
+c(mu.xbar, sigma.xbar)
+
+# let's generate a lot of simulated sample means, and see if they have the right mean and sd
+sample.n = function(n){rnorm(n, mu.x, sigma.x)}
+sample.xbar.n = function(n){mean(sample.n(n))}
+
+sampled.xbars = replicate(10000, sample.xbar.n(n))
+
+# do our sampled sample means have the mean and sd we predict?
+c(mean(sampled.xbars), sd(sampled.xbars))
+```
+
+Great, these are spot on, modulo some sampling variability (if we wanted to be really, really sure, we could increase the number of sample means we sample).  
+
+So now we have learned something about the sampling distribution of the sample mean:
+
+$\bar x^{(n)} \sim \operatorname{Normal}\left({\mu_X, \frac{\sigma_X}{\sqrt{n}}}\right)$
+
+This calculation about the sampling distribution of the sample mean is the basis of many statistical procedures.
+
+## Standard error (of the sample mean)
+
+Often we are interested in how our sample mean ($\bar x^{(n)}$) differs from the population mean ($\mu_X$). What can we say about the distribution of the *error* of our sample mean: $\bar x^{(n)} - \mu_X$?  Well, using our expectation rules for adding a constant, we can see that:
+
+$\operatorname{Mean}\left[{(\bar x^{(n)}-\mu_X)}\right] = 0$, and
+
+$\operatorname{SD}\left[{(\bar x^{(n)}-\mu_X)}\right] = \frac{\sigma_X}{\sqrt{n}}$.
+
+Since the shape of the distribution will not change, we can say that our error is normally distributed:
+
+$(\bar x^{(n)}-\mu_X) \sim \operatorname{Normal}\left({0, \frac{\sigma_X}{\sqrt{n}}}\right)$
+
+The fact that the sampling distribution of the error of our sample mean has a mean of 0 means that the arithmetic mean is an *unbiased* estimate of the population mean.  The standard deviation of the sampling distribution of the error of the sample mean is called the **standard error of the sample mean**.  In general, for any estimator, the standard deviation of the sampling distribution of the error of that estimator is called the **standard error** (we will see such standard errors for slopes in regression, linear contrasts, etc.).
+
+Usually we will denote the standard error $s_{\cdot}$ with a subscript, or $\operatorname{se}\{\cdot\}$ with brackets:
+
+$\operatorname{se}\{\bar x^{(n)}\} = s_{\bar x^{(n)}} = \frac{\sigma_X}{\sqrt{n}}$
+
+(Technically, we would be more correct to call this $\sigma_{\bar x^{(n)}}$, since its a standard error obtained from the population standard deviation, rather than the sample standard deviation, but let's gloss over that for now.)
+

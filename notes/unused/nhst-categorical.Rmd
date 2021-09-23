@@ -1,0 +1,45 @@
+---
+output: 
+    html_document
+---
+
+---
+
+```{r Setup, include=FALSE, results='hide', warning=FALSE}
+library(knitr)
+opts_chunk$set(dev=c("png","pdf"),
+               fig.width=10,
+               fig.height=5,
+               dpi=300,
+               fig.show="hold",
+               fig.lp="fig:",
+               cache=TRUE,
+               par=TRUE,
+               echo=TRUE,
+               message=FALSE,
+               warning=FALSE)
+library(ggplot2)
+my_theme <- theme_bw() + 
+  theme(panel.grid = element_blank(), 
+        panel.background = element_rect(fill = "transparent", color=NA),
+        plot.background = element_rect(fill="transparent", color=NA),
+        axis.text = element_text(size=14),
+        title = element_text(size=18),
+        axis.title = element_text(size=16))
+```
+
+# Categorical data.
+
+Categorical data arise when our measurements correspond to classification.  For instance, any one student can be placed in a "sex" category (male/female), or a "major" category (psychology/linguistics/cog-sci/etc), or a year (freshman/sophomore/etc).  **Categorical measurements require that any given measurement unit (e.g., student) is assigned one and only one category per variable**. 
+
+For each of the categorical variables we described above, it is possible to set up those measurements not to have that key property: perhaps people opt not to identify as either male or female (and thus fall into neither sex category), or perhaps they are a double-major (and thus fall into multiple major categories).  Even though it is *possible* (and perhaps sometimes even desirable) to set these measurements up not to have the "every unit falls in exactly one category", here we are concerned with those measurements that do have this property.  (When this property is not met, so measurement units can be in any number of categories, it is better to consider the individual categories as isolated labels that any given individual can either ascribe to themselves or not -- we will not deal with analyzing such data right now).
+
+Perhaps the most common analysis tool for categorical data in psychology is a variation of the ["Chi-squared" test](chi-squared.html), which is used in two ways: (1) to see if the rates at which units fall into categories differs from some null-hypothesis distribution over categories (a "goodness of fit" test), and (2) to test whether two orthogonal categorical variables are "independent" (meaning that the distribution of categories along variable A does not vary with the variable B category).
+
+Since many categorical variables are actually binary (in the sense that there are only two categories), they can be effectively analyzed via a [Binomial variables](binomial-test.html).  This test is also useful when assessing null hypotheses about the median (or any other quantile) of numerical data, since such null hypotheses postulate that a certain proportion of values will be greater than the null hypothesis quantile; this is sometimes called a "sign test" when the question is about the median difference.
+
+In many cases it is useful to try to estimate, and put confidence intervals on, the [proportion](estimate-proportion.html) of one category or another; this is particularly common for binomial variables.
+
+For the special case of a 2x2 contingency table (two orthogonal binary categorical variables), some prefer to use Fisher's exact test, which we describe very briefly at the end of our notes on the [Chi-squared test](chi-squared.html).
+
+A more useful class of analyses aims to characterize how the rates or some binary or categorical response variable change as a function of one or more explanatory variables.  This is generally done via logistic or multinomial regression, which we will cover much later.

@@ -1,0 +1,35 @@
+---
+title: "Using rmarkdown"
+output: html_document
+---
+
+# Using R-markdown
+
+We have been using R-markdown throughout this class--the website, lecture notes and lab notes were all written in R-markdown (as are these instructions). R-markdown allows you to embed code and figures in easy to read text documents. This makes it much easier to present data to collaborators and yourself (and us who will be grading your assignments!).
+
+You should have R-markdown and knitr installed, but in case you dont:
+
+To install R-markdown, execute:
+
+```{r eval=FALSE}
+install.packages("rmarkdown")
+```
+
+You will also want to install the knitr package. This will allow you to turn Rmd files into pretty html files.
+
+```{r eval=FALSE}
+install.packages("knitr")
+```
+
+In broad strokes, you will want to:
+
+1. Create an Rmd file by going to "File", selecting "New File" and the "R Markdown". Alternatively, modify this file.  
+2. Write text as would in a Word or Text document. If you want to add formatting, check the [cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) or the [tutorial/basics](https://rmarkdown.rstudio.com/authoring_basics.html)    
+3. Insert chunks of code by selecting "Command + Shift + I"  on a Mac or "Control + Alt + I" on a PC . This will create a code block demarcated by three backticks, starting with \`\`\`{r} and ending with \`\`\`, rendered in grey in Rstudio. When you run the Rmd script, R-markdown will execute any code you've written in this space. See [here](http://rmarkdown.rstudio.com/authoring_rcodechunks.html) for more details.  
+4. Click "Knit HTML" on the top-bar to turn your Rmd file into a pretty html file (it will be created in the same folder).   
+5. **NOTE: please use `echo=TRUE` in your global options so that the code prints with the output when you render your html.**
+
+Here are some useful links  
+* [A brief tutorial](http://rmarkdown.rstudio.com/)  
+* [R markdown cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)   
+* [More throrough reference](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)

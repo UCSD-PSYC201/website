@@ -1,0 +1,240 @@
+---
+  output: 
+    html_document
+---
+
+
+# Ordinary Least-Squares (OLS) Regression
+
+In OLS regression we have one numerical response variable ($y$), and one numerical explanatory variable ($x$), and we model the relationship between the two as a line plus some error in ($y$):
+
+$$y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$$, where     
+$$\varepsilon_i \sim \operatorname{Normal}(0, \sigma_\varepsilon)$$
+
+```{R, fig.height=6}
+library(ggplot2)
+x = seq(-5,5,by=0.1)
+b0 = -2
+b1 = 1/3
+y.p = b0 + b1*x
+e = rnorm(length(x), 0, 0.4)
+
+df = data.frame(x = x, y = y.p, e = e)
+
+ggplot(df, aes(x,y))+
+  geom_line(size=1.5, color="blue")+
+  geom_point(aes(y=y+e), size=3)+
+  geom_linerange(aes(x=x, ymin=y, ymax=y+e), color="red")
+
+```
+
+Here we show the individual $x,y$ points as black dots, the underlying linear relationship in blue, and the error/residual (deviations in of $y$ from the exact line) in red.  A few things are noteworthy about the relationship this model assumes:
+
+(1) The relationship between $y$ and $x$ is a line.  We can always fit a line to some data, but the fact that we can do so does not mean that the relationship really is linear, or that a line fit to the relationship tells you anything meaningful at all.  This is a strong structural assumption made in regression modeling, and you should always check (at least by looking at a scatterplot), that this is an adequate description of the data.
+
+(2) There is error only in $y$; there is no error in the $x$ values.  This assumption is violated often, without particularly adverse consequences; however, one should be thoughtful when assigning $x$ and $y$ variables. As a consequence, the regression line for $y$ as a function of $x$ is different than the regression line for $x$ as a function of $y$ (for more, see the difference between [y~x and x~y](ols-lines.html)).  The correlation, on the other hand, is symmetric: $r_{xy} = r_{yx}$.
+
+(3) $y$ value errors for different points are independent and identically distributed.  This means that errors should not be correlated (as usually happens in timeseries data, or otherwise structured data), and that the distribution of errors does not change with $x$ (errors are "homoscedastic").  Small violations of these assumptions often do not have much of an effect, but sometimes they do.  We will talk about this at length later. 
+
+(4) Errors are normally distributed.  While this assumption is not necessary for calculating the least squares $B$ values, it is necessary for some of the null hypothesis tests we will be using to assess statistical significance of estimated model parameters.
+
+## Regression terminology
+
+Let's start with some terminology:
+
+$y_i = B_0 + B_1 x_i + \varepsilon_i$
+
+$B_0$ is the **y intercept**: the value of $y$ when $x = 0$.  It shifts the line up and down along the $y$ axis.
+
+$B_1$ is the **slope**: how many units of $y$ you gain/lose per unit change in $x$.  $B_1$ is in the units $y/x$. E.g., if we are predicting women's height from the height of her mother -- both in inches -- and we find a slope of 0.8, that means that (all else equal) for every inch taller that a mother is, we expect the daughter to be 0.8 inches taller.
+
+The **identity line** is $y=x$ (in other words: $B_0=0$, $B_1=1$).
+
+$\varepsilon_i$ is the **residual**, or **error**, of the $i$th point: how far the real $y$ value differs from the $y$ value we predict using our linear function of $x$.  In all regression, the goal is to estimate $B$ so as to minimize the sum of the squares of these residuals -- the sum of squared errors.
+
+## Estimating the regression line.
+
+Let's generate some fake data, and then fit a line to them.  
+
+```{r}
+IQ = rnorm(50, 100, 15)
+GPA = pmax(1, pmin(4.3, round((IQ-100)/15*0.5+2.8+rnorm(length(IQ),0,0.7), 1)))
+iq.gpa = data.frame(iq=IQ, gpa=GPA)
+g1 = ggplot(iq.gpa, aes(iq,gpa))+
+      geom_point(size=2)
+
+( lm.fit = lm(data = iq.gpa, gpa~iq) )
+```
+
+This fit gives us an intercept ($B_0$) and a slope ($B_1$) for the line that minimizes the sum of squared errors.  
+
+### Math behind estimating the regression line
+
+When estimating the regression line we are interested in finding the slope ($B_1$) and intercept ($B_0$) values that will make the predicted y values $\hat y_i = B_0 + B_1 x_i$ as close to actual $y_i$ values as possible.  Formally, we want to find the $B$ values that minimize the sum of squared errors: $\sum (y_i - \hat y_i)^2$.
+
+It is useful to work through the algebra that allows us to obtain least squares estimates of the slope and intercept from the summary statistics of x and y and their correlation.
+
+Mean of x and y:   
+
+- $\bar x = \sum\limits_{i=1}^n x_i$, and   
+- $\bar y = \sum\limits_{i=1}^n y_i$.
+
+Standard deviations of x and y (by way of the sum of squares of x and y):     
+
+- $\operatorname{SS}[x] = \sum\limits_{i=1}^n (x_i - \bar x)^2$   
+- $s_x = \sqrt{\frac{1}{n-1} \operatorname{SS}[x]}$   
+- $\operatorname{SS}[y] = \sum\limits_{i=1}^n (y_i - \bar y)^2$   
+- $s_y = \sqrt{\frac{1}{n-1} \operatorname{SS}[y]}$   
+
+The correlation of x and y by way of their sum of products and their covariance:
+
+- $\operatorname{SP}[x,y] = \sum\limits_{i=1}^n (x_i - \bar x)(y_i - \bar y)$   
+- $s_{xy} = \frac{1}{n-1} \operatorname{SP}[x,y]$   
+- $r_{xy} = \frac{s_{xy}}{s_x s_y}$
+
+```{r}
+n = nrow(iq.gpa)
+m.x = mean(iq.gpa$iq)
+m.y = mean(iq.gpa$gpa)
+SS.x = sum((iq.gpa$iq-m.x)^2)
+s.x = sd(iq.gpa$iq)
+SS.y = sum((iq.gpa$gpa-m.y)^2)
+s.y = sd(iq.gpa$gpa)
+SP.xy = sum((iq.gpa$iq-m.x)*(iq.gpa$gpa-m.y))
+s.xy = cov(iq.gpa$iq, iq.gpa$gpa)
+r.xy = cor(iq.gpa$iq, iq.gpa$gpa)
+```
+
+The least squares estimate of the slope is obtained by rescaling the correlation (the slope of the z-scores), to the standard deviations of y and x:
+
+$B_1 = r_{xy}\frac{s_y}{s_x}$
+
+```{r}
+b1 = r.xy*s.y/s.x
+```
+
+The least squares estimate of the intercept is obtained by knowing that the least-squares regression line has to pass through the mean of x and y.  Consequently, $B_1 \bar x + B_0 = \bar y$, and we can solve for the intercept as:
+
+$B_0 = \bar y - B_1 \bar x$
+
+```{r}
+b0 = m.y - b1*m.x
+```
+
+With these estimates we can obtain the predicted y values for each observed x:
+
+$\hat y_i = B_0 + B_1 x_i$
+
+```{r}
+iq.gpa$gpa.hat = iq.gpa$iq*b1 + b0
+```
+
+And from these we can calculate the individual residuals, the deviation of each y value from the y value predicted by the regression line:
+
+$e_i = y_i - \hat y_i$
+
+```{r}
+iq.gpa$residual = iq.gpa$gpa - iq.gpa$gpa.hat
+```
+
+From these residuals we can calculate the sum of squared error -- that is, the sum of squared residuals:
+
+$\operatorname{SS}[e] = \sum\limits_{i=1}^n e_i^2$
+
+```{r}
+SS.error = sum(iq.gpa$residual^2)
+```
+
+And thus, we can estimate the standard deviation of the residuals by dividing the sum of squared error by $n-2$ to get the variance, and then taking the square root.  We use $n-2$ because those are the degrees of freedom that are left after we estimate two parameters (the slope and intercept):
+
+$s_e = \sqrt{\frac{1}{n-2} \operatorname{SS}[e]}$
+
+```{r}
+s.e = sqrt(SS.error/(n-2))
+```
+
+## Standard errors of regression coefficients
+
+We can get the (marginal) standard errors of the slope and intercept using the `summary` function to get further details of the model fit:
+
+```{r}
+summary(lm.fit)
+```
+
+### Math behind regression line errors
+
+It is worth looking at the equations used to calculate the marginal standard errors for the slope and intercept.  Both standard errors increase with greater standard deviations of the residuals, and decrease with sample size; however, they also change in interesting ways with the standard deviation of $x$, and the mean of $x$.
+
+The standard error of the slope is proportional to the standard deviation of the residuals, inversely proportional to the square root of sample size, and also inversely proportion to the standard deviation of $x$.  This last fact is perhaps most intriguing, but should make sense: the more spread-out the x values are, the greater the change in y due to changes in x (rather than error), thus the better our estimate of the slope.
+
+$s\{B_1\} = s_e \frac{1}{s_x \sqrt{n-1}}$
+
+```{r}
+s.b1 = s.e/(s.x*sqrt(n-1))
+```
+
+The standard error of the intercept is more interesting.  Remember that we calculate the intercept by relying on the fact that the least squares regression line must go through the mean of y and the mean of x.  Consequently, we calculate the standard error of the intercept by summing the variance due to error in estimating the mean y value (which is inversely proportional to n), and the variance due to extrapolating the line with our uncertainty in the slope to x=0 (which is proportional to the squared standard error of the slope and the squared distance of the mean of x from 0).
+
+$s\{B_0\} = \sqrt{\left({\frac{s_e}{\sqrt(n)}}\right)^2 + \left({\bar x s_e \frac{1}{s_x \sqrt{n-1}}}\right)^2 }$
+
+```{r}
+s.b0 = s.e*sqrt(1/n + m.x^2/s.x^2/(n-1))
+```
+
+## Confidence intervals and tests for regression coefficients
+
+The `summary` function by default returns the t-test statistic and p-values for comparing parameter values to 0, which we can extract via the `coef` function:
+
+```{r}
+(s.lm.fit = summary(lm.fit))
+
+coef(s.lm.fit) # returns the matrix of coefficients, errors, t-stats, and p-values
+
+# we can index that matrix to get specific rows and columns out:
+coef(s.lm.fit)[c("(Intercept)"), c("t value", "Pr(>|t|)")]
+coef(s.lm.fit)[c("iq"), c("t value", "Pr(>|t|)")]
+```
+
+Similarly, we can get confidence intervals on these coefficients using `confint`, which calculates the standard t-distribution confidence intervals using the standard errors.
+
+```{r}
+confint(lm.fit, "(Intercept)", 0.95)
+confint(lm.fit, "iq", 0.95)
+```
+
+### Calculating t-tests and intervals
+
+Just as in the case of all of our t-tests for various mean comparisons, we are going to use the t-distribution to obtain p-values and get confidence intervals.
+
+T-test for slope being non-zero:
+
+```{r}
+t.b1 = (b1-0)/s.b1
+df = n-2        
+# n-2 because we lose two degrees of freedom for the slope and intercept when calculating the sample standard deviation of the residuals
+2*pt(-abs(t.b1), df) #two-tail p value
+```
+
+Confidence interval on the slope:
+
+```{r}
+q = 0.95
+t.crit = qt((1-q)/2,df)
+b1 + c(1,-1)*t.crit*s.b1
+```
+
+T-test for intercept being different from some null (0 by default).  Note that it is quite rare to test for some null intercept value; we do something analogous in ANCOVA, but for a simple regression this is rarely a useful question to ask.
+
+```{r}
+t.b0 = (b0-0)/s.b0
+df = n-2        
+2*pt(-abs(t.b0), df) #two-tail p value
+```
+
+Confidence interval on the intercept:
+
+```{r}
+q = 0.95
+t.crit = qt((1-q)/2,df)
+b0 + c(1,-1)*t.crit*s.b0
+```

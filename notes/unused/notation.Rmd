@@ -1,0 +1,60 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+# Notation
+
+## R notation
+
+R code will appear in line as `lm(y~x)`, or on separate lines as:
+
+````{r eval=FALSE}
+lm(y~x)
+````
+
+## Mathematical notation.
+
+Throughout these notes, and in class, we will adopt some notation conventions
+
+We will usually use *lower case greek letters* to refer to **model parameters**.  
+$\mu$ (mu) will refer to the population mean, typically in the context of a Normal distribution.  
+$\sigma$ (sigma) refers to the population standard deviation in the context of a Normal distribution (with $\sigma^2$ denoting variance).   
+$\rho$ (rho) refers to population correlation.  
+$\beta$ (beta) typically refers to population regression coefficients.  
+$\epsilon$ (epsilon) typically refers to errors or residuals in the context of regression.  
+$\alpha$ (alpha) usually refers to the "critical value" in null hypothesis significance testing.  
+$\chi$ (chi) will appear in the "chi-squared" distribution ($\chi^2$).  
+Other greek letters will appear at various points, standing for various values.  
+
+If there are multiple parameters of the same type in play, or if there is some other opportunity for confusion, we will add subscripts for clarity (e.g., $\mu_X$ and $\mu_Y$ to refer to the means of X and Y, respectively).
+
+We will use *upper case latin letters* to refer to random variables, and the $\sim$ sign to mean "distributed according to".  e.g., $X \sim \operatorname{Normal}(\mu_X, \sigma_X)$ means the random variable $X$ is distributed according to a normal distribution with mean $\mu_X$ and standard deviation $\sigma_X$.
+
+We will refer to specific values of a random variable, and specific observations with *lower-case latin letter* (e.g., $x$).
+
+Observations will usually have a numerical subscript: $x_1$ will refer to the first data point, $x_2$ the second, and so forth.
+
+We will use $n$ to refer to the sample size, subscripted if necessary for clarity.
+
+We will use "big sigma" notation for summation: $\sum\limits_{i=1}^n x_i$ means "sum $x_i$ for values of $i$ from $1$ to $n$":  
+$\sum\limits_{i=1}^n x_i = x_1 + x_2 + x_3 + ... + x_n$
+
+Less often we will use big pi notation for products: $\prod\limits_{i=1}^n x_i$ means "multiply $x_i$ for values of $i$ from $1$ to $n$":  
+$\prod\limits_{i=1}^n x_i = x_1 * x_2 * x_3 * ... * x_n$
+
+We will refer to the sample mean by putting a bar over it (e.g., $\bar x$, "x-bar", for the sample mean of $x$), and the sample standard deviation as $s$, perhaps subscripted for clarity (as in $s_x$).
+
+*Estimates* of population parameters will be the corresponding greek letter, with a "hat"; for instance, the estimated population mean would be $\hat\mu$.
+
+Putting all this together should make the following statements make sense:  
+
+$x_1,...,x_n \sim \operatorname{Normal}(\mu, \sigma)$  
+
+$\hat\mu = \bar x = \frac{1}{n}\sum\limits_{i=1}^n x_i$  
+
+$\hat\sigma = s = \sqrt{\frac{1}{n-1}\sum\limits_{i=1}^n (x_i - \bar x)^2}$  
+
+Which means, observations of $x_1$ through $x_n$ are normally distributed with mean $\mu$ and standard deviation $\sigma$; we will estimate $\mu$ with the sample mean (defined as the sum of all values divided by $n$); and we will estimate $\sigma$ using the sample standard deviation defined as the square root of the sum of squared deviations divided by $n-1$.
+
+We will introduce assorted other notation as needed.
+

@@ -1,0 +1,205 @@
+---
+output: 
+    html_document
+---
+
+# Random variables
+
+While it is easiest to explain the basic rules of probability in terms of sample spaces, outcomes, and events, in practice, we want to know about probability for describing random variables.  A **random variable** is a variable with a value obtained by measuring some stochastic process.  We can consider a complicated sample space in which we roll hundreds of dice (that is our stochastic process), but we can define a random variable $X$ as the total number of dots on two specific dice (die A, and die B).  This is very useful, since the world we measure is very complicated, but we simplify our lives by only dealing with simple observations of small aspects of it.
+
+> A **random variable** is a variable with a value that is subject to random variation. 
+
+For instance, if we roll a die twice, and define $X$ to be the sum of the two rolls, $X$ is a random variable.
+
+> The set of values the random variable can take on is called its **support**.
+
+The variable $X$ (sum of two dice rolls) can take on integers between 2 and 12, so its support is {2,3,4,5,6,7,8,9,10,11,12}.
+
+> The **probability distribution function** of a random variable    
+>  (e.g., $f_X(x)$ or $P(X=x)$ for $X$),    
+> describes the probability that the variable will take on any of its possible values.
+
+We can calculate the probability distribution function for the sum of two dice rolls (with our weird, uneven die) using the rules of probability by summing over all the ways that X will take on a particular value.
+
+````{r}
+outcomes = c('1', '2', '3', '4', '5', '6')
+unnormalized = c(2, 1, 1, 1, 1, 1)
+p.outcomes = unnormalized/sum(unnormalized)
+names(p.outcomes) <- outcomes
+p.outcomes
+````
+
+P(X=2) = P('roll-1' = 1 & 'roll-2' = 1) = (2/7)(2/7) = 4/49   
+P(X=3) = P('roll-1' = 1 & 'roll-2' = 2) + P('roll-1' = 2 & 'roll-2' = 1) = (2/7)(1/7) + (1/7)(2/7) = 4/49   
+etc.
+
+````{r}
+library(dplyr)
+
+# this line creates a data frame with every combination of die a and die b outcomes.
+joint.outcomes <- tidyr::expand(tibble(die.a = outcomes, die.b = outcomes), die.a, die.b)
+
+joint.outcomes <- joint.outcomes %>% 
+  mutate(X = as.numeric(die.a) + as.numeric(die.b),  # add column for sum of both dice.
+         p.die.a = p.outcomes[die.a],  # add columns corresponding to the independent probabilities of die 1 and die 2
+         p.die.b = p.outcomes[die.b],
+         p.conjunction = p.die.a*p.die.b)  # add column corresponding to joint probability (product, given independence)
+
+head(joint.outcomes)
+
+rv.X <- joint.outcomes %>%
+  group_by(X) %>%   # group by value of X (sum of the two dice)
+  summarize(p.X = sum(p.conjunction)) # sum up the probability of all outcomes that have that sum
+
+head(rv.X, 11)
+# just to confirm, let's make sure the probabilities sum to 1, since they ought to
+sum(rv.X$p.X)
+
+library(ggplot2)
+rv.X %>% ggplot(aes(X, p.X))+geom_bar(stat="identity")
+````
+
+In short, we can obtain the probability distribution of a random variable by applying the rules of probability to a description of the stochastic process presumed to determine the value of that random variable.  Notice that the probability distribution $P(X)$ is not *uniform*: $P(X=12) \neq P(X=7)$.  This will be the case for most distributions we consider. 
+
+We can define lots of other variables from the same sample space (of the outcomes of two dice rolls).   
+$A$ might be the number of dots on die A (range $\{1, ..., 6\}$);   
+$B$ could be the number of dots on die B (range $\{1, ..., 6\}$);   
+$Y$ could be $A-B$ (range is $\{-5, -4, ... , 4, 5\})$    
+$Z$ could be $A \cdot B$, etc.
+
+Each of these variables will have a different probability distribution, and all of them are usually written as $P(\cdot)$, which can create confusion.  One way to make this less confusing is to spell it out, for instance $P(X=x)$ is the probability distribution over the random variable $X$ which assigns probability to all possible outcomes, denoted in the lower case $x$.  This ends up being long-winded, and invariably people fall back to abbreviating to something like $P(x)$, but this sometimes causes confusion when dealing with multiple variables.  I try to deal with this by subscripting the probability functions, so in place of $P(X=x)$, I would write $P_X(x)$.  This has its own host of problems, but I think it is sometimes useful. 
+
+## Joint, conditional, and marginal probabilities
+
+Let's consider the random variables $X$ (sum of two dice rolls) and $Y$ (difference of roll A minus roll B).  The probability distribution of each of these variables in isolation (that is, if we disregard the value of the other variables) is called the **marginal distribution** of that variable (because we are effectively "marginalizing" over the other variable).  For instance, the marginal distribution $P(X=x)$ (the sum of two dice rolls) will be the distribution we calculated above when we disregarded the difference between the two rolls.  
+
+If we consider the distribution over one variable (say $X$) while holding another one fixed, we get the **conditional distribution**.  So if we consider the distribution of the sum of the two dice, given that die A - die B = 2, we are interested in the conditional distribution of X given $Y=2$: $P(X=x|Y = 2)$.  If the variables are *not independent*, this will be quite different from the marginal distribution $P(X)$.
+
+````{r}
+# let's add a column for the values of X and Y to our joint outcomes data frame
+joint.outcomes <- joint.outcomes %>% 
+  mutate(Y = as.numeric(die.a) - as.numeric(die.b)) # make a new column for the value of Y
+
+# now we will do the same "group_by(X) and sum probabilities" procedure, but only for cases where Y==2
+rv.X.Y_2 = joint.outcomes %>%
+  filter(Y==2) %>% # consider only outcomes where Y==2
+  group_by(X) %>%   # group by value of X (sum of the two dice)
+  summarize(p = sum(p.conjunction)) # sum up the probability of all outcomes that have that sum
+
+head(rv.X.Y_2, 11)
+
+# note that the sum is no longer 1.  Indeed, the sum will be P(Y==2), since those are the only outcomes we are counting
+sum(rv.X.Y_2$p)
+# consequently, we need to divide by P(Y==2) to get the probability P(X|Y==2)
+rv.X.Y_2 <- mutate(rv.X.Y_2, p=p/sum(p))
+
+head(rv.X.Y_2, 11)
+
+rv.X.Y_2 %>% ggplot(aes(X, p))+geom_bar(stat="identity")
+````
+
+Finally, we might consider the **joint distribution** which distributes probability over *conjunctions* of variables.  For instance, the joint distribution $P(X=x, Y=y)$ (which I will often write as $P_{XY}(x,y)$), distributes probability over the conjunctions of X and Y.  So $P_{XY}(x=5,y=-1)$ is the probability that the two die sum to 5 and die A is 1 smaller than die B (which only happens when A = 2, B=3, which has a probability of (1/7)(1/7)=1/49). 
+
+
+````{r}
+# now we will do the same "group_by and sum probabilities" procedure, but will group by all combinations of X and Y
+rv.XY = joint.outcomes %>%
+  group_by(X,Y) %>%   # group by value of X and Y
+  summarize(p = sum(p.conjunction)) # sum up the probability of all outcomes that have that sum
+head(rv.XY)
+
+rv.XY %>% ggplot(aes(x=X, y=Y, fill=p))+
+  geom_tile() + 
+  scale_x_continuous(breaks = 2:12)+
+  scale_y_continuous(breaks = -6:6)
+```
+
+Since random variables are *partitions* over the sample space, we can use the law of total probability to calculate the *marginal distribution* of X from a joint distribution of X and Y by summing (or integrating for continuously valued variables) over all values of Y:    
+$P_X(x) = \sum\limits_{y \in Y}P_{XY}(x,y)$
+
+```{r}
+rv.XY %>% group_by(X) %>%
+  summarize(p = sum(p))
+```
+
+It is possible for two sets of variables to have very different joint distributions while having the same marginal distributions.  Consider two scenarios with identical marginal distributions:
+
+(1) We roll two fair dice, A and B, and these dice are independent.  The marginal distributions of $P(A)$ and $P(B)$ are uniform over the integers 1 through 6 (assigning each one 1/6 probability).  The joint distribution $P(A,B)$ is uniform over all 36 conjunctions (assigning each one 1/36 probability), consequently the conditional distributions show independence in that they are equal to the marginal distributions: $P(A|B)=P(A)$ and $P(B|A)=P(B)$. 
+
+(2) We roll two magical magnetic dice, A and B, which always come up equal, but are equally likely to come up as any integer.  The marginal distributions $P(A)$ and $P(B)$ are the same as in (1), they are uniform over the integers 1 through 6.  However, the joint distribution $P(A,B)$ is not uniform: it assigns 0 probability to every conjunction where $A \neq B$, and the six outcomes where $A=B$ ($\{(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)\}$) each have probability 1/6.  In this scenario, the variables are not independent, and the conditional distributions are not equal to the marginal distributions: $P(A|B=3)$ is not uniform over the integers 1 through 6, but assigns 100\% probability to $A=3$ and 0 probability to all other outcomes.
+
+## Bernoulli distribution
+
+Let's consider a single flip of a bent coin.  If it comes up heads, we will say random variable $y=1$, if it is tails, $y=0$.
+
+The coin is bent, and comes up heads with probability $p$.
+
+Using the various rules of probability, we can show that:
+$P(y=1) = p$
+$P(y=0) = (1-p)$
+
+If we write down a function of $y$ that returns these probabilities when we give it a particular value of y, we have written down the probability distribution function of y.  Usually we would write this as $f(y)$.
+
+In this case, $f(y)$ is the "Bernoulli" distribution, typically written as:
+
+$f(Y) = \operatorname{Bernoulli}(y|p) = \{p \mbox{ if } y = 0 \mbox{   and } (1-p) \mbox{ if } y=0 \}$
+
+This trivial example shows that the probability distribution function of a random variable is obtained by using the rules of probability.  Rather than writing out a long description about how coin flips determine the value of $y$, it is much more convenient to simply write out the probability distribution function of $y$, as we did above. Moreover, since the Bernoulli distribution is widely known, we could just refer to it by name, and informed people will know that it means the function spelled out above.
+
+$f(y \mid p) = \operatorname{Bernoulli}(p)$
+
+It is even more convenient to write this out in "sampling" notation:
+
+$y \sim \operatorname{Bernoulli}(p)$
+
+This basically says "random variable y is a random draw from a Bernoulli distribution with parameter p"; in other words, random variable y takes on values with probability given by Bernoulli(p).
+
+## Combinations and the binomial distribution
+
+If we flip a coin that comes up heads with probability $p=0.8$, and tails with probability $(1-p)=0.2$, the probability of getting HHT after three independent flips is (under the justifiable assumption that the different flips are independent):   
+$P(H)P(H)P(T) = p \cdot p \cdot (1-p) = 0.8 \cdot 0.8 \cdot 0.2 = 0.128$.
+
+What is the probability of getting 2 heads out of 3 flips?  To answer this question, we must sum up all the different ways in which we can get 2 out of 3 heads: HHT, HTH, THH:  
+$P(2\mbox{ H out of } 3) = P(\mbox{HHT}) + P(\mbox{HTH}) + P(\mbox{THH})$
+
+We should be able to convince ourselves that: $P(\mbox{HHT}) = P(\mbox{HTH}) = P(\mbox{THH}) = p^2 \cdot (1-p)$.
+
+In general, we see that the probability of any particular sequence with n heads (and therefore, necessarily, 3-n tails) will be $p^n * (1-p)^{3-n}$.
+
+So $P(2\mbox{ H out of } 3) = (3)\cdot p^2 \cdot (1-p)$, which we can partition into the constant $(3)$, which indicates how many 3-flip outcomes result in two heads, and the probability of any one such outcome occurring.
+
+Now, let's say define $x$ to be a random variable equal to the number of heads in our sequence of 3 coin flips.  $x$ can have 4 values (0, 1, 2, 3).  The probability of $x$ taking on any particular value is the probability of the disjunction of the outcomes (sequences) that have that number of heads.
+$P(x=0) = P(\mbox{TTT})$
+$P(x=1) = P(\mbox{HTH} \lor \mbox{THT} \lor \mbox{TTH})$
+$P(x=2) = P(\mbox{HHT} \lor \mbox{HTH} \lor \mbox{THH})$
+$P(x=3) = P(\mbox{HHH})$
+
+And we can use our disjunction rule to calculate the probabilities (with the understanding that the unique sequences are disjoint; i.e., $P(\mbox{HTH} \land \mbox{HHT})=0$).
+$P(x=0) = P(\mbox{TTT}) = (1-p)^3$
+$P(x=1) = P(\mbox{HTH} \lor \mbox{THT} \lor \mbox{TTH}) = P(\mbox{HTH}) + P(\mbox{THT}) + P(\mbox{TTH}) = 3 * p * (1-p)^2$
+$P(x=2) = P(\mbox{HHT} \lor \mbox{HTH} \lor \mbox{THH}) = P(\mbox{HHT}) + P(\mbox{HTH}) + P(\mbox{THH}) = 3 * p^2 * (1-p)^1$
+$P(x=3) = P(\mbox{HHH}) = p^3$
+
+In general, if we define $x$ to be the number of coins that were heads out of a sequence of $n$ flips, each coming up heads with probability $p$, the probability that $x=k$ will be given by   
+$\mbox{(number of unique sequences that give k out of n heads)} * p^k * (1-p)^{n-k}$
+
+
+We can enumerate all the ways in which we would get $k$ of $n$, and count, but let's try to come up with a faster, general scheme for doing so.  
+The number of unique sequences that have $k$ out of $n$ heads is given by the [binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient).  This is generally written as ${n \choose k}$, which reads as "n choose k", and describes the number of different, but order invariant, combinations of $k$ objects selected from a set of $n$.  
+
+${n \choose k} = \frac{n!}{k!(n-k)!}$ 
+
+(The exclamation mark is the factorial operation: $x! = x \cdot (x-1) \cdot (x-2) \cdot ... \cdot (1)$.)
+
+So we can write a general expression for the probability that $x$ will take on a particular value $k$:
+
+$P(x \mid p,n) = f(x \mid p,n) = {n \choose k}p^k(1-p)^{n-k}$
+
+This is the binomial distribution, which distributes probability over $k$ -- the number of successes -- given two parameters: $n$ (the number of attempts), and $p$ (the probability of a success on any one attempt).  Since this distribution is widely known, we would typically abbreviate it as
+
+$P(x \mid p,n) = \operatorname{Binomial}(p,n)$
+
+or in sampling notation
+
+$x \sim \operatorname{Binomial}(p,n)$.
+

@@ -1,0 +1,41 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+<!--
+Thing explainer: ideas
+How do we tell which of our ideas are better?  I say: better ideas let everyone do things that they could not do without them.  We can see how much an idea helps everyone do things by asking: How often can we use the idea: how often will it tell us what to do or what will happen?  Will different people using this idea expect the same things to happen?  How exactly does the idea tell us what to do or what will happen?  When we do things the idea tells us should work, do they work?
+-->
+
+# Theories
+
+> **TL; DR:** Consider the quality of theories based on their
+> - Coverage:  How broadly does it apply?  
+> - Reliability: Are the predictions it makes unambiguous?  
+> - Fidelity: How precise are the predictions it makes?  
+> - Validity: Are these predictions right?  
+
+While science begins with measurement, it ends with theories.  Theories are how we consolidate all the measurements into pithy explanations and descriptions that allow us to predict how the world will behave, so that we might begin to use our understanding of the world to change it in ways we like -- engineering.
+
+Not all theories are created equal.  What makes a theory better or worse?  It all boils down to how well the theories make *new* predictions.  As you read the literature, you will encounter many proposed accounts of phenomena that meet this criterion to various degrees, and it's worth characterizing the dimensions of quality along which theories differ.  
+
+Theory coverage: *How broad a range of circumstances does the theory cover?*
+:    In other words, how many restrictions must be in place before the advocates of the theory believe that it ought to make valid predictions?  Physics students end up first learning kinematics with friction and material properties removed; those simplified versions of classical mechanics can successfully make predictions in real circumstances where those ignored forces are negligible, but do not have coverage when (e.g.) air friction is high relative to gravitational acceleration.  In many nascent fields, theories are very piecemeal, predicting only very narrow behaviors in very narrow circumstances; often this means that many natural circumstances lie at the intersection of multiple theories each predicting different behavior.  
+:    All else equal, a theory with greater coverage is better.  
+
+Theory reliability: *How reliable are the predictions obtained from a description of this theory?*  
+:    In other words, if I give some statement describing this theory to a dozen experts, and describe a random experiment with measures and manipulations within the relevant domain that the theory aims to predict, how much agreement will there be among experts as to what the described theory predicts?  If we take classical mechanics, the theory is expressed as kinematic equations, and physics students routinely use those equations to generate the same predictions -- these are highly reliable.  In many nascent fields, "theories" are often described verbally, as metaphors or analogies, and experts will disagree as to what the theory predicts in slightly novel settings.  
+:   A good theory must have high reliability, otherwise it is not science.
+
+Theory fidelity: *How precise are the predictions the theory makes?*  
+:    A theory might only predict that a ball will fall down, and not up. Or it might predict the overall ordering of ball speeds dropped from different heights.  Or it might predict the overall position/velocity/acceleration trajectory of balls dropped from various heights.  Nascent fields often have theories that only make binary (up/down, same/different, bigger/smaller) predictions, and more developed fields have theories that make more precise, quantitative predictions.  
+:    All else equal, a theory that makes higher fidelity predictions is better.
+
+Theory validity: *How accurate are the predictions the theory makes?*  
+:   This is the obvious criterion for a theory that we all know: the predictions it makes ought to match the actual, observed behavior of the world in experiments, etc. Note, of course, that it is much easier to make a "correct" prediction, if the prediction is much less precise, is subject to various parameters, or is the same as the predictions we would make from any other account.  It's hard to adjudicate between the validity and fidelity of different theories -- [Bayesian model selection](https://en.wikipedia.org/wiki/Bayes_factor) / [Occam's razor](https://en.wikipedia.org/wiki/Occam%27s_razor) is one such formal approach that we will discuss later.  
+:    However, all else equal, a theory that makes more accurate predictions is better.
+
+## Which theory qualities are more important?
+
+I believe that by far the most important quality of a theory is its reliability.  If a theory is described sufficiently vaguely that it can make different predictions depending on who is looking at it, its validity simply cannot be assessed.  This I would consider to be the most important aspect of [falsifiability](https://en.wikipedia.org/wiki/Falsifiability).  So long as a theory is reliable in its predictions, it's a lot less obvious how to trade off converage, fidelity, and validity: is it better to have a broad theory that gets many predictions right, but gets some wrong; or a very narrow theory that only makes a few predictions, but all of them are correct?  Is it better to have a broad theory that only predicts whether response times will be the same or different for many situations; or a narrow theory that predicts the exact response times in a single situation?  That seems much trickier to assess.

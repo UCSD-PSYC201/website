@@ -1,0 +1,121 @@
+---
+output: 
+    html_document
+---
+
+# Expectation and moments
+
+Let's consider some discrete random variable, X:
+
+```{r}
+( rv.X <- tibble::tibble(x = 1:10, p.x = c(0.05, 0.05, 0.1, 0.1, 0.2, 0.25, 0.1, 0.05, 0.05, 0.05)) )
+```
+
+The **expected value**, **EV**, or **expectation**  ($\mathbb{E}\left[\cdot\right]$) of some random variable $X$ is the probability-weighted average of the values.  
+
+For discrete random variables this is calculated as the probability-weighted sum of the values:  
+$\mathbb{E}\left[X\right] = \sum\limits_{x}x P(x)$.  
+
+For continuous random variables as the probability-weighted ingral of the values:   
+$\mathbb{E}\left[X\right] = \int\limits_{-\infty}^{\infty}x f_X(x)dx$.  
+ 
+The **mean** of a random variable is just its expected value:   
+$\mu_X = \operatorname{Mean}\left[X\right] = \mathbb{E}\left[X\right]$.
+
+ So, our variable $X$ has an expected value / mean of  5.4:   
+ $\operatorname{Mean}\left[X\right] = \mathbb{E}[X] = 1*0.05 + 2*0.05 + 3*0.1 + 4*0.1 + 5 *0.2 + 6*0.25 + 7*0.1 + 8*0.05 + 9*0.05 + 10*0.05 = 5.4$.
+ 
+```{r}
+( mu.X <- sum(rv.X$x * rv.X$p.x) )
+```
+
+More generally, we can calculate the expected value of some function of a random variable $g(X)$ in the same way: e.g., $\mathbb{E}\left[g(X)\right] = \int\limits_{-\infty}^{\infty}g(x)f_X(x)dx$. (or a sum for discrete random variables)
+
+The **variance** of a random variable is the expected value of the squared distance of $x$ from its mean:   
+$\sigma_X^2 = \operatorname{Var}\left[X\right] = \mathbb{E}\left[(X-\mu_X)^2\right]$.  
+
+Sometimes it is useful to consider the equivalence:   
+$\mathbb{E}\left[(X-\mu_X)^2\right] = \mathbb{E}\left[X^2\right]-\mu_X^2$.  
+
+
+```{r}
+( var.X <- sum((rv.X$x - mu.X)^2 * rv.X$p.x) )
+```
+
+The ***standard deviation*** is the square root of the variance: $\sigma_X = \sqrt{\sigma_X^2}$.
+
+
+```{r}
+( sigma.X <- sqrt(var.X) )
+```
+
+**Standardizing** a random variable means subtracting the mean and dividing by the standard deviation. This is often called "z-scoring", so we will refer to it with the function $\operatorname{z}_X(x) = \frac{x-\mu_X}{\sigma_X}$.
+
+```{r} 
+( rv.X <- dplyr::mutate(rv.X, z.x = (x-mu.X)/sigma.X) )
+```
+
+The **skewness** of a random variable is the expected value of the cubed standardized score of $X$ ($\frac{X-\mu_X}{\sigma_X}^3$).  $\gamma_X = \operatorname{Skew}\left[X\right] = \mathbb{E}\left[\operatorname{z}_X(x)^3\right] = \mathbb{E}\left[\left(\frac{X-\mu_X}{\sigma_X}\right)^3\right]$.
+
+```{r}
+( skewness.X <- sum(rv.X$z.x^3 * rv.X$p.x) )
+```
+
+The **kurtosis** of a random variable is the expected value of the standardized score of $X$ raised to the 4th power ($\mathbb{E}\left[\left(\frac{X-\mu_X}{\sigma_X}\right)^4\right]$).  Typically, however, we consider the **excess kurtosis**, which subtracts 3 making it $0$ for the Normal distribution.  So we define $\kappa_X = \operatorname{Kurt}\left[X\right] = \mathbb{E}\left[\operatorname{z}_X(x)^4\right]-3 = \mathbb{E}\left[\left(\frac{X-\mu_X}{\sigma_X}\right)^4\right]-3$.
+
+
+```{r}
+( ex.kurtosis.X <- sum(rv.X$z.x^4 * rv.X$p.x)-3 )
+```
+
+
+The $n$th **moment** of a random variable is the expectations of a function of $X$ of the form $g_n(x) = \left(\frac{x-a}{b}\right)^n$.  Typically,   
+"first moment" refers to the mean: the first *raw* moment where $g_1(x) = x$;   
+"second moment" refers to the variance: the second *central* moment where $g_2(x)=(x-\mu_X)^2$;  
+"third/fourth moment" refer to skewness/kurtosis: the third/fourth *standardized* moments where $g_3(x)=\operatorname{z}_X(x)^3$, and $g_4(X)=\operatorname{z}_X(x)^4$.
+
+## There are a few useful properties about how the Mean, Variance, Skewness, and Excess Kurtosis behave under various operations:  
+### Adding a constant
+
+  $\operatorname{Mean}\left[X+a\right]=\operatorname{Mean}\left[X\right]+a$  
+  
+  $\operatorname{Var}\left[X+a\right]=\operatorname{Var}\left[X\right]$  
+  
+  $\operatorname{Skew}\left[X+a\right]=\operatorname{Skew}\left[X\right]$  
+  
+  $\operatorname{Kurt}\left[X+a\right]=\operatorname{Kurt}\left[X\right]$.  
+  
+### Multiplying by a constant  
+
+  $\operatorname{Mean}\left[a X\right]=a \operatorname{Mean}\left[X\right]$  
+  
+  $\operatorname{Var}\left[a X\right]=a^2 \operatorname{Var}\left[X\right]$  
+  
+  $\operatorname{Skew}\left[a X\right]=\operatorname{sgn}(a) \operatorname{Skew}\left[X\right]$, where $\operatorname{sgn}(\cdot)$ is the [sign function](https://en.wikipedia.org/wiki/Sign_function)  
+  
+  $\operatorname{Kurt}\left[a X\right]=\operatorname{Kurt}\left[X\right]$. 
+  
+### Adding an *independent* random variable $Y$:  
+
+  $\operatorname{Mean}\left[X+Y\right]=\operatorname{Mean}\left[X\right]+\operatorname{Mean}\left[Y\right]$  
+  
+  $\operatorname{Var}\left[X+Y\right]=\operatorname{Var}\left[X\right] + \operatorname{Var}\left[Y\right]$  
+  
+  $\operatorname{Skew}\left[X+Y\right]=\frac{\operatorname{Skew}\left[X\right] + \operatorname{Skew}\left[Y\right]}{(\sigma_X^2 + \sigma_Y^2)^{3/2}}$  
+  
+  $\operatorname{Kurt}\left[X+Y\right]=\frac{\sigma_X^4 \operatorname{Kurt}\left[X\right]+\sigma_Y^4 \operatorname{Kurt}\left[Y\right]}{(\sigma_X^2 + \sigma_Y^2)^2}$.  
+  
+  It's also useful to know what happens to the variance of X+Y when X and Y are *not independent*:   $\textbf{Var}[X+Y] = \textbf{Var}[X] + \textbf{Var}[Y] + 2*\textbf{Cov}[X,Y]$, (where $\textbf{Cov}[X,Y]$ denotes the covariance of X and Y; which is 0 for independent random variables)  
+  
+### Sum of $n$ *independent* random variables ${X_1, ..., X_n}$ all *identically distributed* as $X$:  
+
+  $\operatorname{Mean}\left[\sum_{i=1}^n X_i\right]=n \operatorname{Mean}\left[X\right]$  
+  
+  $\operatorname{Var}\left[\sum_{i=1}^n X_i\right]=n \operatorname{Var}\left[X\right]$  
+  
+  $\operatorname{Skew}\left[\sum_{i=1}^n X_i\right]=\frac{1}{\sqrt{n}}\operatorname{Skew}\left[X\right]$  
+  
+  $\operatorname{Kurt}\left[\sum_{i=1}^n X_i\right]=\frac{1}{n^2}\operatorname{Kurt}\left[X\right]$. 
+
+note that these properties of the sum of independent, identically distributed random variables are symptoms of the [central limit theorem](prob-clt-normal.html) in action.
+

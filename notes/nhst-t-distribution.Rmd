@@ -1,0 +1,184 @@
+---
+output: 
+    html_document
+---
+
+```{r Setup, include=FALSE, results='hide', warning=FALSE}
+# library(knitr)
+# opts_chunk$set(dev=c("png","pdf"),
+#                fig.width=5,
+#                fig.height=3,
+#                dpi=300,
+#                fig.show="hold",
+#                fig.lp="fig:",
+#                cache=TRUE,
+#                par=TRUE,
+#                echo=TRUE,
+#                message=FALSE,
+#                warning=FALSE)
+library(ggplot2)
+my_theme <- theme_bw() + 
+  theme(panel.grid = element_blank(), 
+        panel.background = element_rect(fill = "transparent", color=NA),
+        plot.background = element_rect(fill="transparent", color=NA),
+        axis.text = element_text(size=14),
+        title = element_text(size=18),
+        axis.title = element_text(size=16))
+```
+
+# TL; DR.
+
+- When using the sample standard deviation to define a test statistic, the sampling variability of the sample sd. will influence the distribution of the test statistic under the null.
+
+- Consequently, we can't use the normal distribution if we use the sample sd.  Instead we use the t distribution, (`dt`, `pt`, `qt`, with the degrees of freedom used to estimate the sample sd)
+
+# Sampling distribution of sample variance, and t-statistic
+
+Ok, so suppose we no longer know what the population standard deviation ought to be under the null hypothesis.  This is nearly always the case in practice.
+
+For instance, we might measure the math GRE scores of folks in our class, and aim to test whether or not those GRE scores are distributed with a mean different from 500.  We don't know what the standard deviation ought to be, so we cannot use a Z test.  Instead we must use a T-test.
+
+## Sample variance
+
+Recall that the sample variance is defined as:
+
+$s^2_x = \frac{1}{n-1}\sum\limits_{i=1}^n{(x_i-\bar x)^2}$
+
+You would reasonably ask: **why are we dividing by $(n-1)$?**
+
+*The short answer*: because if you used $n$, your sample variance would tend to underestimate the population variance; however, with the $(n-1)$ correction, ensures that the sample variance is not biased.  
+
+*The longer answer*: The sample variance is defined as the variance around the sample mean; however, the sample mean is calculated so as to *minimize* the sum of squared deviations of the data points from it; in other words, to minimize the sample variance.  Therefore, without the $(n-1)$ correction, the sample variance would be biased by our calculation of sample mean.  Since we compute the sample mean based on the data, and then use the same data to calculate the sample variance, our calculation of sample variance has fewer **degrees of freedom** than our calculation of the sample mean.  The degrees of freedom refers to how much we have constrained our calculation.  When we calculate the sample mean, we have not constrained any of the parameters of our calculation based on the data, therefore all the data points are "free to vary".  So for the calculation of sample mean, our degrees of freedom is the number of data points $df = n$.  However, when we calculate the sample variance, we have already calculated the sample mean, and the sample variance calculation is *conditioned* on the value of the sample mean (since we calculate squared deviations from the sample mean). Consequently, we have constrained the calculation by one parameter.  This means that conditioned on our estimated sample mean, all but one of the data points are free to vary (in other words, the nth data point can be calculated from the first n-1 data points and the sample mean, so it is not free to vary) -- thus we have $n-1$ degrees of freedom, and using that in the calculation of the sample variance appropriately corrects the bias.
+
+*The mathematical answer*: If this text-based explanation seems convoluted and confusing, that is because it is.  For those that are comfortable with math, the wikipedia page on Variance works through the calculation of the expected bias of the sample variance calculated using $n$, and shows that using $n-1$ [yields an unbiased estimate of variance](https://en.wikipedia.org/wiki/Variance#Sample_variance).
+
+## Sampling distribution of the sample variance
+
+If we take multiple samples of size $n$ from some population, and compute the sample mean of each, the sample mean will vary from one sample to the next.  The variation of the sample mean across samples (when they all come from the same distribution) is known as the sampling distribution of the sample mean, and it follows a normal distribution with a standard deviation known as the "standard error of the mean" (see [notes on normal statistics](nhst-basics-normal.html) ).  Similarly, the sample variance will vary from one sample to another.  We need not worry now about the details of the sampling distribution of the sample variance, but it suffices to say: it will vary around the population variance.
+
+We can simulate the sampling distribution of the sample standard deviation:
+
+```{r, fig.width=10, fig.height=3} 
+sample.n = function(n){rnorm(n, 100, 15)}
+df.sample.var = rbind(data.frame(sample.variance=replicate(10000,sd(sample.n(10))), n="10"),
+                      data.frame(sample.variance=replicate(10000,sd(sample.n(50))), n="50"),
+                      data.frame(sample.variance=replicate(10000,sd(sample.n(250))), n="250"))
+ggplot(df.sample.var, aes(x=sample.variance))+facet_grid(.~n)+
+  geom_histogram(fill="darkblue")+
+  geom_vline(xintercept=15, size=1, color="red")+ # true population variance.
+  my_theme # consult visualization notes on how to make a plot theme.
+```
+
+In other words, sometimes the sample standard deviation ($s_x$) will be bigger than the population standard deviation ($\sigma_x$), and sometimes smaller.  The smaller our sample size, the more variable the sample standard deviation will be around the population standard deviation.
+
+## Sampling distribution of t-statistic
+
+Because the sample standard deviation is subject to sampling variability, if we calculate the equivalent of a Z-statistic, but using the sample standard deviation instead of the population standard deviation:
+
+$t_{\bar x} = \frac{(\bar x-mu)}{s_x / \sqrt n}$
+
+this statistic will *not* follow the standard normal (Z) distribution.  This is entirely because our sample standard deviation also tends to vary from sample to sample.
+
+The sampling distribution of this **"t"** statistic reflects the variation of both the sample mean as well as the sample variance.  The sampling distribution of the t statistic is effectively a weighted mixture of many gaussian distributions, each with a different standard deviation (reflecting the sampling distribution of the sample variance).  This is known as the **(Student's) T distribution**.  And this is the distribution we will be using to calculate null hypothesis tests and confidence intervals in situations when we must estimated the population standard deviation from the sample.
+
+We can simulate the distribution of a t-statistic, and compare it to the standard normal (Z) distribution.
+
+```{r}
+mu.x = 100  # population value
+sd.x = 15   # population value
+n = 3       # small sample size to highlight t distribution tails
+sample.n = function(n){rnorm(n, mu.x, sd.x)}
+calculate.t = function(x){(mean(x) - mu.x)/(sd(x)/sqrt(length(x)))} # uses sample sd
+calculate.z = function(x){(mean(x) - mu.x)/(sd.x /sqrt(length(x)))} # uses population sd
+
+sample.ts = replicate(10000, calculate.t(sample.n(n)))
+sample.zs = replicate(10000, calculate.z(sample.n(n)))
+
+df = rbind(data.frame(value=sample.ts, statistic="T"),
+           data.frame(value=sample.zs, statistic="Z"))
+
+ggplot(df, aes(x=value, fill=statistic))+
+  geom_histogram(position="identity", binwidth=0.2, alpha=0.5)+
+  scale_x_continuous(limits=c(-5,5))+
+  my_theme # consult visualization notes on how to make a plot theme.
+```
+
+Notice that with our small sample size (3), the tails of the t-distribution are considerably "heavier" than those of the standard normal distribution.  With small ns, the standard deviation of the t distribution is larger than 1, and it has a kurtosis much greater than that of a normal.
+
+We can see the deviation of the T-distribution from a standard normal distribution much more clearly using [QQ plots](qq-plots.html):
+
+```{r, fig.width=5, fig.height=5}
+qs = seq(0.01, 0.99, by=0.01)
+df.qs = data.frame(quantile.P = qs,
+                   q.val.Normal = qnorm(qs),
+                   q.val.t = quantile(sample.ts,qs),
+                   q.val.z = quantile(sample.zs,qs))
+ggplot(df.qs, aes(q.val.Normal, q.val.z))+
+  geom_point(col="blue", cex=2)+
+  geom_line(col='blue', size=0.75)+
+  geom_point(aes(y=q.val.t), col="red", cex=2)+
+  geom_line(aes(y=q.val.t), col='red', size=0.75)+
+  geom_abline(position="identity")+
+  xlab("Standard normal quantile")+
+  ylab("Sampling dist of statistic quantile")+
+  my_theme
+```
+
+The blue line corresponds to the qq-plot for sample z statistics, and the red line for sampled t statistics, compared to the standard normal distribution.  This display highlights that the heavy tails of the sampling distribution of the t statistic have a huge impact on extreme quantiles: the z statistic corresponding to the 98th percentile is about `qnorm(0.98)`=2, but the corresponding 0.98 quantile for a t distribution with n=3 is about `qt(0.98,2)`=5.  Likewise, while a statistic of 2 corresponds to the `pnorm(2)`=98th percentile of the z distribution, it is the `pt(2,2)`=91st percentile of the t distribution.  Consequently, if we define a 95% confidence interval as $\pm 1.96 s_{\bar x}$ (as we would using the z distribution), we only get a `1-2*pt(-1.96,2)`=81% confidence interval out. Similarly, if we reject a t-statistic based on a critical z value chosen for $\alpha=0.05$, our false-alarm rate will actually be 19%.
+
+## T-distribution
+
+Consequently, the sampling distribution of the t-statistic is not a standard normal, but is a T distribution with a "degrees of freedom" parameter:
+
+$df = \nu = n-1$  (this is pronounced "nu", but normally we will just refer to it as degrees of freedom)
+
+We can show that the sampled t statistics follow this t-distribution by looking at the qq-plot comparing sampled t statistics to the theoretical t distribution:
+
+```{r, fig.width=10, fig.height=3}
+df = rbind(data.frame(value=sample.ts, what="sample t stats"),
+           data.frame(value=rt(length(sample.ts), n-1), what="t distribution samples"))
+
+g1 = ggplot(df, aes(x=value, fill=what))+
+  geom_histogram(position="identity", binwidth=0.2, alpha=0.5)+
+  scale_x_continuous(limits=c(-5,5))+
+  my_theme # consult visualization notes on how to make a plot theme.
+
+qs = seq(0.01, 0.99, by=0.01)
+df.qs = data.frame(quantile.P = qs,
+                   q.val.t.theoretical = qt(qs,n-1),
+                   q.val.t.samples = quantile(sample.ts,qs))
+g2 = ggplot(df.qs, aes(q.val.t.theoretical, q.val.t.samples))+
+  geom_point(col="red", cex=2)+
+  geom_line(col='red', size=0.75)+
+  geom_abline(position="identity")+
+  my_theme
+library(gridExtra)
+
+grid.arrange(g1,g2,ncol=2)
+```
+
+## Degrees of freedom.
+
+As our sample size increases, our degrees of freedom increase.  This means that the sampling distribution of the sample variance has less variability, and as a consequence, the t-distribution looks more normal.
+
+```{r}
+t = seq(-5,5,by=0.05)
+df = rbind(data.frame(t=t, pt=dnorm(t), df="Normal"),
+           data.frame(t=t, pt=dt(t,100), df="100"),
+           data.frame(t=t, pt=dt(t,30), df="30"),
+           data.frame(t=t, pt=dt(t,10), df="10"),
+           data.frame(t=t, pt=dt(t,3), df="5"),
+           data.frame(t=t, pt=dt(t,1), df="1"))
+ggplot(df, aes(x=t,y=pt,color=as.factor(df)))+
+  geom_line(position="identity", size=1)+
+  scale_color_manual(values = c("black", "red", "blue", "green", "orange", "magenta"))+
+  my_theme
+```
+
+As we see, when n is larger than about 30, the t distribution is pretty close to the normal distribution, so its deviation won't matter for all but the most extreme quantiles.
+
+## Summary.
+
+In short, when we use the *sample* standard deviation to calculate a statistic, (as we usually will), we use the *t distribution* with $n-1$ degrees of freedom rather than the standard normal distribution.
+
+In R, we can get the T distribution's density, cumulative probability, quantile, and random samples with `dt(x,df)`, `pt(x,df)`, `qt(q,df)`, and `rt(n,df)`, respectively.

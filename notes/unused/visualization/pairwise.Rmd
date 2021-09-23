@@ -1,0 +1,14 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Pairwise correlations
+
+If we have many numerical variables, a common exploratory plot is an arrangement of pairwise scatterplots, which is done automatically with the ggpairs function from the GGally package (although many other similar functions exist).   (here we are using the ggplot2 builtin 'diamonds' dataset.)
+
+```{r fig.width=12, fig.height=12}
+library(ggplot2)
+library(GGally)
+ggpairs(diamonds[c(1,5:7)])
+````

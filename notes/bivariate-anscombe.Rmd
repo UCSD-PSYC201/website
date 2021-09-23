@@ -1,0 +1,66 @@
+---
+  output: 
+    html_document
+---
+  
+# Anscombe's quartet
+
+The data for [Anscombe's quartet](https://en.wikipedia.org/wiki/Anscombe%27s_quartet) are built into R, and it is a somewhat useful exercise to reshape the data frame and produce the plot.
+
+```{r}
+str(anscombe)
+```
+
+Note that these data are in "wide" format, we have 4 x columns and 4 y columns, rather than having an x column, a y column, and a column indicating whether the values correspond to set 1, 2, 3, or 4.  We will reshape these data.
+
+```{r}
+# let's use tidyr and dplyr to reshape this into long format.
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+# first, we add a new variable (observation number)
+anscombe.tidy = mutate(anscombe, observation=seq_len(n()))
+# now we reshape into (too) long format (all x and y values in one column)
+anscombe.tidy = gather(anscombe.tidy, key, value, -observation)
+# now we separate the key variable ("x1", "x2", .. "y1") into two variables:
+# "variable" ("x" or "y") and "set" (1, 2, 3, 4)
+anscombe.tidy = separate(anscombe.tidy, 
+                         key, 
+                         c("variable", "set"), 
+                         1, 
+                         convert = TRUE)
+# Now we change the "set" to be a character variable
+anscombe.tidy = mutate(anscombe.tidy, 
+                       set = c("I", "II", "III", "IV")[set])
+# Finally, we spread into a wide format x and y values:
+anscombe.tidy = spread(anscombe.tidy, variable, value)
+
+str(anscombe.tidy)
+```
+
+Great, now these data are in "long" format, and we can easily handle them in ggplot to produce a multi-panel plot.
+
+```{r, fig.height=3.5}
+ggplot(anscombe.tidy, aes(x=x,y=y))+facet_grid(.~set)+
+  geom_smooth(method='lm', formula=y~x)+
+  geom_point(color="black", fill="orange", shape=21, size=3.5)+theme_minimal()+theme(text=element_text(size=16))
+```
+
+What's notable about Anscombe's quartet is that their summary statistics are so similar.
+
+```{r}
+
+anscombe.tidy %>% 
+  group_by(set) %>%
+  summarize(
+      n=n(),
+      mean.x=round(mean(x),2), 
+      mean.y=round(mean(y),2), 
+      sd.x=round(sd(x),2), 
+      sd.y=round(sd(y),2), 
+      correlation=round(cor(x,y),2))
+```
+
+These matching ns, means, standard deviations, and correlation, means that the slope and intercept, and corresponding statistical tests, are all equivalent; yet the data look clearly different.  
+
+The point here is: **summary statistics of marginal distributions and linear relationships necessarily overlook some (potentially important) aspects of the data.**

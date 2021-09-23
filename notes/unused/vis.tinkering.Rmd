@@ -1,0 +1,264 @@
+---
+output: html_document
+---
+
+# Complicated tinkering with plots.
+
+Let's start where we left off in the basics of multiple plots:
+
+````{r}
+library(ggplot2)
+library(gridExtra)
+library(grid)
+
+# make up some data
+x = rnorm(100)
+y = 0.5*x + rnorm(100)*0.25
+
+# store it in a data frame.
+df.xy = data.frame(x=x, y=y)
+
+# make x histogram
+hx <- ggplot(df.xy, aes(x=x)) + 
+  geom_histogram(fill='green') + 
+  theme_bw()
+
+# make y histogram
+hy <- ggplot(df.xy, aes(x=y)) + 
+  geom_histogram(fill='purple') + 
+  coord_flip() +                    # flip y histogram on its side
+  theme_bw()
+
+# make scatterplot
+xy <- ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point(color="red", size=3) + 
+  theme_bw()
+
+# arrange in a grid.
+grid.arrange(hx,
+             grid.rect(gp=gpar(col="white")),  # this is just a white blank.
+             xy,
+             hy, 
+             ncol=2)
+```
+
+We could benefit from fixing a few things here:
+
+1. The scatter plot should take up more space.
+
+1. the different axes should be matched in their limits.
+
+1. we don't need the redundant x and y titles and tick labels on the histograms.
+
+
+```{r}
+hx <- ggplot(df.xy, aes(x=x)) + 
+  geom_histogram(fill='green') + 
+  xlim(min(df.xy$x), max(df.xy$x)) +
+  theme_bw() +
+  theme(axis.title.x = element_blank(), axis.text.x = element_blank())
+
+hy <- ggplot(df.xy, aes(x=y)) + 
+  geom_histogram(fill='purple') + 
+  xlim(min(df.xy$y), max(df.xy$y))+
+  coord_flip() +
+  theme_bw() +
+  theme(axis.title.y = element_blank(), axis.text.y = element_blank())
+
+xy <- ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point(color="red", size=3) + 
+  xlim(min(df.xy$x), max(df.xy$x))+
+  ylim(min(df.xy$y), max(df.xy$y))+
+  theme_bw()
+
+grid.arrange(hx,
+             grid.rect(gp=gpar(col="white")),  
+             xy,
+             hy, 
+             ncol=2,
+             widths = c(3,1), 
+             heights = c(1, 3))
+```
+
+This is looking much more like the kind of scatter plot I want, but I would still tinker with a few things to improve it.
+
+1. choose better binwidths for the x and y histograms
+
+1. remove the tick marks on the x and y axes of the histograms
+
+1. change the plot margins so that the histograms are adjacent to the scatterplot
+
+1. get rid of the hideous colors.
+
+```{r}
+po = -0.2
+hx <- ggplot(df.xy, aes(x=x)) + 
+  geom_histogram(fill='gray', binwidth=diff(range(df.xy$x))/15) + 
+  xlim(min(df.xy$x), max(df.xy$x)) +
+  theme_bw() +
+  theme(axis.title.x = element_blank(), 
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        plot.margin=unit(c(0,po,po,0), "cm"))
+
+hy <- ggplot(df.xy, aes(x=y)) + 
+  geom_histogram(fill='gray', binwidth=diff(range(df.xy$y))/15) + 
+  xlim(min(df.xy$y), max(df.xy$y))+
+  coord_flip() +
+  theme_bw() +
+  theme(axis.title.y = element_blank(), 
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        plot.margin=unit(c(po,0,0,po), "cm"))
+
+xy <- ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point(color="black", size=3) + 
+  xlim(min(df.xy$x), max(df.xy$x))+
+  ylim(min(df.xy$y), max(df.xy$y))+
+  theme_bw() +
+  theme(plot.margin=unit(c(po,po,0,0), "cm"))
+
+grid.arrange(hx,
+             grid.rect(gp=gpar(col="white", alpha=0)),  
+             xy,
+             hy, 
+             ncol=2,
+             widths = c(3,1), 
+             heights = c(1, 3))
+```
+
+This is a definite improvement, but we've also introduced some problems:
+
+1. the x histogram seems to have a different width plot area than the scatter plot (and the matched height of the y histogram may just be a coincidence).
+
+1. the extreme values are cut off in the histogram because the wider bins put the outermost bins outside the xlim() area, and ggplot does not plot graphical elements that extend outside the x or y limits.
+
+```{r}
+binx = diff(range(df.xy$x))/15
+biny = diff(range(df.xy$y))/15
+po = -0.18
+
+hx <- ggplot(df.xy, aes(x=x)) + 
+  geom_histogram(fill='gray', binwidth=binx) + 
+  xlim(min(df.xy$x)-binx, max(df.xy$x)+binx) +
+  theme_bw() +
+  theme(axis.title.x = element_blank(), 
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        plot.margin=unit(c(0,po,po,0), "cm"))
+
+hy <- ggplot(df.xy, aes(x=y)) + 
+  geom_histogram(fill='gray', binwidth=biny) + 
+  xlim(min(df.xy$y)-biny, max(df.xy$y)+biny)+
+  coord_flip() +
+  theme_bw() +
+  theme(axis.title.y = element_blank(), 
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        plot.margin=unit(c(po,0,0,po), "cm"))
+
+xy <- ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point(color="black", size=3) + 
+  xlim(min(df.xy$x)-binx, max(df.xy$x)+binx)+
+  ylim(min(df.xy$y)-biny, max(df.xy$y)+biny)+
+  theme_bw() +
+  theme(plot.margin=unit(c(po,po,0,0), "cm"))
+
+# this stuff fixes the widths and heights of the panels.
+ gX <- ggplotGrob(hx)
+ gY <- ggplotGrob(hy)
+ gXY <- ggplotGrob(xy)
+ maxWidth = grid::unit.pmax(gX$widths[2:5], gXY$widths[2:5])
+ gX$widths[2:5] <- as.list(maxWidth)
+ gXY$widths[2:5] <- as.list(maxWidth)
+
+ maxHeight = grid::unit.pmax(gY$heights[2:5], gXY$heights[2:5])
+ gY$heights[2:5] <- as.list(maxHeight)
+ gXY$heights[2:5] <- as.list(maxHeight)
+
+grid.arrange(gX,
+             grid.rect(gp=gpar(col="white", alpha=0)),  # this is just a white blank.
+             gXY,
+             gY, 
+             ncol=2,
+             widths = c(3,1), 
+             heights = c(1, 3))
+```
+
+Ok this looks technically sound, but I'd like to improve some of its aesthetics.
+
+1. get rid of the boxes, grid lines, and count titles/tick-marks/labels on the histograms 
+
+1. get rid of the border and grid lines on the scatter plot (getting rid of the border will also get rid of the line along the x and y axes, so I will add it back in explicitly.)
+
+1. change the histogram colors to be a bit darker.
+
+```{r}
+binx = diff(range(df.xy$x))/15
+biny = diff(range(df.xy$y))/15
+po = -0.18
+
+hx <- ggplot(df.xy, aes(x=x)) + 
+  geom_histogram(fill='darkgray', binwidth=binx) + 
+  xlim(min(df.xy$x)-binx, max(df.xy$x)+binx) +
+  theme_bw() +
+  theme(axis.title = element_blank(), 
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid = element_blank(),
+        panel.border = element_blank(), 
+        plot.margin=unit(c(0,po,po,0), "cm"))
+
+hy <- ggplot(df.xy, aes(x=y)) + 
+  geom_histogram(fill='darkgray', binwidth=biny) + 
+  xlim(min(df.xy$y)-biny, max(df.xy$y)+biny)+
+  coord_flip() +
+  theme_bw() +
+  theme(axis.title = element_blank(), 
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid = element_blank(),
+        panel.border = element_blank(), 
+        plot.margin=unit(c(po,0,0,po), "cm"))
+
+xy <- ggplot(df.xy, aes(x=x, y=y)) + 
+  geom_point(color="black", size=3) + 
+  xlim(min(df.xy$x)-binx, max(df.xy$x)+binx)+
+  ylim(min(df.xy$y)-biny, max(df.xy$y)+biny)+
+  theme_bw() +
+  theme(panel.grid = element_blank(),
+        panel.border = element_blank(), 
+        axis.line = element_line(color="black"),
+        plot.margin=unit(c(po,po,0,0), "cm"))
+
+# this stuff fixes the widths and heights of the panels.
+ gX <- ggplotGrob(hx)
+ gY <- ggplotGrob(hy)
+ gXY <- ggplotGrob(xy)
+ maxWidth = grid::unit.pmax(gX$widths[2:5], gXY$widths[2:5])
+ gX$widths[2:5] <- as.list(maxWidth)
+ gXY$widths[2:5] <- as.list(maxWidth)
+
+ maxHeight = grid::unit.pmax(gY$heights[2:5], gXY$heights[2:5])
+ gY$heights[2:5] <- as.list(maxHeight)
+ gXY$heights[2:5] <- as.list(maxHeight)
+
+grid.arrange(gX,
+             grid.rect(gp=gpar(col="white", alpha=0)),  # this is just a white blank.
+             gXY,
+             gY, 
+             ncol=2,
+             widths = c(3,1), 
+             heights = c(1, 3))
+```
+
+So -- we got to a plot that I think looks rather nice, but it was quite a bit of work, and required some rather tricky coding (and googling for solutions to various problems) before we got here.  At this point, I would recommend doing a tiny bit more work to make this scatter-with-marginal-histograms plot into a generic function that you might then be able to reuse whenever you need it without needing to recreate the whole process.  
+
+There are three points to take away from this exercise.  
+
+1. ggplot is very flexible and, most likely, can accommodate your needs, but tinkering with some aspects of the plot is harder than others.
+
+1. fine-tuning a complex multi-part graph is hard work, but I think that we should strive for informative, clean, clear graphs, so the work is worth it (especially if you will reuse it!).
+
+1. sometimes the hard work you undetake has already been done by someone else, who is willing to share the fruits of their labor.  Consider for instance, the `scatter.hist()` function in the `psych` package, the `s.hist()` function in the `ade4` package, or the code [here](http://www.r-bloggers.com/quick-scatterplot-with-associated-histograms/), [here](http://www.r-bloggers.com/example-10-3-enhanced-scatterplot-with-marginal-histograms/), or [here](http://www.r-bloggers.com/example-8-41-scatterplot-with-marginal-histograms/), or a ggplot2 solution [here](http://deanattali.com/2015/03/29/ggExtra-r-package/).  So: google around to see if someone else has solved the problem before spending a good long while [shaving yaks](http://sethgodin.typepad.com/seths_blog/2005/03/dont_shave_that.html).
+

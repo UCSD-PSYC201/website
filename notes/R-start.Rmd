@@ -1,0 +1,81 @@
+# Getting started with R {#R-start  .unnumbered}
+
+## Installing R {#R-install  .unnumbered}
+
+(1) Download and install R for your system:  [https://cran.rstudio.com/](https://cran.rstudio.com/)
+
+(2) Download and install RStudio for your system: [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/)
+
+### Packages
+
+We will use a number of packages that extend the functionality of basic R, and make some operations easier/more intuitive.  You can start by installing the tidyverse package using the code below.
+
+```{r eval=FALSE}
+install.packages('tidyverse')
+```
+
+
+## Introduction to R  {#R-intro  .unnumbered}
+
+Writing analyses in R is writing code.  If you are new to this notion, you might benefit from this [excellent article on what code is](http://www.bloomberg.com/graphics/2015-paul-ford-what-is-code/), from this discussion of the [two cultures of computer users](http://www.pgbovine.net/two-cultures-of-computing.htm), and from this harsh, but accurate description of [what it takes to *really* learn to  code](http://blog.sailsoftware.co/2015/09/09/what-it-really-takes-to-learn-how-to-code.html)
+
+
+### Getting started
+
+There's a large set of introductory tutorials to R online, easily accessible via google.
+
+I recommend working through some interactive tutorials to start yourself off:   
+
+- [Try R](tryr.codeschool.com) from codeschool  
+- [swirl](http://swirlstats.com/) offers interactive R lessons run within R   
+- [datacamp](https://www.datacamp.com/) offers interactive tutorials, but I'm a bit confused what is free, and what requires subscription   
+- Here is a handy [tutorial R script](http://learnxinyminutes.com/docs/r/)    
+- OpenIntro stats also [R labs](https://www.openintro.org/stat/labs.php?stat_lab_software=R)    
+- Rstudio offers a list of such [lessons](https://www.rstudio.com/resources/training/online-learning/) 
+
+As you become familiar with the basics, you may want some quick reference sources.
+
+- Take a look at [Rstudio cheat sheets](https://www.rstudio.com/resources/cheatsheets/), in particular data visualization and data wrangling    
+- [This one](https://www.ualberta.ca/~ahamann/teaching/renr690/R_Cheat_Data.pdf) is also useful    
+- Take a look at Wickham's list of [basic R functions worth learning](http://adv-r.had.co.nz/Vocabulary.html)   
+- [Cookbook for R](http://www.cookbook-r.com/) offers solutions and code snippets for common problems.   
+
+You will need to find help.
+
+- [Google](google.com) "R [what you want to do]"    
+- [CrossValidated](http://stats.stackexchange.com/) is a great resource: I often find solutions to my problems there.   
+
+You may also want to consult more advanced lessons to supplement labs/notes:    
+
+- This UBC course offers great notes on [modern and practical R (including ggplot)](http://stat545-ubc.github.io/)    
+- Hadley Wickham's advanced R book and [online notes](http://adv-r.had.co.nz/) are very good, but advanced, as described    
+
+
+To write code well, you will need to know something about how a computer works.
+
+- General [command line](https://en.wikipedia.org/wiki/Command-line_interface) tutorials are good for understanding how CLIs work.  e.g., [learn enough command line to be dangerous](https://www.learnenough.com/command-line-tutorial)   
+- Understand your system's directory and file structure and how to navigate it from a console.  In R: getwd(), setwd(), list.files().   
+
+Once you can actually write some code, it is worth learning to make it good.  
+
+- Good code is readable by humans and [self documenting](https://en.wikipedia.org/wiki/Self-documenting)    
+- This can be achieved by adopting a consistent and sensible style of code.  A few suggestions: [Google R style guide](https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml), and [Wickham's style guide](http://adv-r.had.co.nz/Style.html).  
+- Avoid [magic numbers](https://en.wikipedia.org/wiki/Magic_number_(programming)#Unnamed_numerical_constants).  They make your code hard to read and brittle to change.    
+- Use unique and meaningful names for scripts, functions, variables, data.frames, columns, etc.    
+- Learn to type well, and pay attention to text details.  In most programming languages, letter order, letter case, visually similar symbols, etc. have to be correct for a computer to understand what you are saying. Human readers are forgiving with typos, computers are not.    
+- Learn to use your [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment) (in our case, Rstudio).  [Tab completion](https://support.rstudio.com/hc/en-us/articles/200404846-Working-in-the-Console) is amazing. [Keyboard shortcuts](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts) are very handy.    
+
+## Better data analysis code.
+
+The overarching flow of data analysis is something like:      
+data -> `pre-processing code` -> clean data -> `analysis code` -> results -> `presentation code` -> figures, tables, numbers
+
+It is helpful to [factor](https://en.wikipedia.org/wiki/Code_refactoring) your code this way, as it allows you to muck around with various parts without disrupting the others.
+
+A few suggestions for how to write good code for data analysis.   
+
+- Make sure analysis code is state independent (it should re-run correctly after `rm(list=ls())`), and self-sufficient (it should not require any human intervention, mouse-clicks, etc).  All of this ensures that re-running your analysis is not a pain, and is reproducible.    
+- Don't arbitrarily create data subsets stored in assorted variables -- that's a great way to make a mess of your code and confuse yourself.  Subset data as needed, while keeping the data frame complete.          
+- Build complicated commands piece by piece in the console, then assemble the final compact command in your script.  Especially when using `dplyr` pipes (`%>%`), or nesting functions.     
+- When in doubt about whether the code is intuitive, pass named, rather than positional, arguments to functions.    
+- Take explicit control of your data types and structures -- don't just assume that when you read in a csv file, all variables, factors, etc. have the correct data type, names, etc.  

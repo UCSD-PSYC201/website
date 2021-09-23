@@ -1,0 +1,52 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Introduction
+
+Science and many innovations in industry revolve around using data to learn something about the world and guide future activity.  There are many skills that are useful to this enterprise, and which are more useful depends on the goals of data analysis and the the quality and quantity of the data in play.  The primary goal of this class is to give you the skills the modal student will need for their data analysis, and the secondary goal is to give you conceptual and technical foundations that will make it easier for you to pick up more eclectic skills that may be necessary for any particular data analysis.  
+
+At the very least, as a social/life scientist you should have familiarity with the classic statistical methods that dominate the literature: typically "null hypothesis significance testing" via procedures like t-tests, ANOVAs, and linear regression.  A grasp of more advanced, modern methods, like generalized linear models, mixed/hierarchical linear models, resampling, and Bayesian statistics will allow you to answer a greater variety of more subtle questions in more complicated data, thus giving you an edge in making new discoveries.  Fluency with handling, visualizing, manipulating, and cleaning data by programming in a computing environment will make you more efficient and more capable of learning new technical methods.  Understanding the principles behind various statistical approaches will allow you to tailor them to your specific purposes, thus allowing you to ask whatever question is most relevant for your science.  
+
+Given these lofty ambitions, this class will be hard.  
+
+- It will be hard because this class aims to teach you *skills*, rather than *facts*; many classes you have preciously taken -- including basic applied statistics classes -- expected you to memorize some facts, rules, or procedures, and then recall them and carry out the procedure verbatim.  In addition to doing that, we want you to generalize from the facts and procedures you memorized to apply them in novel situations.    
+- It will be hard because we will use the R statistical programming environment.  Unlike graphical user interface statistical software, where you point and click to carry out a procedure, R requires programming, and programming is hard, especially if you have no prior programming experience.  You will need to learn how to explicitly tell a computer to do things by writing code, and how to debug that code.    
+- It will be hard because we will cover some of the math behind various analysis methods; while we will do what we can to avoid advanced math, many of you will have difficulty using even high-school math because it has been so long since you have practiced it.    
+
+We think this all of this difficulty is worth it because of the skills you will gain.  We think these skills will give you an edge in your scientific endeavors (where advances in data analysis offer avenues for novel research questions), and will also give you an advantage in the labor market outside of academia (where many industries looking to hire data analysts to gain an edge in their business). Hopefully you will recognize the worth of learning these skills, and are willing to put in the effort to overcome the difficulty of acquiring them.
+
+
+In the introduction, it is worth getting oriented.
+
+- Overview of data analysis skills and subfields.    
+
+- Thinking about data, where it comes from, its properties, and strategies for collecting it.   
+
+- Philosophy of science, and the role of data analysis in in advancing scientific knowledge.
+
+- An overview of basic data analysis concepts and summary "statistics".
+
+
+
+1. Throughout this class we will use R for our statistical analyses.  
+    a. [Why R?](why-r.html)   
+    b. [Set up R now.](http://vulstats.ucsd.edu/R-setup.html)(
+    c. [Basic intro to R](../intro-R/intro-R.html)   
+
+2. It may be helpful to know how I think about the various aspects of science and data analysis.  The links below are more philosophical than practical.    
+    a. Probability and statistics is the formal link between scientific theories and data.  Before getting engrossed in the minutia of data analysis, it is worth taking a [broad view of what you're trying to do](philosophy.html).   
+    b. Specific data analyses are useful to evaluate theories, but it is worth considering [what makes a better or worse theory](theories.html) independently of data analysis.    
+    c. All data analysis is built on [statistical models](uses-of-models.html) used in slightly different ways.   
+    d. Some thoughts on the [replication crisis](replication-crisis.html)
+
+3. What you can learn from your data is limited by your data, thus it is worth considering how you...  
+    a. ...[measure](measurement.html) the world.   
+    b. ...[sample](surveys.html) a population of interest.    
+    c. ...[design experiments](experiments.html).
+
+4. Like any stats class, let's start with a quick overview of:    
+    a. [Statistical concepts](statistics-concepts.html)    
+    b. Basic [descriptive statistics](descriptive.html).  (If you find the notation confusing, take a look [here](notation.html).)
+

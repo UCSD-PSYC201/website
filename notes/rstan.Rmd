@@ -1,0 +1,15 @@
+---
+  output: 
+    html_document
+---
+  
+# Stan
+
+```{r}
+library(tidyverse)
+df <- tibble(x = rnorm(100,10,50))
+```
+
+```{r}
+
+```

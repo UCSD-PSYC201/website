@@ -1,0 +1,434 @@
+---
+output: 
+    html_document
+---
+
+# Null hypothesis significance testing with Normal
+
+In [statistics via the Normal](nhst-basics-normal.html) we covered the basic logic and application of the [sampling distribution of the sample mean](nhst-sampling-distribution.html) to the problem of testing a null hypothesis about the population.  
+
+Null hypothesis testing follows this procedure:
+
+(1) We have some structure we are interested in (the "effect").    
+(2) We define a "statistic" to measure this structure.   
+(3) We define a "null" model of the data: a statistical model that generates data like ours, but *lacking* the effect we are interested in.  
+(4) We figure out the sampling distribution of our statistic under the null hypothesis.   
+(5) We compare the statistic value from our data, to its null hypothesis sampling distribution, to see if our statistic is sufficiently extreme under the null, for us to say that we "reject the null".  
+
+## Type 1 error rate: alpha ($\alpha$)
+
+To be more specific, in step 5 we calculate the *probability that a statistic at least as extreme as ours would be obtained from samples from the null hypothesis* -- we call this the **p-value**.  We decide on a *significance level*, usually called **alpha** ($\alpha$): this corresponds to the largest p-value we are willing to declare **significant** (and thus reject the null).  Consequently, the chosen alpha value (typically 0.05), corresponds to the probability that we would *reject the null hypothesis for a sample from the null hypothesis*.  Thus, the alpha value corresponds to the rate at which we are willing to falsely reject the null hypothesis (reject it, when it is true); This is known as the rate of **Type I error**.  
+
+We can get a sense for this via simulation.  We will use the z-test statistic comparing a *sample from the null* to the null mean (and standard error).  We will calculate its p-value, and see if it would be rejected.  Since all of these samples are, by definition, sampled from the null, any sample which we declare significantly different form the null is a false rejection of the null: a type 1 error.
+
+```{r}
+H0.mean = 100
+H0.sd = 15
+alpha = 0.05
+
+z.stat = function(x){(mean(x)-H0.mean)/(H0.sd/sqrt(length(x)))}
+p.value = function(z){2*pnorm(-abs(z))}
+is.significant = function(p.val, alpha){p.val <= alpha}
+
+sample.from.null = function(n){rnorm(n,H0.mean,H0.sd)}
+
+df = data.frame(zs = replicate(1000, z.stat(sample.from.null(10))))
+df$p.value = p.value(df$zs)
+df$significant = is.significant(df$p.value, alpha)
+
+library(ggplot2)
+ggplot(df, aes(x=zs, fill=significant))+geom_histogram()
+
+(type.I.error.rate = sum(df$significant)/nrow(df))
+```
+
+Of course, nothing about this simulation should reveal anything new, but perhaps it illustrates this basic point adequately well.
+
+## The "alternate model"
+
+So far, we have only considered one statistical model: the null model with no effect.  This is sufficient to obtain a p-value and test the null hypothesis.  However, this only tells us the probability of rejecting (or not) the null hypothesis given data from the null hypothesis.  It does not tell us what might happen if the null hypothesis is false.
+
+To calculate the probability of rejecting the null hypothesis when the null hypothesis is *false* (called **power**) we need a statistical model of the data in the case of a false null.  This is the *alternate hypothesis* model.  From this we can calculate power, as well as the **Type II error** rate (the probability of *not rejecting the null hypothesis, when it is indeed false*).
+
+To set up an alternate model, we will simply set up something like the null model, but with some key difference -- an effect size.  For simplicity, let's say that our alternate model is a normal distribution with the same standard deviation, and with a mean that is 8 points higher than the null mean:
+
+```{r}
+H0.mean = 100
+H0.sd = 15
+H1.mean = 108
+H1.sd = 15
+alpha = 0.05
+
+# we will still calculate the z score, and p-value *relative to the null hypothesis*!
+z.stat = function(x){(mean(x)-H0.mean)/(H0.sd/sqrt(length(x)))}
+p.value = function(z){2*pnorm(-abs(z))}
+is.significant = function(p.val, alpha){p.val <= alpha}
+
+# Note: here we are using the H1 mean and sd!
+sample.from.alt = function(n){rnorm(n,H1.mean,H1.sd)}
+
+df = data.frame(zs = replicate(1000, z.stat(sample.from.alt(10))))
+df$p.value = p.value(df$zs)
+df$significant = is.significant(df$p.value, alpha)
+
+library(ggplot2)
+ggplot(df, aes(x=zs, fill=significant))+geom_histogram()
+
+# Power: the probability that we will reject a sample from the alternate model.
+(power= sum(df$significant)/nrow(df))
+# Type II error rate: the probability that we *fail* to reject the null for a sample from the alternate model
+(type.II.error.rate = (1-power))
+# or alternatively:
+(type.II.error.rate = sum(df$significant==FALSE)/nrow(df))
+```
+
+## Effect size
+
+The effect size is the magnitude of the deviation of the alternate model from the null model.  While we can talk about the effect size in our case as the raw difference in means (100 for null, 108 for alternate, so 8 points), it is generally more convenient to talk about the effect in *standardized units*.  This way, we get similar effect size estimates regardless of the units we are considering (e.g., centimeters, inches, etc).
+
+For comparing differences in means, we generally use "Cohen's d": the difference in means in units of standard deviation.  (alternate mean minus null mean) divided by standard deviation:
+
+$$d' = (\mu_X^{H_1} - \mu_X^{H_0})/\sigma_X$$
+
+In our case, we said that the H1 mean was 108, the H0 mean was 100, and the standard deviation was 15, consequently the effect size is (108-100)/15 = 8/15.
+
+## Calculating power from effect size
+
+With this definition, we can calculate power (using a normal z-test), simply by knowing the size of the sample, and the size of the true effect size (Cohen's d).  The power, or the probability that we will reject the null hypothesis, is the probability that a z-statistic obtained for a sample from the null hypothesis will exceed the critical z value.
+
+$P(\mbox{significant} | H_1) = P(\lvert z^{H_1} \rvert \geq \lvert z^*_{\alpha/2} \rvert)$
+
+We must now go on a somewhat long-winded, algebraic exercise to calculate the sampling distribution of the z-statistic (relative to the null hypothesis) for samples of size n from the alternate hypothesis.
+
+$\bar x_{(n)} \mid H_1 \sim \operatorname{Normal}(\mu_X^{H_1}, \sigma_X^{H_1}/\sqrt{n})$
+
+We know that: 
+
+$\sigma_X = \sigma_X^{H_1} = \sigma_X^{H_0}$ (by virtue of the assumption that the alternate model has the same standard deviation as the null model!), and 
+
+$\mu_X^{H_1} = \mu_X^{H_0} + d*\sigma_X$ (this is what the effect size -- Cohen's d -- tells us).  Consequently:
+
+$\bar x_{(n)} \mid H_1 \sim \operatorname{Normal}(\mu_X^{H_0} + d*\sigma_X, \sigma_X/\sqrt{n})$
+
+If we calculate the z-score of a sample mean from the alternate model, relative to the sampling distribution of the sample mean *from the null model* (as we do when we do significance testing), we get (by virtue of our rules about how to linearly transform normally distributed variables):
+
+$z_{\bar x_{(n)}}^{H_1} = \frac{\bar x_{(n)}-\mu_X^{H_0}}{\sigma_X/\sqrt{n}} \mid H_1 \sim \operatorname{Normal}(d*\sqrt{n}, 1)$
+
+We can then compare this to the critical z value.
+
+```{r}
+alpha = 0.05
+z.crit = abs(qnorm(alpha/2))
+n = 10
+d = 8/15 # the effect size we built into the alternate model in the previous section
+(p.reject.H0.low = pnorm(-z.crit, d*sqrt(n),1))    # probability we would reject on the low end
+(p.reject.H0.high = 1-pnorm(z.crit, d*sqrt(n), 1)) # probability we would reject on the high end.
+(p.reject.H0 = p.reject.H0.low + p.reject.H0.high) # this is the power
+```
+
+Notice that in this case (with some considerable effect size, and the standard deviation of the alternate equal to the standard deviation of the null model), there is a negligible probability that we would reject the null for alternate model samples on the other side of the null (in this case, rejecting alternate samples for being too low).  Consequently, we can often ignore that lower tail, and simply calculate power from the tail that the effect size is on (by using the absolute value of the effect size).
+
+```{r}
+(p.reject.H0.high = 1-pnorm(abs(qnorm(alpha/2)), abs(d)*sqrt(n), 1))
+```
+
+## Visualizing alpha and power
+
+Our example so far can be shown in one graph (with a bit of ggplot tinkering):
+
+```{r, fig.width=10, fig.height=5}
+alpha = 0.05
+n = 10
+d = 8/15
+
+z.crit = abs(qnorm(alpha/2))
+z = seq(-4,8,by=0.01)
+df = rbind(data.frame(z=z,
+                 p=dnorm(z),
+                 reject=ifelse(z>=z.crit, "H0 sig. high", ifelse(z<=-z.crit, "H0 sig. low", "H0 not sig")),
+                 distribution="H0"),
+      data.frame(z=z,
+                 p=dnorm(z,d*sqrt(n),1),
+                 reject=ifelse(z>=z.crit, "H1 sig. high", ifelse(z<=-z.crit, "H1 sig. low", "H1 not sig")),
+                 distribution="H1"))
+
+ggplot(subset(df, df$distribution=="H0"), 
+       aes(x=z, y=p, fill=reject, color=distribution))+
+  geom_area(alpha=0.3)+
+  geom_area(data = subset(df, df$distribution=="H1"), alpha=0.3)+
+  geom_vline(xintercept =z.crit)+
+  scale_fill_manual(values = c("black", "red", "red", "orange", "#008888", "#008888"))+
+  scale_color_manual(values=c("#880000", "#008800"))
+```
+
+Here, the distribution outlined in red is the sampling distribution of z scores from the null hypothesis; the distribution outlined in green is the sampling distribution of z scores (relative to the null sampling distribution) sampled from the alternate hypothesis.  The red area corresponds to the probability of a type I error (alpha): rejecting a sample from the null hypothesis.  The grey are corresponds to the probability of correctly failing to reject the null (for a sample from the null).  The yellow area is the Type II error (beta): the probability of incorrectly failing to reject the null (for a sample from the alternate), and the teal area is the power -- the probability of correctly rejecting the null (for a sample from the alternate).
+
+## How power changes.
+
+Here we will considering how changes to effect size ($d$), sample size ($n$), and alpha ($\alpha$) influence power.
+
+First, let's define a few functions that will be helpful to us.
+
+```{r}
+getPower = function(alpha, n, d){
+  z.crit = abs(qnorm(alpha/2))
+  p.reject.H0.low = pnorm(-z.crit, d*sqrt(n),1)
+  p.reject.H0.high = 1-pnorm(z.crit, d*sqrt(n), 1)
+  return(p.reject.H0.low + p.reject.H0.high)
+}
+showAreas = function(alpha, n, d){
+  z.crit = abs(qnorm(alpha/2))
+  z = seq(-4,8,by=0.01)
+  df = rbind(data.frame(z=z,
+                        p=dnorm(z),
+                        reject=ifelse(z>=z.crit, "H0 sig. high", ifelse(z<=-z.crit, "H0 sig. low", "H0 not sig")),
+                        distribution="H0"),
+             data.frame(z=z,
+                        p=dnorm(z,d*sqrt(n),1),
+                        reject=ifelse(z>=z.crit, "H1 sig. high", ifelse(z<=-z.crit, "H1 sig. low", "H1 not sig")),
+                        distribution="H1"))
+  
+  g = ggplot(subset(df, df$distribution=="H0"), 
+         aes(x=z, y=p, fill=reject, color=distribution))+
+    geom_area(alpha=0.3)+
+    geom_area(data = subset(df, df$distribution=="H1"), alpha=0.3)+
+    geom_vline(xintercept = z.crit)+
+    scale_fill_manual(values = c("black", "red", "red", "orange", "#008888", "#008888"))+
+    scale_color_manual(values=c("#880000", "#008800"))+
+    ggtitle(sprintf("alpha = %0.2f  power = %0.2f", 
+                    alpha, 
+                    getPower(alpha,n,d)))+
+    theme(legend.position="none")
+  return(g)
+}
+```
+
+### Changing alpha ($\alpha$)
+
+```{r, fig.width=12, fig.height=4}
+library(gridExtra)
+n = 10
+d = 0.5
+alpha = c(0.01, 0.05, 0.1)
+g1 = showAreas(alpha[1], n, d)
+g2 = showAreas(alpha[2], n, d)
+g3 = showAreas(alpha[3], n, d)
+grid.arrange(g1,g2,g3,ncol=3)
+```
+
+So, if we are willing to increase our Type I error rate, we can increase our power (by virtue of rejecting more of everything).  This is not how we want to increase power, since our goal is not to trade one kind of error for another.  Clearly, we don't just want to move our cutoff, but want to further separate the distributions.
+
+
+### Changing effect size ($d$)
+
+```{r, fig.width=12, fig.height=4}
+library(gridExtra)
+n = 10
+d = c(0.25, 0.5, 0.75)
+alpha = 0.05
+g1 = showAreas(alpha, n, d[1])
+g2 = showAreas(alpha, n, d[2])
+g3 = showAreas(alpha, n, d[3])
+grid.arrange(g1,g2,g3,ncol=3)
+```
+
+Let's say we can somehow increase our effect size (perhaps by finding better, less noisy measurements?, or adopting a stronger manipulation?).  If this happens, we effectively increase the separation between the null and alternate distributions, and increase power without lowering alpha or changing the sample size!  In practice, it's often tricky to increase the effect size though, so while we would like to do that, it's usually not in our power.
+
+### Changing sample size ($n$)
+
+```{r, fig.width=12, fig.height=4}
+library(gridExtra)
+n = c(4, 8, 16)
+d = 0.5
+alpha = 0.05
+g1 = showAreas(alpha, n[1], d)
+g2 = showAreas(alpha, n[2], d)
+g3 = showAreas(alpha, n[3], d)
+grid.arrange(g1,g2,g3,ncol=3)
+```
+
+In practice, the easiest way to increase power is to increase the sample size.  This effectively *also* separates the two distributions further, because the distance between the two sampling distributions of z-scores is $d*\sqrt{n}$. So we can get an effective separation that scales with the square root of the sample size.
+
+## Calculating n for a desired level of power.
+
+If we have a particular effect size, we can calculate the sample size required to achieve a particular level of power.  (Here, we are using the simplified, one-tail power, which works if our assumption of equal variance in null and alternate is correct, and the effect size is not zero.)
+
+`power = 1-pnorm(abs(qnorm(alpha/2)), abs(d)*sqrt(n), 1))`
+
+With algebra, we get:
+
+`pnorm(abs(qnorm(alpha/2)), abs(d)*sqrt(n), 1)) = 1-power`
+
+Since the quantile function (`qnorm`) is the inverse of the cumulative distribution (`pnorm`)...
+
+`abs(qnorm(alpha/2)) = qnorm(1-power, abs(d)*sqrt(n), 1)`
+
+Since the normal is invariant to shifts in the mean...
+
+`abs(qnorm(alpha/2)) = qnorm(1-power) + abs(d)*sqrt(n)`
+
+We also know that the quantiles of the standard normal are symmetric around 0, so we can get rid of an absolute value...
+
+`qnorm(1-alpha/2) - qnorm(1-power)= abs(d)*sqrt(n)`
+
+`((qnorm(1-alpha/2)-qnorm(1-power))/abs(d))^2=n`
+
+So, for a particular level of power that we might want, we can estimate the required sample size as:
+
+```{r}
+n.for.power = function(power,alpha,d){
+  return(((qnorm(1-alpha/2)-qnorm(1-power))/abs(d))^2)
+}
+alpha = 0.05
+d = 0.3
+power = seq(0.05,0.95,by=0.05)
+df = data.frame()
+for(i in 1:length(power)){
+  df = rbind(df, 
+             data.frame(power=power[i],
+                        d=d,
+                        alpha=alpha,
+                        required.n=n.for.power(power[i], alpha, d)))
+}
+df
+```
+
+The noteworthy thing here is that achieving a level of power that folks conventionally recommend (0.8), requires a very large sample size for common, modest (d=0.3) effect sizes.  
+
+In practice, when you want to calculate power, I recommend using the `pwr` package in R, rather than undertaking this manual calculation (especially because there will not be an easy analytical solution as most tests rely on distributions whose shape varies with sample size.)
+
+## Sign and magnitude errors.
+
+Instead of dividing up errors into Type I/II (falsely rejecting, and falsely failing to reject the null), it is helpful instead to consider errors in *sign* and *magnitude* of the effect we report as significant.  This philosophy makes a lot of sense if you consider that very few effects are truly zero (so rejecting the null isn't that important), but are instead small (and variable), and we need to know their size and direction.
+
+A sign error amounts to getting the direction of the effect wrong.  A magnitude error amounts to overestimating the effect size.
+
+### Magnitude errors. 
+
+Consider one of our earlier plots of the rejected and retained null hypotheses for samples from the null, and samples from the alternate with a particular effect size.
+
+```{r, fig.width=10, fig.height=5}
+alpha = 0.05
+n = 10
+d = 0.5
+
+z.crit = abs(qnorm(alpha/2))
+z = seq(-4,8,by=0.01)
+df = rbind(data.frame(z=z,
+                 p=dnorm(z),
+                 reject=ifelse(z>=z.crit, "H0 sig. high", ifelse(z<=-z.crit, "H0 sig. low", "H0 not sig")),
+                 distribution="H0"),
+      data.frame(z=z,
+                 p=dnorm(z,d*sqrt(n),1),
+                 reject=ifelse(z>=z.crit, "H1 sig. high", ifelse(z<=-z.crit, "H1 sig. low", "H1 not sig")),
+                 distribution="H1"))
+
+ggplot(subset(df, df$distribution=="H0"), 
+       aes(x=z, y=p, fill=reject, color=distribution))+
+  geom_area(alpha=0.3)+
+  geom_area(data = subset(df, df$distribution=="H1"), alpha=0.3)+
+  geom_vline(xintercept = z.crit)+
+  scale_fill_manual(values = c("black", "red", "red", "orange", "#008888", "#008888"))+
+  scale_color_manual(values=c("#880000", "#008800"))
+```
+
+We see that the bulk of the 'rejected' alternate hypothesis distribution falls on the wrong (do not reject) side of the critical z value.  Thus, all the z scores we reject were abnormally high as far as samples from the alternate distribution go.  Consequently, if we consider the effect size we might *estimate* from the sample (which we can get as $z/\sqrt{n}$), we would expect an overestimate, on average.  This is precisely what we see when we calculate the average estimated effect from samples from the alternate that were statistically significant.
+
+```{r}
+library(dplyr, quietly=TRUE)
+df$d.est = df$z/sqrt(n)
+df %>% filter(distribution == "H1", reject == "H1 sig. high") %>%
+  summarize(true.d = d, avs.est.d = sum(d.est*p)/sum(p))
+```
+
+This basic effect is sometimes called the "statistical significance filter": findings that are significant, are likely to overestimate the true effect size in the population.  Moreover, it's easy to convince ourselves that the lower the power, the worse the overestimation: If power=100%, then we get 0 overestimation.
+
+### Sign errors
+
+The other kind of error worth considering is the probability that we get the direction of the effect wrong.  Although with a reasonable effect size, and no difference in variance between the null and alternate hypothesis, this probability is quite small, it might become intollerable with low power.
+
+
+```{r, fig.width=10, fig.height=5}
+alpha = 0.05
+n = 10
+d = 0.05
+
+z.crit = abs(qnorm(alpha/2))
+z = seq(-4,8,by=0.01)
+df = rbind(data.frame(z=z,
+                 p=dnorm(z),
+                 reject=ifelse(z>=z.crit, "H0 sig. high", ifelse(z<=-z.crit, "H0 sig. low", "H0 not sig")),
+                 distribution="H0"),
+      data.frame(z=z,
+                 p=dnorm(z,d*sqrt(n),1),
+                 reject=ifelse(z>=z.crit, "H1 sig. high", ifelse(z<=-z.crit, "H1 sig. low", "H1 not sig")),
+                 distribution="H1"))
+
+ggplot(subset(df, df$distribution=="H0"), 
+       aes(x=z, y=p, fill=reject, color=distribution))+
+  geom_area(alpha=0.3)+
+  geom_area(data = subset(df, df$distribution=="H1"), alpha=0.3)+
+  geom_vline(xintercept = z.crit)+
+  geom_vline(xintercept = -z.crit)+
+  scale_fill_manual(values = c("black", "red", "red", "orange", "#008888", "#008888"))+
+  scale_color_manual(values=c("#880000", "#008800"))
+```
+
+With low power (arising from small effect and sample sizes), we see that many of our rejections of the null hypothesis based on samples from the null are actually coming from the wrong side of the null!  We can calculate their proportion as a function of power.  (Note that here we are interested in power to reject on both the correct, and incorrect tail; and we don't care about whether power comes from effect size or sample size, so we adopt a somewhat tricky equivalence, which you can ignore.)
+
+```{r}
+pow = function(m,z.crit){pnorm(-z.crit,m,1)+1-pnorm(+z.crit,m,1)}
+
+p.sign.error = function(des.pow,alpha){
+  z.crit = abs(qnorm(alpha/2))
+  mz = seq(0,4,by=0.01)
+  m = mz[which.min((pow(mz,z.crit)-des.pow)^2)]
+  
+  return(pnorm(-z.crit,m,1)/(pnorm(-z.crit,m,1) + 1 - pnorm(+z.crit,m,1)))
+}
+
+alpha = 0.05
+df = data.frame()
+power = seq(0.05,0.15,by=0.01)
+for(i in 1:length(power)){
+  df = rbind(df,
+             data.frame(power=power[i],
+                        alpha=alpha,
+                        p.sign.err = p.sign.error(power[i],alpha)))
+}
+df
+```
+
+What this tells us is that a null hypothesis z-test, with the standard deviation correctly matched between the true alternate and the null, will declare a sample from the alternate as significant, but get the *direction of the effect wrong* frighteningly frequently when our power is very low.  Hopefully, our power is rarely that low.  
+
+However, one problem that is likely to arise when running z-tests is that the population might have a different standard deviation than assumed under the null hypothesis, we get quite a different phenomenon:
+
+```{r, fig.width=10, fig.height=5}
+alpha = 0.05
+n = 10
+d = 0
+sd.ratio = 2
+
+z.crit = abs(qnorm(alpha/2))
+z = seq(-7,7,by=0.01)
+df = rbind(data.frame(z=z,
+                 p=dnorm(z),
+                 reject=ifelse(z>=z.crit, "H0 sig. high", ifelse(z<=-z.crit, "H0 sig. low", "H0 not sig")),
+                 distribution="H0"),
+      data.frame(z=z,
+                 p=dnorm(z,d*sqrt(n),1*sd.ratio),
+                 reject=ifelse(z>=z.crit, "H1 sig. high", ifelse(z<=-z.crit, "H1 sig. low", "H1 not sig")),
+                 distribution="H1"))
+
+ggplot(subset(df, df$distribution=="H0"), 
+       aes(x=z, y=p, fill=reject, color=distribution))+
+  geom_area(alpha=0.3)+
+  geom_area(data = subset(df, df$distribution=="H1"), alpha=0.3)+
+  geom_vline(xintercept = z.crit)+
+  geom_vline(xintercept = -z.crit)+
+  scale_fill_manual(values = c("black", "red", "red", "orange", "#008888", "#008888"))+
+  scale_color_manual(values=c("#880000", "#008800"))
+```
+
+As you can see, even with no difference in means, but a difference in standard deviations, we might get considerable power (we will reject the null for lots of samples from the alternate).  But not for the reason we think (not because there is a difference in means, but because there is a difference in standard deviations).  This is the reason we generally don't use z-tests (which postulate a null hypothesis with a specific mean and a specific standard deviation), and use t-tests instead (which postulate a null hypothesis with a specific mean, but are agnostic as to the standard deviation).
+

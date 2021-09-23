@@ -1,4 +1,4 @@
-# Projects {#syllabus-projects  .unnumbered}
+# Projects {#course-projects  .unnumbered}
 
 The goal is to analyze a large, rich dataset to answer an interesting behavioral/social/neural question, with the final product being a potentially publishable paper.
 

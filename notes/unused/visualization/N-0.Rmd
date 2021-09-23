@@ -1,0 +1,61 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Numerical ~ 0
+
+The goal here is to show the distribution of a single numerical variable.  There are many ways to do this.
+
+First some fake data.
+
+````{R}
+library(ggplot2)
+
+df = data.frame(iq = round(rnorm(1000, 100, 15)))
+````
+
+### Histograms
+
+The histogram by default bins numerical data into 30 bins, we can change that arbitrarily, here we set the width of the bins to 1.
+
+````{r}
+ggplot(df, aes(x=iq))+geom_histogram(binwidth=1)
+````
+
+### Smoothed density plot
+
+The density plot is like a smoothed histogram, here we also fill in the curve to look better.
+
+````{r}
+ggplot(df, aes(x=iq))+geom_density(fill="blue")
+````
+
+## Methods conducive to explanatory variables.
+
+There are also a number of methods that show the distribution while arranging the variable along the y axis.  This is especially useful when combined with explanatory variables.
+
+### Jittered point plot
+
+Probably the most transparent method to show a distribution is a jitter plot.  I like to add some transparency to the points so you get a sense of density differences even in places where overall density is very high.
+
+````{r}
+ggplot(df, aes(x=1, y=iq))+geom_point(position=position_jitter(width = 0.25), alpha=0.5)
+````
+
+### Boxplot
+
+The boxplot is a common tool for showing the central tendency, dispersion, and some assessment of outliers.  There are a number of different ways to calculate the various points shown in a box plot.  By default, the middle is the mean, the lower and upper boundaries of the box are the 25th and 75th percentile, and the ymin and ymax of the "whiskers" are the largest value that is within 1.5 interquartile range of the box, the remaining points are portrayed as individual (presumably outlier) points.
+
+````{r}
+ggplot(df, aes(x=1, y=iq))+geom_boxplot()
+````
+
+### Violin/viola plots
+
+These are smoothed density plots rendered symmetric and vertical.
+
+````{r}
+ggplot(df, aes(x=1, y=iq))+geom_violin()
+````
+

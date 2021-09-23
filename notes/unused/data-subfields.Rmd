@@ -1,0 +1,31 @@
+---
+output: 
+    tufterhandout::html_tufte_handout
+---
+
+# Data (analysis/science) subfields.
+
+## Probability
+
+Probability is the formal language used to describe the noisy relationship between data and some theory of the underlying processes generating the data, and thus we use probability to describe what we can infer about a process by looking at some of the noisy data it generated.   More broadly, data analysis methods can't be evaluated based on the answer they give you, because you don't usually know the answer you should get.  Consequently, we need to evaluate the method a priori, and then trust the answer that it gives when applied to certain data.  Most methods are evaluated based a probabilistic analysis of what they will do when applied to noisy data.  Although explicit probability calculations are the core justification for many statistical procedures, modern computational methods can obviate the need for such explicit calculations by using simulation and sampling methods to solve challenging probability problems.  Nonetheless, understanding why we do the kinds of things that we do in data analysis, and what kinds of inferences our results justify, requires knowing at least some of the probability theory underlying the statistical procedures.
+
+## Statistics
+
+Many statisticians would say that data science is just a rebranding of their field, as statistics subsumes both the theoretical and applied side of data analysis/science.   Although nearly all aspects of data science are within the purview of statistics, the emphasis on each of these aspects within statistics diverges from their importance in data science.  This may be due to the historical emphasis of statistics on the mathematical and theoretical underpinnings of data analysis procedures (rather than the practicalities of their application), and on characterizing the limited inferences afforded by small data sets (rather than maximizing the complexity and predictive power of inferences in large data sets).
+
+## Machine learning
+
+Machine learning develops algorithms and strategies for allowing computers to learn from data to do useful things.  Although there is some overlap between statistical and machine learning procedures, machine learning algorithms tend to have less emphasis on developing their theoretical underpinnings and probabilistic guarantees of their performance; instead, since the goals of machine learning are largely engineering, the theoretical performance of an algorithm is less relevant than its practical performance.  Consequently, machine learning algorithms are largely evaluated based on their performance in particular applications, rather than on their theoretical properties.  What might seem like a lack of theoretical rigor in the development of machine learning algorithms has greatly increased the rate of development and complexity of novel methods in the field on account of shedding some of the constraints of proving asymptotic performance.  
+
+## Signal processing
+
+
+
+## Computer science
+
+Computer science offers computational tools, algorithms, data structures, databases, and all of the basic infrastructure underlying modern data analysis.  Although much data analysis can be carried out without any formal background in computer science, analysis of data sets beyond a certain point in either quantity or complexity, will require interacting with various database systems, parallelization algorithms, and writing carefully optimized code in more technical programming environments.  
+
+## Communication, visualization, and design
+
+## 
+

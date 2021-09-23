@@ -1,0 +1,195 @@
+---
+output: 
+    html_document
+---
+
+# Foundations of probability
+
+Probability theory is the extension of propositional logic to operate over uncertain truth values.  If propositions are not either true or false, but are true with some *probability*, how can we combine multiple propositions to deduce the probability associated with some derived proposition?  
+
+The basic rules of probability are built by assigning probability to "outcomes" of a possible "sample space".  We are interested in "events", which are subsets of the sample space.  Since so much of this formalism is in set notation, so we will start there.
+
+## Set notation for combinations of outcomes.
+
+We can build up sophisticated probability rules by combining the outcomes of the sample space in various ways.  These correspond to set operations of *union*, *intersection*, and *complement*.  
+
+> The **sample space** is the *set* of all possible **outcomes** of an "experiment".
+
+Each possible outcome of an experiment is an "elementary event", in the sense that all the outcomes are mutually exclusive.  The sample space is usually denoted as $\Omega$.  So if we consider the roll of a six-sided die, there are six possible *outcomes* (1, 2, 3, 4, 5, 6), so we would describe the *sample space* as $\Omega=\{1,2,3,4,5,6\}$.
+
+````{r}
+outcomes = c('1', '2', '3', '4', '5', '6')
+# writing as characters to make it clear these are symbols corresponding to outcomes.
+````
+
+> **Set union** corresponds to a *disjunction* or an *OR* operation.    
+> The set union of A and B is the set of elements that appear in either A or B.   
+> $x \in (A \cup B) \mbox{ if } x \in A \mbox{ or } x \in B$
+
+The set union is denoted with a $\cup$ operator. For instance the union of outcomes a and b is the set that includes both: $a \cup b = \{a,b\}$.  The union of two sets is the set of all elements that appear in *either* set: $\{a,b,c\} \cup \{b,c,d,e,f\} = \{a,b,c,d,e,f\}$; note that the union operation returns a set, so elements that appear in both input sets are not "double counted" -- each element will appear only once in a set.  We will often want to express a union of many sets, which we can write as $\bigcup_{i=1}^n x_i = x_1 \cup x_2 \cup ... \cup x_n$.
+
+````{r}
+union(c('a','b','c'), c('b','c','d','e','f'))
+````
+
+> **Set intersection** corresponds to a *conjunction* or an *AND* operation   
+> The set intersection of A and B is the set of elements that appear in both A and B.   
+> $x \in (A \cap B) \mbox{ if and only if } x \in A \mbox{ and } x \in B$
+
+Set intersection is denoted  with a $\cap$ operator.  The intersection of two sets is the set of elements that appear in both sets.  For instance $\{a,b,c\} \cap \{b,c,d,e,f\} = \{b,c\}$.  The intersection of two sets that share no elements is the null, or empty, set $\{a,b,c\} \cap \{d,e,f\} = \emptyset$, these sets are called *disjoint*.
+
+````{r}
+intersect(c('a','b','c'), c('b','c','d','e','f'))
+````
+
+> **Set complement** is *negation*: the set of possible elements that are *NOT* in the set.   
+> $\neg A = \Omega  \setminus  A$
+
+Generally, it is clearer to explicitly refer to a *relative* set complement, or set difference, to specify which "possible" elements to consider, this is denoted $B \setminus A$ -- the set of elements in B that are *not* in A: $\{a,b,c\} \setminus \{b,c,d,e,f\}=\{a\}$.  In our context, we will talk about the *absolute* set comlement, which we will denote with the logical negation operator $\neg A$ (conventionally this would be written with the superscript c: $A^\complement$).  The absolute set complement has an implicit relative complement to the set of all possible outcomes, in our case $\neg A = \Omega  \setminus  A$.
+
+````{r}
+setdiff(outcomes, c('2', '4', '6'))
+````
+
+It may now be apparent that the set operations we consider also correspond to the basic building blocks of propositional logic: disjunctions, conjunction, and negation.  We will see that the rules of probability are effectively the rules of logic extended to apply to uncertain truth values (as probabilities).
+
+## Basic probability definition and axioms
+
+**Probability** is assigned to each outcome, and usually written as $P(\cdot)$.  So we would write the probability of a particular outcome (say, rolling a 6) as $P(\mbox{"6"})$, but usually we would just substitute a symbol to stand in for a specific outcome (e.g., $u = \mbox{"6"}$, so probability of rolling a six would be $P(u)$).  Probability is always *non-negative* (and as we will see soon, no larger than 1, meaning it falls in the interval $[0,1]$).
+
+> **Probability** is a number between 0 and 1 assigned to every possible *outcome* in the *sample space*    
+> $P(x) \in [0, 1] \mbox{ for all } x \in \Omega$.
+
+````{r}
+p.outcomes = c(1/6, 1/6, 1/6, 1/6, 1/6, 1/6)
+names(p.outcomes) <- outcomes
+p.outcomes
+````
+
+The probability of a union of two outcomes is the sum of their probabilities.  This basic axiom of probability allows us to calculate the probability of one of a set of outcomes happening based on the probabilities of the individual elements in that set, from this axiom we can build many of the other laws of probability.
+
+> **Probability of a union of two outcomes** is the *sum of their probabilities*    
+> $P(a \cup b) = P(\{a,b\}) = P(a) + P(b)$.     
+> Note that this simple addition applies to the union of *outcomes* because those are necessarily different and non-overlapping isolated elements. This will generally not hold true for disjunctions of *events*, which may consist of overlapping sets of outcomes.
+
+````{r}
+p.1.2 = sum(p.outcomes[c('1', '2')])
+````
+
+The final axiom of probability is that it sums to 1, meaning that the total probability being distributed over the sample space is 1.
+
+> **Total probability** of the sample space is 1.0    
+> $P(\Omega) = P\left( {\bigcup\limits_{x \in \Omega} x }\right) = \sum\limits_{x \in \Omega} P(x) = 1$   
+> Basically, this means all the probabilities of isolated outcomes have to sum to 1.
+
+````{r}
+sum(p.outcomes)
+````
+
+### Applying basic probability axioms
+
+So far we have dealt with a *uniform* probability distribution: each side of the die has the same chance (1/6), or more generally $1/|\Omega|$ where $|x|$ indicates the number of elements in $x$.  We could define such a uniform probability distribution over outcomes more generally as:
+
+````{r}
+p.outcomes = rep(1/length(outcomes), length(outcomes))
+names(p.outcomes) <- outcomes
+p.outcomes
+````
+
+Of course, this assumes we have a fair die (all sides have equal probability).  Instead, our die might be biased. Let's say it is biased so that 1 is twice as likely to come up as any of the other five outcomes (which all are equally likely).  We can do some algebra to figure out what this means about the probabilities assigned to each outcome:
+$P(\mbox{'1'}) = 2*P(\mbox{'other'})$  
+And since -- all probabilities must sum to 1:  
+$P(\mbox{'1'}) + 5*P(\mbox{'other'}) = 1$  
+so  
+$2 * P(\mbox{other}) + 5 * P(\mbox{other}) = 1$  
+$P(\mbox{other}) = 1/7$ and $P(\mbox{1}) = 2/7$.
+
+We can also calculate this quickly in R.  Here we define "unnormalized" probabilities (which do not sum to 1, but have the appropriate relative relationships).  We can normalize a vector of numbers by dividing every element by the sum of all elements, thus returning probabilities with the appropriate relationships that all sum to 1:
+
+````{R}
+unnormalized = c(2, 1, 1, 1, 1, 1)
+p.outcomes = unnormalized/sum(unnormalized)
+names(p.outcomes) <- outcomes
+p.outcomes
+````
+
+These axioms are sufficient to derive an assortment of probability rules that we are used to for describing *events*.
+
+## Events and the rules of probability.
+
+Probability becomes useful when we start considering *events*.
+
+> An **event** is a *subset of outcomes from the sample space*.   
+> $E \subset \Omega$
+
+For instance, in our die-rolling example, an event might be "rolling an even number" which is a subset of the sample space: $E = \{2, 4, 6\}$.  By our axiom about the probability of a union of outcomes, we know that 
+
+> The **probability of an event** is the *sum of the probabilities of the outcomes* included in it:  
+> $P(E) = \sum\limits_{x \in E} P(x)$.   
+
+For instance, the probability of "even" is P(even) = P(2)+P(4)+P(6).
+
+````{r}
+p.event = function(subset){
+    sum(p.outcomes[subset])
+}
+even = c('2', '4', '6')
+p.event(even)
+````
+
+(remember, we are still dealing with the unfair dice roll with a '1' twice as likely as the other outcomes)
+
+We can combine events with conjunctions and disjunctions.  While we will mostly refer to conjunctions and disjunctions using the familiar terms "and" ($\&$) and "or" ($\lor$) instead of the set notation "intersection" ($\cap$) and "union" ($\cup$), it is useful to flesh out how they are related.  
+
+Consider the events *even* ($E=\{2,4,6\}$), and *greater than 3* ($G=\{4, 5, 6\}$). 
+
+A **conjunction** (and) of two *events* is also an event defined as their set *intersection*.  For instance if we consider C to be the conjunction of events E (even, $E=\{2,4,6\}$) and G (greater than 3, $G = \{4,5,6\}$), C = E and G = $E \cap G = \{2,4,6\} \cap \{4,5,6\} = \{4,6\}$.
+
+````{r}
+even = c('2', '4', '6')
+greater = c('4', '5', '6')
+intersect(even, greater)
+p.event(intersect(even,greater))
+````
+
+A **disjunction** (or) of two *events* is also an event defined as their set *union*.  For instance even OR "greater than 3": $B = E \cup G = \{2, 4, 6\} \cup \{4, 5, 6\} = \{2, 4, 5, 6\}$.
+
+````{r}
+union(even,greater)
+p.event(union(even,greater))
+````
+
+A **negation** (not) of an event is the set *complement* of that event.  For instance "not even" is defined as the set of outcomes in the sample space that are not even.  $\neg E = \neg \{2,4,6\} = \{1,2,3,4,5,6\} \\ \{2,4,6\} = \{1,3,5\}$.
+
+````{r}
+setdiff(outcomes, even)
+p.event(setdiff(outcomes, even))
+````
+
+Fortunately, we need not always carry out complicated set operations and tabulation to get the probability of an event resulting from these operations.
+
+> **Probability of a disjunction** (OR)   
+> The probability of *A or B* is    
+> $P(A \lor B) = P(A) + P(B) - P(A \& B)$
+
+Subtracting the *conjunction* should make sense.  Consider for instance "even" OR "greater than 3" = $\{2,4,6\} \cup \{4,5,6\} = \{2,4,5,6\}$.  $P(\{2,4,5,6\}) = 4/7$.  If we don't subtract the conjunction we get an incorrect answer: $P(\{2,4,6\}) + P(\{4,5,6\}) = 3/7 + 3/7 = 6/7$.  We have to subtract the conjunction ($P(\{4,6\})=2/7$) to get the correct answer, because otherwise we end up "double counting" the outcomes that appear in both events.
+
+Note that for *disjoint* events -- meaning events that are mutually exclusive, thus they cannot co-occur -- $P(A \& B)=0$, so we need not subtract it.  This is why when we were calculating the probability of a disjunction of *outcomes* (which are necessarily disjoint) we omitted that part.
+
+````{r}
+p.event(even) + p.event(greater) - p.event(intersect(even,greater))
+p.event(union(even,greater))
+````
+
+> **Probability of negation** (NOT)   
+> The probability of *not A* is   
+> $P(\neg A) = 1-P(A)$.
+
+This should also make sense:  We know that "not A" is the complement of A relative to the sample space.  We also know that the total probability of the sample space is 1.  Thus, the probability of outcomes not in A (A's complement) must be 1 less the probability of the outcomes in A.  Here we calculate the probability of "not even" two different ways: 1-P(even) and by defining a "not even" event which is the set of outcomes not included in the "even" event.  As they should, they give us the same result.  (We obtain the outcomes in the "not even" event via the `setdiff(outcomes, even)` function, which returns all the elements in `outcomes` that are not in `even`.)
+
+````{R}
+1-p.event(even)
+p.event(setdiff(outcomes, even))
+````
+
+To discuss the probability of a *conjunction* we need to first start with [Conditional probability](prob-conditional.html).

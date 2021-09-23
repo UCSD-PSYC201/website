@@ -1,0 +1,198 @@
+---
+output: 
+    html_document
+---
+
+# Frequentist statistics via simulation
+
+The logic of null hypothesis testing is based on the sampling distribution of our test statistic under the null hypothesis.  I.e., what test statistics do we expect to see if our sample came from some null model?  While in general we will use various analytical expressions for these sampling distributions, it may be clearer to generate them ourselves by sampling, to see what exactly we are doing.
+
+## Null hypothesis significance testing.
+
+Let's use a coin flipping example to illustrate this logic.  
+
+1) We have some data.  Here: a sequence of coin flips that are either heads (H) or tails (T). 
+
+```{r}
+(data = c('H', 'H', 'H', 'T', 'T', 'H', 'T', 'H', 'H', 'H'))
+```
+
+2) We define some statistic on our data.  Here: the number of heads.
+
+```{r}
+statistic = function(data){sum(ifelse(data=='H', 1, 0))}
+```
+
+3) We calculate this statistic on our data.
+
+```{r}
+(our.stat = statistic(data))
+```
+
+4) We define a null hypothesis: a generative model of our data that we want to reject.  Here: flips of a fair coin.
+
+```{r}
+sample.from.null = function(n){sample(c('H', 'T'), n, replace=TRUE)}
+```
+
+5) We repeat many times the process of (a) generating some data under the null and (b) calculating the statistic many.  This gives us the "sampling distribution of our statistic under the null hypothesis"
+
+```{r}
+null.samples = replicate(10000, statistic(sample.from.null(length(data))))
+str(null.samples)
+```
+
+6) We compare our statistic to the null samples to see what fraction of them are at least as extreme as the one we saw.  Here we define extremeness as "too many heads" (so its a one tailed test).
+
+```{r}
+library(ggplot2, quietly = T)
+ggplot(data.frame(statistic = null.samples, 
+                  more.extreme=ifelse(null.samples>=our.stat, 
+                                      "at least as extreme", 
+                                      "less extreme")), 
+       aes(x=statistic, fill=more.extreme))+
+  geom_bar()+
+  scale_x_continuous(breaks=0:10)
+
+# calculate p-value based on null distribution.
+(p.value = sum(null.samples>=our.stat)/length(null.samples))
+```
+
+The details of this procedure will vary depending on our null hypothesis and statistic in question.  Sometimes we know enough about the null hypothesis to literally generate new data. Sometimes, we only know what we think should be invariant under the null hypothesis, and we do some sort of permutation/randomization of the data to generate null samples.  Nonetheless, the procedure and logic are roughly the same.
+
+## Critical values, alpha, power
+
+Let's say that we are going to run our coin-flipping experiment on a coin that we suspect is bent.  We will:   
+(1) flip the coin 10 times   
+(2) calculate the number of heads, and   
+(3) "reject the null hypothesis" (of a fair coin) if the number of heads is surprisingly high.    
+
+What's the probability that we will reject the null?   To answer this question we need to decide a few things, and make some assumptions:    
+
+(a) what constitutes 'surprisingly high'?  For now, let's just say that we will declare 8 or more heads to be sufficiently "surprising" to reject the null.  We will call this criterion the 'critical value'.   
+
+```{r}
+critical.value = 8
+```
+
+(b) Exactly how bent do we think the coin is?  Does it come up heads 65% of the time?  70%?  100%?  Obviously, the more bent we think the coin is, the more 'surprising' the outcomes we would expect to see from it.  Let's say we think our bent coin comes up heads 75% of the time.  
+
+### Setting up the "Alternate hypothesis"
+
+We have a way of sampling from the null (via `sample.from.null`), but now we need a way to sample possible outcomes we might see from the truly bent coin.
+
+```{r}
+sample.from.alternate = function(n){sample(c('H', 'T'), 
+                                             n, 
+                                             prob=c(0.75, 0.25),
+                                             replace=TRUE)}
+```
+
+If we sample from the alternative many times, and calculate our statistic for each sample, we get samples from the distribution of statistics that we expect to see from the bent coin we hypothesized.
+
+```{r}
+alternate.samples = replicate(10000, statistic(sample.from.alternate(length(data))))
+str(alternate.samples)
+```
+
+### Figuring out "power"
+
+Power is the probability that we will reject the null hypothesis for a sample taken from the "alternate" hypothesis.  In our case, it just means: what proportion of statistics we simulated from the alternate hypothesis are going to be at least as big as the 'critical value' we chose?
+
+```{r}
+( power = mean(alternate.samples >= critical.value) )
+```
+
+So there's our answer: that's the probability that we would reject the null in an experiment that flipped 10 times a bent coin that comes up heads with probability 0.75, given our critical value of 8.
+
+Note that to figure out power, we *have to* make some assumption about what the not-null alternative is.  Without that, we have no way to figure out what samples from the alternate hypothesis would look like, and what fraction of them we would reject the null for.
+
+## Figuring out "alpha"
+
+What's the probability that we would reject the null hypothesis if it turned out that we were flipping a fair coin after all?  I.e., what's the 'false positive rate', how often would we reject the null, even though the null was true?
+
+```{r}
+( alpha = mean(null.samples >= critical.value) )
+```
+
+## Showing alpha, power
+
+```{r}
+library(dplyr, quietly = T)
+all.data <- 
+  rbind(data.frame(n.heads = null.samples,
+           sampled.from = 'null'),
+        data.frame(n.heads = alternate.samples,
+                   sampled.from = 'alternate')) %>%
+  mutate(null.rejected = ifelse(n.heads >= critical.value,
+                                'reject null',
+                                'retain null'),
+         label = paste0('sampled from ', sampled.from, " and " , null.rejected))
+ggplot(all.data, aes(x=n.heads, fill=label))+
+  facet_grid(sampled.from~.)+
+  geom_bar(position='identity', alpha=1)+
+  scale_x_continuous(breaks = 0:10)+
+  scale_fill_manual(values = c('#009900', '#CC8888', '#990000', '#88CC88'))+
+  geom_vline(xintercept = critical.value-0.5, color='red', size=1)
+```
+
+The top panel shows the distribution of samples from the null hypothesis (a fair coin), the bottom panel shows samples from the alternate hypothesis (a bent coin that comes up heads with probability 0.75).   
+Dark green corresponds to the samples from the bent coin for which we would reject the fair-coin null.  These are 'correct rejections of the null', or 'hits', and the probability that this happens for samples from the alternate hypothesis is called "power".   
+Light green are samples from the null (fair coin) for which we would *not* reject the null.  These are also correct, but they don't have a common name.   
+Dark red are samples from the null (fair coin) for which we *do* reject the null.  These are often called false positives, or Type I errors, and the probability that this happens for samples from the null hypothesis is called alpha.   
+Light red are samples from the alternate (bent coin) for which we do *not* reject the null.  Thus they too are a mistake, often called 'false negatives' or Type II errors.  The probability of this happening for samples from the alternate is 1 minus "power".
+
+### Figuring out the critical value.
+
+Above, we sort of just made up a critical value by saying that 8 or more heads out of 10 would be sufficiently surprising to reject.  In general, we aren't just going to make up a critical value, but we will instead pick a particular rate of false positives (Type I errors) that we are willing to tolerate.  Thus, we will pick an alpha that we can be satisfied with (i.e., we will be content if we falsely reject the null hypothesis for this fraction of samples from the null hypothesis).  So, let's say that we will tolerate an alpha of 10%, so we want to find the maximum critical value, such that the proportion of samples from the null that would exceed it is 10% or less.
+
+```{r}
+null.distribution <- data.frame(x = null.samples) %>%
+  group_by(x) %>%
+  count() %>%
+  ungroup() %>%
+  arrange(desc(x)) %>%
+  mutate(prob = n/sum(n)) %>%
+  mutate(prob.x.or.more = cumsum(prob))
+head(null.distribution, 11)
+```
+
+So the probability of getting 10/10 heads is about 0.001 under the null, of getting 9 or 10 heads is about 0.01, of getting 8 9 or 10 heads is a bit over 0.05, and the probability of getting 7,8,9, or 10 heads is about 0.17.  So we would use 8 as our critical value, as we would expect to see 8 or more heads from the null hypothesis fewer than 10% of the time.
+
+<!---
+## Confidence intervals via bootstrap.
+
+If we want to build a confidence interval, we want to find a range of statistics that are likely to arise from new samples that came from the same population as ours.  Bootstrapping is a general procedure for doing so based on the assumption that our sample corresponds to our best guess about the distribution of the population.  Consequently, we could obtain hypothetical new samples from this population by resampling our sample.  To do this, we:
+
+1) Get some data:
+
+```{r}
+data = c('H', 'H', 'H', 'H', 'T', 'H', 'T', 'H', 'H', 'H')
+```
+
+2) Define a statistic that we want a confidence interval on (here, the proportion of heads):
+
+```{r}
+statistic = function(data){sum(ifelse(data=='H', 1, 0))/length(data)}
+```
+
+3) Define a resampling function that samples new possible data sets (**of the same size as ours**) from our sample data **with replacement**:
+
+```{r}
+resample = function(data){sample(data, length(data), replace=TRUE)}
+```
+
+4) Generate lots of resampled samples, calculate our statistic on each:
+
+```{r}
+bootstrapped.samples = replicate(10000, statistic(resample(data)))
+```
+
+5) Calculate a confidence interval from these samples, usually by using the empirical quantile function:
+
+```{r}
+quantile(bootstrapped.samples, c(0.025, 0.975))
+```
+
+This procedure is also very general, and can be used to define bootstrapped confidence intervals for any statistic.  The details of the procedure might vary (we might introduce extra variability to our resampling procedure), and its legitimacy depends on the size of the sample being resampled (too small a sample limits the fidelity and appropriateness of the confidence interval -- here our sample is probably too small), and the statistic in question (statistics that are more sensitive to extrema require larger sample sizes and may never be fully tractable via resampling).
+--->

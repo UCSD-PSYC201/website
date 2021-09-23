@@ -1,0 +1,169 @@
+# Generalized Linear Model
+
+
+Thus far we've spent a great deal of time talking about specific instances of the \textit{General Linear Model}, which is the class of statistical models in which we assume that various explanatory variables have additive effects on the mean of the data, and the data themselves are distributed Normally around the mean (i.e., the error is Gaussian).  This class includes z-tests, t-tests, ANOVA, ANCOVA, ordinary linear regression, multiple linear regression, as well as a great many more procedures we have not talked about.\footnote{Note that $\chi^2$ and binomial tests are not general linear models because they do not assume Gaussian errors.}  However, there are many other classes of models we might consider.
+
+\textbf{Generalized Linear Models}\footnote{Note the confusingly similar terms: there is a difference between ``general" and ``generalized" linear models} are an extension of the general linear model to allow for non-Gaussian errors, and non-identify ``link" functions.
+
+Specifically, our ordinary regression/linear models are constructed as follows:\\
+$y_i = \beta_0 + \beta_1 x^{(1)}_i + \beta_2 x^{(2)}_i + ... + \beta_p x^{(p)}_i + \varepsilon_i$\\
+$\varepsilon_i \sim \text{Normal}(\text{mean}=0, \text{s.d.}=\sigma)$\\
+Or in plain english: each $y$ value is equal to a linear model that determines it's predicted mean, and some zero-mean gaussian error around that mean.\\
+ We can rewrite this as:\\
+$z_i = \beta_0 + \beta_1 x^{(1)}_i + \beta_2 x^{(2)}_i + ... + \beta_p x^{(p)}_i$\\
+$y_i \sim \text{Normal}(\text{mean}=z_i, \text{s.d.}=\sigma)$
+
+Generalized linear models extend this idea to say that the ``mean" (expectation) of a given $y$ value is some transformation of a linear model, and that the error (variation) around the mean may follow a different sort of distribution other than a Gaussian.  This will (hopefully) become clearer as we discuss specific kinds of generalized linear models.
+
+
+\begin{landscape}
+\begin{tabular}{|| m{0.5cm} | p{3cm} || p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} ||} \hline \hline
+\multicolumn{2}{||c||}{} & \multicolumn{5}{|c||}{\textbf{Explanatory variable(s)}} \\ 
+\cline{3-7}
+\multicolumn{2}{||c||}{} & Null & Binary & Nominal & Continuous & Nominal + \par Continuous \\
+\hline \hline
+\multirow{6}{*}{\rotatebox{90}{\textbf{Response variable ~ ~ ~ ~}}}
+& Binary \par  		& Binomial test &  \multicolumn{2}{|c|}{$\chi^2$ independence test}  & \multicolumn{2}{|c|}{Logistic regression} \\ 
+\cline{2-7}
+& Nominal \par 			& $\chi^2$ goodness of fit test &  \multicolumn{2}{|c|}{$\chi^2$ independence test}   & \multicolumn{2}{|c|}{Multinomial Logistic regression}\\ 
+\cline{2-7}
+& Continuous with Additive errors/effects	& 1-samp t-test & 2-samp t-tests & ANOVA & Regression & ANCOVA \\ 
+\cline{2-7}
+& Continuous with Multiplicative errors/effects	&  \multicolumn{5}{|c||}{Same as row above, after log transform of response variable} \\ 
+\cline{2-7}
+& Counts \par			& \multicolumn{5}{|c||}{Poisson regression or log-linear models} \\ 
+\cline{2-7}
+& Failure times \par 		& \multicolumn{5}{|c||}{Survival analysis: Cox regression / etc.} \\ 
+\cline{2-7}
+& Multivariate/\par structured 	& \multicolumn{5}{|c||}{Multilevel / hierarchical models / Bayesian methods}\\ 
+\hline \hline
+\end{tabular}
+
+Table: A rough sketch of some of the possible combinations of explanatory variables and response variables that one might encounter, and what kinds of procedures deal with each one. 
+
+\end{landscape}
+
+\section{``Log-normal" regression}
+
+I'm calling this a ``log-normal" regression to give it a name, but I don't know if this name is commonly used (I can't think of one that is more often used -- ``log-linear" models are a slightly more general class).
+
+A log normal regression would be used when the various regressors and errors combine multiplicatively (not additively) to predict y (for instance, if we are predicting returns on investment, differences in initial investment and fluctuations in interest rates will yield multiplicative changes in returns).
+
+\subsection{Logarithms}
+
+Before we start, let's make sure we are all clear on what a logarithm is.  I will write log functions as $\log_w$, which should be read as ``log base w".  If $w^z=y$ then $\log_w(y) = z$.  You can interpret this as ``I need to multiply $w$ by itself $z$ times to get $y$".  For instance, $2^8=256$, and $\log_2(256)=8$.  I will follow convention, so that if I omit the subscript from the $\log$ function I am using the ``natural logarithm" -- logarithm base $e=2.718282$ (as in $\log(10)=2.302585$; $\exp(2.302585)=10$).
+
+Logarithms have some neat properties, which often come in handy:\\
+$\log_a(x) = \log_b(x)/\log_b(a)$, for instance: $\log(50) = 3.91 = \log_{10}(50) / \log_{10}(2.718)$\\
+$\log(x*y) = \log(x) + \log(y)$\\
+$\log(x^y) = y*\log(x)$
+
+\subsection{back to the log-normal regression}
+
+There are two ways to think about a log normal regression.  The easiest way to think about it is: we take the $\log$ (often $\log_{10}$, because they are easier to interpret) of our y values, and then do a regular regression on these transformed values.  If so, our model will be (in base 10):\\
+$\log_{10}(y_i) = \beta_0 + \beta_1 x^{(1)}_i + \beta_2 x^{(2)}_i + ... + \beta_p x^{(p)}_i + \varepsilon_i$\\
+$\varepsilon_i \sim \text{Normal}(\text{mean}=0, \text{s.d.}=\sigma)$\\
+Which we can rewrite as:\\
+$y_i = 10^{(\beta_0 + \beta_1 x^{(1)}_i + \beta_2 x^{(2)}_i + ... + \beta_p x^{(p)}_i + \varepsilon_i)}$\\
+$\varepsilon_i \sim \text{Normal}(\text{mean}=0, \text{s.d.}=\sigma)$\\
+Or as:\\
+$y_i = 10^{\beta_0}*10^{\beta_1 x^{(1)}_i}*10^{\beta_2 x^{(2)}_i} * ... * 10^{\beta_p x^{(p)}_i}*10^{\varepsilon_i}$\\
+$\varepsilon_i \sim \text{Normal}(\text{mean}=0, \text{s.d.}=\sigma)$\\
+
+So if we just treat $y'_i = \log_{10}(y)$, and do a regular regression predicting $y'$ from $x$, all we are doing is the regular kind of regression we are used to.  However, to figure out how $\beta$ values influence the original $y$ values, we have to work through all the exponentiation to find that a given $\beta$ coefficient indicates the fractional (or multiplicative) change in $y$.  Specifically, if we know that (in a $\log_{10}$ regression):\\
+$\beta_0 = 1$, $\beta_1 = -0.1$\\
+then if $x=4$\\
+$\log_{10}(y) = 1- 0.1*4 = 0.6$\\
+the $y$ value will be $y=10^{0.6} = 3.981$.
+If we change to $x=5$, then\\
+$\log_{10}(y) = 1- 0.1*5 = 0.5$\\
+the $y$ value will be $y=10^{0.5} = 3.162$.
+
+We can work through the interpretation of $\beta_1$ as a multiplicative change in $y$ as follows:\\
+$\log_{10}(y_1) = \beta_0 + \beta_1 x_1$\\
+And the y value:\\
+$y_1 = 10^{\beta_0 + \beta_1 x_1}$\\
+if $x_2 = x_1+1$ then \\
+$\log_{10}(y_2) = \beta_0 + \beta_1 x_2$\\
+$\log_{10}(y_2) = \beta_0 + \beta_1 (x_1+1)$\\
+$\log_{10}(y_2) = \beta_0 + \beta_1 x_1 + \beta_1$\\
+And converting to the original y values:\\
+$y_2 = 10^{\beta_0 + \beta_1 x_1 + \beta_1}$\\
+$y_2 = 10^{\beta_0 + \beta_1 x_1}*10^{\beta_1}$\\
+Note that the first part is $y_1$, so we just get:\\
+$y_2 = y_1*10^{\beta_1}$
+
+So what all this means is that a given slope coefficient ($\beta$) tells us that increasing the corresponding x value by 1, all else constant, will yield a multiplicative increase in y: the new y will be $10^\beta$ times greater than the old y.  If $\beta$ is equal to 0.1, then $10^{\beta}=1.259$, which means that the new y value will be 1.259 times the old y value, which is a 25.9\% increase in y.  If $\beta$ is equal to -0.1, then $10^{\beta}=0.794$, which means that the new y value will be 0.794 times the old y value, which is a 20.6\% decrease in y.
+
+If we want to do inference, model selection, etc. about log-normal regressions, the easiest way to go would be to use $y' = \log_{10}(y)$, and then do all the inference, confidence intervals, model selection, etc. in the same manner as we would for a simple linear regression (taking care to convert the bounds of confidence intervals on predicted $y'$ values into the original $y$ values by exponentiation).
+
+The other way to think about log-normal regression is to consider the ``log normal" distribution. In this case we can write out our log normal regression as:\\
+$z_i = \beta_0 + \beta_1 x^{(1)}_i + \beta_2 x^{(2)}_i + ... + \beta_p x^{(p)}_i$\\
+$y_i \sim \text{Log}_{10}\text{Normal}(\mu=10^{z_i}, \sigma)$\\
+This is equivalent to the description we had above, and arguably more confusing, so let's ignore it.
+
+\section{Logistic regression}
+
+If our data are not continuous (either additively or multiplicatively) but binary (we either got a problem right or wrong; a child was either a boy or a girl; you either got a speeding ticket, or did not, etc.), then we need to adopt a different model for our data.  Obviously, we cannot treat the variability as Gaussian, because we can only get one of two values.  As such, we treat the variability as Bernoulli, or Binomial.
+
+Our logistic regression model is:\\
+$z_i = \beta_0 + \beta_1 x^{(1)}_i + \beta_2 x^{(2)}_i + ... + \beta_p x^{(p)}_i$\\
+$y_i \sim \text{Bernoulli}(p=\text{Logistic}(z_i))$\\
+Where the Bernoulli distribution parameterized by the probability parameter $p$ is:\\
+$\Pr(y) = \begin{cases} y=1 & \Pr(y)=p \\ y=0 & \Pr(y)=(1-p)\end{cases}$\\
+In other words, if $y$ is distributed Bernoulli with probability $p=0.7$, that means $y$ will be ``1" with probability 0.7, and y will be ``0" with probability 0.3.\\
+The Logistic function squishes a continuous variable to the range of probabilities: \\
+$p = \text{Logistic}(z) = \frac{1}{1+\exp(-z)}$\\
+And we can invert the transformation using the Logit (log odds) function:\\
+$z = \text{Logit}(p) = \log(\frac{p}{1-p})$\\
+So $z$ is the log odds.
+
+So altogether, all this math tells us that in a logistic regression, we adopt a linear model for the log odds ($\log(\frac{p}{1-p})$), and we transform the log odds into a probability using the logistic function.   We then assume that our actual $y$ values will be binary (1 or 0) according to a Bernoulli distribution: 1 with probability $p$, 0 with probability $1-p$.  This specification allows us to calculate the likelihood of the data (how likely all the $y$s are) for each possible set of $\beta$ parameters, and we use the ``maximum likelihood" $\beta$ parameters as our estimates.
+
+Once we have a set of parameters estimated, we can then make predictions.  If $\beta_0 = 1$ and $\beta_1=0.1$, and x=4, this means that:\\
+$z = 1+0.1*4 = 1.4$, and the probability of y being 1 will be:\\
+$p = \text{Logistic}(z) = \frac{1}{1+\exp(-z)} = \text{Logistic}(1.4) = \frac{1}{1+\exp(-1.4)}=0.802$
+
+We can interpret $\beta$ slope coefficients in a few ways.  \\
+Let's say $x_2 = x_1+1$, then:\\
+$z_1 = \beta_0 + \beta_1 x_1$, and \\
+$z_2 = \beta_0 + \beta_1 x_2 =  \beta_0 + \beta_1 x_1 + \beta_1 = z_1 + \beta_1$, which yields the first interpretation of the slope coefficient: as $x$ goes up by 1, the log odds increase by adding $\beta_1$ to them.\\
+If we decide to think about odds instead of log odds (where $\text{odds} = \frac{p}{1-p}$), then we can transform the log odds ($z$ values) into odds as follows:\\
+$\text{odds}_1 = \exp(z_1) = \exp(\beta_0 + \beta_1 x_1)$, and \\
+$\text{odds}_2 = \exp(z_2) = \exp(z_1 + \beta_1) = \exp(z_1)*\exp(\beta_1) = \text{odds}_1*\exp(\beta_1)$, which yields the second interpretation of the slope: increasing x by 1 yields a multiplicative change in odds by a factor of $\exp(\beta_1)$. 
+
+For instance, if we know that $\beta_0=1$, $\beta_1=0.1$, $x_1=3$, $x_2=4$, then:\\
+$z_1 = 1+0.1*3 = 1.3$, and the probability of $y_1$ being 1 will be:\\
+$p_1 = \frac{1}{1+\exp(-z_1)} = 0.7858$.\\
+For the $x_2$ we get:\\
+$z_2 = 1+0.1*4 = 1.4$, and the probability of $y_2$ being 1 will be:\\
+$p_2 = \frac{1}{1+\exp(-z_1)} = 0.802$.\\
+The odds ratios will be:\\
+$\text{odds}_1 = \frac{0.7858}{1-0.7858} = 3.669$\\
+$\text{odds}_2 = \frac{0.802}{1-0.802} = 4.055$\\
+And if we consider how the odds changed (fractionally):\\
+$\frac{\text{odds}_2}{\text{odds}_1} = \frac{4.055}{3.669} = 1.105$\\
+Which we can see is equal to $\exp(\beta_1) = \exp(0.1) = 1.105$.\\
+Similarly, we can consider the linear difference in log odds: \\
+$\log(\text{odds}_2) - \log(\text{odds}_1) = 1.4-1.3 = 0.1 = \beta_1$.
+
+Note that there is no stable interpretation of the slope coefficient in terms of probability.  When $x$ goes from 3 to 4, we see that the probability goes from 0.7858 to 0.802, or a linear increase of about 0.162, or a multiplicative increase of about 2\%.  If instead $x$ goes from -10 to -9 (which is still a 1 unit increase), the probability will change from 0.5 to 0.525: a linear increase of 0.025, or a multiplicative increase of 5\%.  In short: the slope coefficient is easily interpretable as a constant additive change in log odds, or a constant multiplicative change in odds, created by a 1 unit increase in $x$, but the slope coefficient does not have a straight-forward relationship to the change in probability.
+
+\subsection{Inference about logistic regression parameters}
+
+Inference about logistic regression parameters is done via the likelihood function, which basically says: what is the probability of the data, given a particular set of parameters ($\theta$).\\
+$L(\theta) = \prod_{i=1}^n P(y_i | \theta, x_i)$; often we use the log likelihood instead:\\
+$LL(\theta) = \log(L(\theta)) = \log(\prod_{i=1}^n P(y_i | \theta, x_i)) = \sum_{i=1}^n \log(P(y_i | \theta, x_i))$\\
+In the logistic regression model, the likelihood of a given data point ($y_i$) is $p_i$ if $y_i=1$, and $(1-p_i)$ if $y_i=0$ (this is the Bernoulli likelihood).  $p_i$ is given by the logistic transformation of $z_i$ which comes from the linear equation, as described above.
+
+We can calculate the likelihood for any given set of parameters ($\theta$), which includes all the individual $\beta$s.  The set of $\beta$s with the highest likelihood is the maximum likelihood estimate.  This is what we get from running a logistic regression in R.  The standard errors of the parameters correspond to the standard deviation of the best-fitting gaussian to the likelihood function around the maximum: if the likelihood function drops off very steeply from the maximum, our standard error will be small.  If the likelihood function drops off shallowly from the maximum, the standard error will be large.  We assume that the shape of the likelihood function around the peak will be gaussian because that tends to be the case if there is enough data.
+
+Since we assume that the likelihood function is gaussian, we can draw confidence intervals and test null hypotheses about parameter values by defining Z-scores using the maximum likelihood $\beta$ estimates and the ``standard errors".  All tests and confidence intervals proceed as they do for normal Z tests (although these tests are called ``Wald" tests because they are being driven by a standard error which corresponds to the estimated standard deviation of the gaussian that best fits the likelihood function at the peak).
+
+If we want to compare two ``nested" logistic regression models (meaning that one is a subset of the other), we can do so using the likelihood ratio test.  This is an analog of the F test we use when comparing two nested linear regression models: we want to know how well the bigger model fits, compared to how well the smaller model fits, given the number of parameters we added to the smaller model to produce the larger model.  The logic of the likelihood ratio test is the same:
+
+$G^2 = -2 * \log(\frac{\text{likelihood}(\text{small model})}{\text{likelihood}(\text{big model})}$
+
+In so far as our likelihood functions are well approximated by gaussians and the null hypothesis is true, $G^2$ will have a $\chi^2$ distribution with $df = df_{small} - df_{big}$; in other words, the degrees of freedom for this $\chi^2$ variable is the number of additional parameters in the larger model.  We can obtain p values for this test using the chi-squared distribution to see how our $G^2$ statistic compares to the null hypothesis distribution.
+
+\end{document}

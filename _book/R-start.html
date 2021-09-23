@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>UCSD Psyc 201ab / CSS 205 / Psyc 193</title>
+  <title>Getting started with R | UCSD Psyc 201ab / CSS 205 / Psyc 193</title>
   <meta name="description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  <meta property="og:title" content="Getting started with R | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="UCSD-PSYC201/website" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  <meta name="twitter:title" content="Getting started with R | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
   
   <meta name="twitter:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="course-projects.html"/>
 
-<link rel="next" href="course-syllabus.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -200,27 +200,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">UCSD Psyc 201ab / CSS 205 / Psyc 193</h1>
+<div id="R-start" class="section level1 unnumbered">
+<h1>Getting started with R</h1>
+<div id="R-install" class="section level2 unnumbered">
+<h2>Installing R</h2>
+<ol style="list-style-type: decimal">
+<li><p>Download and install R for your system: <a href="https://cran.rstudio.com/">https://cran.rstudio.com/</a></p></li>
+<li><p>Download and install RStudio for your system: <a href="https://www.rstudio.com/products/rstudio/download/">https://www.rstudio.com/products/rstudio/download/</a></p></li>
+</ol>
+<div id="packages" class="section level3">
+<h3>Packages</h3>
+<p>We will use a number of packages that extend the functionality of basic R, and make some operations easier/more intuitive. You can start by installing the tidyverse package using the code below.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="R-start.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span></code></pre></div>
 </div>
-<div id="welcome" class="section level1 unnumbered">
-<h1>Welcome</h1>
-<p>This is the website for Psych 201a, 201b; they are presumed to be taken as a series with 201a in the fall, and 201b in the winter. 201a is also offered as an advanced undergraduate course (Psych 193), and will be crosslisted as the core stats class for the Computational Social Science MS program (CSS 205).</p>
-<p>201a covers statistical graphics, probability, classical statistical methods, with an emphasis on the general linear model, and their implementation in R.</p>
-<p>201b covers more advanced models and methods, including generalized linear models, multilevel/hierarchical regression, and computational approaches such as numerical optimization, Monte Carlo, and resampling.</p>
-<p><strong>201b is not offered in the 2021-2022 academic year</strong></p>
+</div>
+<div id="R-intro" class="section level2 unnumbered">
+<h2>Introduction to R</h2>
+<p>Writing analyses in R is writing code. If you are new to this notion, you might benefit from this <a href="http://www.bloomberg.com/graphics/2015-paul-ford-what-is-code/">excellent article on what code is</a>, from this discussion of the <a href="http://www.pgbovine.net/two-cultures-of-computing.htm">two cultures of computer users</a>, and from this harsh, but accurate description of <a href="http://blog.sailsoftware.co/2015/09/09/what-it-really-takes-to-learn-how-to-code.html">what it takes to <em>really</em> learn to code</a></p>
+<div id="getting-started" class="section level3">
+<h3>Getting started</h3>
+<p>There’s a large set of introductory tutorials to R online, easily accessible via google.</p>
+<p>I recommend working through some interactive tutorials to start yourself off:</p>
+<ul>
+<li><a href="tryr.codeschool.com">Try R</a> from codeschool<br />
+</li>
+<li><a href="http://swirlstats.com/">swirl</a> offers interactive R lessons run within R<br />
+</li>
+<li><a href="https://www.datacamp.com/">datacamp</a> offers interactive tutorials, but I’m a bit confused what is free, and what requires subscription<br />
+</li>
+<li>Here is a handy <a href="http://learnxinyminutes.com/docs/r/">tutorial R script</a><br />
+</li>
+<li>OpenIntro stats also <a href="https://www.openintro.org/stat/labs.php?stat_lab_software=R">R labs</a><br />
+</li>
+<li>Rstudio offers a list of such <a href="https://www.rstudio.com/resources/training/online-learning/">lessons</a></li>
+</ul>
+<p>As you become familiar with the basics, you may want some quick reference sources.</p>
+<ul>
+<li>Take a look at <a href="https://www.rstudio.com/resources/cheatsheets/">Rstudio cheat sheets</a>, in particular data visualization and data wrangling<br />
+</li>
+<li><a href="https://www.ualberta.ca/~ahamann/teaching/renr690/R_Cheat_Data.pdf">This one</a> is also useful<br />
+</li>
+<li>Take a look at Wickham’s list of <a href="http://adv-r.had.co.nz/Vocabulary.html">basic R functions worth learning</a><br />
+</li>
+<li><a href="http://www.cookbook-r.com/">Cookbook for R</a> offers solutions and code snippets for common problems.</li>
+</ul>
+<p>You will need to find help.</p>
+<ul>
+<li><a href="google.com">Google</a> “R [what you want to do]”<br />
+</li>
+<li><a href="http://stats.stackexchange.com/">CrossValidated</a> is a great resource: I often find solutions to my problems there.</li>
+</ul>
+<p>You may also want to consult more advanced lessons to supplement labs/notes:</p>
+<ul>
+<li>This UBC course offers great notes on <a href="http://stat545-ubc.github.io/">modern and practical R (including ggplot)</a><br />
+</li>
+<li>Hadley Wickham’s advanced R book and <a href="http://adv-r.had.co.nz/">online notes</a> are very good, but advanced, as described</li>
+</ul>
+<p>To write code well, you will need to know something about how a computer works.</p>
+<ul>
+<li>General <a href="https://en.wikipedia.org/wiki/Command-line_interface">command line</a> tutorials are good for understanding how CLIs work. e.g., <a href="https://www.learnenough.com/command-line-tutorial">learn enough command line to be dangerous</a><br />
+</li>
+<li>Understand your system’s directory and file structure and how to navigate it from a console. In R: getwd(), setwd(), list.files().</li>
+</ul>
+<p>Once you can actually write some code, it is worth learning to make it good.</p>
+<ul>
+<li>Good code is readable by humans and <a href="https://en.wikipedia.org/wiki/Self-documenting">self documenting</a><br />
+</li>
+<li>This can be achieved by adopting a consistent and sensible style of code. A few suggestions: <a href="https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml">Google R style guide</a>, and <a href="http://adv-r.had.co.nz/Style.html">Wickham’s style guide</a>.<br />
+</li>
+<li>Avoid <a href="https://en.wikipedia.org/wiki/Magic_number_(programming)#Unnamed_numerical_constants">magic numbers</a>. They make your code hard to read and brittle to change.<br />
+</li>
+<li>Use unique and meaningful names for scripts, functions, variables, data.frames, columns, etc.<br />
+</li>
+<li>Learn to type well, and pay attention to text details. In most programming languages, letter order, letter case, visually similar symbols, etc. have to be correct for a computer to understand what you are saying. Human readers are forgiving with typos, computers are not.<br />
+</li>
+<li>Learn to use your <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a> (in our case, Rstudio). <a href="https://support.rstudio.com/hc/en-us/articles/200404846-Working-in-the-Console">Tab completion</a> is amazing. <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">Keyboard shortcuts</a> are very handy.</li>
+</ul>
+</div>
+</div>
+<div id="better-data-analysis-code." class="section level2">
+<h2>Better data analysis code.</h2>
+<p>The overarching flow of data analysis is something like:<br />
+data -&gt; <code>pre-processing code</code> -&gt; clean data -&gt; <code>analysis code</code> -&gt; results -&gt; <code>presentation code</code> -&gt; figures, tables, numbers</p>
+<p>It is helpful to <a href="https://en.wikipedia.org/wiki/Code_refactoring">factor</a> your code this way, as it allows you to muck around with various parts without disrupting the others.</p>
+<p>A few suggestions for how to write good code for data analysis.</p>
+<ul>
+<li>Make sure analysis code is state independent (it should re-run correctly after <code>rm(list=ls())</code>), and self-sufficient (it should not require any human intervention, mouse-clicks, etc). All of this ensures that re-running your analysis is not a pain, and is reproducible.<br />
+</li>
+<li>Don’t arbitrarily create data subsets stored in assorted variables – that’s a great way to make a mess of your code and confuse yourself. Subset data as needed, while keeping the data frame complete.<br />
+</li>
+<li>Build complicated commands piece by piece in the console, then assemble the final compact command in your script. Especially when using <code>dplyr</code> pipes (<code>%&gt;%</code>), or nesting functions.<br />
+</li>
+<li>When in doubt about whether the code is intuitive, pass named, rather than positional, arguments to functions.<br />
+</li>
+<li>Take explicit control of your data types and structures – don’t just assume that when you read in a csv file, all variables, factors, etc. have the correct data type, names, etc.</li>
+</ul>
 
 </div>
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="course-projects.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="course-syllabus.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -251,7 +335,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/notes/R-start.Rmd",
 "text": "Edit"
 },
 "history": {

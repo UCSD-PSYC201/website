@@ -1,0 +1,318 @@
+---
+  output: 
+    tufterhandout::html_tufte_handout
+---
+  
+```{r child = '../header.Rmd'}
+```
+
+# R Gotchas
+
+Unfortunately, there are a number of rather obnoxious caveats to the R programming language, which you may find endearing and perhaps even useful after a while, but at first, they will cause puzzlement and frustration.
+
+Some of these amount to gotchas that arise in any computing environment; others arise in any numerical computing environment; and others are R specific.
+
+## Happy computing
+
+### Write functions
+
+
+## Computing
+
+### Memory allocation and efficiency.
+
+Credit: From [R-Inferno](http://www.burns-stat.com/documents/books/the-r-inferno/)
+
+```{R}
+n = 10000
+# slowest
+x = c()
+for(i in 1:n) x <- c(x, i)
+# faster
+x = vector(length=n)
+for(i in 1:n) x[i] <- 1
+# fastest
+x = 1:n
+```
+
+## Numerical computing
+
+### Vectorized vs non-vectorized operations
+
+
+### Floating point
+
+Credit: From [R-Inferno](http://www.burns-stat.com/documents/books/the-r-inferno/)
+
+Representing a floating point number (meaning a decimal number) on a computer is hard.  A computer represents numbers in some sort of binary encoding.  For instance, if we have a really limited encoding scheme, using one byte (8 bits), we can encode 2^8=256 different values.  We might decide that the range of values we can encode are integers from 0 to 255, where 0 would be encoded as `00000000`, 255 would be `11111111`, and 26 would be `00011010`.  
+
+The same sort of logic applies to encoding floating point numbers in binary, but a floating point number in theory has infinitely many values (e.g., we can always ad $10^{-n}$, where $n$ is arbitrarily large, thus meaning we will need to represent our floating point number to at least $n$ decimal places).  Consequently, truly representing floating point numbers would require infinitely many bits, so we could capture the infinitely many values they might take on.  That's obviously not what computers do.  They use a limited number of bits, and as a consequence, they encounter various kinds of truncation errors when dealing with very small floating point numbers.
+
+For the most part, numerical computing environments print numbers in a friendly format, so that we need not look at the monstrous floating point representation underneath the hood.  This yields some weird behavior: floating point numbers that are rounded when printing will look identical, but may not be.  And at some point, we can exceed our floating point precision, and then technically different floating point numbers will be equal.
+
+```{R}
+2
+2 + 10^-15
+2 == (2 + 10^-15)
+2 == (2 + 10^-16)
+all.equal(2, 2+10^-15)
+all.equal(2, 2+10^-16)
+```
+
+A work-around for equality testing is to use the `all.equal` function, rather than the `==` operator when comparing floating point numbers with an appreciation for the 'machine tollerance' of the floating point representation, and the expected numerical error that might arise in a floating point number.
+
+### 
+
+## Probability
+
+Probability is a *measure* on a space of *outcomes* in an *experiment*.  For our purposes, it is helpful to formulate this as a function of outcomes.
+
+For instance, let's say's that I roll an six sided-die, with sides number 1 through 6.  We can list all the possible outocmes:
+
+```{R}
+die.outcomes = c(1,2,3,4,5,6)
+```
+
+And the probability of getting any of these outcomes is 1/6, which we can encode as a function of outcome:
+
+```{R}
+# this function returns a vector of probabilities corresponding to each of the outcomes in the vector of outcomes
+# the x %in% y operator returns true for any x that is an element of y, and F for the others.
+# we use logical indexing to assign the outcome probability (1/6) to all possible outcomes, and 0 otherwise
+Pr = function(outcomes){
+  p = rep(0,length(outcomes))
+  p[outcomes %in% die.outcomes] = 1/6
+  return(p)
+}
+```
+
+Now we can look at the probability of a particular outcome (and we get 0 for outcomes that are not possible)
+
+```{R}
+Pr(1)
+Pr(4)
+Pr(c(5,6,7,8))
+```
+
+### Sampling, long-run frequency, and the law of large numbers.
+
+Another way to think about this probability is as the long-run frequency of a given outcome.  So we can set up a function that rolls a die and returns the side that it landed on.  In this case, we can implement such sampling with the `sample` function.
+
+```{R}
+roll.die = function(){
+  return(sample(die.outcomes, 1, replace=T, prob = Pr(die.outcomes)))
+}
+```
+
+Every time we roll the die, we get a random outcome, we would call this a *sample*
+
+```{R}
+roll.die()
+roll.die()
+```
+
+[Borel's law of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers#Borel.27s_law_of_large_numbers) is the intuitive rule that if we repeat a random experiment many many times, the proportion of those times that had a particular outcome occur will match the probability of that outcome occurring in any one run of the experiment.  In our case, we can generate many rolls of the die, then calculate what fraction of them yielded a particular outcome:
+
+```{R}
+rolls = replicate(10000,roll.die())
+( p.1 = sum(rolls==1)/length(rolls) )
+( p.4 = sum(rolls==4)/length(rolls) )
+( p.8 = sum(rolls==8)/length(rolls) )
+```
+
+## Events are subsets of outcomes
+
+An event in probability theory is a subset of outcomes.  For instance, for our rolled die, we might define an event as "getting an even roll".  It is useful to us to think of an event as a predicate, which we apply to the outcomes to see whether or not they fit into the event.  To make these kinds of calculations explicit, we can make a data frame listing all outcomes, their probabilities, and whether or not they are included in a particular event:
+
+```{R}
+is.even = function(outcome){
+  return((outcome %% 2)==0)  # x %% y is the modulus operator which returns the remainder after dividing x by y.
+}
+( die.expt = data.frame(outcome = die.outcomes, probability=Pr(die.outcomes), even=is.even(die.outcomes)) )
+```
+
+The probability of an event is the sum of the probabilities of the outcomes in that event:
+
+```{R}
+( p.even = with(subset(die.expt, die.expt$even==T), sum(probability)) )
+```
+
+Note that here we are using `with` and `subset`.   
+`subset(df, logical.vector)` returns the subset of rows in a data frame for which the logical vector is true.    
+`with(df, expression)` runs the expression in an environment wherein the columns of the data frame are simply vector variables that we can refer to directly.   
+
+### Sampling to estimate event probabilities.
+
+Just as we can calculate the probability of a particular outcome from samples, we can do the same with an event.  We generate many samples, see which fall in an event, and estimate their relative frequency:
+
+```{R}
+die.samples = data.frame(outcome = replicate(10000, roll.die()))
+die.samples$even = is.even(die.samples$outcome)
+head(die.samples)
+( p.even = sum(die.samples$even) / nrow(die.samples) )
+```
+
+Note that this formulation of the explicit probability calculation (data frame of outcomes with associated probabilities, or data frame of samples) makes it clear what the relationship is.  Basically, we treat the probability of each sampled outcome as 1/n where n is the number of samples:
+
+```{R}
+die.samples$probability = 1/nrow(die.samples)
+( p.even = with(subset(die.samples, die.samples$even), sum(probability)) )
+```
+
+## Probability of a conjunction of events
+
+The conjunction of events A and B may be thought of as another event -- another subset of the outcomes that is the *set intersection* of A and B.  Alternatively, we can just think of it as a conjunction predicate that returns true if both events are true of this outcome.  
+
+First let's define a second event "greater than 3" (which is the subset 4,5,6 of dice outcomes).
+
+```{R}
+is.greaterthan3 = function(outcome){
+  return(outcome > 3)
+}
+( die.expt$greaterthan3 = is.greaterthan3(die.expt$outcome) )
+```
+
+Now we can define the conjunction event, which we can calculate in two ways -- either by defining a new conjunction predicate, or by simply taking the logical conjunction of our two event columns.
+
+```{R}
+is.even.n.greaterthan3 = function(outcome){
+  return( is.even(outcome) & is.greaterthan3(outcome) )
+}
+die.expt$even.n.greaterthan3 = is.even.n.greaterthan3(die.expt$outcome)
+die.expt
+( p.even.n.greaterthan3 = 
+    with(subset(die.expt, die.expt$even.n.greaterthan3), 
+         sum(probability)) )
+```
+
+### Sampling to get probability of conjunction
+
+```{R}
+die.samples$greaterthan3 = is.greaterthan3(die.samples$outcome)
+die.samples$even.n.greaterthan3 = is.even.n.greaterthan3(die.samples$outcome)
+( p.even.n.greaterthan3 = mean(die.samples$even.n.greaterthan3) )
+```
+
+Note that here we take the shortcut of taking the mean of the logical vector `even.n.greaterthan3` to calculate the proportion that is true. This works because true=1, false=0, consequently sum(TF) = n.true, and mean(TF) = n.true/n.total -- the proportion that were true.
+
+## Probability of a disjunction
+
+```{R}
+is.even.or.greaterthan3 = function(outcome){
+  return( is.even(outcome) || is.greaterthan3(outcome) )
+}
+die.expt$even.or.greaterthan3 = is.even.or.greaterthan3(die.expt$outcome)
+die.expt
+( p.even.or.greaterthan3 = 
+    with(subset(die.expt, die.expt$even.or.greaterthan3), 
+         sum(probability)) )
+```
+
+### Sampling to get probability of disjunction
+
+```{R}
+die.samples$even.or.greaterthan3 = is.even.or.greaterthan3(die.samples$outcome)
+( p.even.or.greaterthan3 = mean(die.samples$even.or.greaterthan3) )
+```
+
+## Conditional probability
+
+```{R}
+p.greaterthan3 = with(subset(die.expt, die.expt$greaterthan3), sum(probability))
+( p.even_greaterthan3 = p.even.n.greaterthan3 / p.greaterthan3 )
+( p.even_greaterthan3 = with(subset(die.expt, die.expt$greaterthan3),
+                             sum(probability[even])/sum(probability)) )
+```
+
+
+### Sampling to calculate conditional probability
+
+
+```{R}
+( p.even_greaterthan3 = with(subset(die.samples, die.samples$greaterthan3),
+                             mean(even)) )
+( p.even_greaterthan3 = sum(die.samples$even.n.greaterthan3)/sum(die.samples$greaterthan3) )
+```
+
+## Random variables
+
+A random variable is a *partition* of the outcome space.  A partition is a group of events such that every outcome is in one and only one event.  We can define this as a function in R:
+
+```{R}
+rv.mod3 = function(outcome){
+  return( outcome %% 3)
+}
+```
+
+To calculate the probability of a particular value of the random variable 
+
+```{R}
+die.expt$mod3 = rv.mod3(die.expt$outcome)
+mod3.values = sort(unique(die.expt$mod3))
+mod3.probs = sapply(mod3.values, 
+        function(v){
+          with(subset(die.expt, die.expt$mod3==v), 
+               sum(probability))
+          }
+        )
+data.frame(mod3 = mod3.values, probability=mod3.probs)
+```
+
+### Samples and random variables
+
+```{R}
+die.samples$mod3 = rv.mod3(die.samples$outcome)
+mod3.values = sort(unique(die.samples$mod3))
+mod3.probs = sapply(mod3.values, 
+        function(v){mean(die.samples$mod3 == v)}
+    )
+data.frame(mod3 = mod3.values, probability=mod3.probs)
+```
+
+## Combinations
+
+# Older.
+
+Sampling is a very helpful tool to understand probability.
+
+When I say that the probability of a die coming up x is P(x), I am referring to the long-run frequency of the outcomes that would happen if we rolled this die many times.  So, instead of going through the math to calculate various properties of this die-roll, we can *simulate* die rolls, and work on those simulations.
+
+This works on account of various "laws of large numbers", and in particular, the "Monte Carlo" theorem, which basically says: if you want to calculate the expectation of some function on a random variable, you can calculate it by averaging that function's output on a bunch of samples drawn with frequency proportional to their probability under the random variable.
+
+
+```{R}
+die.outcomes = c(1,2,3,4,5,6)
+die.probs = c(1/6,1/6,1/6,1/6,1/6,1/6)
+```
+
+We can use this probability distribution to calculate expectations of the die-roll, like the mean and standard deviation:
+
+```{R}
+( mu.die = sum(die.probs*die.outcomes) )
+( sd.die = sqrt(sum(die.probs*(die.outcomes-mu.die)^2)) )
+```
+
+These calculations are based on the actual probability distribution of the different die outcomes.  If we wanted to calculate the mean and std. dev. of the sum of two die rolls, we would need to do some rather tricky coding to calculate the probability distribution of the sum of two die rolls:
+
+```{R}
+( die.x.die.sum = outer(die.outcomes, die.outcomes, function(a,b)(a+b)) )
+( die.x.die.prob = outer(die.probs, die.probs, function(a,b)(a*b)) )
+( die.die.sum = sort(unique(as.vector(die.x.die.sum))) )
+( die.die.prob = sapply(die.die.sum, function(x)(sum(die.x.die.prob[die.x.die.sum==x]))) )
+```
+
+Here we calculated the probability distribution of the sum of two dice by enumerating every possible combination of die outcomes, getting their sum and probability, then summing up over different combinations of die 1 and die 2 that yield the same sum.  This gets very hairy if we want to calculate the probability distribution of anything even slightly complicated (e.g., the sum of 10 die rolls).
+
+
+Let's write a function that rolls a die:
+
+```{R}
+roll.die = function(){sample(c(1,2,3,4,5,6))}
+(roll.die())
+```
+
+Now we can generate a sample die roll.
+
+```{R}
+
+```

@@ -1,48 +1,44 @@
-# 201a Schedule  {#schdeule-201a  .unnumbered}
+# 201a Schedule  {#course-201a  .unnumbered}
 
-## Week 0: Introduction 
+## Week 0: Introduction {-}
+
+In which we will cover the goals of this class, and where the class materials fit into the broader landscape of quantitative / computational / data skills.
 
 #### Readings   
 
-**Basic introduction to R / Rstudio**: R4DS: [1](http://r4ds.had.co.nz/introduction.html), [4](http://r4ds.had.co.nz/workflow-basics.html), [6](http://r4ds.had.co.nz/workflow-scripts.html), [8](http://r4ds.had.co.nz/workflow-projects.html)  
+**Basic introduction to R / Rstudio**: [R4DS](https://r4ds.had.co.nz/) Sections: [1](http://r4ds.had.co.nz/introduction.html), [4](http://r4ds.had.co.nz/workflow-basics.html), [6](http://r4ds.had.co.nz/workflow-scripts.html), [8](http://r4ds.had.co.nz/workflow-projects.html)  
 
 #### Homework
 
-[basic R syntax tutorial](http://vulstats.ucsd.edu/hw/) 
+[Pre-survey](https://forms.gle/2LEtUqjDGUfGhjHg7)
 
 #### Thursday
 
-[slides: intro](slides/L00.a-introduction.pdf)   
-[slides: administrative](slides/L00.b-administrivia.pdf)   
-[slides: overview](slides/L00.c-birds-eye.pdf)   
-[slides: advice](slides/L00.d-practical-suggestions.pdf)   
 
-## Week 1: Data
+## Week 1: Data  {-}
+
+In which we cover data organization, cleaning, and basic summaries, while getting acquainted with R syntax.
 
 #### Readings
 
-**Working with data**: R4DS: [5](http://r4ds.had.co.nz/transform.html), [7](http://r4ds.had.co.nz/exploratory-data-analysis.html), [11](http://r4ds.had.co.nz/data-import.html), [12](http://r4ds.had.co.nz/tidy-data.html)   
-**Descriptive stats**: [[notes](notes/descriptive.html)]   
-**Cleaning data example (code)**: [[notes](notes/data-cleaning.html)]  
+**Working with data**: R4DS Sections: [5](http://r4ds.had.co.nz/transform.html), [7](http://r4ds.had.co.nz/exploratory-data-analysis.html), [11](http://r4ds.had.co.nz/data-import.html), [12](http://r4ds.had.co.nz/tidy-data.html)   
+<!--- **Descriptive stats**: [[notes](notes/descriptive.html)]   
+**Cleaning data example (code)**: [[notes](notes/data-cleaning.html)]  -->
 
 #### Homework
 
-[data cleaning](http://vulstats.ucsd.edu/hw/) Due: 2020-10-14 
+[data cleaning](http://vulstats.ucsd.edu/hw/) 
 
 #### Tuesday   
-[slides: data questions](slides/L01.data.pdf)   
-[slides: projects](slides/L01.projects.pdf)   
-[code: basics](code/live/L01.R)
 
 #### Wednesday  
-More R [[code](labs/201a-2020/01/lab1.R)] [[data](labs/201a-2020/01/lab1.csv)]
 
 #### Thursday   
-[code: summary stats, tidyverse](code/live/L02.R)
 
 
+## Week 2: Visualization {-}
 
-## Week 2: Visualization
+In which we cover how to make scientifically useful graphs.
 
 #### Readings
 [[notes](notes/visualizations.html)]   
@@ -51,20 +47,19 @@ socviz: [make a plot](https://socviz.co/makeplot.html) (the rest of this book ma
 
 #### Homework
 
-[data visualization](http://vulstats.ucsd.edu/hw/) Due: 2020-10-21
+[data visualization](http://vulstats.ucsd.edu/hw/)
 
 #### Tuesday   
-[slides: visualization](slides/L03.visualization.pdf)   
-[code: ggplot](code/live/L03.R)
 
 #### Wednesday  
-ggplot practice [[code](labs/201a-2020/02/Lab2.Rmd)] [[answers](labs/201a-2020/02/Lab2_ans.Rmd)]
 
 #### Thursday   
 
 
 
-## Week 3: Theoretical foundations of classical statistics
+## Week 3: Theoretical foundations {-}
+
+In which we cover probability theory, and the logic of classical statistical methods.
 
 #### Readings
 
@@ -98,7 +93,8 @@ Probability [[code](labs/201a-2020/03/lab3.Rmd)] [[answers](labs/201a-2020/03/la
 #### Thursday
 [slides: NHST](slides/L05.classical-stats.pdf)   
 
-## Week 4: Linear model: Regression
+## Week 4: Linear model: Regression {-}
+
 
 #### Notes
 [t-distribution](notes/nhst-t-distribution.html)   
@@ -128,7 +124,7 @@ Regression [[code](labs/201a-2020/04/lab4.Rmd)] [[answers](labs/201a-2020/04/lab
 #### Thursday   
 [slides](slides/L-regression-2.pdf)
 
-## Week 5: Linear model: Multiple regression
+## Week 5: Linear model: Multiple regression {-}
 
 #### Notes  
 [multiple regression](notes/multiple-regression.html)  
@@ -144,7 +140,7 @@ Multiple regression [[code](labs/201a-2020/05/lab5.Rmd)] [[answers](labs/201a-20
 #### Thursday
 [slides](slides/L-mr-b.pdf)   
 
-## Week 6: Linear model: Categorical predictors
+## Week 6: Linear model: Categorical predictors {-}
 
 #### Readings / Notes
 [Notes on t-tests](notes/nhst-t-tests.html)   
@@ -163,7 +159,7 @@ Multiple regression [[code](labs/201a-2020/05/lab5.Rmd)] [[answers](labs/201a-20
 [slides](slides/L-lm-cat-b.pdf)   
 
 
-## Week 7: Linear model: ANCOVA, diagnostics
+## Week 7: Linear model: ANCOVA, diagnostics {-}
 
 #### Homework
 
@@ -179,7 +175,7 @@ ANOVA [[code](labs/201a-2020/06/Lab6.Rmd)] [[answers](labs/201a-2020/06/Lab6-ans
 [slides](slides/L-lm-diagnostics.pdf)   
 
 
-## Week 8: Linear model: Linearizing transforms
+## Week 8: Linear model: Linearizing transforms {-}
 
 #### Homework
 
@@ -188,7 +184,7 @@ ANOVA [[code](labs/201a-2020/06/Lab6.Rmd)] [[answers](labs/201a-2020/06/Lab6-ans
 #### Tuesday
 [slides](slides/L-lm-transforms.pdf)   
 
-## Week 9: Covarying errors (repeated measures / random effects)
+## Week 9: Covarying errors (repeated measures / random effects) {-}
 
 #### Readings:  
 I don't like either of these.... I am still on the hunt for a pithy conceptual overview of repeated measures designs and analyses:   
@@ -207,7 +203,7 @@ Repeated measures [[code](labs/201a-2020/07/lab7.Rmd)] [[answers](labs/201a-2020
 [[Howell (basic)](pdf/Howell.ch-14.repeated-measures.pdf)]    
 [[Kutner (mathy)](pdf/Kutner.ch-27.repeated-measures.pdf)] 
 
-## Week 10: Review and preview
+## Week 10: Review and preview {-}
 
 #### Tuesday
 - Mixed effects model brief    

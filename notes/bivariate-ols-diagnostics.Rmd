@@ -1,0 +1,146 @@
+---
+  output: 
+    html_document
+---
+  
+
+# Regression Diagnostics
+
+When we fit a line to some data using ordinary least squares regression and then interpret the coefficients, corresponding t-tests, etc. we are making quite a few assumptions.  When some of these are violated, we will git a misleading answer from the regression.  In this section, we will conjure up various plots and tests to check some of these assumptions.
+
+Some of the most important assumptions we make cannot be tested by looking at the data, instead they require domain knowledge.  The most important assumption is that we are measuring the things we want to be.  Usually we use some observable proxy variables for unobservable latent properties we are interested in.  For instance, we might use GDP/capita of a country as a proxy for income of  its citizens, but, this measure does not consider cost of living, income distributions, etc.  Domain knowledge and critical thought is requires to guess whether the difference between the measurable proxy and the latent variable is a big deal with respect to our question of interest.
+
+
+## Assumption: relationship between y and x is well described by a line.
+
+We can always fit a line, that doesn't mean it's a good idea.  The simplest, and most important way to check if it's a good idea to fit a line is to look at the scatterplot.  If it looks clearly non-linear, don't fit a line to it!
+
+```{r}
+suppressMessages(library(dplyr))
+suppressMessages(library(ggplot2))
+n = 200
+quadratic.data <- data.frame(x = seq(-100, 100, length.out = n), 
+           y=seq(-3, 4, length.out = n)^2+rnorm(n))
+ggplot(quadratic.data, aes(x,y))+geom_point()+geom_smooth(method='lm')
+```
+
+When we have a simple regression with just one predictor, it's really easy to look at the scatterplot, so that's usually enough, but we can also look at the residuals (difference between y and the y we predict from the regression) as a function of x:
+
+```{r}
+quadratic.data$residuals = residuals(lm(data=quadratic.data, y~x))
+ggplot(quadratic.data, aes(x,residuals))+geom_point()+geom_hline(yintercept = 0, color='red')
+```
+
+As we move to multiple regression, we can only look at one variable at a time in plots like the one above, so they tend to not be so useful.  Instead, we will look at the residuals as a function of the fitted y value.
+
+```{r}
+quadratic.data$fitted.y = fitted(lm(data=quadratic.data, y~x))
+ggplot(quadratic.data, aes(fitted.y,residuals))+geom_point()+geom_hline(yintercept = 0, color='red')
+```
+
+This plot is also returned as the first diagnostic plot of a linear model, from `plot(lm(..), 1)`.
+
+```{r}
+plot(lm(data=quadratic.data, y~x), which = 1)
+```
+
+All of these plots are basically showing us what was obvious from the get-go: the line misses the really big quadratic component we built into our data.  So we probably shouldn't be fitting a line.
+
+## Assumption: out estimates are not driven by a few huge outliers
+
+```{r}
+n = 99
+outlier.data <- data.frame(x = c(rnorm(n),-15), y=c(rnorm(n), 15))
+ggplot(outlier.data, aes(x,y))+geom_point()+geom_smooth(method='lm')
+```
+
+These fake data make it patently obvious that the one outlier at (-15,15) is driving the regression line, but often it might be more subtle.  
+
+What allows an outlier to greatly influence a regression?  It needs to have a lot of *leverage* -- meaning that it is an outlier with respect to the predictors (here, just x), which we can measure with `hat()`.  Second, it needs to use that leverage by also being an outlier in y.  We can check if such a thing happens by looking at the residuals as a function of the leverage.
+
+```{r}
+outlier.data$leverage = hat(outlier.data$x)
+outlier.data$residuals = residuals(lm(data=outlier.data, y~x))
+ggplot(outlier.data, aes(leverage, residuals))+geom_point()
+```
+
+An more useful version of this plot is generated via `plot(lm(), 5)`:
+
+```{r}
+plot(lm(data=outlier.data, y~x), which = 5)
+```
+
+This shows residuals (here they are standardized, meaning, scaled by their sd) as a function of leverage, just as in the plot we made above.  However, it also shows contours corresponding to a particular "Cook's distance".  Cook's distance is high when a data point has a lot of *influence* on the regression, meaning that it has a lot of leverage and uses it (by also being an outlier in y).  It basically tells us how much this data point is changing our regression line.  Proposed cutoffs for a Cook's distance being too large are 1, or 4/n.
+
+We can look at the Cook's distance for each data point with `plot(lm(), 4)`
+
+```{r}
+plot(lm(data=outlier.data, y~x), which = 4)
+```
+
+If you have data points with very large Cook's distances, it means that the regression line you have estimated is largely reflecting the influence of a few data points, rather than the bulk of your data.
+
+## Assumption: errors are independent, identically distributed, normal.
+
+There is also a set of assumptions about the behavior of the errors/residuals.  They should be normal (so that we are justified in using t and F statistics), they should be identically distributed, and they should be independent.  
+
+
+### Errors are independent: independent of x, fitted y, order, each other.
+
+
+Probably the most important of these assumptions is that the errors are independent, but not being independent can mean a few different things.   
+
+- Errors can be autocorrelated in order (e.g., if I measure things over time, errors tend to be correlated over time) -- this is a major issue in time-series analysis, but for the kind of data we usually deal with, we can mostly ignore it.
+
+- Errors might depend on x, or fitted y; this is the kind of thing we saw when we had obviously non-linear data.  This is important, but we've already considered it.  
+
+- Errors might correlate with each other -- this is what happens when we incorrectly specify a nested / hierarchical model.  For instance, if I measure the weight and height of 10 people, each 5 times, I will get 50 measurements; however, I only really have 10 independent units (people) -- all measurements of the same person will have a correlated error with repsect to the overall weight~height relationship.  We really need to avoid this kind of non-independence in errors, as it will lead to really wrong conclusions; but this is not something we can easily check for; we just need to understand the structure of our data, and specify the appropriate model for the error correlation (with `lmer` or `aov`, etc).  
+
+### Errors are identically distributed
+
+Typically, 'identically distributed' for errors refers to them being 'homoscedastic', or 'equal variance' -- meaning that the magnitude of the residuals is roughly consistent across our regression (rather than 'heteroscedastic', in which there is more variability in y for some values of x than others).  
+
+```{r}
+heteroscedastic.data <- data.frame(x=seq(0,100,length.out=100),
+                                  y=seq(0,100,length.out=100)*0.1+
+                                    rnorm(100,0,seq(0,100,length.out=100)/10))
+ggplot(heteroscedastic.data, aes(x,y))+geom_point()
+```
+
+We can check for this using `plot(lm, 3)`
+
+```{r}
+plot(lm(data=heteroscedastic.data, y~x),3)
+```
+
+This shows the absolute, standardized residuals as a function of the fitted y value (not as a function of x, so that this plot will also work for multiple regression with lots of explanatory variables).  Clearly, we have bigger errors at bigger y values.
+
+Sometimes such heteroscedasticity arises from our model being wrong.  For instance, if we consider how much net worth fluctuates over time, we will see that wealthy people have much larger fluctuations in absolute terms.  This is because fluctuations are constant not in dollars, but in percent.  Thus, the heteroscedasticity in this case reflects that we are applying a linear model to dollars, but we should instead be considering log(dollars), or percent fluctuations.  
+
+So, if we see very large, blatant, heteroscedasticity, we should carefully evaluate if we are measuring something that we really believe should have linear, additive errors.  If not, we should use an appropriate non-linear transform (like a logarithm), to get a measure of something that we *do* believe is linear and additive.  However, if we have a variable that seems to us should be linear, and otherwise seems to behave linearly, a slight amount of heteroscedasticity is not that big of a deal, in the grand scheme of things.
+
+### Errors are normal
+
+The last technical assumption is that the errors (residuals) are normally distributed.  Just as in the case of heteroscedasticity, if they clearly are not, we should think hard if we are specifying the correct model; however, slight deviations from normality are practically guaranteed, and are largely irrelevant.
+
+We can check for this using a qq-plot of the residuals with `plot(lm, 2)`.
+
+```{r}
+x = rnorm(100)
+non.normal <- data.frame(x=x, y=x*1+rexp(100, 0.5))
+ggplot(non.normal, aes(x,y))+geom_point()
+plot(lm(data=non.normal, y~x),2)
+```
+
+Insofar as the stadardized residual quantiles don't fall in line with the theoretical quantiles, we have non-normal residuals.  I think a better way to look at weirdness of residuals would be to look at their histogram:
+
+```{r}
+non.normal$residuals = residuals(lm(data=non.normal, y~x))
+ggplot(non.normal, aes(x=residuals))+geom_density(fill='gray')
+```
+
+If the histogram of the residuals looks really skewed, then it's worth trying to figure out how to transform the y variable to get the data to behave more sensibly.  Slight deviations from normality won't matter much.
+
+## Testing assumptions
+
+There are assorted null hypothesis tests to see if these assumptions are violated.  With enough (real) data, the answer will almost certainly be yes.  With too little data, glaringly obvious violations might not reach statistical significance.  So, in practice, I find the null hypothesis tests for assumption violations to not be especially useful, and the diagnostic plots to be far more practical.

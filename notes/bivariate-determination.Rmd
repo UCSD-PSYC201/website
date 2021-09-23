@@ -1,0 +1,95 @@
+---
+  output: 
+    html_document
+---
+  
+# Partitioning variance and the coefficient of determination.
+
+Let's start with the fake IQ-GPA data from our discussion of [ordinary least squared regression](bivariate-ols.html).
+
+```{r}
+library(ggplot2)
+IQ = rnorm(50, 100, 15)
+GPA = pmax(1, pmin(4.3, round((IQ-100)/15*0.5+2.8+rnorm(length(IQ),0,0.7), 1)))
+iq.gpa = data.frame(iq=IQ, gpa=GPA)
+g1 = ggplot(iq.gpa, aes(iq,gpa))+
+      geom_point(size=2)
+
+( lm.fit = lm(data = iq.gpa, gpa~iq) )
+```
+
+
+Linear regression brings to the forefront a running theme in classical statistics: partitioning the overall variance of measurements into the variance that may be attributed to different sources.  This kind of partitioning is most commonly associated with an "analysis of variance", which is a particular way of analyzing the results of a linear regression.
+
+In R, we can get the ANOVA results for a given linear model fit via the `anova` command:
+
+```{r}
+anova(lm.fit)
+```
+
+Tha ANOVA table shows the degrees of freedom, sums of squares, and other values for different sources of variance in y.  The two sources of variance in play in our simple regression are (1) variance in GPA that can be attributed to variance in IQ, and its impact on GPA, and (2) variance in GPA that we cannot account for with our predictors (here just IQ) -- the left over variance of the residuals.
+
+These sums of squares are not *quite* actual variance estimates, they are variance estimates unnormalized by the number of data points that went into those estimates (the sums of squares, rather than the sums of squares divided by the number of things that go into that sum).  However, the number of elements that goes into each of these sums is the same, so we can compare them.  For instance we can divide the sum of squares attributed to IQ, by the sum of IQ and residual sums of squares, to calculate the proportion of the variance in GPA that can be explained by IQ:
+
+```{r}
+ss.iq = anova(lm.fit)['iq','Sum Sq']
+ss.error = anova(lm.fit)['Residuals','Sum Sq']
+
+(r.sq = ss.iq/(ss.iq+ss.error))
+```
+
+This "proportion of variance explained", or "coefficient of determination" can also be calculated by squaring the sample correlation (for this simple case of one response and one explanatory variable):
+
+```{r}
+cor(iq.gpa$iq, iq.gpa$gpa)^2
+```
+
+So what are these sums of squares?
+
+## Calculating sums of squares.
+
+The basic partitioning of sums of squares follows the logic that the "total sum of squares" is equal to the sum of all the sums of squares of different candidate sources.  In our case, the "total" sum of squares is the total variation of $y$ (GPA) around its mean:
+
+$\text{SST} = \operatorname{SS}[y] = \sum\limits_{i=1}^n (y_i - \bar y)^2$   
+
+```{R}
+m.y = mean(iq.gpa$gpa)
+iq.gpa$gpa.hat = predict(lm.fit, newdata = iq.gpa)
+( SS.y = sum((iq.gpa$gpa-m.y)^2) )
+```
+
+The sum of squares of the "regression", that is -- the sum of squares that can be explained by the linear model we fit, can be calculated as the sum of the squared deviations of the predicted y values, from the mean of y:
+
+$\text{SSR} = \operatorname{SS}[\hat y] = \sum\limits_{i=1}^n (\hat y_i - \bar y)^2$
+
+```{R}
+( SS.yhat = sum((iq.gpa$gpa.hat - m.y)^2) )
+```
+
+The sum of squares of the residuals (or the error), is the sum of squared deviations of the actual y values from those predicted by the linear regression.
+
+$\text{SSE} = \operatorname{SS}[e] = \sum\limits_{i=1}^n (y_i - \hat y_i)^2$
+
+```{r}
+( SS.error = sum((iq.gpa$gpa - iq.gpa$gpa.hat)^2) )
+```
+
+We can generate a plot of these.  The black line segments indicate the deviation of y values from the mean y value (black horizontal line); the blue line segments indicates the deviation of the predicted y value (blue slope) from the mean y value; and the red segments indicate the error -- the deviation of the actual y value from the predicted y value.
+
+```{r, fig.height=7}
+ggplot(iq.gpa, aes(x=iq, y=gpa))+
+  geom_point(size=5)+
+  geom_hline(yintercept = m.y)+
+  geom_abline(intercept=coef(lm.fit)["(Intercept)"], slope=coef(lm.fit)["iq"], color="blue", size=1.5)+
+  geom_linerange(ymin = m.y, mapping = aes(x=iq, ymax=gpa), color="black")+
+  geom_linerange(ymin=m.y, aes(x=iq-0.35, ymax=gpa.hat), color="blue")+
+  geom_linerange(aes(x=iq+0.35, ymin=gpa, ymax=gpa.hat), color="red")
+```
+
+The partitioning of the deviation of a given y value from the mean into the deviation of the corresponding regression prediction from the mean, and the deviation of the y value from the regression prediction maps onto the partition of sums of squares:     
+SST = SSR + SSE
+
+```{r}
+c(SS.y, SS.yhat+SS.error)
+```
+
