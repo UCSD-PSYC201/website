@@ -1,3 +1,5 @@
 Welcome! 
 
-This is the statis class website for psych 201ab
+This is the static class website for psych 201ab
+
+`bookdown::render_book("index.Rmd", "bookdown::gitbook")`
