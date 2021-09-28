@@ -1,0 +1,265 @@
+library(tidyverse)
+
+dat <- read_tsv('OSRI_data_Aug2018/data.csv')
+
+m_cols = seq(1,44,2)
+f_cols = seq(2,44,2)
+
+z.score = function(x){(x-mean(x))/sd(x)}
+smoothp = function(x){(x+1/length(x))/(sum(x)+1)}
+entropy = function(p){-sum(p*log2(p))}
+
+# calculate response entropy, and what response folks provided when giving only 1 answer
+dat <- dat %>% 
+  rowwise() %>%
+  mutate(resp.ent = entropy(smoothp(table(Q1:Q44))),
+         one.val = ifelse(n_distinct(Q1:Q44)==1, Q1, 0)) %>%
+  ungroup()
+
+# recode categorical variables into labels
+dat <- dat %>% 
+  mutate(gender = case_when(gender==1 ~ 'male',
+                            gender==2 ~ 'female',
+                            gender==3 ~ 'other',
+                            TRUE ~ 'unspecified'),
+         education = case_when(education == 1 ~ '1 <HS',
+                               education == 2 ~ '2 HS',
+                               education == 3 ~ '3 BS',
+                               education == 4 ~ '4 grad',
+                               TRUE ~ 'unspecified'),
+         race = case_when(race == 1 ~ 'Mixed',
+                          race == 2 ~ 'Asian',
+                          race == 3 ~ 'Black',
+                          race == 4 ~ 'Nat. Am.',
+                          race == 5 ~ 'Nat. Aus.',
+                          race == 6 ~ 'White',
+                          race == 7 ~ 'Other',
+                          TRUE ~ 'unspecified'),
+         orientation = case_when(orientation == 1 ~ 'heterosexual',
+                                 orientation == 2 ~ 'bisexual',
+                                 orientation == 3 ~ 'homosexual',
+                                 orientation == 4 ~ 'asexual',
+                                 orientation == 5 ~ 'other',
+                                 TRUE ~ 'unspecified'),
+         religion = case_when(religion == 1 ~ 'atheist',
+                              religion == 2 ~ 'christian',
+                              religion == 3 ~ 'muslim',
+                              religion == 4 ~ 'jewish',
+                              religion == 5 ~ 'hindu',
+                              religion == 6 ~ 'buddhist',
+                              religion == 7 ~ 'other',
+                              TRUE ~ 'unspecified'),
+         hand = case_when(hand == 1 ~ 'right',
+                          hand == 2 ~ 'left',
+                          hand == 3 ~ 'both'))
+
+
+# who is providing all the same answers?
+# turns out its mostly heterosexual males, or those who did not respond to gender question.
+# probably ok to drop these folks as just providing noise.
+dat %>% count(same.resp = ifelse(resp.ent == 0, 'novar', 'var'), 
+              gender, orientation) %>%
+  spread(same.resp, n) %>%
+  mutate(p = (novar)/(novar+var)) %>%
+  mutate(p.novar = novar/sum(novar),
+         p.var = var/sum(var))
+
+# sexuality and gender.
+dat %>% count(gender, orientation) %>%
+  spread(gender, n) %>%
+  mutate_at(2:5, function(x){x/sum(x)})
+
+# filter BS
+dat <- dat %>% 
+  filter(resp.ent > 0) %>%
+  filter(age < 99) %>%
+  
+# calculate scores.
+dat <- dat %>%
+  mutate(masculine = rowSums(.[m_cols]),
+         feminine = rowSums(.[f_cols])) %>%
+  mutate_at(1:44, z.score) %>%
+  mutate(masculine.z = rowSums(.[m_cols]),
+         feminine.z = rowSums(.[f_cols]))
+
+# calculate canonical variables
+dat <- dat %>% 
+  mutate_at(c('masculine', 'feminine', 'masculine.z', 'feminine.z'), z.score) %>%
+  mutate(m.minus.f = masculine.z - feminine.z, m.plus.f = masculine.z + feminine.z) %>%
+  mutate(g.consistent = case_when(gender == 'male' ~ m.minus.f,
+                                  gender == 'female' ~ -m.minus.f,
+                                  TRUE ~ m.minus.f))
+
+# effect size of gender
+dat %>%
+  group_by(gender) %>%
+  summarize(m = mean(m.minus.f), s = sd(m.minus.f), n = n()) %>%
+  summarize(d = (m[gender=='male'] - m[gender=='female'])/sqrt(s[gender=='male']^2 + s[gender=='female']^2))
+
+# effect size of sexuality
+dat %>% group_by(gender, orientation) %>%
+  summarize(m = mean(g.consistent), s = sd(g.consistent), n = n()) %>%
+  group_by(gender) %>%
+  mutate(d = (m-m[orientation=='heterosexual'])/sqrt(s^2 + s[orientation=='heterosexual']^2))
+
+# plots by gender
+colors = c('female' = 'darkred',
+           'male' = 'darkblue',
+           'other' = 'darkgreen',
+           'unspecified' = 'darkgray')
+
+# scatterplot of z-scored masculine/feminine scales
+dat %>% ggplot(aes(x=masculine.z, y=feminine.z, color=gender))+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = 0)+
+  geom_point(size=0.1, alpha=0.1)+
+  scale_color_manual(values = colors)+
+  coord_cartesian(xlim = c(-3,3), ylim=c(-3,3))+
+  theme_minimal()
+
+# stacked gender histograms for m-f:  no bimodality -- just a continuum
+dat %>% ggplot(aes(x=m.minus.f, fill=gender))+
+  # geom_density(position='identity', alpha=0.5)+
+  geom_histogram(position='stack', bins=100, alpha=0.5, size=1)+
+  scale_color_manual(values = colors)+
+  scale_fill_manual(values = colors)+
+  theme_minimal()
+
+# gender histograms for m-f: male/female are predictably different.  other is in the middle.  males more variable.
+dat %>% ggplot(aes(x=m.minus.f, fill=gender))+
+  # geom_density(position='identity', alpha=0.5)+
+  geom_histogram(position='identity', bins=100, alpha=0.5, size=1)+
+  scale_color_manual(values = colors)+
+  scale_fill_manual(values = colors)+
+  theme_minimal()
+
+# gender densities for m-f: male/female are predictably different.  other is in the middle.  males more variable.
+dat %>% ggplot(aes(x=m.minus.f, color=gender))+
+  # geom_density(position='identity', alpha=0.5)+
+  geom_line(stat='density', alpha=1, size=1.5)+
+  scale_color_manual(values = colors)+
+  scale_fill_manual(values = colors)+
+  theme_minimal()
+
+# histogram of off-diagonal
+dat %>% ggplot(aes(x=m.plus.f, fill=gender))+
+  geom_histogram(position='identity', bins=100, alpha=0.5, size=1)+
+  scale_color_manual(values = colors)+
+  scale_fill_manual(values = colors)+
+  theme_minimal()
+
+# density of m+f: all groups appear to be equally on the continuum (no group systematically deviates more or less from the m-f line)
+dat %>% ggplot(aes(x=m.plus.f, color=gender))+
+  # geom_density(position='identity', alpha=0.5)+
+  geom_line(stat='density', alpha=1, size=1.5)+
+  scale_color_manual(values = colors)+
+  scale_fill_manual(values = colors)+
+  theme_minimal()
+
+# plots by sexual orientation
+colors.orientation = c('heterosexual' = 'darkblue',
+                       'homosexual' = 'darkred',
+                       'asexual' = 'chocolate4',
+                       'bisexual' = 'darkgreen',
+                       'other' = 'gray',
+                       'unspecified' = 'gray')
+
+# gender consistency density for male/females of various sexual orientations.  hetero>homo, much more so for males.
+dat %>% filter(gender %in% c('male', 'female'),
+               !(orientation %in% c('other', 'unspecified'))) %>%
+  ggplot(aes(x=g.consistent, color=orientation))+
+  facet_grid(gender~.) +
+  # geom_density(position='identity', alpha=1, size=1.5)+
+  geom_line(stat='density', alpha=1, size=1.5)+
+  # geom_histogram(position='identity', bins=100, alpha=0.5, size=1)+
+  scale_color_manual(values = colors.orientation)+
+  scale_fill_manual(values = colors.orientation)+
+  theme_minimal()
+
+
+# education?
+# is it just proxy for age?  yes, yes it is.
+dat %>% ggplot(aes(x=age, fill=education))+
+  geom_histogram(position='identity', bins=30, alpha=0.5, size=1)+
+  theme_minimal()
+
+# gender consistency by age, orientation, gender
+dat %>% filter(gender %in% c('male', 'female'),
+               !(orientation %in% c('other', 'unspecified', 'asexual'))) %>%
+  ggplot(aes(x = age, y=g.consistent, color=orientation))+
+  facet_grid(gender~.) +
+  geom_point(size=0.1, alpha=0.1)+
+  geom_smooth(method='lm')+
+  scale_color_manual(values = colors.orientation)+
+  scale_fill_manual(values = colors.orientation)+
+  theme_minimal()
+
+# age by orientation
+dat %>% filter(gender %in% c('male', 'female'),
+               !(orientation %in% c('other', 'unspecified'))) %>%
+  ggplot(aes(x=age, color=orientation))+
+  facet_grid(gender~.) +
+  # geom_density(position='identity', alpha=1, size=1.5)+
+  geom_line(stat='density', alpha=1, size=1)+
+  # geom_histogram(position='identity', bins=100, alpha=0.5, size=1)+
+  scale_color_manual(values = colors.orientation)+
+  scale_fill_manual(values = colors.orientation)+
+  theme_minimal()
+
+age.qs = unname(quantile(dat$age, seq(0.1, 0.9, 0.1)))
+age.cuts = c(12, age.qs, 99)
+dat %>% mutate(age.bin = cut(age, 
+                             breaks = age.cuts, 
+                             labels = paste0(age.cuts[-length(age.cuts)], '-', age.cuts[-1]))) %>%
+  filter(gender %in% c('male', 'female'),
+         !(orientation %in% c('other', 'unspecified', 'asexual'))) %>%
+  ggplot(aes(x=age.bin, fill=orientation))+
+  facet_grid(gender~.)+
+  geom_bar(position='fill')+
+  scale_fill_manual(values = colors.orientation)+
+  theme_minimal()
+
+# which parts of gender continuum go to who?
+
+colors.g.o = c('female-heterosexual' = 'darkred',
+               'female-homosexual' = 'red',
+               'female-bisexual' = 'pink',
+               'male-bisexual' = 'skyblue',
+               'male-homosexual' = 'blue',
+               'male-heterosexual' = 'darkblue')
+
+qs= seq(0, 1, 0.02)
+mf.qs = unname(quantile(dat$m.minus.f, qs))
+mf.qs[1] = -Inf
+mf.qs[length(mf.qs)] = Inf
+mf.cuts = mf.qs
+
+dat %>% 
+  filter(gender %in% c('male', 'female'),
+         !(orientation %in% c('other', 'unspecified', 'asexual'))) %>%
+  mutate(g.o = factor(paste0(gender, '-', orientation), levels=names(colors.g.o)),
+         mf.ventile = cut(m.minus.f, 
+                          mf.cuts, 
+                          labels=paste0(qs[-length(qs)], '-', qs[-1]))) %>%
+  ggplot(aes(x=mf.ventile, fill=g.o))+
+  geom_bar(position='fill')+
+  scale_fill_manual(values=colors.g.o)+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 90))
+    
+
+dat %>% 
+  filter(gender %in% c('male', 'female'),
+         !(orientation %in% c('other', 'unspecified', 'asexual'))) %>%
+  mutate(orientation = factor(orientation, levels=c('homosexual', 'bisexual', 'heterosexual')),
+                              mf.ventile = cut(m.minus.f, 
+                          mf.cuts, 
+                          labels=paste0(qs[-length(qs)], '-', qs[-1]))) %>%
+  ggplot(aes(x=mf.ventile, fill=orientation))+
+  geom_bar(position='fill')+
+  scale_fill_manual(values=colors.orientation)+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 90))
+
+
+

@@ -1,0 +1,4841 @@
+subject,trialNumber,product_A,product_B,response,attention
+sona-26675,0,skateboard,coffee,777,0
+sona-26675,1,earrings,pen,1,0
+sona-26675,2,jacket,bicycle,270,0
+sona-26675,3,paper notebook,dress,1e3,0
+sona-26675,4,earrings,wallet,1,0
+sona-26675,5,paper notebook,band-aid,422,0
+sona-26675,6,shoes,band-aid,1,0
+sona-26675,7,smart phone,headphones,264,0
+sona-26675,8,shirt,computer keyboard,152,0
+sona-26675,9,skateboard,basketball,251,0
+sona-26675,10,laptop,water bottle,1,0
+sona-26675,11,concert tickets,yoga mat,1,0
+sona-26675,12,pencil,water bottle,635,0
+sona-26675,13,video games,dishes,213,0
+sona-26675,14,lipstick,tie,409,0
+sona-26675,15,chocolate,backpack,305,0
+sona-26675,16,video games,calculator,251,0
+sona-26675,17,swimming suit,earrings,989,0
+sona-26675,18,earrings,necklace,768,1
+sona-26675,19,watch,smart phone,1e3,0
+sona-26675,20,dress,wallet,1,0
+sona-26675,21,glasses,swimming suit,330,0
+sona-26675,22,guitar,basketball,67,0
+sona-26675,23,baseball cap,dress,756,0
+sona-26675,24,paper notebook,jacket,1e3,0
+sona-26675,25,swimming suit,dishes,94,0
+sona-26675,26,pen,socks,369,0
+sona-26675,27,laptop,swimming suit,274,0
+sona-26675,28,scarf,band-aid,1,0
+sona-26675,29,headphones,granola bar,1,0
+sona-26675,30,watch,tie,233,0
+sona-26675,31,skateboard,pencil,1,0
+sona-26675,32,pen,camera,1e3,0
+sona-26675,33,athletic clothes,guitar,336,0
+sona-26675,34,makeup foundation,bicycle,318,0
+sona-26675,35,band-aid,sunglasses,1e3,0
+sona-26675,36,laptop,tie,1e3,1
+sona-26675,37,paper notebook,ring,1e3,0
+sona-26675,38,skateboard,detergent,337,0
+sona-26675,39,concert tickets,pen,1,0
+sona-26675,40,calculator,wallet,784,0
+sona-26675,41,video games,earrings,696,0
+sona-26675,42,laptop,chocolate,1,0
+sona-26675,43,concert tickets,wine,725,0
+sona-26675,44,bicycle,granola bar,1,0
+sona-26675,45,scarf,makeup foundation,664,0
+sona-26675,46,pencil,basketball,678,0
+sona-26675,47,beanie,tie,356,0
+sona-26675,48,headphones,car,1e3,0
+sona-26675,49,napkin,chocolate,1e3,0
+sona-26675,50,desktop computer,basketball,1,0
+sona-26675,51,books,cooking pot,392,0
+sona-26675,52,scarf,necklace,1e3,0
+sona-26675,53,laptop,pants,1,0
+sona-26675,54,lipstick,computer keyboard,313,0
+sona-26670,0,beanie,dress,1e3,0
+sona-26670,1,beanie,video games,945,0
+sona-26670,2,watch,computer keyboard,2,0
+sona-26670,3,necklace,paper notebook,44,0
+sona-26670,4,desktop computer,smart phone,885,0
+sona-26670,5,paper notebook,wallet,44,0
+sona-26670,6,necklace,desktop computer,1,0
+sona-26670,7,lipstick,yoga mat,1,0
+sona-26670,8,dishes,pen,1,0
+sona-26670,9,band-aid,earrings,1e3,0
+sona-26670,10,lipstick,earrings,866,0
+sona-26670,11,sunglasses,wallet,1,0
+sona-26670,12,earrings,paper notebook,1,0
+sona-26670,13,athletic clothes,bicycle,1,0
+sona-26670,14,yoga mat,video games,985,0
+sona-26670,15,pencil,wallet,896,0
+sona-26670,16,jacket,scarf,1,0
+sona-26670,17,yoga mat,headphones,934,0
+sona-26670,18,camera,pencil,1,1
+sona-26670,19,basketball,tie,972,0
+sona-26670,20,detergent,granola bar,999,0
+sona-26670,21,jacket,earrings,959,0
+sona-26670,22,skateboard,car,961,0
+sona-26670,23,car,scarf,1,0
+sona-26670,24,athletic clothes,baseball cap,1,0
+sona-26670,25,concert tickets,makeup foundation,1,0
+sona-26670,26,cooking pot,wine,991,0
+sona-26670,27,desktop computer,socks,1,0
+sona-26670,28,coffee,athletic clothes,878,0
+sona-26670,29,desktop computer,swimming suit,960,0
+sona-26670,30,skateboard,earrings,1e3,0
+sona-26670,31,wine,makeup foundation,1,0
+sona-26670,32,backpack,napkin,1,0
+sona-26670,33,granola bar,swimming suit,977,0
+sona-26670,34,cooking pot,sunglasses,961,0
+sona-26670,35,yoga mat,pencil,1e3,0
+sona-26670,36,desktop computer,camera,920,1
+sona-26670,37,camera,jacket,929,0
+sona-26670,38,wallet,shirt,935,0
+sona-26670,39,skateboard,books,1,0
+sona-26670,40,granola bar,pen,60,0
+sona-26670,41,yoga mat,ring,1e3,0
+sona-26670,42,tie,baseball cap,1,0
+sona-26670,43,lipstick,beanie,1,0
+sona-26670,44,books,earrings,1e3,0
+sona-26670,45,yoga mat,shirt,1e3,0
+sona-26670,46,napkin,books,860,0
+sona-26670,47,napkin,wine,953,0
+sona-26670,48,concert tickets,jacket,1,0
+sona-26670,49,chocolate,baseball cap,900,0
+sona-26670,50,laptop,swimming suit,46,0
+sona-26670,51,earphones,paper notebook,2,0
+sona-26670,52,shoes,swimming suit,1,0
+sona-26670,53,basketball,paper notebook,1,0
+sona-26670,54,watch,swimming suit,1,0
+sona-26660,0,glasses,books,1,0
+sona-26660,1,backpack,cooking pot,1,0
+sona-26660,2,pencil,pants,1,0
+sona-26660,3,sunglasses,earrings,1,0
+sona-26660,4,calculator,scarf,1,0
+sona-26660,5,laptop,yoga mat,1,0
+sona-26660,6,calculator,shirt,1e3,0
+sona-26660,7,earphones,smart phone,1,0
+sona-26660,8,makeup foundation,wallet,1e3,0
+sona-26660,9,napkin,detergent,1,0
+sona-26660,10,laptop,chocolate,1,0
+sona-26660,11,desktop computer,wallet,1,0
+sona-26660,12,sunglasses,watch,1e3,0
+sona-26660,13,yoga mat,beanie,990,0
+sona-26660,14,headphones,books,1,0
+sona-26660,15,paper notebook,guitar,1,0
+sona-26660,16,yoga mat,headphones,1e3,0
+sona-26660,17,calculator,yoga mat,1,0
+sona-26660,18,dress,chocolate,1e3,1
+sona-26660,19,car,jacket,1,0
+sona-26660,20,sunglasses,makeup foundation,1,0
+sona-26660,21,camera,beanie,1e3,0
+sona-26660,22,napkin,yoga mat,1,0
+sona-26660,23,napkin,computer keyboard,1e3,0
+sona-26660,24,purse,jacket,1e3,0
+sona-26660,25,lipstick,water bottle,1e3,0
+sona-26660,26,athletic clothes,pants,1,0
+sona-26660,27,socks,beanie,1,0
+sona-26660,28,calculator,swimming suit,1e3,0
+sona-26660,29,paper notebook,band-aid,1,0
+sona-26660,30,necklace,basketball,1,0
+sona-26660,31,dishes,beanie,1e3,0
+sona-26660,32,calculator,shoes,1e3,0
+sona-26660,33,necklace,earphones,1e3,0
+sona-26660,34,guitar,books,129,0
+sona-26660,35,ring,books,252,0
+sona-26660,36,computer keyboard,basketball,776,1
+sona-26660,37,skateboard,coffee,318,0
+sona-26660,38,wallet,cooking pot,327,0
+sona-26660,39,computer keyboard,baseball cap,739,0
+sona-26660,40,granola bar,wine,759,0
+sona-26660,41,dress,shoes,840,0
+sona-26660,42,chocolate,headphones,883,0
+sona-26660,43,computer keyboard,guitar,725,0
+sona-26660,44,necklace,computer keyboard,270,0
+sona-26660,45,athletic clothes,cooking pot,266,0
+sona-26660,46,desktop computer,sunglasses,850,0
+sona-26660,47,napkin,pen,604,0
+sona-26660,48,concert tickets,laptop,617,0
+sona-26660,49,guitar,earphones,600,0
+sona-26660,50,dishes,bicycle,385,0
+sona-26660,51,lipstick,wine,597,0
+sona-26660,52,skateboard,baseball cap,363,0
+sona-26660,53,ring,jacket,642,0
+sona-26660,54,water bottle,yoga mat,317,0
+sona-26659,0,yoga mat,swimming suit,846,0
+sona-26659,1,makeup foundation,wallet,800,0
+sona-26659,2,napkin,water bottle,869,0
+sona-26659,3,dress,shirt,224,0
+sona-26659,4,shirt,video games,826,0
+sona-26659,5,headphones,jacket,162,0
+sona-26659,6,scarf,baseball cap,230,0
+sona-26659,7,dress,napkin,203,0
+sona-26659,8,skateboard,pencil,177,0
+sona-26659,9,dress,ring,916,0
+sona-26659,10,napkin,baseball cap,956,0
+sona-26659,11,pants,coffee,923,0
+sona-26659,12,computer keyboard,beanie,840,0
+sona-26659,13,camera,shirt,92,0
+sona-26659,14,tie,computer keyboard,105,0
+sona-26659,15,earrings,tie,98,0
+sona-26659,16,lipstick,shoes,921,0
+sona-26659,17,basketball,water bottle,835,0
+sona-26659,18,shirt,smart phone,898,1
+sona-26659,19,necklace,wine,126,0
+sona-26659,20,lipstick,water bottle,916,0
+sona-26659,21,earphones,athletic clothes,890,0
+sona-26659,22,computer keyboard,laptop,829,0
+sona-26659,23,smart phone,concert tickets,164,0
+sona-26659,24,computer keyboard,purse,921,0
+sona-26659,25,watch,beanie,127,0
+sona-26659,26,scarf,band-aid,128,0
+sona-26659,27,wine,earphones,84,0
+sona-26659,28,yoga mat,desktop computer,861,0
+sona-26659,29,scarf,pencil,74,0
+sona-26659,30,calculator,water bottle,870,0
+sona-26659,31,detergent,books,840,0
+sona-26659,32,headphones,wine,863,0
+sona-26659,33,video games,pencil,102,0
+sona-26659,34,headphones,necklace,877,0
+sona-26659,35,smart phone,sunglasses,169,0
+sona-26659,36,shirt,car,921,1
+sona-26659,37,skateboard,water bottle,127,0
+sona-26659,38,calculator,yoga mat,104,0
+sona-26659,39,camera,water bottle,119,0
+sona-26659,40,wine,makeup foundation,94,0
+sona-26659,41,paper notebook,video games,886,0
+sona-26659,42,coffee,scarf,806,0
+sona-26659,43,backpack,shirt,113,0
+sona-26659,44,water bottle,pencil,124,0
+sona-26659,45,pen,athletic clothes,871,0
+sona-26659,46,ring,purse,111,0
+sona-26659,47,pen,yoga mat,883,0
+sona-26659,48,granola bar,makeup foundation,857,0
+sona-26659,49,paper notebook,concert tickets,876,0
+sona-26659,50,detergent,wine,884,0
+sona-26659,51,earrings,socks,97,0
+sona-26659,52,chocolate,sunglasses,876,0
+sona-26659,53,concert tickets,video games,851,0
+sona-26659,54,camera,lipstick,112,0
+sona-26627,0,coffee,detergent,1,0
+sona-26627,1,dishes,paper notebook,1,0
+sona-26627,2,computer keyboard,video games,1e3,0
+sona-26627,3,bicycle,athletic clothes,1e3,0
+sona-26627,4,laptop,makeup foundation,1e3,0
+sona-26627,5,calculator,shirt,1e3,0
+sona-26627,6,beanie,athletic clothes,1e3,0
+sona-26627,7,guitar,athletic clothes,1e3,0
+sona-26627,8,car,swimming suit,1,0
+sona-26627,9,desktop computer,guitar,1,0
+sona-26627,10,basketball,bicycle,1e3,0
+sona-26627,11,makeup foundation,beanie,1,0
+sona-26627,12,pencil,athletic clothes,1e3,0
+sona-26627,13,yoga mat,ring,1e3,0
+sona-26627,14,desktop computer,beanie,1e3,0
+sona-26627,15,wine,video games,1,0
+sona-26627,16,basketball,beanie,1e3,0
+sona-26627,17,earrings,laptop,1,0
+sona-26627,18,video games,bicycle,1,1
+sona-26627,19,makeup foundation,granola bar,1,0
+sona-26627,20,water bottle,dishes,1e3,0
+sona-26627,21,lipstick,computer keyboard,1,0
+sona-26627,22,pencil,guitar,1e3,0
+sona-26627,23,guitar,bicycle,1,0
+sona-26627,24,water bottle,athletic clothes,1e3,0
+sona-26627,25,coffee,water bottle,1,0
+sona-26627,26,guitar,beanie,1,0
+sona-26627,27,video games,paper notebook,1,0
+sona-26627,28,yoga mat,car,1e3,0
+sona-26627,29,granola bar,beanie,1e3,0
+sona-26627,30,granola bar,basketball,1e3,0
+sona-26627,31,desktop computer,pants,1e3,0
+sona-26627,32,swimming suit,guitar,1,0
+sona-26627,33,pen,swimming suit,1e3,0
+sona-26627,34,jacket,guitar,1,0
+sona-26627,35,shirt,makeup foundation,1,0
+sona-26627,36,wine,basketball,1e3,1
+sona-26627,37,calculator,tie,1e3,0
+sona-26627,38,watch,headphones,1,0
+sona-26627,39,skateboard,bicycle,1,0
+sona-26627,40,band-aid,necklace,1e3,0
+sona-26627,41,concert tickets,headphones,1,0
+sona-26627,42,coffee,swimming suit,1,0
+sona-26627,43,paper notebook,makeup foundation,1e3,0
+sona-26627,44,camera,makeup foundation,1e3,0
+sona-26627,45,calculator,coffee,1e3,0
+sona-26627,46,guitar,granola bar,1,0
+sona-26627,47,scarf,bicycle,1,0
+sona-26627,48,napkin,pen,1e3,0
+sona-26627,49,detergent,dress,1e3,0
+sona-26627,50,books,watch,1e3,0
+sona-26627,51,dishes,granola bar,1,0
+sona-26627,52,pencil,swimming suit,1e3,0
+sona-26627,53,computer keyboard,beanie,1e3,0
+sona-26627,54,swimming suit,granola bar,1,0
+sona-26608,0,books,lipstick,846,0
+sona-26608,1,baseball cap,skateboard,380,0
+sona-26608,2,beanie,shoes,650,0
+sona-26608,3,granola bar,purse,888,0
+sona-26608,4,calculator,wallet,675,0
+sona-26608,5,headphones,scarf,284,0
+sona-26608,6,video games,desktop computer,266,0
+sona-26608,7,makeup foundation,earrings,798,0
+sona-26608,8,baseball cap,pencil,224,0
+sona-26608,9,tie,scarf,248,0
+sona-26608,10,pants,necklace,276,0
+sona-26608,11,calculator,camera,790,0
+sona-26608,12,band-aid,books,754,0
+sona-26608,13,backpack,computer keyboard,217,0
+sona-26608,14,coffee,wine,245,0
+sona-26608,15,books,pen,225,0
+sona-26608,16,backpack,lipstick,786,0
+sona-26608,17,concert tickets,desktop computer,280,0
+sona-26608,18,tie,coffee,684,1
+sona-26608,19,earphones,necklace,185,0
+sona-26608,20,backpack,pen,296,0
+sona-26608,21,pen,lipstick,824,0
+sona-26608,22,sunglasses,backpack,207,0
+sona-26608,23,water bottle,camera,767,0
+sona-26608,24,tie,purse,849,0
+sona-26608,25,swimming suit,laptop,276,0
+sona-26608,26,guitar,camera,165,0
+sona-26608,27,dishes,basketball,338,0
+sona-26608,28,wallet,lipstick,229,0
+sona-26608,29,dishes,earrings,752,0
+sona-26608,30,purse,computer keyboard,320,0
+sona-26608,31,band-aid,chocolate,760,0
+sona-26608,32,smart phone,wine,282,0
+sona-26608,33,car,lipstick,206,0
+sona-26608,34,baseball cap,camera,218,0
+sona-26608,35,napkin,headphones,751,0
+sona-26608,36,necklace,desktop computer,266,1
+sona-26608,37,dress,guitar,128,0
+sona-26608,38,swimming suit,watch,278,0
+sona-26608,39,basketball,cooking pot,697,0
+sona-26608,40,jacket,beanie,245,0
+sona-26608,41,swimming suit,calculator,211,0
+sona-26608,42,books,shirt,836,0
+sona-26608,43,baseball cap,pants,764,0
+sona-26608,44,earphones,sunglasses,773,0
+sona-26608,45,earphones,computer keyboard,260,0
+sona-26608,46,jacket,socks,239,0
+sona-26608,47,dishes,napkin,188,0
+sona-26608,48,dishes,purse,745,0
+sona-26608,49,tie,napkin,238,0
+sona-26608,50,athletic clothes,paper notebook,264,0
+sona-26608,51,purse,pen,250,0
+sona-26608,52,napkin,cooking pot,327,0
+sona-26608,53,makeup foundation,shirt,282,0
+sona-26608,54,guitar,pencil,192,0
+sona-26607,0,paper notebook,earrings,675,0
+sona-26607,1,chocolate,paper notebook,645,0
+sona-26607,2,makeup foundation,dishes,214,0
+sona-26607,3,yoga mat,band-aid,211,0
+sona-26607,4,watch,books,218,0
+sona-26607,5,bicycle,guitar,564,0
+sona-26607,6,pen,computer keyboard,370,0
+sona-26607,7,makeup foundation,ring,853,0
+sona-26607,8,sunglasses,coffee,206,0
+sona-26607,9,chocolate,video games,326,0
+sona-26607,10,car,tie,162,0
+sona-26607,11,lipstick,guitar,396,0
+sona-26607,12,concert tickets,napkin,279,0
+sona-26607,13,sunglasses,band-aid,222,0
+sona-26607,14,chocolate,earphones,79,0
+sona-26607,15,wine,computer keyboard,77,0
+sona-26607,16,guitar,computer keyboard,294,0
+sona-26607,17,socks,video games,941,0
+sona-26607,18,wallet,pen,1e3,1
+sona-26607,19,backpack,books,835,0
+sona-26607,20,wallet,napkin,175,0
+sona-26607,21,sunglasses,earrings,846,0
+sona-26607,22,video games,headphones,623,0
+sona-26607,23,glasses,dress,899,0
+sona-26607,24,chocolate,smart phone,902,0
+sona-26607,25,shirt,dishes,90,0
+sona-26607,26,makeup foundation,earphones,192,0
+sona-26607,27,desktop computer,bicycle,708,0
+sona-26607,28,pants,earphones,251,0
+sona-26607,29,cooking pot,desktop computer,327,0
+sona-26607,30,coffee,granola bar,775,0
+sona-26607,31,books,dress,453,0
+sona-26607,32,scarf,guitar,771,0
+sona-26607,33,earrings,glasses,196,0
+sona-26607,34,detergent,glasses,802,0
+sona-26607,35,beanie,car,924,0
+sona-26607,36,cooking pot,dishes,690,1
+sona-26607,37,basketball,dress,630,0
+sona-26607,38,shirt,desktop computer,360,0
+sona-26607,39,concert tickets,baseball cap,337,0
+sona-26607,40,dress,jacket,352,0
+sona-26607,41,necklace,purse,475,0
+sona-26607,42,yoga mat,pants,306,0
+sona-26607,43,desktop computer,dress,731,0
+sona-26607,44,basketball,jacket,397,0
+sona-26607,45,water bottle,concert tickets,764,0
+sona-26607,46,baseball cap,basketball,721,0
+sona-26607,47,tie,dress,320,0
+sona-26607,48,earphones,jacket,692,0
+sona-26607,49,pants,granola bar,681,0
+sona-26607,50,coffee,dress,862,0
+sona-26607,51,desktop computer,jacket,755,0
+sona-26607,52,wallet,scarf,283,0
+sona-26607,53,granola bar,headphones,695,0
+sona-26607,54,lipstick,earrings,690,0
+sona-26591,0,water bottle,coffee,199,0
+sona-26591,1,coffee,cooking pot,314,0
+sona-26591,2,dishes,smart phone,649,0
+sona-26591,3,makeup foundation,smart phone,393,0
+sona-26591,4,chocolate,cooking pot,426,0
+sona-26591,5,car,shoes,930,0
+sona-26591,6,lipstick,backpack,698,0
+sona-26591,7,glasses,backpack,120,0
+sona-26591,8,earphones,smart phone,334,0
+sona-26591,9,wine,cooking pot,425,0
+sona-26591,10,books,computer keyboard,373,0
+sona-26591,11,shirt,pencil,279,0
+sona-26591,12,calculator,purse,727,0
+sona-26591,13,calculator,socks,695,0
+sona-26591,14,earrings,necklace,383,0
+sona-26591,15,pencil,concert tickets,737,0
+sona-26591,16,paper notebook,baseball cap,665,0
+sona-26591,17,cooking pot,dress,679,0
+sona-26591,18,wallet,athletic clothes,1e3,1
+sona-26591,19,basketball,concert tickets,627,0
+sona-26591,20,athletic clothes,concert tickets,640,0
+sona-26591,21,socks,smart phone,600,0
+sona-26591,22,tie,earphones,671,0
+sona-26591,23,purse,beanie,334,0
+sona-26591,24,ring,guitar,383,0
+sona-26591,25,pencil,baseball cap,609,0
+sona-26591,26,concert tickets,necklace,368,0
+sona-26591,27,shirt,guitar,365,0
+sona-26591,28,sunglasses,skateboard,48,0
+sona-26591,29,pen,wine,237,0
+sona-26591,30,camera,guitar,575,0
+sona-26591,31,athletic clothes,necklace,522,0
+sona-26591,32,pants,backpack,570,0
+sona-26591,33,yoga mat,wine,577,0
+sona-26591,34,purse,bicycle,383,0
+sona-26591,35,band-aid,dress,609,0
+sona-26591,36,ring,skateboard,1e3,1
+sona-26591,37,paper notebook,napkin,441,0
+sona-26591,38,glasses,basketball,443,0
+sona-26591,39,basketball,camera,576,0
+sona-26591,40,purse,earrings,587,0
+sona-26591,41,pen,concert tickets,589,0
+sona-26591,42,wine,skateboard,377,0
+sona-26591,43,books,bicycle,454,0
+sona-26591,44,jacket,napkin,429,0
+sona-26591,45,yoga mat,watch,567,0
+sona-26591,46,athletic clothes,bicycle,610,0
+sona-26591,47,lipstick,pen,655,0
+sona-26591,48,athletic clothes,guitar,584,0
+sona-26591,49,coffee,bicycle,625,0
+sona-26591,50,shirt,laptop,399,0
+sona-26591,51,paper notebook,smart phone,378,0
+sona-26591,52,detergent,dress,698,0
+sona-26591,53,pencil,makeup foundation,671,0
+sona-26591,54,purse,athletic clothes,394,0
+sona-26580,0,sunglasses,coffee,739,0
+sona-26580,1,purse,headphones,280,0
+sona-26580,2,headphones,wine,1e3,0
+sona-26580,3,calculator,earphones,844,0
+sona-26580,4,swimming suit,earphones,303,0
+sona-26580,5,sunglasses,necklace,548,0
+sona-26580,6,car,necklace,35,0
+sona-26580,7,backpack,coffee,876,0
+sona-26580,8,ring,necklace,97,0
+sona-26580,9,wallet,pen,47,0
+sona-26580,10,dishes,coffee,846,0
+sona-26580,11,lipstick,paper notebook,80,0
+sona-26580,12,earrings,pen,83,0
+sona-26580,13,shoes,napkin,104,0
+sona-26580,14,guitar,necklace,821,0
+sona-26580,15,makeup foundation,scarf,168,0
+sona-26580,16,athletic clothes,guitar,61,0
+sona-26580,17,shirt,athletic clothes,882,0
+sona-26580,18,makeup foundation,granola bar,24,1
+sona-26580,19,glasses,backpack,433,0
+sona-26580,20,swimming suit,glasses,203,0
+sona-26580,21,wine,dishes,177,0
+sona-26580,22,shirt,desktop computer,319,0
+sona-26580,23,band-aid,jacket,744,0
+sona-26580,24,tie,camera,700,0
+sona-26580,25,glasses,dishes,343,0
+sona-26580,26,headphones,granola bar,215,0
+sona-26580,27,sunglasses,jacket,718,0
+sona-26580,28,pants,laptop,291,0
+sona-26580,29,guitar,jacket,734,0
+sona-26580,30,baseball cap,necklace,613,0
+sona-26580,31,purse,socks,219,0
+sona-26580,32,chocolate,makeup foundation,1e3,0
+sona-26580,33,granola bar,dishes,487,0
+sona-26580,34,cooking pot,athletic clothes,1e3,0
+sona-26580,35,laptop,jacket,456,0
+sona-26580,36,cooking pot,pen,492,1
+sona-26580,37,concert tickets,smart phone,677,0
+sona-26580,38,pants,napkin,240,0
+sona-26580,39,basketball,calculator,1,0
+sona-26580,40,glasses,coffee,579,0
+sona-26580,41,desktop computer,glasses,583,0
+sona-26580,42,pants,baseball cap,1,0
+sona-26580,43,earrings,coffee,378,0
+sona-26580,44,baseball cap,napkin,294,0
+sona-26580,45,baseball cap,jacket,611,0
+sona-26580,46,granola bar,calculator,378,0
+sona-26580,47,athletic clothes,calculator,1,0
+sona-26580,48,camera,desktop computer,335,0
+sona-26580,49,headphones,earphones,394,0
+sona-26580,50,smart phone,backpack,236,0
+sona-26580,51,desktop computer,dishes,341,0
+sona-26580,52,wallet,jacket,640,0
+sona-26580,53,dress,necklace,64,0
+sona-26580,54,beanie,camera,560,0
+sona-26567,0,socks,scarf,1e3,0
+sona-26567,1,socks,glasses,920,0
+sona-26567,2,purse,napkin,1,0
+sona-26567,3,band-aid,makeup foundation,736,0
+sona-26567,4,shirt,smart phone,855,0
+sona-26567,5,sunglasses,dress,835,0
+sona-26567,6,cooking pot,swimming suit,1e3,0
+sona-26567,7,yoga mat,cooking pot,453,0
+sona-26567,8,shoes,makeup foundation,622,0
+sona-26567,9,basketball,baseball cap,669,0
+sona-26567,10,glasses,books,240,0
+sona-26567,11,scarf,dress,1e3,0
+sona-26567,12,dress,earphones,11,0
+sona-26567,13,car,desktop computer,1,0
+sona-26567,14,skateboard,makeup foundation,955,0
+sona-26567,15,laptop,smart phone,1e3,0
+sona-26567,16,chocolate,baseball cap,56,0
+sona-26567,17,wine,bicycle,1,0
+sona-26567,18,athletic clothes,baseball cap,1e3,1
+sona-26567,19,ring,chocolate,1,0
+sona-26567,20,water bottle,dress,1e3,0
+sona-26567,21,water bottle,basketball,295,0
+sona-26567,22,pen,coffee,837,0
+sona-26567,23,scarf,detergent,240,0
+sona-26567,24,concert tickets,band-aid,256,0
+sona-26567,25,books,band-aid,824,0
+sona-26567,26,wallet,jacket,857,0
+sona-26567,27,car,granola bar,1,0
+sona-26567,28,glasses,car,1e3,0
+sona-26567,29,necklace,pencil,1,0
+sona-26567,30,napkin,tie,1e3,0
+sona-26567,31,backpack,scarf,1e3,0
+sona-26567,32,concert tickets,car,788,0
+sona-26567,33,pen,makeup foundation,1e3,0
+sona-26567,34,pencil,pen,1e3,0
+sona-26567,35,pants,glasses,1,0
+sona-26567,36,headphones,granola bar,222,1
+sona-26567,37,headphones,makeup foundation,826,0
+sona-26567,38,napkin,lipstick,902,0
+sona-26567,39,books,granola bar,863,0
+sona-26567,40,concert tickets,desktop computer,156,0
+sona-26567,41,bicycle,detergent,83,0
+sona-26567,42,wine,pen,1,0
+sona-26567,43,band-aid,sunglasses,737,0
+sona-26567,44,skateboard,granola bar,248,0
+sona-26567,45,shoes,car,1e3,0
+sona-26567,46,dishes,swimming suit,1e3,0
+sona-26567,47,pants,cooking pot,83,0
+sona-26567,48,glasses,granola bar,209,0
+sona-26567,49,purse,desktop computer,218,0
+sona-26567,50,tie,concert tickets,757,0
+sona-26567,51,pants,baseball cap,234,0
+sona-26567,52,necklace,tie,203,0
+sona-26567,53,laptop,sunglasses,796,0
+sona-26567,54,smart phone,cooking pot,220,0
+sona-26257,0,watch,laptop,998,0
+sona-26257,1,dress,pants,1,0
+sona-26257,2,wine,bicycle,1e3,1
+sona-26257,3,shoes,guitar,184,0
+sona-26257,4,computer keyboard,earrings,810,0
+sona-26257,5,shoes,pants,217,0
+sona-26257,6,shoes,yoga mat,196,0
+sona-26257,7,shirt,concert tickets,189,0
+sona-26257,8,wine,sunglasses,179,0
+sona-26257,9,dishes,lipstick,261,0
+sona-26257,10,shoes,band-aid,247,0
+sona-26257,11,pants,paper notebook,262,0
+sona-26257,12,baseball cap,earrings,146,0
+sona-26257,13,wallet,headphones,810,0
+sona-26257,14,wine,books,781,0
+sona-26257,15,cooking pot,pants,717,0
+sona-26257,16,water bottle,beanie,823,0
+sona-26257,17,headphones,video games,173,0
+sona-26257,18,socks,paper notebook,192,1
+sona-26257,19,socks,desktop computer,745,0
+sona-26257,20,dress,napkin,193,0
+sona-26257,21,camera,purse,716,0
+sona-26257,22,desktop computer,backpack,784,0
+sona-26257,23,socks,concert tickets,233,0
+sona-26257,24,ring,detergent,272,0
+sona-26257,25,pencil,backpack,790,0
+sona-26257,26,purse,granola bar,215,0
+sona-26257,27,desktop computer,granola bar,329,0
+sona-26257,28,sunglasses,concert tickets,308,0
+sona-26257,29,camera,water bottle,308,0
+sona-26257,30,camera,granola bar,320,0
+sona-26257,31,water bottle,pen,699,0
+sona-26257,32,pants,concert tickets,234,0
+sona-26257,33,necklace,baseball cap,610,0
+sona-26257,34,tie,pencil,273,0
+sona-26257,35,dress,smart phone,190,0
+sona-26257,36,wine,bicycle,231,1
+sona-26257,37,earphones,baseball cap,670,0
+sona-26257,38,athletic clothes,shirt,177,0
+sona-26257,39,shirt,beanie,221,0
+sona-26257,40,chocolate,beanie,677,0
+sona-26257,41,ring,beanie,664,0
+sona-26257,42,swimming suit,computer keyboard,250,0
+sona-26257,43,watch,bicycle,700,0
+sona-26257,44,lipstick,computer keyboard,646,0
+sona-26257,45,basketball,car,694,0
+sona-26257,46,books,beanie,679,0
+sona-26257,47,water bottle,concert tickets,692,0
+sona-26257,48,basketball,beanie,678,0
+sona-26257,49,shoes,skateboard,279,0
+sona-26257,50,guitar,detergent,391,0
+sona-26257,51,dishes,camera,271,0
+sona-26257,52,guitar,concert tickets,113,0
+sona-26257,53,tie,napkin,322,0
+sona-26257,54,purse,pencil,77,0
+sona-25901,0,glasses,napkin,263,0
+sona-25901,1,calculator,smart phone,761,0
+sona-25901,2,guitar,baseball cap,579,0
+sona-25901,3,desktop computer,cooking pot,273,0
+sona-25901,4,sunglasses,backpack,716,0
+sona-25901,5,napkin,makeup foundation,696,0
+sona-25901,6,earrings,necklace,746,0
+sona-25901,7,paper notebook,band-aid,232,0
+sona-25901,8,pencil,watch,722,0
+sona-25901,9,calculator,shoes,978,0
+sona-25901,10,athletic clothes,napkin,78,0
+sona-25901,11,skateboard,ring,856,0
+sona-25901,12,tie,bicycle,666,0
+sona-25901,13,purse,guitar,236,0
+sona-25901,14,purse,wine,307,0
+sona-25901,15,calculator,athletic clothes,822,0
+sona-25901,16,calculator,napkin,430,0
+sona-25901,17,chocolate,skateboard,738,0
+sona-25901,18,lipstick,water bottle,416,1
+sona-25901,19,wallet,basketball,312,0
+sona-25901,20,water bottle,yoga mat,701,0
+sona-25901,21,books,chocolate,249,0
+sona-25901,22,calculator,chocolate,559,0
+sona-25901,23,socks,swimming suit,761,0
+sona-25901,24,scarf,pen,334,0
+sona-25901,25,books,dishes,641,0
+sona-25901,26,paper notebook,backpack,715,0
+sona-25901,27,shirt,sunglasses,201,0
+sona-25901,28,scarf,computer keyboard,500,0
+sona-25901,29,wallet,swimming suit,755,0
+sona-25901,30,headphones,athletic clothes,780,0
+sona-25901,31,earphones,basketball,436,0
+sona-25901,32,dress,computer keyboard,268,0
+sona-25901,33,chocolate,coffee,665,0
+sona-25901,34,calculator,paper notebook,689,0
+sona-25901,35,headphones,backpack,762,0
+sona-25901,36,detergent,cooking pot,456,1
+sona-25901,37,glasses,dress,776,0
+sona-25901,38,desktop computer,watch,432,0
+sona-25901,39,swimming suit,baseball cap,293,0
+sona-25901,40,books,headphones,379,0
+sona-25901,41,pen,swimming suit,889,0
+sona-25901,42,desktop computer,computer keyboard,325,0
+sona-25901,43,video games,makeup foundation,694,0
+sona-25901,44,tie,laptop,641,0
+sona-25901,45,tie,basketball,723,0
+sona-25901,46,paper notebook,concert tickets,607,0
+sona-25901,47,tie,water bottle,547,0
+sona-25901,48,skateboard,napkin,291,0
+sona-25901,49,pants,makeup foundation,311,0
+sona-25901,50,beanie,cooking pot,278,0
+sona-25901,51,video games,jacket,680,0
+sona-25901,52,tie,sunglasses,672,0
+sona-25901,53,purse,skateboard,279,0
+sona-25901,54,lipstick,earrings,390,0
+sona-25765,0,necklace,skateboard,1e3,0
+sona-25765,1,cooking pot,pencil,1,0
+sona-25765,2,guitar,skateboard,1,0
+sona-25765,3,video games,coffee,1,0
+sona-25765,4,watch,tie,1e3,0
+sona-25765,5,baseball cap,purse,1,0
+sona-25765,6,laptop,lipstick,1e3,0
+sona-25765,7,granola bar,water bottle,1e3,0
+sona-25765,8,beanie,jacket,1,0
+sona-25765,9,watch,skateboard,1e3,0
+sona-25765,10,laptop,earphones,1e3,0
+sona-25765,11,bicycle,chocolate,1,0
+sona-25765,12,computer keyboard,concert tickets,1e3,0
+sona-25765,13,swimming suit,earphones,1,0
+sona-25765,14,shirt,detergent,1,0
+sona-25765,15,headphones,skateboard,1e3,0
+sona-25765,16,yoga mat,backpack,1,0
+sona-25765,17,earrings,purse,1,0
+sona-25765,18,wine,water bottle,1e3,1
+sona-25765,19,video games,paper notebook,1,0
+sona-25765,20,watch,guitar,1e3,0
+sona-25765,21,wallet,lipstick,1e3,0
+sona-25765,22,desktop computer,skateboard,1e3,0
+sona-25765,23,wine,car,1e3,0
+sona-25765,24,swimming suit,coffee,1,0
+sona-25765,25,bicycle,camera,1,0
+sona-25765,26,cooking pot,purse,1,0
+sona-25765,27,smart phone,dress,1,0
+sona-25765,28,pen,guitar,1e3,0
+sona-25765,29,athletic clothes,shirt,1e3,0
+sona-25765,30,swimming suit,purse,1,0
+sona-25765,31,wallet,makeup foundation,1e3,0
+sona-25765,32,watch,detergent,1,0
+sona-25765,33,scarf,camera,1,0
+sona-25765,34,granola bar,pencil,1e3,0
+sona-25765,35,scarf,bicycle,1e3,0
+sona-25765,36,cooking pot,skateboard,1e3,1
+sona-25765,37,tie,camera,1,0
+sona-25765,38,sunglasses,socks,1,0
+sona-25765,39,scarf,wallet,1,0
+sona-25765,40,computer keyboard,beanie,1e3,0
+sona-25765,41,computer keyboard,shirt,1e3,0
+sona-25765,42,guitar,books,1,0
+sona-25765,43,yoga mat,band-aid,1,0
+sona-25765,44,lipstick,makeup foundation,1,0
+sona-25765,45,socks,shirt,1e3,0
+sona-25765,46,lipstick,paper notebook,1,0
+sona-25765,47,earphones,camera,1,0
+sona-25765,48,computer keyboard,headphones,1e3,0
+sona-25765,49,bicycle,water bottle,1,0
+sona-25765,50,chocolate,paper notebook,1,0
+sona-25765,51,swimming suit,baseball cap,1,0
+sona-25765,52,sunglasses,concert tickets,1e3,0
+sona-25765,53,shirt,basketball,1,0
+sona-25765,54,pencil,wallet,1e3,0
+sona-25755,0,basketball,shoes,806,0
+sona-25755,1,swimming suit,desktop computer,822,0
+sona-25755,2,lipstick,books,876,0
+sona-25755,3,scarf,backpack,849,0
+sona-25755,4,wine,camera,75,0
+sona-25755,5,ring,wallet,66,0
+sona-25755,6,basketball,detergent,115,0
+sona-25755,7,swimming suit,lipstick,847,0
+sona-25755,8,wallet,athletic clothes,96,0
+sona-25755,9,wine,granola bar,94,0
+sona-25755,10,earphones,backpack,945,0
+sona-25755,11,makeup foundation,granola bar,33,0
+sona-25755,12,lipstick,earrings,937,0
+sona-25755,13,water bottle,pen,968,0
+sona-25755,14,watch,pants,52,0
+sona-25755,15,earphones,pants,927,0
+sona-25755,16,computer keyboard,skateboard,950,0
+sona-25755,17,watch,granola bar,40,0
+sona-25755,18,laptop,wallet,927,1
+sona-25755,19,water bottle,calculator,918,0
+sona-25755,20,headphones,guitar,931,0
+sona-25755,21,sunglasses,water bottle,81,0
+sona-25755,22,laptop,shirt,51,0
+sona-25755,23,granola bar,bicycle,938,0
+sona-25755,24,concert tickets,jacket,919,0
+sona-25755,25,detergent,bicycle,940,0
+sona-25755,26,scarf,skateboard,924,0
+sona-25755,27,tie,pencil,28,0
+sona-25755,28,ring,water bottle,42,0
+sona-25755,29,smart phone,dishes,26,0
+sona-25755,30,water bottle,backpack,973,0
+sona-25755,31,jacket,camera,28,0
+sona-25755,32,skateboard,detergent,33,0
+sona-25755,33,calculator,video games,22,0
+sona-25755,34,shirt,water bottle,46,0
+sona-25755,35,laptop,desktop computer,977,0
+sona-25755,36,cooking pot,backpack,960,1
+sona-25755,37,shoes,glasses,31,0
+sona-25755,38,detergent,makeup foundation,970,0
+sona-25755,39,basketball,napkin,38,0
+sona-25755,40,shirt,coffee,50,0
+sona-25755,41,jacket,necklace,926,0
+sona-25755,42,headphones,car,905,0
+sona-25755,43,computer keyboard,necklace,932,0
+sona-25755,44,socks,jacket,977,0
+sona-25755,45,baseball cap,necklace,973,0
+sona-25755,46,lipstick,purse,968,0
+sona-25755,47,jacket,calculator,29,0
+sona-25755,48,coffee,pen,992,0
+sona-25755,49,ring,computer keyboard,28,0
+sona-25755,50,laptop,band-aid,29,0
+sona-25755,51,scarf,granola bar,20,0
+sona-25755,52,dishes,paper notebook,34,0
+sona-25755,53,band-aid,beanie,938,0
+sona-25755,54,baseball cap,earrings,961,0
+sona-25231,0,dress,water bottle,1,0
+sona-25231,1,purse,headphones,1e3,0
+sona-25231,2,tie,baseball cap,1e3,0
+sona-25231,3,smart phone,shoes,1,0
+sona-25231,4,sunglasses,wallet,1,0
+sona-25231,5,paper notebook,necklace,1e3,0
+sona-25231,6,earphones,bicycle,1,0
+sona-25231,7,tie,bicycle,1e3,0
+sona-25231,8,detergent,smart phone,1e3,0
+sona-25231,9,cooking pot,basketball,1e3,0
+sona-25231,10,detergent,car,1e3,0
+sona-25231,11,calculator,earrings,1e3,0
+sona-25231,12,coffee,necklace,1,0
+sona-25231,13,paper notebook,glasses,1e3,0
+sona-25231,14,car,lipstick,1,0
+sona-25231,15,computer keyboard,shoes,1e3,0
+sona-25231,16,paper notebook,coffee,1e3,0
+sona-25231,17,tie,guitar,1,0
+sona-25231,18,wine,camera,1e3,1
+sona-25231,19,paper notebook,jacket,1e3,0
+sona-25231,20,books,detergent,1,0
+sona-25231,21,jacket,glasses,1e3,0
+sona-25231,22,napkin,dress,1e3,0
+sona-25231,23,purse,coffee,1e3,0
+sona-25231,24,cooking pot,guitar,1,0
+sona-25231,25,scarf,dishes,997,0
+sona-25231,26,pen,skateboard,1e3,0
+sona-25231,27,concert tickets,computer keyboard,1,0
+sona-25231,28,makeup foundation,computer keyboard,1e3,0
+sona-25231,29,granola bar,earrings,1e3,0
+sona-25231,30,pants,granola bar,1,0
+sona-25231,31,sunglasses,beanie,1,0
+sona-25231,32,smart phone,ring,1,0
+sona-25231,33,socks,backpack,1e3,0
+sona-25231,34,calculator,car,1e3,0
+sona-25231,35,sunglasses,earphones,1e3,0
+sona-25231,36,headphones,athletic clothes,1,1
+sona-25231,37,athletic clothes,bicycle,1e3,0
+sona-25231,38,napkin,basketball,1e3,0
+sona-25231,39,socks,earphones,1e3,0
+sona-25231,40,makeup foundation,car,1e3,0
+sona-25231,41,purse,yoga mat,1,0
+sona-25231,42,napkin,glasses,1e3,0
+sona-25231,43,yoga mat,skateboard,1e3,0
+sona-25231,44,napkin,backpack,1e3,0
+sona-25231,45,pants,tie,1,0
+sona-25231,46,headphones,shoes,1e3,0
+sona-25231,47,athletic clothes,water bottle,1e3,0
+sona-25231,48,detergent,ring,1e3,0
+sona-25231,49,books,basketball,1e3,0
+sona-25231,50,basketball,skateboard,1e3,0
+sona-25231,51,yoga mat,wine,1e3,0
+sona-25231,52,dishes,chocolate,1,0
+sona-25231,53,sunglasses,coffee,1e3,0
+sona-25231,54,coffee,guitar,1,0
+sona-25137,0,smart phone,socks,1,0
+sona-25137,1,earphones,car,980,0
+sona-25137,2,smart phone,scarf,44,0
+sona-25137,3,napkin,lipstick,926,0
+sona-25137,4,cooking pot,bicycle,849,0
+sona-25137,5,beanie,bicycle,886,0
+sona-25137,6,calculator,guitar,873,0
+sona-25137,7,paper notebook,backpack,861,0
+sona-25137,8,headphones,ring,904,0
+sona-25137,9,pencil,earphones,901,0
+sona-25137,10,smart phone,earrings,69,0
+sona-25137,11,napkin,bicycle,940,0
+sona-25137,12,socks,bicycle,892,0
+sona-25137,13,lipstick,desktop computer,859,0
+sona-25137,14,napkin,backpack,890,0
+sona-25137,15,makeup foundation,pants,46,0
+sona-25137,16,band-aid,backpack,910,0
+sona-25137,17,beanie,glasses,75,0
+sona-25137,18,watch,pen,1e3,1
+sona-25137,19,baseball cap,pencil,85,0
+sona-25137,20,pen,necklace,907,0
+sona-25137,21,earphones,napkin,45,0
+sona-25137,22,wallet,shoes,902,0
+sona-25137,23,band-aid,napkin,63,0
+sona-25137,24,pen,bicycle,907,0
+sona-25137,25,calculator,tie,857,0
+sona-25137,26,beanie,band-aid,74,0
+sona-25137,27,napkin,necklace,804,0
+sona-25137,28,athletic clothes,car,944,0
+sona-25137,29,basketball,beanie,936,0
+sona-25137,30,swimming suit,napkin,28,0
+sona-25137,31,headphones,camera,13,0
+sona-25137,32,desktop computer,car,912,0
+sona-25137,33,granola bar,watch,914,0
+sona-25137,34,pants,swimming suit,880,0
+sona-25137,35,bicycle,necklace,894,0
+sona-25137,36,camera,bicycle,1e3,1
+sona-25137,37,earphones,camera,851,0
+sona-25137,38,concert tickets,backpack,918,0
+sona-25137,39,makeup foundation,yoga mat,87,0
+sona-25137,40,wallet,laptop,898,0
+sona-25137,41,earphones,backpack,894,0
+sona-25137,42,wallet,computer keyboard,957,0
+sona-25137,43,laptop,pen,81,0
+sona-25137,44,pen,skateboard,910,0
+sona-25137,45,jacket,desktop computer,49,0
+sona-25137,46,band-aid,desktop computer,933,0
+sona-25137,47,wallet,beanie,938,0
+sona-25137,48,camera,necklace,61,0
+sona-25137,49,baseball cap,glasses,9,0
+sona-25137,50,backpack,necklace,4,0
+sona-25137,51,shoes,bicycle,37,0
+sona-25137,52,chocolate,napkin,898,0
+sona-25137,53,pencil,cooking pot,49,0
+sona-25137,54,beanie,computer keyboard,830,0
+sona-25127,0,backpack,wine,294,0
+sona-25127,1,napkin,bicycle,819,0
+sona-25127,2,ring,smart phone,947,0
+sona-25127,3,laptop,bicycle,452,0
+sona-25127,4,dress,detergent,247,0
+sona-25127,5,concert tickets,scarf,345,0
+sona-25127,6,earphones,tie,172,0
+sona-25127,7,pants,wine,207,0
+sona-25127,8,basketball,ring,677,0
+sona-25127,9,beanie,coffee,503,0
+sona-25127,10,napkin,smart phone,842,0
+sona-25127,11,desktop computer,computer keyboard,1,0
+sona-25127,12,jacket,calculator,273,0
+sona-25127,13,socks,wallet,738,0
+sona-25127,14,detergent,water bottle,604,0
+sona-25127,15,band-aid,calculator,613,0
+sona-25127,16,beanie,basketball,567,0
+sona-25127,17,calculator,socks,491,0
+sona-25127,18,camera,wine,493,1
+sona-25127,19,baseball cap,wine,427,0
+sona-25127,20,backpack,detergent,397,0
+sona-25127,21,desktop computer,wallet,291,0
+sona-25127,22,band-aid,skateboard,560,0
+sona-25127,23,detergent,smart phone,778,0
+sona-25127,24,earphones,granola bar,226,0
+sona-25127,25,computer keyboard,concert tickets,312,0
+sona-25127,26,baseball cap,earphones,718,0
+sona-25127,27,makeup foundation,lipstick,353,0
+sona-25127,28,beanie,socks,528,0
+sona-25127,29,dress,purse,646,0
+sona-25127,30,camera,headphones,595,0
+sona-25127,31,basketball,band-aid,568,0
+sona-25127,32,athletic clothes,ring,629,0
+sona-25127,33,guitar,shirt,364,0
+sona-25127,34,necklace,skateboard,436,0
+sona-25127,35,glasses,socks,414,0
+sona-25127,36,granola bar,socks,512,1
+sona-25127,37,pen,dishes,513,0
+sona-25127,38,concert tickets,dress,537,0
+sona-25127,39,smart phone,wine,126,0
+sona-25127,40,coffee,makeup foundation,528,0
+sona-25127,41,earrings,shirt,480,0
+sona-25127,42,makeup foundation,necklace,287,0
+sona-25127,43,pen,shoes,838,0
+sona-25127,44,pen,scarf,475,0
+sona-25127,45,scarf,yoga mat,473,0
+sona-25127,46,backpack,books,482,0
+sona-25127,47,basketball,wallet,748,0
+sona-25127,48,pen,baseball cap,656,0
+sona-25127,49,bicycle,granola bar,205,0
+sona-25127,50,glasses,skateboard,336,0
+sona-25127,51,purse,video games,801,0
+sona-25127,52,laptop,backpack,1,0
+sona-25127,53,earrings,necklace,182,0
+sona-25127,54,granola bar,glasses,778,0
+sona-24970,0,granola bar,backpack,929,0
+sona-24970,1,swimming suit,napkin,122,0
+sona-24970,2,skateboard,pencil,119,0
+sona-24970,3,swimming suit,camera,927,0
+sona-24970,4,earphones,desktop computer,860,0
+sona-24970,5,guitar,smart phone,934,0
+sona-24970,6,calculator,car,1e3,0
+sona-24970,7,swimming suit,smart phone,958,0
+sona-24970,8,paper notebook,jacket,671,0
+sona-24970,9,purse,earphones,193,0
+sona-24970,10,guitar,computer keyboard,55,0
+sona-24970,11,bicycle,band-aid,8,0
+sona-24970,12,bicycle,basketball,1,0
+sona-24970,13,lipstick,beanie,547,0
+sona-24970,14,shoes,napkin,79,0
+sona-24970,15,dishes,swimming suit,878,0
+sona-24970,16,necklace,napkin,71,0
+sona-24970,17,swimming suit,beanie,171,0
+sona-24970,18,concert tickets,desktop computer,1e3,1
+sona-24970,19,coffee,computer keyboard,469,0
+sona-24970,20,calculator,wallet,1e3,0
+sona-24970,21,baseball cap,basketball,438,0
+sona-24970,22,laptop,socks,55,0
+sona-24970,23,purse,band-aid,48,0
+sona-24970,24,purse,necklace,282,0
+sona-24970,25,ring,baseball cap,64,0
+sona-24970,26,athletic clothes,bicycle,375,0
+sona-24970,27,ring,dress,164,0
+sona-24970,28,makeup foundation,athletic clothes,635,0
+sona-24970,29,pencil,beanie,602,0
+sona-24970,30,jacket,guitar,360,0
+sona-24970,31,pants,napkin,173,0
+sona-24970,32,shoes,baseball cap,122,0
+sona-24970,33,granola bar,basketball,351,0
+sona-24970,34,calculator,tie,649,0
+sona-24970,35,water bottle,wallet,1e3,0
+sona-24970,36,pen,basketball,1e3,1
+sona-24970,37,pencil,watch,934,0
+sona-24970,38,chocolate,computer keyboard,333,0
+sona-24970,39,yoga mat,wallet,862,0
+sona-24970,40,bicycle,shirt,442,0
+sona-24970,41,makeup foundation,shirt,329,0
+sona-24970,42,coffee,video games,847,0
+sona-24970,43,shoes,coffee,280,0
+sona-24970,44,swimming suit,shirt,796,0
+sona-24970,45,wine,athletic clothes,320,0
+sona-24970,46,skateboard,granola bar,302,0
+sona-24970,47,purse,athletic clothes,122,0
+sona-24970,48,coffee,desktop computer,818,0
+sona-24970,49,pen,car,954,0
+sona-24970,50,athletic clothes,detergent,293,0
+sona-24970,51,bicycle,headphones,758,0
+sona-24970,52,dishes,shirt,680,0
+sona-24970,53,pants,band-aid,304,0
+sona-24970,54,tie,glasses,789,0
+sona-24921,0,earrings,car,1e3,0
+sona-24921,1,computer keyboard,yoga mat,1,0
+sona-24921,2,granola bar,computer keyboard,791,0
+sona-24921,3,guitar,computer keyboard,627,0
+sona-24921,4,basketball,lipstick,638,0
+sona-24921,5,necklace,headphones,669,0
+sona-24921,6,dishes,purse,670,0
+sona-24921,7,dress,backpack,204,0
+sona-24921,8,band-aid,yoga mat,735,0
+sona-24921,9,basketball,desktop computer,647,0
+sona-24921,10,bicycle,sunglasses,788,0
+sona-24921,11,bicycle,scarf,168,0
+sona-24921,12,makeup foundation,shoes,990,0
+sona-24921,13,socks,skateboard,777,0
+sona-24921,14,pencil,beanie,712,0
+sona-24921,15,watch,detergent,185,0
+sona-24921,16,tie,wallet,723,0
+sona-24921,17,books,pen,276,0
+sona-24921,18,concert tickets,sunglasses,220,1
+sona-24921,19,napkin,car,852,0
+sona-24921,20,band-aid,coffee,779,0
+sona-24921,21,ring,athletic clothes,1e3,0
+sona-24921,22,water bottle,baseball cap,1e3,0
+sona-24921,23,water bottle,smart phone,720,0
+sona-24921,24,napkin,socks,788,0
+sona-24921,25,wallet,paper notebook,143,0
+sona-24921,26,chocolate,jacket,871,0
+sona-24921,27,computer keyboard,headphones,175,0
+sona-24921,28,napkin,guitar,742,0
+sona-24921,29,socks,swimming suit,846,0
+sona-24921,30,wine,cooking pot,464,0
+sona-24921,31,tie,skateboard,681,0
+sona-24921,32,bicycle,video games,774,0
+sona-24921,33,chocolate,skateboard,729,0
+sona-24921,34,basketball,guitar,729,0
+sona-24921,35,granola bar,headphones,788,0
+sona-24921,36,watch,purse,801,1
+sona-24921,37,dress,shoes,728,0
+sona-24921,38,necklace,computer keyboard,742,0
+sona-24921,39,pen,pants,773,0
+sona-24921,40,video games,shoes,139,0
+sona-24921,41,band-aid,pants,777,0
+sona-24921,42,skateboard,backpack,179,0
+sona-24921,43,guitar,books,715,0
+sona-24921,44,basketball,earphones,721,0
+sona-24921,45,guitar,jacket,740,0
+sona-24921,46,glasses,earphones,780,0
+sona-24921,47,tie,desktop computer,676,0
+sona-24921,48,basketball,glasses,684,0
+sona-24921,49,makeup foundation,yoga mat,746,0
+sona-24921,50,dishes,pen,793,0
+sona-24921,51,ring,pen,184,0
+sona-24921,52,books,smart phone,723,0
+sona-24921,53,dress,paper notebook,762,0
+sona-24921,54,ring,backpack,791,0
+sona-24871,0,pencil,yoga mat,716,0
+sona-24871,1,laptop,dress,692,0
+sona-24871,2,headphones,baseball cap,724,0
+sona-24871,3,headphones,lipstick,760,0
+sona-24871,4,socks,purse,784,0
+sona-24871,5,wallet,books,848,0
+sona-24871,6,cooking pot,granola bar,827,0
+sona-24871,7,dishes,band-aid,193,0
+sona-24871,8,lipstick,earphones,166,0
+sona-24871,9,skateboard,sunglasses,772,0
+sona-24871,10,bicycle,wine,182,0
+sona-24871,11,watch,purse,148,0
+sona-24871,12,detergent,backpack,821,0
+sona-24871,13,detergent,wallet,804,0
+sona-24871,14,detergent,bicycle,848,0
+sona-24871,15,backpack,band-aid,163,0
+sona-24871,16,skateboard,headphones,194,0
+sona-24871,17,shoes,coffee,185,0
+sona-24871,18,paper notebook,basketball,1e3,1
+sona-24871,19,camera,scarf,181,0
+sona-24871,20,socks,video games,811,0
+sona-24871,21,chocolate,beanie,813,0
+sona-24871,22,napkin,lipstick,805,0
+sona-24871,23,earrings,car,847,0
+sona-24871,24,cooking pot,pants,849,0
+sona-24871,25,basketball,video games,802,0
+sona-24871,26,water bottle,computer keyboard,138,0
+sona-24871,27,laptop,socks,125,0
+sona-24871,28,detergent,yoga mat,860,0
+sona-24871,29,sunglasses,baseball cap,137,0
+sona-24871,30,cooking pot,skateboard,863,0
+sona-24871,31,napkin,scarf,882,0
+sona-24871,32,band-aid,yoga mat,872,0
+sona-24871,33,lipstick,band-aid,68,0
+sona-24871,34,laptop,calculator,38,0
+sona-24871,35,scarf,pen,114,0
+sona-24871,36,cooking pot,guitar,847,1
+sona-24871,37,chocolate,yoga mat,891,0
+sona-24871,38,sunglasses,computer keyboard,92,0
+sona-24871,39,lipstick,purse,870,0
+sona-24871,40,skateboard,beanie,890,0
+sona-24871,41,cooking pot,yoga mat,898,0
+sona-24871,42,pants,guitar,61,0
+sona-24871,43,water bottle,beanie,909,0
+sona-24871,44,laptop,shirt,80,0
+sona-24871,45,makeup foundation,earphones,91,0
+sona-24871,46,band-aid,concert tickets,912,0
+sona-24871,47,pen,calculator,885,0
+sona-24871,48,watch,coffee,114,0
+sona-24871,49,calculator,concert tickets,102,0
+sona-24871,50,purse,wine,78,0
+sona-24871,51,laptop,yoga mat,40,0
+sona-24871,52,purse,tie,78,0
+sona-24871,53,smart phone,yoga mat,79,0
+sona-24871,54,basketball,yoga mat,921,0
+sona-24780,0,lipstick,ring,179,0
+sona-24780,1,coffee,scarf,168,0
+sona-24780,2,jacket,napkin,122,0
+sona-24780,3,concert tickets,pencil,169,0
+sona-24780,4,jacket,watch,1e3,0
+sona-24780,5,detergent,watch,940,0
+sona-24780,6,earphones,shirt,886,0
+sona-24780,7,earrings,sunglasses,844,0
+sona-24780,8,coffee,pants,943,0
+sona-24780,9,basketball,purse,923,0
+sona-24780,10,pen,socks,25,0
+sona-24780,11,paper notebook,band-aid,502,0
+sona-24780,12,shirt,video games,718,0
+sona-24780,13,backpack,chocolate,281,0
+sona-24780,14,beanie,shirt,585,0
+sona-24780,15,detergent,pants,615,0
+sona-24780,16,beanie,wine,836,0
+sona-24780,17,jacket,backpack,335,0
+sona-24780,18,band-aid,concert tickets,515,1
+sona-24780,19,car,headphones,1,0
+sona-24780,20,smart phone,water bottle,1,0
+sona-24780,21,wallet,ring,578,0
+sona-24780,22,books,earrings,551,0
+sona-24780,23,earrings,pencil,400,0
+sona-24780,24,athletic clothes,sunglasses,267,0
+sona-24780,25,smart phone,swimming suit,631,0
+sona-24780,26,coffee,water bottle,716,0
+sona-24780,27,car,desktop computer,1,0
+sona-24780,28,dress,books,124,0
+sona-24780,29,calculator,yoga mat,494,0
+sona-24780,30,smart phone,detergent,451,0
+sona-24780,31,desktop computer,makeup foundation,735,0
+sona-24780,32,napkin,ring,617,0
+sona-24780,33,basketball,beanie,517,0
+sona-24780,34,earphones,computer keyboard,197,0
+sona-24780,35,chocolate,coffee,611,0
+sona-24780,36,jacket,laptop,1e3,1
+sona-24780,37,concert tickets,shoes,526,0
+sona-24780,38,coffee,ring,587,0
+sona-24780,39,baseball cap,purse,800,0
+sona-24780,40,detergent,wine,583,0
+sona-24780,41,backpack,calculator,193,0
+sona-24780,42,wallet,scarf,274,0
+sona-24780,43,paper notebook,earrings,676,0
+sona-24780,44,wine,purse,694,0
+sona-24780,45,jacket,yoga mat,184,0
+sona-24780,46,books,swimming suit,976,0
+sona-24780,47,ring,sunglasses,560,0
+sona-24780,48,car,earrings,1,0
+sona-24780,49,dress,purse,180,0
+sona-24780,50,makeup foundation,scarf,256,0
+sona-24780,51,basketball,granola bar,622,0
+sona-24780,52,coffee,desktop computer,601,0
+sona-24780,53,earphones,tie,343,0
+sona-24780,54,concert tickets,pants,517,0
+sona-24725,0,detergent,swimming suit,1e3,0
+sona-24725,1,guitar,basketball,494,0
+sona-24725,2,pencil,makeup foundation,807,0
+sona-24725,3,books,necklace,557,0
+sona-24725,4,bicycle,earphones,411,0
+sona-24725,5,watch,tie,468,0
+sona-24725,6,scarf,video games,603,0
+sona-24725,7,tie,swimming suit,717,0
+sona-24725,8,paper notebook,calculator,398,0
+sona-24725,9,glasses,tie,455,0
+sona-24725,10,band-aid,pencil,400,0
+sona-24725,11,headphones,swimming suit,683,0
+sona-24725,12,guitar,band-aid,427,0
+sona-24725,13,ring,camera,403,0
+sona-24725,14,books,laptop,681,0
+sona-24725,15,pen,beanie,826,0
+sona-24725,16,shoes,video games,308,0
+sona-24725,17,jacket,wine,704,0
+sona-24725,18,scarf,pencil,1e3,1
+sona-24725,19,backpack,calculator,410,0
+sona-24725,20,detergent,pencil,374,0
+sona-24725,21,wallet,makeup foundation,756,0
+sona-24725,22,concert tickets,paper notebook,290,0
+sona-24725,23,basketball,necklace,845,0
+sona-24725,24,scarf,jacket,782,0
+sona-24725,25,baseball cap,headphones,427,0
+sona-24725,26,concert tickets,camera,719,0
+sona-24725,27,smart phone,necklace,193,0
+sona-24725,28,pencil,yoga mat,242,0
+sona-24725,29,granola bar,cooking pot,101,0
+sona-24725,30,camera,pants,303,0
+sona-24725,31,car,laptop,193,0
+sona-24725,32,beanie,video games,886,0
+sona-24725,33,guitar,headphones,866,0
+sona-24725,34,basketball,sunglasses,787,0
+sona-24725,35,shoes,dress,179,0
+sona-24725,36,books,purse,869,1
+sona-24725,37,wallet,sunglasses,161,0
+sona-24725,38,earrings,socks,138,0
+sona-24725,39,yoga mat,dishes,883,0
+sona-24725,40,napkin,shirt,924,0
+sona-24725,41,scarf,water bottle,802,0
+sona-24725,42,bicycle,basketball,177,0
+sona-24725,43,watch,glasses,144,0
+sona-24725,44,cooking pot,swimming suit,823,0
+sona-24725,45,coffee,tie,832,0
+sona-24725,46,dress,earrings,571,0
+sona-24725,47,athletic clothes,sunglasses,165,0
+sona-24725,48,scarf,earphones,807,0
+sona-24725,49,camera,necklace,301,0
+sona-24725,50,laptop,pen,235,0
+sona-24725,51,camera,socks,104,0
+sona-24725,52,athletic clothes,detergent,1,0
+sona-24725,53,books,chocolate,106,0
+sona-24725,54,jacket,video games,211,0
+sona-24476,0,camera,smart phone,1e3,0
+sona-24476,1,headphones,shoes,1e3,0
+sona-24476,2,backpack,bicycle,1,0
+sona-24476,3,books,sunglasses,1e3,0
+sona-24476,4,calculator,bicycle,1e3,0
+sona-24476,5,basketball,video games,1e3,0
+sona-24476,6,desktop computer,earrings,8,0
+sona-24476,7,shirt,computer keyboard,1,0
+sona-24476,8,makeup foundation,glasses,1e3,0
+sona-24476,9,yoga mat,jacket,1e3,0
+sona-24476,10,guitar,wine,1,0
+sona-24476,11,swimming suit,camera,1e3,0
+sona-24476,12,books,video games,1e3,0
+sona-24476,13,shoes,necklace,1,0
+sona-24476,14,coffee,necklace,1e3,0
+sona-24476,15,bicycle,camera,1e3,0
+sona-24476,16,books,earphones,1e3,0
+sona-24476,17,shirt,watch,1,0
+sona-24476,18,basketball,granola bar,1,1
+sona-24476,19,earphones,wine,1,0
+sona-24476,20,swimming suit,video games,1e3,0
+sona-24476,21,athletic clothes,camera,1e3,0
+sona-24476,22,basketball,bicycle,1e3,0
+sona-24476,23,calculator,glasses,1e3,0
+sona-24476,24,coffee,glasses,1e3,0
+sona-24476,25,detergent,skateboard,1e3,0
+sona-24476,26,athletic clothes,socks,1,0
+sona-24476,27,watch,athletic clothes,1,0
+sona-24476,28,granola bar,chocolate,1,0
+sona-24476,29,purse,sunglasses,1,0
+sona-24476,30,earrings,socks,1,0
+sona-24476,31,scarf,pencil,1,0
+sona-24476,32,swimming suit,wine,997,0
+sona-24476,33,paper notebook,baseball cap,1e3,0
+sona-24476,34,earphones,computer keyboard,1,0
+sona-24476,35,basketball,earrings,6,0
+sona-24476,36,watch,pencil,1,1
+sona-24476,37,smart phone,wine,1,0
+sona-24476,38,basketball,water bottle,1,0
+sona-24476,39,water bottle,band-aid,1,0
+sona-24476,40,glasses,baseball cap,1,0
+sona-24476,41,books,backpack,1e3,0
+sona-24476,42,headphones,wallet,1,0
+sona-24476,43,glasses,backpack,993,0
+sona-24476,44,tie,chocolate,1,0
+sona-24476,45,guitar,calculator,1,0
+sona-24476,46,necklace,jacket,1e3,0
+sona-24476,47,camera,pencil,1,0
+sona-24476,48,headphones,dress,1e3,0
+sona-24476,49,calculator,lipstick,1e3,0
+sona-24476,50,earphones,smart phone,1e3,0
+sona-24476,51,swimming suit,beanie,1,0
+sona-24476,52,water bottle,dishes,1,0
+sona-24476,53,lipstick,skateboard,1,0
+sona-24476,54,shirt,concert tickets,1e3,0
+sona-24425,0,pants,sunglasses,264,0
+sona-24425,1,skateboard,swimming suit,800,0
+sona-24425,2,pen,basketball,786,0
+sona-24425,3,bicycle,swimming suit,208,0
+sona-24425,4,desktop computer,tie,777,0
+sona-24425,5,glasses,pen,44,0
+sona-24425,6,glasses,beanie,170,0
+sona-24425,7,baseball cap,camera,109,0
+sona-24425,8,tie,sunglasses,41,0
+sona-24425,9,band-aid,glasses,956,0
+sona-24425,10,coffee,detergent,383,0
+sona-24425,11,watch,bicycle,197,0
+sona-24425,12,wallet,purse,870,0
+sona-24425,13,pencil,tie,879,0
+sona-24425,14,purse,shirt,856,0
+sona-24425,15,dishes,scarf,581,0
+sona-24425,16,basketball,scarf,358,0
+sona-24425,17,shoes,basketball,200,0
+sona-24425,18,car,camera,342,1
+sona-24425,19,scarf,sunglasses,671,0
+sona-24425,20,napkin,tie,666,0
+sona-24425,21,socks,basketball,729,0
+sona-24425,22,laptop,purse,285,0
+sona-24425,23,makeup foundation,detergent,293,0
+sona-24425,24,cooking pot,pants,682,0
+sona-24425,25,wine,granola bar,276,0
+sona-24425,26,glasses,cooking pot,292,0
+sona-24425,27,necklace,pants,284,0
+sona-24425,28,granola bar,sunglasses,712,0
+sona-24425,29,athletic clothes,cooking pot,339,0
+sona-24425,30,chocolate,makeup foundation,710,0
+sona-24425,31,car,detergent,173,0
+sona-24425,32,yoga mat,chocolate,370,0
+sona-24425,33,band-aid,athletic clothes,680,0
+sona-24425,34,paper notebook,granola bar,275,0
+sona-24425,35,shoes,pen,211,0
+sona-24425,36,swimming suit,granola bar,244,1
+sona-24425,37,swimming suit,detergent,210,0
+sona-24425,38,earphones,sunglasses,724,0
+sona-24425,39,books,detergent,272,0
+sona-24425,40,video games,concert tickets,651,0
+sona-24425,41,earphones,pants,697,0
+sona-24425,42,guitar,headphones,707,0
+sona-24425,43,purse,basketball,323,0
+sona-24425,44,books,coffee,284,0
+sona-24425,45,pen,ring,741,0
+sona-24425,46,band-aid,laptop,648,0
+sona-24425,47,jacket,sunglasses,762,0
+sona-24425,48,laptop,coffee,279,0
+sona-24425,49,video games,sunglasses,777,0
+sona-24425,50,baseball cap,socks,334,0
+sona-24425,51,dishes,coffee,671,0
+sona-24425,52,pants,shirt,657,0
+sona-24425,53,basketball,makeup foundation,651,0
+sona-24425,54,headphones,granola bar,349,0
+sona-24322,0,pen,headphones,1e3,0
+sona-24322,1,backpack,tie,265,0
+sona-24322,2,water bottle,cooking pot,127,0
+sona-24322,3,car,band-aid,1,0
+sona-24322,4,laptop,water bottle,71,0
+sona-24322,5,ring,guitar,1,0
+sona-24322,6,camera,pen,1,0
+sona-24322,7,computer keyboard,wallet,620,0
+sona-24322,8,socks,skateboard,193,0
+sona-24322,9,car,shoes,161,0
+sona-24322,10,dress,granola bar,174,0
+sona-24322,11,skateboard,computer keyboard,128,0
+sona-24322,12,ring,desktop computer,669,0
+sona-24322,13,shirt,shoes,874,0
+sona-24322,14,video games,granola bar,140,0
+sona-24322,15,shirt,band-aid,34,0
+sona-24322,16,earphones,headphones,890,0
+sona-24322,17,glasses,dishes,126,0
+sona-24322,18,socks,coffee,162,1
+sona-24322,19,concert tickets,wine,149,0
+sona-24322,20,glasses,swimming suit,829,0
+sona-24322,21,smart phone,headphones,132,0
+sona-24322,22,paper notebook,guitar,773,0
+sona-24322,23,band-aid,paper notebook,792,0
+sona-24322,24,beanie,watch,898,0
+sona-24322,25,socks,athletic clothes,922,0
+sona-24322,26,concert tickets,skateboard,117,0
+sona-24322,27,car,dress,181,0
+sona-24322,28,laptop,jacket,199,0
+sona-24322,29,baseball cap,pencil,167,0
+sona-24322,30,smart phone,band-aid,177,0
+sona-24322,31,purse,coffee,191,0
+sona-24322,32,jacket,baseball cap,826,0
+sona-24322,33,concert tickets,chocolate,105,0
+sona-24322,34,watch,napkin,70,0
+sona-24322,35,coffee,lipstick,116,0
+sona-24322,36,books,scarf,180,1
+sona-24322,37,wallet,detergent,199,0
+sona-24322,38,earrings,watch,851,0
+sona-24322,39,ring,dishes,96,0
+sona-24322,40,water bottle,wine,62,0
+sona-24322,41,band-aid,wallet,794,0
+sona-24322,42,makeup foundation,video games,771,0
+sona-24322,43,earphones,napkin,248,0
+sona-24322,44,laptop,cooking pot,96,0
+sona-24322,45,band-aid,sunglasses,781,0
+sona-24322,46,socks,ring,730,0
+sona-24322,47,athletic clothes,pants,255,0
+sona-24322,48,laptop,napkin,209,0
+sona-24322,49,laptop,baseball cap,120,0
+sona-24322,50,laptop,wine,177,0
+sona-24322,51,computer keyboard,headphones,787,0
+sona-24322,52,bicycle,desktop computer,773,0
+sona-24322,53,makeup foundation,napkin,216,0
+sona-24322,54,jacket,earrings,860,0
+sona-24272,0,chocolate,skateboard,952,0
+sona-24272,1,band-aid,yoga mat,795,0
+sona-24272,2,backpack,chocolate,129,0
+sona-24272,3,pen,detergent,136,0
+sona-24272,4,bicycle,baseball cap,868,0
+sona-24272,5,pencil,headphones,835,0
+sona-24272,6,dishes,ring,830,0
+sona-24272,7,pencil,guitar,869,0
+sona-24272,8,headphones,ring,855,0
+sona-24272,9,glasses,tie,1,0
+sona-24272,10,camera,bicycle,1,0
+sona-24272,11,wine,baseball cap,965,0
+sona-24272,12,ring,socks,216,0
+sona-24272,13,books,beanie,850,0
+sona-24272,14,smart phone,baseball cap,57,0
+sona-24272,15,band-aid,baseball cap,839,0
+sona-24272,16,headphones,napkin,178,0
+sona-24272,17,books,paper notebook,133,0
+sona-24272,18,video games,wallet,857,1
+sona-24272,19,ring,earphones,129,0
+sona-24272,20,laptop,baseball cap,780,0
+sona-24272,21,calculator,yoga mat,820,0
+sona-24272,22,chocolate,band-aid,729,0
+sona-24272,23,athletic clothes,baseball cap,123,0
+sona-24272,24,computer keyboard,necklace,885,0
+sona-24272,25,dishes,detergent,832,0
+sona-24272,26,beanie,smart phone,781,0
+sona-24272,27,calculator,purse,851,0
+sona-24272,28,pants,swimming suit,837,0
+sona-24272,29,camera,coffee,3,0
+sona-24272,30,makeup foundation,shoes,823,0
+sona-24272,31,calculator,guitar,789,0
+sona-24272,32,athletic clothes,calculator,41,0
+sona-24272,33,water bottle,tie,140,0
+sona-24272,34,computer keyboard,baseball cap,876,0
+sona-24272,35,granola bar,watch,817,0
+sona-24272,36,backpack,dishes,194,1
+sona-24272,37,necklace,jacket,202,0
+sona-24272,38,guitar,paper notebook,152,0
+sona-24272,39,baseball cap,watch,120,0
+sona-24272,40,shirt,band-aid,131,0
+sona-24272,41,athletic clothes,detergent,126,0
+sona-24272,42,earrings,socks,143,0
+sona-24272,43,books,glasses,852,0
+sona-24272,44,bicycle,coffee,209,0
+sona-24272,45,shoes,watch,85,0
+sona-24272,46,beanie,tie,121,0
+sona-24272,47,baseball cap,purse,140,0
+sona-24272,48,basketball,cooking pot,130,0
+sona-24272,49,detergent,coffee,857,0
+sona-24272,50,lipstick,backpack,142,0
+sona-24272,51,scarf,makeup foundation,879,0
+sona-24272,52,water bottle,backpack,865,0
+sona-24272,53,pants,camera,850,0
+sona-24272,54,tie,socks,143,0
+sona-24133,0,baseball cap,earrings,1e3,0
+sona-24133,1,guitar,wallet,246,0
+sona-24133,2,sunglasses,ring,1e3,0
+sona-24133,3,shirt,yoga mat,1,0
+sona-24133,4,beanie,earphones,697,0
+sona-24133,5,ring,cooking pot,1,0
+sona-24133,6,wallet,tie,365,0
+sona-24133,7,sunglasses,smart phone,726,0
+sona-24133,8,smart phone,watch,712,0
+sona-24133,9,earrings,basketball,1,0
+sona-24133,10,pencil,ring,954,0
+sona-24133,11,basketball,ring,1e3,0
+sona-24133,12,necklace,athletic clothes,133,0
+sona-24133,13,dishes,laptop,804,0
+sona-24133,14,band-aid,basketball,609,0
+sona-24133,15,coffee,guitar,768,0
+sona-24133,16,beanie,video games,708,0
+sona-24133,17,necklace,coffee,42,0
+sona-24133,18,water bottle,chocolate,1e3,1
+sona-24133,19,scarf,pants,751,0
+sona-24133,20,pants,guitar,784,0
+sona-24133,21,coffee,wallet,760,0
+sona-24133,22,bicycle,guitar,754,0
+sona-24133,23,socks,headphones,784,0
+sona-24133,24,concert tickets,yoga mat,390,0
+sona-24133,25,athletic clothes,books,787,0
+sona-24133,26,makeup foundation,detergent,156,0
+sona-24133,27,scarf,swimming suit,656,0
+sona-24133,28,paper notebook,smart phone,871,0
+sona-24133,29,athletic clothes,pants,851,0
+sona-24133,30,camera,pen,194,0
+sona-24133,31,concert tickets,makeup foundation,177,0
+sona-24133,32,concert tickets,baseball cap,166,0
+sona-24133,33,glasses,paper notebook,154,0
+sona-24133,34,baseball cap,headphones,765,0
+sona-24133,35,guitar,calculator,124,0
+sona-24133,36,sunglasses,watch,1e3,1
+sona-24133,37,books,pencil,219,0
+sona-24133,38,glasses,concert tickets,836,0
+sona-24133,39,guitar,pencil,279,0
+sona-24133,40,granola bar,baseball cap,808,0
+sona-24133,41,earrings,purse,1,0
+sona-24133,42,backpack,purse,666,0
+sona-24133,43,granola bar,makeup foundation,683,0
+sona-24133,44,wine,cooking pot,732,0
+sona-24133,45,lipstick,yoga mat,338,0
+sona-24133,46,books,shoes,803,0
+sona-24133,47,sunglasses,car,996,0
+sona-24133,48,concert tickets,shoes,809,0
+sona-24133,49,necklace,headphones,23,0
+sona-24133,50,skateboard,smart phone,797,0
+sona-24133,51,sunglasses,wine,121,0
+sona-24133,52,swimming suit,skateboard,185,0
+sona-24133,53,basketball,cooking pot,231,0
+sona-24133,54,jacket,watch,805,0
+sona-23751,0,laptop,guitar,235,0
+sona-23751,1,earphones,desktop computer,311,0
+sona-23751,2,calculator,necklace,817,0
+sona-23751,3,skateboard,concert tickets,807,0
+sona-23751,4,paper notebook,wine,705,0
+sona-23751,5,pencil,napkin,407,0
+sona-23751,6,earrings,swimming suit,911,0
+sona-23751,7,granola bar,dishes,466,0
+sona-23751,8,car,pants,135,0
+sona-23751,9,wine,athletic clothes,731,0
+sona-23751,10,wallet,pen,83,0
+sona-23751,11,video games,beanie,421,0
+sona-23751,12,calculator,desktop computer,302,0
+sona-23751,13,dishes,guitar,734,0
+sona-23751,14,baseball cap,granola bar,405,0
+sona-23751,15,smart phone,skateboard,156,0
+sona-23751,16,ring,shoes,43,0
+sona-23751,17,cooking pot,dishes,509,0
+sona-23751,18,yoga mat,socks,1e3,1
+sona-23751,19,athletic clothes,headphones,289,0
+sona-23751,20,wallet,socks,351,0
+sona-23751,21,bicycle,video games,641,0
+sona-23751,22,necklace,watch,714,0
+sona-23751,23,wallet,video games,135,0
+sona-23751,24,backpack,athletic clothes,728,0
+sona-23751,25,earrings,skateboard,370,0
+sona-23751,26,pencil,desktop computer,551,0
+sona-23751,27,ring,athletic clothes,738,0
+sona-23751,28,scarf,desktop computer,410,0
+sona-23751,29,scarf,sunglasses,965,0
+sona-23751,30,smart phone,camera,280,0
+sona-23751,31,cooking pot,desktop computer,819,0
+sona-23751,32,camera,calculator,53,0
+sona-23751,33,computer keyboard,guitar,780,0
+sona-23751,34,bicycle,sunglasses,847,0
+sona-23751,35,bicycle,shoes,970,0
+sona-23751,36,glasses,headphones,1e3,1
+sona-23751,37,necklace,pants,383,0
+sona-23751,38,socks,concert tickets,728,0
+sona-23751,39,lipstick,water bottle,380,0
+sona-23751,40,wine,glasses,628,0
+sona-23751,41,beanie,sunglasses,783,0
+sona-23751,42,baseball cap,detergent,447,0
+sona-23751,43,wine,desktop computer,211,0
+sona-23751,44,camera,purse,837,0
+sona-23751,45,video games,computer keyboard,237,0
+sona-23751,46,yoga mat,calculator,446,0
+sona-23751,47,car,skateboard,341,0
+sona-23751,48,shoes,skateboard,273,0
+sona-23751,49,band-aid,watch,838,0
+sona-23751,50,dishes,backpack,739,0
+sona-23751,51,earphones,detergent,289,0
+sona-23751,52,shoes,wallet,277,0
+sona-23751,53,dress,concert tickets,326,0
+sona-23751,54,purse,pants,362,0
+sona-23707,0,beanie,concert tickets,1e3,0
+sona-23707,1,beanie,watch,1e3,0
+sona-23707,2,pencil,glasses,1e3,0
+sona-23707,3,desktop computer,wallet,1,0
+sona-23707,4,computer keyboard,video games,1e3,0
+sona-23707,5,beanie,swimming suit,1e3,0
+sona-23707,6,camera,earrings,1e3,0
+sona-23707,7,jacket,napkin,1,0
+sona-23707,8,jacket,pants,1,0
+sona-23707,9,backpack,dishes,1,0
+sona-23707,10,bicycle,skateboard,1,0
+sona-23707,11,shirt,chocolate,1,0
+sona-23707,12,cooking pot,concert tickets,1e3,0
+sona-23707,13,cooking pot,purse,1e3,0
+sona-23707,14,detergent,books,1e3,0
+sona-23707,15,athletic clothes,cooking pot,1,0
+sona-23707,16,earphones,basketball,1,0
+sona-23707,17,earphones,napkin,1,0
+sona-23707,18,skateboard,socks,1,1
+sona-23707,19,granola bar,makeup foundation,1e3,0
+sona-23707,20,water bottle,smart phone,1e3,0
+sona-23707,21,skateboard,pencil,1,0
+sona-23707,22,desktop computer,backpack,1,0
+sona-23707,23,beanie,pencil,1,0
+sona-23707,24,bicycle,cooking pot,1,0
+sona-23707,25,shoes,baseball cap,1,0
+sona-23707,26,tie,chocolate,1,0
+sona-23707,27,skateboard,wallet,1e3,0
+sona-23707,28,necklace,concert tickets,1e3,0
+sona-23707,29,calculator,coffee,1e3,0
+sona-23707,30,guitar,concert tickets,1e3,0
+sona-23707,31,lipstick,computer keyboard,1,0
+sona-23707,32,paper notebook,water bottle,1e3,0
+sona-23707,33,detergent,jacket,987,0
+sona-23707,34,napkin,purse,988,0
+sona-23707,35,band-aid,sunglasses,981,0
+sona-23707,36,shoes,smart phone,47,1
+sona-23707,37,concert tickets,dress,973,0
+sona-23707,38,band-aid,laptop,992,0
+sona-23707,39,granola bar,earrings,989,0
+sona-23707,40,shirt,laptop,971,0
+sona-23707,41,books,granola bar,21,0
+sona-23707,42,computer keyboard,guitar,27,0
+sona-23707,43,backpack,dress,989,0
+sona-23707,44,wine,ring,998,0
+sona-23707,45,makeup foundation,yoga mat,26,0
+sona-23707,46,camera,shoes,993,0
+sona-23707,47,shoes,guitar,40,0
+sona-23707,48,laptop,chocolate,27,0
+sona-23707,49,calculator,napkin,26,0
+sona-23707,50,band-aid,backpack,981,0
+sona-23707,51,athletic clothes,headphones,79,0
+sona-23707,52,paper notebook,glasses,999,0
+sona-23707,53,concert tickets,video games,6,0
+sona-23707,54,necklace,ring,998,0
+sona-23698,0,tie,baseball cap,115,0
+sona-23698,1,napkin,bicycle,769,0
+sona-23698,2,tie,scarf,131,0
+sona-23698,3,pencil,wine,780,0
+sona-23698,4,backpack,lipstick,833,0
+sona-23698,5,coffee,earrings,178,0
+sona-23698,6,wallet,skateboard,279,0
+sona-23698,7,athletic clothes,water bottle,137,0
+sona-23698,8,basketball,scarf,164,0
+sona-23698,9,wine,baseball cap,207,0
+sona-23698,10,skateboard,earrings,179,0
+sona-23698,11,napkin,baseball cap,724,0
+sona-23698,12,yoga mat,skateboard,235,0
+sona-23698,13,watch,earrings,144,0
+sona-23698,14,glasses,beanie,858,0
+sona-23698,15,shirt,pants,742,0
+sona-23698,16,video games,calculator,268,0
+sona-23698,17,jacket,necklace,294,0
+sona-23698,18,desktop computer,books,800,1
+sona-23698,19,jacket,desktop computer,275,0
+sona-23698,20,shoes,swimming suit,687,0
+sona-23698,21,paper notebook,pants,294,0
+sona-23698,22,band-aid,books,885,0
+sona-23698,23,video games,shirt,218,0
+sona-23698,24,purse,granola bar,292,0
+sona-23698,25,wine,calculator,262,0
+sona-23698,26,pants,sunglasses,251,0
+sona-23698,27,band-aid,lipstick,882,0
+sona-23698,28,yoga mat,wine,804,0
+sona-23698,29,bicycle,makeup foundation,190,0
+sona-23698,30,jacket,socks,792,0
+sona-23698,31,pen,detergent,236,0
+sona-23698,32,calculator,water bottle,230,0
+sona-23698,33,scarf,earrings,166,0
+sona-23698,34,cooking pot,camera,202,0
+sona-23698,35,pen,coffee,195,0
+sona-23698,36,tie,glasses,1e3,1
+sona-23698,37,yoga mat,scarf,410,0
+sona-23698,38,bicycle,headphones,762,0
+sona-23698,39,yoga mat,lipstick,203,0
+sona-23698,40,dishes,ring,167,0
+sona-23698,41,sunglasses,baseball cap,703,0
+sona-23698,42,desktop computer,computer keyboard,821,0
+sona-23698,43,desktop computer,glasses,231,0
+sona-23698,44,baseball cap,detergent,660,0
+sona-23698,45,watch,detergent,838,0
+sona-23698,46,pen,bicycle,334,0
+sona-23698,47,dress,lipstick,599,0
+sona-23698,48,band-aid,bicycle,335,0
+sona-23698,49,car,desktop computer,263,0
+sona-23698,50,desktop computer,makeup foundation,240,0
+sona-23698,51,camera,beanie,227,0
+sona-23698,52,car,scarf,224,0
+sona-23698,53,cooking pot,socks,211,0
+sona-23698,54,athletic clothes,socks,208,0
+sona-23652,0,jacket,yoga mat,1,0
+sona-23652,1,wine,shirt,276,0
+sona-23652,2,computer keyboard,yoga mat,439,0
+sona-23652,3,guitar,necklace,1e3,0
+sona-23652,4,shirt,pencil,229,0
+sona-23652,5,desktop computer,sunglasses,630,0
+sona-23652,6,glasses,computer keyboard,281,0
+sona-23652,7,coffee,car,1e3,0
+sona-23652,8,earphones,necklace,874,0
+sona-23652,9,glasses,dishes,695,0
+sona-23652,10,jacket,band-aid,127,0
+sona-23652,11,purse,concert tickets,787,0
+sona-23652,12,guitar,tie,250,0
+sona-23652,13,athletic clothes,dress,615,0
+sona-23652,14,headphones,tie,329,0
+sona-23652,15,desktop computer,water bottle,204,0
+sona-23652,16,desktop computer,smart phone,926,0
+sona-23652,17,sunglasses,glasses,47,0
+sona-23652,18,swimming suit,necklace,1e3,1
+sona-23652,19,backpack,necklace,700,0
+sona-23652,20,skateboard,pencil,511,0
+sona-23652,21,laptop,smart phone,288,0
+sona-23652,22,sunglasses,books,261,0
+sona-23652,23,computer keyboard,tie,368,0
+sona-23652,24,shirt,yoga mat,425,0
+sona-23652,25,books,water bottle,557,0
+sona-23652,26,headphones,pencil,408,0
+sona-23652,27,granola bar,pen,452,0
+sona-23652,28,car,baseball cap,1,0
+sona-23652,29,makeup foundation,camera,707,0
+sona-23652,30,purse,swimming suit,383,0
+sona-23652,31,desktop computer,baseball cap,248,0
+sona-23652,32,headphones,water bottle,415,0
+sona-23652,33,guitar,socks,384,0
+sona-23652,34,laptop,pen,1,0
+sona-23652,35,makeup foundation,books,433,0
+sona-23652,36,sunglasses,concert tickets,676,1
+sona-23652,37,cooking pot,earphones,455,0
+sona-23652,38,backpack,car,1e3,0
+sona-23652,39,books,calculator,439,0
+sona-23652,40,paper notebook,earrings,736,0
+sona-23652,41,watch,granola bar,202,0
+sona-23652,42,headphones,car,985,0
+sona-23652,43,dress,granola bar,36,0
+sona-23652,44,bicycle,glasses,813,0
+sona-23652,45,watch,scarf,115,0
+sona-23652,46,shoes,baseball cap,29,0
+sona-23652,47,headphones,beanie,323,0
+sona-23652,48,calculator,computer keyboard,526,0
+sona-23652,49,watch,swimming suit,310,0
+sona-23652,50,watch,socks,294,0
+sona-23652,51,scarf,athletic clothes,672,0
+sona-23652,52,paper notebook,scarf,648,0
+sona-23652,53,purse,detergent,223,0
+sona-23652,54,bicycle,pants,800,0
+sona-23546,0,jacket,smart phone,1,0
+sona-23546,1,granola bar,ring,1e3,0
+sona-23546,2,desktop computer,dishes,1,0
+sona-23546,3,smart phone,laptop,1e3,0
+sona-23546,4,paper notebook,detergent,1,0
+sona-23546,5,jacket,napkin,1,0
+sona-23546,6,chocolate,beanie,1,0
+sona-23546,7,sunglasses,napkin,1,0
+sona-23546,8,earrings,beanie,1,0
+sona-23546,9,baseball cap,glasses,1,0
+sona-23546,10,wine,band-aid,1,0
+sona-23546,11,shoes,earrings,1,0
+sona-23546,12,earphones,glasses,1e3,0
+sona-23546,13,dishes,makeup foundation,1e3,0
+sona-23546,14,backpack,basketball,1,0
+sona-23546,15,beanie,glasses,1e3,0
+sona-23546,16,sunglasses,ring,1e3,0
+sona-23546,17,napkin,glasses,1e3,0
+sona-23546,18,wallet,video games,1,1
+sona-23546,19,dishes,guitar,1e3,0
+sona-23546,20,wallet,earrings,1,0
+sona-23546,21,paper notebook,shoes,1e3,0
+sona-23546,22,scarf,car,1e3,0
+sona-23546,23,sunglasses,detergent,1,0
+sona-23546,24,earrings,headphones,1,0
+sona-23546,25,purse,basketball,1,0
+sona-23546,26,shoes,swimming suit,2,0
+sona-23546,27,cooking pot,makeup foundation,1e3,0
+sona-23546,28,backpack,earphones,1,0
+sona-23546,29,yoga mat,earphones,1e3,0
+sona-23546,30,tie,band-aid,1,0
+sona-23546,31,chocolate,dress,1e3,0
+sona-23546,32,scarf,glasses,1,0
+sona-23546,33,backpack,makeup foundation,996,0
+sona-23546,34,earphones,band-aid,1,0
+sona-23546,35,granola bar,necklace,1e3,0
+sona-23546,36,detergent,shirt,1e3,1
+sona-23546,37,water bottle,dress,1e3,0
+sona-23546,38,calculator,basketball,1,0
+sona-23546,39,earphones,makeup foundation,1e3,0
+sona-23546,40,skateboard,pencil,1,0
+sona-23546,41,cooking pot,beanie,1,0
+sona-23546,42,shoes,laptop,1,0
+sona-23546,43,books,guitar,991,0
+sona-23546,44,wallet,athletic clothes,1,0
+sona-23546,45,water bottle,ring,1e3,0
+sona-23546,46,jacket,makeup foundation,1,0
+sona-23546,47,guitar,laptop,1,0
+sona-23546,48,yoga mat,watch,1e3,0
+sona-23546,49,paper notebook,lipstick,1e3,0
+sona-23546,50,wallet,pen,1,0
+sona-23546,51,makeup foundation,guitar,874,0
+sona-23546,52,socks,athletic clothes,975,0
+sona-23546,53,lipstick,athletic clothes,1e3,0
+sona-23546,54,earrings,books,13,0
+sona-23541,0,shoes,earphones,320,0
+sona-23541,1,backpack,guitar,333,0
+sona-23541,2,baseball cap,dress,333,0
+sona-23541,3,bicycle,beanie,623,0
+sona-23541,4,napkin,laptop,551,0
+sona-23541,5,backpack,paper notebook,297,0
+sona-23541,6,camera,granola bar,349,0
+sona-23541,7,athletic clothes,paper notebook,340,0
+sona-23541,8,chocolate,paper notebook,671,0
+sona-23541,9,yoga mat,paper notebook,554,0
+sona-23541,10,shirt,baseball cap,586,0
+sona-23541,11,pen,swimming suit,389,0
+sona-23541,12,video games,watch,615,0
+sona-23541,13,ring,headphones,597,0
+sona-23541,14,socks,watch,589,0
+sona-23541,15,desktop computer,laptop,622,0
+sona-23541,16,pants,baseball cap,600,0
+sona-23541,17,socks,purse,434,0
+sona-23541,18,band-aid,napkin,379,1
+sona-23541,19,necklace,headphones,394,0
+sona-23541,20,pencil,swimming suit,645,0
+sona-23541,21,camera,smart phone,393,0
+sona-23541,22,athletic clothes,wallet,608,0
+sona-23541,23,water bottle,socks,397,0
+sona-23541,24,coffee,headphones,596,0
+sona-23541,25,camera,guitar,589,0
+sona-23541,26,wine,purse,633,0
+sona-23541,27,tie,cooking pot,373,0
+sona-23541,28,baseball cap,detergent,330,0
+sona-23541,29,purse,beanie,633,0
+sona-23541,30,jacket,beanie,346,0
+sona-23541,31,jacket,dress,625,0
+sona-23541,32,necklace,laptop,369,0
+sona-23541,33,watch,computer keyboard,382,0
+sona-23541,34,books,swimming suit,382,0
+sona-23541,35,jacket,car,637,0
+sona-23541,36,books,tie,1e3,1
+sona-23541,37,shirt,dishes,716,0
+sona-23541,38,basketball,paper notebook,647,0
+sona-23541,39,skateboard,video games,340,0
+sona-23541,40,water bottle,athletic clothes,381,0
+sona-23541,41,pants,makeup foundation,668,0
+sona-23541,42,books,bicycle,349,0
+sona-23541,43,earrings,pen,608,0
+sona-23541,44,water bottle,backpack,656,0
+sona-23541,45,camera,makeup foundation,353,0
+sona-23541,46,water bottle,car,651,0
+sona-23541,47,bicycle,chocolate,396,0
+sona-23541,48,ring,computer keyboard,345,0
+sona-23541,49,wine,baseball cap,665,0
+sona-23541,50,books,basketball,358,0
+sona-23541,51,coffee,pen,657,0
+sona-23541,52,pencil,smart phone,656,0
+sona-23541,53,shoes,water bottle,738,0
+sona-23541,54,shirt,pen,665,0
+sona-23502,0,video games,wine,890,0
+sona-23502,1,earrings,watch,929,0
+sona-23502,2,smart phone,watch,909,0
+sona-23502,3,backpack,concert tickets,908,0
+sona-23502,4,yoga mat,swimming suit,903,0
+sona-23502,5,yoga mat,wine,922,0
+sona-23502,6,band-aid,calculator,886,0
+sona-23502,7,tie,socks,43,0
+sona-23502,8,cooking pot,pen,921,0
+sona-23502,9,guitar,video games,71,0
+sona-23502,10,glasses,ring,999,0
+sona-23502,11,backpack,wine,991,0
+sona-23502,12,car,wine,37,0
+sona-23502,13,baseball cap,yoga mat,38,0
+sona-23502,14,glasses,laptop,991,0
+sona-23502,15,skateboard,wine,990,0
+sona-23502,16,laptop,beanie,24,0
+sona-23502,17,napkin,wine,987,0
+sona-23502,18,basketball,car,989,1
+sona-23502,19,glasses,dishes,13,0
+sona-23502,20,car,water bottle,1,0
+sona-23502,21,water bottle,dress,963,0
+sona-23502,22,yoga mat,smart phone,1e3,0
+sona-23502,23,jacket,skateboard,41,0
+sona-23502,24,smart phone,ring,1e3,0
+sona-23502,25,scarf,watch,982,0
+sona-23502,26,wallet,calculator,19,0
+sona-23502,27,computer keyboard,earphones,986,0
+sona-23502,28,laptop,concert tickets,994,0
+sona-23502,29,jacket,beanie,14,0
+sona-23502,30,glasses,paper notebook,25,0
+sona-23502,31,basketball,backpack,877,0
+sona-23502,32,detergent,necklace,996,0
+sona-23502,33,lipstick,watch,974,0
+sona-23502,34,beanie,pencil,424,0
+sona-23502,35,desktop computer,necklace,1e3,0
+sona-23502,36,camera,watch,206,1
+sona-23502,37,headphones,pants,6,0
+sona-23502,38,baseball cap,swimming suit,912,0
+sona-23502,39,socks,cooking pot,13,0
+sona-23502,40,shoes,watch,100,0
+sona-23502,41,jacket,swimming suit,940,0
+sona-23502,42,yoga mat,beanie,606,0
+sona-23502,43,athletic clothes,makeup foundation,29,0
+sona-23502,44,computer keyboard,smart phone,945,0
+sona-23502,45,water bottle,smart phone,853,0
+sona-23502,46,baseball cap,laptop,920,0
+sona-23502,47,granola bar,car,910,0
+sona-23502,48,earphones,car,78,0
+sona-23502,49,earphones,granola bar,78,0
+sona-23502,50,detergent,water bottle,798,0
+sona-23502,51,computer keyboard,socks,264,0
+sona-23502,52,computer keyboard,dishes,398,0
+sona-23502,53,dress,cooking pot,311,0
+sona-23502,54,desktop computer,yoga mat,304,0
+sona-2333,0,athletic clothes,chocolate,171,0
+sona-2333,1,glasses,ring,794,0
+sona-2333,2,jacket,coffee,149,0
+sona-2333,3,necklace,water bottle,213,0
+sona-2333,4,basketball,camera,748,0
+sona-2333,5,detergent,sunglasses,658,0
+sona-2333,6,athletic clothes,scarf,1,0
+sona-2333,7,video games,granola bar,125,0
+sona-2333,8,athletic clothes,purse,772,0
+sona-2333,9,pencil,calculator,475,0
+sona-2333,10,dress,cooking pot,9,0
+sona-2333,11,skateboard,guitar,107,0
+sona-2333,12,camera,ring,278,0
+sona-2333,13,pen,car,998,0
+sona-2333,14,paper notebook,napkin,457,0
+sona-2333,15,chocolate,wine,804,0
+sona-2333,16,cooking pot,detergent,534,0
+sona-2333,17,backpack,video games,328,0
+sona-2333,18,watch,calculator,1e3,1
+sona-2333,19,video games,skateboard,802,0
+sona-2333,20,watch,camera,241,0
+sona-2333,21,calculator,ring,1e3,0
+sona-2333,22,makeup foundation,watch,402,0
+sona-2333,23,athletic clothes,tie,99,0
+sona-2333,24,coffee,detergent,373,0
+sona-2333,25,skateboard,swimming suit,708,0
+sona-2333,26,concert tickets,tie,353,0
+sona-2333,27,dishes,headphones,755,0
+sona-2333,28,pen,athletic clothes,805,0
+sona-2333,29,pencil,paper notebook,436,0
+sona-2333,30,dress,calculator,105,0
+sona-2333,31,basketball,ring,816,0
+sona-2333,32,backpack,guitar,320,0
+sona-2333,33,dress,backpack,658,0
+sona-2333,34,socks,lipstick,570,0
+sona-2333,35,skateboard,desktop computer,694,0
+sona-2333,36,smart phone,lipstick,1e3,1
+sona-2333,37,dress,chocolate,370,0
+sona-2333,38,dress,athletic clothes,643,0
+sona-2333,39,chocolate,desktop computer,702,0
+sona-2333,40,pen,watch,615,0
+sona-2333,41,coffee,shoes,803,0
+sona-2333,42,computer keyboard,skateboard,1e3,0
+sona-2333,43,earphones,coffee,563,0
+sona-2333,44,books,sunglasses,565,0
+sona-2333,45,socks,paper notebook,429,0
+sona-2333,46,cooking pot,car,990,0
+sona-2333,47,athletic clothes,swimming suit,706,0
+sona-2333,48,sunglasses,shirt,339,0
+sona-2333,49,basketball,concert tickets,645,0
+sona-2333,50,glasses,swimming suit,846,0
+sona-2333,51,coffee,wallet,756,0
+sona-2333,52,beanie,yoga mat,349,0
+sona-2333,53,laptop,napkin,1,0
+sona-2333,54,pen,baseball cap,735,0
+sona-23021,0,coffee,basketball,342,0
+sona-23021,1,sunglasses,calculator,392,0
+sona-23021,2,wine,laptop,598,0
+sona-23021,3,tie,laptop,583,0
+sona-23021,4,band-aid,ring,289,0
+sona-23021,5,skateboard,shoes,613,0
+sona-23021,6,bicycle,calculator,399,0
+sona-23021,7,computer keyboard,laptop,703,0
+sona-23021,8,chocolate,detergent,316,0
+sona-23021,9,bicycle,laptop,645,0
+sona-23021,10,dress,jacket,569,0
+sona-23021,11,backpack,watch,572,0
+sona-23021,12,scarf,swimming suit,609,0
+sona-23021,13,backpack,cooking pot,620,0
+sona-23021,14,glasses,cooking pot,618,0
+sona-23021,15,chocolate,books,623,0
+sona-23021,16,wine,basketball,631,0
+sona-23021,17,cooking pot,laptop,629,0
+sona-23021,18,napkin,shirt,1e3,1
+sona-23021,19,ring,pants,567,0
+sona-23021,20,water bottle,calculator,582,0
+sona-23021,21,purse,cooking pot,558,0
+sona-23021,22,scarf,cooking pot,593,0
+sona-23021,23,earrings,watch,609,0
+sona-23021,24,headphones,cooking pot,386,0
+sona-23021,25,tie,water bottle,403,0
+sona-23021,26,pencil,shirt,633,0
+sona-23021,27,makeup foundation,smart phone,358,0
+sona-23021,28,athletic clothes,lipstick,423,0
+sona-23021,29,water bottle,cooking pot,609,0
+sona-23021,30,athletic clothes,dishes,585,0
+sona-23021,31,purse,tie,567,0
+sona-23021,32,smart phone,jacket,605,0
+sona-23021,33,video games,water bottle,548,0
+sona-23021,34,desktop computer,laptop,633,0
+sona-23021,35,athletic clothes,pants,576,0
+sona-23021,36,necklace,granola bar,409,1
+sona-23021,37,desktop computer,books,425,0
+sona-23021,38,sunglasses,lipstick,578,0
+sona-23021,39,glasses,athletic clothes,411,0
+sona-23021,40,video games,basketball,389,0
+sona-23021,41,video games,bicycle,571,0
+sona-23021,42,computer keyboard,guitar,444,0
+sona-23021,43,paper notebook,ring,626,0
+sona-23021,44,makeup foundation,concert tickets,403,0
+sona-23021,45,baseball cap,backpack,575,0
+sona-23021,46,watch,video games,384,0
+sona-23021,47,pencil,pants,613,0
+sona-23021,48,detergent,pen,653,0
+sona-23021,49,wine,swimming suit,611,0
+sona-23021,50,purse,car,549,0
+sona-23021,51,scarf,socks,406,0
+sona-23021,52,computer keyboard,swimming suit,612,0
+sona-23021,53,baseball cap,tie,605,0
+sona-23021,54,baseball cap,chocolate,396,0
+sona-22835,0,watch,lipstick,193,0
+sona-22835,1,bicycle,wallet,797,0
+sona-22835,2,pants,headphones,231,0
+sona-22835,3,athletic clothes,napkin,162,0
+sona-22835,4,band-aid,smart phone,805,0
+sona-22835,5,tie,headphones,195,0
+sona-22835,6,shirt,detergent,289,0
+sona-22835,7,dress,headphones,216,0
+sona-22835,8,desktop computer,napkin,315,0
+sona-22835,9,bicycle,books,286,0
+sona-22835,10,chocolate,earphones,671,0
+sona-22835,11,computer keyboard,headphones,612,0
+sona-22835,12,ring,purse,154,0
+sona-22835,13,ring,headphones,178,0
+sona-22835,14,ring,tie,188,0
+sona-22835,15,concert tickets,glasses,684,0
+sona-22835,16,chocolate,video games,612,0
+sona-22835,17,scarf,tie,802,0
+sona-22835,18,basketball,calculator,1e3,1
+sona-22835,19,paper notebook,lipstick,682,0
+sona-22835,20,yoga mat,band-aid,270,0
+sona-22835,21,smart phone,detergent,265,0
+sona-22835,22,jacket,lipstick,233,0
+sona-22835,23,watch,laptop,194,0
+sona-22835,24,necklace,glasses,231,0
+sona-22835,25,skateboard,dress,724,0
+sona-22835,26,cooking pot,detergent,604,0
+sona-22835,27,smart phone,ring,650,0
+sona-22835,28,calculator,jacket,703,0
+sona-22835,29,guitar,earphones,371,0
+sona-22835,30,wallet,concert tickets,293,0
+sona-22835,31,chocolate,paper notebook,590,0
+sona-22835,32,pen,necklace,697,0
+sona-22835,33,jacket,pants,197,0
+sona-22835,34,socks,tie,701,0
+sona-22835,35,watch,baseball cap,159,0
+sona-22835,36,laptop,napkin,194,1
+sona-22835,37,desktop computer,dress,701,0
+sona-22835,38,camera,napkin,233,0
+sona-22835,39,necklace,detergent,218,0
+sona-22835,40,wine,cooking pot,232,0
+sona-22835,41,earphones,camera,665,0
+sona-22835,42,watch,earrings,195,0
+sona-22835,43,lipstick,purse,735,0
+sona-22835,44,skateboard,paper notebook,239,0
+sona-22835,45,granola bar,video games,615,0
+sona-22835,46,paper notebook,headphones,617,0
+sona-22835,47,backpack,desktop computer,302,0
+sona-22835,48,water bottle,car,889,0
+sona-22835,49,guitar,scarf,690,0
+sona-22835,50,camera,tie,259,0
+sona-22835,51,watch,scarf,256,0
+sona-22835,52,purse,headphones,241,0
+sona-22835,53,chocolate,headphones,608,0
+sona-22835,54,ring,dress,243,0
+sona-22499,0,concert tickets,band-aid,51,0
+sona-22499,1,cooking pot,guitar,899,0
+sona-22499,2,napkin,socks,604,0
+sona-22499,3,pencil,wallet,1e3,0
+sona-22499,4,makeup foundation,guitar,80,0
+sona-22499,5,yoga mat,chocolate,753,0
+sona-22499,6,scarf,chocolate,1e3,0
+sona-22499,7,lipstick,detergent,283,0
+sona-22499,8,bicycle,athletic clothes,588,0
+sona-22499,9,granola bar,backpack,561,0
+sona-22499,10,yoga mat,laptop,815,0
+sona-22499,11,shirt,glasses,370,0
+sona-22499,12,detergent,desktop computer,816,0
+sona-22499,13,jacket,camera,694,0
+sona-22499,14,desktop computer,paper notebook,1,0
+sona-22499,15,tie,pants,666,0
+sona-22499,16,cooking pot,camera,1e3,0
+sona-22499,17,shoes,socks,123,0
+sona-22499,18,computer keyboard,skateboard,754,1
+sona-22499,19,desktop computer,watch,875,0
+sona-22499,20,jacket,chocolate,743,0
+sona-22499,21,water bottle,athletic clothes,166,0
+sona-22499,22,camera,books,181,0
+sona-22499,23,cooking pot,wine,586,0
+sona-22499,24,pencil,wine,618,0
+sona-22499,25,makeup foundation,purse,115,0
+sona-22499,26,swimming suit,car,89,0
+sona-22499,27,cooking pot,coffee,608,0
+sona-22499,28,dress,band-aid,97,0
+sona-22499,29,earrings,wine,650,0
+sona-22499,30,headphones,concert tickets,788,0
+sona-22499,31,smart phone,glasses,1,0
+sona-22499,32,yoga mat,granola bar,670,0
+sona-22499,33,dishes,laptop,869,0
+sona-22499,34,backpack,wallet,1e3,0
+sona-22499,35,purse,pen,356,0
+sona-22499,36,yoga mat,skateboard,591,1
+sona-22499,37,swimming suit,shoes,131,0
+sona-22499,38,video games,cooking pot,353,0
+sona-22499,39,bicycle,wallet,1e3,0
+sona-22499,40,concert tickets,pen,54,0
+sona-22499,41,lipstick,granola bar,289,0
+sona-22499,42,computer keyboard,desktop computer,730,0
+sona-22499,43,earrings,pants,653,0
+sona-22499,44,concert tickets,scarf,60,0
+sona-22499,45,backpack,paper notebook,262,0
+sona-22499,46,dishes,necklace,614,0
+sona-22499,47,shoes,purse,289,0
+sona-22499,48,shirt,guitar,754,0
+sona-22499,49,smart phone,scarf,1,0
+sona-22499,50,camera,pen,160,0
+sona-22499,51,yoga mat,makeup foundation,844,0
+sona-22499,52,athletic clothes,computer keyboard,631,0
+sona-22499,53,backpack,earphones,305,0
+sona-22499,54,water bottle,earrings,145,0
+sona-22376,0,cooking pot,basketball,680,0
+sona-22376,1,shoes,video games,1,0
+sona-22376,2,dress,watch,1,0
+sona-22376,3,socks,earphones,375,0
+sona-22376,4,shoes,basketball,1,0
+sona-22376,5,athletic clothes,earrings,1,0
+sona-22376,6,chocolate,basketball,663,0
+sona-22376,7,video games,detergent,131,0
+sona-22376,8,wallet,books,141,0
+sona-22376,9,pants,desktop computer,1,0
+sona-22376,10,swimming suit,dress,1,0
+sona-22376,11,scarf,watch,707,0
+sona-22376,12,glasses,desktop computer,352,0
+sona-22376,13,camera,jacket,1e3,0
+sona-22376,14,basketball,bicycle,784,0
+sona-22376,15,chocolate,swimming suit,1e3,0
+sona-22376,16,tie,napkin,1,0
+sona-22376,17,cooking pot,bicycle,602,0
+sona-22376,18,beanie,wallet,1e3,1
+sona-22376,19,computer keyboard,laptop,1e3,0
+sona-22376,20,camera,sunglasses,284,0
+sona-22376,21,makeup foundation,laptop,136,0
+sona-22376,22,dress,necklace,1,0
+sona-22376,23,pants,napkin,1,0
+sona-22376,24,wine,sunglasses,344,0
+sona-22376,25,video games,socks,359,0
+sona-22376,26,shirt,baseball cap,1,0
+sona-22376,27,video games,baseball cap,262,0
+sona-22376,28,paper notebook,skateboard,429,0
+sona-22376,29,computer keyboard,socks,767,0
+sona-22376,30,desktop computer,earphones,360,0
+sona-22376,31,granola bar,purse,1e3,0
+sona-22376,32,basketball,computer keyboard,619,0
+sona-22376,33,backpack,yoga mat,1,0
+sona-22376,34,laptop,sunglasses,142,0
+sona-22376,35,glasses,water bottle,1,0
+sona-22376,36,basketball,dress,1e3,1
+sona-22376,37,baseball cap,yoga mat,146,0
+sona-22376,38,makeup foundation,swimming suit,1e3,0
+sona-22376,39,computer keyboard,pencil,412,0
+sona-22376,40,tie,baseball cap,233,0
+sona-22376,41,paper notebook,car,1e3,0
+sona-22376,42,video games,yoga mat,1,0
+sona-22376,43,glasses,laptop,633,0
+sona-22376,44,shoes,granola bar,1,0
+sona-22376,45,tie,skateboard,278,0
+sona-22376,46,cooking pot,jacket,1e3,0
+sona-22376,47,paper notebook,video games,619,0
+sona-22376,48,paper notebook,athletic clothes,881,0
+sona-22376,49,camera,purse,802,0
+sona-22376,50,shoes,baseball cap,1,0
+sona-22376,51,backpack,watch,1,0
+sona-22376,52,sunglasses,yoga mat,227,0
+sona-22376,53,laptop,earrings,380,0
+sona-22376,54,pants,pencil,1,0
+sona-22303,0,headphones,watch,341,0
+sona-22303,1,earphones,yoga mat,576,0
+sona-22303,2,baseball cap,napkin,606,0
+sona-22303,3,shirt,earrings,501,0
+sona-22303,4,bicycle,cooking pot,782,0
+sona-22303,5,earphones,bicycle,505,0
+sona-22303,6,headphones,concert tickets,500,0
+sona-22303,7,baseball cap,bicycle,541,0
+sona-22303,8,detergent,jacket,154,0
+sona-22303,9,dress,computer keyboard,706,0
+sona-22303,10,computer keyboard,cooking pot,685,0
+sona-22303,11,detergent,scarf,262,0
+sona-22303,12,dress,concert tickets,555,0
+sona-22303,13,coffee,jacket,331,0
+sona-22303,14,skateboard,paper notebook,252,0
+sona-22303,15,laptop,headphones,593,0
+sona-22303,16,video games,desktop computer,255,0
+sona-22303,17,shirt,detergent,673,0
+sona-22303,18,basketball,laptop,353,1
+sona-22303,19,computer keyboard,watch,384,0
+sona-22303,20,smart phone,pants,289,0
+sona-22303,21,paper notebook,coffee,691,0
+sona-22303,22,sunglasses,desktop computer,721,0
+sona-22303,23,dishes,necklace,712,0
+sona-22303,24,tie,computer keyboard,225,0
+sona-22303,25,video games,bicycle,753,0
+sona-22303,26,water bottle,coffee,758,0
+sona-22303,27,camera,purse,786,0
+sona-22303,28,coffee,swimming suit,764,0
+sona-22303,29,pen,sunglasses,737,0
+sona-22303,30,lipstick,scarf,233,0
+sona-22303,31,makeup foundation,sunglasses,746,0
+sona-22303,32,cooking pot,desktop computer,789,0
+sona-22303,33,lipstick,shoes,801,0
+sona-22303,34,athletic clothes,socks,32,0
+sona-22303,35,socks,ring,857,0
+sona-22303,36,lipstick,skateboard,84,1
+sona-22303,37,camera,shoes,848,0
+sona-22303,38,basketball,yoga mat,869,0
+sona-22303,39,backpack,pants,163,0
+sona-22303,40,beanie,books,849,0
+sona-22303,41,paper notebook,sunglasses,837,0
+sona-22303,42,computer keyboard,napkin,114,0
+sona-22303,43,laptop,swimming suit,15,0
+sona-22303,44,shoes,wallet,870,0
+sona-22303,45,glasses,ring,865,0
+sona-22303,46,athletic clothes,earrings,22,0
+sona-22303,47,socks,scarf,947,0
+sona-22303,48,tie,camera,32,0
+sona-22303,49,athletic clothes,headphones,25,0
+sona-22303,50,skateboard,sunglasses,928,0
+sona-22303,51,glasses,concert tickets,920,0
+sona-22303,52,detergent,video games,861,0
+sona-22303,53,band-aid,shoes,891,0
+sona-22303,54,basketball,guitar,869,0
+sona-22283,0,pants,camera,1,0
+sona-22283,1,guitar,detergent,1,0
+sona-22283,2,basketball,granola bar,1,0
+sona-22283,3,shoes,guitar,1,0
+sona-22283,4,calculator,swimming suit,1e3,0
+sona-22283,5,computer keyboard,car,1e3,0
+sona-22283,6,yoga mat,pencil,1,0
+sona-22283,7,athletic clothes,wallet,1,0
+sona-22283,8,dishes,detergent,1,0
+sona-22283,9,water bottle,pencil,1,0
+sona-22283,10,socks,sunglasses,1e3,0
+sona-22283,11,athletic clothes,granola bar,1,0
+sona-22283,12,bicycle,tie,1e3,0
+sona-22283,13,cooking pot,detergent,1,0
+sona-22283,14,video games,jacket,1e3,0
+sona-22283,15,dress,glasses,1,0
+sona-22283,16,napkin,cooking pot,1e3,0
+sona-22283,17,laptop,chocolate,1,0
+sona-22283,18,calculator,backpack,1e3,1
+sona-22283,19,wine,scarf,1e3,0
+sona-22283,20,athletic clothes,calculator,1,0
+sona-22283,21,wine,band-aid,1,0
+sona-22283,22,yoga mat,guitar,1e3,0
+sona-22283,23,pencil,pen,1e3,0
+sona-22283,24,chocolate,guitar,1e3,0
+sona-22283,25,shirt,backpack,1,0
+sona-22283,26,earphones,detergent,1,0
+sona-22283,27,yoga mat,books,1e3,0
+sona-22283,28,band-aid,jacket,1e3,0
+sona-22283,29,water bottle,pen,1,0
+sona-22283,30,swimming suit,desktop computer,1e3,0
+sona-22283,31,shirt,desktop computer,1,0
+sona-22283,32,swimming suit,detergent,1,0
+sona-22283,33,coffee,scarf,1e3,0
+sona-22283,34,makeup foundation,glasses,1,0
+sona-22283,35,camera,dishes,1e3,0
+sona-22283,36,video games,makeup foundation,1,1
+sona-22283,37,books,chocolate,1,0
+sona-22283,38,shoes,makeup foundation,1,0
+sona-22283,39,desktop computer,granola bar,1,0
+sona-22283,40,skateboard,desktop computer,1e3,0
+sona-22283,41,lipstick,pencil,1,0
+sona-22283,42,pencil,guitar,1e3,0
+sona-22283,43,socks,cooking pot,1,0
+sona-22283,44,cooking pot,necklace,1e3,0
+sona-22283,45,athletic clothes,ring,1,0
+sona-22283,46,desktop computer,dishes,1,0
+sona-22283,47,yoga mat,backpack,1e3,0
+sona-22283,48,concert tickets,granola bar,1,0
+sona-22283,49,makeup foundation,dishes,1,0
+sona-22283,50,necklace,detergent,1,0
+sona-22283,51,smart phone,shoes,1,0
+sona-22283,52,necklace,makeup foundation,1,0
+sona-22283,53,earrings,band-aid,1,0
+sona-22283,54,bicycle,scarf,1e3,0
+sona-22173,0,calculator,band-aid,741,0
+sona-22173,1,athletic clothes,shirt,168,0
+sona-22173,2,headphones,pen,213,0
+sona-22173,3,laptop,concert tickets,835,0
+sona-22173,4,camera,lipstick,154,0
+sona-22173,5,scarf,desktop computer,778,0
+sona-22173,6,wine,skateboard,192,0
+sona-22173,7,necklace,band-aid,807,0
+sona-22173,8,wine,smart phone,113,0
+sona-22173,9,sunglasses,jacket,168,0
+sona-22173,10,pencil,basketball,783,0
+sona-22173,11,bicycle,sunglasses,829,0
+sona-22173,12,napkin,bicycle,834,0
+sona-22173,13,purse,makeup foundation,768,0
+sona-22173,14,books,paper notebook,800,0
+sona-22173,15,desktop computer,video games,846,0
+sona-22173,16,scarf,basketball,826,0
+sona-22173,17,earphones,calculator,235,0
+sona-22173,18,coffee,pen,170,1
+sona-22173,19,earphones,shirt,230,0
+sona-22173,20,coffee,beanie,212,0
+sona-22173,21,laptop,baseball cap,159,0
+sona-22173,22,napkin,headphones,740,0
+sona-22173,23,watch,calculator,1,0
+sona-22173,24,makeup foundation,athletic clothes,196,0
+sona-22173,25,swimming suit,calculator,273,0
+sona-22173,26,water bottle,yoga mat,728,0
+sona-22173,27,pencil,lipstick,775,0
+sona-22173,28,headphones,athletic clothes,138,0
+sona-22173,29,dishes,pencil,157,0
+sona-22173,30,detergent,pen,137,0
+sona-22173,31,computer keyboard,cooking pot,234,0
+sona-22173,32,watch,earrings,202,0
+sona-22173,33,coffee,wine,842,0
+sona-22173,34,purse,shoes,822,0
+sona-22173,35,ring,video games,769,0
+sona-22173,36,headphones,tie,738,1
+sona-22173,37,camera,pen,211,0
+sona-22173,38,calculator,beanie,165,0
+sona-22173,39,watch,bicycle,767,0
+sona-22173,40,socks,calculator,796,0
+sona-22173,41,earphones,books,777,0
+sona-22173,42,purse,camera,752,0
+sona-22173,43,camera,skateboard,790,0
+sona-22173,44,dress,baseball cap,175,0
+sona-22173,45,headphones,yoga mat,220,0
+sona-22173,46,skateboard,band-aid,697,0
+sona-22173,47,computer keyboard,camera,622,0
+sona-22173,48,shirt,yoga mat,386,0
+sona-22173,49,video games,shoes,634,0
+sona-22173,50,coffee,cooking pot,678,0
+sona-22173,51,purse,sunglasses,635,0
+sona-22173,52,swimming suit,athletic clothes,368,0
+sona-22173,53,napkin,shoes,646,0
+sona-22173,54,socks,wallet,324,0
+sona-21991,0,purse,makeup foundation,1,0
+sona-21991,1,makeup foundation,athletic clothes,1e3,0
+sona-21991,2,wine,scarf,177,0
+sona-21991,3,dress,glasses,198,0
+sona-21991,4,scarf,coffee,6,0
+sona-21991,5,shirt,cooking pot,5,0
+sona-21991,6,tie,wallet,217,0
+sona-21991,7,skateboard,athletic clothes,1,0
+sona-21991,8,lipstick,watch,1e3,0
+sona-21991,9,computer keyboard,scarf,561,0
+sona-21991,10,video games,jacket,314,0
+sona-21991,11,water bottle,watch,642,0
+sona-21991,12,skateboard,baseball cap,334,0
+sona-21991,13,shoes,bicycle,146,0
+sona-21991,14,makeup foundation,laptop,1e3,0
+sona-21991,15,skateboard,books,606,0
+sona-21991,16,calculator,earphones,923,0
+sona-21991,17,detergent,backpack,1e3,0
+sona-21991,18,cooking pot,laptop,753,1
+sona-21991,19,paper notebook,socks,626,0
+sona-21991,20,purse,watch,886,0
+sona-21991,21,car,calculator,1,0
+sona-21991,22,paper notebook,wine,753,0
+sona-21991,23,scarf,earphones,634,0
+sona-21991,24,baseball cap,athletic clothes,774,0
+sona-21991,25,wine,bicycle,265,0
+sona-21991,26,basketball,watch,894,0
+sona-21991,27,basketball,water bottle,893,0
+sona-21991,28,paper notebook,earphones,639,0
+sona-21991,29,video games,guitar,943,0
+sona-21991,30,bicycle,pencil,195,0
+sona-21991,31,paper notebook,tie,707,0
+sona-21991,32,calculator,scarf,736,0
+sona-21991,33,earrings,ring,750,0
+sona-21991,34,wine,jacket,629,0
+sona-21991,35,shoes,makeup foundation,204,0
+sona-21991,36,desktop computer,makeup foundation,1,1
+sona-21991,37,lipstick,computer keyboard,392,0
+sona-21991,38,lipstick,calculator,335,0
+sona-21991,39,paper notebook,dishes,548,0
+sona-21991,40,computer keyboard,makeup foundation,411,0
+sona-21991,41,headphones,books,496,0
+sona-21991,42,sunglasses,makeup foundation,266,0
+sona-21991,43,swimming suit,books,167,0
+sona-21991,44,smart phone,backpack,672,0
+sona-21991,45,smart phone,wallet,794,0
+sona-21991,46,basketball,necklace,854,0
+sona-21991,47,video games,concert tickets,779,0
+sona-21991,48,napkin,necklace,1e3,0
+sona-21991,49,granola bar,pencil,259,0
+sona-21991,50,headphones,band-aid,647,0
+sona-21991,51,cooking pot,scarf,658,0
+sona-21991,52,concert tickets,makeup foundation,348,0
+sona-21991,53,shirt,camera,869,0
+sona-21991,54,pen,calculator,223,0
+sona-21460,0,watch,shirt,920,0
+sona-21460,1,shoes,headphones,887,0
+sona-21460,2,baseball cap,detergent,128,0
+sona-21460,3,cooking pot,pants,964,0
+sona-21460,4,smart phone,shoes,515,0
+sona-21460,5,baseball cap,swimming suit,802,0
+sona-21460,6,wine,books,332,0
+sona-21460,7,earrings,athletic clothes,774,0
+sona-21460,8,video games,computer keyboard,378,0
+sona-21460,9,granola bar,guitar,496,0
+sona-21460,10,granola bar,shirt,688,0
+sona-21460,11,makeup foundation,camera,295,0
+sona-21460,12,lipstick,yoga mat,324,0
+sona-21460,13,sunglasses,guitar,210,0
+sona-21460,14,glasses,computer keyboard,300,0
+sona-21460,15,baseball cap,pen,181,0
+sona-21460,16,pencil,glasses,1e3,0
+sona-21460,17,ring,bicycle,649,0
+sona-21460,18,wine,lipstick,894,1
+sona-21460,19,earphones,skateboard,630,0
+sona-21460,20,beanie,concert tickets,690,0
+sona-21460,21,pen,shirt,981,0
+sona-21460,22,granola bar,headphones,956,0
+sona-21460,23,camera,tie,752,0
+sona-21460,24,ring,glasses,950,0
+sona-21460,25,skateboard,athletic clothes,802,0
+sona-21460,26,makeup foundation,cooking pot,1,0
+sona-21460,27,smart phone,sunglasses,650,0
+sona-21460,28,basketball,chocolate,758,0
+sona-21460,29,watch,bicycle,221,0
+sona-21460,30,shoes,pants,741,0
+sona-21460,31,glasses,shirt,598,0
+sona-21460,32,purse,athletic clothes,290,0
+sona-21460,33,tie,earphones,320,0
+sona-21460,34,smart phone,books,95,0
+sona-21460,35,basketball,water bottle,355,0
+sona-21460,36,water bottle,guitar,811,1
+sona-21460,37,chocolate,socks,280,0
+sona-21460,38,sunglasses,pants,247,0
+sona-21460,39,computer keyboard,dishes,655,0
+sona-21460,40,earrings,swimming suit,754,0
+sona-21460,41,smart phone,cooking pot,37,0
+sona-21460,42,scarf,cooking pot,76,0
+sona-21460,43,makeup foundation,headphones,178,0
+sona-21460,44,lipstick,water bottle,85,0
+sona-21460,45,wallet,paper notebook,93,0
+sona-21460,46,laptop,computer keyboard,11,0
+sona-21460,47,granola bar,desktop computer,700,0
+sona-21460,48,dress,dishes,56,0
+sona-21460,49,dress,skateboard,12,0
+sona-21460,50,wine,chocolate,82,0
+sona-21460,51,purse,dishes,60,0
+sona-21460,52,backpack,coffee,95,0
+sona-21460,53,detergent,shoes,932,0
+sona-21460,54,granola bar,scarf,975,0
+sona-21387,0,shirt,headphones,1,0
+sona-21387,1,guitar,water bottle,1e3,0
+sona-21387,2,bicycle,basketball,377,0
+sona-21387,3,lipstick,detergent,243,0
+sona-21387,4,scarf,water bottle,664,0
+sona-21387,5,earrings,granola bar,334,0
+sona-21387,6,granola bar,cooking pot,284,0
+sona-21387,7,smart phone,scarf,1,0
+sona-21387,8,calculator,jacket,972,0
+sona-21387,9,swimming suit,beanie,209,0
+sona-21387,10,desktop computer,pen,138,0
+sona-21387,11,calculator,makeup foundation,785,0
+sona-21387,12,granola bar,backpack,894,0
+sona-21387,13,shoes,sunglasses,1,0
+sona-21387,14,baseball cap,granola bar,231,0
+sona-21387,15,band-aid,chocolate,950,0
+sona-21387,16,socks,backpack,978,0
+sona-21387,17,basketball,cooking pot,420,0
+sona-21387,18,wallet,makeup foundation,297,1
+sona-21387,19,skateboard,socks,745,0
+sona-21387,20,dress,napkin,231,0
+sona-21387,21,earrings,headphones,622,0
+sona-21387,22,concert tickets,dishes,315,0
+sona-21387,23,shoes,desktop computer,780,0
+sona-21387,24,books,watch,779,0
+sona-21387,25,sunglasses,cooking pot,213,0
+sona-21387,26,dress,lipstick,718,0
+sona-21387,27,bicycle,desktop computer,886,0
+sona-21387,28,dishes,band-aid,431,0
+sona-21387,29,wallet,watch,711,0
+sona-21387,30,purse,headphones,238,0
+sona-21387,31,ring,makeup foundation,9,0
+sona-21387,32,scarf,video games,671,0
+sona-21387,33,shirt,computer keyboard,219,0
+sona-21387,34,concert tickets,desktop computer,892,0
+sona-21387,35,jacket,detergent,212,0
+sona-21387,36,pencil,dress,764,1
+sona-21387,37,shirt,granola bar,202,0
+sona-21387,38,purse,video games,196,0
+sona-21387,39,swimming suit,band-aid,196,0
+sona-21387,40,baseball cap,cooking pot,287,0
+sona-21387,41,tie,guitar,239,0
+sona-21387,42,purse,pencil,278,0
+sona-21387,43,bicycle,pen,213,0
+sona-21387,44,yoga mat,chocolate,837,0
+sona-21387,45,smart phone,shirt,90,0
+sona-21387,46,pants,band-aid,138,0
+sona-21387,47,headphones,detergent,273,0
+sona-21387,48,calculator,purse,919,0
+sona-21387,49,concert tickets,computer keyboard,327,0
+sona-21387,50,purse,tie,213,0
+sona-21387,51,pants,chocolate,867,0
+sona-21387,52,purse,books,220,0
+sona-21387,53,dress,detergent,142,0
+sona-21387,54,guitar,sunglasses,674,0
+sona-21360,0,shirt,tie,387,0
+sona-21360,1,cooking pot,books,716,0
+sona-21360,2,ring,jacket,247,0
+sona-21360,3,video games,computer keyboard,778,0
+sona-21360,4,earrings,watch,847,0
+sona-21360,5,paper notebook,beanie,253,0
+sona-21360,6,baseball cap,socks,176,0
+sona-21360,7,dress,pants,707,0
+sona-21360,8,concert tickets,basketball,755,0
+sona-21360,9,ring,guitar,266,0
+sona-21360,10,glasses,tie,363,0
+sona-21360,11,bicycle,backpack,725,0
+sona-21360,12,wine,dress,272,0
+sona-21360,13,athletic clothes,granola bar,203,0
+sona-21360,14,bicycle,calculator,731,0
+sona-21360,15,backpack,athletic clothes,278,0
+sona-21360,16,band-aid,scarf,260,0
+sona-21360,17,laptop,tie,219,0
+sona-21360,18,makeup foundation,napkin,684,1
+sona-21360,19,camera,lipstick,365,0
+sona-21360,20,bicycle,purse,678,0
+sona-21360,21,makeup foundation,necklace,672,0
+sona-21360,22,bicycle,concert tickets,282,0
+sona-21360,23,scarf,jacket,682,0
+sona-21360,24,books,napkin,303,0
+sona-21360,25,smart phone,necklace,270,0
+sona-21360,26,wallet,pen,286,0
+sona-21360,27,concert tickets,coffee,716,0
+sona-21360,28,bicycle,laptop,682,0
+sona-21360,29,socks,scarf,745,0
+sona-21360,30,baseball cap,lipstick,256,0
+sona-21360,31,coffee,pencil,707,0
+sona-21360,32,backpack,watch,328,0
+sona-21360,33,bicycle,swimming suit,298,0
+sona-21360,34,concert tickets,shoes,750,0
+sona-21360,35,guitar,glasses,685,0
+sona-21360,36,shirt,wine,326,1
+sona-21360,37,headphones,water bottle,296,0
+sona-21360,38,detergent,computer keyboard,796,0
+sona-21360,39,books,band-aid,344,0
+sona-21360,40,shirt,pen,250,0
+sona-21360,41,makeup foundation,wine,293,0
+sona-21360,42,calculator,shirt,305,0
+sona-21360,43,skateboard,shoes,730,0
+sona-21360,44,purse,lipstick,339,0
+sona-21360,45,calculator,socks,290,0
+sona-21360,46,laptop,desktop computer,285,0
+sona-21360,47,smart phone,pants,303,0
+sona-21360,48,skateboard,paper notebook,662,0
+sona-21360,49,earrings,calculator,259,0
+sona-21360,50,car,napkin,304,0
+sona-21360,51,napkin,swimming suit,700,0
+sona-21360,52,calculator,chocolate,290,0
+sona-21360,53,ring,pen,226,0
+sona-21360,54,sunglasses,paper notebook,241,0
+sona-20996,0,dress,baseball cap,48,0
+sona-20996,1,beanie,paper notebook,884,0
+sona-20996,2,purse,socks,29,0
+sona-20996,3,concert tickets,pencil,1,0
+sona-20996,4,paper notebook,baseball cap,938,0
+sona-20996,5,shoes,swimming suit,1e3,0
+sona-20996,6,granola bar,pencil,5,0
+sona-20996,7,necklace,cooking pot,10,0
+sona-20996,8,books,necklace,1e3,0
+sona-20996,9,granola bar,paper notebook,1,0
+sona-20996,10,ring,computer keyboard,1,0
+sona-20996,11,books,sunglasses,953,0
+sona-20996,12,watch,socks,35,0
+sona-20996,13,earphones,wallet,979,0
+sona-20996,14,desktop computer,cooking pot,35,0
+sona-20996,15,tie,glasses,902,0
+sona-20996,16,chocolate,glasses,910,0
+sona-20996,17,baseball cap,detergent,52,0
+sona-20996,18,granola bar,skateboard,983,1
+sona-20996,19,shirt,baseball cap,44,0
+sona-20996,20,shirt,car,1e3,0
+sona-20996,21,video games,smart phone,1e3,0
+sona-20996,22,swimming suit,guitar,1,0
+sona-20996,23,pen,chocolate,1,0
+sona-20996,24,athletic clothes,necklace,1,0
+sona-20996,25,water bottle,dress,1e3,0
+sona-20996,26,paper notebook,car,1e3,0
+sona-20996,27,granola bar,pants,1e3,0
+sona-20996,28,swimming suit,detergent,1,0
+sona-20996,29,socks,glasses,1e3,0
+sona-20996,30,calculator,camera,991,0
+sona-20996,31,guitar,car,1e3,0
+sona-20996,32,backpack,earphones,1,1
+sona-20996,33,books,earphones,957,0
+sona-20996,34,ring,desktop computer,1,0
+sona-20996,35,socks,paper notebook,998,0
+sona-20996,36,backpack,earphones,20,1
+sona-20996,37,scarf,watch,996,0
+sona-20996,38,scarf,headphones,993,0
+sona-20996,39,swimming suit,laptop,1e3,0
+sona-20996,40,skateboard,sunglasses,1e3,0
+sona-20996,41,dishes,computer keyboard,1,0
+sona-20996,42,granola bar,napkin,12,0
+sona-20996,43,books,beanie,1,0
+sona-20996,44,band-aid,sunglasses,921,0
+sona-20996,45,tie,pencil,35,0
+sona-20996,46,headphones,dress,1e3,0
+sona-20996,47,headphones,coffee,10,0
+sona-20996,48,water bottle,desktop computer,1e3,0
+sona-20996,49,tie,detergent,1,0
+sona-20996,50,shoes,baseball cap,1,0
+sona-20996,51,desktop computer,glasses,10,0
+sona-20996,52,smart phone,dress,5,0
+sona-20996,53,watch,dress,1,0
+sona-20996,54,athletic clothes,baseball cap,25,0
+sona-20977,0,wine,pants,180,0
+sona-20977,1,video games,pants,191,0
+sona-20977,2,coffee,earphones,775,0
+sona-20977,3,bicycle,beanie,821,0
+sona-20977,4,water bottle,computer keyboard,823,0
+sona-20977,5,pants,dishes,104,0
+sona-20977,6,napkin,computer keyboard,777,0
+sona-20977,7,paper notebook,tie,845,0
+sona-20977,8,dress,headphones,823,0
+sona-20977,9,video games,detergent,145,0
+sona-20977,10,desktop computer,chocolate,190,0
+sona-20977,11,yoga mat,smart phone,177,0
+sona-20977,12,earrings,necklace,922,0
+sona-20977,13,band-aid,dishes,832,0
+sona-20977,14,glasses,necklace,872,0
+sona-20977,15,video games,skateboard,186,0
+sona-20977,16,video games,jacket,129,0
+sona-20977,17,jacket,earphones,778,0
+sona-20977,18,wine,makeup foundation,785,1
+sona-20977,19,video games,pencil,142,0
+sona-20977,20,scarf,earphones,142,0
+sona-20977,21,beanie,headphones,126,0
+sona-20977,22,pants,headphones,783,0
+sona-20977,23,car,books,1,0
+sona-20977,24,concert tickets,necklace,73,0
+sona-20977,25,chocolate,earrings,904,0
+sona-20977,26,calculator,laptop,889,0
+sona-20977,27,lipstick,guitar,820,0
+sona-20977,28,books,ring,925,0
+sona-20977,29,calculator,computer keyboard,919,0
+sona-20977,30,basketball,necklace,915,0
+sona-20977,31,glasses,smart phone,907,0
+sona-20977,32,guitar,athletic clothes,62,0
+sona-20977,33,camera,paper notebook,14,0
+sona-20977,34,granola bar,pants,928,0
+sona-20977,35,video games,earrings,103,0
+sona-20977,36,paper notebook,granola bar,1e3,1
+sona-20977,37,athletic clothes,dishes,106,0
+sona-20977,38,wallet,camera,987,0
+sona-20977,39,dress,computer keyboard,953,0
+sona-20977,40,computer keyboard,earphones,21,0
+sona-20977,41,purse,earrings,52,0
+sona-20977,42,wine,dishes,4,0
+sona-20977,43,ring,earphones,7,0
+sona-20977,44,sunglasses,skateboard,955,0
+sona-20977,45,glasses,headphones,976,0
+sona-20977,46,desktop computer,skateboard,5,0
+sona-20977,47,necklace,jacket,976,0
+sona-20977,48,headphones,computer keyboard,955,0
+sona-20977,49,desktop computer,yoga mat,60,0
+sona-20977,50,lipstick,car,985,0
+sona-20977,51,basketball,pants,35,0
+sona-20977,52,dress,pants,984,0
+sona-20977,53,headphones,scarf,948,0
+sona-20977,54,detergent,books,957,0
+sona-20961,0,ring,smart phone,942,0
+sona-20961,1,guitar,pencil,274,0
+sona-20961,2,cooking pot,video games,797,0
+sona-20961,3,camera,skateboard,691,0
+sona-20961,4,cooking pot,chocolate,592,0
+sona-20961,5,coffee,backpack,740,0
+sona-20961,6,athletic clothes,purse,303,0
+sona-20961,7,bicycle,pencil,379,0
+sona-20961,8,dress,scarf,260,0
+sona-20961,9,guitar,scarf,840,0
+sona-20961,10,lipstick,socks,337,0
+sona-20961,11,video games,baseball cap,604,0
+sona-20961,12,ring,desktop computer,712,0
+sona-20961,13,water bottle,tie,607,0
+sona-20961,14,camera,ring,328,0
+sona-20961,15,granola bar,calculator,348,0
+sona-20961,16,water bottle,calculator,354,0
+sona-20961,17,ring,jacket,582,0
+sona-20961,18,beanie,basketball,364,1
+sona-20961,19,dishes,scarf,676,0
+sona-20961,20,earrings,glasses,624,0
+sona-20961,21,athletic clothes,bicycle,358,0
+sona-20961,22,skateboard,shirt,814,0
+sona-20961,23,skateboard,desktop computer,957,0
+sona-20961,24,yoga mat,car,974,0
+sona-20961,25,headphones,athletic clothes,734,0
+sona-20961,26,napkin,desktop computer,813,0
+sona-20961,27,computer keyboard,sunglasses,752,0
+sona-20961,28,lipstick,wine,805,0
+sona-20961,29,pencil,shirt,691,0
+sona-20961,30,earrings,baseball cap,237,0
+sona-20961,31,swimming suit,desktop computer,262,0
+sona-20961,32,napkin,guitar,748,0
+sona-20961,33,earphones,chocolate,261,0
+sona-20961,34,wine,basketball,219,0
+sona-20961,35,band-aid,basketball,452,0
+sona-20961,36,swimming suit,band-aid,1e3,1
+sona-20961,37,pencil,necklace,553,0
+sona-20961,38,detergent,desktop computer,151,0
+sona-20961,39,sunglasses,tie,213,0
+sona-20961,40,paper notebook,sunglasses,703,0
+sona-20961,41,water bottle,desktop computer,717,0
+sona-20961,42,athletic clothes,sunglasses,724,0
+sona-20961,43,pencil,car,990,0
+sona-20961,44,guitar,coffee,316,0
+sona-20961,45,basketball,scarf,802,0
+sona-20961,46,swimming suit,sunglasses,242,0
+sona-20961,47,lipstick,chocolate,306,0
+sona-20961,48,shirt,watch,307,0
+sona-20961,49,purse,chocolate,244,0
+sona-20961,50,chocolate,smart phone,996,0
+sona-20961,51,lipstick,tie,261,0
+sona-20961,52,necklace,glasses,799,0
+sona-20961,53,swimming suit,beanie,243,0
+sona-20961,54,swimming suit,guitar,152,0
+sona-20904,0,lipstick,video games,580,0
+sona-20904,1,paper notebook,earrings,758,0
+sona-20904,2,pencil,headphones,779,0
+sona-20904,3,baseball cap,water bottle,495,0
+sona-20904,4,lipstick,basketball,246,0
+sona-20904,5,pencil,chocolate,733,0
+sona-20904,6,camera,bicycle,406,0
+sona-20904,7,swimming suit,dishes,1,0
+sona-20904,8,concert tickets,watch,459,0
+sona-20904,9,shoes,computer keyboard,40,0
+sona-20904,10,yoga mat,books,757,0
+sona-20904,11,band-aid,athletic clothes,787,0
+sona-20904,12,laptop,pen,176,0
+sona-20904,13,earrings,dress,761,0
+sona-20904,14,car,cooking pot,1,0
+sona-20904,15,car,tie,1,0
+sona-20904,16,car,necklace,1,0
+sona-20904,17,swimming suit,video games,421,0
+sona-20904,18,shirt,makeup foundation,1e3,1
+sona-20904,19,purse,band-aid,1,0
+sona-20904,20,car,ring,469,0
+sona-20904,21,band-aid,jacket,675,0
+sona-20904,22,shoes,lipstick,672,0
+sona-20904,23,concert tickets,laptop,545,0
+sona-20904,24,granola bar,watch,657,0
+sona-20904,25,car,paper notebook,1,0
+sona-20904,26,tie,pen,410,0
+sona-20904,27,shirt,glasses,268,0
+sona-20904,28,glasses,desktop computer,419,0
+sona-20904,29,wine,earrings,524,0
+sona-20904,30,guitar,glasses,569,0
+sona-20904,31,necklace,swimming suit,929,0
+sona-20904,32,beanie,bicycle,725,0
+sona-20904,33,granola bar,beanie,610,0
+sona-20904,34,laptop,jacket,596,0
+sona-20904,35,skateboard,pen,357,0
+sona-20904,36,skateboard,computer keyboard,407,1
+sona-20904,37,dishes,pants,726,0
+sona-20904,38,guitar,lipstick,564,0
+sona-20904,39,band-aid,wine,856,0
+sona-20904,40,pants,desktop computer,353,0
+sona-20904,41,sunglasses,napkin,364,0
+sona-20904,42,chocolate,dress,596,0
+sona-20904,43,purse,socks,386,0
+sona-20904,44,lipstick,water bottle,454,0
+sona-20904,45,purse,earrings,441,0
+sona-20904,46,necklace,camera,589,0
+sona-20904,47,tie,skateboard,554,0
+sona-20904,48,pencil,basketball,749,0
+sona-20904,49,necklace,calculator,327,0
+sona-20904,50,athletic clothes,backpack,590,0
+sona-20904,51,granola bar,camera,610,0
+sona-20904,52,pencil,socks,597,0
+sona-20904,53,beanie,pen,339,0
+sona-20904,54,guitar,pen,405,0
+sona-20874,0,necklace,socks,123,0
+sona-20874,1,swimming suit,athletic clothes,584,0
+sona-20874,2,pants,coffee,63,0
+sona-20874,3,ring,tie,132,0
+sona-20874,4,computer keyboard,video games,734,0
+sona-20874,5,swimming suit,lipstick,229,0
+sona-20874,6,baseball cap,ring,804,0
+sona-20874,7,guitar,headphones,693,0
+sona-20874,8,purse,socks,176,0
+sona-20874,9,purse,lipstick,133,0
+sona-20874,10,band-aid,beanie,806,0
+sona-20874,11,smart phone,camera,437,0
+sona-20874,12,band-aid,books,717,0
+sona-20874,13,backpack,tie,162,0
+sona-20874,14,granola bar,coffee,350,0
+sona-20874,15,detergent,beanie,817,0
+sona-20874,16,guitar,chocolate,176,0
+sona-20874,17,laptop,paper notebook,276,0
+sona-20874,18,guitar,watch,567,1
+sona-20874,19,smart phone,yoga mat,277,0
+sona-20874,20,sunglasses,necklace,757,0
+sona-20874,21,tie,detergent,340,0
+sona-20874,22,skateboard,car,757,0
+sona-20874,23,guitar,wallet,469,0
+sona-20874,24,skateboard,coffee,289,0
+sona-20874,25,watch,purse,307,0
+sona-20874,26,necklace,beanie,110,0
+sona-20874,27,smart phone,concert tickets,483,0
+sona-20874,28,jacket,socks,133,0
+sona-20874,29,smart phone,makeup foundation,269,0
+sona-20874,30,guitar,car,886,0
+sona-20874,31,baseball cap,backpack,314,0
+sona-20874,32,granola bar,wallet,923,0
+sona-20874,33,necklace,video games,77,0
+sona-20874,34,backpack,car,840,0
+sona-20874,35,tie,lipstick,243,0
+sona-20874,36,baseball cap,purse,830,1
+sona-20874,37,laptop,beanie,147,0
+sona-20874,38,shoes,paper notebook,139,0
+sona-20874,39,glasses,bicycle,526,0
+sona-20874,40,books,beanie,727,0
+sona-20874,41,lipstick,car,790,0
+sona-20874,42,skateboard,books,653,0
+sona-20874,43,shoes,tie,232,0
+sona-20874,44,concert tickets,cooking pot,76,0
+sona-20874,45,granola bar,concert tickets,870,0
+sona-20874,46,chocolate,detergent,213,0
+sona-20874,47,headphones,water bottle,119,0
+sona-20874,48,water bottle,coffee,146,0
+sona-20874,49,guitar,backpack,225,0
+sona-20874,50,cooking pot,camera,904,0
+sona-20874,51,earphones,car,908,0
+sona-20874,52,bicycle,makeup foundation,433,0
+sona-20874,53,coffee,beanie,856,0
+sona-20874,54,basketball,laptop,850,0
+sona-20797,0,earphones,books,799,0
+sona-20797,1,guitar,laptop,721,0
+sona-20797,2,scarf,books,687,0
+sona-20797,3,wine,shirt,663,0
+sona-20797,4,pants,backpack,357,0
+sona-20797,5,earrings,car,797,0
+sona-20797,6,car,calculator,257,0
+sona-20797,7,coffee,bicycle,324,0
+sona-20797,8,yoga mat,pencil,349,0
+sona-20797,9,granola bar,chocolate,599,0
+sona-20797,10,backpack,bicycle,440,0
+sona-20797,11,coffee,calculator,319,0
+sona-20797,12,skateboard,jacket,609,0
+sona-20797,13,lipstick,car,729,0
+sona-20797,14,ring,swimming suit,161,0
+sona-20797,15,headphones,laptop,710,0
+sona-20797,16,baseball cap,books,611,0
+sona-20797,17,jacket,napkin,145,0
+sona-20797,18,skateboard,pen,343,1
+sona-20797,19,watch,jacket,172,0
+sona-20797,20,lipstick,chocolate,661,0
+sona-20797,21,earrings,makeup foundation,734,0
+sona-20797,22,sunglasses,chocolate,375,0
+sona-20797,23,bicycle,beanie,349,0
+sona-20797,24,books,beanie,364,0
+sona-20797,25,guitar,cooking pot,655,0
+sona-20797,26,necklace,camera,685,0
+sona-20797,27,laptop,coffee,335,0
+sona-20797,28,skateboard,car,683,0
+sona-20797,29,wine,glasses,669,0
+sona-20797,30,socks,detergent,292,0
+sona-20797,31,pants,coffee,310,0
+sona-20797,32,water bottle,skateboard,636,0
+sona-20797,33,detergent,paper notebook,386,0
+sona-20797,34,baseball cap,pants,634,0
+sona-20797,35,dress,beanie,288,0
+sona-20797,36,purse,shoes,1e3,1
+sona-20797,37,purse,sunglasses,305,0
+sona-20797,38,cooking pot,beanie,311,0
+sona-20797,39,concert tickets,backpack,292,0
+sona-20797,40,pen,band-aid,297,0
+sona-20797,41,camera,cooking pot,284,0
+sona-20797,42,camera,backpack,335,0
+sona-20797,43,computer keyboard,scarf,360,0
+sona-20797,44,bicycle,books,704,0
+sona-20797,45,water bottle,shoes,745,0
+sona-20797,46,socks,swimming suit,577,0
+sona-20797,47,socks,computer keyboard,598,0
+sona-20797,48,headphones,swimming suit,664,0
+sona-20797,49,water bottle,lipstick,327,0
+sona-20797,50,car,athletic clothes,386,0
+sona-20797,51,yoga mat,makeup foundation,804,0
+sona-20797,52,headphones,beanie,292,0
+sona-20797,53,pants,basketball,326,0
+sona-20797,54,athletic clothes,books,367,0
+sona-20740,0,headphones,tie,681,0
+sona-20740,1,watch,wallet,762,0
+sona-20740,2,headphones,napkin,740,0
+sona-20740,3,pen,lipstick,790,0
+sona-20740,4,guitar,napkin,701,0
+sona-20740,5,calculator,glasses,280,0
+sona-20740,6,calculator,tie,804,0
+sona-20740,7,cooking pot,yoga mat,283,0
+sona-20740,8,concert tickets,skateboard,221,0
+sona-20740,9,ring,purse,192,0
+sona-20740,10,wallet,lipstick,260,0
+sona-20740,11,basketball,napkin,815,0
+sona-20740,12,shoes,concert tickets,704,0
+sona-20740,13,calculator,chocolate,835,0
+sona-20740,14,makeup foundation,athletic clothes,266,0
+sona-20740,15,video games,makeup foundation,763,0
+sona-20740,16,basketball,desktop computer,213,0
+sona-20740,17,dishes,earphones,265,0
+sona-20740,18,camera,sunglasses,286,1
+sona-20740,19,skateboard,shirt,748,0
+sona-20740,20,concert tickets,bicycle,305,0
+sona-20740,21,backpack,ring,759,0
+sona-20740,22,necklace,baseball cap,251,0
+sona-20740,23,calculator,baseball cap,263,0
+sona-20740,24,shirt,socks,266,0
+sona-20740,25,car,athletic clothes,725,0
+sona-20740,26,sunglasses,chocolate,687,0
+sona-20740,27,athletic clothes,jacket,220,0
+sona-20740,28,skateboard,wine,684,0
+sona-20740,29,wine,napkin,676,0
+sona-20740,30,video games,purse,776,0
+sona-20740,31,swimming suit,lipstick,692,0
+sona-20740,32,skateboard,laptop,780,0
+sona-20740,33,video games,laptop,216,0
+sona-20740,34,shirt,earphones,215,0
+sona-20740,35,cooking pot,jacket,746,0
+sona-20740,36,headphones,wine,770,1
+sona-20740,37,ring,beanie,117,0
+sona-20740,38,video games,pen,181,0
+sona-20740,39,shoes,desktop computer,807,0
+sona-20740,40,desktop computer,lipstick,721,0
+sona-20740,41,ring,earphones,168,0
+sona-20740,42,swimming suit,yoga mat,257,0
+sona-20740,43,beanie,lipstick,864,0
+sona-20740,44,skateboard,cooking pot,206,0
+sona-20740,45,basketball,socks,218,0
+sona-20740,46,headphones,baseball cap,190,0
+sona-20740,47,skateboard,baseball cap,252,0
+sona-20740,48,athletic clothes,napkin,808,0
+sona-20740,49,scarf,baseball cap,251,0
+sona-20740,50,ring,water bottle,235,0
+sona-20740,51,water bottle,baseball cap,827,0
+sona-20740,52,video games,desktop computer,263,0
+sona-20740,53,computer keyboard,baseball cap,302,0
+sona-20740,54,car,guitar,715,0
+sona-20485,0,shirt,earrings,788,0
+sona-20485,1,wallet,water bottle,163,0
+sona-20485,2,guitar,pants,891,0
+sona-20485,3,sunglasses,granola bar,324,0
+sona-20485,4,napkin,baseball cap,1e3,0
+sona-20485,5,basketball,lipstick,867,0
+sona-20485,6,chocolate,scarf,768,0
+sona-20485,7,wine,earrings,1e3,1
+sona-20485,8,shirt,glasses,1,0
+sona-20485,9,dishes,backpack,1,0
+sona-20485,10,sunglasses,pants,769,0
+sona-20485,11,car,glasses,341,0
+sona-20485,12,backpack,books,954,0
+sona-20485,13,paper notebook,socks,760,0
+sona-20485,14,tie,video games,189,0
+sona-20485,15,detergent,athletic clothes,843,0
+sona-20485,16,wine,calculator,356,0
+sona-20485,17,makeup foundation,necklace,747,0
+sona-20485,18,scarf,granola bar,1e3,1
+sona-20485,19,camera,lipstick,617,0
+sona-20485,20,sunglasses,backpack,650,0
+sona-20485,21,beanie,books,345,0
+sona-20485,22,lipstick,water bottle,413,0
+sona-20485,23,basketball,headphones,652,0
+sona-20485,24,desktop computer,yoga mat,352,0
+sona-20485,25,guitar,bicycle,669,0
+sona-20485,26,wine,tie,388,0
+sona-20485,27,skateboard,coffee,649,0
+sona-20485,28,car,dishes,975,0
+sona-20485,29,coffee,pants,748,0
+sona-20485,30,swimming suit,water bottle,375,0
+sona-20485,31,dress,earrings,252,0
+sona-20485,32,cooking pot,baseball cap,865,0
+sona-20485,33,camera,napkin,292,0
+sona-20485,34,paper notebook,wine,816,0
+sona-20485,35,makeup foundation,guitar,282,0
+sona-20485,36,wine,earrings,1e3,1
+sona-20485,37,wallet,glasses,229,0
+sona-20485,38,socks,laptop,707,0
+sona-20485,39,basketball,bicycle,646,0
+sona-20485,40,computer keyboard,ring,731,0
+sona-20485,41,desktop computer,necklace,747,0
+sona-20485,42,shoes,baseball cap,865,0
+sona-20485,43,baseball cap,granola bar,236,0
+sona-20485,44,swimming suit,smart phone,665,0
+sona-20485,45,basketball,baseball cap,941,0
+sona-20485,46,skateboard,napkin,248,0
+sona-20485,47,necklace,pen,181,0
+sona-20485,48,computer keyboard,napkin,182,0
+sona-20485,49,basketball,glasses,667,0
+sona-20485,50,swimming suit,napkin,809,0
+sona-20485,51,glasses,necklace,798,0
+sona-20485,52,socks,pants,732,0
+sona-20485,53,cooking pot,shoes,714,0
+sona-20485,54,skateboard,swimming suit,867,0
+sona-20446,0,socks,calculator,17,0
+sona-20446,1,wallet,calculator,1,0
+sona-20446,2,beanie,basketball,849,0
+sona-20446,3,wine,headphones,417,0
+sona-20446,4,wine,glasses,151,0
+sona-20446,5,purse,dress,277,0
+sona-20446,6,desktop computer,glasses,67,0
+sona-20446,7,skateboard,beanie,687,0
+sona-20446,8,dishes,video games,733,0
+sona-20446,9,tie,dress,65,0
+sona-20446,10,granola bar,headphones,811,0
+sona-20446,11,earphones,granola bar,77,0
+sona-20446,12,skateboard,camera,914,0
+sona-20446,13,headphones,concert tickets,896,0
+sona-20446,14,paper notebook,calculator,410,0
+sona-20446,15,pencil,car,775,0
+sona-20446,16,detergent,napkin,735,0
+sona-20446,17,swimming suit,purse,747,0
+sona-20446,18,jacket,granola bar,1e3,1
+sona-20446,19,jacket,coffee,632,0
+sona-20446,20,shoes,tie,190,0
+sona-20446,21,guitar,napkin,216,0
+sona-20446,22,athletic clothes,makeup foundation,354,0
+sona-20446,23,camera,pencil,145,0
+sona-20446,24,guitar,ring,709,0
+sona-20446,25,shirt,granola bar,141,0
+sona-20446,26,pen,swimming suit,123,0
+sona-20446,27,pen,athletic clothes,71,0
+sona-20446,28,water bottle,napkin,461,0
+sona-20446,29,paper notebook,basketball,451,0
+sona-20446,30,granola bar,coffee,859,0
+sona-20446,31,glasses,basketball,702,0
+sona-20446,32,ring,cooking pot,54,0
+sona-20446,33,guitar,water bottle,143,0
+sona-20446,34,band-aid,granola bar,554,0
+sona-20446,35,earrings,basketball,311,0
+sona-20446,36,dishes,camera,866,1
+sona-20446,37,jacket,granola bar,1e3,1
+sona-20446,38,skateboard,jacket,770,0
+sona-20446,39,shirt,wallet,788,0
+sona-20446,40,shirt,detergent,94,0
+sona-20446,41,ring,beanie,93,0
+sona-20446,42,swimming suit,chocolate,600,0
+sona-20446,43,video games,guitar,391,0
+sona-20446,44,purse,laptop,361,0
+sona-20446,45,chocolate,cooking pot,307,0
+sona-20446,46,ring,smart phone,284,0
+sona-20446,47,ring,dress,265,0
+sona-20446,48,skateboard,tie,815,0
+sona-20446,49,watch,pencil,307,0
+sona-20446,50,watch,smart phone,244,0
+sona-20446,51,necklace,calculator,175,0
+sona-20446,52,video games,socks,162,0
+sona-20446,53,pen,beanie,170,0
+sona-20446,54,pants,laptop,815,0
+sona-20424,0,earrings,athletic clothes,1e3,0
+sona-20424,1,pencil,purse,1e3,0
+sona-20424,2,shirt,detergent,316,0
+sona-20424,3,sunglasses,skateboard,202,0
+sona-20424,4,ring,napkin,1,0
+sona-20424,5,dress,athletic clothes,1,0
+sona-20424,6,backpack,napkin,1,0
+sona-20424,7,scarf,basketball,430,0
+sona-20424,8,swimming suit,pencil,1,0
+sona-20424,9,earphones,desktop computer,1e3,0
+sona-20424,10,wine,basketball,1,0
+sona-20424,11,napkin,chocolate,1e3,0
+sona-20424,12,camera,ring,1e3,0
+sona-20424,13,computer keyboard,cooking pot,228,0
+sona-20424,14,basketball,athletic clothes,1e3,0
+sona-20424,15,car,band-aid,1,0
+sona-20424,16,dress,jacket,1,0
+sona-20424,17,earphones,wine,1e3,0
+sona-20424,18,lipstick,shoes,784,1
+sona-20424,19,pants,guitar,1e3,0
+sona-20424,20,pencil,pen,853,0
+sona-20424,21,shirt,yoga mat,1,0
+sona-20424,22,earrings,wine,1e3,0
+sona-20424,23,camera,socks,1,0
+sona-20424,24,guitar,granola bar,1,0
+sona-20424,25,shoes,athletic clothes,1,0
+sona-20424,26,dress,detergent,1,0
+sona-20424,27,pencil,tie,1e3,0
+sona-20424,28,beanie,backpack,1e3,0
+sona-20424,29,earphones,wallet,1e3,0
+sona-20424,30,books,baseball cap,1,0
+sona-20424,31,purse,lipstick,34,0
+sona-20424,32,sunglasses,wine,1e3,0
+sona-20424,33,makeup foundation,shoes,922,0
+sona-20424,34,lipstick,athletic clothes,901,0
+sona-20424,35,watch,napkin,1,0
+sona-20424,36,bicycle,purse,1e3,1
+sona-20424,37,pants,dress,1e3,0
+sona-20424,38,guitar,headphones,1,0
+sona-20424,39,shirt,makeup foundation,1,0
+sona-20424,40,yoga mat,scarf,912,0
+sona-20424,41,necklace,athletic clothes,142,0
+sona-20424,42,sunglasses,desktop computer,1e3,0
+sona-20424,43,earrings,jacket,1e3,0
+sona-20424,44,guitar,skateboard,1,0
+sona-20424,45,ring,smart phone,1e3,0
+sona-20424,46,laptop,computer keyboard,1,0
+sona-20424,47,laptop,detergent,1,0
+sona-20424,48,pants,car,1e3,0
+sona-20424,49,video games,concert tickets,1e3,0
+sona-20424,50,glasses,shoes,1e3,0
+sona-20424,51,smart phone,desktop computer,1,0
+sona-20424,52,camera,dress,1e3,0
+sona-20424,53,shirt,dress,1e3,0
+sona-20424,54,detergent,water bottle,839,0
+sona-20396,0,desktop computer,dress,825,0
+sona-20396,1,earphones,headphones,916,0
+sona-20396,2,paper notebook,socks,857,0
+sona-20396,3,jacket,tie,325,0
+sona-20396,4,paper notebook,pants,640,0
+sona-20396,5,shirt,tie,252,0
+sona-20396,6,wallet,water bottle,763,0
+sona-20396,7,calculator,makeup foundation,722,0
+sona-20396,8,detergent,lipstick,685,0
+sona-20396,9,purse,watch,685,0
+sona-20396,10,baseball cap,glasses,255,0
+sona-20396,11,swimming suit,scarf,312,0
+sona-20396,12,ring,backpack,740,0
+sona-20396,13,bicycle,video games,680,0
+sona-20396,14,video games,necklace,300,0
+sona-20396,15,computer keyboard,concert tickets,717,0
+sona-20396,16,jacket,shirt,246,0
+sona-20396,17,jacket,athletic clothes,639,0
+sona-20396,18,tie,athletic clothes,677,1
+sona-20396,19,swimming suit,dishes,248,0
+sona-20396,20,dishes,watch,739,0
+sona-20396,21,pants,smart phone,724,0
+sona-20396,22,wallet,detergent,262,0
+sona-20396,23,detergent,chocolate,718,0
+sona-20396,24,swimming suit,water bottle,727,0
+sona-20396,25,pencil,backpack,751,0
+sona-20396,26,earphones,watch,777,0
+sona-20396,27,scarf,coffee,256,0
+sona-20396,28,paper notebook,jacket,742,0
+sona-20396,29,video games,car,737,0
+sona-20396,30,guitar,tie,264,0
+sona-20396,31,earphones,granola bar,860,0
+sona-20396,32,socks,backpack,845,0
+sona-20396,33,beanie,dress,140,0
+sona-20396,34,pencil,shoes,737,0
+sona-20396,35,guitar,glasses,157,0
+sona-20396,36,baseball cap,pants,203,1
+sona-20396,37,baseball cap,earrings,843,0
+sona-20396,38,band-aid,cooking pot,202,0
+sona-20396,39,earrings,dress,764,0
+sona-20396,40,calculator,skateboard,926,0
+sona-20396,41,camera,purse,232,0
+sona-20396,42,swimming suit,chocolate,905,0
+sona-20396,43,pencil,camera,825,0
+sona-20396,44,yoga mat,socks,1,0
+sona-20396,45,computer keyboard,jacket,790,0
+sona-20396,46,makeup foundation,guitar,90,0
+sona-20396,47,calculator,pen,159,0
+sona-20396,48,yoga mat,smart phone,802,0
+sona-20396,49,baseball cap,basketball,808,0
+sona-20396,50,pencil,pen,824,0
+sona-20396,51,pencil,computer keyboard,724,0
+sona-20396,52,video games,dishes,125,0
+sona-20396,53,beanie,pants,336,0
+sona-20396,54,water bottle,band-aid,156,0
+sona-20099,0,cooking pot,books,749,0
+sona-20099,1,dishes,laptop,818,0
+sona-20099,2,yoga mat,pants,883,0
+sona-20099,3,beanie,concert tickets,984,0
+sona-20099,4,shirt,camera,425,0
+sona-20099,5,guitar,shoes,808,0
+sona-20099,6,shirt,backpack,795,0
+sona-20099,7,paper notebook,laptop,854,0
+sona-20099,8,baseball cap,concert tickets,128,0
+sona-20099,9,detergent,books,956,0
+sona-20099,10,computer keyboard,earphones,822,0
+sona-20099,11,jacket,wine,148,0
+sona-20099,12,shoes,coffee,113,0
+sona-20099,13,desktop computer,detergent,96,0
+sona-20099,14,detergent,dress,885,0
+sona-20099,15,shirt,band-aid,242,0
+sona-20099,16,napkin,chocolate,770,0
+sona-20099,17,pencil,cooking pot,771,0
+sona-20099,18,jacket,wallet,935,1
+sona-20099,19,headphones,computer keyboard,118,0
+sona-20099,20,watch,scarf,157,0
+sona-20099,21,wine,earrings,163,0
+sona-20099,22,beanie,lipstick,854,0
+sona-20099,23,tie,dishes,108,0
+sona-20099,24,desktop computer,swimming suit,847,0
+sona-20099,25,desktop computer,baseball cap,781,0
+sona-20099,26,scarf,books,795,0
+sona-20099,27,laptop,books,146,0
+sona-20099,28,purse,books,211,0
+sona-20099,29,smart phone,shoes,137,0
+sona-20099,30,band-aid,concert tickets,825,0
+sona-20099,31,pen,laptop,752,0
+sona-20099,32,sunglasses,detergent,205,0
+sona-20099,33,books,earphones,832,0
+sona-20099,34,detergent,athletic clothes,908,0
+sona-20099,35,socks,laptop,815,0
+sona-20099,36,chocolate,earphones,778,1
+sona-20099,37,calculator,ring,857,0
+sona-20099,38,band-aid,lipstick,885,0
+sona-20099,39,dishes,cooking pot,166,0
+sona-20099,40,baseball cap,earphones,130,0
+sona-20099,41,smart phone,purse,780,0
+sona-20099,42,baseball cap,napkin,161,0
+sona-20099,43,makeup foundation,basketball,202,0
+sona-20099,44,purse,napkin,149,0
+sona-20099,45,paper notebook,pants,775,0
+sona-20099,46,dishes,concert tickets,860,0
+sona-20099,47,swimming suit,basketball,291,0
+sona-20099,48,paper notebook,cooking pot,280,0
+sona-20099,49,jacket,athletic clothes,117,0
+sona-20099,50,pencil,pants,776,0
+sona-20099,51,chocolate,backpack,800,0
+sona-20099,52,scarf,sunglasses,792,0
+sona-20099,53,glasses,coffee,148,0
+sona-20099,54,pencil,band-aid,149,0
+sona-19979,0,lipstick,beanie,1e3,0
+sona-19979,1,video games,paper notebook,1e3,0
+sona-19979,2,paper notebook,beanie,1e3,0
+sona-19979,3,wine,smart phone,1,0
+sona-19979,4,necklace,earrings,1,0
+sona-19979,5,computer keyboard,pants,1,0
+sona-19979,6,pants,laptop,1,0
+sona-19979,7,pants,shoes,1e3,0
+sona-19979,8,coffee,dishes,1,0
+sona-19979,9,socks,dishes,1e3,0
+sona-19979,10,swimming suit,necklace,1,0
+sona-19979,11,lipstick,bicycle,1,0
+sona-19979,12,desktop computer,backpack,1e3,0
+sona-19979,13,baseball cap,swimming suit,1e3,0
+sona-19979,14,pants,earrings,1,0
+sona-19979,15,scarf,guitar,1,0
+sona-19979,16,shoes,detergent,1,0
+sona-19979,17,shoes,earrings,1,0
+sona-19979,18,pencil,ring,1e3,1
+sona-19979,19,concert tickets,guitar,1e3,0
+sona-19979,20,scarf,concert tickets,1,0
+sona-19979,21,skateboard,glasses,1e3,0
+sona-19979,22,makeup foundation,bicycle,1,0
+sona-19979,23,wine,dishes,1,0
+sona-19979,24,wallet,shoes,1e3,0
+sona-19979,25,yoga mat,sunglasses,1e3,0
+sona-19979,26,glasses,laptop,1,0
+sona-19979,27,detergent,dishes,1e3,0
+sona-19979,28,coffee,earrings,1,0
+sona-19979,29,swimming suit,pants,1e3,0
+sona-19979,30,concert tickets,shoes,1e3,0
+sona-19979,31,band-aid,detergent,1,0
+sona-19979,32,band-aid,purse,1e3,0
+sona-19979,33,granola bar,basketball,1e3,0
+sona-19979,34,smart phone,beanie,1e3,0
+sona-19979,35,backpack,detergent,1,0
+sona-19979,36,glasses,dishes,1,1
+sona-19979,37,earrings,dishes,1e3,0
+sona-19979,38,pencil,cooking pot,1e3,0
+sona-19979,39,band-aid,makeup foundation,1e3,0
+sona-19979,40,scarf,books,1,0
+sona-19979,41,headphones,napkin,1,0
+sona-19979,42,beanie,shirt,1,0
+sona-19979,43,baseball cap,dishes,1,0
+sona-19979,44,basketball,jacket,1e3,0
+sona-19979,45,socks,napkin,1,0
+sona-19979,46,glasses,sunglasses,1,0
+sona-19979,47,shoes,laptop,1,0
+sona-19979,48,swimming suit,earrings,1,0
+sona-19979,49,concert tickets,necklace,1,0
+sona-19979,50,skateboard,shoes,1e3,0
+sona-19979,51,headphones,pen,27,0
+sona-19979,52,glasses,paper notebook,12,0
+sona-19979,53,cooking pot,guitar,1e3,0
+sona-19979,54,dress,jacket,1e3,0
+sona-19577,0,tie,books,677,0
+sona-19577,1,coffee,headphones,688,0
+sona-19577,2,pen,guitar,672,0
+sona-19577,3,beanie,concert tickets,752,0
+sona-19577,4,makeup foundation,guitar,713,0
+sona-19577,5,purse,pants,796,0
+sona-19577,6,camera,scarf,192,0
+sona-19577,7,band-aid,laptop,227,0
+sona-19577,8,swimming suit,pen,215,0
+sona-19577,9,necklace,desktop computer,768,0
+sona-19577,10,band-aid,watch,719,0
+sona-19577,11,camera,skateboard,504,0
+sona-19577,12,granola bar,lipstick,799,0
+sona-19577,13,watch,bicycle,381,0
+sona-19577,14,earphones,guitar,752,0
+sona-19577,15,lipstick,napkin,190,0
+sona-19577,16,yoga mat,headphones,210,0
+sona-19577,17,swimming suit,lipstick,613,0
+sona-19577,18,backpack,napkin,1e3,1
+sona-19577,19,purse,pencil,259,0
+sona-19577,20,scarf,books,679,0
+sona-19577,21,earrings,car,728,0
+sona-19577,22,sunglasses,pen,366,0
+sona-19577,23,dishes,jacket,631,0
+sona-19577,24,purse,necklace,380,0
+sona-19577,25,earrings,shoes,760,0
+sona-19577,26,beanie,wine,749,0
+sona-19577,27,glasses,calculator,341,0
+sona-19577,28,sunglasses,pencil,243,0
+sona-19577,29,sunglasses,bicycle,410,0
+sona-19577,30,pen,dress,696,0
+sona-19577,31,earphones,coffee,506,0
+sona-19577,32,paper notebook,athletic clothes,741,0
+sona-19577,33,granola bar,baseball cap,617,0
+sona-19577,34,granola bar,guitar,780,0
+sona-19577,35,band-aid,detergent,355,0
+sona-19577,36,shirt,car,1e3,1
+sona-19577,37,jacket,glasses,342,0
+sona-19577,38,smart phone,glasses,177,0
+sona-19577,39,desktop computer,skateboard,798,0
+sona-19577,40,detergent,pen,527,0
+sona-19577,41,detergent,shirt,746,0
+sona-19577,42,ring,desktop computer,183,0
+sona-19577,43,band-aid,basketball,773,0
+sona-19577,44,earrings,baseball cap,318,0
+sona-19577,45,water bottle,backpack,408,0
+sona-19577,46,video games,books,284,0
+sona-19577,47,concert tickets,computer keyboard,105,0
+sona-19577,48,coffee,car,871,0
+sona-19577,49,purse,watch,622,0
+sona-19577,50,shoes,chocolate,283,0
+sona-19577,51,laptop,car,791,0
+sona-19577,52,shirt,pants,288,0
+sona-19577,53,beanie,purse,411,0
+sona-19577,54,video games,calculator,237,0
+sona-19248,0,scarf,wallet,1,0
+sona-19248,1,basketball,dishes,1e3,0
+sona-19248,2,necklace,wine,1e3,0
+sona-19248,3,chocolate,granola bar,1,0
+sona-19248,4,socks,basketball,1,0
+sona-19248,5,ring,earphones,1,0
+sona-19248,6,sunglasses,watch,1e3,0
+sona-19248,7,desktop computer,swimming suit,1,0
+sona-19248,8,shoes,headphones,1,0
+sona-19248,9,car,pants,1,0
+sona-19248,10,necklace,granola bar,1,0
+sona-19248,11,lipstick,cooking pot,1,0
+sona-19248,12,napkin,cooking pot,1e3,0
+sona-19248,13,paper notebook,shirt,1e3,0
+sona-19248,14,desktop computer,calculator,3,0
+sona-19248,15,shirt,computer keyboard,586,0
+sona-19248,16,dishes,granola bar,313,0
+sona-19248,17,coffee,makeup foundation,403,0
+sona-19248,18,swimming suit,headphones,1e3,1
+sona-19248,19,napkin,earphones,726,0
+sona-19248,20,beanie,wallet,289,0
+sona-19248,21,lipstick,dress,842,0
+sona-19248,22,pencil,smart phone,796,0
+sona-19248,23,yoga mat,glasses,1e3,0
+sona-19248,24,ring,earrings,1,0
+sona-19248,25,guitar,bicycle,326,0
+sona-19248,26,concert tickets,calculator,330,0
+sona-19248,27,video games,wine,667,0
+sona-19248,28,books,jacket,246,0
+sona-19248,29,scarf,camera,775,0
+sona-19248,30,backpack,guitar,320,0
+sona-19248,31,napkin,computer keyboard,684,0
+sona-19248,32,earphones,wine,733,0
+sona-19248,33,desktop computer,athletic clothes,349,0
+sona-19248,34,paper notebook,detergent,335,0
+sona-19248,35,makeup foundation,wine,699,0
+sona-19248,36,skateboard,laptop,1e3,1
+sona-19248,37,purse,shoes,665,0
+sona-19248,38,earrings,shoes,239,0
+sona-19248,39,earrings,band-aid,100,0
+sona-19248,40,athletic clothes,wine,815,0
+sona-19248,41,backpack,granola bar,302,0
+sona-19248,42,backpack,jacket,286,0
+sona-19248,43,shoes,athletic clothes,102,0
+sona-19248,44,beanie,headphones,784,0
+sona-19248,45,skateboard,socks,201,0
+sona-19248,46,camera,pants,264,0
+sona-19248,47,pencil,books,745,0
+sona-19248,48,glasses,watch,766,0
+sona-19248,49,wallet,wine,350,0
+sona-19248,50,chocolate,backpack,254,0
+sona-19248,51,books,camera,765,0
+sona-19248,52,necklace,video games,271,0
+sona-19248,53,desktop computer,concert tickets,307,0
+sona-19248,54,skateboard,ring,727,0
+sona-19199,0,baseball cap,video games,955,0
+sona-19199,1,wine,skateboard,946,0
+sona-19199,2,purse,detergent,938,0
+sona-19199,3,pen,makeup foundation,18,0
+sona-19199,4,books,skateboard,964,0
+sona-19199,5,athletic clothes,shoes,967,0
+sona-19199,6,dishes,video games,943,0
+sona-19199,7,makeup foundation,headphones,41,0
+sona-19199,8,necklace,headphones,20,0
+sona-19199,9,shirt,necklace,968,0
+sona-19199,10,basketball,jacket,980,0
+sona-19199,11,athletic clothes,wallet,965,0
+sona-19199,12,laptop,sunglasses,938,0
+sona-19199,13,granola bar,pants,975,0
+sona-19199,14,tie,paper notebook,1,0
+sona-19199,15,glasses,camera,957,0
+sona-19199,16,shirt,bicycle,21,0
+sona-19199,17,headphones,shoes,961,0
+sona-19199,18,band-aid,coffee,988,1
+sona-19199,19,ring,lipstick,3,0
+sona-19199,20,shoes,watch,1e3,0
+sona-19199,21,tie,calculator,1,0
+sona-19199,22,scarf,chocolate,9,0
+sona-19199,23,basketball,granola bar,1,0
+sona-19199,24,socks,wallet,980,0
+sona-19199,25,guitar,headphones,1e3,0
+sona-19199,26,baseball cap,camera,1e3,0
+sona-19199,27,glasses,headphones,1,0
+sona-19199,28,calculator,chocolate,1,0
+sona-19199,29,dress,watch,1e3,0
+sona-19199,30,desktop computer,pants,967,0
+sona-19199,31,baseball cap,guitar,832,0
+sona-19199,32,jacket,sunglasses,882,0
+sona-19199,33,socks,pen,978,0
+sona-19199,34,yoga mat,pants,978,0
+sona-19199,35,swimming suit,skateboard,44,0
+sona-19199,36,smart phone,video games,60,1
+sona-19199,37,granola bar,shoes,1e3,0
+sona-19199,38,granola bar,calculator,1e3,0
+sona-19199,39,ring,water bottle,1,0
+sona-19199,40,glasses,books,31,0
+sona-19199,41,guitar,video games,932,0
+sona-19199,42,pants,bicycle,9,0
+sona-19199,43,shoes,wallet,1e3,0
+sona-19199,44,makeup foundation,sunglasses,953,0
+sona-19199,45,earphones,water bottle,49,0
+sona-19199,46,beanie,shoes,975,0
+sona-19199,47,ring,books,28,0
+sona-19199,48,video games,bicycle,983,0
+sona-19199,49,skateboard,video games,906,0
+sona-19199,50,athletic clothes,dishes,44,0
+sona-19199,51,smart phone,dishes,42,0
+sona-19199,52,band-aid,concert tickets,1e3,0
+sona-19199,53,laptop,yoga mat,26,0
+sona-19199,54,water bottle,pants,1e3,0
+sona-18983,0,wine,shirt,1e3,0
+sona-18983,1,pants,athletic clothes,1e3,0
+sona-18983,2,pen,concert tickets,1e3,0
+sona-18983,3,pants,makeup foundation,1e3,0
+sona-18983,4,detergent,baseball cap,1e3,0
+sona-18983,5,granola bar,video games,1e3,0
+sona-18983,6,shirt,headphones,1e3,0
+sona-18983,7,laptop,calculator,1,0
+sona-18983,8,tie,backpack,1e3,0
+sona-18983,9,baseball cap,granola bar,1,0
+sona-18983,10,laptop,cooking pot,1,0
+sona-18983,11,makeup foundation,shoes,1e3,0
+sona-18983,12,smart phone,desktop computer,1,0
+sona-18983,13,bicycle,guitar,1,0
+sona-18983,14,video games,coffee,1e3,0
+sona-18983,15,laptop,smart phone,38,0
+sona-18983,16,granola bar,desktop computer,1e3,0
+sona-18983,17,pants,detergent,1,0
+sona-18983,18,books,coffee,1e3,1
+sona-18983,19,napkin,cooking pot,1e3,0
+sona-18983,20,pants,swimming suit,203,0
+sona-18983,21,baseball cap,camera,1e3,0
+sona-18983,22,dishes,paper notebook,730,0
+sona-18983,23,computer keyboard,earrings,1e3,0
+sona-18983,24,camera,video games,1,0
+sona-18983,25,wallet,camera,937,0
+sona-18983,26,earphones,calculator,1,0
+sona-18983,27,ring,shirt,20,0
+sona-18983,28,paper notebook,lipstick,1e3,0
+sona-18983,29,granola bar,lipstick,1e3,0
+sona-18983,30,swimming suit,shoes,1e3,0
+sona-18983,31,napkin,laptop,1e3,0
+sona-18983,32,pen,shirt,439,0
+sona-18983,33,bicycle,concert tickets,851,0
+sona-18983,34,glasses,smart phone,1e3,0
+sona-18983,35,books,jacket,189,0
+sona-18983,36,pants,earrings,818,1
+sona-18983,37,dishes,calculator,754,0
+sona-18983,38,backpack,smart phone,1e3,0
+sona-18983,39,computer keyboard,shirt,561,0
+sona-18983,40,wallet,swimming suit,66,0
+sona-18983,41,camera,shirt,1,0
+sona-18983,42,socks,beanie,69,0
+sona-18983,43,athletic clothes,dress,152,0
+sona-18983,44,swimming suit,yoga mat,239,0
+sona-18983,45,guitar,shirt,222,0
+sona-18983,46,scarf,concert tickets,1e3,0
+sona-18983,47,computer keyboard,beanie,332,0
+sona-18983,48,detergent,guitar,803,0
+sona-18983,49,laptop,swimming suit,49,0
+sona-18983,50,dishes,swimming suit,215,0
+sona-18983,51,socks,basketball,925,0
+sona-18983,52,ring,headphones,88,0
+sona-18983,53,basketball,shoes,900,0
+sona-18983,54,baseball cap,guitar,644,0
+sona-18876,0,earrings,watch,866,0
+sona-18876,1,baseball cap,cooking pot,270,0
+sona-18876,2,headphones,camera,97,0
+sona-18876,3,guitar,concert tickets,876,0
+sona-18876,4,books,scarf,496,0
+sona-18876,5,guitar,video games,854,0
+sona-18876,6,scarf,ring,901,0
+sona-18876,7,band-aid,bicycle,85,0
+sona-18876,8,wallet,earphones,114,0
+sona-18876,9,baseball cap,athletic clothes,997,0
+sona-18876,10,wine,dishes,65,0
+sona-18876,11,coffee,purse,931,0
+sona-18876,12,earrings,calculator,102,0
+sona-18876,13,desktop computer,earrings,98,0
+sona-18876,14,glasses,tie,935,0
+sona-18876,15,headphones,bicycle,39,0
+sona-18876,16,beanie,earphones,911,0
+sona-18876,17,headphones,scarf,33,0
+sona-18876,18,scarf,purse,975,1
+sona-18876,19,skateboard,shoes,1e3,0
+sona-18876,20,laptop,makeup foundation,1,0
+sona-18876,21,water bottle,laptop,1,0
+sona-18876,22,basketball,detergent,1e3,0
+sona-18876,23,jacket,car,1e3,0
+sona-18876,24,baseball cap,watch,1e3,0
+sona-18876,25,shirt,socks,1,0
+sona-18876,26,beanie,smart phone,1e3,0
+sona-18876,27,basketball,bicycle,906,0
+sona-18876,28,earrings,paper notebook,76,0
+sona-18876,29,pencil,watch,913,0
+sona-18876,30,shirt,car,1e3,0
+sona-18876,31,beanie,video games,900,0
+sona-18876,32,guitar,jacket,971,0
+sona-18876,33,bicycle,detergent,894,0
+sona-18876,34,chocolate,swimming suit,888,0
+sona-18876,35,chocolate,paper notebook,822,0
+sona-18876,36,desktop computer,smart phone,1e3,1
+sona-18876,37,pencil,pen,536,0
+sona-18876,38,laptop,tie,138,0
+sona-18876,39,desktop computer,calculator,67,0
+sona-18876,40,earphones,detergent,76,0
+sona-18876,41,headphones,dishes,169,0
+sona-18876,42,coffee,camera,67,0
+sona-18876,43,backpack,computer keyboard,37,0
+sona-18876,44,wallet,smart phone,850,0
+sona-18876,45,basketball,granola bar,491,0
+sona-18876,46,beanie,athletic clothes,1e3,0
+sona-18876,47,water bottle,backpack,54,0
+sona-18876,48,ring,car,820,0
+sona-18876,49,earrings,pen,825,0
+sona-18876,50,baseball cap,computer keyboard,243,0
+sona-18876,51,skateboard,beanie,461,0
+sona-18876,52,books,headphones,752,0
+sona-18876,53,earphones,video games,792,0
+sona-18876,54,athletic clothes,granola bar,87,0
+sona-18759,0,lipstick,beanie,1,0
+sona-18759,1,books,earphones,182,0
+sona-18759,2,skateboard,dishes,212,0
+sona-18759,3,backpack,water bottle,182,0
+sona-18759,4,coffee,bicycle,490,0
+sona-18759,5,water bottle,makeup foundation,945,0
+sona-18759,6,smart phone,band-aid,119,0
+sona-18759,7,socks,concert tickets,68,0
+sona-18759,8,computer keyboard,tie,901,0
+sona-18759,9,pencil,water bottle,592,0
+sona-18759,10,coffee,napkin,218,0
+sona-18759,11,camera,concert tickets,821,0
+sona-18759,12,water bottle,glasses,863,0
+sona-18759,13,jacket,bicycle,120,0
+sona-18759,14,jacket,necklace,873,0
+sona-18759,15,lipstick,napkin,43,0
+sona-18759,16,earrings,tie,888,0
+sona-18759,17,wine,ring,941,0
+sona-18759,18,socks,granola bar,1e3,1
+sona-18759,19,dishes,purse,913,0
+sona-18759,20,guitar,detergent,643,0
+sona-18759,21,necklace,pen,95,0
+sona-18759,22,necklace,makeup foundation,948,0
+sona-18759,23,chocolate,laptop,466,0
+sona-18759,24,books,athletic clothes,967,0
+sona-18759,25,pencil,scarf,797,0
+sona-18759,26,beanie,pen,317,0
+sona-18759,27,smart phone,concert tickets,290,0
+sona-18759,28,calculator,shoes,888,0
+sona-18759,29,concert tickets,shirt,875,0
+sona-18759,30,chocolate,shoes,953,0
+sona-18759,31,ring,napkin,38,0
+sona-18759,32,detergent,yoga mat,196,0
+sona-18759,33,calculator,skateboard,816,0
+sona-18759,34,granola bar,dishes,778,0
+sona-18759,35,lipstick,chocolate,1,0
+sona-18759,36,calculator,laptop,1e3,1
+sona-18759,37,lipstick,backpack,59,0
+sona-18759,38,pen,dress,1e3,0
+sona-18759,39,earrings,detergent,1,0
+sona-18759,40,jacket,dress,923,0
+sona-18759,41,guitar,baseball cap,855,0
+sona-18759,42,basketball,jacket,938,0
+sona-18759,43,skateboard,beanie,947,0
+sona-18759,44,shirt,purse,969,0
+sona-18759,45,shoes,earphones,20,0
+sona-18759,46,computer keyboard,watch,991,0
+sona-18759,47,baseball cap,granola bar,240,0
+sona-18759,48,pants,concert tickets,97,0
+sona-18759,49,yoga mat,watch,972,0
+sona-18759,50,pencil,band-aid,420,0
+sona-18759,51,band-aid,dress,953,0
+sona-18759,52,coffee,sunglasses,847,0
+sona-18759,53,camera,watch,934,0
+sona-18759,54,beanie,bicycle,291,0
+sona-18659,0,computer keyboard,scarf,913,0
+sona-18659,1,guitar,sunglasses,814,0
+sona-18659,2,scarf,lipstick,44,0
+sona-18659,3,lipstick,baseball cap,1,0
+sona-18659,4,wine,headphones,192,0
+sona-18659,5,water bottle,detergent,850,0
+sona-18659,6,bicycle,makeup foundation,824,0
+sona-18659,7,band-aid,car,1e3,0
+sona-18659,8,video games,purse,907,0
+sona-18659,9,tie,dress,981,0
+sona-18659,10,video games,desktop computer,212,0
+sona-18659,11,detergent,books,1e3,0
+sona-18659,12,concert tickets,earrings,893,0
+sona-18659,13,basketball,purse,955,0
+sona-18659,14,pencil,lipstick,931,0
+sona-18659,15,necklace,camera,947,0
+sona-18659,16,tie,smart phone,939,0
+sona-18659,17,guitar,car,1e3,0
+sona-18659,18,band-aid,water bottle,42,1
+sona-18659,19,watch,water bottle,1,0
+sona-18659,20,earphones,car,1e3,0
+sona-18659,21,video games,guitar,177,0
+sona-18659,22,basketball,dishes,1e3,0
+sona-18659,23,tie,purse,945,0
+sona-18659,24,yoga mat,baseball cap,74,0
+sona-18659,25,coffee,beanie,1e3,0
+sona-18659,26,yoga mat,necklace,85,0
+sona-18659,27,cooking pot,purse,890,0
+sona-18659,28,coffee,backpack,1,0
+sona-18659,29,dress,baseball cap,110,0
+sona-18659,30,shirt,camera,26,0
+sona-18659,31,athletic clothes,basketball,68,0
+sona-18659,32,backpack,athletic clothes,949,0
+sona-18659,33,pen,computer keyboard,104,0
+sona-18659,34,concert tickets,computer keyboard,24,0
+sona-18659,35,computer keyboard,dishes,834,0
+sona-18659,36,earrings,basketball,155,1
+sona-18659,37,glasses,earphones,183,0
+sona-18659,38,shirt,athletic clothes,116,0
+sona-18659,39,headphones,makeup foundation,925,0
+sona-18659,40,desktop computer,pants,902,0
+sona-18659,41,smart phone,bicycle,194,0
+sona-18659,42,band-aid,purse,935,0
+sona-18659,43,skateboard,desktop computer,149,0
+sona-18659,44,granola bar,chocolate,917,0
+sona-18659,45,car,beanie,57,0
+sona-18659,46,tie,books,902,0
+sona-18659,47,paper notebook,shoes,932,0
+sona-18659,48,athletic clothes,lipstick,894,0
+sona-18659,49,backpack,desktop computer,156,0
+sona-18659,50,car,detergent,121,0
+sona-18659,51,earrings,makeup foundation,936,0
+sona-18659,52,pen,wallet,924,0
+sona-18659,53,band-aid,beanie,975,0
+sona-18659,54,coffee,ring,954,0
+sona-18445,0,backpack,paper notebook,435,0
+sona-18445,1,wallet,pencil,415,0
+sona-18445,2,tie,sunglasses,417,0
+sona-18445,3,coffee,cooking pot,421,0
+sona-18445,4,glasses,baseball cap,466,0
+sona-18445,5,glasses,ring,446,0
+sona-18445,6,scarf,laptop,576,0
+sona-18445,7,athletic clothes,calculator,468,0
+sona-18445,8,ring,pencil,456,0
+sona-18445,9,car,guitar,227,0
+sona-18445,10,calculator,wallet,1e3,0
+sona-18445,11,books,skateboard,729,0
+sona-18445,12,lipstick,scarf,332,0
+sona-18445,13,yoga mat,socks,472,0
+sona-18445,14,concert tickets,video games,428,0
+sona-18445,15,smart phone,water bottle,203,0
+sona-18445,16,books,laptop,385,0
+sona-18445,17,chocolate,band-aid,589,0
+sona-18445,18,lipstick,wallet,863,1
+sona-18445,19,paper notebook,calculator,474,0
+sona-18445,20,chocolate,cooking pot,302,0
+sona-18445,21,smart phone,headphones,376,0
+sona-18445,22,tie,shoes,688,0
+sona-18445,23,earphones,shoes,423,0
+sona-18445,24,water bottle,calculator,562,0
+sona-18445,25,detergent,headphones,584,0
+sona-18445,26,smart phone,calculator,251,0
+sona-18445,27,bicycle,backpack,746,0
+sona-18445,28,athletic clothes,makeup foundation,336,0
+sona-18445,29,band-aid,shirt,698,0
+sona-18445,30,ring,backpack,193,0
+sona-18445,31,swimming suit,earrings,668,0
+sona-18445,32,desktop computer,laptop,280,0
+sona-18445,33,concert tickets,headphones,561,0
+sona-18445,34,watch,earrings,394,0
+sona-18445,35,car,wine,539,0
+sona-18445,36,socks,pencil,398,1
+sona-18445,37,napkin,headphones,622,0
+sona-18445,38,granola bar,desktop computer,687,0
+sona-18445,39,books,camera,763,0
+sona-18445,40,glasses,scarf,785,0
+sona-18445,41,guitar,shirt,774,0
+sona-18445,42,chocolate,basketball,257,0
+sona-18445,43,yoga mat,wine,354,0
+sona-18445,44,napkin,athletic clothes,816,0
+sona-18445,45,water bottle,basketball,789,0
+sona-18445,46,headphones,athletic clothes,738,0
+sona-18445,47,bicycle,baseball cap,746,0
+sona-18445,48,watch,makeup foundation,714,0
+sona-18445,49,laptop,dishes,384,0
+sona-18445,50,scarf,computer keyboard,299,0
+sona-18445,51,watch,yoga mat,293,0
+sona-18445,52,chocolate,baseball cap,394,0
+sona-18445,53,water bottle,beanie,308,0
+sona-18445,54,beanie,calculator,272,0
+sona-18377,0,scarf,camera,203,0
+sona-18377,1,basketball,purse,794,0
+sona-18377,2,dress,water bottle,130,0
+sona-18377,3,cooking pot,detergent,274,0
+sona-18377,4,necklace,wallet,688,0
+sona-18377,5,baseball cap,lipstick,203,0
+sona-18377,6,calculator,headphones,776,0
+sona-18377,7,books,makeup foundation,699,0
+sona-18377,8,jacket,watch,191,0
+sona-18377,9,computer keyboard,pants,677,0
+sona-18377,10,headphones,earphones,212,0
+sona-18377,11,water bottle,laptop,804,0
+sona-18377,12,wine,pen,880,0
+sona-18377,13,scarf,granola bar,268,0
+sona-18377,14,socks,cooking pot,240,0
+sona-18377,15,wine,laptop,732,0
+sona-18377,16,purse,jacket,804,0
+sona-18377,17,dishes,lipstick,215,0
+sona-18377,18,scarf,earrings,724,1
+sona-18377,19,video games,smart phone,712,0
+sona-18377,20,laptop,watch,230,0
+sona-18377,21,camera,headphones,714,0
+sona-18377,22,purse,socks,833,0
+sona-18377,23,swimming suit,makeup foundation,254,0
+sona-18377,24,baseball cap,camera,663,0
+sona-18377,25,earphones,wallet,704,0
+sona-18377,26,skateboard,sunglasses,728,0
+sona-18377,27,athletic clothes,camera,753,0
+sona-18377,28,dishes,yoga mat,788,0
+sona-18377,29,dishes,bicycle,217,0
+sona-18377,30,skateboard,camera,249,0
+sona-18377,31,napkin,coffee,719,0
+sona-18377,32,video games,pencil,224,0
+sona-18377,33,makeup foundation,sunglasses,139,0
+sona-18377,34,beanie,athletic clothes,83,0
+sona-18377,35,earrings,cooking pot,220,0
+sona-18377,36,necklace,basketball,69,1
+sona-18377,37,computer keyboard,earphones,1e3,0
+sona-18377,38,jacket,yoga mat,166,0
+sona-18377,39,watch,lipstick,201,0
+sona-18377,40,chocolate,watch,816,0
+sona-18377,41,scarf,car,189,0
+sona-18377,42,coffee,sunglasses,825,0
+sona-18377,43,beanie,backpack,818,0
+sona-18377,44,wine,dress,868,0
+sona-18377,45,computer keyboard,watch,856,0
+sona-18377,46,socks,pants,898,0
+sona-18377,47,skateboard,headphones,878,0
+sona-18377,48,laptop,camera,857,0
+sona-18377,49,dishes,computer keyboard,876,0
+sona-18377,50,earrings,pants,856,0
+sona-18377,51,video games,watch,858,0
+sona-18377,52,baseball cap,laptop,867,0
+sona-18377,53,guitar,baseball cap,898,0
+sona-18377,54,shirt,calculator,853,0
+sona-18314,0,books,sunglasses,875,0
+sona-18314,1,earrings,water bottle,23,0
+sona-18314,2,camera,shirt,916,0
+sona-18314,3,watch,makeup foundation,887,0
+sona-18314,4,swimming suit,sunglasses,76,0
+sona-18314,5,video games,headphones,896,0
+sona-18314,6,pencil,coffee,937,0
+sona-18314,7,yoga mat,pants,951,0
+sona-18314,8,pants,band-aid,72,0
+sona-18314,9,baseball cap,athletic clothes,893,0
+sona-18314,10,video games,pen,61,0
+sona-18314,11,band-aid,baseball cap,88,0
+sona-18314,12,glasses,pencil,109,0
+sona-18314,13,chocolate,dishes,929,0
+sona-18314,14,tie,jacket,942,0
+sona-18314,15,wine,chocolate,44,0
+sona-18314,16,dishes,bicycle,942,0
+sona-18314,17,purse,earphones,28,0
+sona-18314,18,beanie,desktop computer,1e3,1
+sona-18314,19,skateboard,dress,955,0
+sona-18314,20,swimming suit,skateboard,71,0
+sona-18314,21,pen,dress,958,0
+sona-18314,22,beanie,bicycle,893,0
+sona-18314,23,desktop computer,athletic clothes,924,0
+sona-18314,24,makeup foundation,coffee,43,0
+sona-18314,25,laptop,books,76,0
+sona-18314,26,swimming suit,glasses,72,0
+sona-18314,27,glasses,jacket,981,0
+sona-18314,28,computer keyboard,jacket,964,0
+sona-18314,29,wallet,basketball,66,0
+sona-18314,30,shoes,dress,930,0
+sona-18314,31,yoga mat,water bottle,820,0
+sona-18314,32,computer keyboard,coffee,799,0
+sona-18314,33,pencil,paper notebook,920,0
+sona-18314,34,makeup foundation,glasses,60,0
+sona-18314,35,wine,swimming suit,814,0
+sona-18314,36,ring,paper notebook,142,1
+sona-18314,37,smart phone,granola bar,163,0
+sona-18314,38,watch,sunglasses,149,0
+sona-18314,39,chocolate,granola bar,164,0
+sona-18314,40,beanie,skateboard,865,0
+sona-18314,41,calculator,athletic clothes,113,0
+sona-18314,42,glasses,calculator,233,0
+sona-18314,43,pencil,baseball cap,157,0
+sona-18314,44,backpack,basketball,176,0
+sona-18314,45,earphones,shirt,860,0
+sona-18314,46,cooking pot,desktop computer,773,0
+sona-18314,47,jacket,calculator,189,0
+sona-18314,48,calculator,desktop computer,805,0
+sona-18314,49,scarf,glasses,180,0
+sona-18314,50,bicycle,sunglasses,849,0
+sona-18314,51,basketball,pencil,188,0
+sona-18314,52,ring,calculator,196,0
+sona-18314,53,dress,calculator,146,0
+sona-18314,54,basketball,pen,166,0
+sona-18017,0,skateboard,bicycle,4,0
+sona-18017,1,watch,detergent,21,0
+sona-18017,2,computer keyboard,makeup foundation,957,0
+sona-18017,3,swimming suit,laptop,1e3,0
+sona-18017,4,books,jacket,1e3,0
+sona-18017,5,earrings,coffee,1,0
+sona-18017,6,pen,pants,994,0
+sona-18017,7,band-aid,makeup foundation,1e3,0
+sona-18017,8,smart phone,cooking pot,9,0
+sona-18017,9,backpack,band-aid,1,0
+sona-18017,10,dress,desktop computer,1,0
+sona-18017,11,books,sunglasses,999,0
+sona-18017,12,earphones,headphones,1e3,0
+sona-18017,13,socks,smart phone,1e3,0
+sona-18017,14,backpack,socks,10,0
+sona-18017,15,wallet,calculator,3,0
+sona-18017,16,pants,beanie,1,0
+sona-18017,17,video games,ring,1e3,0
+sona-18017,18,wallet,water bottle,1e3,1
+sona-18017,19,sunglasses,lipstick,1e3,0
+sona-18017,20,computer keyboard,earrings,999,0
+sona-18017,21,lipstick,dishes,1,0
+sona-18017,22,glasses,shirt,1e3,0
+sona-18017,23,glasses,earrings,992,0
+sona-18017,24,swimming suit,detergent,3,0
+sona-18017,25,earphones,camera,983,0
+sona-18017,26,necklace,coffee,7,0
+sona-18017,27,glasses,camera,977,0
+sona-18017,28,beanie,shirt,998,0
+sona-18017,29,skateboard,tie,33,0
+sona-18017,30,shoes,beanie,1,0
+sona-18017,31,purse,calculator,1,0
+sona-18017,32,concert tickets,beanie,1,0
+sona-18017,33,pencil,athletic clothes,1e3,0
+sona-18017,34,pencil,backpack,1e3,0
+sona-18017,35,purse,yoga mat,1,0
+sona-18017,36,sunglasses,band-aid,1e3,1
+sona-18017,37,paper notebook,water bottle,998,0
+sona-18017,38,headphones,concert tickets,1,0
+sona-18017,39,chocolate,paper notebook,12,0
+sona-18017,40,skateboard,paper notebook,1,0
+sona-18017,41,water bottle,makeup foundation,971,0
+sona-18017,42,pencil,detergent,903,0
+sona-18017,43,backpack,dishes,85,0
+sona-18017,44,computer keyboard,laptop,928,0
+sona-18017,45,beanie,chocolate,943,0
+sona-18017,46,wallet,granola bar,9,0
+sona-18017,47,wine,tie,927,0
+sona-18017,48,books,purse,927,0
+sona-18017,49,basketball,necklace,903,0
+sona-18017,50,napkin,bicycle,876,0
+sona-18017,51,headphones,baseball cap,81,0
+sona-18017,52,headphones,jacket,76,0
+sona-18017,53,basketball,yoga mat,869,0
+sona-18017,54,necklace,water bottle,90,0
+sona-17842,0,dishes,bicycle,498,0
+sona-17842,1,skateboard,athletic clothes,717,0
+sona-17842,2,band-aid,makeup foundation,623,0
+sona-17842,3,watch,water bottle,291,0
+sona-17842,4,camera,desktop computer,288,0
+sona-17842,5,calculator,baseball cap,497,0
+sona-17842,6,necklace,glasses,299,0
+sona-17842,7,glasses,books,781,0
+sona-17842,8,granola bar,watch,794,0
+sona-17842,9,pencil,swimming suit,725,0
+sona-17842,10,backpack,calculator,347,0
+sona-17842,11,concert tickets,skateboard,298,0
+sona-17842,12,basketball,athletic clothes,680,0
+sona-17842,13,guitar,dishes,261,0
+sona-17842,14,desktop computer,glasses,280,0
+sona-17842,15,pencil,cooking pot,498,0
+sona-17842,16,necklace,books,767,0
+sona-17842,17,backpack,car,760,0
+sona-17842,18,socks,glasses,767,1
+sona-17842,19,scarf,detergent,757,0
+sona-17842,20,baseball cap,paper notebook,689,0
+sona-17842,21,purse,water bottle,287,0
+sona-17842,22,coffee,skateboard,279,0
+sona-17842,23,scarf,water bottle,505,0
+sona-17842,24,earrings,baseball cap,248,0
+sona-17842,25,video games,jacket,280,0
+sona-17842,26,socks,wallet,759,0
+sona-17842,27,makeup foundation,bicycle,285,0
+sona-17842,28,lipstick,pen,515,0
+sona-17842,29,concert tickets,earphones,301,0
+sona-17842,30,makeup foundation,paper notebook,255,0
+sona-17842,31,smart phone,desktop computer,277,0
+sona-17842,32,napkin,desktop computer,737,0
+sona-17842,33,basketball,pants,748,0
+sona-17842,34,calculator,jacket,324,0
+sona-17842,35,scarf,concert tickets,727,0
+sona-17842,36,band-aid,tie,706,1
+sona-17842,37,granola bar,tie,747,0
+sona-17842,38,headphones,earphones,324,0
+sona-17842,39,backpack,wallet,784,0
+sona-17842,40,makeup foundation,swimming suit,802,0
+sona-17842,41,necklace,shoes,300,0
+sona-17842,42,coffee,chocolate,228,0
+sona-17842,43,wine,calculator,247,0
+sona-17842,44,laptop,ring,771,0
+sona-17842,45,tie,chocolate,283,0
+sona-17842,46,athletic clothes,books,800,0
+sona-17842,47,bicycle,chocolate,270,0
+sona-17842,48,camera,baseball cap,286,0
+sona-17842,49,scarf,chocolate,255,0
+sona-17842,50,coffee,pen,504,0
+sona-17842,51,shirt,smart phone,762,0
+sona-17842,52,wine,books,782,0
+sona-17842,53,laptop,watch,812,0
+sona-17842,54,ring,wine,288,0
+sona-17801,0,lipstick,laptop,809,0
+sona-17801,1,napkin,glasses,770,0
+sona-17801,2,watch,ring,849,0
+sona-17801,3,computer keyboard,bicycle,872,0
+sona-17801,4,tie,scarf,186,0
+sona-17801,5,water bottle,lipstick,57,0
+sona-17801,6,scarf,laptop,734,0
+sona-17801,7,scarf,paper notebook,338,0
+sona-17801,8,shoes,computer keyboard,135,0
+sona-17801,9,car,earrings,79,0
+sona-17801,10,athletic clothes,backpack,282,0
+sona-17801,11,makeup foundation,basketball,150,0
+sona-17801,12,shirt,jacket,931,0
+sona-17801,13,pen,calculator,194,0
+sona-17801,14,socks,sunglasses,777,0
+sona-17801,15,headphones,computer keyboard,192,0
+sona-17801,16,tie,baseball cap,788,0
+sona-17801,17,tie,car,798,0
+sona-17801,18,wallet,swimming suit,180,1
+sona-17801,19,athletic clothes,cooking pot,141,0
+sona-17801,20,pants,bicycle,1e3,0
+sona-17801,21,bicycle,books,144,0
+sona-17801,22,calculator,basketball,687,0
+sona-17801,23,car,paper notebook,171,0
+sona-17801,24,desktop computer,laptop,831,0
+sona-17801,25,purse,napkin,78,0
+sona-17801,26,basketball,beanie,907,0
+sona-17801,27,makeup foundation,cooking pot,249,0
+sona-17801,28,earphones,backpack,800,0
+sona-17801,29,lipstick,wine,743,0
+sona-17801,30,sunglasses,guitar,144,0
+sona-17801,31,jacket,earphones,209,0
+sona-17801,32,purse,shirt,173,0
+sona-17801,33,pencil,dishes,194,0
+sona-17801,34,lipstick,glasses,786,0
+sona-17801,35,pencil,cooking pot,825,0
+sona-17801,36,ring,books,99,1
+sona-17801,37,baseball cap,coffee,221,0
+sona-17801,38,pen,beanie,142,0
+sona-17801,39,swimming suit,laptop,827,0
+sona-17801,40,lipstick,camera,803,0
+sona-17801,41,ring,swimming suit,84,0
+sona-17801,42,pen,glasses,825,0
+sona-17801,43,pencil,jacket,815,0
+sona-17801,44,ring,athletic clothes,106,0
+sona-17801,45,watch,scarf,215,0
+sona-17801,46,socks,earrings,830,0
+sona-17801,47,concert tickets,headphones,759,0
+sona-17801,48,guitar,laptop,853,0
+sona-17801,49,tie,laptop,842,0
+sona-17801,50,watch,shirt,206,0
+sona-17801,51,lipstick,paper notebook,90,0
+sona-17801,52,calculator,cooking pot,704,0
+sona-17801,53,pants,athletic clothes,898,0
+sona-17801,54,baseball cap,smart phone,836,0
+sona-17775,0,lipstick,wine,850,0
+sona-17775,1,lipstick,glasses,841,0
+sona-17775,2,necklace,guitar,156,0
+sona-17775,3,watch,guitar,124,0
+sona-17775,4,pen,socks,817,0
+sona-17775,5,guitar,headphones,839,0
+sona-17775,6,pants,smart phone,827,0
+sona-17775,7,purse,cooking pot,119,0
+sona-17775,8,necklace,skateboard,143,0
+sona-17775,9,shirt,glasses,785,0
+sona-17775,10,dress,makeup foundation,63,0
+sona-17775,11,pants,granola bar,180,0
+sona-17775,12,purse,water bottle,153,0
+sona-17775,13,napkin,ring,904,0
+sona-17775,14,detergent,glasses,927,0
+sona-17775,15,backpack,necklace,841,0
+sona-17775,16,purse,smart phone,851,0
+sona-17775,17,paper notebook,pants,878,0
+sona-17775,18,necklace,chocolate,1e3,1
+sona-17775,19,tie,band-aid,130,0
+sona-17775,20,video games,pants,109,0
+sona-17775,21,granola bar,glasses,862,0
+sona-17775,22,tie,basketball,880,0
+sona-17775,23,tie,wallet,875,0
+sona-17775,24,detergent,ring,873,0
+sona-17775,25,shirt,laptop,860,0
+sona-17775,26,laptop,computer keyboard,84,0
+sona-17775,27,necklace,smart phone,858,0
+sona-17775,28,dishes,car,900,0
+sona-17775,29,beanie,makeup foundation,82,0
+sona-17775,30,purse,earrings,118,0
+sona-17775,31,computer keyboard,smart phone,830,0
+sona-17775,32,watch,bicycle,113,0
+sona-17775,33,camera,basketball,171,0
+sona-17775,34,shoes,coffee,114,0
+sona-17775,35,tie,water bottle,91,0
+sona-17775,36,dishes,granola bar,1e3,1
+sona-17775,37,concert tickets,ring,158,0
+sona-17775,38,pen,purse,803,0
+sona-17775,39,tie,camera,848,0
+sona-17775,40,pen,granola bar,154,0
+sona-17775,41,laptop,bicycle,134,0
+sona-17775,42,concert tickets,computer keyboard,87,0
+sona-17775,43,athletic clothes,guitar,78,0
+sona-17775,44,smart phone,bicycle,88,0
+sona-17775,45,sunglasses,bicycle,98,0
+sona-17775,46,video games,makeup foundation,868,0
+sona-17775,47,lipstick,desktop computer,894,0
+sona-17775,48,earphones,books,75,0
+sona-17775,49,pen,wine,891,0
+sona-17775,50,dishes,baseball cap,900,0
+sona-17775,51,shoes,socks,116,0
+sona-17775,52,cooking pot,wine,862,0
+sona-17775,53,watch,granola bar,74,0
+sona-17775,54,dress,desktop computer,71,0
+sona-17204,0,wallet,headphones,1,0
+sona-17204,1,coffee,earrings,768,0
+sona-17204,2,video games,bicycle,337,0
+sona-17204,3,socks,books,672,0
+sona-17204,4,dress,socks,1,0
+sona-17204,5,car,baseball cap,1,0
+sona-17204,6,pencil,earrings,1e3,0
+sona-17204,7,basketball,athletic clothes,1e3,0
+sona-17204,8,lipstick,books,784,0
+sona-17204,9,napkin,chocolate,626,0
+sona-17204,10,lipstick,baseball cap,429,0
+sona-17204,11,books,chocolate,443,0
+sona-17204,12,skateboard,socks,226,0
+sona-17204,13,dress,earrings,1,0
+sona-17204,14,guitar,lipstick,34,0
+sona-17204,15,guitar,wallet,989,0
+sona-17204,16,ring,beanie,3,0
+sona-17204,17,chocolate,baseball cap,898,0
+sona-17204,18,jacket,bicycle,1e3,1
+sona-17204,19,detergent,lipstick,869,0
+sona-17204,20,video games,jacket,357,0
+sona-17204,21,jacket,necklace,690,0
+sona-17204,22,computer keyboard,chocolate,320,0
+sona-17204,23,lipstick,band-aid,264,0
+sona-17204,24,smart phone,baseball cap,269,0
+sona-17204,25,watch,tie,208,0
+sona-17204,26,headphones,backpack,218,0
+sona-17204,27,swimming suit,wine,217,0
+sona-17204,28,paper notebook,tie,827,0
+sona-17204,29,concert tickets,computer keyboard,125,0
+sona-17204,30,socks,computer keyboard,791,0
+sona-17204,31,smart phone,earrings,156,0
+sona-17204,32,dress,sunglasses,166,0
+sona-17204,33,shirt,tie,706,0
+sona-17204,34,pen,baseball cap,853,0
+sona-17204,35,coffee,dishes,776,0
+sona-17204,36,lipstick,athletic clothes,730,1
+sona-17204,37,jacket,books,191,0
+sona-17204,38,wallet,concert tickets,754,0
+sona-17204,39,cooking pot,computer keyboard,764,0
+sona-17204,40,wallet,bicycle,733,0
+sona-17204,41,watch,books,229,0
+sona-17204,42,backpack,athletic clothes,185,0
+sona-17204,43,laptop,pencil,199,0
+sona-17204,44,wine,jacket,674,0
+sona-17204,45,desktop computer,jacket,236,0
+sona-17204,46,bicycle,athletic clothes,197,0
+sona-17204,47,guitar,pants,230,0
+sona-17204,48,detergent,pencil,262,0
+sona-17204,49,socks,car,1e3,0
+sona-17204,50,makeup foundation,sunglasses,858,0
+sona-17204,51,band-aid,camera,1e3,0
+sona-17204,52,coffee,car,996,0
+sona-17204,53,band-aid,athletic clothes,986,0
+sona-17204,54,makeup foundation,necklace,848,0
+sona-17140,0,scarf,calculator,5,0
+sona-17140,1,granola bar,paper notebook,629,0
+sona-17140,2,socks,baseball cap,971,0
+sona-17140,3,pen,wallet,946,0
+sona-17140,4,shirt,makeup foundation,65,0
+sona-17140,5,pencil,water bottle,578,0
+sona-17140,6,pen,car,1e3,0
+sona-17140,7,coffee,wine,964,0
+sona-17140,8,shirt,earrings,95,0
+sona-17140,9,laptop,concert tickets,155,0
+sona-17140,10,sunglasses,laptop,3,0
+sona-17140,11,pen,bicycle,970,0
+sona-17140,12,headphones,purse,948,0
+sona-17140,13,concert tickets,wallet,948,0
+sona-17140,14,water bottle,pants,989,0
+sona-17140,15,computer keyboard,laptop,876,0
+sona-17140,16,swimming suit,glasses,12,0
+sona-17140,17,swimming suit,chocolate,23,0
+sona-17140,18,necklace,purse,1e3,1
+sona-17140,19,swimming suit,baseball cap,19,0
+sona-17140,20,napkin,wine,911,0
+sona-17140,21,scarf,detergent,3,0
+sona-17140,22,glasses,paper notebook,27,0
+sona-17140,23,laptop,detergent,17,0
+sona-17140,24,scarf,socks,266,0
+sona-17140,25,computer keyboard,athletic clothes,970,0
+sona-17140,26,headphones,books,391,0
+sona-17140,27,baseball cap,coffee,84,0
+sona-17140,28,beanie,pen,15,0
+sona-17140,29,cooking pot,books,876,0
+sona-17140,30,calculator,watch,1e3,0
+sona-17140,31,tie,socks,68,0
+sona-17140,32,tie,guitar,16,0
+sona-17140,33,tie,wine,170,0
+sona-17140,34,chocolate,necklace,703,0
+sona-17140,35,swimming suit,necklace,105,0
+sona-17140,36,socks,laptop,1e3,1
+sona-17140,37,scarf,chocolate,100,0
+sona-17140,38,sunglasses,swimming suit,1e3,0
+sona-17140,39,chocolate,detergent,844,0
+sona-17140,40,socks,athletic clothes,1e3,0
+sona-17140,41,baseball cap,camera,94,0
+sona-17140,42,cooking pot,glasses,860,0
+sona-17140,43,cooking pot,lipstick,967,0
+sona-17140,44,desktop computer,detergent,162,0
+sona-17140,45,ring,glasses,967,0
+sona-17140,46,dishes,backpack,851,0
+sona-17140,47,pencil,band-aid,419,0
+sona-17140,48,ring,books,23,0
+sona-17140,49,skateboard,cooking pot,31,0
+sona-17140,50,pants,video games,42,0
+sona-17140,51,pencil,swimming suit,951,0
+sona-17140,52,swimming suit,wallet,904,0
+sona-17140,53,calculator,car,987,0
+sona-17140,54,guitar,concert tickets,456,0
+sona-17086,0,ring,lipstick,701,0
+sona-17086,1,paper notebook,calculator,437,0
+sona-17086,2,glasses,dress,708,0
+sona-17086,3,coffee,desktop computer,433,0
+sona-17086,4,dress,necklace,333,0
+sona-17086,5,ring,pencil,285,0
+sona-17086,6,ring,earrings,690,0
+sona-17086,7,athletic clothes,dishes,331,0
+sona-17086,8,bicycle,basketball,459,0
+sona-17086,9,beanie,backpack,366,0
+sona-17086,10,basketball,desktop computer,450,0
+sona-17086,11,ring,bicycle,635,0
+sona-17086,12,backpack,headphones,594,0
+sona-17086,13,necklace,concert tickets,595,0
+sona-17086,14,swimming suit,dishes,346,0
+sona-17086,15,swimming suit,desktop computer,313,0
+sona-17086,16,chocolate,baseball cap,705,0
+sona-17086,17,tie,pencil,292,0
+sona-17086,18,napkin,paper notebook,627,1
+sona-17086,19,car,baseball cap,365,0
+sona-17086,20,desktop computer,chocolate,562,0
+sona-17086,21,desktop computer,car,607,0
+sona-17086,22,bicycle,jacket,655,0
+sona-17086,23,jacket,band-aid,363,0
+sona-17086,24,dress,concert tickets,227,0
+sona-17086,25,bicycle,lipstick,699,0
+sona-17086,26,sunglasses,bicycle,313,0
+sona-17086,27,headphones,jacket,713,0
+sona-17086,28,socks,car,632,0
+sona-17086,29,athletic clothes,band-aid,320,0
+sona-17086,30,watch,pencil,314,0
+sona-17086,31,headphones,concert tickets,670,0
+sona-17086,32,skateboard,camera,656,0
+sona-17086,33,backpack,concert tickets,662,0
+sona-17086,34,tie,pants,694,0
+sona-17086,35,calculator,band-aid,622,0
+sona-17086,36,shoes,dishes,313,1
+sona-17086,37,scarf,sunglasses,664,0
+sona-17086,38,purse,earphones,383,0
+sona-17086,39,watch,camera,325,0
+sona-17086,40,desktop computer,camera,687,0
+sona-17086,41,cooking pot,sunglasses,585,0
+sona-17086,42,dress,sunglasses,630,0
+sona-17086,43,wine,laptop,618,0
+sona-17086,44,computer keyboard,band-aid,392,0
+sona-17086,45,pencil,car,600,0
+sona-17086,46,scarf,basketball,324,0
+sona-17086,47,shirt,athletic clothes,610,0
+sona-17086,48,shoes,backpack,317,0
+sona-17086,49,video games,socks,361,0
+sona-17086,50,concert tickets,calculator,371,0
+sona-17086,51,glasses,yoga mat,398,0
+sona-17086,52,guitar,jacket,403,0
+sona-17086,53,watch,calculator,415,0
+sona-17086,54,glasses,coffee,365,0
+sona-17066,0,detergent,dishes,772,0
+sona-17066,1,sunglasses,desktop computer,754,0
+sona-17066,2,calculator,desktop computer,760,0
+sona-17066,3,watch,calculator,176,0
+sona-17066,4,paper notebook,car,828,0
+sona-17066,5,camera,books,140,0
+sona-17066,6,athletic clothes,water bottle,163,0
+sona-17066,7,athletic clothes,video games,198,0
+sona-17066,8,glasses,yoga mat,501,0
+sona-17066,9,dishes,lipstick,255,0
+sona-17066,10,cooking pot,dishes,712,0
+sona-17066,11,granola bar,coffee,846,0
+sona-17066,12,camera,earrings,613,0
+sona-17066,13,guitar,computer keyboard,448,0
+sona-17066,14,pencil,concert tickets,592,0
+sona-17066,15,desktop computer,lipstick,416,0
+sona-17066,16,coffee,books,297,0
+sona-17066,17,video games,sunglasses,669,0
+sona-17066,18,dress,sunglasses,1e3,1
+sona-17066,19,earrings,desktop computer,207,0
+sona-17066,20,paper notebook,concert tickets,624,0
+sona-17066,21,pants,concert tickets,606,0
+sona-17066,22,makeup foundation,camera,671,0
+sona-17066,23,jacket,cooking pot,346,0
+sona-17066,24,ring,desktop computer,173,0
+sona-17066,25,jacket,concert tickets,251,0
+sona-17066,26,shirt,granola bar,338,0
+sona-17066,27,headphones,concert tickets,376,0
+sona-17066,28,purse,sunglasses,310,0
+sona-17066,29,guitar,ring,689,0
+sona-17066,30,computer keyboard,necklace,628,0
+sona-17066,31,napkin,pencil,518,0
+sona-17066,32,car,coffee,234,0
+sona-17066,33,socks,granola bar,455,0
+sona-17066,34,athletic clothes,shoes,360,0
+sona-17066,35,socks,car,743,0
+sona-17066,36,laptop,concert tickets,1e3,1
+sona-17066,37,yoga mat,sunglasses,667,0
+sona-17066,38,glasses,band-aid,342,0
+sona-17066,39,tie,desktop computer,616,0
+sona-17066,40,band-aid,detergent,363,0
+sona-17066,41,jacket,sunglasses,671,0
+sona-17066,42,paper notebook,calculator,749,0
+sona-17066,43,concert tickets,books,248,0
+sona-17066,44,earphones,desktop computer,621,0
+sona-17066,45,band-aid,pants,704,0
+sona-17066,46,scarf,sunglasses,677,0
+sona-17066,47,smart phone,books,43,0
+sona-17066,48,watch,water bottle,178,0
+sona-17066,49,athletic clothes,detergent,183,0
+sona-17066,50,concert tickets,desktop computer,685,0
+sona-17066,51,jacket,swimming suit,178,0
+sona-17066,52,glasses,computer keyboard,333,0
+sona-17066,53,laptop,books,148,0
+sona-17066,54,laptop,desktop computer,135,0
+sona-16942,0,car,smart phone,1,0
+sona-16942,1,backpack,pen,1,0
+sona-16942,2,dishes,beanie,361,0
+sona-16942,3,paper notebook,makeup foundation,765,0
+sona-16942,4,computer keyboard,camera,918,0
+sona-16942,5,books,guitar,110,0
+sona-16942,6,purse,laptop,759,0
+sona-16942,7,beanie,scarf,205,0
+sona-16942,8,earphones,yoga mat,198,0
+sona-16942,9,necklace,athletic clothes,817,0
+sona-16942,10,concert tickets,scarf,74,0
+sona-16942,11,earphones,scarf,148,0
+sona-16942,12,purse,shoes,863,0
+sona-16942,13,backpack,ring,968,0
+sona-16942,14,laptop,calculator,114,0
+sona-16942,15,wallet,guitar,118,0
+sona-16942,16,guitar,calculator,27,0
+sona-16942,17,swimming suit,chocolate,88,0
+sona-16942,18,desktop computer,basketball,74,1
+sona-16942,19,granola bar,headphones,998,0
+sona-16942,20,pen,jacket,972,0
+sona-16942,21,books,skateboard,70,0
+sona-16942,22,necklace,concert tickets,911,0
+sona-16942,23,cooking pot,purse,919,0
+sona-16942,24,athletic clothes,purse,67,0
+sona-16942,25,desktop computer,makeup foundation,47,0
+sona-16942,26,tie,baseball cap,63,0
+sona-16942,27,socks,water bottle,976,0
+sona-16942,28,wine,headphones,43,0
+sona-16942,29,wine,yoga mat,1,0
+sona-16942,30,wine,wallet,11,0
+sona-16942,31,band-aid,shoes,971,0
+sona-16942,32,detergent,calculator,73,0
+sona-16942,33,cooking pot,wallet,930,0
+sona-16942,34,dishes,napkin,917,0
+sona-16942,35,pen,sunglasses,979,0
+sona-16942,36,dishes,detergent,945,1
+sona-16942,37,watch,pants,97,0
+sona-16942,38,necklace,granola bar,60,0
+sona-16942,39,beanie,headphones,936,0
+sona-16942,40,bicycle,purse,18,0
+sona-16942,41,granola bar,baseball cap,912,0
+sona-16942,42,dishes,laptop,934,0
+sona-16942,43,books,dress,1,0
+sona-16942,44,earphones,sunglasses,975,0
+sona-16942,45,books,socks,20,0
+sona-16942,46,wine,granola bar,69,0
+sona-16942,47,car,sunglasses,32,0
+sona-16942,48,detergent,baseball cap,99,0
+sona-16942,49,purse,sunglasses,974,0
+sona-16942,50,beanie,chocolate,33,0
+sona-16942,51,swimming suit,guitar,59,0
+sona-16942,52,water bottle,calculator,947,0
+sona-16942,53,pen,granola bar,45,0
+sona-16942,54,earrings,detergent,88,0
+sona-16593,0,socks,desktop computer,774,0
+sona-16593,1,guitar,car,969,0
+sona-16593,2,car,headphones,1,0
+sona-16593,3,makeup foundation,headphones,1,0
+sona-16593,4,backpack,band-aid,1,0
+sona-16593,5,dress,necklace,1,0
+sona-16593,6,desktop computer,detergent,1e3,0
+sona-16593,7,makeup foundation,yoga mat,952,0
+sona-16593,8,granola bar,watch,932,0
+sona-16593,9,guitar,video games,965,0
+sona-16593,10,yoga mat,athletic clothes,1e3,0
+sona-16593,11,laptop,water bottle,1,0
+sona-16593,12,video games,napkin,1e3,0
+sona-16593,13,paper notebook,athletic clothes,938,0
+sona-16593,14,earrings,band-aid,1e3,0
+sona-16593,15,beanie,video games,26,0
+sona-16593,16,calculator,tie,1e3,0
+sona-16593,17,car,pen,1,0
+sona-16593,18,desktop computer,wine,1e3,1
+sona-16593,19,yoga mat,napkin,148,0
+sona-16593,20,purse,laptop,156,0
+sona-16593,21,necklace,sunglasses,773,0
+sona-16593,22,chocolate,ring,901,0
+sona-16593,23,shirt,watch,1,0
+sona-16593,24,chocolate,wine,844,0
+sona-16593,25,calculator,makeup foundation,754,0
+sona-16593,26,shoes,athletic clothes,822,0
+sona-16593,27,concert tickets,napkin,113,0
+sona-16593,28,baseball cap,pen,143,0
+sona-16593,29,bicycle,camera,63,0
+sona-16593,30,coffee,skateboard,78,0
+sona-16593,31,glasses,wine,166,0
+sona-16593,32,dress,swimming suit,867,0
+sona-16593,33,dress,tie,86,0
+sona-16593,34,concert tickets,baseball cap,828,0
+sona-16593,35,water bottle,smart phone,932,0
+sona-16593,36,granola bar,concert tickets,806,1
+sona-16593,37,jacket,concert tickets,803,0
+sona-16593,38,purse,tie,790,0
+sona-16593,39,ring,napkin,776,0
+sona-16593,40,purse,yoga mat,761,0
+sona-16593,41,water bottle,earphones,750,0
+sona-16593,42,shoes,basketball,796,0
+sona-16593,43,sunglasses,wallet,775,0
+sona-16593,44,yoga mat,pants,772,0
+sona-16593,45,granola bar,video games,778,0
+sona-16593,46,cooking pot,paper notebook,769,0
+sona-16593,47,beanie,makeup foundation,765,0
+sona-16593,48,ring,skateboard,755,0
+sona-16593,49,guitar,sunglasses,658,0
+sona-16593,50,earrings,pants,612,0
+sona-16593,51,beanie,backpack,857,0
+sona-16593,52,water bottle,tie,735,0
+sona-16593,53,cooking pot,water bottle,834,0
+sona-16593,54,shirt,chocolate,657,0
+sona-16297,0,granola bar,detergent,747,0
+sona-16297,1,granola bar,basketball,330,0
+sona-16297,2,tie,laptop,1,0
+sona-16297,3,smart phone,desktop computer,327,0
+sona-16297,4,pencil,desktop computer,1e3,0
+sona-16297,5,wallet,necklace,360,0
+sona-16297,6,tie,computer keyboard,202,0
+sona-16297,7,granola bar,lipstick,1e3,0
+sona-16297,8,skateboard,jacket,663,0
+sona-16297,9,concert tickets,car,1e3,0
+sona-16297,10,band-aid,pants,1e3,0
+sona-16297,11,earphones,bicycle,644,0
+sona-16297,12,tie,video games,397,0
+sona-16297,13,water bottle,bicycle,1e3,0
+sona-16297,14,shirt,ring,765,0
+sona-16297,15,swimming suit,necklace,998,0
+sona-16297,16,paper notebook,dress,1e3,0
+sona-16297,17,skateboard,guitar,752,0
+sona-16297,18,lipstick,books,174,1
+sona-16297,19,bicycle,car,1e3,0
+sona-16297,20,glasses,beanie,1,0
+sona-16297,21,skateboard,desktop computer,868,0
+sona-16297,22,dress,pants,965,0
+sona-16297,23,band-aid,makeup foundation,507,0
+sona-16297,24,beanie,guitar,647,0
+sona-16297,25,pen,video games,1e3,0
+sona-16297,26,swimming suit,pants,1e3,0
+sona-16297,27,wine,pants,1,0
+sona-16297,28,dishes,detergent,52,0
+sona-16297,29,shirt,scarf,157,0
+sona-16297,30,tie,coffee,1,0
+sona-16297,31,cooking pot,smart phone,1e3,0
+sona-16297,32,cooking pot,skateboard,1e3,0
+sona-16297,33,lipstick,car,1e3,0
+sona-16297,34,dishes,pencil,5,0
+sona-16297,35,shirt,guitar,515,0
+sona-16297,36,cooking pot,shoes,783,1
+sona-16297,37,swimming suit,coffee,191,0
+sona-16297,38,jacket,dress,1e3,0
+sona-16297,39,glasses,books,51,0
+sona-16297,40,water bottle,baseball cap,162,0
+sona-16297,41,lipstick,chocolate,185,0
+sona-16297,42,dishes,paper notebook,29,0
+sona-16297,43,necklace,scarf,889,0
+sona-16297,44,dishes,desktop computer,1e3,0
+sona-16297,45,cooking pot,bicycle,150,0
+sona-16297,46,swimming suit,books,637,0
+sona-16297,47,tie,napkin,14,0
+sona-16297,48,concert tickets,dress,803,0
+sona-16297,49,cooking pot,necklace,895,0
+sona-16297,50,napkin,ring,733,0
+sona-16297,51,granola bar,ring,919,0
+sona-16297,52,wallet,books,49,0
+sona-16297,53,ring,books,144,0
+sona-16297,54,camera,bicycle,3,0
+sona-15697,0,yoga mat,socks,715,0
+sona-15697,1,ring,dress,825,0
+sona-15697,2,makeup foundation,car,1,0
+sona-15697,3,dress,pen,49,0
+sona-15697,4,necklace,sunglasses,975,0
+sona-15697,5,cooking pot,smart phone,882,0
+sona-15697,6,car,baseball cap,1e3,0
+sona-15697,7,lipstick,skateboard,1e3,1
+sona-15697,8,cooking pot,headphones,1e3,0
+sona-15697,9,books,cooking pot,448,0
+sona-15697,10,granola bar,pen,389,0
+sona-15697,11,pen,socks,498,0
+sona-15697,12,jacket,laptop,404,0
+sona-15697,13,shoes,shirt,757,0
+sona-15697,14,shoes,band-aid,59,0
+sona-15697,15,scarf,basketball,227,0
+sona-15697,16,calculator,desktop computer,210,0
+sona-15697,17,cooking pot,dress,940,0
+sona-15697,18,lipstick,skateboard,1e3,1
+sona-15697,19,skateboard,concert tickets,138,0
+sona-15697,20,computer keyboard,pen,706,0
+sona-15697,21,books,computer keyboard,406,0
+sona-15697,22,granola bar,video games,667,0
+sona-15697,23,cooking pot,scarf,756,0
+sona-15697,24,laptop,pants,872,0
+sona-15697,25,video games,watch,812,0
+sona-15697,26,laptop,desktop computer,220,0
+sona-15697,27,necklace,chocolate,237,0
+sona-15697,28,athletic clothes,coffee,272,0
+sona-15697,29,napkin,backpack,845,0
+sona-15697,30,water bottle,band-aid,318,0
+sona-15697,31,ring,scarf,923,0
+sona-15697,32,scarf,headphones,536,0
+sona-15697,33,swimming suit,calculator,395,0
+sona-15697,34,video games,wine,738,0
+sona-15697,35,headphones,concert tickets,354,0
+sona-15697,36,water bottle,basketball,733,1
+sona-15697,37,glasses,napkin,376,0
+sona-15697,38,makeup foundation,jacket,921,0
+sona-15697,39,desktop computer,backpack,816,0
+sona-15697,40,calculator,earrings,711,0
+sona-15697,41,skateboard,bicycle,870,0
+sona-15697,42,makeup foundation,video games,135,0
+sona-15697,43,yoga mat,backpack,891,0
+sona-15697,44,lipstick,granola bar,364,0
+sona-15697,45,beanie,pants,829,0
+sona-15697,46,swimming suit,car,142,0
+sona-15697,47,chocolate,coffee,514,0
+sona-15697,48,socks,wallet,856,0
+sona-15697,49,dress,backpack,56,0
+sona-15697,50,makeup foundation,scarf,606,0
+sona-15697,51,water bottle,bicycle,224,0
+sona-15697,52,pants,baseball cap,190,0
+sona-15697,53,purse,pen,310,0
+sona-15697,54,detergent,concert tickets,895,0
+sona-15534,0,watch,smart phone,810,0
+sona-15534,1,coffee,laptop,857,0
+sona-15534,2,earphones,wine,931,0
+sona-15534,3,earrings,detergent,162,0
+sona-15534,4,dishes,camera,836,0
+sona-15534,5,paper notebook,beanie,106,0
+sona-15534,6,pen,tie,730,0
+sona-15534,7,desktop computer,cooking pot,184,0
+sona-15534,8,dress,concert tickets,817,0
+sona-15534,9,basketball,concert tickets,858,0
+sona-15534,10,coffee,necklace,851,0
+sona-15534,11,tie,smart phone,782,0
+sona-15534,12,swimming suit,watch,794,0
+sona-15534,13,baseball cap,smart phone,241,0
+sona-15534,14,computer keyboard,ring,937,0
+sona-15534,15,skateboard,baseball cap,262,0
+sona-15534,16,athletic clothes,bicycle,759,0
+sona-15534,17,pen,cooking pot,254,0
+sona-15534,18,wine,concert tickets,782,1
+sona-15534,19,desktop computer,yoga mat,228,0
+sona-15534,20,scarf,chocolate,208,0
+sona-15534,21,swimming suit,smart phone,792,0
+sona-15534,22,baseball cap,lipstick,133,0
+sona-15534,23,smart phone,water bottle,334,0
+sona-15534,24,desktop computer,tie,278,0
+sona-15534,25,earrings,lipstick,239,0
+sona-15534,26,basketball,smart phone,768,0
+sona-15534,27,desktop computer,beanie,275,0
+sona-15534,28,tie,glasses,737,0
+sona-15534,29,necklace,pants,251,0
+sona-15534,30,earphones,sunglasses,237,0
+sona-15534,31,skateboard,shirt,789,0
+sona-15534,32,calculator,yoga mat,307,0
+sona-15534,33,detergent,necklace,931,0
+sona-15534,34,granola bar,jacket,813,0
+sona-15534,35,pencil,camera,787,0
+sona-15534,36,laptop,wallet,203,1
+sona-15534,37,guitar,beanie,254,0
+sona-15534,38,coffee,pants,143,0
+sona-15534,39,dishes,headphones,894,0
+sona-15534,40,books,wine,721,0
+sona-15534,41,pencil,calculator,700,0
+sona-15534,42,pencil,water bottle,802,0
+sona-15534,43,purse,napkin,113,0
+sona-15534,44,pen,bicycle,889,0
+sona-15534,45,scarf,paper notebook,200,0
+sona-15534,46,jacket,camera,872,0
+sona-15534,47,dress,necklace,907,0
+sona-15534,48,tie,water bottle,112,0
+sona-15534,49,purse,concert tickets,191,0
+sona-15534,50,books,necklace,807,0
+sona-15534,51,shoes,coffee,235,0
+sona-15534,52,granola bar,concert tickets,774,0
+sona-15534,53,swimming suit,calculator,292,0
+sona-15534,54,car,wallet,321,0
+sona-14103,0,earrings,skateboard,491,0
+sona-14103,1,yoga mat,granola bar,131,0
+sona-14103,2,watch,jacket,694,0
+sona-14103,3,swimming suit,pants,202,0
+sona-14103,4,bicycle,pen,501,0
+sona-14103,5,napkin,car,830,0
+sona-14103,6,desktop computer,purse,694,0
+sona-14103,7,desktop computer,shirt,730,0
+sona-14103,8,glasses,books,249,0
+sona-14103,9,coffee,smart phone,655,0
+sona-14103,10,baseball cap,dishes,326,0
+sona-14103,11,desktop computer,jacket,683,0
+sona-14103,12,water bottle,detergent,328,0
+sona-14103,13,band-aid,jacket,807,0
+sona-14103,14,baseball cap,necklace,339,0
+sona-14103,15,camera,tie,728,0
+sona-14103,16,swimming suit,jacket,311,0
+sona-14103,17,camera,purse,703,0
+sona-14103,18,wine,wallet,275,1
+sona-14103,19,napkin,lipstick,773,0
+sona-14103,20,chocolate,watch,771,0
+sona-14103,21,shoes,socks,269,0
+sona-14103,22,paper notebook,sunglasses,796,0
+sona-14103,23,headphones,napkin,199,0
+sona-14103,24,pants,smart phone,363,0
+sona-14103,25,concert tickets,earphones,752,0
+sona-14103,26,earphones,jacket,740,0
+sona-14103,27,baseball cap,earrings,646,0
+sona-14103,28,books,necklace,711,0
+sona-14103,29,socks,lipstick,791,0
+sona-14103,30,granola bar,swimming suit,747,0
+sona-14103,31,earrings,sunglasses,636,0
+sona-14103,32,ring,pants,313,0
+sona-14103,33,shoes,sunglasses,627,0
+sona-14103,34,pants,napkin,168,0
+sona-14103,35,desktop computer,detergent,213,0
+sona-14103,36,basketball,band-aid,1e3,1
+sona-14103,37,makeup foundation,jacket,400,0
+sona-14103,38,shoes,earphones,746,0
+sona-14103,39,laptop,coffee,193,0
+sona-14103,40,yoga mat,water bottle,145,0
+sona-14103,41,scarf,wallet,129,0
+sona-14103,42,purse,water bottle,193,0
+sona-14103,43,chocolate,dishes,491,0
+sona-14103,44,swimming suit,laptop,242,0
+sona-14103,45,computer keyboard,earrings,802,0
+sona-14103,46,cooking pot,makeup foundation,940,0
+sona-14103,47,wine,basketball,296,0
+sona-14103,48,books,concert tickets,188,0
+sona-14103,49,water bottle,smart phone,710,0
+sona-14103,50,ring,napkin,105,0
+sona-14103,51,backpack,car,732,0
+sona-14103,52,computer keyboard,baseball cap,748,0
+sona-14103,53,purse,earphones,211,0
+sona-14103,54,shoes,napkin,73,0
+sona-14033,0,chocolate,bicycle,544,0
+sona-14033,1,backpack,granola bar,427,0
+sona-14033,2,shirt,camera,448,0
+sona-14033,3,baseball cap,basketball,554,0
+sona-14033,4,chocolate,scarf,541,0
+sona-14033,5,pants,wine,537,0
+sona-14033,6,camera,water bottle,440,0
+sona-14033,7,pen,tie,453,0
+sona-14033,8,scarf,makeup foundation,473,0
+sona-14033,9,calculator,socks,468,0
+sona-14033,10,earrings,concert tickets,451,0
+sona-14033,11,earphones,skateboard,1e3,0
+sona-14033,12,skateboard,jacket,1,0
+sona-14033,13,wine,skateboard,1e3,0
+sona-14033,14,shoes,dress,556,0
+sona-14033,15,wine,scarf,425,0
+sona-14033,16,glasses,skateboard,1e3,0
+sona-14033,17,desktop computer,water bottle,469,0
+sona-14033,18,detergent,chocolate,443,1
+sona-14033,19,guitar,tie,431,0
+sona-14033,20,sunglasses,purse,435,0
+sona-14033,21,lipstick,scarf,571,0
+sona-14033,22,dishes,books,580,0
+sona-14033,23,athletic clothes,laptop,568,0
+sona-14033,24,yoga mat,video games,581,0
+sona-14033,25,swimming suit,detergent,429,0
+sona-14033,26,shoes,glasses,562,0
+sona-14033,27,pants,socks,563,0
+sona-14033,28,baseball cap,glasses,571,0
+sona-14033,29,cooking pot,napkin,417,0
+sona-14033,30,wine,camera,412,0
+sona-14033,31,headphones,detergent,432,0
+sona-14033,32,concert tickets,laptop,574,0
+sona-14033,33,skateboard,shirt,34,0
+sona-14033,34,earphones,chocolate,418,0
+sona-14033,35,paper notebook,earrings,423,0
+sona-14033,36,backpack,wallet,412,1
+sona-14033,37,necklace,detergent,391,0
+sona-14033,38,paper notebook,makeup foundation,399,0
+sona-14033,39,calculator,band-aid,407,0
+sona-14033,40,necklace,tie,578,0
+sona-14033,41,wallet,computer keyboard,608,0
+sona-14033,42,wine,shirt,418,0
+sona-14033,43,desktop computer,tie,413,0
+sona-14033,44,socks,jacket,599,0
+sona-14033,45,yoga mat,pen,393,0
+sona-14033,46,desktop computer,chocolate,417,0
+sona-14033,47,headphones,water bottle,397,0
+sona-14033,48,yoga mat,band-aid,421,0
+sona-14033,49,wallet,ring,364,0
+sona-14033,50,concert tickets,pen,604,0
+sona-14033,51,car,skateboard,986,0
+sona-14033,52,detergent,makeup foundation,429,0
+sona-14033,53,earphones,sunglasses,566,0
+sona-14033,54,desktop computer,laptop,570,0
+sona-13556,0,pants,pen,301,0
+sona-13556,1,tie,sunglasses,755,0
+sona-13556,2,coffee,concert tickets,815,0
+sona-13556,3,coffee,water bottle,699,0
+sona-13556,4,ring,laptop,203,0
+sona-13556,5,desktop computer,bicycle,319,0
+sona-13556,6,wine,skateboard,303,0
+sona-13556,7,ring,chocolate,112,0
+sona-13556,8,calculator,dress,863,0
+sona-13556,9,pants,chocolate,188,0
+sona-13556,10,laptop,sunglasses,146,0
+sona-13556,11,scarf,video games,778,0
+sona-13556,12,wine,shirt,646,0
+sona-13556,13,cooking pot,shoes,752,0
+sona-13556,14,earphones,detergent,258,0
+sona-13556,15,jacket,socks,176,0
+sona-13556,16,wine,earphones,288,0
+sona-13556,17,backpack,baseball cap,81,0
+sona-13556,18,computer keyboard,earphones,1e3,1
+sona-13556,19,napkin,water bottle,768,0
+sona-13556,20,tie,dress,743,0
+sona-13556,21,desktop computer,water bottle,242,0
+sona-13556,22,skateboard,shirt,887,0
+sona-13556,23,guitar,detergent,255,0
+sona-13556,24,wine,baseball cap,703,0
+sona-13556,25,shoes,watch,886,0
+sona-13556,26,paper notebook,coffee,823,0
+sona-13556,27,swimming suit,ring,217,0
+sona-13556,28,scarf,pen,156,0
+sona-13556,29,earphones,pen,643,0
+sona-13556,30,skateboard,detergent,320,0
+sona-13556,31,athletic clothes,band-aid,234,0
+sona-13556,32,cooking pot,basketball,748,0
+sona-13556,33,baseball cap,earrings,782,0
+sona-13556,34,chocolate,socks,769,0
+sona-13556,35,scarf,makeup foundation,676,0
+sona-13556,36,granola bar,guitar,1e3,1
+sona-13556,37,earphones,water bottle,752,0
+sona-13556,38,ring,necklace,238,0
+sona-13556,39,computer keyboard,pen,187,0
+sona-13556,40,napkin,earphones,672,0
+sona-13556,41,cooking pot,shirt,731,0
+sona-13556,42,shirt,calculator,297,0
+sona-13556,43,yoga mat,baseball cap,352,0
+sona-13556,44,camera,sunglasses,822,0
+sona-13556,45,napkin,books,651,0
+sona-13556,46,glasses,backpack,178,0
+sona-13556,47,lipstick,tie,278,0
+sona-13556,48,ring,watch,229,0
+sona-13556,49,cooking pot,dress,885,0
+sona-13556,50,sunglasses,shoes,629,0
+sona-13556,51,backpack,necklace,639,0
+sona-13556,52,pencil,wallet,785,0
+sona-13556,53,concert tickets,calculator,248,0
+sona-13556,54,jacket,water bottle,275,0
+sona-13315,0,coffee,athletic clothes,1e3,0
+sona-13315,1,backpack,chocolate,4,0
+sona-13315,2,car,calculator,1,0
+sona-13315,3,earrings,beanie,361,0
+sona-13315,4,headphones,laptop,710,0
+sona-13315,5,makeup foundation,basketball,284,0
+sona-13315,6,pencil,chocolate,216,0
+sona-13315,7,earphones,yoga mat,692,0
+sona-13315,8,headphones,jacket,681,0
+sona-13315,9,lipstick,pencil,144,0
+sona-13315,10,skateboard,shirt,582,0
+sona-13315,11,lipstick,bicycle,388,0
+sona-13315,12,wine,baseball cap,902,0
+sona-13315,13,water bottle,calculator,272,0
+sona-13315,14,guitar,computer keyboard,605,0
+sona-13315,15,wallet,chocolate,210,0
+sona-13315,16,napkin,earrings,1e3,0
+sona-13315,17,watch,sunglasses,218,0
+sona-13315,18,beanie,scarf,1e3,1
+sona-13315,19,backpack,watch,755,0
+sona-13315,20,camera,desktop computer,141,0
+sona-13315,21,earphones,books,779,0
+sona-13315,22,beanie,swimming suit,1e3,0
+sona-13315,23,wallet,athletic clothes,877,0
+sona-13315,24,lipstick,napkin,4,0
+sona-13315,25,wine,earphones,344,0
+sona-13315,26,pants,chocolate,1,0
+sona-13315,27,scarf,shirt,792,0
+sona-13315,28,calculator,band-aid,140,0
+sona-13315,29,laptop,jacket,801,0
+sona-13315,30,baseball cap,swimming suit,754,0
+sona-13315,31,pen,bicycle,670,0
+sona-13315,32,coffee,band-aid,392,0
+sona-13315,33,camera,necklace,705,0
+sona-13315,34,calculator,swimming suit,907,0
+sona-13315,35,cooking pot,earphones,703,0
+sona-13315,36,bicycle,dishes,316,1
+sona-13315,37,ring,calculator,1,0
+sona-13315,38,ring,computer keyboard,1,0
+sona-13315,39,cooking pot,dishes,634,0
+sona-13315,40,coffee,yoga mat,809,0
+sona-13315,41,napkin,desktop computer,1e3,0
+sona-13315,42,purse,pants,365,0
+sona-13315,43,earrings,concert tickets,630,0
+sona-13315,44,cooking pot,athletic clothes,1e3,0
+sona-13315,45,granola bar,shirt,1e3,0
+sona-13315,46,guitar,yoga mat,705,0
+sona-13315,47,earphones,calculator,369,0
+sona-13315,48,guitar,band-aid,270,0
+sona-13315,49,pen,scarf,1e3,0
+sona-13315,50,car,video games,1,0
+sona-13315,51,jacket,concert tickets,167,0
+sona-13315,52,books,dress,718,0
+sona-13315,53,wallet,skateboard,707,0
+sona-13315,54,car,shoes,291,0
+sona-12997,0,beanie,yoga mat,617,0
+sona-12997,1,wallet,athletic clothes,694,0
+sona-12997,2,purse,socks,671,0
+sona-12997,3,necklace,athletic clothes,270,0
+sona-12997,4,basketball,tie,663,0
+sona-12997,5,cooking pot,dress,688,0
+sona-12997,6,basketball,calculator,276,0
+sona-12997,7,coffee,sunglasses,688,0
+sona-12997,8,jacket,detergent,358,0
+sona-12997,9,earrings,earphones,270,0
+sona-12997,10,wallet,earphones,659,0
+sona-12997,11,necklace,dress,286,0
+sona-12997,12,laptop,athletic clothes,350,0
+sona-12997,13,desktop computer,earrings,684,0
+sona-12997,14,beanie,camera,725,0
+sona-12997,15,coffee,dress,662,0
+sona-12997,16,backpack,detergent,334,0
+sona-12997,17,video games,earphones,740,0
+sona-12997,18,wallet,wine,729,1
+sona-12997,19,concert tickets,earphones,719,0
+sona-12997,20,skateboard,coffee,297,0
+sona-12997,21,pants,paper notebook,301,0
+sona-12997,22,purse,calculator,235,0
+sona-12997,23,shirt,water bottle,259,0
+sona-12997,24,bicycle,tie,735,0
+sona-12997,25,band-aid,napkin,283,0
+sona-12997,26,backpack,earphones,687,0
+sona-12997,27,cooking pot,wallet,688,0
+sona-12997,28,skateboard,sunglasses,261,0
+sona-12997,29,desktop computer,camera,730,0
+sona-12997,30,bicycle,water bottle,315,0
+sona-12997,31,backpack,yoga mat,734,0
+sona-12997,32,backpack,ring,728,0
+sona-12997,33,coffee,napkin,189,0
+sona-12997,34,wine,pen,270,0
+sona-12997,35,swimming suit,ring,257,0
+sona-12997,36,shirt,swimming suit,789,1
+sona-12997,37,purse,smart phone,272,0
+sona-12997,38,lipstick,water bottle,719,0
+sona-12997,39,paper notebook,guitar,797,0
+sona-12997,40,concert tickets,dress,882,0
+sona-12997,41,backpack,dishes,145,0
+sona-12997,42,earrings,glasses,692,0
+sona-12997,43,cooking pot,wine,720,0
+sona-12997,44,wallet,napkin,247,0
+sona-12997,45,pants,desktop computer,672,0
+sona-12997,46,earrings,smart phone,853,0
+sona-12997,47,wallet,guitar,762,0
+sona-12997,48,necklace,granola bar,177,0
+sona-12997,49,necklace,shoes,198,0
+sona-12997,50,skateboard,basketball,196,0
+sona-12997,51,yoga mat,shoes,286,0
+sona-12997,52,laptop,bicycle,197,0
+sona-12997,53,scarf,earrings,250,0
+sona-12997,54,wine,detergent,141,0
+sona-11581,0,chocolate,necklace,692,0
+sona-11581,1,backpack,desktop computer,548,0
+sona-11581,2,detergent,coffee,927,0
+sona-11581,3,granola bar,jacket,746,0
+sona-11581,4,baseball cap,computer keyboard,249,0
+sona-11581,5,earrings,headphones,787,0
+sona-11581,6,shoes,books,164,0
+sona-11581,7,granola bar,headphones,780,0
+sona-11581,8,band-aid,desktop computer,578,0
+sona-11581,9,skateboard,tie,218,0
+sona-11581,10,shoes,laptop,192,0
+sona-11581,11,car,cooking pot,95,0
+sona-11581,12,desktop computer,guitar,347,0
+sona-11581,13,necklace,video games,618,0
+sona-11581,14,detergent,shirt,724,0
+sona-11581,15,skateboard,dishes,239,0
+sona-11581,16,granola bar,purse,716,0
+sona-11581,17,granola bar,earphones,793,0
+sona-11581,18,video games,cooking pot,250,1
+sona-11581,19,car,water bottle,265,0
+sona-11581,20,dishes,calculator,502,0
+sona-11581,21,baseball cap,necklace,663,0
+sona-11581,22,glasses,calculator,277,0
+sona-11581,23,granola bar,cooking pot,619,0
+sona-11581,24,lipstick,ring,404,0
+sona-11581,25,swimming suit,cooking pot,244,0
+sona-11581,26,wallet,computer keyboard,277,0
+sona-11581,27,desktop computer,headphones,743,0
+sona-11581,28,detergent,ring,848,0
+sona-11581,29,beanie,laptop,351,0
+sona-11581,30,beanie,cooking pot,180,0
+sona-11581,31,glasses,pants,720,0
+sona-11581,32,band-aid,basketball,706,0
+sona-11581,33,dishes,makeup foundation,860,0
+sona-11581,34,socks,necklace,692,0
+sona-11581,35,wine,beanie,341,0
+sona-11581,36,pen,pants,804,1
+sona-11581,37,lipstick,headphones,201,0
+sona-11581,38,shirt,scarf,264,0
+sona-11581,39,wine,makeup foundation,854,0
+sona-11581,40,lipstick,necklace,805,0
+sona-11581,41,lipstick,laptop,212,0
+sona-11581,42,dress,jacket,289,0
+sona-11581,43,desktop computer,dishes,275,0
+sona-11581,44,pencil,dishes,519,0
+sona-11581,45,socks,pencil,268,0
+sona-11581,46,backpack,ring,816,0
+sona-11581,47,purse,video games,841,0
+sona-11581,48,pen,basketball,648,0
+sona-11581,49,pencil,shoes,766,0
+sona-11581,50,concert tickets,guitar,265,0
+sona-11581,51,glasses,headphones,391,0
+sona-11581,52,chocolate,pencil,397,0
+sona-11581,53,wine,desktop computer,321,0
+sona-11581,54,paper notebook,purse,713,0

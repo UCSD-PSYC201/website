@@ -1,0 +1,54 @@
+---
+title: "R markdown"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
+
+## Project Goals for 201a
+
+- Get and understand a data set, and how it might answer an interesting question.  
+- Have some coherent motivation  
+- Make graphs of the effects.  
+- Simple crude statistics to start are fine (save fancy stuff for 201b)  
+
+## Presentations like a 10 min conference talk
+
+- Motivation and framing!   
+- Don't describe your R-coding journey  
+- Show results in nice graphs, and explain them!   
+- Describe your caveats and ambitions (to get useful feedback)  
+
+## Options of how we spend our time
+
+- Review (or Thursday)  
+- R-markdown tinkering  
+- Causal identification strategies  
+- Help on group projects  

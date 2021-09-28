@@ -1,0 +1,61 @@
+---
+title: "Psych 201 Plots 10-13"
+author: "Daniel Lenzen"
+date: "October 13, 2015"
+output: html_document
+---
+
+- What is my percentile for pace relative to: all folks, folks in my
+corral, all males, males in my 5-year age group, males in my 5-
+year age group from CA.
+
+- Make a (nice) graph showing where I fall relative to one of
+these distributions.
+
+- Make nice graphs comparing the distributions of (male and
+female) speed, speed as a function of corral, speed as a
+function of age.
+
+```{r}
+library("ggplot2")
+load(url('http://vulstats.ucsd.edu/data/cal1020.cleaned.Rdata')) 
+vuls <- cal1020[which (cal1020$name.last=="Vul"), ]
+ans1 = (length(cal1020$pace.min[cal1020$pace.min < vuls$pace.min]))/nrow(cal1020)*100
+```
+Ed is in the `r ans1` percentile for speed
+
+##Ed vs. Overall
+```{r}
+ggplot(data=cal1020, aes(cal1020$pace.min)) + geom_histogram() + geom_vline(aes(xintercept=vuls$pace.min), color="blue", size=1) + ggtitle("Ed's Pace compared to overall distribution") + xlab("Pace per mile (mins)") + ylab("Number of runners")
+```
+
+##By Corral
+```{r}
+vulsCor <- cal1020[which (cal1020$corral == vuls$corral), ]
+ans2 = (length(vulsCor$pace.min[vulsCor$pace.min < vuls$pace.min]))/nrow(vulsCor)*100
+
+cal1020$corralNew <- as.character(cal1020$corral)
+
+ggplot(data=cal1020, aes(cal1020$pace.min, fill=cal1020$corralNew)) + geom_density(alpha=.3) + xlab("Pace per mile (mins)") + ggtitle("Pace for each corral")
+```
+
+##By Sex
+```{r}
+males <- cal1020[which (cal1020$sex == vuls$sex), ]
+ans3 = (length(males$pace.min[males$pace.min < vuls$pace.min]))/nrow(males)*100
+
+ggplot(data=cal1020, aes(cal1020$pace.min, fill=cal1020$sex)) + geom_density(alpha=.3) + xlab("Pace per mile (mins)") + ggtitle("Pace by sex")
+
+```
+
+##By Age
+```{r}
+ggplot(data=cal1020, aes(x=cal1020$age, y=cal1020$pace.min)) +
+    geom_point(shape=16, alpha=.25) +    
+  xlab("Age") +
+  ylab("Pace per mile (mins)") +
+  ggtitle("Speed vs. Age")
+```
+
+
+

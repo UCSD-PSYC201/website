@@ -1,0 +1,121 @@
+---
+title: "Humor-Style Questions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Humore style questionnaire
+
+```{r}
+require(tidyverse)
+
+hsq <- read_csv('../data/HSQ/data.csv')
+
+glimpse(hsq)
+```
+
+
+## What are these variables?
+```{r}
+qs = read_tsv('../data/HSQ/qs.tsv')
+
+knitr::kable(qs)
+```
+
+## What are the scales?
+
+```{r}
+scales = list()
+scales[['affiliative']] = c(Q1 = -1, Q5 = 1, Q9 = -1, Q13 = +1, Q17=-1, Q21=1, Q25=-1, Q29=-1)
+scales[['selfenhancing']] = c(Q2=1, Q6=1, Q10=1, Q14=1, Q18=1, Q22=1, Q26=1, Q30=1)
+scales[['aggressive']] = c(Q3=1,Q7=1,Q11=1, Q15=1,Q19=1,Q23=1,Q27=1,Q31=1)
+scales[['selfdefeating']] = c(Q4=1,Q8=1,Q12=1,Q16=1,Q20=1,Q24=1,Q28=1,Q32=1)
+```
+
+## fix data
+
+```{r}
+
+hsq <- hsq %>% 
+  mutate_at(vars(Q1:Q32), function(x){ifelse(x==-1, NA, x)}) %>% 
+  mutate(gender = recode(gender, 
+                         `1`='male', 
+                         `2`='female', 
+                         `3`='other')) %>% 
+  drop_na()
+
+qnames = paste0('Q', 1:32)
+
+zscore = function(x){(x-mean(x))/sd(x)}
+
+qmat = hsq %>% 
+  select(Q1:Q32) %>% 
+  mutate_all(zscore) %>% 
+  as.matrix()
+
+smat = matrix(0, nrow=4, ncol=32, dimnames = list(names(scales), paste0('Q', 1:32)))
+for(n in names(scales)){
+  smat[cbind(n, names(scales[[n]]))] = scales[[n]]
+}
+
+scores = qmat %*% t(smat)
+
+for(i in 1:length(scales)){
+  hsq[,names(scales)[i]] = scores[,i]
+}
+
+```
+
+## ICC of scales?
+
+```{r}
+require(lme4)
+
+calc_icc_simple = function(qmat, scale_vect){
+  N = nrow(qmat)
+  K = length(scale_vect)
+  qmat <- qmat[,names(scale_vect)]
+  qmat = t(t(qmat)*scale_vect)
+  var(rowMeans(qmat))/var(as.vector(qmat)) * K/(K-1) - 1/(K-1)
+}
+
+
+calc_icc_simple(qmat, scales[[4]])
+
+```
+
+### Null: scales are random.  
+
+shuffle questions.
+
+```{r}
+
+shuffle = function(qmat){
+  ns = colnames(qmat)
+  colnames(qmat) = sample(ns, length(ns), replace=F)
+  return(qmat)
+}
+
+
+samps = 10000
+null_icc = matrix(rep(NA, samps*length(scales)), ncol=length(scales),
+                  dimnames = list(c(), names(scales)))
+for(i in 1:samps){
+  for(sn in names(scales)){
+      null_icc[i, sn] = calc_icc_simple(shuffle(qmat), scales[[sn]])
+
+  }
+}
+
+null_icc %>% 
+  as_tibble() %>% 
+  pivot_longer(1:4, names_to='scale', values_to='null_icc') %>% 
+  ggplot(aes(x=null_icc))+
+  geom_histogram()+
+  facet_wrap(.~scale)
+
+true_icc = calc_icc_simple(qmat, scales[[1]])
+```
