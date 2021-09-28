@@ -32,7 +32,7 @@ In which we cover data organization, cleaning, and basic summaries, while gettin
 
 #### Tuesday   
 
-Overview: [slides](slides/L01.pdf)
+Data overview: [slides](slides/L01.pdf) [live code](code/live/L01.R)
 
 #### Wednesday  
 
