@@ -34,7 +34,7 @@ Details:
 
 - *Class Campuswire*:  Sign up [**here**](https://campuswire.com/p/G8F0D1572), code is **2647**.  All class communication will be here.
 
-- *Homework assignments*:  **CURRENTLY DOWN** [**login**](http://vulstats.ucsd.edu/hw/)  
+- *Homework assignments*:  [**login**](http://vulstats.ucsd.edu/hw/)  (**this may be buggy, please do not hesitate to tell us if something is wrong.** )
 Login is your ucsd username, password is full student ID, including letter.
 
 - *Readings*:  Generally we will draw on a number of sources, and our own notes, as needed for whatever we are covering.    
