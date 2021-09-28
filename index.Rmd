@@ -1,6 +1,7 @@
 --- 
 title: "UCSD Psyc 201ab / CSS 205 / Psyc 193"
 site: bookdown::bookdown_site
+output: bookdown::gitbook
 documentclass: book
 bibliography: [book.bib, packages.bib]
 # url: your book url like https://bookdown.org/yihui/bookdown

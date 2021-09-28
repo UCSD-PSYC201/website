@@ -1,5 +1,3 @@
-# (PART) Course {-}
-
 # Syllabus {#course-syllabus  .unnumbered}
 
 ## Instructors
