@@ -14,6 +14,7 @@ In which we will cover the goals of this class, and where the class materials fi
 
 #### Thursday
 
+Overview: [slides](slides/L00.pdf)
 
 ## Week 1: Data  {-}
 
@@ -30,6 +31,8 @@ In which we cover data organization, cleaning, and basic summaries, while gettin
 [data cleaning](http://vulstats.ucsd.edu/hw/) 
 
 #### Tuesday   
+
+Overview: [slides](slides/L01.pdf)
 
 #### Wednesday  
 
