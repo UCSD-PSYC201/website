@@ -34,7 +34,9 @@ In which we cover data organization, cleaning, and basic summaries, while gettin
 
 Data overview: [slides](slides/L01.pdf) [live code](code/live/L01.R)
 
-#### Wednesday  
+#### Wednesday 9/29
+
+R basics (continued) [[files](labs/201a-2021/01/lab1.tar.gz)]
 
 #### Thursday   
 
