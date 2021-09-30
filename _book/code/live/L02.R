@@ -8,24 +8,41 @@
 # relative paths
 
 getwd()
-setwd()
+setwd('~/Downloads/')
+list.files()
 file.path()
 .Platform$file.sep
 
 ## Data summaries
 load(url('http://vulstats.ucsd.edu/data/cal1020.cleaned.Rdata'))
 
+View(cal1020)
 str(cal1020)
+head(cal1020)
+tail(cal1020)
+
+names(cal1020)
+
+# pull out a column
+
+# pull out a row
+
+# pull out a cell
 
 
 # Descriptive stats
 ## central tendency
+### mean (algebra for )
 ### mean (weighted)
 sum(cal1020$time.sec)/length(cal1020$time.sec)
 mean(cal1020$time.sec)
+
+
+
 ### median
 median(cal1020$time.sec)
 ### (mode?)
+
 
 # dispersion
 ## sd
