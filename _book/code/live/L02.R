@@ -1,4 +1,18 @@
 ## 201ab L02
+
+## files and paths
+# http://vulstats.ucsd.edu/data/cal1020.cleaned.Rdata
+# enter in browser -- where did it go?
+
+# absolute paths
+# relative paths
+
+getwd()
+setwd()
+file.path()
+.Platform$file.sep
+
+## Data summaries
 load(url('http://vulstats.ucsd.edu/data/cal1020.cleaned.Rdata'))
 
 str(cal1020)
@@ -55,8 +69,6 @@ moments::skewness(cal1020$time.sec)
 ## kurtosis: tail heaviness
 mean(z_score(cal1020$time.sec)^4)-3
 moments::kurtosis(cal1020$time.sec)-3
-
-install.packages('moments')
 
 # moments::skewness, 
 # moments::kurtosis

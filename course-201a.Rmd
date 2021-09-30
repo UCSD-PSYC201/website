@@ -40,6 +40,7 @@ R basics (continued) [[files](labs/201a-2021/01/lab1.tar.gz)]
 
 #### Thursday   
 
+Data summaries, data frames, and dplyr: [slides](slides/L02.pdf) [live code](code/live/L02.R)
 
 ## Week 2: Visualization {-}
 

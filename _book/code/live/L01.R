@@ -8,15 +8,21 @@
 2*2
 3^2
 8 %% 3
+8/3
+
+(3 + 4) * 5 ^ 2
+
 
 # basic function syntax (place, name args)
 
 4 ^ (1/2)
 
+sqrt(4)
 sqrt(x = 4)
 
 log(8, 2)
 log( x = 8, base = 2)
+log(8, base=2)
 
 # (Rstudio) tab completion
 
@@ -28,17 +34,24 @@ log(x = 8, base = 2)
 
 # help
 ?log
-??log
+??sqrt
 
 # syntax, errors
 execute
 execute()
 
-# environment
+
+
+# environment sdjhglksdjhg fds
 ls()
 
 # variables (assignment)
 x = 4
+
+x = x*8
+
+ls()
+x
 
 # variable types
 a = 3
@@ -55,6 +68,8 @@ as.numeric(b)
 as.numeric(b)*2
 as.numeric('three')
 
+as.numeric("3+4")
+
 # peculiar types from peculiar math / data
 3/0
 Inf/Inf
@@ -66,7 +81,7 @@ sqrt(-2)
 
 # logical comparisons
 x = 3
-x == 3
+x == 3.01
 x > 3
 x >= 3
 x < 3
@@ -78,7 +93,6 @@ TRUE*4
 FALSE*4
 'TRUE'*4
 
-
 # boolean operators
 x > 3
 !(x > 3)
@@ -86,7 +100,7 @@ x > 3 | x == 3
 x > 3 & x == 3
 # | and ||  & and && for vectors.
 c(T, F) | c(F, F)
-c(F, T) || c(F, F)
+c(T, F) || c(F, F)
 
 # vectors
 a = c(8, 6, 7, 5, 3, 0, 9)  
@@ -98,8 +112,13 @@ length(a)
 length(b)
 
 # vectors: indexing, assigning, growing, deleting
+1:4
+
 a[1]
+a[1:4]
 a[c(1:3, 5)]
+
+
 a[-1]
 a
 a[1] = 4
@@ -112,8 +131,8 @@ a[100] = 100
 a
 
 # vector building functions
-seq(1, 10)
 1:10
+seq(1, 10)
 seq(from = 1, to = 10, by = 1)
 seq(1, 10, by = 1/3)
 
@@ -127,9 +146,11 @@ LETTERS
 # vectors, logic
 a = c(8, 6, 7, 5, 3, 0, 9)  
 a >= 6
+a[a >= 6]
+
 a[!(a >= 6)]
 which(a >= 6)
-((a %% 2) == 0)
+a[((a %% 2) == 0) & (a >= 6)]
 
 ((a %% 2) == 0) & (a >= 6)
 ((a %% 2) == 0) | (a >= 6)
