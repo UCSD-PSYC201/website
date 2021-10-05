@@ -57,6 +57,8 @@ socviz: [make a plot](https://socviz.co/makeplot.html) (the rest of this book ma
 
 #### Tuesday   
 
+visualization, ggplot #1: [slides](slides/L03.pdf) , [code](code/live/L03.R)
+
 #### Wednesday  
 
 #### Thursday   

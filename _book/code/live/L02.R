@@ -9,6 +9,7 @@
 
 getwd()
 setwd('~/Downloads/')
+setwd("/Users/evul/g.evul.ucsd/TEACHING/201ab/website")
 list.files()
 file.path()
 .Platform$file.sep
@@ -24,15 +25,28 @@ tail(cal1020)
 names(cal1020)
 
 # pull out a column
+cal1020$age
+cal1020[['age']]
+cal1020[,'age']
+
+x = cal1020$age
 
 # pull out a row
+cal1020[1,]
 
 # pull out a cell
+cal1020[10,'age']
+cal1020$age[10]
+cal1020[10,6]
 
 
 # Descriptive stats
 ## central tendency
 ### mean (algebra for )
+
+mean(cal1020$age)
+sum(cal1020$age)/nrow(cal1020)
+
 ### mean (weighted)
 sum(cal1020$time.sec)/length(cal1020$time.sec)
 mean(cal1020$time.sec)
@@ -40,12 +54,20 @@ mean(cal1020$time.sec)
 
 
 ### median
-median(cal1020$time.sec)
-### (mode?)
+x = cal1020$age[1:8]
 
+median(cal1020$age)
+### (mode?)
+library(dplyr)
+cal1020 %>% count(time.sec) %>% arrange(n) %>% tail()
+
+hist(cal1020$time.sec, 200)
 
 # dispersion
 ## sd
+sqrt(sum((cal1020$time.sec - mean(cal1020$time.sec))^2) / (nrow(cal1020)-1))
+var(cal1020$time.sec)
+
 sd(cal1020$time.sec)
 ## var
 var(cal1020$time.sec)
@@ -60,6 +82,16 @@ quantile(cal1020$time.sec, probs = c(0.25, 0.75))
 IQR(cal1020$time.sec)
 ## (entropy?)
 
+x = cal1020$time.sec
+x = c(x, 30*24*60*60)
+mean(x)
+median(x)
+sd(x)
+
+IQR(x)
+
+hist(x)
+
 
 ## sensitivity to tails
 
@@ -69,12 +101,13 @@ m = mean(cal1020$time.sec)
 s = sd(cal1020$time.sec)
 cal1020$zscores = (cal1020$time.sec-m)/s
 
-# make a z_score(x) function
+# make a z_scor ing function
 z_score = function(x){
   m = mean(x)
   s = sd(x)
   return((x-m)/s)
 }
+# not really a z score...
 
 z_score(1:10)
 # intuitions behind moments
@@ -90,7 +123,7 @@ moments::kurtosis(cal1020$time.sec)-3
 # moments::skewness, 
 # moments::kurtosis
 
-
+install.packages('tidyverse')
 library(dplyr)
 ### tidyverse:  
 # dplyr, ggplot, pipe, readr, and some other libraries.
@@ -107,9 +140,13 @@ library(dplyr)
 # data transformations
 
 ##  "subset observations": extracting subsets of rows. 
+(cal1020$sex == 'female')  & (cal1020$time.sec < 3500)
+
 cal1020[(cal1020$sex == 'female') & (cal1020$time.sec < 3500), ]
 
 # filter     {handy: top_n, sample_n, sample_frac, slice, distinct}
+filter(cal1020, sex == 'female', time.sec < 3500)
+
 cal1020 %>% 
   filter(sex == 'female', time.sec < 3500)
 
@@ -120,8 +157,6 @@ cal1020 %>%
   filter(age > 50, sex=="female") %>% 
   glimpse()
 
-cal1020[cal1020$age > 50 & cal1020$sex == 'female',]
-
 ##  "subset variables": extract subset of columns
 # select    {handy predicates: contains(), matches(), one_of(); handy variants: select_if, select_at}
 
@@ -130,8 +165,8 @@ cal1020[, c("name.first", "State")]
 cal1020 %>% select(name.first, State)
 cal1020 %>% select_if(is.numeric) %>% glimpse()
 
-cal1020 %>% select(name.first:State)
-cal1020[, 1:4]
+cal1020 %>% select(name.first:State) %>% glimpse()
+cal1020[, 1:4] %>% glimpse()
 
 cal1020 %>% select(-sex) %>% glimpse()
 
@@ -158,7 +193,10 @@ cal1020 %>%
 # - nesting functions
 # - create a bunch of intermediate variables.
 
-# e.g., find women over 50, get their first name, age, time.
+# e.g., find men under 50, get their first name, age,State, .
+cal1020 %>% 
+  filter(age < 50, sex == 'male') %>% 
+  select(name.first, age, State)
 
 ## make / change columns
 # mutate: add new variablse (keep old onse and everything else)
@@ -180,6 +218,29 @@ cal1020 %>% mutate_if(is.numeric, z_score) %>% glimpse()
 
 ## making groups
 # group_by, ungroup
+cal1020 %>%
+  group_by(sex) %>% 
+  top_n(2)
+
+cal1020 %>% 
+  filter(State == 'CA') %>% 
+  group_by(sex) %>% 
+  summarise(mean_age = mean(age), 
+            mean_time = mean(time.sec))
+
+tmp %>% filter(is.na(age))
+
+cal1020[cal1020$State == 'CA', ] %>% count(is.na(State))
+
+tmp = cal1020[cal1020$State == 'CA', ]
+
+for(sex in c('male', 'female')){
+  print(sex)
+  tmp2 = tmp[tmp$sex==sex, ]
+  print(mean(tmp2$age, na.rm=T))
+  print(mean(tmp2$time.sec, na.rm=T))
+}
+
 # we usually want to do stuff to specific subsets of the data.
 # e.g., for each subject-condition, calculate median RT.
 # conventional approach would be:

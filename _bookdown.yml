@@ -13,5 +13,7 @@ rmd_files:
 # "201b.Rmd",
     "course-projects.Rmd",
     "notes/R-start.Rmd",
+    "notes/visualizations.Rmd",
+    "notes/vis.ggplot.Rmd",
   ]
 

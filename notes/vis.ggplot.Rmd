@@ -1,8 +1,4 @@
----
-output: html_document
----
-
-# ggplot
+## ggplot {#visualization}
 
 We will teach you to use [ggplot](http://ggplot2.org/) for data visualization.
 

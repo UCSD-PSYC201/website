@@ -1,3 +1,5 @@
+# (PART) Notes
+
 # Getting started with R {#R-start  .unnumbered}
 
 ## Installing R {#R-install  .unnumbered}

@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Visualizations | UCSD Psyc 201ab / CSS 205 / Psyc 193</title>
+  <meta name="description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Visualizations | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  <meta name="github-repo" content="UCSD-PSYC201/website" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Visualizations | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  
+  <meta name="twitter:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="R-start.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html"><i class="fa fa-check"></i>Syllabus</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#instructors"><i class="fa fa-check"></i>Instructors</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#class-meetings"><i class="fa fa-check"></i>Class meetings</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#grading"><i class="fa fa-check"></i>Grading</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#class-resources"><i class="fa fa-check"></i>Class Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html"><i class="fa fa-check"></i>201a Schedule</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-0-introduction"><i class="fa fa-check"></i>Week 0: Introduction</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-1-data"><i class="fa fa-check"></i>Week 1: Data</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-2-visualization"><i class="fa fa-check"></i>Week 2: Visualization</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-3-theoretical-foundations"><i class="fa fa-check"></i>Week 3: Theoretical foundations</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-4-linear-model-regression"><i class="fa fa-check"></i>Week 4: Linear model: Regression</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-5-linear-model-multiple-regression"><i class="fa fa-check"></i>Week 5: Linear model: Multiple regression</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-6-linear-model-categorical-predictors"><i class="fa fa-check"></i>Week 6: Linear model: Categorical predictors</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-7-linear-model-ancova-diagnostics"><i class="fa fa-check"></i>Week 7: Linear model: ANCOVA, diagnostics</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-8-linear-model-linearizing-transforms"><i class="fa fa-check"></i>Week 8: Linear model: Linearizing transforms</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-9-covarying-errors-repeated-measures-random-effects"><i class="fa fa-check"></i>Week 9: Covarying errors (repeated measures / random effects)</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-10-review-and-preview"><i class="fa fa-check"></i>Week 10: Review and preview</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html"><i class="fa fa-check"></i>Projects</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#examples-of-this-sort-of-thing"><i class="fa fa-check"></i>Examples of this sort of thing</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a"><i class="fa fa-check"></i>201a</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-timeline"><i class="fa fa-check"></i>201a Timeline</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#groups"><i class="fa fa-check"></i>Groups</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-project-plan"><i class="fa fa-check"></i>201a Project plan</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-preliminary-data-summaries"><i class="fa fa-check"></i>201a Preliminary data summaries</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-write-ups"><i class="fa fa-check"></i>201a Write-ups</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-presentation"><i class="fa fa-check"></i>201a Presentation</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-group-evaluation"><i class="fa fa-check"></i>201a Group-evaluation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#b"><i class="fa fa-check"></i>201b</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#data-sources"><i class="fa fa-check"></i>Data sources</a></li>
+</ul></li>
+<li class="part"><span><b>I Notes</b></span></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html"><i class="fa fa-check"></i>Getting started with R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#R-install"><i class="fa fa-check"></i>Installing R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#R-intro"><i class="fa fa-check"></i>Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#better-data-analysis-code."><i class="fa fa-check"></i>Better data analysis code.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i>Visualizations</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#general-rules-for-scientific-data-visualization."><i class="fa fa-check"></i>General rules for scientific data visualization.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#picking-a-plot-whats-convention"><i class="fa fa-check"></i>Picking a plot (what’s convention)</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-0"><i class="fa fa-check"></i>Categorical ~ 0</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#histogram"><i class="fa fa-check"></i>Histogram</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#pie-chart"><i class="fa fa-check"></i>Pie chart</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#stacked-area"><i class="fa fa-check"></i>Stacked area</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-0"><i class="fa fa-check"></i>numerical ~ 0</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#histogram-density"><i class="fa fa-check"></i>Histogram &amp; density</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-categorical"><i class="fa fa-check"></i>numerical ~ categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#bar-plot-with-error-bars"><i class="fa fa-check"></i>Bar plot with error bars</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#jittered-data-points."><i class="fa fa-check"></i>Jittered data points.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#violaviolin-plot"><i class="fa fa-check"></i>Viola/Violin plot</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#box-and-whiskers-plot"><i class="fa fa-check"></i>Box and whiskers plot</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#overlayed-densities"><i class="fa fa-check"></i>Overlayed densities</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#empirical-cumulative-distribution"><i class="fa fa-check"></i>Empirical cumulative distribution</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#comparisons"><i class="fa fa-check"></i>Comparisons</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#recommendations"><i class="fa fa-check"></i>Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-numerical-2-x-numerical-0"><i class="fa fa-check"></i>numerical ~ numerical (2 x numerical ~ 0)</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#scatter-and-heatmap"><i class="fa fa-check"></i>Scatter and heatmap</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#conditional-means"><i class="fa fa-check"></i>Conditional means</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-numerical-categorical"><i class="fa fa-check"></i>numerical ~ numerical + categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-numerical"><i class="fa fa-check"></i>categorical ~ numerical</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#x-categorical-and-categorical-categorical"><i class="fa fa-check"></i>2 x categorical and categorical ~ categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#heatmap"><i class="fa fa-check"></i>Heatmap</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-categorical"><i class="fa fa-check"></i>categorical ~ categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#extra-plot-notes."><i class="fa fa-check"></i>Extra plot notes.</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-2-x-categorical"><i class="fa fa-check"></i>numerical ~ 2 x categorical</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#bin-width-and-bandwidths"><i class="fa fa-check"></i>bin width and bandwidths</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#visualization"><i class="fa fa-check"></i>ggplot</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#installation."><i class="fa fa-check"></i>Installation.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#basic-overview."><i class="fa fa-check"></i>Basic overview.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#changing-labels."><i class="fa fa-check"></i>Changing labels.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#themes-and-elements-and-properties."><i class="fa fa-check"></i>Themes and elements and properties.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#changing-display-properties-of-plotted-elements."><i class="fa fa-check"></i>Changing display properties of plotted elements.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#other-geometric-elements."><i class="fa fa-check"></i>Other geometric elements.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#assembling-multiple-plots-in-one-figure"><i class="fa fa-check"></i>Assembling multiple plots in one figure</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">UCSD Psyc 201ab / CSS 205 / Psyc 193</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="visualization" class="section level1">
+<h1>Visualizations</h1>
+<p>These notes are largely there to provide quick examples of ggplot2 code that generates graphs for particular data. I assume that the ggplot2 introduction from R4DS got you oriented, but if not, we have a few more notes on the basics of <a href="#ggplot">ggplot</a>.</p>
+<div id="general-rules-for-scientific-data-visualization." class="section level2">
+<h2>General rules for scientific data visualization.</h2>
+<p>The order of these rules indicates their priority (as I see it): rules further down are superceded by higher up rules if they are in conflict.</p>
+<ol style="list-style-type: decimal">
+<li><p>Everything should be labeled, and interpretable without consulting a figure caption or having to solve a puzzle.</p></li>
+<li><p>Graphs should facilitate <em>relevant</em> quantitative interpretation and comparisons.</p></li>
+<li><p>Graphs should represent variability and uncertainty to permit inferential statistics by eye</p></li>
+<li><p>Graphs should follow conventions for the kind of information/data being presented.</p></li>
+<li><p>Graphs should not waste ink and should otherwise look pretty.</p></li>
+</ol>
+</div>
+<div id="picking-a-plot-whats-convention" class="section level2">
+<h2>Picking a plot (what’s convention)</h2>
+<p>When you make a plot, you are trying to show the relationship between one or more response/outcome variables, and some explanatory variables (in experimental settings, these are often called dependent and independent variables, respectively). These variables can be classified as either categorical or numerical. I find it helpful to think of conventional plot options in terms of a pseudo formula: what kind of response variable is being explained by what types of explanatory variables. e.g., categorical ~ numerical would mean you are showing how a categorical response variable changes with some numerical explanatory variable. Most of this document is structured based on such formulas.</p>
+</div>
+<div id="categorical-0" class="section level2">
+<h2>Categorical ~ 0</h2>
+<p>How do we show the distribution of some categorical variable (that’s what I mean by “~0”: no explanatory variables)? The three main plot types to consider here are: histogram, pie chart, and stacked area plot.</p>
+<p>Histograms make comparisons of frequency across categories easiest (you just have to compare how tall two bars are). Pie charts make this somewhat difficult, because we are pretty bad at visually comparing similar angles; however, pie charts do effectively convey the absolute proportion of a category (which is hard to assess in a histogram). Stacked area plots are a sort of compromise of both: comparisons across categories are harder than in a histogram, but easier than a pie chart; absolute proportion is easier than in a histogram, but harder than a pie chart.</p>
+<p>For our plots of a categorical variable with no expanatory variables, we will use the SPSP demographics data.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="visualization.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="visualization.html#cb2-2" aria-hidden="true" tabindex="-1"></a>spsp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;http://vulstats.ucsd.edu/data/spsp.demographics.cleaned.csv&#39;</span>)</span>
+<span id="cb2-3"><a href="visualization.html#cb2-3" aria-hidden="true" tabindex="-1"></a>spsp <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(ethnicity) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ethnicity</th>
+<th align="right">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Arab</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="left">Asian</td>
+<td align="right">504</td>
+</tr>
+<tr class="odd">
+<td align="left">Black</td>
+<td align="right">133</td>
+</tr>
+<tr class="even">
+<td align="left">Latino</td>
+<td align="right">128</td>
+</tr>
+<tr class="odd">
+<td align="left">Native American</td>
+<td align="right">33</td>
+</tr>
+<tr class="even">
+<td align="left">Other</td>
+<td align="right">344</td>
+</tr>
+<tr class="odd">
+<td align="left">White</td>
+<td align="right">2586</td>
+</tr>
+</tbody>
+</table>
+<div id="histogram" class="section level3">
+<h3>Histogram</h3>
+<p>The classic distribution plot is a histogram: one bar per category, usually arranged along the x-axis, with the y-axis showing frequencies.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="visualization.html#cb3-1" aria-hidden="true" tabindex="-1"></a>( plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(spsp, <span class="fu">aes</span>(<span class="at">x=</span>ethnicity, <span class="at">fill=</span>ethnicity)) <span class="sc">+</span> </span>
+<span id="cb3-2"><a href="visualization.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb3-3"><a href="visualization.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## the lines above form the basis of the plot, </span></span>
+<span id="cb3-4"><a href="visualization.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## the lines below just make it look nicer</span></span>
+<span id="cb3-5"><a href="visualization.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>)<span class="sc">+</span></span>
+<span id="cb3-6"><a href="visualization.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb3-7"><a href="visualization.html#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb3-8"><a href="visualization.html#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>, <span class="at">hjust=</span><span class="dv">1</span>)) )</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="288" /></p>
+</div>
+<div id="pie-chart" class="section level3">
+<h3>Pie chart</h3>
+<p>Pie charts show the proportion of each category as wedges on a circle. (Pie charts are generally <a href="http://www.businessinsider.com/pie-charts-are-the-worst-2013-6">frowned upon</a>, so you better have a really good reason to use them.) Also, because they are out of favor, making them in ggplot is a bit weird: you have to make a stacked area plot, then convert the coordinates to polar.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="visualization.html#cb4-1" aria-hidden="true" tabindex="-1"></a>( plot2 <span class="ot">&lt;-</span> </span>
+<span id="cb4-2"><a href="visualization.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(spsp, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(<span class="dv">1</span>),<span class="at">fill=</span>ethnicity))<span class="sc">+</span></span>
+<span id="cb4-3"><a href="visualization.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> (..count..)<span class="sc">/</span><span class="fu">sum</span>(..count..)), <span class="at">width=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb4-4"><a href="visualization.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta=</span><span class="st">&quot;y&quot;</span>)<span class="sc">+</span></span>
+<span id="cb4-5"><a href="visualization.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## the lines above form the basis of the plot, </span></span>
+<span id="cb4-6"><a href="visualization.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="do">## the lines below just make it look nicer</span></span>
+<span id="cb4-7"><a href="visualization.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>)<span class="sc">+</span></span>
+<span id="cb4-8"><a href="visualization.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb4-9"><a href="visualization.html#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb4-10"><a href="visualization.html#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-11"><a href="visualization.html#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-12"><a href="visualization.html#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()) )</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="144" /></p>
+</div>
+<div id="stacked-area" class="section level3">
+<h3>Stacked area</h3>
+<p>Think of a stacked area plot as a histogram, with all the bars stacked on top of each other (hopefully, with different colors!). This plot connects to methods of plotting a categorical variable as a function of some other variables.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="visualization.html#cb5-1" aria-hidden="true" tabindex="-1"></a>( plot3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(spsp, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(<span class="dv">1</span>),<span class="at">fill=</span>ethnicity))<span class="sc">+</span></span>
+<span id="cb5-2"><a href="visualization.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width=</span><span class="fl">0.75</span>, <span class="at">stat=</span><span class="st">&#39;count&#39;</span>)<span class="sc">+</span></span>
+<span id="cb5-3"><a href="visualization.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## the lines above form the basis of the plot, </span></span>
+<span id="cb5-4"><a href="visualization.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## the lines below just make it look nicer</span></span>
+<span id="cb5-5"><a href="visualization.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>)<span class="sc">+</span></span>
+<span id="cb5-6"><a href="visualization.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb5-7"><a href="visualization.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">&quot;SPSP</span><span class="sc">\n</span><span class="st">ethnicity&quot;</span>))<span class="sc">+</span></span>
+<span id="cb5-8"><a href="visualization.html#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb5-9"><a href="visualization.html#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) )</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="384" /></p>
+</div>
+</div>
+<div id="numerical-0" class="section level2">
+<h2>numerical ~ 0</h2>
+<p>To look at the distribution of a numeric variable, we will generally need to do something to smooth or bin over the number line*. Histograms have explicit bins, and show the frequency of numbers in each bin. Density plots smooth over the numberline not in explicit bins, but with a continuous kernel. Histograms do a better job of coneying how noisy your data are, but are quite sensitive to bin placement: they will give you a different impression depending on bin width and bin shifts (e.g., bin 1-2, 2-3, … vs 0.5-1.5, 1.5-2.5, ….). Because density plots do not have discrete bins, they are smoother, so there is no notion of shifting a bin, and they tend to be less sensitive to bandwidth; however, they tend to make your data look clean even when they are not.</p>
+<p>Let’s use some data from a 10 mile race to plot the distribution of a numeric variable.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="visualization.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">&quot;http://vulstats.ucsd.edu/data/cal1020.cleaned.Rdata&quot;</span>))</span>
+<span id="cb6-2"><a href="visualization.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cal1020)</span></code></pre></div>
+<pre><code>## Rows: 3,234
+## Columns: 11
+## $ name.first [3m[38;5;246m&lt;fct&gt;[39m[23m Jordan, Macdonard, Sergio, Jamesom, Darren, Okwaro, Ste…
+## $ name.last  [3m[38;5;246m&lt;fct&gt;[39m[23m Chipangama, Ondara, Reyes, Mora, Brown, Raura, Underwoo…
+## $ City       [3m[38;5;246m&lt;fct&gt;[39m[23m &quot;Flagstaff&quot;, &quot;Grand Prairie&quot;, &quot;Palmdale&quot;, &quot;Arroyo Grand…
+## $ State      [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;AZ&quot;, &quot;TX&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;NY&quot;, &quot;CA&quot;, &quot;…
+## $ Zip        [3m[38;5;246m&lt;fct&gt;[39m[23m 86004, 75054, 93551, 93420, 92075, 92057, 92024, 12440,…
+## $ age        [3m[38;5;246m&lt;dbl&gt;[39m[23m 25, 29, 32, 30, 28, 39, 26, 27, 33, 34, 33, 39, 26, 32,…
+## $ sex        [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;,…
+## $ time.sec   [3m[38;5;246m&lt;dbl&gt;[39m[23m 2880, 2885, 2970, 3062, 3083, 3206, 3222, 3289, 3318, 3…
+## $ corral     [3m[38;5;246m&lt;int&gt;[39m[23m 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1…
+## $ pace.min   [3m[38;5;246m&lt;dbl&gt;[39m[23m 4.800000, 4.808333, 4.950000, 5.103333, 5.138333, 5.343…
+## $ speed.mph  [3m[38;5;246m&lt;dbl&gt;[39m[23m 12.500000, 12.478336, 12.121212, 11.757022, 11.676938, …</code></pre>
+<div id="histogram-density" class="section level3">
+<h3>Histogram &amp; density</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="visualization.html#cb8-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cal1020, <span class="fu">aes</span>(<span class="at">x=</span>time.sec<span class="sc">/</span><span class="dv">60</span>))<span class="sc">+</span></span>
+<span id="cb8-2"><a href="visualization.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb8-3"><a href="visualization.html#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&#39;histogram&#39;</span>)<span class="sc">+</span></span>
+<span id="cb8-4"><a href="visualization.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&#39;Minutes&#39;</span>, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">240</span>, <span class="at">by=</span><span class="dv">30</span>))<span class="sc">+</span></span>
+<span id="cb8-5"><a href="visualization.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb8-6"><a href="visualization.html#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="visualization.html#cb8-7" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cal1020, <span class="fu">aes</span>(<span class="at">x=</span>time.sec<span class="sc">/</span><span class="dv">60</span>))<span class="sc">+</span></span>
+<span id="cb8-8"><a href="visualization.html#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill=</span><span class="st">&#39;gray&#39;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb8-9"><a href="visualization.html#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&#39;density&#39;</span>)<span class="sc">+</span></span>
+<span id="cb8-10"><a href="visualization.html#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&#39;Minutes&#39;</span>, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">240</span>, <span class="at">by=</span><span class="dv">30</span>))<span class="sc">+</span></span>
+<span id="cb8-11"><a href="visualization.html#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb8-12"><a href="visualization.html#cb8-12" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="576" /></p>
+</div>
+</div>
+<div id="numerical-categorical" class="section level2">
+<h2>numerical ~ categorical</h2>
+<p>This is the most common data visualization category I see in psychology: how does some numerical variable change as a function of condition (category). Usually it is portrayed as a bar plot (hopefully with error bars). But we can do better.</p>
+<p>First, let’s make all the variations, and put them in one figure (below we just make each plot, and then show them all together.)</p>
+<div id="bar-plot-with-error-bars" class="section level3">
+<h3>Bar plot with error bars</h3>
+<p>We adopt the common approach of using the mean +/- 1 standard error of the mean as the error bars here.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="visualization.html#cb9-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cal1020, <span class="fu">aes</span>(<span class="at">x=</span>sex, <span class="at">fill=</span>sex, <span class="at">y=</span>speed.mph))<span class="sc">+</span></span>
+<span id="cb9-2"><a href="visualization.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y =</span> mean, </span>
+<span id="cb9-3"><a href="visualization.html#cb9-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">geom=</span><span class="st">&quot;bar&quot;</span>)<span class="sc">+</span></span>
+<span id="cb9-4"><a href="visualization.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se,</span>
+<span id="cb9-5"><a href="visualization.html#cb9-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">geom=</span><span class="st">&quot;errorbar&quot;</span>, </span>
+<span id="cb9-6"><a href="visualization.html#cb9-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">width=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb9-7"><a href="visualization.html#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Avg speed (mph; +/- s.e.m.)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb9-8"><a href="visualization.html#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Barplot&#39;</span>)<span class="sc">+</span></span>
+<span id="cb9-9"><a href="visualization.html#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb9-10"><a href="visualization.html#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">7</span>))<span class="sc">+</span></span>
+<span id="cb9-11"><a href="visualization.html#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+</div>
+<div id="jittered-data-points." class="section level3">
+<h3>Jittered data points.</h3>
+<p>Data points are jittered, because otherwise they would fall on top of each other, and would be impossible to discern.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="visualization.html#cb10-1" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cal1020, <span class="fu">aes</span>(<span class="at">x=</span>sex, <span class="at">color=</span>sex, <span class="at">y=</span>speed.mph))<span class="sc">+</span></span>
+<span id="cb10-2"><a href="visualization.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">size=</span><span class="fl">0.1</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb10-3"><a href="visualization.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Speed (mph)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb10-4"><a href="visualization.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Jittered&#39;</span>)<span class="sc">+</span></span>
+<span id="cb10-5"><a href="visualization.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb10-6"><a href="visualization.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+</div>
+<div id="violaviolin-plot" class="section level3">
+<h3>Viola/Violin plot</h3>
+<p>Like a smoothed density histogram, except it’s symmetric, so it looks nicer when many are arrayed side by side.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="visualization.html#cb11-1" aria-hidden="true" tabindex="-1"></a>plot3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cal1020, <span class="fu">aes</span>(<span class="at">x=</span>sex, <span class="at">fill=</span>sex, <span class="at">y=</span>speed.mph))<span class="sc">+</span></span>
+<span id="cb11-2"><a href="visualization.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>()<span class="sc">+</span></span>
+<span id="cb11-3"><a href="visualization.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Speed (mph)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb11-4"><a href="visualization.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Violin&#39;</span>)<span class="sc">+</span></span>
+<span id="cb11-5"><a href="visualization.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb11-6"><a href="visualization.html#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+</div>
+<div id="box-and-whiskers-plot" class="section level3">
+<h3>Box and whiskers plot</h3>
+<p>This is a visualization of a bunch of summary statistics of the distribution. By default, these summary statistics are: the median (middle line), the 25th and 75th percentile (edges of the box), 25th percentile - 1.5(IQR), and 75th percentile + 1.5(IQR) (the whiskers); and it shows the “outliers” (data points that are beyond those IQR intervals.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="visualization.html#cb12-1" aria-hidden="true" tabindex="-1"></a>plot4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cal1020, <span class="fu">aes</span>(<span class="at">x=</span>sex, <span class="at">fill=</span>sex, <span class="at">color=</span>sex, <span class="at">y=</span>speed.mph))<span class="sc">+</span></span>
+<span id="cb12-2"><a href="visualization.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">outlier.alpha =</span> <span class="fl">0.1</span>)<span class="sc">+</span></span>
+<span id="cb12-3"><a href="visualization.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Speed (mph)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb12-4"><a href="visualization.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Boxplot&#39;</span>)<span class="sc">+</span></span>
+<span id="cb12-5"><a href="visualization.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb12-6"><a href="visualization.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+</div>
+<div id="overlayed-densities" class="section level3">
+<h3>Overlayed densities</h3>
+<p>(here we flip the coordinates so we can picture them along side the other graphs)</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="visualization.html#cb13-1" aria-hidden="true" tabindex="-1"></a>plot5 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cal1020, <span class="fu">aes</span>(<span class="at">x=</span>speed.mph, <span class="at">fill=</span>sex, <span class="at">color=</span>sex))<span class="sc">+</span></span>
+<span id="cb13-2"><a href="visualization.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb13-3"><a href="visualization.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb13-4"><a href="visualization.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&#39;Speed (mph)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb13-5"><a href="visualization.html#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Densities&#39;</span>)<span class="sc">+</span></span>
+<span id="cb13-6"><a href="visualization.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb13-7"><a href="visualization.html#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+</div>
+<div id="empirical-cumulative-distribution" class="section level3">
+<h3>Empirical cumulative distribution</h3>
+<p>(here we flip the coordinates so we can picture them along side the other graphs)</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="visualization.html#cb14-1" aria-hidden="true" tabindex="-1"></a>plot6 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cal1020, <span class="fu">aes</span>(<span class="at">x=</span>speed.mph, <span class="at">fill=</span>sex, <span class="at">color=</span>sex))<span class="sc">+</span></span>
+<span id="cb14-2"><a href="visualization.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ecdf</span>(<span class="at">geom=</span><span class="st">&#39;line&#39;</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">alpha=</span><span class="fl">0.75</span>)<span class="sc">+</span></span>
+<span id="cb14-3"><a href="visualization.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb14-4"><a href="visualization.html#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&#39;Speed (mph)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb14-5"><a href="visualization.html#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;CDF&#39;</span>, <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="fl">1.0</span>))<span class="sc">+</span></span>
+<span id="cb14-6"><a href="visualization.html#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;ECDF&#39;</span>)<span class="sc">+</span></span>
+<span id="cb14-7"><a href="visualization.html#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb14-8"><a href="visualization.html#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+</div>
+<div id="comparisons" class="section level3">
+<h3>Comparisons</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="visualization.html#cb15-1" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, plot3, plot4, plot5, plot6, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="768" /></p>
+<p>The mean + standard error bar plot makes the implicit statistical comparison (t-test) easy to do by eye, but it obscures what the actual data look like (both the underlying variability, as well as it’s messiness). The jittered plot is very faithful to the underlying data, but it’s tricky to figure out how the distributions compare. The violin plot hides some of the data messiness, but does make comparisons easier. The boxplot is useful for showing the five-number summary, but not much else. Overlayed density plots are more intuitive than violin plots, but they only work well for a small number of categories. Empirical CDFs are also only good for a few categories, and their strength is in showing differences in the tails of the distributions.</p>
+</div>
+<div id="recommendations" class="section level3">
+<h3>Recommendations</h3>
+<p>My suggestion is to use a point+range to indicate the mean and standard error (thus facilitating comparisons), and to overlay that on some representaiton of the underlying data. I recommend using a jittered display of individual data points if you have relatively little data, and a violin plot if you have a lot of data (such that the jitter is very hard to make informative).</p>
+<p>Below, to show the few-data-points case, I sub-sample the data.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="visualization.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recommendation for few data points</span></span>
+<span id="cb16-2"><a href="visualization.html#cb16-2" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="visualization.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">50</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="visualization.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>sex, <span class="at">fill=</span>sex, <span class="at">color=</span>sex, <span class="at">y=</span>speed.mph))<span class="sc">+</span></span>
+<span id="cb16-5"><a href="visualization.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width=</span><span class="fl">0.25</span>, <span class="at">size =</span> <span class="fl">0.75</span>, <span class="at">alpha=</span><span class="fl">0.7</span>)<span class="sc">+</span></span>
+<span id="cb16-6"><a href="visualization.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se,</span>
+<span id="cb16-7"><a href="visualization.html#cb16-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">geom=</span><span class="st">&quot;pointrange&quot;</span>, </span>
+<span id="cb16-8"><a href="visualization.html#cb16-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">fatten =</span> <span class="dv">2</span>,</span>
+<span id="cb16-9"><a href="visualization.html#cb16-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb16-10"><a href="visualization.html#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Speed (mph +/1 sem)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb16-11"><a href="visualization.html#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb16-12"><a href="visualization.html#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span>
+<span id="cb16-13"><a href="visualization.html#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="visualization.html#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Here we will write a function to generate a 95% confidence interval</span></span>
+<span id="cb16-15"><a href="visualization.html#cb16-15" aria-hidden="true" tabindex="-1"></a>mean_ci <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb16-16"><a href="visualization.html#cb16-16" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">=</span> <span class="fu">mean</span>(x)</span>
+<span id="cb16-17"><a href="visualization.html#cb16-17" aria-hidden="true" tabindex="-1"></a>  se <span class="ot">=</span> <span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x))</span>
+<span id="cb16-18"><a href="visualization.html#cb16-18" aria-hidden="true" tabindex="-1"></a>  ql <span class="ot">=</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="fl">-0.025</span>)</span>
+<span id="cb16-19"><a href="visualization.html#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&#39;y&#39;</span><span class="ot">=</span>m, <span class="st">&#39;ymin&#39;</span><span class="ot">=</span>m<span class="sc">-</span>ql<span class="sc">*</span>se, <span class="st">&#39;ymax&#39;</span><span class="ot">=</span>m<span class="sc">+</span>ql<span class="sc">*</span>se)</span>
+<span id="cb16-20"><a href="visualization.html#cb16-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-21"><a href="visualization.html#cb16-21" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span> </span>
+<span id="cb16-22"><a href="visualization.html#cb16-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>sex, <span class="at">fill=</span>sex, <span class="at">color=</span>sex, <span class="at">y=</span>speed.mph))<span class="sc">+</span></span>
+<span id="cb16-23"><a href="visualization.html#cb16-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha=</span><span class="fl">0.3</span>)<span class="sc">+</span></span>
+<span id="cb16-24"><a href="visualization.html#cb16-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_ci,</span>
+<span id="cb16-25"><a href="visualization.html#cb16-25" aria-hidden="true" tabindex="-1"></a>               <span class="at">geom=</span><span class="st">&quot;pointrange&quot;</span>,</span>
+<span id="cb16-26"><a href="visualization.html#cb16-26" aria-hidden="true" tabindex="-1"></a>               <span class="at">fatten =</span> <span class="dv">2</span>,</span>
+<span id="cb16-27"><a href="visualization.html#cb16-27" aria-hidden="true" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb16-28"><a href="visualization.html#cb16-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Speed (mph +/- 2 sem)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb16-29"><a href="visualization.html#cb16-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb16-30"><a href="visualization.html#cb16-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span>
+<span id="cb16-31"><a href="visualization.html#cb16-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-32"><a href="visualization.html#cb16-32" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="480" /></p>
+</div>
+</div>
+<div id="numerical-numerical-2-x-numerical-0" class="section level2">
+<h2>numerical ~ numerical (2 x numerical ~ 0)</h2>
+<p>To show the joint distribution of two numerical variables, or one numerical variable as a function of another, the obvious choice is a scatterplot. However, a scatterplot, just like a jittered display of data points, is difficult to make usable when you have a lot of data (you need to tinker with point size and point transparency so that the display isn’t just an undifferentiated blob). A 2D histogram, mapping frequency onto color, is a better choice if you have a lot of data.</p>
+<div id="scatter-and-heatmap" class="section level3">
+<h3>Scatter and heatmap</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="visualization.html#cb17-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="visualization.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age, <span class="at">y=</span>speed.mph, <span class="at">alpha=</span><span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb17-3"><a href="visualization.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">0.5</span>, <span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.25</span>))<span class="sc">+</span></span>
+<span id="cb17-4"><a href="visualization.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Speed (mph)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb17-5"><a href="visualization.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;scatterplot&#39;</span>)<span class="sc">+</span></span>
+<span id="cb17-6"><a href="visualization.html#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb17-7"><a href="visualization.html#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span>
+<span id="cb17-8"><a href="visualization.html#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="visualization.html#cb17-9" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span></span>
+<span id="cb17-10"><a href="visualization.html#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age, <span class="at">y=</span>speed.mph)) <span class="sc">+</span> </span>
+<span id="cb17-11"><a href="visualization.html#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bin2d</span>()<span class="sc">+</span></span>
+<span id="cb17-12"><a href="visualization.html#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_continuous</span>(<span class="at">low=</span><span class="st">&quot;#DDDDDD&quot;</span>, <span class="at">high=</span><span class="st">&quot;#000000&quot;</span>)<span class="sc">+</span></span>
+<span id="cb17-13"><a href="visualization.html#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Speed (mph)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb17-14"><a href="visualization.html#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;heatmap histogram&#39;</span>)<span class="sc">+</span></span>
+<span id="cb17-15"><a href="visualization.html#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb17-16"><a href="visualization.html#cb17-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-17"><a href="visualization.html#cb17-17" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="576" /></p>
+</div>
+<div id="conditional-means" class="section level3">
+<h3>Conditional means</h3>
+<p>The other popular way to show the relationship between a numerical response (y) and a numerical explanatory variable (x) is to show the mean (plus error bars) of y for a given range of x. Such conditional means are typically connected with a line, and sometimes even the error bars are connected in a ribbon. This is the most direct way of showing the “conditional” means, but is generally impractical unless you have a lot of data. The most common way to show conditional means is to show the fitted y~x line; this takes us further away from the data (because it assumes that the conditional means follow a line), and usually gives us a false impression of how linear the relationship is. The other common alternative is to do “LOESS” smoothing (locally weighted regression); for each point we are plotting, the LOESS method fits a function to all the data, but weights the data based on how far away it is from the point we are interested; the consequence is a smooth, wiggly line that generally looks nice, but often misleads folks into thinking that they have evidence for non-linearities in their data.</p>
+<p>Generally, I would recommend showing the raw data distribution (as in the subsection above), plus a representation of whatever model you fit to those data (if you fit a line, show a line; if you fit a parabola, show the parabola).</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="visualization.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## make bins and calculate mean, se</span></span>
+<span id="cb18-2"><a href="visualization.html#cb18-2" aria-hidden="true" tabindex="-1"></a>cal1020.binned <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="visualization.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">age.bin =</span> <span class="fu">floor</span>(age<span class="sc">/</span><span class="dv">5</span>)<span class="sc">*</span><span class="dv">5</span><span class="fl">+2.5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="visualization.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(speed.mph), <span class="at">sem=</span><span class="fu">sd</span>(speed.mph)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()))</span>
+<span id="cb18-5"><a href="visualization.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-6"><a href="visualization.html#cb18-6" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> cal1020.binned <span class="sc">%&gt;%</span> </span>
+<span id="cb18-7"><a href="visualization.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age.bin, <span class="at">y=</span>mean, <span class="at">alpha=</span><span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb18-8"><a href="visualization.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb18-9"><a href="visualization.html#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb18-10"><a href="visualization.html#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">y=</span>mean, <span class="at">ymin=</span>mean<span class="sc">-</span>sem, <span class="at">ymax=</span>mean<span class="sc">+</span>sem))<span class="sc">+</span></span>
+<span id="cb18-11"><a href="visualization.html#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Mean speed (mph +/- sem)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb18-12"><a href="visualization.html#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;y|x&#39;</span>)<span class="sc">+</span></span>
+<span id="cb18-13"><a href="visualization.html#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb18-14"><a href="visualization.html#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span>
+<span id="cb18-15"><a href="visualization.html#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="visualization.html#cb18-16" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> cal1020.binned <span class="sc">%&gt;%</span> </span>
+<span id="cb18-17"><a href="visualization.html#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age.bin, <span class="at">y=</span>mean, <span class="at">alpha=</span><span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb18-18"><a href="visualization.html#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb18-19"><a href="visualization.html#cb18-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb18-20"><a href="visualization.html#cb18-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>mean<span class="sc">-</span>sem, <span class="at">ymax=</span>mean<span class="sc">+</span>sem))<span class="sc">+</span></span>
+<span id="cb18-21"><a href="visualization.html#cb18-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Mean speed (mph +/- sem)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb18-22"><a href="visualization.html#cb18-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;y|x Ribbon&#39;</span>)<span class="sc">+</span></span>
+<span id="cb18-23"><a href="visualization.html#cb18-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb18-24"><a href="visualization.html#cb18-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span>
+<span id="cb18-25"><a href="visualization.html#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="visualization.html#cb18-26" aria-hidden="true" tabindex="-1"></a>plot3 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span></span>
+<span id="cb18-27"><a href="visualization.html#cb18-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age, <span class="at">y=</span>speed.mph, <span class="at">alpha=</span><span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb18-28"><a href="visualization.html#cb18-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>, <span class="at">color=</span><span class="st">&#39;red&#39;</span>, <span class="at">fill=</span><span class="st">&#39;red&#39;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb18-29"><a href="visualization.html#cb18-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Fitted speed (mph + 95% CI)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb18-30"><a href="visualization.html#cb18-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Line&#39;</span>)<span class="sc">+</span></span>
+<span id="cb18-31"><a href="visualization.html#cb18-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb18-32"><a href="visualization.html#cb18-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span>
+<span id="cb18-33"><a href="visualization.html#cb18-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-34"><a href="visualization.html#cb18-34" aria-hidden="true" tabindex="-1"></a>plot4 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span></span>
+<span id="cb18-35"><a href="visualization.html#cb18-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age, <span class="at">y=</span>speed.mph, <span class="at">alpha=</span><span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb18-36"><a href="visualization.html#cb18-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;loess&#39;</span>, <span class="at">color=</span><span class="st">&#39;blue&#39;</span>, <span class="at">fill=</span><span class="st">&#39;blue&#39;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb18-37"><a href="visualization.html#cb18-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Fitted speed (mph + 95% CI)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb18-38"><a href="visualization.html#cb18-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;LOESS&#39;</span>)<span class="sc">+</span></span>
+<span id="cb18-39"><a href="visualization.html#cb18-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb18-40"><a href="visualization.html#cb18-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span>
+<span id="cb18-41"><a href="visualization.html#cb18-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-42"><a href="visualization.html#cb18-42" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, plot3, plot4, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="768" /></p>
+</div>
+<div id="numerical-numerical-categorical" class="section level3">
+<h3>numerical ~ numerical + categorical</h3>
+<p>If you add a categorical variable to those numerical~numerical plots, the obvious choice would be to color the points/fitted lines. However, if you have a lot of data, the scatterplots become unusable, so sometimes it is worth splitting the different categories into facets, as shown below.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="visualization.html#cb19-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="visualization.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age, <span class="at">y=</span>speed.mph, <span class="at">fill=</span>sex, <span class="at">color=</span>sex, <span class="at">group=</span>sex)) <span class="sc">+</span> </span>
+<span id="cb19-3"><a href="visualization.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">0.5</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.25</span>))<span class="sc">+</span></span>
+<span id="cb19-4"><a href="visualization.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>,<span class="at">alpha=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb19-5"><a href="visualization.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Speed (mph)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb19-6"><a href="visualization.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb19-7"><a href="visualization.html#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span>
+<span id="cb19-8"><a href="visualization.html#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="visualization.html#cb19-9" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span></span>
+<span id="cb19-10"><a href="visualization.html#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age, <span class="at">y=</span>speed.mph, <span class="at">fill=</span>sex, <span class="at">color=</span>sex, <span class="at">group=</span>sex)) <span class="sc">+</span> </span>
+<span id="cb19-11"><a href="visualization.html#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>sex)<span class="sc">+</span></span>
+<span id="cb19-12"><a href="visualization.html#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">0.5</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.25</span>))<span class="sc">+</span></span>
+<span id="cb19-13"><a href="visualization.html#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>,<span class="at">alpha=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb19-14"><a href="visualization.html#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Speed (mph)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb19-15"><a href="visualization.html#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb19-16"><a href="visualization.html#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span>
+<span id="cb19-17"><a href="visualization.html#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="visualization.html#cb19-18" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, <span class="at">nrow=</span><span class="dv">1</span>, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="768" /></p>
+</div>
+</div>
+<div id="categorical-numerical" class="section level2">
+<h2>categorical ~ numerical</h2>
+<p>It’s not very common to see a category distribution as a function of a numerical variable in experimental data, because such visualizations look like noise unless without a <em>lot</em> of data. However, the two obvious options are variations of a stacked area plot. I recommend the “filled” variety, unless the distribution of the explanatory variable is <em>really</em> important to show.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="visualization.html#cb20-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cal1020, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">round</span>(speed.mph<span class="sc">*</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">2</span>, <span class="at">fill=</span>sex))<span class="sc">+</span></span>
+<span id="cb20-2"><a href="visualization.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&#39;stack&#39;</span>)<span class="sc">+</span></span>
+<span id="cb20-3"><a href="visualization.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&#39;Avg speed (mph)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb20-4"><a href="visualization.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb20-5"><a href="visualization.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span>
+<span id="cb20-6"><a href="visualization.html#cb20-6" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cal1020, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">round</span>(speed.mph<span class="sc">*</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">2</span>, <span class="at">fill=</span>sex))<span class="sc">+</span></span>
+<span id="cb20-7"><a href="visualization.html#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&#39;fill&#39;</span>)<span class="sc">+</span></span>
+<span id="cb20-8"><a href="visualization.html#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&#39;Avg speed (mph)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb20-9"><a href="visualization.html#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;proportion&#39;</span>)<span class="sc">+</span></span>
+<span id="cb20-10"><a href="visualization.html#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb20-11"><a href="visualization.html#cb20-11" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, <span class="at">nrow=</span><span class="dv">1</span>, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+</div>
+<div id="x-categorical-and-categorical-categorical" class="section level2">
+<h2>2 x categorical and categorical ~ categorical</h2>
+<div id="heatmap" class="section level3">
+<h3>Heatmap</h3>
+<p>To show the joint distribution of two categorical variables, the best option is a heatmap.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="visualization.html#cb21-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> spsp <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="visualization.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">stage =</span> <span class="fu">factor</span>(stage, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Undergrad&quot;</span>, <span class="st">&quot;Grad&quot;</span>, <span class="st">&quot;Early Career&quot;</span>, <span class="st">&quot;Regular Member&quot;</span>, <span class="st">&quot;Retired&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="visualization.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>stage, <span class="at">y=</span>ethnicity))<span class="sc">+</span></span>
+<span id="cb21-4"><a href="visualization.html#cb21-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_bin2d</span>() <span class="sc">+</span></span>
+<span id="cb21-5"><a href="visualization.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_continuous</span>(<span class="at">low=</span><span class="st">&quot;#DDDDDD&quot;</span>, <span class="at">high=</span><span class="st">&quot;#000000&quot;</span>)<span class="sc">+</span></span>
+<span id="cb21-6"><a href="visualization.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb21-7"><a href="visualization.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb21-8"><a href="visualization.html#cb21-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">vjust=</span><span class="dv">1</span>))</span></code></pre></div>
+</div>
+<div id="categorical-categorical" class="section level3">
+<h3>categorical ~ categorical</h3>
+<p>To show how distribution of one categorical variable changes as a function of another, we should use filled stacked area plots. Note, that since these plots are “filled” along y, we get no sense of the distribution of the x variable, but in such cases we generally care much less about the distribution of x, then about the conditional distribution of y|x.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="visualization.html#cb22-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> spsp <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="visualization.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">stage =</span> <span class="fu">factor</span>(stage, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Undergrad&quot;</span>, <span class="st">&quot;Grad&quot;</span>, <span class="st">&quot;Early Career&quot;</span>, <span class="st">&quot;Regular Member&quot;</span>, <span class="st">&quot;Retired&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="visualization.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>stage, <span class="at">fill=</span>ethnicity))<span class="sc">+</span></span>
+<span id="cb22-4"><a href="visualization.html#cb22-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&#39;fill&#39;</span>) <span class="sc">+</span></span>
+<span id="cb22-5"><a href="visualization.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>)<span class="sc">+</span></span>
+<span id="cb22-6"><a href="visualization.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb22-7"><a href="visualization.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb22-8"><a href="visualization.html#cb22-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">vjust=</span><span class="dv">1</span>))</span></code></pre></div>
+</div>
+</div>
+<div id="extra-plot-notes." class="section level2">
+<h2>Extra plot notes.</h2>
+<div id="numerical-2-x-categorical" class="section level3">
+<h3>numerical ~ 2 x categorical</h3>
+<p>When plotting one numerical variable as a function of two categorical variables, the most common method is to use color to differentiate adjacent categories on the x-axis.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="visualization.html#cb23-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="visualization.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">first.1 =</span> <span class="fu">substr</span>(name.first, <span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="visualization.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>sex, <span class="at">fill=</span>first<span class="fl">.1</span>, <span class="at">color=</span>first<span class="fl">.1</span>, <span class="at">y=</span>speed.mph))<span class="sc">+</span></span>
+<span id="cb23-4"><a href="visualization.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha=</span><span class="fl">0.3</span>,</span>
+<span id="cb23-5"><a href="visualization.html#cb23-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">position=</span><span class="st">&quot;dodge&quot;</span>)<span class="sc">+</span></span>
+<span id="cb23-6"><a href="visualization.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_jitter(width=0.25, size = 0.75, alpha=0.7,</span></span>
+<span id="cb23-7"><a href="visualization.html#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#              position=position_dodge())+</span></span>
+<span id="cb23-8"><a href="visualization.html#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se,</span>
+<span id="cb23-9"><a href="visualization.html#cb23-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">geom=</span><span class="st">&quot;pointrange&quot;</span>, </span>
+<span id="cb23-10"><a href="visualization.html#cb23-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">fatten =</span> <span class="dv">2</span>,</span>
+<span id="cb23-11"><a href="visualization.html#cb23-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="at">width=</span><span class="fl">0.9</span>),</span>
+<span id="cb23-12"><a href="visualization.html#cb23-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb23-13"><a href="visualization.html#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&#39;Speed (mph)&#39;</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb23-14"><a href="visualization.html#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb23-15"><a href="visualization.html#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+<div id="frequency-vs-proportion-splots" class="section level4">
+<h4>Frequency vs Proportion splots</h4>
+<p>When showing how a categorical variable changes as a function of another variable, we use stacked area plots of one sort or another. We have a choice about whether to ‘stack’ or ‘fill’ the counts. Meaning, do we show the proportion of category y, without showing the distribution of category x (if we fill), or do we do a worse job conveying the proportions of y, but give a better sense of the distribution of x (if we stack). Generally, the correct answer is to fill.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="visualization.html#cb24-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(spsp, <span class="fu">aes</span>(<span class="at">x=</span>ethnicity, <span class="at">fill=</span>ethnicity)) <span class="sc">+</span> </span>
+<span id="cb24-2"><a href="visualization.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb24-3"><a href="visualization.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## the lines above form the basis of the plot, </span></span>
+<span id="cb24-4"><a href="visualization.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## the lines below just make it look nicer</span></span>
+<span id="cb24-5"><a href="visualization.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>)<span class="sc">+</span></span>
+<span id="cb24-6"><a href="visualization.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb24-7"><a href="visualization.html#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb24-8"><a href="visualization.html#cb24-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span>
+<span id="cb24-9"><a href="visualization.html#cb24-9" aria-hidden="true" tabindex="-1"></a>plot2  <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(spsp, <span class="fu">aes</span>(<span class="at">x=</span>ethnicity, <span class="at">fill=</span>ethnicity)) <span class="sc">+</span> </span>
+<span id="cb24-10"><a href="visualization.html#cb24-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> (..count..)<span class="sc">/</span><span class="fu">sum</span>(..count..)))<span class="sc">+</span></span>
+<span id="cb24-11"><a href="visualization.html#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## the lines above form the basis of the plot, </span></span>
+<span id="cb24-12"><a href="visualization.html#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="do">## the lines below just make it look nicer</span></span>
+<span id="cb24-13"><a href="visualization.html#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;proportion&#39;</span>)<span class="sc">+</span></span>
+<span id="cb24-14"><a href="visualization.html#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>)<span class="sc">+</span></span>
+<span id="cb24-15"><a href="visualization.html#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb24-16"><a href="visualization.html#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb24-17"><a href="visualization.html#cb24-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
+</div>
+</div>
+<div id="bin-width-and-bandwidths" class="section level3">
+<h3>bin width and bandwidths</h3>
+<p>The plots below will show how histograms and density plots change as a function of bin/band width.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="visualization.html#cb25-1" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">=</span> <span class="fu">list</span>()</span>
+<span id="cb25-2"><a href="visualization.html#cb25-2" aria-hidden="true" tabindex="-1"></a>i <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb25-3"><a href="visualization.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(W <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">15</span>)){</span>
+<span id="cb25-4"><a href="visualization.html#cb25-4" aria-hidden="true" tabindex="-1"></a>  plots[[i]] <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cal1020, <span class="fu">aes</span>(<span class="at">x=</span>time.sec<span class="sc">/</span><span class="dv">60</span>))<span class="sc">+</span></span>
+<span id="cb25-5"><a href="visualization.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> W)<span class="sc">+</span></span>
+<span id="cb25-6"><a href="visualization.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&#39;Minutes&#39;</span>, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">240</span>, <span class="at">by=</span><span class="dv">30</span>))<span class="sc">+</span></span>
+<span id="cb25-7"><a href="visualization.html#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb25-8"><a href="visualization.html#cb25-8" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb25-9"><a href="visualization.html#cb25-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-10"><a href="visualization.html#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="visualization.html#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(W <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">15</span>)){</span>
+<span id="cb25-12"><a href="visualization.html#cb25-12" aria-hidden="true" tabindex="-1"></a>  plots[[i]] <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cal1020, <span class="fu">aes</span>(<span class="at">x=</span>time.sec<span class="sc">/</span><span class="dv">60</span>))<span class="sc">+</span></span>
+<span id="cb25-13"><a href="visualization.html#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">bw =</span> W, <span class="at">fill=</span><span class="st">&#39;gray&#39;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb25-14"><a href="visualization.html#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&#39;Minutes&#39;</span>, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">240</span>, <span class="at">by=</span><span class="dv">30</span>))<span class="sc">+</span></span>
+<span id="cb25-15"><a href="visualization.html#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb25-16"><a href="visualization.html#cb25-16" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb25-17"><a href="visualization.html#cb25-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-18"><a href="visualization.html#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="visualization.html#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co">#do.call(gridExtra::grid.arrange, c(plots, ncol=3))</span></span></code></pre></div>
+
+</div>
+</div>
+<div id="visualization" class="section level2">
+<h2>ggplot</h2>
+<p>We will teach you to use <a href="http://ggplot2.org/">ggplot</a> for data visualization.</p>
+<p>It has a number of advantages once you are familiar with it. However, it has a somewhat steep learning curve.</p>
+<p>Making plots entirely by writing code will seem weird at first – you will want to interact with the plot by clicking on it in various ways, and you can’t. However, the advantage of writing code to make your plots is that once the data changes (you get more, or you decide to filter it one way or another, or adopt one transformation or another), you will not need to recreate the plots manually. This will seem like a negligible advantage to you now, but trust me, this will save you time in the end.</p>
+<p>Generally, many of the things we cover are described a bit differently in this <a href="http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/">ggplot tutorial</a> and on the <a href="https://www.rstudio.com/wp-content/uploads/2015/08/ggplot2-cheatsheet.pdf">ggplot cheat sheet</a>. Lots more resources may be found by googling.</p>
+<div id="installation." class="section level3">
+<h3>Installation.</h3>
+<p>If you do not already have ggplot installed, install it with</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="visualization.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;ggplot2&#39;</span>)</span></code></pre></div>
+<p>You will need to load the ggplot library (and also grid, and gridExtra):</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="visualization.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb27-2"><a href="visualization.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb27-3"><a href="visualization.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span></code></pre></div>
+</div>
+<div id="basic-overview." class="section level3">
+<h3>Basic overview.</h3>
+<p><strong>ggplot works on <em>data frames</em></strong>: you give it a data frame and tell it how the various columns of the data frame should be mapped on to display properties.</p>
+<p><strong>We specify the <em>aesthetic</em> mapping</strong> using the <code>aes()</code> to say how various data.frame columns should be used to generate a display. For instance, the x coordinate is one aesthetic property, the color is another property, as is size, or fill, or style of point.</p>
+<p><strong>We then specify what kinds of geometric entities to add to the plot</strong>, which will follow the aesthetic mapping we described.</p>
+<p>Thus, to produce a scatter plot of two vectors x and y, instead of running a scatterplot(x,y) command of some sort, we would need to put them into a data frame, specify that ggplot should use that data frame, should map the x column on to x, and the y column on to y, and then add a “point” geometric entity.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="visualization.html#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb28-2"><a href="visualization.html#cb28-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fl">0.5</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)<span class="sc">*</span><span class="fl">0.25</span></span>
+<span id="cb28-3"><a href="visualization.html#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="visualization.html#cb28-4" aria-hidden="true" tabindex="-1"></a>df.xy <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)</span>
+<span id="cb28-5"><a href="visualization.html#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="visualization.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df.xy, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p>The <code>ggplot(data = df.xy, mapping = aes(x=x, y=y)) + geom_point()</code> line is doing a few things:<br />
+<code>ggplot(data = df.xy,</code> tells ggplot to use df.xy as the data frame (the <code>data=</code> part can often be dropped)<br />
+<code>mapping = aes(x=x, y=y))</code> specifies that the x coordinate should be obtained from the x column of the data frame, and the y coordinate from the y column.<br />
+<code>+ geom_point()</code> says that we should add points that follow that aesthetic mapping.</p>
+<p>If we change the geometric entity from <code>geom_point</code>, we will produce a different graph. For instance, <code>geom_line()</code> will connect the points with lines:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="visualization.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df.xy, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>And we can add multiple geometric entities all following the same aesthetic mapping:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="visualization.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb30-2"><a href="visualization.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb30-3"><a href="visualization.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p>Note that here we did two things to make the code eaiser to read. (1) we dropped the <code>data =</code> and <code>mapping =</code> part, as the order is sufficient to indicate which input to <code>ggplot()</code> is the data frame, and which is the mapping), and (2) we made the command span multiple lines by entering line breaks after the +s. While this is not strictly necessary, it makes the code easier to work with.</p>
+</div>
+<div id="changing-labels." class="section level3">
+<h3>Changing labels.</h3>
+<p>We can add a title, and change the x and y label text.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="visualization.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb31-2"><a href="visualization.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb31-3"><a href="visualization.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb31-4"><a href="visualization.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
+<span id="cb31-5"><a href="visualization.html#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
+<span id="cb31-6"><a href="visualization.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+</div>
+<div id="themes-and-elements-and-properties." class="section level3">
+<h3>Themes and elements and properties.</h3>
+<p>We can change the way in which various aspects of the display look, which ggplot refers to as the <a href="http://docs.ggplot2.org/current/theme.html">theme</a> of the plot.</p>
+<p>There are many properties to the theme that are <em>hierarchically organized</em>. For instance the <code>title</code> property applies to all title text in the plot, including the plot title (<code>plot.title</code>), the axis titles (<code>axis.title</code>), the legend title (<code>legend.title</code>); thus if we were to set the title property to have green font, that would apply to all titles (unless we issued specific instructions to override this for more specific titles).</p>
+<p>Changing such theme properties is achieved with the <code>theme()</code> command, in which we specify which property of the plot we want to alter, and we set it by invoking a particular element type, initiated with whatever we want to change. Titles are text, so we change them by setting <code>title=element_text(...)</code> where the stuff in <code>...</code> includes the <a href="http://docs.ggplot2.org/current/element_text.html">element_text</a> properties and the values we set them to. Such a command will override the properties that we set, but preserve the ones we did not set.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="visualization.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb32-2"><a href="visualization.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb32-3"><a href="visualization.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb32-4"><a href="visualization.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
+<span id="cb32-5"><a href="visualization.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
+<span id="cb32-6"><a href="visualization.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>) <span class="sc">+</span></span>
+<span id="cb32-7"><a href="visualization.html#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">&quot;green&quot;</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p>Despite the fact that this is hideous, a few things are worth noting: (a) by setting the color of the <code>title</code> property, we influenced the color of the plot title, the x axis title, and the y axis title, and (b) we only changed the <em>color</em> of all of those, and they retained their differences in font size. The values we set at a particular level of the plot hierarchy propagate down to all children, but this only influences the property that we changed.</p>
+<p>The <a href="http://docs.ggplot2.org/current/theme.html">theme properties</a> can be partitioned into properties of the axes (<code>axis.*</code>, like <code>axis.text</code> for the labels for axis tick marks, <code>axis.title</code> for axis title, or more specific ones like <code>axis.title.x</code>), properties of the legend (<code>legend.*</code>), properties of the graph area (<code>panel.*</code>), properties of the whole image (<code>plot.*</code>), and properties of the “strip” that gives identifying information in multi-panel plots (<code>strip.*</code>).</p>
+<p>A fairly decent publication-grade plot theme can be created by simply invoking the black and white theme (<code>theme_bw()</code>):</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="visualization.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb33-2"><a href="visualization.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb33-3"><a href="visualization.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb33-4"><a href="visualization.html#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
+<span id="cb33-5"><a href="visualization.html#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
+<span id="cb33-6"><a href="visualization.html#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb33-7"><a href="visualization.html#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p>Generally, I like somewhat larger axis text and titles, and no grid lines, so I might favor something like:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="visualization.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb34-2"><a href="visualization.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb34-3"><a href="visualization.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb34-4"><a href="visualization.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
+<span id="cb34-5"><a href="visualization.html#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
+<span id="cb34-6"><a href="visualization.html#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb34-7"><a href="visualization.html#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb34-8"><a href="visualization.html#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb34-9"><a href="visualization.html#cb34-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>),</span>
+<span id="cb34-10"><a href="visualization.html#cb34-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>),</span>
+<span id="cb34-11"><a href="visualization.html#cb34-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p>We can also save a particular theme to reuse later:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="visualization.html#cb35-1" aria-hidden="true" tabindex="-1"></a>eds_theme <span class="ot">&lt;-</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb35-2"><a href="visualization.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb35-3"><a href="visualization.html#cb35-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>),</span>
+<span id="cb35-4"><a href="visualization.html#cb35-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>),</span>
+<span id="cb35-5"><a href="visualization.html#cb35-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span>
+<span id="cb35-6"><a href="visualization.html#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="visualization.html#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb35-8"><a href="visualization.html#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb35-9"><a href="visualization.html#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb35-10"><a href="visualization.html#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
+<span id="cb35-11"><a href="visualization.html#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
+<span id="cb35-12"><a href="visualization.html#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb35-13"><a href="visualization.html#cb35-13" aria-hidden="true" tabindex="-1"></a>  eds_theme</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+</div>
+<div id="changing-display-properties-of-plotted-elements." class="section level3">
+<h3>Changing display properties of plotted elements.</h3>
+<p>We can also change properties like size and color of the plot elements. There are two ways to do so: we might make those properties vary with some aspect of the data by including them in <code>aes()</code>, or we can make them be fixed by including them outside of <code>aes()</code>.</p>
+<p>For instance, if we want the size and color of the points to vary with the y value, we might write:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="visualization.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb36-2"><a href="visualization.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>y, <span class="at">size=</span>y)) <span class="sc">+</span> </span>
+<span id="cb36-3"><a href="visualization.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  eds_theme</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p>But if we wanted to simply set a particular size and color for those points, we would note it outside of the aesthetic mapping in <code>aes()</code>:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="visualization.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb37-2"><a href="visualization.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span> </span>
+<span id="cb37-3"><a href="visualization.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  eds_theme</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p>Other notable properties of <code>geom_point()</code> include their <a href="http://www.cookbook-r.com/Graphs/Shapes_and_line_types/">shape</a>, their border color and fill color (for shapes 21-25), and their transparency (alpha). Besides color, width (“size”), and transparency (“alpha”), <code>geom_line()</code> has a <a href="http://www.cookbook-r.com/Graphs/Shapes_and_line_types/">‘linetype’</a> property.</p>
+<p>So we can make quite a crazy plot by manipulating them all (and this is without even mapping them to data values in aes!)</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="visualization.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb38-2"><a href="visualization.html#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;navy&quot;</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">shape=</span><span class="dv">22</span>, <span class="at">fill=</span><span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb38-3"><a href="visualization.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color=</span><span class="st">&quot;green&quot;</span>, <span class="at">size=</span><span class="dv">2</span>, <span class="at">linetype=</span><span class="st">&quot;dotdash&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="visualization.html#cb38-4" aria-hidden="true" tabindex="-1"></a>  eds_theme</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+</div>
+<div id="other-geometric-elements." class="section level3">
+<h3>Other geometric elements.</h3>
+<p>Besides <code>geom_line</code> and <code>geom_point</code>, there are many other geometric elements we might plot (enumerated on the main <a href="http://docs.ggplot2.org/current/">reference page</a>). We will cover these as we need to as we go over specific visualization types.</p>
+</div>
+<div id="assembling-multiple-plots-in-one-figure" class="section level3">
+<h3>Assembling multiple plots in one figure</h3>
+<p>Often we want to make a few plots and attach them together. For instance, we might want to see the histograms of x, y, and their scatterplot. This can be accomplished with the <code>gridExtra</code> package, which you can install with <code>install.packages('gridExtra')</code>.</p>
+<p>The strategy is to define the various plots, and save them to variables, then put them together with <code>grid.arrange()</code>.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="visualization.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb39-2"><a href="visualization.html#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="visualization.html#cb39-3" aria-hidden="true" tabindex="-1"></a>hx <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span> </span>
+<span id="cb39-4"><a href="visualization.html#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;green&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb39-5"><a href="visualization.html#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb39-6"><a href="visualization.html#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="visualization.html#cb39-7" aria-hidden="true" tabindex="-1"></a>hy <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>y)) <span class="sc">+</span> </span>
+<span id="cb39-8"><a href="visualization.html#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;purple&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb39-9"><a href="visualization.html#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb39-10"><a href="visualization.html#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="visualization.html#cb39-11" aria-hidden="true" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb39-12"><a href="visualization.html#cb39-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span> </span>
+<span id="cb39-13"><a href="visualization.html#cb39-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb39-14"><a href="visualization.html#cb39-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-15"><a href="visualization.html#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(hx,hy,xy,<span class="at">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<p>We might rather want the x and y histograms to align with the x and y axes of the scatter plot, so we might want to arrange this as a 2x2 grid, while flipping the coordinates of the y histogram (note that we need a blank panel for the upper right).</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="visualization.html#cb41-1" aria-hidden="true" tabindex="-1"></a>hx <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span> </span>
+<span id="cb41-2"><a href="visualization.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;green&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb41-3"><a href="visualization.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb41-4"><a href="visualization.html#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="visualization.html#cb41-5" aria-hidden="true" tabindex="-1"></a>hy <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>y)) <span class="sc">+</span> </span>
+<span id="cb41-6"><a href="visualization.html#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;purple&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb41-7"><a href="visualization.html#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span>                              <span class="co"># this flips the histogram sideways.</span></span>
+<span id="cb41-8"><a href="visualization.html#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb41-9"><a href="visualization.html#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="visualization.html#cb41-10" aria-hidden="true" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb41-11"><a href="visualization.html#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb41-12"><a href="visualization.html#cb41-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb41-13"><a href="visualization.html#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-14"><a href="visualization.html#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(hx,</span>
+<span id="cb41-15"><a href="visualization.html#cb41-15" aria-hidden="true" tabindex="-1"></a>             <span class="fu">grid.rect</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">col=</span><span class="st">&quot;white&quot;</span>)),  <span class="co"># this is just a white blank.</span></span>
+<span id="cb41-16"><a href="visualization.html#cb41-16" aria-hidden="true" tabindex="-1"></a>             xy,</span>
+<span id="cb41-17"><a href="visualization.html#cb41-17" aria-hidden="true" tabindex="-1"></a>             hy, </span>
+<span id="cb41-18"><a href="visualization.html#cb41-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p>There is still lots left to fix here, and I will walk through the process of making this figure presentable <a href="vis.tinkering.html">here</a>. In the meantime, lets move on.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="R-start.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/notes/visualizations.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
