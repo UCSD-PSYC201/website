@@ -1,5 +1,7 @@
 library(tidyverse)
 
+# 'http://vulstats.ucsd.edu/data/duckworth-grit-scale-data/data-coded.csv'
+
 dat <- read_csv('http://vulstats.ucsd.edu/data/duckworth-grit-scale-data/data-coded.csv')
 
 glimpse(dat)
@@ -8,10 +10,32 @@ dat %>% count(gender)
 
 dat %>%  count(race)
 
+dat %>% 
+  filter(gender %in% c('female', 'male'),
+         !is.na(race) ,
+         age < 100) %>% 
+  ggplot(aes(x=agreeableness, 
+             y=neuroticism, 
+             color = age))+
+  facet_grid(race~gender)+
+  geom_point(position = position_jitter(width=0.5, height=0.5))+
+  geom_smooth(method='lm')+
+  #scale_color_gradient(high = 'red', low='darkgreen')+
+  # scale_color_manual(values = c('female'='darkgreen', #'darkgreen',
+  #                               'male'='chartreuse'))+
+  scale_color_gradient2(low="red", 
+                        high="green", 
+                        mid="darkgray", 
+                        midpoint=39)+
+  theme(strip.text = element_text(size=26),
+        panel.background = element_blank())
 
+# category ~ 0
+# distribution of race
 dat %>% 
   ggplot(aes(fill = race, x=1))+
-  geom_bar(position=position_stack())
+  geom_bar()
+
 
 dat %>% 
   filter(age < 100) %>% 
