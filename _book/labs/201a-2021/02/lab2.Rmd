@@ -1,0 +1,135 @@
+---
+title: "PSYC 201A Lab 02: Data visualization"
+author: "Wenhao (James) Qi"
+date: "2020-10-06"
+---
+
+<!-- knitting -->
+
+```{r}
+# install.packages('mdsr')
+library(tidyverse)
+library(mdsr) # for make_babynames_dist()
+```
+
+Some useful cheat sheets:
+
+- (ggplot, dplyr, tidyr, purrr, rmarkdown...)[https://www.rstudio.com/resources/cheatsheets/]
+- (Named colors)[http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf]
+
+# 1 Plotting iris
+
+```{r}
+glimpse(iris)
+```
+
+## 1.1 (10 min)
+
+Plot a scatter plot of `Petal.Length` vs. `Petal.Width`, with different colors for different species. Change the colors to match the colors of the actual flowers (this data set is about iris flowers!):
+
+- setosa: slateblue2
+- versicolor: thistle4
+- virginica: orchid4
+
+Plot a line (without standard errors) that shows the trend of the data within each species.
+
+Hint: `geom_point`, `geom_smooth(method = ..., se = ...)`, `scale_color_manual`
+
+```{r}
+
+```
+
+<!-- theme -->
+
+## 1.2 (10 min)
+
+Create a box plot (or a violin plot) showing `Petal.Width` by species.
+
+Hint: `geom_boxplot`, `geom_violin`
+
+```{r}
+
+```
+
+Make a histogram of `Sepal.Length` for each species. Make two plots displaying the same data:
+
+- Each species histogram is in a different panel
+- The histograms for all species overlapping in the same panel
+
+Hint: `facet_wrap`, `aes(fill = ...)`, `geom_histogram(alpha = ..., position = ...)`
+
+```{r}
+
+```
+
+# 2 Plotting babynames
+
+```{r}
+babynames <- make_babynames_dist()
+glimpse(babynames)
+```
+
+We are only looking at males named Edward.
+
+```{r}
+edward <- babynames %>% filter(name == "Edward", sex == "M")
+glimpse(edward)
+```
+
+For our plot we need the median year of birth of Edwards still alive today, calculated below.
+
+```{r}
+median.yob <- edward %>%
+  arrange(year) %>%
+  mutate(
+    percentile = cumsum(est_alive_today) / sum(est_alive_today),
+    above.median = percentile >= .5
+  ) %>%
+  filter(above.median) %>%
+  slice_head() %>%
+  pull(year)
+```
+
+We will try to produce (this plot)[https://vulstats.ucsd.edu/labs/201a-2021/02/plot4.png] in 4 steps.
+
+# 2.1 (10 min)
+
+Try to produce (plot1)[https://vulstats.ucsd.edu/labs/201a-2021/02/plot1.png].
+
+Hint: `geom_bar(stat = ...)`, `labs`, 'palegreen3', 'palegreen4'
+
+```{r}
+
+```
+
+<!-- save plots -->
+
+# 2.2 (5 min)
+
+Try to produce (plot2)[https://vulstats.ucsd.edu/labs/201a-2021/02/plot2.png].
+
+Hint: `geom_line(size = ...)`
+
+```{r}
+
+```
+
+# 2.3 (10 min)
+
+Try to produce (plot3)[https://vulstats.ucsd.edu/labs/201a-2021/02/plot3.png].
+
+Hint: `ifelse`, 'darkgreen', `geom_text(size = ...)`, `geom_curve(arrow = ..., curvature = ...)`
+
+```{r}
+
+```
+
+# 2.4 (10 min)
+
+Try to produce (plot4)[https://vulstats.ucsd.edu/labs/201a-2021/02/plot4.png].
+
+Hint: `scale_x_continuous(expand = ..., breaks = ..., minor_breaks = ..., labels = ...)`, `theme_minimal`, `theme(axis.text.x = ..., plot.title = ...)`
+
+```{r}
+
+```

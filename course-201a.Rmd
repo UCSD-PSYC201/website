@@ -11,6 +11,7 @@ In which we will cover the goals of this class, and where the class materials fi
 #### Homework
 
 [Pre-survey](https://forms.gle/2LEtUqjDGUfGhjHg7)
+[HW00: Swirl](http://vulstats.ucsd.edu/hw/) (due 9/30)
 
 #### Thursday
 
@@ -28,7 +29,7 @@ In which we cover data organization, cleaning, and basic summaries, while gettin
 
 #### Homework
 
-[data cleaning](http://vulstats.ucsd.edu/hw/) 
+[HW01: Data cleaning](http://vulstats.ucsd.edu/hw/) (due 10/11)
 
 #### Tuesday   
 
@@ -53,13 +54,13 @@ socviz: [make a plot](https://socviz.co/makeplot.html) (the rest of this book ma
 
 #### Homework
 
-[data visualization](http://vulstats.ucsd.edu/hw/)
-
 #### Tuesday   
 
 visualization, ggplot #1: [slides](slides/L03.pdf) , [code](code/live/L03.R)
 
-#### Wednesday  
+#### Wednesday 10/6
+
+Data visualization [[code](labs/201a-2021/02/lab2.Rmd)]
 
 #### Thursday   
 
