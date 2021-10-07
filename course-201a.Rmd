@@ -60,7 +60,7 @@ visualization, ggplot #1: [slides](slides/L03.pdf) , [code](code/live/L03.R)
 
 #### Wednesday 10/6
 
-Data visualization [[code](labs/201a-2021/02/lab2.Rmd)]
+Data visualization [[code](labs/201a-2021/02/lab2.Rmd)] [[answer](labs/201a-2021/02/lab2-ans.Rmd)]
 
 #### Thursday   
 
