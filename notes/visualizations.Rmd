@@ -1,3 +1,7 @@
+```{r echo=F}
+set.seed(3509)
+```
+
 # Visualizations  {#visualization}
 
 These notes are largely there to provide quick examples of ggplot2 code that generates graphs for particular data.  I assume that the ggplot2 introduction from R4DS got you oriented, but if not, we have a few more notes on the basics of [ggplot](#ggplot).

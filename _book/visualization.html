@@ -328,7 +328,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-6"><a href="visualization.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
 <span id="cb3-7"><a href="visualization.html#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>,</span>
 <span id="cb3-8"><a href="visualization.html#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>, <span class="at">hjust=</span><span class="dv">1</span>)) )</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="288" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="288" /></p>
 </div>
 <div id="pie-chart" class="section level3">
 <h3>Pie chart</h3>
@@ -345,7 +345,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-10"><a href="visualization.html#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb4-11"><a href="visualization.html#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb4-12"><a href="visualization.html#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()) )</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="144" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="144" /></p>
 </div>
 <div id="stacked-area" class="section level3">
 <h3>Stacked area</h3>
@@ -359,7 +359,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-7"><a href="visualization.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">&quot;SPSP</span><span class="sc">\n</span><span class="st">ethnicity&quot;</span>))<span class="sc">+</span></span>
 <span id="cb5-8"><a href="visualization.html#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb5-9"><a href="visualization.html#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) )</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="384" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="384" /></p>
 </div>
 </div>
 <div id="numerical-0" class="section level2">
@@ -370,17 +370,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-2"><a href="visualization.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cal1020)</span></code></pre></div>
 <pre><code>## Rows: 3,234
 ## Columns: 11
-## $ name.first &lt;fct&gt; Jordan, Macdonard, Sergio, Jamesom, Darren, Okwaro, Steven, Lindsey, Derek, Daniel, Andre…
-## $ name.last  &lt;fct&gt; Chipangama, Ondara, Reyes, Mora, Brown, Raura, Underwood, Scherf, Bradley, Seidel, Corman…
-## $ City       &lt;fct&gt; &quot;Flagstaff&quot;, &quot;Grand Prairie&quot;, &quot;Palmdale&quot;, &quot;Arroyo Grande&quot;, &quot;Solana Beach&quot;, &quot;Oceanside&quot;, &quot;…
-## $ State      &lt;chr&gt; &quot;AZ&quot;, &quot;TX&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;NY&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;AZ&quot;,…
-## $ Zip        &lt;fct&gt; 86004, 75054, 93551, 93420, 92075, 92057, 92024, 12440, 92024, 92078, 92130, 92056, 92123…
-## $ age        &lt;dbl&gt; 25, 29, 32, 30, 28, 39, 26, 27, 33, 34, 33, 39, 26, 32, 41, 24, 42, 48, 51, 33, 46, 50, 4…
-## $ sex        &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;,…
-## $ time.sec   &lt;dbl&gt; 2880, 2885, 2970, 3062, 3083, 3206, 3222, 3289, 3318, 3363, 3388, 3413, 3421, 3435, 3445,…
-## $ corral     &lt;int&gt; 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1,…
-## $ pace.min   &lt;dbl&gt; 4.800000, 4.808333, 4.950000, 5.103333, 5.138333, 5.343333, 5.370000, 5.481667, 5.530000,…
-## $ speed.mph  &lt;dbl&gt; 12.500000, 12.478336, 12.121212, 11.757022, 11.676938, 11.228946, 11.173184, 10.945576, 1…</code></pre>
+## $ name.first &lt;fct&gt; Jordan, Macdonard, Sergio, Jamesom, Darren, Okwaro, Steven, Lindsey, Derek, Dani…
+## $ name.last  &lt;fct&gt; Chipangama, Ondara, Reyes, Mora, Brown, Raura, Underwood, Scherf, Bradley, Seide…
+## $ City       &lt;fct&gt; &quot;Flagstaff&quot;, &quot;Grand Prairie&quot;, &quot;Palmdale&quot;, &quot;Arroyo Grande&quot;, &quot;Solana Beach&quot;, &quot;Ocea…
+## $ State      &lt;chr&gt; &quot;AZ&quot;, &quot;TX&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;NY&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;C…
+## $ Zip        &lt;fct&gt; 86004, 75054, 93551, 93420, 92075, 92057, 92024, 12440, 92024, 92078, 92130, 920…
+## $ age        &lt;dbl&gt; 25, 29, 32, 30, 28, 39, 26, 27, 33, 34, 33, 39, 26, 32, 41, 24, 42, 48, 51, 33, …
+## $ sex        &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;…
+## $ time.sec   &lt;dbl&gt; 2880, 2885, 2970, 3062, 3083, 3206, 3222, 3289, 3318, 3363, 3388, 3413, 3421, 34…
+## $ corral     &lt;int&gt; 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1,…
+## $ pace.min   &lt;dbl&gt; 4.800000, 4.808333, 4.950000, 5.103333, 5.138333, 5.343333, 5.370000, 5.481667, …
+## $ speed.mph  &lt;dbl&gt; 12.500000, 12.478336, 12.121212, 11.757022, 11.676938, 11.228946, 11.173184, 10.…</code></pre>
 <div id="histogram-density" class="section level3">
 <h3>Histogram &amp; density</h3>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="visualization.html#cb8-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cal1020, <span class="fu">aes</span>(<span class="at">x=</span>time.sec<span class="sc">/</span><span class="dv">60</span>))<span class="sc">+</span></span>
@@ -395,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-10"><a href="visualization.html#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&#39;Minutes&#39;</span>, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">240</span>, <span class="at">by=</span><span class="dv">30</span>))<span class="sc">+</span></span>
 <span id="cb8-11"><a href="visualization.html#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
 <span id="cb8-12"><a href="visualization.html#cb8-12" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="576" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="576" /></p>
 </div>
 </div>
 <div id="numerical-categorical" class="section level2">
@@ -473,7 +473,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="comparisons" class="section level3">
 <h3>Comparisons</h3>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="visualization.html#cb15-1" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, plot3, plot4, plot5, plot6, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="768" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="768" /></p>
 <p>The mean + standard error bar plot makes the implicit statistical comparison (t-test) easy to do by eye, but it obscures what the actual data look like (both the underlying variability, as well as it’s messiness). The jittered plot is very faithful to the underlying data, but it’s tricky to figure out how the distributions compare. The violin plot hides some of the data messiness, but does make comparisons easier. The boxplot is useful for showing the five-number summary, but not much else. Overlayed density plots are more intuitive than violin plots, but they only work well for a small number of categories. Empirical CDFs are also only good for a few categories, and their strength is in showing differences in the tails of the distributions.</p>
 </div>
 <div id="recommendations" class="section level3">
@@ -512,7 +512,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb16-30"><a href="visualization.html#cb16-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span>
 <span id="cb16-31"><a href="visualization.html#cb16-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-32"><a href="visualization.html#cb16-32" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="480" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="480" /></p>
 </div>
 </div>
 <div id="numerical-numerical-2-x-numerical-0" class="section level2">
@@ -537,7 +537,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-15"><a href="visualization.html#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
 <span id="cb17-16"><a href="visualization.html#cb17-16" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb17-17"><a href="visualization.html#cb17-17" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="576" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="576" /></p>
 </div>
 <div id="conditional-means" class="section level3">
 <h3>Conditional means</h3>
@@ -585,7 +585,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb18-40"><a href="visualization.html#cb18-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span>
 <span id="cb18-41"><a href="visualization.html#cb18-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-42"><a href="visualization.html#cb18-42" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, plot3, plot4, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="768" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="768" /></p>
 </div>
 <div id="numerical-numerical-categorical" class="section level3">
 <h3>numerical ~ numerical + categorical</h3>
@@ -608,7 +608,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-16"><a href="visualization.html#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span>
 <span id="cb19-17"><a href="visualization.html#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-18"><a href="visualization.html#cb19-18" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, <span class="at">nrow=</span><span class="dv">1</span>, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="768" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="768" /></p>
 </div>
 </div>
 <div id="categorical-numerical" class="section level2">
@@ -625,7 +625,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb20-9"><a href="visualization.html#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;proportion&#39;</span>)<span class="sc">+</span></span>
 <span id="cb20-10"><a href="visualization.html#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
 <span id="cb20-11"><a href="visualization.html#cb20-11" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(plot1, plot2, <span class="at">nrow=</span><span class="dv">1</span>, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </div>
 <div id="x-categorical-and-categorical-categorical" class="section level2">
 <h2>2 x categorical and categorical ~ categorical</h2>
@@ -735,11 +735,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="visualization.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb27-2"><a href="visualization.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
 <span id="cb27-3"><a href="visualization.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;gridExtra&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     combine</code></pre>
 </div>
 <div id="basic-overview." class="section level3">
 <h3>Basic overview.</h3>
@@ -747,111 +742,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>We specify the <em>aesthetic</em> mapping</strong> using the <code>aes()</code> to say how various data.frame columns should be used to generate a display. For instance, the x coordinate is one aesthetic property, the color is another property, as is size, or fill, or style of point.</p>
 <p><strong>We then specify what kinds of geometric entities to add to the plot</strong>, which will follow the aesthetic mapping we described.</p>
 <p>Thus, to produce a scatter plot of two vectors x and y, instead of running a scatterplot(x,y) command of some sort, we would need to put them into a data frame, specify that ggplot should use that data frame, should map the x column on to x, and the y column on to y, and then add a “point” geometric entity.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="visualization.html#cb30-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb30-2"><a href="visualization.html#cb30-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fl">0.5</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)<span class="sc">*</span><span class="fl">0.25</span></span>
-<span id="cb30-3"><a href="visualization.html#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="visualization.html#cb30-4" aria-hidden="true" tabindex="-1"></a>df.xy <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)</span>
-<span id="cb30-5"><a href="visualization.html#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="visualization.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df.xy, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="visualization.html#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb28-2"><a href="visualization.html#cb28-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fl">0.5</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)<span class="sc">*</span><span class="fl">0.25</span></span>
+<span id="cb28-3"><a href="visualization.html#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="visualization.html#cb28-4" aria-hidden="true" tabindex="-1"></a>df.xy <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)</span>
+<span id="cb28-5"><a href="visualization.html#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="visualization.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df.xy, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>The <code>ggplot(data = df.xy, mapping = aes(x=x, y=y)) + geom_point()</code> line is doing a few things:<br />
 <code>ggplot(data = df.xy,</code> tells ggplot to use df.xy as the data frame (the <code>data=</code> part can often be dropped)<br />
 <code>mapping = aes(x=x, y=y))</code> specifies that the x coordinate should be obtained from the x column of the data frame, and the y coordinate from the y column.<br />
 <code>+ geom_point()</code> says that we should add points that follow that aesthetic mapping.</p>
 <p>If we change the geometric entity from <code>geom_point</code>, we will produce a different graph. For instance, <code>geom_line()</code> will connect the points with lines:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="visualization.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df.xy, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
-<p>And we can add multiple geometric entities all following the same aesthetic mapping:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="visualization.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb32-2"><a href="visualization.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb32-3"><a href="visualization.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="visualization.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df.xy, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p>And we can add multiple geometric entities all following the same aesthetic mapping:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="visualization.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb30-2"><a href="visualization.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb30-3"><a href="visualization.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>Note that here we did two things to make the code eaiser to read. (1) we dropped the <code>data =</code> and <code>mapping =</code> part, as the order is sufficient to indicate which input to <code>ggplot()</code> is the data frame, and which is the mapping), and (2) we made the command span multiple lines by entering line breaks after the +s. While this is not strictly necessary, it makes the code easier to work with.</p>
 </div>
 <div id="changing-labels." class="section level3">
 <h3>Changing labels.</h3>
 <p>We can add a title, and change the x and y label text.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="visualization.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb33-2"><a href="visualization.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb33-3"><a href="visualization.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb33-4"><a href="visualization.html#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
-<span id="cb33-5"><a href="visualization.html#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
-<span id="cb33-6"><a href="visualization.html#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="visualization.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb31-2"><a href="visualization.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb31-3"><a href="visualization.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb31-4"><a href="visualization.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
+<span id="cb31-5"><a href="visualization.html#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
+<span id="cb31-6"><a href="visualization.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 </div>
 <div id="themes-and-elements-and-properties." class="section level3">
 <h3>Themes and elements and properties.</h3>
 <p>We can change the way in which various aspects of the display look, which ggplot refers to as the <a href="http://docs.ggplot2.org/current/theme.html">theme</a> of the plot.</p>
 <p>There are many properties to the theme that are <em>hierarchically organized</em>. For instance the <code>title</code> property applies to all title text in the plot, including the plot title (<code>plot.title</code>), the axis titles (<code>axis.title</code>), the legend title (<code>legend.title</code>); thus if we were to set the title property to have green font, that would apply to all titles (unless we issued specific instructions to override this for more specific titles).</p>
 <p>Changing such theme properties is achieved with the <code>theme()</code> command, in which we specify which property of the plot we want to alter, and we set it by invoking a particular element type, initiated with whatever we want to change. Titles are text, so we change them by setting <code>title=element_text(...)</code> where the stuff in <code>...</code> includes the <a href="http://docs.ggplot2.org/current/element_text.html">element_text</a> properties and the values we set them to. Such a command will override the properties that we set, but preserve the ones we did not set.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="visualization.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb32-2"><a href="visualization.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb32-3"><a href="visualization.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb32-4"><a href="visualization.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
+<span id="cb32-5"><a href="visualization.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
+<span id="cb32-6"><a href="visualization.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>) <span class="sc">+</span></span>
+<span id="cb32-7"><a href="visualization.html#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">&quot;green&quot;</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p>Despite the fact that this is hideous, a few things are worth noting: (a) by setting the color of the <code>title</code> property, we influenced the color of the plot title, the x axis title, and the y axis title, and (b) we only changed the <em>color</em> of all of those, and they retained their differences in font size. The values we set at a particular level of the plot hierarchy propagate down to all children, but this only influences the property that we changed.</p>
+<p>The <a href="http://docs.ggplot2.org/current/theme.html">theme properties</a> can be partitioned into properties of the axes (<code>axis.*</code>, like <code>axis.text</code> for the labels for axis tick marks, <code>axis.title</code> for axis title, or more specific ones like <code>axis.title.x</code>), properties of the legend (<code>legend.*</code>), properties of the graph area (<code>panel.*</code>), properties of the whole image (<code>plot.*</code>), and properties of the “strip” that gives identifying information in multi-panel plots (<code>strip.*</code>).</p>
+<p>A fairly decent publication-grade plot theme can be created by simply invoking the black and white theme (<code>theme_bw()</code>):</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="visualization.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb33-2"><a href="visualization.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb33-3"><a href="visualization.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb33-4"><a href="visualization.html#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
+<span id="cb33-5"><a href="visualization.html#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
+<span id="cb33-6"><a href="visualization.html#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb33-7"><a href="visualization.html#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p>Generally, I like somewhat larger axis text and titles, and no grid lines, so I might favor something like:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="visualization.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
 <span id="cb34-2"><a href="visualization.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb34-3"><a href="visualization.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb34-4"><a href="visualization.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
 <span id="cb34-5"><a href="visualization.html#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
-<span id="cb34-6"><a href="visualization.html#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>) <span class="sc">+</span></span>
-<span id="cb34-7"><a href="visualization.html#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">&quot;green&quot;</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
-<p>Despite the fact that this is hideous, a few things are worth noting: (a) by setting the color of the <code>title</code> property, we influenced the color of the plot title, the x axis title, and the y axis title, and (b) we only changed the <em>color</em> of all of those, and they retained their differences in font size. The values we set at a particular level of the plot hierarchy propagate down to all children, but this only influences the property that we changed.</p>
-<p>The <a href="http://docs.ggplot2.org/current/theme.html">theme properties</a> can be partitioned into properties of the axes (<code>axis.*</code>, like <code>axis.text</code> for the labels for axis tick marks, <code>axis.title</code> for axis title, or more specific ones like <code>axis.title.x</code>), properties of the legend (<code>legend.*</code>), properties of the graph area (<code>panel.*</code>), properties of the whole image (<code>plot.*</code>), and properties of the “strip” that gives identifying information in multi-panel plots (<code>strip.*</code>).</p>
-<p>A fairly decent publication-grade plot theme can be created by simply invoking the black and white theme (<code>theme_bw()</code>):</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="visualization.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb35-2"><a href="visualization.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb35-3"><a href="visualization.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb35-4"><a href="visualization.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
-<span id="cb35-5"><a href="visualization.html#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
-<span id="cb35-6"><a href="visualization.html#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb35-7"><a href="visualization.html#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
-<p>Generally, I like somewhat larger axis text and titles, and no grid lines, so I might favor something like:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="visualization.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb36-2"><a href="visualization.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb36-3"><a href="visualization.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb36-4"><a href="visualization.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
-<span id="cb36-5"><a href="visualization.html#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
-<span id="cb36-6"><a href="visualization.html#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb36-7"><a href="visualization.html#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb36-8"><a href="visualization.html#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb36-9"><a href="visualization.html#cb36-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>),</span>
-<span id="cb36-10"><a href="visualization.html#cb36-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>),</span>
-<span id="cb36-11"><a href="visualization.html#cb36-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
-<p>We can also save a particular theme to reuse later:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="visualization.html#cb37-1" aria-hidden="true" tabindex="-1"></a>eds_theme <span class="ot">&lt;-</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb37-2"><a href="visualization.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb37-3"><a href="visualization.html#cb37-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>),</span>
-<span id="cb37-4"><a href="visualization.html#cb37-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>),</span>
-<span id="cb37-5"><a href="visualization.html#cb37-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span>
-<span id="cb37-6"><a href="visualization.html#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-7"><a href="visualization.html#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb37-8"><a href="visualization.html#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb37-9"><a href="visualization.html#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb37-10"><a href="visualization.html#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
-<span id="cb37-11"><a href="visualization.html#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
-<span id="cb37-12"><a href="visualization.html#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb37-13"><a href="visualization.html#cb37-13" aria-hidden="true" tabindex="-1"></a>  eds_theme</span></code></pre></div>
+<span id="cb34-6"><a href="visualization.html#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb34-7"><a href="visualization.html#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb34-8"><a href="visualization.html#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb34-9"><a href="visualization.html#cb34-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>),</span>
+<span id="cb34-10"><a href="visualization.html#cb34-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>),</span>
+<span id="cb34-11"><a href="visualization.html#cb34-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p>We can also save a particular theme to reuse later:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="visualization.html#cb35-1" aria-hidden="true" tabindex="-1"></a>eds_theme <span class="ot">&lt;-</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb35-2"><a href="visualization.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb35-3"><a href="visualization.html#cb35-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>),</span>
+<span id="cb35-4"><a href="visualization.html#cb35-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>),</span>
+<span id="cb35-5"><a href="visualization.html#cb35-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span>
+<span id="cb35-6"><a href="visualization.html#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="visualization.html#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb35-8"><a href="visualization.html#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb35-9"><a href="visualization.html#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb35-10"><a href="visualization.html#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable y as a function of variable x&quot;</span>)<span class="sc">+</span></span>
+<span id="cb35-11"><a href="visualization.html#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;This is the x variable&quot;</span>) <span class="sc">+</span></span>
+<span id="cb35-12"><a href="visualization.html#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;This is the y variable&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb35-13"><a href="visualization.html#cb35-13" aria-hidden="true" tabindex="-1"></a>  eds_theme</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 </div>
 <div id="changing-display-properties-of-plotted-elements." class="section level3">
 <h3>Changing display properties of plotted elements.</h3>
 <p>We can also change properties like size and color of the plot elements. There are two ways to do so: we might make those properties vary with some aspect of the data by including them in <code>aes()</code>, or we can make them be fixed by including them outside of <code>aes()</code>.</p>
 <p>For instance, if we want the size and color of the points to vary with the y value, we might write:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="visualization.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb38-2"><a href="visualization.html#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>y, <span class="at">size=</span>y)) <span class="sc">+</span> </span>
-<span id="cb38-3"><a href="visualization.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  eds_theme</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
-<p>But if we wanted to simply set a particular size and color for those points, we would note it outside of the aesthetic mapping in <code>aes()</code>:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="visualization.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb39-2"><a href="visualization.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span> </span>
-<span id="cb39-3"><a href="visualization.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  eds_theme</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="visualization.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb36-2"><a href="visualization.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>y, <span class="at">size=</span>y)) <span class="sc">+</span> </span>
+<span id="cb36-3"><a href="visualization.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  eds_theme</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p>But if we wanted to simply set a particular size and color for those points, we would note it outside of the aesthetic mapping in <code>aes()</code>:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="visualization.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb37-2"><a href="visualization.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span> </span>
+<span id="cb37-3"><a href="visualization.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  eds_theme</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <p>Other notable properties of <code>geom_point()</code> include their <a href="http://www.cookbook-r.com/Graphs/Shapes_and_line_types/">shape</a>, their border color and fill color (for shapes 21-25), and their transparency (alpha). Besides color, width (“size”), and transparency (“alpha”), <code>geom_line()</code> has a <a href="http://www.cookbook-r.com/Graphs/Shapes_and_line_types/">‘linetype’</a> property.</p>
 <p>So we can make quite a crazy plot by manipulating them all (and this is without even mapping them to data values in aes!)</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="visualization.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb40-2"><a href="visualization.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;navy&quot;</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">shape=</span><span class="dv">22</span>, <span class="at">fill=</span><span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb40-3"><a href="visualization.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color=</span><span class="st">&quot;green&quot;</span>, <span class="at">size=</span><span class="dv">2</span>, <span class="at">linetype=</span><span class="st">&quot;dotdash&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb40-4"><a href="visualization.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  eds_theme</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="visualization.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb38-2"><a href="visualization.html#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;navy&quot;</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">shape=</span><span class="dv">22</span>, <span class="at">fill=</span><span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb38-3"><a href="visualization.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color=</span><span class="st">&quot;green&quot;</span>, <span class="at">size=</span><span class="dv">2</span>, <span class="at">linetype=</span><span class="st">&quot;dotdash&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="visualization.html#cb38-4" aria-hidden="true" tabindex="-1"></a>  eds_theme</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 </div>
 <div id="other-geometric-elements." class="section level3">
 <h3>Other geometric elements.</h3>
@@ -861,46 +856,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>Assembling multiple plots in one figure</h3>
 <p>Often we want to make a few plots and attach them together. For instance, we might want to see the histograms of x, y, and their scatterplot. This can be accomplished with the <code>gridExtra</code> package, which you can install with <code>install.packages('gridExtra')</code>.</p>
 <p>The strategy is to define the various plots, and save them to variables, then put them together with <code>grid.arrange()</code>.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="visualization.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb41-2"><a href="visualization.html#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="visualization.html#cb41-3" aria-hidden="true" tabindex="-1"></a>hx <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span> </span>
-<span id="cb41-4"><a href="visualization.html#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;green&#39;</span>) <span class="sc">+</span> </span>
-<span id="cb41-5"><a href="visualization.html#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb41-6"><a href="visualization.html#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-7"><a href="visualization.html#cb41-7" aria-hidden="true" tabindex="-1"></a>hy <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>y)) <span class="sc">+</span> </span>
-<span id="cb41-8"><a href="visualization.html#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;purple&#39;</span>) <span class="sc">+</span> </span>
-<span id="cb41-9"><a href="visualization.html#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb41-10"><a href="visualization.html#cb41-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-11"><a href="visualization.html#cb41-11" aria-hidden="true" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb41-12"><a href="visualization.html#cb41-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span> </span>
-<span id="cb41-13"><a href="visualization.html#cb41-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb41-14"><a href="visualization.html#cb41-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-15"><a href="visualization.html#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(hx,hy,xy,<span class="at">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
-<p>We might rather want the x and y histograms to align with the x and y axes of the scatter plot, so we might want to arrange this as a 2x2 grid, while flipping the coordinates of the y histogram (note that we need a blank panel for the upper right).</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="visualization.html#cb43-1" aria-hidden="true" tabindex="-1"></a>hx <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span> </span>
-<span id="cb43-2"><a href="visualization.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;green&#39;</span>) <span class="sc">+</span> </span>
-<span id="cb43-3"><a href="visualization.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb43-4"><a href="visualization.html#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="visualization.html#cb43-5" aria-hidden="true" tabindex="-1"></a>hy <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>y)) <span class="sc">+</span> </span>
-<span id="cb43-6"><a href="visualization.html#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;purple&#39;</span>) <span class="sc">+</span> </span>
-<span id="cb43-7"><a href="visualization.html#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span>                              <span class="co"># this flips the histogram sideways.</span></span>
-<span id="cb43-8"><a href="visualization.html#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb43-9"><a href="visualization.html#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-10"><a href="visualization.html#cb43-10" aria-hidden="true" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb43-11"><a href="visualization.html#cb43-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb43-12"><a href="visualization.html#cb43-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb43-13"><a href="visualization.html#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-14"><a href="visualization.html#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(hx,</span>
-<span id="cb43-15"><a href="visualization.html#cb43-15" aria-hidden="true" tabindex="-1"></a>             <span class="fu">grid.rect</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">col=</span><span class="st">&quot;white&quot;</span>)),  <span class="co"># this is just a white blank.</span></span>
-<span id="cb43-16"><a href="visualization.html#cb43-16" aria-hidden="true" tabindex="-1"></a>             xy,</span>
-<span id="cb43-17"><a href="visualization.html#cb43-17" aria-hidden="true" tabindex="-1"></a>             hy, </span>
-<span id="cb43-18"><a href="visualization.html#cb43-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="visualization.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb39-2"><a href="visualization.html#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="visualization.html#cb39-3" aria-hidden="true" tabindex="-1"></a>hx <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span> </span>
+<span id="cb39-4"><a href="visualization.html#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;green&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb39-5"><a href="visualization.html#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb39-6"><a href="visualization.html#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="visualization.html#cb39-7" aria-hidden="true" tabindex="-1"></a>hy <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>y)) <span class="sc">+</span> </span>
+<span id="cb39-8"><a href="visualization.html#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;purple&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb39-9"><a href="visualization.html#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb39-10"><a href="visualization.html#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="visualization.html#cb39-11" aria-hidden="true" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb39-12"><a href="visualization.html#cb39-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span> </span>
+<span id="cb39-13"><a href="visualization.html#cb39-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb39-14"><a href="visualization.html#cb39-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-15"><a href="visualization.html#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(hx,hy,xy,<span class="at">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p>We might rather want the x and y histograms to align with the x and y axes of the scatter plot, so we might want to arrange this as a 2x2 grid, while flipping the coordinates of the y histogram (note that we need a blank panel for the upper right).</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="visualization.html#cb41-1" aria-hidden="true" tabindex="-1"></a>hx <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span> </span>
+<span id="cb41-2"><a href="visualization.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;green&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb41-3"><a href="visualization.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb41-4"><a href="visualization.html#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="visualization.html#cb41-5" aria-hidden="true" tabindex="-1"></a>hy <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>y)) <span class="sc">+</span> </span>
+<span id="cb41-6"><a href="visualization.html#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;purple&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb41-7"><a href="visualization.html#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span>                              <span class="co"># this flips the histogram sideways.</span></span>
+<span id="cb41-8"><a href="visualization.html#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb41-9"><a href="visualization.html#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="visualization.html#cb41-10" aria-hidden="true" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df.xy, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb41-11"><a href="visualization.html#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb41-12"><a href="visualization.html#cb41-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb41-13"><a href="visualization.html#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-14"><a href="visualization.html#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(hx,</span>
+<span id="cb41-15"><a href="visualization.html#cb41-15" aria-hidden="true" tabindex="-1"></a>             <span class="fu">grid.rect</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">col=</span><span class="st">&quot;white&quot;</span>)),  <span class="co"># this is just a white blank.</span></span>
+<span id="cb41-16"><a href="visualization.html#cb41-16" aria-hidden="true" tabindex="-1"></a>             xy,</span>
+<span id="cb41-17"><a href="visualization.html#cb41-17" aria-hidden="true" tabindex="-1"></a>             hy, </span>
+<span id="cb41-18"><a href="visualization.html#cb41-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
 <p>There is still lots left to fix here, and I will walk through the process of making this figure presentable <a href="vis.tinkering.html">here</a>. In the meantime, lets move on.</p>
 
 </div>
