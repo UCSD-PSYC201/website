@@ -11,6 +11,7 @@ In which we will cover the goals of this class, and where the class materials fi
 #### Homework
 
 [Pre-survey](https://forms.gle/2LEtUqjDGUfGhjHg7)
+
 [HW00: Swirl](http://vulstats.ucsd.edu/hw/) (due 9/30)
 
 #### Thursday
