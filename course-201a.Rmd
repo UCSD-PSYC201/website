@@ -96,7 +96,7 @@ In which we cover probability theory, and the logic of classical statistical met
 [NHST probability](http://vulstats.ucsd.edu/hw/) Due: 2020-10-28
 
 #### Tuesday   
-[slides: probability](slides/L04.probability.pdf)   
+[slides: probability](slides/L05.pdf)   
 
 #### Wednesday
 
