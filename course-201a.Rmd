@@ -93,14 +93,12 @@ In which we cover probability theory, and the logic of classical statistical met
 
 #### Homework
 
-[NHST probability](http://vulstats.ucsd.edu/hw/) Due: 2020-10-28
-
 #### Tuesday   
 [slides: probability](slides/L05.pdf)   
 
 #### Wednesday
 
-Probability [[code](labs/201a-2020/03/lab3.Rmd)] [[answers](labs/201a-2020/03/lab3-ans.Rmd)]
+Probability [[code](labs/201a-2021/03/lab3.Rmd)] [[answers](labs/201a-2021/03/lab3-ans.Rmd)]
 
 #### Thursday
 [slides: NHST](slides/L05.classical-stats.pdf)   
