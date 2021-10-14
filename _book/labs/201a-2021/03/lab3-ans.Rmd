@@ -1,0 +1,251 @@
+---
+title: "PSYC 201A Lab 03: Probability"
+author: "Wenhao (James) Qi"
+date: "2021-10-13"
+---
+
+```{r}
+library(tidyverse)
+```
+
+# 1 Basic probability rules (base rate neglect)
+
+Suppose that 1% of competitive cyclists use performance-enhancing drugs and that a particular drug test has a 5% false positive rate and a 10% false negative rate.
+
+```{r}
+p.drug <- 0.01
+p.pos.given.legit <- 0.05
+p.neg.given.drug <- 0.1
+```
+
+# 1.1 (5 min)
+
+What is the probability that a cyclist is not taking drugs given the test was negative?
+
+```{r}
+p.legit <- 1 - p.drug
+p.neg.given.legit <- 1 - p.pos.given.legit
+p.neg <- p.neg.given.drug * p.drug + p.neg.given.legit * p.legit
+p.legit.given.neg <- p.neg.given.legit * p.legit / p.neg
+```
+
+What is the probability that a cyclist is taking drugs given the test was positive?
+
+```{r}
+p.pos.given.drug <- 1 - p.neg.given.drug
+p.pos <- p.pos.given.drug * p.drug + p.pos.given.legit * p.legit
+p.drug.given.pos <- p.pos.given.drug * p.drug / p.pos
+```
+
+# 2 Binomial distribution
+
+In this section, we use a bent coin P(H) = 0.65.
+
+```{r}
+p.head <- 0.65
+```
+
+## 2.1 Sampling (5 min)
+
+Sample the results of 10 coin flips and count the number of heads.
+
+Hint: `runif`
+
+```{r}
+sum(runif(10) < p.head)
+```
+
+Take 100 such samples.
+
+Hint: `replicate`
+
+```{r}
+replicate(100, sum(runif(10) < p.head))
+```
+
+Do the same thing with `rbinom`.
+
+```{r}
+rbinom(100, 10, p.head)
+```
+
+## 2.2 PMF (10 min)
+
+Calculate analytically the probability that there are 3 heads in the 10 coin flips.
+
+Hint: `choose`
+
+```{r}
+choose(10, 3) * p.head^3 * (1 - p.head)^7
+```
+
+Do the same thing with `dbinom`:
+
+```{r}
+dbinom(3, 10, p.head)
+```
+
+Calculate analytically the probability mass function and plot it:
+
+```{r}
+n <- 0:10
+p <- choose(10, n) * p.head^n * (1 - p.head)^(10 - n)
+tibble(n = n, p = p) %>%
+  ggplot(aes(n, p)) +
+  geom_bar(stat = "identity")
+```
+
+Do the same thing with `dbinom`:
+
+```{r}
+tibble(n = n, p = dbinom(n, 10, p.head)) %>%
+  ggplot(aes(n, p)) +
+  geom_bar(stat = "identity")
+```
+
+## 2.3 CDF (10 min)
+
+Calculate analytically the probability that there are 3 or fewer heads in the 10 coin flips.
+
+```{r}
+pmf <- function(n) choose(10, n) * p.head^n * (1 - p.head)^(10 - n)
+sum(pmf(0:3))
+```
+
+Do the same thing with `pbinom`.
+
+```{r}
+pbinom(3, 10, p.head)
+```
+
+Calculate analytically the cumulative distribution function and plot it.
+
+```{r}
+cdf <- Vectorize(function(n) sum(pmf(0:n)))
+tibble(n = 0:10, p = cdf(n)) %>%
+  ggplot(aes(n, p)) +
+  geom_bar(stat = "identity")
+```
+
+Do the same thing with `pbinom`.
+
+```{r}
+tibble(n = 0:10, p = pbinom(n, 10, p.head)) %>%
+  ggplot(aes(n, p)) +
+  geom_bar(stat = "identity")
+```
+
+## 2.4 Quantile (5 min)
+
+What's smallest integer n such that the number of heads is less than or equal to n at least 50% of the time?  Calculate analytically.
+
+```{r}
+min((0:10)[cdf(0:10) >= 0.5])
+```
+
+Do the same thing with `qbinom`.
+
+```{r}
+qbinom(0.5, 10, p.head)
+```
+
+## 2.5 Moments (10 min)
+
+Calculate analytically the expected value of the number of heads.
+
+```{r}
+ev <- sum(pmf(0:10) * 0:10)
+```
+
+Simulate the expected value with 10000 samples.
+
+```{r}
+mean(rbinom(10000, 10, p.head))
+```
+
+Calculate analytically the standard deviation of the distribution.
+
+```{r}
+sqrt(sum(pmf(0:10) * (0:10 - ev)^2))
+```
+
+Simulate the standard deviation with 10000 samples.
+
+```{r}
+samples <- rbinom(10000, 10, p.head)
+sqrt(mean((samples - mean(samples))^2)) # (very slightly) biased
+sqrt(sum((samples - mean(samples))^2) / (length(samples) - 1)) # unbiased
+```
+
+# 3 Normal distribution (15 min)
+
+In this section we assume people's IQ follows a normal distribution with mean = 100 and sd = 15.
+
+Take 10 samples of IQ.
+
+```{r}
+rnorm(10, 100, 15)
+```
+
+Plot the probability density function of IQ.
+
+```{r}
+tibble(x = seq(50, 150, 0.1), y = dnorm(x, 100, 15)) %>%
+  ggplot(aes(x, y)) +
+  geom_line()
+```
+
+What proportion of people have an IQ lower than 120?
+
+```{r}
+pnorm(120, 100, 15)
+```
+
+What proportion of people have an IQ between 80 and 120?
+
+```{r}
+pnorm(120, 100, 15) - pnorm(80, 100, 15)
+```
+
+Plot the cumulative probability function of IQ.
+
+```{r}
+tibble(x = seq(50, 150, 0.1), y = pnorm(x, 100, 15)) %>%
+  ggplot(aes(x, y)) +
+  geom_line()
+```
+
+What's the value x such that 90% of people have a lower IQ than x?
+
+```{r}
+qnorm(0.9, 100, 15)
+```
+
+Simulate the mean of IQ with 10000 samples.
+
+```{r}
+mean(rnorm(10000, 100, 15))
+```
+
+Simulate the standard deviation of IQ with 10000 samples.
+
+```{r}
+samples <- rnorm(10000, 100, 15)
+sqrt(mean((samples - mean(samples))^2)) # (very slightly) biased
+sqrt(sum((samples - mean(samples))^2) / (length(samples) - 1)) # unbiased
+```
+
+# 4 (Bonus challenge) Central limit theorem
+
+Use numerical samples to demonstrate that the sampling distribution of the sample mean approaches a normal distribution as the sample size increases, for beta(0.01,0.01), unif(0,1) and gamma(1,1).
+
+```{r}
+sample.size <- 10000
+bind_rows(map(
+  factorial(1:6),
+  ~ tibble(n = ., x = replicate(sample.size, mean(rbeta(., 0.01, 0.01))))
+)) %>%
+  ggplot(aes(x)) +
+  geom_histogram() +
+  facet_wrap(vars(n), nrow = 2, scales = "free", labeller = "label_both")
+```
