@@ -1,32 +1,5 @@
----
-output: 
-    html_document
----
 
-```{r Setup, include=FALSE, results='hide', warning=FALSE}
-library(knitr)
-opts_chunk$set(dev=c("png","pdf"),
-               fig.width=10,
-               fig.height=5,
-               dpi=300,
-               fig.show="hold",
-               fig.lp="fig:",
-               cache=TRUE,
-               par=TRUE,
-               echo=TRUE,
-               message=FALSE,
-               warning=FALSE)
-library(ggplot2)
-my_theme <- theme_bw() + 
-  theme(panel.grid = element_blank(), 
-        panel.background = element_rect(fill = "transparent", color=NA),
-        plot.background = element_rect(fill="transparent", color=NA),
-        axis.text = element_text(size=14),
-        title = element_text(size=18),
-        axis.title = element_text(size=16))
-```
-
-# (Student's) t-tests
+# (Student's) t-tests {#t-tests}
 
 We use t-tests when we calculate the standard error based on the sample standard deviation.  The logic of why we must use the t-distribution in these cases is described when we consider the [sampling distribution of the sample variance, and the t statistic](nhst-t-distribution.html).  Read that first, and then we can quickly cover the slightly different t-test varieties we can use to compare sample means.
 
@@ -222,7 +195,7 @@ This t-statistic will follow the t-distribution with degrees of freedom matching
 
 $df = n_x + n_y -2$ 
 
-#### Special case of equal sample sizes
+##### Special case of equal sample sizes
 
 Sometimes textbooks present special formulas for cases where $n=n_x=n_y$ (where the sample sizes are equal), but those formulas can be calculated directly from the more general formulas that assume unequal sample sizes by plugging $n$ in for both $n_x$ and $n_y$:     
 $df = 2n-2$   

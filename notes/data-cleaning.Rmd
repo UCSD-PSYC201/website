@@ -1,9 +1,4 @@
----
-output: 
-    html_document
----
-
-# Data cleaning -- worked example
+# Data cleaning -- worked example {#data-cleaning}
 
 We will practice reading and cleaning data using the published race data for the California "10 20" running event (10 miles, 20 bands).  These data were scraped from the official race website, then fixed up a bit and saved as a *tab delimited text file*.  This text file can be found [here](http://vulstats.ucsd.edu/data/cal10202.txt).
 

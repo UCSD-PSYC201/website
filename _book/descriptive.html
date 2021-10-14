@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Descriptive statistics | UCSD Psyc 201ab / CSS 205 / Psyc 193</title>
+  <meta name="description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Descriptive statistics | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  <meta name="github-repo" content="UCSD-PSYC201/website" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Descriptive statistics | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  
+  <meta name="twitter:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-cleaning.html"/>
+<link rel="next" href="visualization.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html"><i class="fa fa-check"></i>Syllabus</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#instructors"><i class="fa fa-check"></i>Instructors</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#class-meetings"><i class="fa fa-check"></i>Class meetings</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#grading"><i class="fa fa-check"></i>Grading</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#class-resources"><i class="fa fa-check"></i>Class Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html"><i class="fa fa-check"></i>201a Schedule</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-0-introduction"><i class="fa fa-check"></i>Week 0: Introduction</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-1-data"><i class="fa fa-check"></i>Week 1: Data</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-2-visualization"><i class="fa fa-check"></i>Week 2: Visualization</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-3-theoretical-foundations"><i class="fa fa-check"></i>Week 3: Theoretical foundations</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-4-linear-model-regression"><i class="fa fa-check"></i>Week 4: Linear model: Regression</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-5-linear-model-multiple-regression"><i class="fa fa-check"></i>Week 5: Linear model: Multiple regression</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-6-linear-model-categorical-predictors"><i class="fa fa-check"></i>Week 6: Linear model: Categorical predictors</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-7-linear-model-ancova-diagnostics"><i class="fa fa-check"></i>Week 7: Linear model: ANCOVA, diagnostics</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-8-linear-model-linearizing-transforms"><i class="fa fa-check"></i>Week 8: Linear model: Linearizing transforms</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-9-covarying-errors-repeated-measures-random-effects"><i class="fa fa-check"></i>Week 9: Covarying errors (repeated measures / random effects)</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-10-review-and-preview"><i class="fa fa-check"></i>Week 10: Review and preview</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html"><i class="fa fa-check"></i>Projects</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#examples-of-this-sort-of-thing"><i class="fa fa-check"></i>Examples of this sort of thing</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a"><i class="fa fa-check"></i>201a</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-timeline"><i class="fa fa-check"></i>201a Timeline</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#groups"><i class="fa fa-check"></i>Groups</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-project-plan"><i class="fa fa-check"></i>201a Project plan</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-preliminary-data-summaries"><i class="fa fa-check"></i>201a Preliminary data summaries</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-write-ups"><i class="fa fa-check"></i>201a Write-ups</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-presentation"><i class="fa fa-check"></i>201a Presentation</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-group-evaluation"><i class="fa fa-check"></i>201a Group-evaluation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#b"><i class="fa fa-check"></i>201b</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#data-sources"><i class="fa fa-check"></i>Data sources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html"><i class="fa fa-check"></i>R homework</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#grading-1"><i class="fa fa-check"></i>Grading</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#collaboration"><i class="fa fa-check"></i>Collaboration</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#submitting-r-assignments"><i class="fa fa-check"></i>Submitting R Assignments</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#writing-r-scripts"><i class="fa fa-check"></i>Writing R scripts</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#submitting-your-assignment"><i class="fa fa-check"></i>Submitting your assignment</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#additional-resources."><i class="fa fa-check"></i>Additional resources.</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Notes</b></span></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html"><i class="fa fa-check"></i>Getting started with R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#R-install"><i class="fa fa-check"></i>Installing R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#R-intro"><i class="fa fa-check"></i>Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#better-data-analysis-code."><i class="fa fa-check"></i>Better data analysis code.</a></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#using-r-markdown"><i class="fa fa-check"></i>Using R-markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i>Data cleaning – worked example</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#read-file-with-readr"><i class="fa fa-check"></i>Read file with readr</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#first-glimpse-at-the-data."><i class="fa fa-check"></i>First glimpse at the data.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#what-we-want-to-do"><i class="fa fa-check"></i>What we want to do</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#rename-columns"><i class="fa fa-check"></i>rename columns</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#convert-time-columns-into-seconds."><i class="fa fa-check"></i>convert time columns into seconds.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#extract-sex-from-division-and-other-clues"><i class="fa fa-check"></i>Extract sex from division, and other clues</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-corral-from-bib-number"><i class="fa fa-check"></i>Get corral from bib number</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#fix-the-age-column-which-is-a-string-for-some-reason"><i class="fa fa-check"></i>fix the age column (which is a string for some reason)</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-time-out-of-the-mangled-5.25-and-10-mile-columns."><i class="fa fa-check"></i>Get time out of the mangled 5.25 and 10 mile columns.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-rid-of-some-unnecessary-columns"><i class="fa fa-check"></i>Get rid of some unnecessary columns</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#getting-new-columns-from-simple-transformations"><i class="fa fa-check"></i>Getting new columns from simple transformations</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#fixing-states."><i class="fa fa-check"></i>Fixing states.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#save-the-cleaned-data."><i class="fa fa-check"></i>Save the cleaned data.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html"><i class="fa fa-check"></i>Descriptive statistics</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#descriptive-statistics-are-implicit-estimators."><i class="fa fa-check"></i>Descriptive statistics are implicit estimators.</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#describing-central-tendency."><i class="fa fa-check"></i>Describing central tendency.</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#describing-dispersion"><i class="fa fa-check"></i>Describing dispersion</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#descriptions-of-shape."><i class="fa fa-check"></i>Descriptions of shape.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i>Visualizations</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#general-rules-for-scientific-data-visualization."><i class="fa fa-check"></i>General rules for scientific data visualization.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#picking-a-plot-whats-convention"><i class="fa fa-check"></i>Picking a plot (what’s convention)</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-0"><i class="fa fa-check"></i>Categorical ~ 0</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#histogram"><i class="fa fa-check"></i>Histogram</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#pie-chart"><i class="fa fa-check"></i>Pie chart</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#stacked-area"><i class="fa fa-check"></i>Stacked area</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-0"><i class="fa fa-check"></i>numerical ~ 0</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#histogram-density"><i class="fa fa-check"></i>Histogram &amp; density</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-categorical"><i class="fa fa-check"></i>numerical ~ categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#bar-plot-with-error-bars"><i class="fa fa-check"></i>Bar plot with error bars</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#jittered-data-points."><i class="fa fa-check"></i>Jittered data points.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#violaviolin-plot"><i class="fa fa-check"></i>Viola/Violin plot</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#box-and-whiskers-plot"><i class="fa fa-check"></i>Box and whiskers plot</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#overlayed-densities"><i class="fa fa-check"></i>Overlayed densities</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#empirical-cumulative-distribution"><i class="fa fa-check"></i>Empirical cumulative distribution</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#comparisons"><i class="fa fa-check"></i>Comparisons</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#recommendations"><i class="fa fa-check"></i>Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-numerical-2-x-numerical-0"><i class="fa fa-check"></i>numerical ~ numerical (2 x numerical ~ 0)</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#scatter-and-heatmap"><i class="fa fa-check"></i>Scatter and heatmap</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#conditional-means"><i class="fa fa-check"></i>Conditional means</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-numerical-categorical"><i class="fa fa-check"></i>numerical ~ numerical + categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-numerical"><i class="fa fa-check"></i>categorical ~ numerical</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#x-categorical-and-categorical-categorical"><i class="fa fa-check"></i>2 x categorical and categorical ~ categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#heatmap"><i class="fa fa-check"></i>Heatmap</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-categorical"><i class="fa fa-check"></i>categorical ~ categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#extra-plot-notes."><i class="fa fa-check"></i>Extra plot notes.</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-2-x-categorical"><i class="fa fa-check"></i>numerical ~ 2 x categorical</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#bin-width-and-bandwidths"><i class="fa fa-check"></i>bin width and bandwidths</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#visualization"><i class="fa fa-check"></i>ggplot</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#installation."><i class="fa fa-check"></i>Installation.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#basic-overview."><i class="fa fa-check"></i>Basic overview.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#changing-labels."><i class="fa fa-check"></i>Changing labels.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#themes-and-elements-and-properties."><i class="fa fa-check"></i>Themes and elements and properties.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#changing-display-properties-of-plotted-elements."><i class="fa fa-check"></i>Changing display properties of plotted elements.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#other-geometric-elements."><i class="fa fa-check"></i>Other geometric elements.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#assembling-multiple-plots-in-one-figure"><i class="fa fa-check"></i>Assembling multiple plots in one figure</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i>Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-terms"><i class="fa fa-check"></i>Probability terms</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#absolute-probability-statements-prob"><i class="fa fa-check"></i>Absolute probability statements {prob}</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-comparisons"><i class="fa fa-check"></i>Probability comparisons</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#proportional-magnitudes-and-confusion"><i class="fa fa-check"></i>Proportional magnitudes and confusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-foundations"><i class="fa fa-check"></i>Foundations of probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#set-notation-for-combinations-of-outcomes."><i class="fa fa-check"></i>Set notation for combinations of outcomes.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#basic-probability-definition-and-axioms"><i class="fa fa-check"></i>Basic probability definition and axioms</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#events-and-the-rules-of-probability."><i class="fa fa-check"></i>Events and the rules of probability.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-conditional"><i class="fa fa-check"></i>Conditional probability and Bayes</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#chain-rule"><i class="fa fa-check"></i>Chain rule</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#partitions-and-total-probability"><i class="fa fa-check"></i>Partitions and total probability</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#bayes-rule"><i class="fa fa-check"></i>Bayes’ rule</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-simulations"><i class="fa fa-check"></i>Simulation, Sampling and Monte Carlo.</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-long-run-frequency-and-the-law-of-large-numbers."><i class="fa fa-check"></i>Sampling, long-run frequency, and the law of large numbers.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-estimate-event-probabilities."><i class="fa fa-check"></i>Sampling to estimate event probabilities.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-of-a-conjunction-of-events"><i class="fa fa-check"></i>Probability of a conjunction of events</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-get-probability-of-disjunction"><i class="fa fa-check"></i>Sampling to get probability of disjunction</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-calculate-conditional-probability"><i class="fa fa-check"></i>Sampling to calculate conditional probability</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-rv"><i class="fa fa-check"></i>Random variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#joint-conditional-and-marginal-probabilities"><i class="fa fa-check"></i>Joint, conditional, and marginal probabilities</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#bernoulli-distribution"><i class="fa fa-check"></i>Bernoulli distribution</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#combinations-and-the-binomial-distribution"><i class="fa fa-check"></i>Combinations and the binomial distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-rv-functions"><i class="fa fa-check"></i>Distribution functions: PDF, CDF, Quantile</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-distribution-mass-and-density-functions-p.d.f."><i class="fa fa-check"></i>Probability distribution (mass and density) functions (p.d.f.)</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#cumulative-distribution-functions-c.d.f."><i class="fa fa-check"></i>Cumulative distribution functions (c.d.f.)</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#quantile-functions-inverse-cdf."><i class="fa fa-check"></i>Quantile functions (inverse CDF).</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-expectation"><i class="fa fa-check"></i>Expectation and moments</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#there-are-a-few-useful-properties-about-how-the-mean-variance-skewness-and-excess-kurtosis-behave-under-various-operations"><i class="fa fa-check"></i>There are a few useful properties about how the Mean, Variance, Skewness, and Excess Kurtosis behave under various operations:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-clt"><i class="fa fa-check"></i>Central limit theorem and the normal distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#requirements-for-clt-to-hold"><i class="fa fa-check"></i>Requirements for CLT to hold</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#normal-distribution"><i class="fa fa-check"></i>Normal distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html"><i class="fa fa-check"></i>Foundations of Statistics</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-simulation"><i class="fa fa-check"></i>Frequentist statistics via simulation</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#null-hypothesis-significance-testing."><i class="fa fa-check"></i>Null hypothesis significance testing.</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#critical-values-alpha-power"><i class="fa fa-check"></i>Critical values, alpha, power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#setting-up-the-alternate-hypothesis"><i class="fa fa-check"></i>Setting up the “Alternate hypothesis”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-power"><i class="fa fa-check"></i>Figuring out “power”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-alpha"><i class="fa fa-check"></i>Figuring out “alpha”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#showing-alpha-power"><i class="fa fa-check"></i>Showing alpha, power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-the-critical-value."><i class="fa fa-check"></i>Figuring out the critical value.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-sampling"><i class="fa fa-check"></i>Sampling distributions</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#tl-dr."><i class="fa fa-check"></i>TL; DR.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#logic"><i class="fa fa-check"></i>Logic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#expectation-about-the-sampling-distribution-of-the-sample-mean."><i class="fa fa-check"></i>Expectation about the sampling distribution of the sample mean.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#standard-error-of-the-sample-mean"><i class="fa fa-check"></i>Standard error (of the sample mean)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-basics-normal"><i class="fa fa-check"></i>Statistics via the Normal distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-null-hypothesis-significance-testing-nhst"><i class="fa fa-check"></i>(Normal) Null hypothesis significance testing (NHST)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-tests-with-sample-means"><i class="fa fa-check"></i>Normal tests with sample means</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#z-scores-and-z-tests"><i class="fa fa-check"></i>Z-scores and Z-tests</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#z-tests"><i class="fa fa-check"></i>Z-tests</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-confidence-intervals-on-the-sample-mean"><i class="fa fa-check"></i>(Normal) Confidence intervals on the sample mean</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#relationship-between-confidence-intervals-and-null-hypothesis-tests."><i class="fa fa-check"></i>Relationship between confidence intervals and null hypothesis tests.</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#special-critical-z-values"><i class="fa fa-check"></i>Special critical Z-values</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#rarity-of-z-tests-and-z--confidence-intervals"><i class="fa fa-check"></i>Rarity of Z-tests and Z- confidence intervals</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#what-are-these-percents-and-probabilities"><i class="fa fa-check"></i>What are these percents and probabilities?</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#what-does-the-percent-in-a-confidence-interval-mean"><i class="fa fa-check"></i>What does the “percent” in a confidence interval mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#nhst-theory-normal"><i class="fa fa-check"></i>Null hypothesis significance testing with Normal</a>
+<ul>
+<li><a href="NHST.html#type-1-error-rate-alpha-alpha">Type 1 error rate: alpha (<span class="math inline">\(\alpha\)</span>)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#the-alternate-model"><i class="fa fa-check"></i>The “alternate model”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#effect-size"><i class="fa fa-check"></i>Effect size</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#calculating-power-from-effect-size"><i class="fa fa-check"></i>Calculating power from effect size</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#visualizing-alpha-and-power"><i class="fa fa-check"></i>Visualizing alpha and power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#how-power-changes."><i class="fa fa-check"></i>How power changes.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#calculating-n-for-a-desired-level-of-power."><i class="fa fa-check"></i>Calculating n for a desired level of power.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sign-and-magnitude-errors."><i class="fa fa-check"></i>Sign and magnitude errors.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#theory-binomial"><i class="fa fa-check"></i>From probability to statistics with the Binomial</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#data-description-summary"><i class="fa fa-check"></i>Data description / summary</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#estimation"><i class="fa fa-check"></i>Estimation</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#null-hypothesis-significance-testing-nhst"><i class="fa fa-check"></i>Null Hypothesis Significance testing (NHST)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#model-selection"><i class="fa fa-check"></i>Model selection</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#t-distribution"><i class="fa fa-check"></i>t-distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#tl-dr.-1"><i class="fa fa-check"></i>TL; DR.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-sample-variance-and-t-statistic"><i class="fa fa-check"></i>Sampling distribution of sample variance, and t-statistic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sample-variance"><i class="fa fa-check"></i>Sample variance</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-the-sample-variance"><i class="fa fa-check"></i>Sampling distribution of the sample variance</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-t-statistic"><i class="fa fa-check"></i>Sampling distribution of t-statistic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#t-distribution-1"><i class="fa fa-check"></i>T-distribution</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#degrees-of-freedom."><i class="fa fa-check"></i>Degrees of freedom.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#summary."><i class="fa fa-check"></i>Summary.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i>(Student’s) t-tests</a>
+<ul>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-t-test"><i class="fa fa-check"></i>1-sample t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#paired-repeated-measures-t-test"><i class="fa fa-check"></i>Paired / repeated-measures t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-presumed-equal-variance-t-test"><i class="fa fa-check"></i>2-sample, presumed equal variance, t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-unequal-variance-t-test"><i class="fa fa-check"></i>2-sample, unequal variance, t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#power-calculations."><i class="fa fa-check"></i>Power calculations.</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#summary-of-tests-for-the-mean-and-effect-sizes"><i class="fa fa-check"></i>Summary of tests for the mean and effect sizes</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math."><i class="fa fa-check"></i>Math.</a>
+<ul>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math-behind-2-sample-equal-variance-t-test"><i class="fa fa-check"></i>Math behind 2-sample equal variance t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math-behind-unequal-variance-t-test"><i class="fa fa-check"></i>Math behind unequal variance t-test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html"><i class="fa fa-check"></i>Binomial test.</a>
+<ul>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html#estimating-proportions."><i class="fa fa-check"></i>Estimating proportions.</a></li>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html#sign-test-test-for-percentiles"><i class="fa fa-check"></i>Sign test, test for percentiles</a></li>
+</ul></li>
+<li><a href="chi-squared.html#chi-squared">Pearson’s Chi<span class="math inline">\(^2\)</span> (<span class="math inline">\(\chi^2\)</span>) test</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html"><i class="fa fa-check"></i>“Goodness of fit” test</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#implementation-in-r"><i class="fa fa-check"></i>Implementation in R</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#chi-squared-test-calculations"><i class="fa fa-check"></i>Chi-squared test calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#test-for-independence"><i class="fa fa-check"></i>Test for independence</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#implementation-in-r-1"><i class="fa fa-check"></i>Implementation in R</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#independence-test-calculations"><i class="fa fa-check"></i>Independence test calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#more-than-2-way-contingency-table"><i class="fa fa-check"></i>More than 2-way contingency table</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#mathematical-rationale"><i class="fa fa-check"></i>Mathematical rationale</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#limitations"><i class="fa fa-check"></i>Limitations</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#fishers-exact-test"><i class="fa fa-check"></i>Fisher’s “exact” test</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html"><i class="fa fa-check"></i>Bivariate linear relationships</a>
+<ul>
+<li><a href="bivariate.html#linear-relationships"><em>Linear</em> relationships</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#covariance-and-correlation-measuring-the-linear-dependence."><i class="fa fa-check"></i>Covariance and correlation: Measuring the linear dependence.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#covariance"><i class="fa fa-check"></i>Covariance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#correlation-coefficient"><i class="fa fa-check"></i>Correlation coefficient</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#ols-regression-predicting-the-mean-of-y-for-a-given-x"><i class="fa fa-check"></i>(OLS) Regression: Predicting the mean of y for a given x</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#difference-between-yx-xy-and-the-principle-component-line"><i class="fa fa-check"></i>Difference between y~x, x~y, and the principle component line</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#partitioning-variance"><i class="fa fa-check"></i>Partitioning variance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-a-linear-relationship."><i class="fa fa-check"></i>Significance of a linear relationship.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#prediction-from-regression."><i class="fa fa-check"></i>Prediction from regression.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-anscombe"><i class="fa fa-check"></i>Anscombe’s quartet</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-covariance"><i class="fa fa-check"></i>Covariance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#estimating-covariance."><i class="fa fa-check"></i>Estimating covariance.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-correlation"><i class="fa fa-check"></i>Correlation</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#correlation-as-the-slope-of-z-scores"><i class="fa fa-check"></i>Correlation as the slope of z-scores</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#coefficient-of-determination"><i class="fa fa-check"></i>Coefficient of determination</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-ols"><i class="fa fa-check"></i>Ordinary Least-Squares (OLS) Regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#regression-terminology"><i class="fa fa-check"></i>Regression terminology</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#estimating-the-regression-line."><i class="fa fa-check"></i>Estimating the regression line.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#standard-errors-of-regression-coefficients"><i class="fa fa-check"></i>Standard errors of regression coefficients</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#confidence-intervals-and-tests-for-regression-coefficients"><i class="fa fa-check"></i>Confidence intervals and tests for regression coefficients</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-lines"><i class="fa fa-check"></i>y~x vs x~y vs principle component line</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-determination"><i class="fa fa-check"></i>Partitioning variance and the coefficient of determination.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#calculating-sums-of-squares."><i class="fa fa-check"></i>Calculating sums of squares.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-significance"><i class="fa fa-check"></i>Significance of linear relationship.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-slope."><i class="fa fa-check"></i>Significance of slope.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-pairwise-correlation"><i class="fa fa-check"></i>Significance of pairwise correlation</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-variance-partition."><i class="fa fa-check"></i>Significance of variance partition.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#isomorphism-with-one-response-and-one-predictor"><i class="fa fa-check"></i>Isomorphism with one response and one predictor</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-prediction"><i class="fa fa-check"></i>Regression prediction.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#predicting-mean-y-given-x."><i class="fa fa-check"></i>Predicting mean y given x.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#predicting-new-y-given-x."><i class="fa fa-check"></i>Predicting new y given x.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#visualizing-the-difference"><i class="fa fa-check"></i>Visualizing the difference</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-ols-diagnostics"><i class="fa fa-check"></i>Regression Diagnostics</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-relationship-between-y-and-x-is-well-described-by-a-line."><i class="fa fa-check"></i>Assumption: relationship between y and x is well described by a line.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-out-estimates-are-not-driven-by-a-few-huge-outliers"><i class="fa fa-check"></i>Assumption: out estimates are not driven by a few huge outliers</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-errors-are-independent-identically-distributed-normal."><i class="fa fa-check"></i>Assumption: errors are independent, identically distributed, normal.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#testing-assumptions"><i class="fa fa-check"></i>Testing assumptions</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">UCSD Psyc 201ab / CSS 205 / Psyc 193</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="descriptive" class="section level1">
+<h1>Descriptive statistics</h1>
+<dl>
+<dt>A <em>statistic</em></dt>
+<dd>is a measurement of some attribute of a sample, computed by applying some function or algorithm to the sample. “Statistic” can refer both to the function and to the value it yields for a particular sample.
+</dd>
+<dd><code>function(x){sum(sin(x))}</code> is a statistic of the sample <code>x</code>, albeit not a particularly useful one.
+</dd>
+<dd><code>function(x){sum(x)/length(x)}</code> is a more useful statistic (the arithmetic sample mean).
+</dd>
+<dt><em>Descriptive statistics</em></dt>
+<dd>are used to quantitatively summarize some features of a sample.
+</dd>
+<dt><em>Estimators</em></dt>
+<dd>are statistics that are used to estimate a <em>population parameter</em>, that is a parameter of some <em>statistical model</em> of the data.
+</dd>
+<dt><em>Test statistics</em></dt>
+<dd>are compared to their <em>sampling distribution</em> under the <em>null hypothesis</em> in significance testing.
+</dd>
+</dl>
+<p>There is nothing qualitatively different between the statistics used for description, estimation, and testing. They are all functions of the sample that yield some value, and the only difference lies in how that value is used. For instance, the sample mean can be used to describe the sample, to estimate the population mean, or to test a hypothesis about the population mean.</p>
+<div id="descriptive-statistics-are-implicit-estimators." class="section level3">
+<h3>Descriptive statistics are implicit estimators.</h3>
+<p>Although descriptive statistics are typically presented as non-inferential, as not relying on any statistical model of the data, in practice this is rarely the case: we choose which features of the data are worth describing based on (sometimes unstated) assumptions about the data-generating process. In other words, descriptive statistics are usually (at least implicitly) used as estimators.</p>
+<p>For instance, let’s say I show you a sequence of coin flips: HHTHTTHTTTHHTT, and ask you to summarize its most relevant feature with one descriptive statistic. Which statistic do you use?</p>
+<ul>
+<li>If I tell you the coin might be slightly bent, and thus more likely to come up heads than tails, you would want to describe the proportion of heads in the sequence (<span class="math inline">\(6/14\)</span>).<br />
+</li>
+<li>If I tell you that the sequence was generated by a machine that aims to flip the coin an even number of times so as to repeat the previous flip outcome, you would want to summarize the proportion of repetitions (<span class="math inline">\(8/13\)</span>).<br />
+</li>
+<li>If I tell you that the sequence was generated by a machine that is designed to flip a coin indefinitely, but sometimes it goes awry and drops the coin, thus cutting the sequence short, you would want to summarize the length of the sequence (<span class="math inline">\(14\)</span>).</li>
+</ul>
+<p>In short, our choice of which aspects of the data are worth describing depend on how we think the data were generated, and thus which features of the data might be most useful to estimate properties of the data generating process. Although we are providing descriptive statistics, we really want to use them as estimators.</p>
+</div>
+<div id="describing-central-tendency." class="section level3">
+<h3>Describing central tendency.</h3>
+<p>The usual thing we want to do with some sample is calculate the “average,” by which we mean some measure of the “central tendency.”</p>
+<dl>
+<dt>Central tendency</dt>
+<dd>Is a value that describes the “middle” of our data, in some sense.
+</dd>
+<dd>Examples of such values include various types of <em>mean</em>, the <em>median</em>, and the <em>mode</em>.
+</dd>
+</dl>
+<p>There are many types of “average,” which are more or less useful depending on our assumptions about where the data came from, but the conventional “average” is the <strong>arithmetic mean</strong>, which we will just call the “mean.”</p>
+<div id="arithmetic-mean-or-just-mean" class="section level4">
+<h4>Arithmetic mean (or just “mean”)</h4>
+<p>The arithmetic mean is usually denoted with a bar (as in <span class="math inline">\(\bar x\)</span>, “x-bar” is the sample mean of x):</p>
+<p><span class="math inline">\(\bar x = \frac{1}{n}\sum\limits_{i=1}^n x_i\)</span></p>
+<p>Let’s take the yearly number of miles travelled on airlines between 1937 and 1960 as an example:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="descriptive.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)              <span class="co"># using ggplot package for graphics</span></span>
+<span id="cb69-2"><a href="descriptive.html#cb69-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">as.vector</span>(airmiles)       <span class="co"># casting time-series as vector -- ignore this</span></span>
+<span id="cb69-3"><a href="descriptive.html#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="descriptive.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span><span class="fu">data.frame</span>(<span class="at">x=</span>x), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span> </span>
+<span id="cb69-5"><a href="descriptive.html#cb69-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">1000</span>, <span class="at">fill=</span><span class="st">&#39;red&#39;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span>       <span class="co"># plot histogram.</span></span>
+<span id="cb69-6"><a href="descriptive.html#cb69-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">color=</span><span class="st">&quot;blue&quot;</span>)  <span class="sc">+</span>    <span class="co"># add rug of tick marks for unique observations</span></span>
+<span id="cb69-7"><a href="descriptive.html#cb69-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of yearly miles travelled by air (1937-1960&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb69-8"><a href="descriptive.html#cb69-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()               <span class="co"># nicer theme</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="3000" /></p>
+<p>We can calculate the sample mean in a number of ways:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="descriptive.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)<span class="sc">/</span><span class="fu">length</span>(x)</span></code></pre></div>
+<pre><code>## [1] 10527.83</code></pre>
+<p>or</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="descriptive.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
+<pre><code>## [1] 10527.83</code></pre>
+</div>
+<div id="sensitivity-to-outliers" class="section level4">
+<h4>Sensitivity to outliers</h4>
+<p>You can think of the mean as the “balance” point of the data: if we think of each data point as having equal mass and each being arranged on a see-saw accordint to their values, then the further the value is away from the fulcrum, the more torque it will provide, and thus will push the see-saw down harder. The point where we would need to put the fulcrum to balance the see-saw is the sample mean.</p>
+<p>This means that outliers (measurements that are far away from the rest of the data), will exert a big influence on what the mean is.</p>
+</div>
+<div id="median" class="section level4">
+<h4>Median</h4>
+<p>The median is the value such that 50% of the data are bigger than that value, and 50% are smaller. (There is no conventional notation for the sample median.) Thus, the median literally picks out the point that’s in the middle of the sorted list of numbers, and does not care how much larger or smaller the values on either side are, so long as there are 50% of them on each side (very much unlike the mean).</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="descriptive.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code></pre></div>
+<pre><code>## [1] 6431</code></pre>
+<p>The median is also known as the 50th percentile, or the 0.5th quantile, so we can also estimate it with the empirical quantile function:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="descriptive.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>##  50% 
+## 6431</code></pre>
+</div>
+<div id="mode" class="section level4">
+<h4>Mode</h4>
+<dl>
+<dt>The <em>mode</em></dt>
+<dd>is the most common value in the data.
+</dd>
+</dl>
+<p>A “mode” function does not exist in R, because it is a rather odd statistic that is very unstable for most numerical data. Nonetheless, we can write a function to give us the most frequent values in a sample:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="descriptive.html#cb78-1" aria-hidden="true" tabindex="-1"></a>Mode <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<span id="cb78-2"><a href="descriptive.html#cb78-2" aria-hidden="true" tabindex="-1"></a>  ux <span class="ot">=</span> <span class="fu">unique</span>(x)              <span class="co"># find all unique values</span></span>
+<span id="cb78-3"><a href="descriptive.html#cb78-3" aria-hidden="true" tabindex="-1"></a>  fx <span class="ot">=</span> <span class="fu">tabulate</span>(<span class="fu">match</span>(x,ux))  <span class="co"># count frequency of each unique value</span></span>
+<span id="cb78-4"><a href="descriptive.html#cb78-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ux[fx <span class="sc">==</span> <span class="fu">max</span>(fx)])   <span class="co"># return unique value(s) that have the highest frequency</span></span>
+<span id="cb78-5"><a href="descriptive.html#cb78-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>(Note that this function will return <em>all</em> the values that have the greatest frequency, so there may be many modes).</p>
+<p><strong>The mode is the only available measure of central tendency for <em>categorical</em> data</strong>, and often makes quite a bit of sense if we have <em>discrete</em> numerical data that have a small number of unique values compared to the number of total observations. For instance, the number of cylinders in car models surveyed in the <code>mtcars</code> data set, is conducive to a description of its mode:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="descriptive.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl)) <span class="sc">+</span> </span>
+<span id="cb79-2"><a href="descriptive.html#cb79-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="st">&#39;red&#39;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span>       <span class="co"># plot histogram.</span></span>
+<span id="cb79-3"><a href="descriptive.html#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">color=</span><span class="st">&quot;blue&quot;</span>)  <span class="sc">+</span>    <span class="co"># add rug of tick marks for unique observations</span></span>
+<span id="cb79-4"><a href="descriptive.html#cb79-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of number of cylinders in mtcars$cyl&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb79-5"><a href="descriptive.html#cb79-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb79-6"><a href="descriptive.html#cb79-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-7"><a href="descriptive.html#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Mode</span>(mtcars<span class="sc">$</span>cyl)</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="3000" /></p>
+<p>For continuous, numerical data, the mode is very tricky to formalize because most of the values are unique. Consider our yearly air miles (still represented in <code>x</code>). There are <code>length(x)</code>=24 data points, of which <code>length(unique(x))</code>=24 are unique; consequently, repeated values of number of airmiles travelled per year, specified to the nearest mile, are very unlikely.</p>
+<p>Nonetheless, if we look at the histogram, there does appear to be a mode – a peak that is higher than the others. However, this peak arises from <em>binning</em> the values.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="descriptive.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span><span class="fu">data.frame</span>(<span class="at">x=</span>x), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span> </span>
+<span id="cb81-2"><a href="descriptive.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">1000</span>, <span class="at">fill=</span><span class="st">&#39;red&#39;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span>       <span class="co"># plot histogram.</span></span>
+<span id="cb81-3"><a href="descriptive.html#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">color=</span><span class="st">&quot;blue&quot;</span>)  <span class="sc">+</span>    <span class="co"># add rug of tick marks for unique observations</span></span>
+<span id="cb81-4"><a href="descriptive.html#cb81-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of yearly miles travelled by air (1937-1960&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb81-5"><a href="descriptive.html#cb81-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()               <span class="co"># nicer theme</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="3000" /></p>
+<p>If we try to calculate the mode for airmiles, it returns <em>all</em> the values, because they are all “most frequent,” occuring only once in the sample.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="descriptive.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Mode</span>(x)</span></code></pre></div>
+<pre><code>##  [1]   412   480   683  1052  1385  1418  1634  2178  3362  5948  6109  5981  6753  8003 10566 12528 14760 16769 19819 22362 25340
+## [22] 25343 29269 30514</code></pre>
+<p>We can try to coax the Mode to give us something more meaningful, by rounding, say to the nearest 10:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="descriptive.html#cb84-1" aria-hidden="true" tabindex="-1"></a>x<span class="fl">.10</span> <span class="ot">=</span> <span class="fu">round</span>(x<span class="sc">/</span><span class="dv">10</span>)<span class="sc">*</span><span class="dv">10</span></span>
+<span id="cb84-2"><a href="descriptive.html#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Mode</span>(x<span class="fl">.10</span>)</span></code></pre></div>
+<pre><code>## [1] 25340</code></pre>
+<p>The value this gives us is a little weird, because it so happened to be the only value that repeated in the set of airmiles rounded to 10: there are <code>length(unique(x.10))</code>=23 unique values out of 24 observations, meaning that the “mode” we got just happened to be the one number that repeated twice. Perhaps more rounding will help:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="descriptive.html#cb86-1" aria-hidden="true" tabindex="-1"></a>x<span class="fl">.100</span> <span class="ot">=</span> <span class="fu">round</span>(x<span class="sc">/</span><span class="dv">100</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb86-2"><a href="descriptive.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Mode</span>(x<span class="fl">.100</span>)</span></code></pre></div>
+<pre><code>## [1]  1400 25300</code></pre>
+<p>Now we have two modes again (both of them repeat twice). More rounding?</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="descriptive.html#cb88-1" aria-hidden="true" tabindex="-1"></a>x<span class="fl">.1000</span> <span class="ot">=</span> <span class="fu">round</span>(x<span class="sc">/</span><span class="dv">1000</span>)<span class="sc">*</span><span class="dv">1000</span></span>
+<span id="cb88-2"><a href="descriptive.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Mode</span>(x<span class="fl">.1000</span>)</span></code></pre></div>
+<pre><code>## [1] 1000</code></pre>
+<p>This is more reasonable, with the “mode” occurring 4 times in the sample. But Maybe we should keep rounding?</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="descriptive.html#cb90-1" aria-hidden="true" tabindex="-1"></a>x<span class="fl">.10000</span> <span class="ot">=</span> <span class="fu">round</span>(x<span class="sc">/</span><span class="dv">10000</span>)<span class="sc">*</span><span class="dv">10000</span></span>
+<span id="cb90-2"><a href="descriptive.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Mode</span>(x<span class="fl">.10000</span>)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>So these data either have 24 modes (no rounding), a mode at 25,340 (rounding to nearest 10), two modes 1400 and 25300 (rounding to nearest 100), a mode at 1000 (rounding to nearest 1000), or a mode at 0 (rounding to nearest 10000). If we consider that a mode at 0 when rounding to 10000 covers the range [-5000,5000], and rounding to 1000 covers [500,1500], we have a somewhat coherent story about the most frequent <em>interval</em>, but a most frequent value does not exist.</p>
+</div>
+</div>
+<div id="describing-dispersion" class="section level3">
+<h3>Describing dispersion</h3>
+<p>Once we have established some measure of central tendency, we usually want to know something about the <em>dispersion</em>.</p>
+<dl>
+<dt>Dispersion</dt>
+<dd>How spread out are the data around its central tendency. The <em>variability</em> of the data.
+</dd>
+<dd>Common examples include <em>standard deviation</em>/<em>variance</em>, <em>range</em>, <em>interquartile range</em>, etc.
+</dd>
+</dl>
+<div id="standard-deviation-and-variance" class="section level4">
+<h4>Standard deviation and variance</h4>
+<p>When we summarize the central tendency with the mean, the natural measure of dispersion is the standard deviation or the variance.</p>
+<dl>
+<dt>The sample <em>variance</em></dt>
+<dd>is the average squared deviation from the mean.
+</dd>
+<dd><span class="math inline">\(s^2 = \frac{1}{n-1}\sum\limits_{i=1}^n (x_i-\bar x)^2\)</span>
+</dd>
+<dd>in R: <code>var(x)</code><br />
+(For somewhat technical reasons we calculate the sample variance by dividing by <span class="math inline">\(n-1\)</span> rather than <span class="math inline">\(n\)</span>)
+</dd>
+</dl>
+<p>We can calculate this manually, or using the <code>var</code> function:</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="descriptive.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x still refers to the airmiles data.</span></span>
+<span id="cb92-2"><a href="descriptive.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="fu">length</span>(x)<span class="sc">-</span><span class="dv">1</span>)    <span class="co"># calculating sample variance manually</span></span></code></pre></div>
+<pre><code>## [1] 100667654</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="descriptive.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)</span></code></pre></div>
+<pre><code>## [1] 100667654</code></pre>
+<p>The variance is intimately related to two other quantities:</p>
+<dl>
+<dt>The <em>sum of squares</em></dt>
+<dd>Is the <em>sum</em> of squared deviations from (in this context) the mean, without taking the average by dividing by <span class="math inline">\(n-1\)</span>.<br />
+We usually denote the sum of squares as the function <span class="math inline">\(\operatorname{SS}(x)\)</span>, or simply as SSX.<br />
+<span class="math inline">\(\operatorname{SS}[x] = \sum\limits_{i=1}^n (x_i-\bar x)^2\)</span>
+</dd>
+</dl>
+<p>We can calculate the sum of squares manually with</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="descriptive.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 2315356053</code></pre>
+<dl>
+<dt>The sample <em>standard deviation</em></dt>
+<dd>Is the square root of the variance, thus making it interpretable in units of <span class="math inline">\(x\)</span>.
+</dd>
+<dd><span class="math inline">\(s = \sqrt{s^2} = \sqrt{\frac{1}{n-1}\sum\limits_{i=1}^n (x_i-\bar x)^2}\)</span>
+</dd>
+<dd>in R: <code>sd(x)</code>
+</dd>
+</dl>
+<p>Which we can calcuate either manually or using <code>sd</code>:</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="descriptive.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="fu">length</span>(x)<span class="sc">-</span><span class="dv">1</span>))    <span class="co"># calculating sample standard deviation manually</span></span></code></pre></div>
+<pre><code>## [1] 10033.33</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="descriptive.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
+<pre><code>## [1] 10033.33</code></pre>
+<p>Just to be clear here about the relationships of the sum of squares of x, the sample variance of x, and the standard deviation of x.</p>
+<p><span class="math inline">\(\operatorname{SS}[x] = \sum\limits_{i=1}^n (x_i-\bar x)^2\)</span></p>
+<p><span class="math inline">\(s^2 = \frac{1}{n-1} \operatorname{SS}[x]\)</span></p>
+<p><span class="math inline">\(s = \sqrt{s^2}\)</span></p>
+<p>Or in <code>R</code>:</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="descriptive.html#cb102-1" aria-hidden="true" tabindex="-1"></a>ss.x <span class="ot">=</span> <span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb102-2"><a href="descriptive.html#cb102-2" aria-hidden="true" tabindex="-1"></a>var.x <span class="ot">=</span> ss.x <span class="sc">/</span> (<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb102-3"><a href="descriptive.html#cb102-3" aria-hidden="true" tabindex="-1"></a>sd.x <span class="ot">=</span> <span class="fu">sqrt</span>(var.x)</span></code></pre></div>
+<p>Although the standard deviation and variance are perhaps the most common descriptions of the dispersion of numerical data, the sum of squares is not a useful summary of dispersion, because it will mostly reflect the sample size: it will grow as <span class="math inline">\(n\)</span> increases because it is a sum over all data points without dividing by <span class="math inline">\(n\)</span> in any way.</p>
+<p>Standard deviation and variance care very much about <em>extreme</em> values, because they are based on the sum of <em>squared</em> deviations, thus a value very far from the mean will exert a great influence, as its squared deviation will be very large. In this sense, these measures are not <em>robust</em> to extreme values or outliers.</p>
+</div>
+<div id="median-or-mean-absolute-deviation-mad" class="section level4">
+<h4>Median (or mean) absolute deviation (MAD)</h4>
+<p>If we calculate central tendency as the median, likely because we want to take advantage of its robustness to extreme values, we probably also want to calculate dispersion around the median in a manner that is somewhat robust to extreme values.</p>
+<dl>
+<dt>Median absolute deviation (from the median)</dt>
+<dd>is a measure of dispersion that is as described: the median absolute deviation from the median
+</dd>
+<dd><span class="math inline">\(\operatorname{MAD}[x] = \operatorname{Median}\left[{\lvert{x_i-m}\rvert}\right]\)</span>, (where <span class="math inline">\(\lvert x \rvert\)</span> denote the absolute value, and <span class="math inline">\(m\)</span> denotes the median of <span class="math inline">\(x\)</span>, and <span class="math inline">\(\operatorname{Median}[w]\)</span> yields the median of <span class="math inline">\(w\)</span>.)
+</dd>
+<dd>or in R: <code>mad(x)</code>
+</dd>
+</dl>
+<p>We can calculate this in R manually or using <code>mad()</code>:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="descriptive.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">abs</span>(x<span class="sc">-</span><span class="fu">median</span>(x)))</span></code></pre></div>
+<pre><code>## [1] 5563.5</code></pre>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="descriptive.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mad</span>(x)</span></code></pre></div>
+<pre><code>## [1] 8248.445</code></pre>
+<p>Oops – these give us different answers. That’s because the <code>mad()</code> function by default adjusts the raw median absolute deviation by a constant (~1.4826) to try to make it an estimator for the standard deviation of normally distributed data.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="descriptive.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">abs</span>(x<span class="sc">-</span><span class="fu">median</span>(x)))<span class="sc">*</span><span class="fl">1.4826</span></span></code></pre></div>
+<pre><code>## [1] 8248.445</code></pre>
+<p>The median absolute deviation is more robust to outliers and skewed distributions than the mean because it (a) considers the absolute value of deviations, rather than the squared deviations, and (b) calculates the median absolute deviation, rather than the average, thus effectively not caring how large the largest deviations are.</p>
+<p>There is ample opportunity for confusion because “MAD” sometimes refers to the “mean absolute deviation,” and in general an “average absolute deviation” may refer to deviations from any measure of central tendency (mean, median, mode, or something else), and the average may be the mean or the median, or even something else. We will try to stick to using MAD to refer to the <em>median absolute deviation from the median.</em></p>
+</div>
+<div id="quantile-measures-of-dispersion-e.g.-range-and-interquartile-range." class="section level4">
+<h4>Quantile measures of dispersion (e.g., Range and interquartile range).</h4>
+<p>There are some other measures of dispersion that rely on the distribution of data in the sample without reference to the central tendency: they are concerned with the distance between percentiles (quantiles) in the sample, rather than the distance to some measure of central tendency. The most straight forward of these would be the <em>range</em>, but the <em>interquartile range</em> is usually more useful.</p>
+<dl>
+<dt>Range</dt>
+<dd>is the distance between the smallest and largest value in the sample.
+</dd>
+<dd>in R: <code>max(x)-min(x)</code>
+</dd>
+</dl>
+<p>In R, the <code>range(x)</code> function returns the smallest and largest values in <code>x</code>, rather than the distance between them, but we can calculate the range in a number of ways:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="descriptive.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x)</span></code></pre></div>
+<pre><code>## [1]   412 30514</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="descriptive.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(x))</span></code></pre></div>
+<pre><code>## [1] 30102</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="descriptive.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x)<span class="sc">-</span><span class="fu">min</span>(x)</span></code></pre></div>
+<pre><code>## [1] 30102</code></pre>
+<p>The range is obviously very sensitive to outliers and extreme values, since it only considers the two most extreme values in its definition. This is a bit undesirable, so we might want to consider the range that disregards the extremes.</p>
+<dl>
+<dt>The interquartile range (IQR)</dt>
+<dd>Is the distance between the 25th and 75th percentile
+</dd>
+<dd>In <code>R</code>: <code>IQR(x)</code>
+</dd>
+</dl>
+<p>The interquartile range considers the 1st and 3rd “quartile,” that is the first and third boundary between data points if we divide all the values into four equal-n bins. These would more commonly be called the 25th and 75th percentile, or the 0.25th and 0.75th quantile.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="descriptive.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))    <span class="co"># the 25th and 75th percentile. (1st and 3rd quartile)</span></span></code></pre></div>
+<pre><code>##     25%     75% 
+##  1580.0 17531.5</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="descriptive.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">quantile</span>(x, <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>)))  <span class="co"># the distance between them: the interquartile range</span></span></code></pre></div>
+<pre><code>##     75% 
+## 15951.5</code></pre>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="descriptive.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x)   <span class="co"># R&#39;s built-in interquartile range function.</span></span></code></pre></div>
+<pre><code>## [1] 15951.5</code></pre>
+<p>Because IQR only considers the values at the 25th and 75th percentile, it does not care how extreme the extreme values are, and is thus quite robust to outliers.</p>
+</div>
+<div id="entropy" class="section level4">
+<h4>Entropy</h4>
+<p>There are no conventional measures of dispersion for categorical data: no measures of average deviation from the central tendency, or even rank-based measures of range, make sense. However, sometimes it might be desirable to quantify the ‘dispersion’ of a categorical distribution as a measure of how “not peaky” it is.</p>
+<p>Let’s consider the HairEyeColor data set, which we will manipulate a bit to extract a vector of category labels corresponding to hair color:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="descriptive.html#cb121-1" aria-hidden="true" tabindex="-1"></a>haireye.df <span class="ot">=</span> <span class="fu">as.data.frame</span>(HairEyeColor)  <span class="co"># convert table to data frame.</span></span>
+<span id="cb121-2"><a href="descriptive.html#cb121-2" aria-hidden="true" tabindex="-1"></a>haireye.df <span class="ot">=</span> haireye.df[<span class="fu">rep</span>(<span class="fu">row.names</span>(haireye.df), haireye.df<span class="sc">$</span>Freq), <span class="fu">c</span>(<span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Hair&quot;</span>, <span class="st">&quot;Eye&quot;</span>)]</span>
+<span id="cb121-3"><a href="descriptive.html#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="co"># replicate to have unique observations, rather than counts.</span></span>
+<span id="cb121-4"><a href="descriptive.html#cb121-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-5"><a href="descriptive.html#cb121-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>haireye.df, <span class="fu">aes</span>(<span class="at">x=</span>Hair)) <span class="sc">+</span> </span>
+<span id="cb121-6"><a href="descriptive.html#cb121-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">&#39;red&#39;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span>       <span class="co"># plot histogram.</span></span>
+<span id="cb121-7"><a href="descriptive.html#cb121-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of hair color&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb121-8"><a href="descriptive.html#cb121-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()    </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="3000" /></p>
+<p>The mode of hair color makes quite a bit of sense: <code>Mode(hair)</code>=Brown, but how do we measure how “peaky” this distribution is?</p>
+<p>I would advocate using a measure of “entropy” over the sample frequencies:</p>
+<dl>
+<dt>Entropy</dt>
+<dd>A measure of how “unpredictable” a categorical random variable is – it indicates how much information (in bits) you get from making an observation.
+</dd>
+<dd><span class="math inline">\(H(X) = - \sum\limits_x P(x) \log_2\left[P(x)\right]\)</span>, where <span class="math inline">\(\log_2\)</span> denotes the base 2 logarithm.
+</dd>
+</dl>
+<p>We can write a function in R to calculate the entropy of a sample:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="descriptive.html#cb122-1" aria-hidden="true" tabindex="-1"></a>Entropy <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<span id="cb122-2"><a href="descriptive.html#cb122-2" aria-hidden="true" tabindex="-1"></a>  ux <span class="ot">=</span> <span class="fu">unique</span>(x)              <span class="co"># find all unique values</span></span>
+<span id="cb122-3"><a href="descriptive.html#cb122-3" aria-hidden="true" tabindex="-1"></a>  fx <span class="ot">=</span> <span class="fu">tabulate</span>(<span class="fu">match</span>(x,ux))  <span class="co"># count frequency of each unique value</span></span>
+<span id="cb122-4"><a href="descriptive.html#cb122-4" aria-hidden="true" tabindex="-1"></a>  px <span class="ot">=</span> fx<span class="sc">/</span><span class="fu">sum</span>(fx)             <span class="co"># convert frequencies to proportions (probabilities)</span></span>
+<span id="cb122-5"><a href="descriptive.html#cb122-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="sc">-</span><span class="fu">sum</span>(px<span class="sc">*</span><span class="fu">log2</span>(px)))   <span class="co"># return entropy over unique values</span></span>
+<span id="cb122-6"><a href="descriptive.html#cb122-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb122-7"><a href="descriptive.html#cb122-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-8"><a href="descriptive.html#cb122-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Entropy</span>(haireye.df<span class="sc">$</span>Hair)</span></code></pre></div>
+<pre><code>## [1] 1.798227</code></pre>
+<p>Entropy is a measure of information, rather than dispersion, so a variable that can take on more unique values, will usually have a higher entropy. For instance, consider participant sex in the <code>HairEyeColor</code> data:</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="descriptive.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>haireye.df, <span class="fu">aes</span>(<span class="at">x=</span>Sex)) <span class="sc">+</span> </span>
+<span id="cb124-2"><a href="descriptive.html#cb124-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">&#39;red&#39;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span>     <span class="co"># plot histogram.</span></span>
+<span id="cb124-3"><a href="descriptive.html#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of sex&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb124-4"><a href="descriptive.html#cb124-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()    </span>
+<span id="cb124-5"><a href="descriptive.html#cb124-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-6"><a href="descriptive.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Entropy</span>(haireye.df<span class="sc">$</span>Sex)</span></code></pre></div>
+<pre><code>## [1] 0.9976193</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="3000" /></p>
+<p>While the distribution of hair color looks quite a bit “peakier,” it’s entropy (1.7982269) is higher than the entropy of the very not-peaky distribution of sex (0.9976193), because there are four different hair colors, and only two sexes in the data.</p>
+<p>Perhaps a more intuitive measure of “peakiness” would be entropy normalized to the maximum entropy for that number of alternatives:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="descriptive.html#cb126-1" aria-hidden="true" tabindex="-1"></a>RelativeEntropy <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<span id="cb126-2"><a href="descriptive.html#cb126-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate maximum entropy for a variable with the same number of unique values.</span></span>
+<span id="cb126-3"><a href="descriptive.html#cb126-3" aria-hidden="true" tabindex="-1"></a>  uniform.p <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">length</span>(<span class="fu">unique</span>(x)), <span class="fu">length</span>(<span class="fu">unique</span>(x)))</span>
+<span id="cb126-4"><a href="descriptive.html#cb126-4" aria-hidden="true" tabindex="-1"></a>  maxent <span class="ot">=</span> <span class="sc">-</span><span class="fu">sum</span>(uniform.p<span class="sc">*</span><span class="fu">log2</span>(uniform.p))   </span>
+<span id="cb126-5"><a href="descriptive.html#cb126-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># return relative entropy</span></span>
+<span id="cb126-6"><a href="descriptive.html#cb126-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">Entropy</span>(x)<span class="sc">/</span>maxent)</span>
+<span id="cb126-7"><a href="descriptive.html#cb126-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Relative entropy gives us a more intuitive measure of lack-of-peakiness that reflects the number of possible values: <code>RelativeEntropy(haireye.df$Hair)</code>=0.8991135 and <code>RelativeEntropy(haireye.df$Eye)</code>=0.9139308.</p>
+<p>Although neither the entropy nor relative entropy statistics we defined here are conventional, I find them to be sometimes useful. Moreover, they highlight the fact that a descriptive statistic can be whatever we choose: if we think some particular measure of a sample is a useful description of some feature of the data, we can use it as a statistic.</p>
+</div>
+</div>
+<div id="descriptions-of-shape." class="section level3">
+<h3>Descriptions of shape.</h3>
+<p>For numerical data we often want to describe not just the central tendency and dispersion, but also its <em>shape</em>.</p>
+<p>Consider for instance the two samples <code>x</code> and <code>y</code> (that we create below to have mean <span class="math inline">\(m\)</span> and standard deviation <span class="math inline">\(s\)</span>):</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="descriptive.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)  <span class="co"># used to make plots side by side.</span></span>
+<span id="cb127-2"><a href="descriptive.html#cb127-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-3"><a href="descriptive.html#cb127-3" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="dv">7</span></span>
+<span id="cb127-4"><a href="descriptive.html#cb127-4" aria-hidden="true" tabindex="-1"></a>m <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb127-5"><a href="descriptive.html#cb127-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb127-6"><a href="descriptive.html#cb127-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> (x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">/</span><span class="fu">sd</span>(x)<span class="sc">*</span>s <span class="sc">+</span> m</span>
+<span id="cb127-7"><a href="descriptive.html#cb127-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rexp</span>(<span class="dv">1000</span>)</span>
+<span id="cb127-8"><a href="descriptive.html#cb127-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> (y<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">/</span><span class="fu">sd</span>(y)<span class="sc">*</span>s <span class="sc">+</span> m</span>
+<span id="cb127-9"><a href="descriptive.html#cb127-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-10"><a href="descriptive.html#cb127-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="st">&quot;mean(x): %0.2f        mean(y): %0.2f&quot;</span>, <span class="fu">mean</span>(x), <span class="fu">mean</span>(y))</span></code></pre></div>
+<pre><code>## [1] &quot;mean(x): 50.00        mean(y): 50.00&quot;</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="descriptive.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="st">&#39;  sd(x): %0.2f          sd(y): %0.2f&#39;</span>, <span class="fu">sd</span>(x), <span class="fu">sd</span>(y))</span></code></pre></div>
+<pre><code>## [1] &quot;  sd(x): 7.00          sd(y): 7.00&quot;</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="descriptive.html#cb131-1" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">=</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span>x), <span class="fu">aes</span>(<span class="at">x=</span>x))<span class="sc">+</span></span>
+<span id="cb131-2"><a href="descriptive.html#cb131-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="fl">0.5</span>, <span class="at">fill=</span><span class="st">&#39;red&#39;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span>       <span class="co"># plot histogram.</span></span>
+<span id="cb131-3"><a href="descriptive.html#cb131-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of x&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb131-4"><a href="descriptive.html#cb131-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb131-5"><a href="descriptive.html#cb131-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-6"><a href="descriptive.html#cb131-6" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">=</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">y=</span>y), <span class="fu">aes</span>(<span class="at">x=</span>y))<span class="sc">+</span></span>
+<span id="cb131-7"><a href="descriptive.html#cb131-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="fl">0.5</span>, <span class="at">fill=</span><span class="st">&#39;red&#39;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span>       <span class="co"># plot histogram.</span></span>
+<span id="cb131-8"><a href="descriptive.html#cb131-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of y&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb131-9"><a href="descriptive.html#cb131-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb131-10"><a href="descriptive.html#cb131-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-11"><a href="descriptive.html#cb131-11" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(g1,g2, <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="3000" /></p>
+<p>They have exactly the same sample mean and sample standard deviation, but clearly look different. That difference in how they look is called the “shape.” There are two statistics that are most commonly used to describe the shape of a distribution: its skewness and kurtosis.</p>
+<div id="skewness" class="section level4">
+<h4>Skewness</h4>
+<dl>
+<dt>The skewness</dt>
+<dd>of a distribution measures whether the positive or negative tail is heavier.
+</dd>
+<dd>it is roughly the average of the cubed “z-scores” (see <a href="../probability/expectation.html">expectations</a>)
+</dd>
+<dd>(although calculating it from a sample requires some correction)
+</dd>
+<dd>in <code>R</code>, we calculate it using <code>skewness()</code> from the <code>moments</code> package.
+</dd>
+</dl>
+<p>The skewness of the variable <code>x</code> should be around 0, as it is symmetric, the skewness of <code>y</code> should be positive, as it has a heavy “positive” tail.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="descriptive.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb132-2"><a href="descriptive.html#cb132-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-3"><a href="descriptive.html#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(x)</span></code></pre></div>
+<pre><code>## [1] -0.05165289</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="descriptive.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(y)</span></code></pre></div>
+<pre><code>## [1] 2.004362</code></pre>
+<p>We can construct a new variable that will have negative skewness:</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="descriptive.html#cb136-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">*</span><span class="fu">rexp</span>(<span class="dv">1000</span>)</span>
+<span id="cb136-2"><a href="descriptive.html#cb136-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> (z<span class="sc">-</span><span class="fu">mean</span>(z))<span class="sc">/</span><span class="fu">sd</span>(z)<span class="sc">*</span>s <span class="sc">+</span> m</span>
+<span id="cb136-3"><a href="descriptive.html#cb136-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-4"><a href="descriptive.html#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">z=</span>z), <span class="fu">aes</span>(<span class="at">x=</span>z))<span class="sc">+</span></span>
+<span id="cb136-5"><a href="descriptive.html#cb136-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="fl">0.5</span>, <span class="at">fill=</span><span class="st">&#39;red&#39;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span>       <span class="co"># plot histogram.</span></span>
+<span id="cb136-6"><a href="descriptive.html#cb136-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of z&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb136-7"><a href="descriptive.html#cb136-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb136-8"><a href="descriptive.html#cb136-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-9"><a href="descriptive.html#cb136-9" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(z)</span></code></pre></div>
+<pre><code>## [1] -2.090862</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="3000" /></p>
+</div>
+<div id="skew-and-central-tendency." class="section level4">
+<h4>Skew and central tendency.</h4>
+<p>Since the mean very much cares about extreme values, the median only cares about the rank of values, and the mode only cares about the most common value, they are differently influenced by the skew of the data.</p>
+<p>Consider the geometrically distributed variable X:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="descriptive.html#cb138-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">rgeom</span>(<span class="dv">10000</span>, <span class="fl">0.1</span>)</span>
+<span id="cb138-2"><a href="descriptive.html#cb138-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-3"><a href="descriptive.html#cb138-3" aria-hidden="true" tabindex="-1"></a>df_stats <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">statistic =</span> <span class="fu">c</span>(<span class="st">&quot;Mode&quot;</span>, <span class="st">&quot;Median&quot;</span>, <span class="st">&quot;Mean&quot;</span>), <span class="at">val=</span><span class="fu">c</span>(<span class="fu">Mode</span>(X), <span class="fu">median</span>(X), <span class="fu">mean</span>(X)))</span>
+<span id="cb138-4"><a href="descriptive.html#cb138-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-5"><a href="descriptive.html#cb138-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">X=</span>X), <span class="fu">aes</span>(<span class="at">x=</span>X))<span class="sc">+</span></span>
+<span id="cb138-6"><a href="descriptive.html#cb138-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>, <span class="at">fill=</span><span class="st">&#39;lightgray&#39;</span>) <span class="sc">+</span>       <span class="co"># plot histogram.</span></span>
+<span id="cb138-7"><a href="descriptive.html#cb138-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of X&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb138-8"><a href="descriptive.html#cb138-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">data=</span>df_stats, <span class="fu">aes</span>(<span class="at">xintercept=</span>val, <span class="at">color=</span>statistic), <span class="at">size=</span><span class="dv">2</span>, <span class="at">show_guide=</span><span class="cn">TRUE</span>)<span class="sc">+</span></span>
+<span id="cb138-9"><a href="descriptive.html#cb138-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#dd0000&quot;</span>,<span class="st">&quot;#00bb00&quot;</span>, <span class="st">&quot;#0000ff&quot;</span>), <span class="at">name =</span> <span class="st">&quot;Central tendency statistic&quot;</span>)<span class="sc">+</span></span>
+<span id="cb138-10"><a href="descriptive.html#cb138-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="3000" /></p>
+<p>The mean is most drawn to the heavy positive tail, the median second, and the mode least of all.</p>
+</div>
+<div id="kurtosis" class="section level4">
+<h4>Kurtosis</h4>
+<dl>
+<dt>The (excess) kurtosis</dt>
+<dd>of a distribution measures how heavy the tails are (compared to a normal distribution)
+</dd>
+<dd>it is roughly the average of the “z-scores” to the fourth power (for more see <a href="../probability/expectation.html">expectations</a>)
+</dd>
+<dd>(although calculating it from a sample requires some correction)
+</dd>
+<dd>in <code>R</code>, we calculate it using <code>kurtosis()-3</code> from the <code>moments</code> package.
+</dd>
+</dl>
+<p>The excess kurtosis describes whether the tails are much like a normal distribution (kurtosis=0), whether the tails are heavy/long (meaning the distribution is quite peaky for its mean and variance; kurtosis&gt;0), or whether its tails are short (meaning the distribution is quite boxy for its mean and variance; kursosis&lt;0).</p>
+<p>Let’s consider a few variables with different kurtosis (but all with roughly the same mean, sd and skew):</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="descriptive.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PearsonDS)</span>
+<span id="cb139-2"><a href="descriptive.html#cb139-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="dv">7</span></span>
+<span id="cb139-3"><a href="descriptive.html#cb139-3" aria-hidden="true" tabindex="-1"></a>m <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb139-4"><a href="descriptive.html#cb139-4" aria-hidden="true" tabindex="-1"></a>k <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb139-5"><a href="descriptive.html#cb139-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">list</span>()</span>
+<span id="cb139-6"><a href="descriptive.html#cb139-6" aria-hidden="true" tabindex="-1"></a>gplots <span class="ot">=</span> <span class="fu">list</span>()</span>
+<span id="cb139-7"><a href="descriptive.html#cb139-7" aria-hidden="true" tabindex="-1"></a>X.kurtosis <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb139-8"><a href="descriptive.html#cb139-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(k)){</span>
+<span id="cb139-9"><a href="descriptive.html#cb139-9" aria-hidden="true" tabindex="-1"></a>  varname <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&#39;X.&#39;</span>, i, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb139-10"><a href="descriptive.html#cb139-10" aria-hidden="true" tabindex="-1"></a>  X[[i]] <span class="ot">=</span> <span class="fu">rpearson</span>(<span class="dv">1000</span>, <span class="at">moments=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, k[i]<span class="sc">+</span><span class="dv">3</span>))</span>
+<span id="cb139-11"><a href="descriptive.html#cb139-11" aria-hidden="true" tabindex="-1"></a>  X[[i]] <span class="ot">=</span> (X[[i]]<span class="sc">-</span><span class="fu">mean</span>(X[[i]]))<span class="sc">/</span><span class="fu">sd</span>(X[[i]])<span class="sc">*</span>s <span class="sc">+</span> m</span>
+<span id="cb139-12"><a href="descriptive.html#cb139-12" aria-hidden="true" tabindex="-1"></a>  gplots[[i]] <span class="ot">=</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span>X[[i]]), <span class="fu">aes</span>(<span class="at">x=</span>x))<span class="sc">+</span></span>
+<span id="cb139-13"><a href="descriptive.html#cb139-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;red&#39;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span>       <span class="co"># plot histogram.</span></span>
+<span id="cb139-14"><a href="descriptive.html#cb139-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">&quot;Histogram of &quot;</span>, varname, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb139-15"><a href="descriptive.html#cb139-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span>
+<span id="cb139-16"><a href="descriptive.html#cb139-16" aria-hidden="true" tabindex="-1"></a>  X.kurtosis[varname] <span class="ot">=</span> <span class="fu">kurtosis</span>(X[[i]])<span class="sc">-</span><span class="dv">3</span></span>
+<span id="cb139-17"><a href="descriptive.html#cb139-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb139-18"><a href="descriptive.html#cb139-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-19"><a href="descriptive.html#cb139-19" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(gplots[[<span class="dv">1</span>]], gplots[[<span class="dv">2</span>]], gplots[[<span class="dv">3</span>]], <span class="at">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="3000" /></p>
+<p>These variables (stored in the list <code>X</code>) have kurtosis (stored in the named vector <code>X.kurtosis</code> increasing from left to right:</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="descriptive.html#cb140-1" aria-hidden="true" tabindex="-1"></a>X.kurtosis</span></code></pre></div>
+<pre><code>##       X.1       X.2       X.3 
+## -1.030450 -0.162459  2.057358</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-cleaning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/notes/descriptive.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,9 +1,4 @@
----
-  output: 
-    html_document
----
-  
-# Significance of linear relationship.
+## Significance of linear relationship. {#bivariate-significance}
 
 Here we will work with the fake IQ-GPA data we generated when talking about [Ordinary Least-Squares (OLS) Regression](bivariate-ols.html).
 
@@ -22,7 +17,7 @@ print(g1)
 
 There are many **equivalent** ways to ascertain whether a single-variable ordinary least-squares regression is "significant".  
 
-## Significance of slope.
+### Significance of slope.
 
 We already saw that we can test whether the slope is significantly different from 0 by calculating a t statistic by using the estimated slope and its standard error: 
 
@@ -34,7 +29,7 @@ This is the statistic R calculates when estimating the significance of the coeff
 coef(summary(lm.fit))['iq',]
 ```
 
-## Significance of pairwise correlation
+### Significance of pairwise correlation
 
 Similarly, we can obtain this same t statistic via the pairwise [correlation](correlation.html) via:
 
@@ -46,7 +41,7 @@ We can obtain this test of the significance of a pairwise correlation via the `c
 cor.test(iq.gpa$iq, iq.gpa$gpa)
 ```
 
-## Significance of variance partition.
+### Significance of variance partition.
 
 Finally, we can calculate an F statistic based on the [partition of the variance](determination.html) attributable to the regression as:
 
@@ -69,7 +64,7 @@ df.2 = nrow(iq.gpa)-2 # anova(lm.fit)['Residuals', 'Df']
 ( p = 1-pf(F, df.1, df.2) )
 ```
 
-## Isomorphism with one response and one predictor
+### Isomorphism with one response and one predictor
 
 In this special case of a linear regression with just one explanatory variable, all of these are equivalent.  The t statistic for the correlation is the t-statistic for the coefficient, and that t-value squared is the F value from the analysis of variance.  The resulting p-values are also the same.
 

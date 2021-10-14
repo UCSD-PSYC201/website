@@ -1,9 +1,4 @@
----
-  output: 
-    html_document
----
-
-# Descriptive statistics
+# Descriptive statistics {#descriptive}
 
 A *statistic* 
 :    is a measurement of some attribute of a sample, computed by applying some function or algorithm to the sample.  "Statistic" can refer both to the function and to the value it yields for a particular sample.
@@ -21,7 +16,7 @@ A *statistic*
 
 There is nothing qualitatively different between the statistics used for description, estimation, and testing.  They are all functions of the sample that yield some value, and the only difference lies in how that value is used.  For instance, the sample mean can be used to describe the sample, to estimate the population mean, or to test a hypothesis about the population mean.
 
-## Descriptive statistics are implicit estimators.
+### Descriptive statistics are implicit estimators.
 
 Although descriptive statistics are typically presented as non-inferential, as not relying on any statistical model of the data, in practice this is rarely the case: we choose which features of the data are worth describing based on (sometimes unstated) assumptions about the data-generating process.  In other words, descriptive statistics are usually (at least implicitly) used as estimators.  
 
@@ -33,7 +28,7 @@ For instance, let's say I show you a sequence of coin flips: HHTHTTHTTTHHTT, and
 
 In short, our choice of which aspects of the data are worth describing depend on how we think the data were generated, and thus which features of the data might be most useful to estimate properties of the data generating process.  Although we are providing descriptive statistics, we really want to use them as estimators.
 
-## Describing central tendency.
+### Describing central tendency.
 
 The usual thing we want to do with some sample is calculate the "average", by which we mean some measure of the "central tendency".
 
@@ -43,7 +38,7 @@ Central tendency
 
 There are many types of "average", which are more or less useful depending on our assumptions about where the data came from, but the conventional "average" is the **arithmetic mean**, which we will just call the "mean".  
 
-### Arithmetic mean (or just "mean") 
+#### Arithmetic mean (or just "mean") 
 
 The arithmetic mean is usually denoted with a bar (as in $\bar x$, "x-bar" is the sample mean of x):  
 
@@ -80,7 +75,7 @@ You can think of the mean as the "balance" point of the data: if we think of eac
 
 This means that outliers (measurements that are far away from the rest of the data), will exert a big influence on what the mean is.
 
-### Median
+#### Median
 
 The median is the value such that 50% of the data are bigger than that value, and 50% are smaller.  (There is no conventional notation for the sample median.)  Thus, the median literally picks out the point that's in the middle of the sorted list of numbers, and does not care how much larger or smaller the values on either side are, so long as there are 50% of them on each side (very much unlike the mean).
 
@@ -94,7 +89,7 @@ The median is also known as the 50th percentile, or the 0.5th quantile, so we ca
 quantile(x, 0.5)
 ````
 
-### Mode
+#### Mode
 
 The *mode* 
 :    is the most common value in the data.  
@@ -171,7 +166,7 @@ Mode(x.10000)
 
 So these data either have 24 modes (no rounding), a mode at 25,340 (rounding to nearest 10), two modes 1400 and 25300 (rounding to nearest 100), a mode at 1000 (rounding to nearest 1000), or a mode at 0 (rounding to nearest 10000).  If we consider that a mode at 0 when rounding to 10000 covers the range [-5000,5000], and rounding to 1000 covers [500,1500], we have a somewhat coherent story about the most frequent *interval*, but a most frequent value does not exist.
 
-## Describing dispersion
+### Describing dispersion
 
 Once we have established some measure of central tendency, we usually want to know something about the *dispersion*.
 
@@ -179,7 +174,7 @@ Dispersion
 :    How spread out are the data around its central tendency.  The *variability* of the data.
 :    Common examples include *standard deviation*/*variance*, *range*, *interquartile range*, etc.
 
-### Standard deviation and variance
+#### Standard deviation and variance
 
 When we summarize the central tendency with the mean, the natural measure of dispersion is the standard deviation or the variance.
 
@@ -243,7 +238,7 @@ Although the standard deviation and variance are perhaps the most common descrip
 
 Standard deviation and variance care very much about *extreme* values, because they are based on the sum of *squared* deviations, thus a value very far from the mean will exert a great influence, as its squared deviation will be very large.  In this sense, these measures are not *robust* to extreme values or outliers.
 
-### Median (or mean) absolute deviation (MAD)
+#### Median (or mean) absolute deviation (MAD)
 
 If we calculate central tendency as the median, likely because we want to take advantage of its robustness to extreme values, we probably also want to calculate dispersion around the median in a manner that is somewhat robust to extreme values.  
 
@@ -270,7 +265,7 @@ The median absolute deviation is more robust to outliers and skewed distribution
 
 There is ample opportunity for confusion because "MAD" sometimes refers to the "mean absolute deviation", and in general an "average absolute deviation" may refer to deviations from any measure of central tendency (mean, median, mode, or something else), and the average may be the mean or the median, or even something else.  We will try to stick to using MAD to refer to the *median absolute deviation from the median.*
 
-### Quantile measures of dispersion (e.g., Range and interquartile range).
+#### Quantile measures of dispersion (e.g., Range and interquartile range).
 
 There are some other measures of dispersion that rely on the distribution of data in the sample without reference to the central tendency: they are concerned with the distance between percentiles (quantiles) in the sample, rather than the distance to some measure of central tendency. The most straight forward of these would be the *range*, but the *interquartile range* is usually more useful.
 
@@ -306,7 +301,7 @@ IQR(x)   # R's built-in interquartile range function.
 
 Because IQR only considers the values at the 25th and 75th percentile, it does not care how extreme the extreme values are, and is thus quite robust to outliers.
 
-### Entropy
+#### Entropy
 
 There are no conventional measures of dispersion for categorical data: no measures of average deviation from the central tendency, or even rank-based measures of range, make sense.  However, sometimes it might be desirable to quantify the 'dispersion' of a categorical distribution as a measure of how "not peaky" it is.
 
@@ -373,7 +368,7 @@ Relative entropy gives us a more intuitive measure of lack-of-peakiness that ref
 
 Although neither the entropy nor relative entropy statistics we defined here are conventional, I find them to be sometimes useful.  Moreover, they highlight the fact that a descriptive statistic can be whatever we choose: if we think some particular measure of a sample is a useful description of some feature of the data, we can use it as a statistic.
 
-## Descriptions of shape.
+### Descriptions of shape.
 
 For numerical data we often want to describe not just the central tendency and dispersion, but also its *shape*.  
 
@@ -407,7 +402,7 @@ grid.arrange(g1,g2, ncol=2)
 
 They have exactly the same sample mean and sample standard deviation, but clearly look different.  That difference in how they look is called the "shape".  There are two statistics that are most commonly used to describe the shape of a distribution: its skewness and kurtosis.
 
-### Skewness
+#### Skewness
 
 The skewness
 :    of a distribution measures whether the positive or negative tail is heavier.
@@ -439,7 +434,7 @@ ggplot(data.frame(z=z), aes(x=z))+
 skewness(z)
 ````
 
-### Skew and central tendency.
+#### Skew and central tendency.
 
 Since the mean very much cares about extreme values, the median only cares about the rank of values, and the mode only cares about the most common value, they are differently influenced by the skew of the data.
 
@@ -460,7 +455,7 @@ ggplot(data.frame(X=X), aes(x=X))+
 
 The mean is most drawn to the heavy positive tail, the median second, and the mode least of all.
 
-### Kurtosis
+#### Kurtosis
 
 The (excess) kurtosis
 :    of a distribution measures how heavy the tails are (compared to a normal distribution)

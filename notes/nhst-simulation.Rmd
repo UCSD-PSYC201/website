@@ -1,9 +1,6 @@
----
-output: 
-    html_document
----
+# Foundations of Statistics {#NHST}
 
-# Frequentist statistics via simulation
+## Frequentist statistics via simulation {#NHST-simulation}
 
 The logic of null hypothesis testing is based on the sampling distribution of our test statistic under the null hypothesis.  I.e., what test statistics do we expect to see if our sample came from some null model?  While in general we will use various analytical expressions for these sampling distributions, it may be clearer to generate them ourselves by sampling, to see what exactly we are doing.
 
@@ -60,7 +57,7 @@ ggplot(data.frame(statistic = null.samples,
 
 The details of this procedure will vary depending on our null hypothesis and statistic in question.  Sometimes we know enough about the null hypothesis to literally generate new data. Sometimes, we only know what we think should be invariant under the null hypothesis, and we do some sort of permutation/randomization of the data to generate null samples.  Nonetheless, the procedure and logic are roughly the same.
 
-## Critical values, alpha, power
+### Critical values, alpha, power
 
 Let's say that we are going to run our coin-flipping experiment on a coin that we suspect is bent.  We will:   
 (1) flip the coin 10 times   
@@ -107,7 +104,7 @@ So there's our answer: that's the probability that we would reject the null in a
 
 Note that to figure out power, we *have to* make some assumption about what the not-null alternative is.  Without that, we have no way to figure out what samples from the alternate hypothesis would look like, and what fraction of them we would reject the null for.
 
-## Figuring out "alpha"
+### Figuring out "alpha"
 
 What's the probability that we would reject the null hypothesis if it turned out that we were flipping a fair coin after all?  I.e., what's the 'false positive rate', how often would we reject the null, even though the null was true?
 
@@ -115,7 +112,7 @@ What's the probability that we would reject the null hypothesis if it turned out
 ( alpha = mean(null.samples >= critical.value) )
 ```
 
-## Showing alpha, power
+### Showing alpha, power
 
 ```{r}
 library(dplyr, quietly = T)

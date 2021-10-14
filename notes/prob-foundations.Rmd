@@ -1,15 +1,11 @@
----
-output: 
-    html_document
----
 
-# Foundations of probability
+## Foundations of probability {#probability-foundations}
 
 Probability theory is the extension of propositional logic to operate over uncertain truth values.  If propositions are not either true or false, but are true with some *probability*, how can we combine multiple propositions to deduce the probability associated with some derived proposition?  
 
 The basic rules of probability are built by assigning probability to "outcomes" of a possible "sample space".  We are interested in "events", which are subsets of the sample space.  Since so much of this formalism is in set notation, so we will start there.
 
-## Set notation for combinations of outcomes.
+### Set notation for combinations of outcomes.
 
 We can build up sophisticated probability rules by combining the outcomes of the sample space in various ways.  These correspond to set operations of *union*, *intersection*, and *complement*.  
 
@@ -53,7 +49,7 @@ setdiff(outcomes, c('2', '4', '6'))
 
 It may now be apparent that the set operations we consider also correspond to the basic building blocks of propositional logic: disjunctions, conjunction, and negation.  We will see that the rules of probability are effectively the rules of logic extended to apply to uncertain truth values (as probabilities).
 
-## Basic probability definition and axioms
+### Basic probability definition and axioms
 
 **Probability** is assigned to each outcome, and usually written as $P(\cdot)$.  So we would write the probability of a particular outcome (say, rolling a 6) as $P(\mbox{"6"})$, but usually we would just substitute a symbol to stand in for a specific outcome (e.g., $u = \mbox{"6"}$, so probability of rolling a six would be $P(u)$).  Probability is always *non-negative* (and as we will see soon, no larger than 1, meaning it falls in the interval $[0,1]$).
 
@@ -86,7 +82,7 @@ The final axiom of probability is that it sums to 1, meaning that the total prob
 sum(p.outcomes)
 ````
 
-### Applying basic probability axioms
+#### Applying basic probability axioms
 
 So far we have dealt with a *uniform* probability distribution: each side of the die has the same chance (1/6), or more generally $1/|\Omega|$ where $|x|$ indicates the number of elements in $x$.  We could define such a uniform probability distribution over outcomes more generally as:
 
@@ -115,7 +111,7 @@ p.outcomes
 
 These axioms are sufficient to derive an assortment of probability rules that we are used to for describing *events*.
 
-## Events and the rules of probability.
+### Events and the rules of probability.
 
 Probability becomes useful when we start considering *events*.
 
@@ -192,4 +188,4 @@ This should also make sense:  We know that "not A" is the complement of A relati
 p.event(setdiff(outcomes, even))
 ````
 
-To discuss the probability of a *conjunction* we need to first start with [Conditional probability](prob-conditional.html).
+To discuss the probability of a *conjunction* we need to first start with [Conditional probability](#probability-conditional).

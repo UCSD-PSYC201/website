@@ -1,9 +1,4 @@
----
-output: 
-    html_document
----
-
-# Expectation and moments
+## Expectation and moments {#probability-expectation}
 
 Let's consider some discrete random variable, X:
 
@@ -74,8 +69,9 @@ The $n$th **moment** of a random variable is the expectations of a function of $
 "second moment" refers to the variance: the second *central* moment where $g_2(x)=(x-\mu_X)^2$;  
 "third/fourth moment" refer to skewness/kurtosis: the third/fourth *standardized* moments where $g_3(x)=\operatorname{z}_X(x)^3$, and $g_4(X)=\operatorname{z}_X(x)^4$.
 
-## There are a few useful properties about how the Mean, Variance, Skewness, and Excess Kurtosis behave under various operations:  
-### Adding a constant
+### There are a few useful properties about how the Mean, Variance, Skewness, and Excess Kurtosis behave under various operations:  
+
+#### Adding a constant
 
   $\operatorname{Mean}\left[X+a\right]=\operatorname{Mean}\left[X\right]+a$  
   
@@ -85,7 +81,7 @@ The $n$th **moment** of a random variable is the expectations of a function of $
   
   $\operatorname{Kurt}\left[X+a\right]=\operatorname{Kurt}\left[X\right]$.  
   
-### Multiplying by a constant  
+#### Multiplying by a constant  
 
   $\operatorname{Mean}\left[a X\right]=a \operatorname{Mean}\left[X\right]$  
   
@@ -95,7 +91,7 @@ The $n$th **moment** of a random variable is the expectations of a function of $
   
   $\operatorname{Kurt}\left[a X\right]=\operatorname{Kurt}\left[X\right]$. 
   
-### Adding an *independent* random variable $Y$:  
+#### Adding an *independent* random variable $Y$:  
 
   $\operatorname{Mean}\left[X+Y\right]=\operatorname{Mean}\left[X\right]+\operatorname{Mean}\left[Y\right]$  
   
@@ -107,7 +103,7 @@ The $n$th **moment** of a random variable is the expectations of a function of $
   
   It's also useful to know what happens to the variance of X+Y when X and Y are *not independent*:   $\textbf{Var}[X+Y] = \textbf{Var}[X] + \textbf{Var}[Y] + 2*\textbf{Cov}[X,Y]$, (where $\textbf{Cov}[X,Y]$ denotes the covariance of X and Y; which is 0 for independent random variables)  
   
-### Sum of $n$ *independent* random variables ${X_1, ..., X_n}$ all *identically distributed* as $X$:  
+#### Sum of $n$ *independent* random variables ${X_1, ..., X_n}$ all *identically distributed* as $X$:  
 
   $\operatorname{Mean}\left[\sum_{i=1}^n X_i\right]=n \operatorname{Mean}\left[X\right]$  
   

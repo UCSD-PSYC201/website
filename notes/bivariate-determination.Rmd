@@ -1,11 +1,6 @@
----
-  output: 
-    html_document
----
-  
-# Partitioning variance and the coefficient of determination.
+## Partitioning variance and the coefficient of determination.  {#bivariate-determination}
 
-Let's start with the fake IQ-GPA data from our discussion of [ordinary least squared regression](bivariate-ols.html).
+Let's start with the fake IQ-GPA data from our discussion of [ordinary least squared regression](#bivariate-ols).
 
 ```{r}
 library(ggplot2)
@@ -46,7 +41,7 @@ cor(iq.gpa$iq, iq.gpa$gpa)^2
 
 So what are these sums of squares?
 
-## Calculating sums of squares.
+### Calculating sums of squares.
 
 The basic partitioning of sums of squares follows the logic that the "total sum of squares" is equal to the sum of all the sums of squares of different candidate sources.  In our case, the "total" sum of squares is the total variation of $y$ (GPA) around its mean:
 

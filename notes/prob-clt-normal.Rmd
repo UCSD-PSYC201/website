@@ -1,9 +1,4 @@
----
-output: 
-    html_document
----
-
-# Central limit theorem and the normal distribution
+## Central limit theorem and the normal distribution {#probability-clt}
 
 The [central limit theorem](https://en.wikipedia.org/wiki/Central_limit_theorem) shows that the mean of many independent (and roughly identically) distributed random variables will be (roughly) normally distributed.  We are not going to prove this, but we can get a sense for it.
 
@@ -62,7 +57,7 @@ However, another word of caution: while the central limit theorem always applies
 
 Caveats aside, the CLT applies often enough that most conventional statistical procedures are based on it.  We will spend a great deal of time on Z-tests, t-tests, linear regression, ANOVA, etc, all of which assume either that the errors, or that the sample means, are normally distributed, and this assumption is often valid because of the CLT.
 
-## Normal distribution
+### Normal distribution
 
 Since in so many cases the mean from a sufficiently large sample will be normally distributed, much of classical statistics relies on this asymptotic normality of sample means.  
 
@@ -73,7 +68,7 @@ ggplot(data.frame(x=x, dens=dnorm(x,0,1)), aes(x=x,y=dens))+geom_area()
 
 In R, we would get the probability density function of a normal with `dnorm`, its cumulative probability function with `pnorm`, and the quantile function with `qnorm`.
 
-### Properties of normal distribution 
+#### Properties of normal distribution 
 
 Let's say $X \sim \operatorname{Normal}(\mu_x, \sigma_x)$.  For instance, $X$ may be IQ scores from the population, in which case $X \sim \operatorname{Normal}(100,15)$.
 

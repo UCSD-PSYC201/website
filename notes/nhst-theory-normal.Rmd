@@ -1,11 +1,6 @@
----
-output: 
-    html_document
----
+## Null hypothesis significance testing with Normal {#nhst-theory-normal}
 
-# Null hypothesis significance testing with Normal
-
-In [statistics via the Normal](nhst-basics-normal.html) we covered the basic logic and application of the [sampling distribution of the sample mean](nhst-sampling-distribution.html) to the problem of testing a null hypothesis about the population.  
+In [statistics via the Normal](#nhst-basics-normal) we covered the basic logic and application of the [sampling distribution of the sample mean](#nhst-sampling-distribution.html) to the problem of testing a null hypothesis about the population.  
 
 Null hypothesis testing follows this procedure:
 
@@ -15,7 +10,7 @@ Null hypothesis testing follows this procedure:
 (4) We figure out the sampling distribution of our statistic under the null hypothesis.   
 (5) We compare the statistic value from our data, to its null hypothesis sampling distribution, to see if our statistic is sufficiently extreme under the null, for us to say that we "reject the null".  
 
-## Type 1 error rate: alpha ($\alpha$)
+### Type 1 error rate: alpha ($\alpha$)
 
 To be more specific, in step 5 we calculate the *probability that a statistic at least as extreme as ours would be obtained from samples from the null hypothesis* -- we call this the **p-value**.  We decide on a *significance level*, usually called **alpha** ($\alpha$): this corresponds to the largest p-value we are willing to declare **significant** (and thus reject the null).  Consequently, the chosen alpha value (typically 0.05), corresponds to the probability that we would *reject the null hypothesis for a sample from the null hypothesis*.  Thus, the alpha value corresponds to the rate at which we are willing to falsely reject the null hypothesis (reject it, when it is true); This is known as the rate of **Type I error**.  
 
@@ -44,7 +39,7 @@ ggplot(df, aes(x=zs, fill=significant))+geom_histogram()
 
 Of course, nothing about this simulation should reveal anything new, but perhaps it illustrates this basic point adequately well.
 
-## The "alternate model"
+### The "alternate model"
 
 So far, we have only considered one statistical model: the null model with no effect.  This is sufficient to obtain a p-value and test the null hypothesis.  However, this only tells us the probability of rejecting (or not) the null hypothesis given data from the null hypothesis.  It does not tell us what might happen if the null hypothesis is false.
 
@@ -82,7 +77,7 @@ ggplot(df, aes(x=zs, fill=significant))+geom_histogram()
 (type.II.error.rate = sum(df$significant==FALSE)/nrow(df))
 ```
 
-## Effect size
+### Effect size
 
 The effect size is the magnitude of the deviation of the alternate model from the null model.  While we can talk about the effect size in our case as the raw difference in means (100 for null, 108 for alternate, so 8 points), it is generally more convenient to talk about the effect in *standardized units*.  This way, we get similar effect size estimates regardless of the units we are considering (e.g., centimeters, inches, etc).
 
@@ -92,7 +87,7 @@ $$d' = (\mu_X^{H_1} - \mu_X^{H_0})/\sigma_X$$
 
 In our case, we said that the H1 mean was 108, the H0 mean was 100, and the standard deviation was 15, consequently the effect size is (108-100)/15 = 8/15.
 
-## Calculating power from effect size
+### Calculating power from effect size
 
 With this definition, we can calculate power (using a normal z-test), simply by knowing the size of the sample, and the size of the true effect size (Cohen's d).  The power, or the probability that we will reject the null hypothesis, is the probability that a z-statistic obtained for a sample from the null hypothesis will exceed the critical z value.
 
@@ -132,7 +127,7 @@ Notice that in this case (with some considerable effect size, and the standard d
 (p.reject.H0.high = 1-pnorm(abs(qnorm(alpha/2)), abs(d)*sqrt(n), 1))
 ```
 
-## Visualizing alpha and power
+### Visualizing alpha and power
 
 Our example so far can be shown in one graph (with a bit of ggplot tinkering):
 
@@ -163,7 +158,7 @@ ggplot(subset(df, df$distribution=="H0"),
 
 Here, the distribution outlined in red is the sampling distribution of z scores from the null hypothesis; the distribution outlined in green is the sampling distribution of z scores (relative to the null sampling distribution) sampled from the alternate hypothesis.  The red area corresponds to the probability of a type I error (alpha): rejecting a sample from the null hypothesis.  The grey are corresponds to the probability of correctly failing to reject the null (for a sample from the null).  The yellow area is the Type II error (beta): the probability of incorrectly failing to reject the null (for a sample from the alternate), and the teal area is the power -- the probability of correctly rejecting the null (for a sample from the alternate).
 
-## How power changes.
+### How power changes.
 
 Here we will considering how changes to effect size ($d$), sample size ($n$), and alpha ($\alpha$) influence power.
 
@@ -203,7 +198,7 @@ showAreas = function(alpha, n, d){
 }
 ```
 
-### Changing alpha ($\alpha$)
+#### Changing alpha ($\alpha$)
 
 ```{r, fig.width=12, fig.height=4}
 library(gridExtra)
@@ -219,7 +214,7 @@ grid.arrange(g1,g2,g3,ncol=3)
 So, if we are willing to increase our Type I error rate, we can increase our power (by virtue of rejecting more of everything).  This is not how we want to increase power, since our goal is not to trade one kind of error for another.  Clearly, we don't just want to move our cutoff, but want to further separate the distributions.
 
 
-### Changing effect size ($d$)
+#### Changing effect size ($d$)
 
 ```{r, fig.width=12, fig.height=4}
 library(gridExtra)
@@ -234,7 +229,7 @@ grid.arrange(g1,g2,g3,ncol=3)
 
 Let's say we can somehow increase our effect size (perhaps by finding better, less noisy measurements?, or adopting a stronger manipulation?).  If this happens, we effectively increase the separation between the null and alternate distributions, and increase power without lowering alpha or changing the sample size!  In practice, it's often tricky to increase the effect size though, so while we would like to do that, it's usually not in our power.
 
-### Changing sample size ($n$)
+#### Changing sample size ($n$)
 
 ```{r, fig.width=12, fig.height=4}
 library(gridExtra)
@@ -249,7 +244,7 @@ grid.arrange(g1,g2,g3,ncol=3)
 
 In practice, the easiest way to increase power is to increase the sample size.  This effectively *also* separates the two distributions further, because the distance between the two sampling distributions of z-scores is $d*\sqrt{n}$. So we can get an effective separation that scales with the square root of the sample size.
 
-## Calculating n for a desired level of power.
+### Calculating n for a desired level of power.
 
 If we have a particular effect size, we can calculate the sample size required to achieve a particular level of power.  (Here, we are using the simplified, one-tail power, which works if our assumption of equal variance in null and alternate is correct, and the effect size is not zero.)
 
@@ -297,13 +292,13 @@ The noteworthy thing here is that achieving a level of power that folks conventi
 
 In practice, when you want to calculate power, I recommend using the `pwr` package in R, rather than undertaking this manual calculation (especially because there will not be an easy analytical solution as most tests rely on distributions whose shape varies with sample size.)
 
-## Sign and magnitude errors.
+### Sign and magnitude errors.
 
 Instead of dividing up errors into Type I/II (falsely rejecting, and falsely failing to reject the null), it is helpful instead to consider errors in *sign* and *magnitude* of the effect we report as significant.  This philosophy makes a lot of sense if you consider that very few effects are truly zero (so rejecting the null isn't that important), but are instead small (and variable), and we need to know their size and direction.
 
 A sign error amounts to getting the direction of the effect wrong.  A magnitude error amounts to overestimating the effect size.
 
-### Magnitude errors. 
+#### Magnitude errors. 
 
 Consider one of our earlier plots of the rejected and retained null hypotheses for samples from the null, and samples from the alternate with a particular effect size.
 
@@ -343,7 +338,7 @@ df %>% filter(distribution == "H1", reject == "H1 sig. high") %>%
 
 This basic effect is sometimes called the "statistical significance filter": findings that are significant, are likely to overestimate the true effect size in the population.  Moreover, it's easy to convince ourselves that the lower the power, the worse the overestimation: If power=100%, then we get 0 overestimation.
 
-### Sign errors
+#### Sign errors
 
 The other kind of error worth considering is the probability that we get the direction of the effect wrong.  Although with a reasonable effect size, and no difference in variance between the null and alternate hypothesis, this probability is quite small, it might become intollerable with low power.
 

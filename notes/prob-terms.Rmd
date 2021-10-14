@@ -1,9 +1,9 @@
----
-output: 
-    html_document
----
 
-# Absolute probability statements
+# Probability  {#probability}
+
+## Probability terms {#probability-terms}
+
+### Absolute probability statements {prob}
 
 A **probability** of something is a number between 0 and 1: $p \in [0,1]$.  
 
@@ -34,7 +34,7 @@ A **proportion** is a [descriptive statistic](../introduction/descriptive.html) 
 A **hazard rate** (also failure rate, or hazard function) is a time-varying probability associated with some [survival](https://en.wikipedia.org/wiki/Survival_analysis) function: what is the probability that someone will die right now, given that they have survived up to now?
 
 
-# Probability comparisons
+### Probability comparisons
 
 The **relative risk** is a ratio of two probabilities, usually some "treatment" and some "baseline".  For instance risk of lung cancer for smokers is 0.125, for non-smokers it is 0.003, so the relative risk of lung cancer for smoking is 0.125/0.003 = 41.
 
@@ -47,7 +47,7 @@ log((0.125/(1-0.125)) / (0.003/(1-0.003))) = log(0.125/(1-0.125)) - log(0.003/(1
 We might also calculate the linear difference in probabilities (or more often) percent; in this case, we should make it clear that we are talking about a difference in **percentage points**:    
 e.g., the chance of lung cancer among smokers (12.5%) is 12.2 percentage points higher than in non-smokers (0.3%).
 
-# Proportional magnitudes and confusion
+### Proportional magnitudes and confusion
 
 Unfortunately, we use the language of "proportions" not only to describe the sample statistic corresponding to a probability estimate, but we also use it when describing the relative magnitudes of two quantities. For instance, my dog's weight is 50 lbs, my weight is 160 lbs.  So, proportional to my weight, my dog is 5/16ths, or 0.3 times, or 30% of my weight, we might also say my dog weighs 70% less than me. My weight is 16/5ths, or 3.2 times, or 320% of my dogs weight, and we might say that I weight 220% more than my dog.
 

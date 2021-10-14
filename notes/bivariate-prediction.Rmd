@@ -1,9 +1,4 @@
----
-  output: 
-    html_document
----
-  
-# Regression prediction.
+## Regression prediction.  {#bivariate-prediction}
 
 We will start our discussion of prediction intervals with the same fake IQ-GPA data that we covered in [OLS regression](ols.html).
 
@@ -22,7 +17,7 @@ Now that we have estimated the best fitting intercept ($B_0$) and slope ($B_1$),
 
 There are two kinds of predictions we might make: a prediction for the **mean y value** at a given x, and a prediction for a **new data point** at a given x.
 
-## Predicting mean y given x.
+### Predicting mean y given x.
 
 Our uncertainty about the slope and our uncertainty about the mean of y will combine to give us uncertainty about the y value that the line will pass through at a given x.  This line describes the mean of y at each x; consequently, our uncertainty about the line, is our uncertainty about mean y at a given x.  
 
@@ -60,7 +55,7 @@ y.hat = b0 + b1*new.x
 ```
 
 
-## Predicting new y given x.
+### Predicting new y given x.
 
 If instead of putting confidence intervals on mean y at a given x, we want confidence intervals on a new data point, we have to add to our uncertainty about the mean, our uncertainty about where data points are relative to the mean.  Since our data do not fall exactly on the line, there is some spread of data around the line, and we have to take that into account when predicting a new data point.  We do so by adding the variance of the residuals (the spread of data around the mean), to the variance of the line position (described in the previous section).
 
@@ -83,7 +78,7 @@ y.hat = b0 + b1*new.x
 ( y.hat + c(1,-1)*t.crit*s.y.x(new.x) )
 ```
 
-## Visualizing the difference
+### Visualizing the difference
 
 It is useful to see how these two kinds of prediction confidence intervals change as a function of x.  We see that the interval for predicting a new data point (gray) is much wider, due to the considerable amount of variability of data points around the line.  The interval on the line is narrower and is also very saliently inhomogenous -- it grows the further from the mean we are.  Technically, the prediction (gray) interval also grows, but often this is not easily detectable by eye because so much of that variability is swamped by the variance of the data points around the line.  
 

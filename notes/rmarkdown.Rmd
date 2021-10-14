@@ -1,9 +1,4 @@
----
-title: "Using rmarkdown"
-output: html_document
----
-
-# Using R-markdown
+## Using R-markdown
 
 We have been using R-markdown throughout this class--the website, lecture notes and lab notes were all written in R-markdown (as are these instructions). R-markdown allows you to embed code and figures in easy to read text documents. This makes it much easier to present data to collaborators and yourself (and us who will be grading your assignments!).
 

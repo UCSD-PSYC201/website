@@ -1,4 +1,4 @@
-# UCSD 201a/b: R homework
+# R homework
 
 You will have homework roughly every week.  
 
@@ -78,7 +78,7 @@ If the 'Answer' column is green, your script gets the right answer for the data 
 
 The 'Works on test?' column lets you know whether your script extends to the test data - it will be green if so. If you get the correct answer on the given data but the wrong answer on the extension test data, you should check for any numbers you may have hard coded.
 
-## Additional resources.
+### Additional resources.
 
 The R homepage:   
 [http://www.r-project.org/](http://www.r-project.org/)

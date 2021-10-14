@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Binomial test. | UCSD Psyc 201ab / CSS 205 / Psyc 193</title>
+  <meta name="description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Binomial test. | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  <meta name="github-repo" content="UCSD-PSYC201/website" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Binomial test. | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  
+  <meta name="twitter:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="t-tests.html"/>
+<link rel="next" href="chi-squared.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html"><i class="fa fa-check"></i>Syllabus</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#instructors"><i class="fa fa-check"></i>Instructors</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#class-meetings"><i class="fa fa-check"></i>Class meetings</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#grading"><i class="fa fa-check"></i>Grading</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#class-resources"><i class="fa fa-check"></i>Class Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html"><i class="fa fa-check"></i>201a Schedule</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-0-introduction"><i class="fa fa-check"></i>Week 0: Introduction</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-1-data"><i class="fa fa-check"></i>Week 1: Data</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-2-visualization"><i class="fa fa-check"></i>Week 2: Visualization</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-3-theoretical-foundations"><i class="fa fa-check"></i>Week 3: Theoretical foundations</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-4-linear-model-regression"><i class="fa fa-check"></i>Week 4: Linear model: Regression</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-5-linear-model-multiple-regression"><i class="fa fa-check"></i>Week 5: Linear model: Multiple regression</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-6-linear-model-categorical-predictors"><i class="fa fa-check"></i>Week 6: Linear model: Categorical predictors</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-7-linear-model-ancova-diagnostics"><i class="fa fa-check"></i>Week 7: Linear model: ANCOVA, diagnostics</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-8-linear-model-linearizing-transforms"><i class="fa fa-check"></i>Week 8: Linear model: Linearizing transforms</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-9-covarying-errors-repeated-measures-random-effects"><i class="fa fa-check"></i>Week 9: Covarying errors (repeated measures / random effects)</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-10-review-and-preview"><i class="fa fa-check"></i>Week 10: Review and preview</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html"><i class="fa fa-check"></i>Projects</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#examples-of-this-sort-of-thing"><i class="fa fa-check"></i>Examples of this sort of thing</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a"><i class="fa fa-check"></i>201a</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-timeline"><i class="fa fa-check"></i>201a Timeline</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#groups"><i class="fa fa-check"></i>Groups</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-project-plan"><i class="fa fa-check"></i>201a Project plan</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-preliminary-data-summaries"><i class="fa fa-check"></i>201a Preliminary data summaries</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-write-ups"><i class="fa fa-check"></i>201a Write-ups</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-presentation"><i class="fa fa-check"></i>201a Presentation</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-group-evaluation"><i class="fa fa-check"></i>201a Group-evaluation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#b"><i class="fa fa-check"></i>201b</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#data-sources"><i class="fa fa-check"></i>Data sources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html"><i class="fa fa-check"></i>R homework</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#grading-1"><i class="fa fa-check"></i>Grading</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#collaboration"><i class="fa fa-check"></i>Collaboration</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#submitting-r-assignments"><i class="fa fa-check"></i>Submitting R Assignments</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#writing-r-scripts"><i class="fa fa-check"></i>Writing R scripts</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#submitting-your-assignment"><i class="fa fa-check"></i>Submitting your assignment</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#additional-resources."><i class="fa fa-check"></i>Additional resources.</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Notes</b></span></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html"><i class="fa fa-check"></i>Getting started with R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#R-install"><i class="fa fa-check"></i>Installing R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#R-intro"><i class="fa fa-check"></i>Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#better-data-analysis-code."><i class="fa fa-check"></i>Better data analysis code.</a></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#using-r-markdown"><i class="fa fa-check"></i>Using R-markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i>Data cleaning – worked example</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#read-file-with-readr"><i class="fa fa-check"></i>Read file with readr</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#first-glimpse-at-the-data."><i class="fa fa-check"></i>First glimpse at the data.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#what-we-want-to-do"><i class="fa fa-check"></i>What we want to do</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#rename-columns"><i class="fa fa-check"></i>rename columns</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#convert-time-columns-into-seconds."><i class="fa fa-check"></i>convert time columns into seconds.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#extract-sex-from-division-and-other-clues"><i class="fa fa-check"></i>Extract sex from division, and other clues</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-corral-from-bib-number"><i class="fa fa-check"></i>Get corral from bib number</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#fix-the-age-column-which-is-a-string-for-some-reason"><i class="fa fa-check"></i>fix the age column (which is a string for some reason)</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-time-out-of-the-mangled-5.25-and-10-mile-columns."><i class="fa fa-check"></i>Get time out of the mangled 5.25 and 10 mile columns.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-rid-of-some-unnecessary-columns"><i class="fa fa-check"></i>Get rid of some unnecessary columns</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#getting-new-columns-from-simple-transformations"><i class="fa fa-check"></i>Getting new columns from simple transformations</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#fixing-states."><i class="fa fa-check"></i>Fixing states.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#save-the-cleaned-data."><i class="fa fa-check"></i>Save the cleaned data.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html"><i class="fa fa-check"></i>Descriptive statistics</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#descriptive-statistics-are-implicit-estimators."><i class="fa fa-check"></i>Descriptive statistics are implicit estimators.</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#describing-central-tendency."><i class="fa fa-check"></i>Describing central tendency.</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#describing-dispersion"><i class="fa fa-check"></i>Describing dispersion</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#descriptions-of-shape."><i class="fa fa-check"></i>Descriptions of shape.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i>Visualizations</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#general-rules-for-scientific-data-visualization."><i class="fa fa-check"></i>General rules for scientific data visualization.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#picking-a-plot-whats-convention"><i class="fa fa-check"></i>Picking a plot (what’s convention)</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-0"><i class="fa fa-check"></i>Categorical ~ 0</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#histogram"><i class="fa fa-check"></i>Histogram</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#pie-chart"><i class="fa fa-check"></i>Pie chart</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#stacked-area"><i class="fa fa-check"></i>Stacked area</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-0"><i class="fa fa-check"></i>numerical ~ 0</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#histogram-density"><i class="fa fa-check"></i>Histogram &amp; density</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-categorical"><i class="fa fa-check"></i>numerical ~ categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#bar-plot-with-error-bars"><i class="fa fa-check"></i>Bar plot with error bars</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#jittered-data-points."><i class="fa fa-check"></i>Jittered data points.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#violaviolin-plot"><i class="fa fa-check"></i>Viola/Violin plot</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#box-and-whiskers-plot"><i class="fa fa-check"></i>Box and whiskers plot</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#overlayed-densities"><i class="fa fa-check"></i>Overlayed densities</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#empirical-cumulative-distribution"><i class="fa fa-check"></i>Empirical cumulative distribution</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#comparisons"><i class="fa fa-check"></i>Comparisons</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#recommendations"><i class="fa fa-check"></i>Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-numerical-2-x-numerical-0"><i class="fa fa-check"></i>numerical ~ numerical (2 x numerical ~ 0)</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#scatter-and-heatmap"><i class="fa fa-check"></i>Scatter and heatmap</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#conditional-means"><i class="fa fa-check"></i>Conditional means</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-numerical-categorical"><i class="fa fa-check"></i>numerical ~ numerical + categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-numerical"><i class="fa fa-check"></i>categorical ~ numerical</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#x-categorical-and-categorical-categorical"><i class="fa fa-check"></i>2 x categorical and categorical ~ categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#heatmap"><i class="fa fa-check"></i>Heatmap</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-categorical"><i class="fa fa-check"></i>categorical ~ categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#extra-plot-notes."><i class="fa fa-check"></i>Extra plot notes.</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-2-x-categorical"><i class="fa fa-check"></i>numerical ~ 2 x categorical</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#bin-width-and-bandwidths"><i class="fa fa-check"></i>bin width and bandwidths</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#visualization"><i class="fa fa-check"></i>ggplot</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#installation."><i class="fa fa-check"></i>Installation.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#basic-overview."><i class="fa fa-check"></i>Basic overview.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#changing-labels."><i class="fa fa-check"></i>Changing labels.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#themes-and-elements-and-properties."><i class="fa fa-check"></i>Themes and elements and properties.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#changing-display-properties-of-plotted-elements."><i class="fa fa-check"></i>Changing display properties of plotted elements.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#other-geometric-elements."><i class="fa fa-check"></i>Other geometric elements.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#assembling-multiple-plots-in-one-figure"><i class="fa fa-check"></i>Assembling multiple plots in one figure</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i>Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-terms"><i class="fa fa-check"></i>Probability terms</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#absolute-probability-statements-prob"><i class="fa fa-check"></i>Absolute probability statements {prob}</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-comparisons"><i class="fa fa-check"></i>Probability comparisons</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#proportional-magnitudes-and-confusion"><i class="fa fa-check"></i>Proportional magnitudes and confusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-foundations"><i class="fa fa-check"></i>Foundations of probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#set-notation-for-combinations-of-outcomes."><i class="fa fa-check"></i>Set notation for combinations of outcomes.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#basic-probability-definition-and-axioms"><i class="fa fa-check"></i>Basic probability definition and axioms</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#events-and-the-rules-of-probability."><i class="fa fa-check"></i>Events and the rules of probability.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-conditional"><i class="fa fa-check"></i>Conditional probability and Bayes</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#chain-rule"><i class="fa fa-check"></i>Chain rule</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#partitions-and-total-probability"><i class="fa fa-check"></i>Partitions and total probability</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#bayes-rule"><i class="fa fa-check"></i>Bayes’ rule</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-simulations"><i class="fa fa-check"></i>Simulation, Sampling and Monte Carlo.</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-long-run-frequency-and-the-law-of-large-numbers."><i class="fa fa-check"></i>Sampling, long-run frequency, and the law of large numbers.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-estimate-event-probabilities."><i class="fa fa-check"></i>Sampling to estimate event probabilities.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-of-a-conjunction-of-events"><i class="fa fa-check"></i>Probability of a conjunction of events</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-get-probability-of-disjunction"><i class="fa fa-check"></i>Sampling to get probability of disjunction</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-calculate-conditional-probability"><i class="fa fa-check"></i>Sampling to calculate conditional probability</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-rv"><i class="fa fa-check"></i>Random variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#joint-conditional-and-marginal-probabilities"><i class="fa fa-check"></i>Joint, conditional, and marginal probabilities</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#bernoulli-distribution"><i class="fa fa-check"></i>Bernoulli distribution</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#combinations-and-the-binomial-distribution"><i class="fa fa-check"></i>Combinations and the binomial distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-rv-functions"><i class="fa fa-check"></i>Distribution functions: PDF, CDF, Quantile</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-distribution-mass-and-density-functions-p.d.f."><i class="fa fa-check"></i>Probability distribution (mass and density) functions (p.d.f.)</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#cumulative-distribution-functions-c.d.f."><i class="fa fa-check"></i>Cumulative distribution functions (c.d.f.)</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#quantile-functions-inverse-cdf."><i class="fa fa-check"></i>Quantile functions (inverse CDF).</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-expectation"><i class="fa fa-check"></i>Expectation and moments</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#there-are-a-few-useful-properties-about-how-the-mean-variance-skewness-and-excess-kurtosis-behave-under-various-operations"><i class="fa fa-check"></i>There are a few useful properties about how the Mean, Variance, Skewness, and Excess Kurtosis behave under various operations:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-clt"><i class="fa fa-check"></i>Central limit theorem and the normal distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#requirements-for-clt-to-hold"><i class="fa fa-check"></i>Requirements for CLT to hold</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#normal-distribution"><i class="fa fa-check"></i>Normal distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html"><i class="fa fa-check"></i>Foundations of Statistics</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-simulation"><i class="fa fa-check"></i>Frequentist statistics via simulation</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#null-hypothesis-significance-testing."><i class="fa fa-check"></i>Null hypothesis significance testing.</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#critical-values-alpha-power"><i class="fa fa-check"></i>Critical values, alpha, power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#setting-up-the-alternate-hypothesis"><i class="fa fa-check"></i>Setting up the “Alternate hypothesis”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-power"><i class="fa fa-check"></i>Figuring out “power”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-alpha"><i class="fa fa-check"></i>Figuring out “alpha”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#showing-alpha-power"><i class="fa fa-check"></i>Showing alpha, power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-the-critical-value."><i class="fa fa-check"></i>Figuring out the critical value.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-sampling"><i class="fa fa-check"></i>Sampling distributions</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#tl-dr."><i class="fa fa-check"></i>TL; DR.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#logic"><i class="fa fa-check"></i>Logic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#expectation-about-the-sampling-distribution-of-the-sample-mean."><i class="fa fa-check"></i>Expectation about the sampling distribution of the sample mean.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#standard-error-of-the-sample-mean"><i class="fa fa-check"></i>Standard error (of the sample mean)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-basics-normal"><i class="fa fa-check"></i>Statistics via the Normal distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-null-hypothesis-significance-testing-nhst"><i class="fa fa-check"></i>(Normal) Null hypothesis significance testing (NHST)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-tests-with-sample-means"><i class="fa fa-check"></i>Normal tests with sample means</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#z-scores-and-z-tests"><i class="fa fa-check"></i>Z-scores and Z-tests</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#z-tests"><i class="fa fa-check"></i>Z-tests</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-confidence-intervals-on-the-sample-mean"><i class="fa fa-check"></i>(Normal) Confidence intervals on the sample mean</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#relationship-between-confidence-intervals-and-null-hypothesis-tests."><i class="fa fa-check"></i>Relationship between confidence intervals and null hypothesis tests.</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#special-critical-z-values"><i class="fa fa-check"></i>Special critical Z-values</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#rarity-of-z-tests-and-z--confidence-intervals"><i class="fa fa-check"></i>Rarity of Z-tests and Z- confidence intervals</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#what-are-these-percents-and-probabilities"><i class="fa fa-check"></i>What are these percents and probabilities?</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#what-does-the-percent-in-a-confidence-interval-mean"><i class="fa fa-check"></i>What does the “percent” in a confidence interval mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#nhst-theory-normal"><i class="fa fa-check"></i>Null hypothesis significance testing with Normal</a>
+<ul>
+<li><a href="NHST.html#type-1-error-rate-alpha-alpha">Type 1 error rate: alpha (<span class="math inline">\(\alpha\)</span>)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#the-alternate-model"><i class="fa fa-check"></i>The “alternate model”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#effect-size"><i class="fa fa-check"></i>Effect size</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#calculating-power-from-effect-size"><i class="fa fa-check"></i>Calculating power from effect size</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#visualizing-alpha-and-power"><i class="fa fa-check"></i>Visualizing alpha and power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#how-power-changes."><i class="fa fa-check"></i>How power changes.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#calculating-n-for-a-desired-level-of-power."><i class="fa fa-check"></i>Calculating n for a desired level of power.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sign-and-magnitude-errors."><i class="fa fa-check"></i>Sign and magnitude errors.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#theory-binomial"><i class="fa fa-check"></i>From probability to statistics with the Binomial</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#data-description-summary"><i class="fa fa-check"></i>Data description / summary</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#estimation"><i class="fa fa-check"></i>Estimation</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#null-hypothesis-significance-testing-nhst"><i class="fa fa-check"></i>Null Hypothesis Significance testing (NHST)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#model-selection"><i class="fa fa-check"></i>Model selection</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#t-distribution"><i class="fa fa-check"></i>t-distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#tl-dr.-1"><i class="fa fa-check"></i>TL; DR.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-sample-variance-and-t-statistic"><i class="fa fa-check"></i>Sampling distribution of sample variance, and t-statistic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sample-variance"><i class="fa fa-check"></i>Sample variance</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-the-sample-variance"><i class="fa fa-check"></i>Sampling distribution of the sample variance</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-t-statistic"><i class="fa fa-check"></i>Sampling distribution of t-statistic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#t-distribution-1"><i class="fa fa-check"></i>T-distribution</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#degrees-of-freedom."><i class="fa fa-check"></i>Degrees of freedom.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#summary."><i class="fa fa-check"></i>Summary.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i>(Student’s) t-tests</a>
+<ul>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-t-test"><i class="fa fa-check"></i>1-sample t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#paired-repeated-measures-t-test"><i class="fa fa-check"></i>Paired / repeated-measures t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-presumed-equal-variance-t-test"><i class="fa fa-check"></i>2-sample, presumed equal variance, t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-unequal-variance-t-test"><i class="fa fa-check"></i>2-sample, unequal variance, t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#power-calculations."><i class="fa fa-check"></i>Power calculations.</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#summary-of-tests-for-the-mean-and-effect-sizes"><i class="fa fa-check"></i>Summary of tests for the mean and effect sizes</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math."><i class="fa fa-check"></i>Math.</a>
+<ul>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math-behind-2-sample-equal-variance-t-test"><i class="fa fa-check"></i>Math behind 2-sample equal variance t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math-behind-unequal-variance-t-test"><i class="fa fa-check"></i>Math behind unequal variance t-test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html"><i class="fa fa-check"></i>Binomial test.</a>
+<ul>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html#estimating-proportions."><i class="fa fa-check"></i>Estimating proportions.</a></li>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html#sign-test-test-for-percentiles"><i class="fa fa-check"></i>Sign test, test for percentiles</a></li>
+</ul></li>
+<li><a href="chi-squared.html#chi-squared">Pearson’s Chi<span class="math inline">\(^2\)</span> (<span class="math inline">\(\chi^2\)</span>) test</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html"><i class="fa fa-check"></i>“Goodness of fit” test</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#implementation-in-r"><i class="fa fa-check"></i>Implementation in R</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#chi-squared-test-calculations"><i class="fa fa-check"></i>Chi-squared test calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#test-for-independence"><i class="fa fa-check"></i>Test for independence</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#implementation-in-r-1"><i class="fa fa-check"></i>Implementation in R</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#independence-test-calculations"><i class="fa fa-check"></i>Independence test calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#more-than-2-way-contingency-table"><i class="fa fa-check"></i>More than 2-way contingency table</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#mathematical-rationale"><i class="fa fa-check"></i>Mathematical rationale</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#limitations"><i class="fa fa-check"></i>Limitations</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#fishers-exact-test"><i class="fa fa-check"></i>Fisher’s “exact” test</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html"><i class="fa fa-check"></i>Bivariate linear relationships</a>
+<ul>
+<li><a href="bivariate.html#linear-relationships"><em>Linear</em> relationships</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#covariance-and-correlation-measuring-the-linear-dependence."><i class="fa fa-check"></i>Covariance and correlation: Measuring the linear dependence.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#covariance"><i class="fa fa-check"></i>Covariance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#correlation-coefficient"><i class="fa fa-check"></i>Correlation coefficient</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#ols-regression-predicting-the-mean-of-y-for-a-given-x"><i class="fa fa-check"></i>(OLS) Regression: Predicting the mean of y for a given x</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#difference-between-yx-xy-and-the-principle-component-line"><i class="fa fa-check"></i>Difference between y~x, x~y, and the principle component line</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#partitioning-variance"><i class="fa fa-check"></i>Partitioning variance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-a-linear-relationship."><i class="fa fa-check"></i>Significance of a linear relationship.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#prediction-from-regression."><i class="fa fa-check"></i>Prediction from regression.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-anscombe"><i class="fa fa-check"></i>Anscombe’s quartet</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-covariance"><i class="fa fa-check"></i>Covariance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#estimating-covariance."><i class="fa fa-check"></i>Estimating covariance.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-correlation"><i class="fa fa-check"></i>Correlation</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#correlation-as-the-slope-of-z-scores"><i class="fa fa-check"></i>Correlation as the slope of z-scores</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#coefficient-of-determination"><i class="fa fa-check"></i>Coefficient of determination</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-ols"><i class="fa fa-check"></i>Ordinary Least-Squares (OLS) Regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#regression-terminology"><i class="fa fa-check"></i>Regression terminology</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#estimating-the-regression-line."><i class="fa fa-check"></i>Estimating the regression line.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#standard-errors-of-regression-coefficients"><i class="fa fa-check"></i>Standard errors of regression coefficients</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#confidence-intervals-and-tests-for-regression-coefficients"><i class="fa fa-check"></i>Confidence intervals and tests for regression coefficients</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-lines"><i class="fa fa-check"></i>y~x vs x~y vs principle component line</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-determination"><i class="fa fa-check"></i>Partitioning variance and the coefficient of determination.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#calculating-sums-of-squares."><i class="fa fa-check"></i>Calculating sums of squares.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-significance"><i class="fa fa-check"></i>Significance of linear relationship.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-slope."><i class="fa fa-check"></i>Significance of slope.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-pairwise-correlation"><i class="fa fa-check"></i>Significance of pairwise correlation</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-variance-partition."><i class="fa fa-check"></i>Significance of variance partition.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#isomorphism-with-one-response-and-one-predictor"><i class="fa fa-check"></i>Isomorphism with one response and one predictor</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-prediction"><i class="fa fa-check"></i>Regression prediction.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#predicting-mean-y-given-x."><i class="fa fa-check"></i>Predicting mean y given x.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#predicting-new-y-given-x."><i class="fa fa-check"></i>Predicting new y given x.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#visualizing-the-difference"><i class="fa fa-check"></i>Visualizing the difference</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-ols-diagnostics"><i class="fa fa-check"></i>Regression Diagnostics</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-relationship-between-y-and-x-is-well-described-by-a-line."><i class="fa fa-check"></i>Assumption: relationship between y and x is well described by a line.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-out-estimates-are-not-driven-by-a-few-huge-outliers"><i class="fa fa-check"></i>Assumption: out estimates are not driven by a few huge outliers</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-errors-are-independent-identically-distributed-normal."><i class="fa fa-check"></i>Assumption: errors are independent, identically distributed, normal.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#testing-assumptions"><i class="fa fa-check"></i>Testing assumptions</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">UCSD Psyc 201ab / CSS 205 / Psyc 193</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="binomial-test" class="section level1">
+<h1>Binomial test.</h1>
+<p>If we have two possible categories (e.g., “pass”/“fail,” “female”/“male,” etc.), we can use the Binomial test to see if their proportions deviate from some null hypothesis proportion. We talked about this via problem <a href="nhst-simulation.html">via sampling</a>, but that served to explain the logic, rather than provide practical advice. We also talked about this in the advanced notes going from <a href="theory-binomial.html">probability to statistics via the binomial</a>, but that section was broad, mathy and complicated. Here let’s just be practical.</p>
+<p>If you have binary categorical data:</p>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="binomial-test.html#cb465-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">sex =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>), <span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> T, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.6</span>, <span class="fl">0.4</span>)))</span>
+<span id="cb465-2"><a href="binomial-test.html#cb465-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>sex)</span></code></pre></div>
+<pre><code>## 
+## female   male 
+##     22     28</code></pre>
+<p>And we want to know if the rates of one outcome deviate from some null hypothesis probability</p>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="binomial-test.html#cb467-1" aria-hidden="true" tabindex="-1"></a>H0.p.female <span class="ot">=</span> <span class="fl">0.52</span></span></code></pre></div>
+<p>We can run a binomial test:</p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="binomial-test.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x=</span><span class="fu">sum</span>(df<span class="sc">$</span>sex<span class="sc">==</span><span class="st">&quot;female&quot;</span>), <span class="co"># number of one of two outcomes.</span></span>
+<span id="cb468-2"><a href="binomial-test.html#cb468-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">nrow</span>(df), <span class="co"># total number of observations</span></span>
+<span id="cb468-3"><a href="binomial-test.html#cb468-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">p =</span> H0.p.female) <span class="co"># probability of that outcome under the null</span></span></code></pre></div>
+<pre><code>## 
+##  Exact binomial test
+## 
+## data:  sum(df$sex == &quot;female&quot;) and nrow(df)
+## number of successes = 22, number of trials = 50, p-value = 0.2618
+## alternative hypothesis: true probability of success is not equal to 0.52
+## 95 percent confidence interval:
+##  0.2999072 0.5874559
+## sample estimates:
+## probability of success 
+##                   0.44</code></pre>
+<p>Thus we test the null hypothesis that our counts deviate from some null probability, using the Binomial distribution.</p>
+<div id="estimating-proportions." class="section level2">
+<h2>Estimating proportions.</h2>
+<p>If we have some categorical observations, generally we will want to report the proportion of different outcomes. How do we estimate this proportion and put confidence intervals on it?</p>
+<p>I think it’s useful to learn the confidence interval defined by the Normal approximation to the binomial proportion (although there are many other alternatives).</p>
+<p>If I flip <span class="math inline">\(n\)</span> coins and get <span class="math inline">\(k\)</span> heads, my estimated probability that we will get heads is <span class="math inline">\(\hat p = k/n\)</span>.</p>
+<p>The standard error of <span class="math inline">\(\hat p\)</span> will be <span class="math inline">\(s_{\hat p}=\sqrt{\hat p (1-\hat p) / n}\)</span></p>
+<p>If our sample size (<span class="math inline">\(n\)</span>) is large, and <span class="math inline">\(p\)</span> is not too close to 0 or 1, <span class="math inline">\(\hat p\)</span> will follow a normal distribution with standard deviation equal to the standard error of <span class="math inline">\(\hat p\)</span>. Consequently, we can use z-scores to put confidence intervals on <span class="math inline">\(p\)</span>:</p>
+<p><span class="math display">\[\hat p \pm z_{\alpha/2} \sqrt{\frac{1}{n} \hat p (1-\hat p)}\]</span></p>
+<p>This Z-score based confidence interval on a proportion is sufficient for most purposes.</p>
+<p>It is fairly easy to calculate in R:</p>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="binomial-test.html#cb470-1" aria-hidden="true" tabindex="-1"></a>k.women <span class="ot">=</span> <span class="dv">14</span></span>
+<span id="cb470-2"><a href="binomial-test.html#cb470-2" aria-hidden="true" tabindex="-1"></a>n.people <span class="ot">=</span> <span class="dv">23</span></span>
+<span id="cb470-3"><a href="binomial-test.html#cb470-3" aria-hidden="true" tabindex="-1"></a>p.hat <span class="ot">=</span> k.women<span class="sc">/</span>n.people</span>
+<span id="cb470-4"><a href="binomial-test.html#cb470-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb470-5"><a href="binomial-test.html#cb470-5" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fl">0.95</span> <span class="co"># 95% confidence interval</span></span>
+<span id="cb470-6"><a href="binomial-test.html#cb470-6" aria-hidden="true" tabindex="-1"></a>se.p.hat <span class="ot">=</span> <span class="fu">sqrt</span>(p.hat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p.hat)<span class="sc">/</span>n.people)</span>
+<span id="cb470-7"><a href="binomial-test.html#cb470-7" aria-hidden="true" tabindex="-1"></a>z.crit <span class="ot">=</span> <span class="fu">abs</span>(<span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">-</span>q)<span class="sc">/</span><span class="dv">2</span>))</span>
+<span id="cb470-8"><a href="binomial-test.html#cb470-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb470-9"><a href="binomial-test.html#cb470-9" aria-hidden="true" tabindex="-1"></a>(<span class="at">CI.p.hat =</span> p.hat <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span>z.crit<span class="sc">*</span>se.p.hat)</span></code></pre></div>
+<pre><code>## [1] 0.4092422 0.8081491</code></pre>
+<p>There are <a href="https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval">many suggested intervals</a> for the binomial proportion, and the <code>binom.test</code> gives you a different interval than the one calculated via the normal approximation (it uses Clopper &amp; Pearson).</p>
+<p>The interval based on the Normal distribution seems the easiest to use quickly for rough calculations, so it seems more useful to know exactly.</p>
+</div>
+<div id="sign-test-test-for-percentiles" class="section level2">
+<h2>Sign test, test for percentiles</h2>
+<p>The binomial test is also useful to test for a specific quantile (usually the median), in numerical data.</p>
+<p>Let’s say we have some weird looking data on changes in performance (delta):</p>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="binomial-test.html#cb472-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">delta =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1000</span>, <span class="fu">rnorm</span>(<span class="dv">20</span>,<span class="fl">1.5</span>,<span class="dv">1</span>)))</span>
+<span id="cb472-2"><a href="binomial-test.html#cb472-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>delta))<span class="sc">+</span><span class="fu">geom_histogram</span>()<span class="sc">+</span>my_theme</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-230-1.png" width="3000" /></p>
+<p>Note that the crazy outlier makes us unable to detect that improvement is actually positive:</p>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="binomial-test.html#cb473-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(df<span class="sc">$</span>delta, <span class="at">mu=</span><span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  df$delta
+## t = -0.96728, df = 20, p-value = 0.345
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  -145.62094   53.35413
+## sample estimates:
+## mean of x 
+##  -46.1334</code></pre>
+<p>Testing for the mean, using the standard deviation is very sensitive to outliers. Testing for the median, on the other hand, is not.</p>
+<p>We can test to see if the median is 0 by calculating the proportion of improvement scores that are greater than 0. If 0 is really the median, this should be about half. Thus we have a binomial test situation: what proportion of scores are greater than zero, compared to the null distribution of them being binomially distributed with probability 0.5</p>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="binomial-test.html#cb475-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x=</span><span class="fu">sum</span>(df<span class="sc">$</span>delta <span class="sc">&gt;</span> <span class="dv">0</span>), <span class="co"># number greater than null median</span></span>
+<span id="cb475-2"><a href="binomial-test.html#cb475-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">n=</span><span class="fu">sum</span>(df<span class="sc">$</span>delta <span class="sc">!=</span> <span class="dv">0</span>), <span class="co"># number that are not equal to zero -- should be all</span></span>
+<span id="cb475-3"><a href="binomial-test.html#cb475-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">p=</span><span class="fl">0.5</span>)   <span class="co"># null distribution of fraction of data that should be above the mean.</span></span></code></pre></div>
+<pre><code>## 
+##  Exact binomial test
+## 
+## data:  sum(df$delta &gt; 0) and sum(df$delta != 0)
+## number of successes = 18, number of trials = 21, p-value = 0.00149
+## alternative hypothesis: true probability of success is not equal to 0.5
+## 95 percent confidence interval:
+##  0.636576 0.969511
+## sample estimates:
+## probability of success 
+##              0.8571429</code></pre>
+<p>Note that we count as the possible total number all values that are not equal to the hypothetical median. Generally, with continuous data, you will never get numbers exactly equal to the null median, but if you do, you should not count them as being either above or below the median (thus they get dropped from the binomial test analysis).</p>
+<p>This use of a binomial test for a particular percentile is often called a sign test, and can be generalized to test for percentiles other than the median (e.g., the 75th percentile), although I never see them used that way.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="t-tests.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chi-squared.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/notes/nhst-binomial-test.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

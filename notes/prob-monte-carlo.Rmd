@@ -1,9 +1,4 @@
----
-  output: 
-    html_document
----
-  
-# Sampling and Monte Carlo.
+## Simulation, Sampling and Monte Carlo. {#probability-simulations}
 
 Sampling is a very helpful tool to understand probability.
 
@@ -49,7 +44,7 @@ rolls = replicate(10000,roll.die())
 ( p.8 = sum(rolls==8)/length(rolls) )
 ```
 
-## Sampling to estimate event probabilities.
+### Sampling to estimate event probabilities.
 
 An event in probability theory is a subset of outcomes.  For instance, for our rolled die, we might define an event as "getting an even roll".  It is useful to us to think of an event as a predicate, which we apply to the outcomes to see whether or not they fit into the event.  To make these kinds of calculations explicit, we can make a data frame listing all outcomes, their probabilities, and whether or not they are included in a particular event:
 
@@ -70,7 +65,7 @@ head(die.samples)
 
 Note that this formulation of the explicit probability calculation (data frame of outcomes with associated probabilities, or data frame of samples) makes it clear what the relationship is.  Basically, we treat the probability of each sampled outcome as 1/n where n is the number of samples.
 
-## Probability of a conjunction of events
+### Probability of a conjunction of events
 
 The conjunction of events A and B may be thought of as another event -- another subset of the outcomes that is the *set intersection* of A and B.  Alternatively, we can just think of it as a conjunction predicate that returns true if both events are true of this outcome.  
 

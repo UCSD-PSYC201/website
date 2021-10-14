@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Data cleaning – worked example | UCSD Psyc 201ab / CSS 205 / Psyc 193</title>
+  <meta name="description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Data cleaning – worked example | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  <meta name="github-repo" content="UCSD-PSYC201/website" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data cleaning – worked example | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  
+  <meta name="twitter:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="R-start.html"/>
+<link rel="next" href="descriptive.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html"><i class="fa fa-check"></i>Syllabus</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#instructors"><i class="fa fa-check"></i>Instructors</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#class-meetings"><i class="fa fa-check"></i>Class meetings</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#grading"><i class="fa fa-check"></i>Grading</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#class-resources"><i class="fa fa-check"></i>Class Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html"><i class="fa fa-check"></i>201a Schedule</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-0-introduction"><i class="fa fa-check"></i>Week 0: Introduction</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-1-data"><i class="fa fa-check"></i>Week 1: Data</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-2-visualization"><i class="fa fa-check"></i>Week 2: Visualization</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-3-theoretical-foundations"><i class="fa fa-check"></i>Week 3: Theoretical foundations</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-4-linear-model-regression"><i class="fa fa-check"></i>Week 4: Linear model: Regression</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-5-linear-model-multiple-regression"><i class="fa fa-check"></i>Week 5: Linear model: Multiple regression</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-6-linear-model-categorical-predictors"><i class="fa fa-check"></i>Week 6: Linear model: Categorical predictors</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-7-linear-model-ancova-diagnostics"><i class="fa fa-check"></i>Week 7: Linear model: ANCOVA, diagnostics</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-8-linear-model-linearizing-transforms"><i class="fa fa-check"></i>Week 8: Linear model: Linearizing transforms</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-9-covarying-errors-repeated-measures-random-effects"><i class="fa fa-check"></i>Week 9: Covarying errors (repeated measures / random effects)</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-10-review-and-preview"><i class="fa fa-check"></i>Week 10: Review and preview</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html"><i class="fa fa-check"></i>Projects</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#examples-of-this-sort-of-thing"><i class="fa fa-check"></i>Examples of this sort of thing</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a"><i class="fa fa-check"></i>201a</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-timeline"><i class="fa fa-check"></i>201a Timeline</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#groups"><i class="fa fa-check"></i>Groups</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-project-plan"><i class="fa fa-check"></i>201a Project plan</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-preliminary-data-summaries"><i class="fa fa-check"></i>201a Preliminary data summaries</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-write-ups"><i class="fa fa-check"></i>201a Write-ups</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-presentation"><i class="fa fa-check"></i>201a Presentation</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-group-evaluation"><i class="fa fa-check"></i>201a Group-evaluation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#b"><i class="fa fa-check"></i>201b</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#data-sources"><i class="fa fa-check"></i>Data sources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html"><i class="fa fa-check"></i>R homework</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#grading-1"><i class="fa fa-check"></i>Grading</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#collaboration"><i class="fa fa-check"></i>Collaboration</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#submitting-r-assignments"><i class="fa fa-check"></i>Submitting R Assignments</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#writing-r-scripts"><i class="fa fa-check"></i>Writing R scripts</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#submitting-your-assignment"><i class="fa fa-check"></i>Submitting your assignment</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#additional-resources."><i class="fa fa-check"></i>Additional resources.</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Notes</b></span></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html"><i class="fa fa-check"></i>Getting started with R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#R-install"><i class="fa fa-check"></i>Installing R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#R-intro"><i class="fa fa-check"></i>Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#better-data-analysis-code."><i class="fa fa-check"></i>Better data analysis code.</a></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#using-r-markdown"><i class="fa fa-check"></i>Using R-markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i>Data cleaning – worked example</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#read-file-with-readr"><i class="fa fa-check"></i>Read file with readr</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#first-glimpse-at-the-data."><i class="fa fa-check"></i>First glimpse at the data.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#what-we-want-to-do"><i class="fa fa-check"></i>What we want to do</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#rename-columns"><i class="fa fa-check"></i>rename columns</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#convert-time-columns-into-seconds."><i class="fa fa-check"></i>convert time columns into seconds.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#extract-sex-from-division-and-other-clues"><i class="fa fa-check"></i>Extract sex from division, and other clues</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-corral-from-bib-number"><i class="fa fa-check"></i>Get corral from bib number</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#fix-the-age-column-which-is-a-string-for-some-reason"><i class="fa fa-check"></i>fix the age column (which is a string for some reason)</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-time-out-of-the-mangled-5.25-and-10-mile-columns."><i class="fa fa-check"></i>Get time out of the mangled 5.25 and 10 mile columns.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-rid-of-some-unnecessary-columns"><i class="fa fa-check"></i>Get rid of some unnecessary columns</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#getting-new-columns-from-simple-transformations"><i class="fa fa-check"></i>Getting new columns from simple transformations</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#fixing-states."><i class="fa fa-check"></i>Fixing states.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#save-the-cleaned-data."><i class="fa fa-check"></i>Save the cleaned data.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html"><i class="fa fa-check"></i>Descriptive statistics</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#descriptive-statistics-are-implicit-estimators."><i class="fa fa-check"></i>Descriptive statistics are implicit estimators.</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#describing-central-tendency."><i class="fa fa-check"></i>Describing central tendency.</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#describing-dispersion"><i class="fa fa-check"></i>Describing dispersion</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#descriptions-of-shape."><i class="fa fa-check"></i>Descriptions of shape.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i>Visualizations</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#general-rules-for-scientific-data-visualization."><i class="fa fa-check"></i>General rules for scientific data visualization.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#picking-a-plot-whats-convention"><i class="fa fa-check"></i>Picking a plot (what’s convention)</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-0"><i class="fa fa-check"></i>Categorical ~ 0</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#histogram"><i class="fa fa-check"></i>Histogram</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#pie-chart"><i class="fa fa-check"></i>Pie chart</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#stacked-area"><i class="fa fa-check"></i>Stacked area</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-0"><i class="fa fa-check"></i>numerical ~ 0</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#histogram-density"><i class="fa fa-check"></i>Histogram &amp; density</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-categorical"><i class="fa fa-check"></i>numerical ~ categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#bar-plot-with-error-bars"><i class="fa fa-check"></i>Bar plot with error bars</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#jittered-data-points."><i class="fa fa-check"></i>Jittered data points.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#violaviolin-plot"><i class="fa fa-check"></i>Viola/Violin plot</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#box-and-whiskers-plot"><i class="fa fa-check"></i>Box and whiskers plot</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#overlayed-densities"><i class="fa fa-check"></i>Overlayed densities</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#empirical-cumulative-distribution"><i class="fa fa-check"></i>Empirical cumulative distribution</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#comparisons"><i class="fa fa-check"></i>Comparisons</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#recommendations"><i class="fa fa-check"></i>Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-numerical-2-x-numerical-0"><i class="fa fa-check"></i>numerical ~ numerical (2 x numerical ~ 0)</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#scatter-and-heatmap"><i class="fa fa-check"></i>Scatter and heatmap</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#conditional-means"><i class="fa fa-check"></i>Conditional means</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-numerical-categorical"><i class="fa fa-check"></i>numerical ~ numerical + categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-numerical"><i class="fa fa-check"></i>categorical ~ numerical</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#x-categorical-and-categorical-categorical"><i class="fa fa-check"></i>2 x categorical and categorical ~ categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#heatmap"><i class="fa fa-check"></i>Heatmap</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-categorical"><i class="fa fa-check"></i>categorical ~ categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#extra-plot-notes."><i class="fa fa-check"></i>Extra plot notes.</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-2-x-categorical"><i class="fa fa-check"></i>numerical ~ 2 x categorical</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#bin-width-and-bandwidths"><i class="fa fa-check"></i>bin width and bandwidths</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#visualization"><i class="fa fa-check"></i>ggplot</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#installation."><i class="fa fa-check"></i>Installation.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#basic-overview."><i class="fa fa-check"></i>Basic overview.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#changing-labels."><i class="fa fa-check"></i>Changing labels.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#themes-and-elements-and-properties."><i class="fa fa-check"></i>Themes and elements and properties.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#changing-display-properties-of-plotted-elements."><i class="fa fa-check"></i>Changing display properties of plotted elements.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#other-geometric-elements."><i class="fa fa-check"></i>Other geometric elements.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#assembling-multiple-plots-in-one-figure"><i class="fa fa-check"></i>Assembling multiple plots in one figure</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i>Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-terms"><i class="fa fa-check"></i>Probability terms</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#absolute-probability-statements-prob"><i class="fa fa-check"></i>Absolute probability statements {prob}</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-comparisons"><i class="fa fa-check"></i>Probability comparisons</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#proportional-magnitudes-and-confusion"><i class="fa fa-check"></i>Proportional magnitudes and confusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-foundations"><i class="fa fa-check"></i>Foundations of probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#set-notation-for-combinations-of-outcomes."><i class="fa fa-check"></i>Set notation for combinations of outcomes.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#basic-probability-definition-and-axioms"><i class="fa fa-check"></i>Basic probability definition and axioms</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#events-and-the-rules-of-probability."><i class="fa fa-check"></i>Events and the rules of probability.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-conditional"><i class="fa fa-check"></i>Conditional probability and Bayes</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#chain-rule"><i class="fa fa-check"></i>Chain rule</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#partitions-and-total-probability"><i class="fa fa-check"></i>Partitions and total probability</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#bayes-rule"><i class="fa fa-check"></i>Bayes’ rule</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-simulations"><i class="fa fa-check"></i>Simulation, Sampling and Monte Carlo.</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-long-run-frequency-and-the-law-of-large-numbers."><i class="fa fa-check"></i>Sampling, long-run frequency, and the law of large numbers.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-estimate-event-probabilities."><i class="fa fa-check"></i>Sampling to estimate event probabilities.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-of-a-conjunction-of-events"><i class="fa fa-check"></i>Probability of a conjunction of events</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-get-probability-of-disjunction"><i class="fa fa-check"></i>Sampling to get probability of disjunction</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-calculate-conditional-probability"><i class="fa fa-check"></i>Sampling to calculate conditional probability</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-rv"><i class="fa fa-check"></i>Random variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#joint-conditional-and-marginal-probabilities"><i class="fa fa-check"></i>Joint, conditional, and marginal probabilities</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#bernoulli-distribution"><i class="fa fa-check"></i>Bernoulli distribution</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#combinations-and-the-binomial-distribution"><i class="fa fa-check"></i>Combinations and the binomial distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-rv-functions"><i class="fa fa-check"></i>Distribution functions: PDF, CDF, Quantile</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-distribution-mass-and-density-functions-p.d.f."><i class="fa fa-check"></i>Probability distribution (mass and density) functions (p.d.f.)</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#cumulative-distribution-functions-c.d.f."><i class="fa fa-check"></i>Cumulative distribution functions (c.d.f.)</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#quantile-functions-inverse-cdf."><i class="fa fa-check"></i>Quantile functions (inverse CDF).</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-expectation"><i class="fa fa-check"></i>Expectation and moments</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#there-are-a-few-useful-properties-about-how-the-mean-variance-skewness-and-excess-kurtosis-behave-under-various-operations"><i class="fa fa-check"></i>There are a few useful properties about how the Mean, Variance, Skewness, and Excess Kurtosis behave under various operations:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-clt"><i class="fa fa-check"></i>Central limit theorem and the normal distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#requirements-for-clt-to-hold"><i class="fa fa-check"></i>Requirements for CLT to hold</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#normal-distribution"><i class="fa fa-check"></i>Normal distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html"><i class="fa fa-check"></i>Foundations of Statistics</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-simulation"><i class="fa fa-check"></i>Frequentist statistics via simulation</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#null-hypothesis-significance-testing."><i class="fa fa-check"></i>Null hypothesis significance testing.</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#critical-values-alpha-power"><i class="fa fa-check"></i>Critical values, alpha, power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#setting-up-the-alternate-hypothesis"><i class="fa fa-check"></i>Setting up the “Alternate hypothesis”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-power"><i class="fa fa-check"></i>Figuring out “power”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-alpha"><i class="fa fa-check"></i>Figuring out “alpha”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#showing-alpha-power"><i class="fa fa-check"></i>Showing alpha, power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-the-critical-value."><i class="fa fa-check"></i>Figuring out the critical value.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-sampling"><i class="fa fa-check"></i>Sampling distributions</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#tl-dr."><i class="fa fa-check"></i>TL; DR.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#logic"><i class="fa fa-check"></i>Logic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#expectation-about-the-sampling-distribution-of-the-sample-mean."><i class="fa fa-check"></i>Expectation about the sampling distribution of the sample mean.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#standard-error-of-the-sample-mean"><i class="fa fa-check"></i>Standard error (of the sample mean)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-basics-normal"><i class="fa fa-check"></i>Statistics via the Normal distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-null-hypothesis-significance-testing-nhst"><i class="fa fa-check"></i>(Normal) Null hypothesis significance testing (NHST)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-tests-with-sample-means"><i class="fa fa-check"></i>Normal tests with sample means</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#z-scores-and-z-tests"><i class="fa fa-check"></i>Z-scores and Z-tests</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#z-tests"><i class="fa fa-check"></i>Z-tests</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-confidence-intervals-on-the-sample-mean"><i class="fa fa-check"></i>(Normal) Confidence intervals on the sample mean</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#relationship-between-confidence-intervals-and-null-hypothesis-tests."><i class="fa fa-check"></i>Relationship between confidence intervals and null hypothesis tests.</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#special-critical-z-values"><i class="fa fa-check"></i>Special critical Z-values</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#rarity-of-z-tests-and-z--confidence-intervals"><i class="fa fa-check"></i>Rarity of Z-tests and Z- confidence intervals</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#what-are-these-percents-and-probabilities"><i class="fa fa-check"></i>What are these percents and probabilities?</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#what-does-the-percent-in-a-confidence-interval-mean"><i class="fa fa-check"></i>What does the “percent” in a confidence interval mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#nhst-theory-normal"><i class="fa fa-check"></i>Null hypothesis significance testing with Normal</a>
+<ul>
+<li><a href="NHST.html#type-1-error-rate-alpha-alpha">Type 1 error rate: alpha (<span class="math inline">\(\alpha\)</span>)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#the-alternate-model"><i class="fa fa-check"></i>The “alternate model”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#effect-size"><i class="fa fa-check"></i>Effect size</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#calculating-power-from-effect-size"><i class="fa fa-check"></i>Calculating power from effect size</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#visualizing-alpha-and-power"><i class="fa fa-check"></i>Visualizing alpha and power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#how-power-changes."><i class="fa fa-check"></i>How power changes.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#calculating-n-for-a-desired-level-of-power."><i class="fa fa-check"></i>Calculating n for a desired level of power.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sign-and-magnitude-errors."><i class="fa fa-check"></i>Sign and magnitude errors.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#theory-binomial"><i class="fa fa-check"></i>From probability to statistics with the Binomial</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#data-description-summary"><i class="fa fa-check"></i>Data description / summary</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#estimation"><i class="fa fa-check"></i>Estimation</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#null-hypothesis-significance-testing-nhst"><i class="fa fa-check"></i>Null Hypothesis Significance testing (NHST)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#model-selection"><i class="fa fa-check"></i>Model selection</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#t-distribution"><i class="fa fa-check"></i>t-distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#tl-dr.-1"><i class="fa fa-check"></i>TL; DR.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-sample-variance-and-t-statistic"><i class="fa fa-check"></i>Sampling distribution of sample variance, and t-statistic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sample-variance"><i class="fa fa-check"></i>Sample variance</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-the-sample-variance"><i class="fa fa-check"></i>Sampling distribution of the sample variance</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-t-statistic"><i class="fa fa-check"></i>Sampling distribution of t-statistic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#t-distribution-1"><i class="fa fa-check"></i>T-distribution</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#degrees-of-freedom."><i class="fa fa-check"></i>Degrees of freedom.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#summary."><i class="fa fa-check"></i>Summary.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i>(Student’s) t-tests</a>
+<ul>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-t-test"><i class="fa fa-check"></i>1-sample t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#paired-repeated-measures-t-test"><i class="fa fa-check"></i>Paired / repeated-measures t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-presumed-equal-variance-t-test"><i class="fa fa-check"></i>2-sample, presumed equal variance, t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-unequal-variance-t-test"><i class="fa fa-check"></i>2-sample, unequal variance, t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#power-calculations."><i class="fa fa-check"></i>Power calculations.</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#summary-of-tests-for-the-mean-and-effect-sizes"><i class="fa fa-check"></i>Summary of tests for the mean and effect sizes</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math."><i class="fa fa-check"></i>Math.</a>
+<ul>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math-behind-2-sample-equal-variance-t-test"><i class="fa fa-check"></i>Math behind 2-sample equal variance t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math-behind-unequal-variance-t-test"><i class="fa fa-check"></i>Math behind unequal variance t-test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html"><i class="fa fa-check"></i>Binomial test.</a>
+<ul>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html#estimating-proportions."><i class="fa fa-check"></i>Estimating proportions.</a></li>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html#sign-test-test-for-percentiles"><i class="fa fa-check"></i>Sign test, test for percentiles</a></li>
+</ul></li>
+<li><a href="chi-squared.html#chi-squared">Pearson’s Chi<span class="math inline">\(^2\)</span> (<span class="math inline">\(\chi^2\)</span>) test</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html"><i class="fa fa-check"></i>“Goodness of fit” test</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#implementation-in-r"><i class="fa fa-check"></i>Implementation in R</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#chi-squared-test-calculations"><i class="fa fa-check"></i>Chi-squared test calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#test-for-independence"><i class="fa fa-check"></i>Test for independence</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#implementation-in-r-1"><i class="fa fa-check"></i>Implementation in R</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#independence-test-calculations"><i class="fa fa-check"></i>Independence test calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#more-than-2-way-contingency-table"><i class="fa fa-check"></i>More than 2-way contingency table</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#mathematical-rationale"><i class="fa fa-check"></i>Mathematical rationale</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#limitations"><i class="fa fa-check"></i>Limitations</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#fishers-exact-test"><i class="fa fa-check"></i>Fisher’s “exact” test</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html"><i class="fa fa-check"></i>Bivariate linear relationships</a>
+<ul>
+<li><a href="bivariate.html#linear-relationships"><em>Linear</em> relationships</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#covariance-and-correlation-measuring-the-linear-dependence."><i class="fa fa-check"></i>Covariance and correlation: Measuring the linear dependence.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#covariance"><i class="fa fa-check"></i>Covariance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#correlation-coefficient"><i class="fa fa-check"></i>Correlation coefficient</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#ols-regression-predicting-the-mean-of-y-for-a-given-x"><i class="fa fa-check"></i>(OLS) Regression: Predicting the mean of y for a given x</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#difference-between-yx-xy-and-the-principle-component-line"><i class="fa fa-check"></i>Difference between y~x, x~y, and the principle component line</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#partitioning-variance"><i class="fa fa-check"></i>Partitioning variance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-a-linear-relationship."><i class="fa fa-check"></i>Significance of a linear relationship.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#prediction-from-regression."><i class="fa fa-check"></i>Prediction from regression.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-anscombe"><i class="fa fa-check"></i>Anscombe’s quartet</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-covariance"><i class="fa fa-check"></i>Covariance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#estimating-covariance."><i class="fa fa-check"></i>Estimating covariance.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-correlation"><i class="fa fa-check"></i>Correlation</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#correlation-as-the-slope-of-z-scores"><i class="fa fa-check"></i>Correlation as the slope of z-scores</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#coefficient-of-determination"><i class="fa fa-check"></i>Coefficient of determination</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-ols"><i class="fa fa-check"></i>Ordinary Least-Squares (OLS) Regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#regression-terminology"><i class="fa fa-check"></i>Regression terminology</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#estimating-the-regression-line."><i class="fa fa-check"></i>Estimating the regression line.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#standard-errors-of-regression-coefficients"><i class="fa fa-check"></i>Standard errors of regression coefficients</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#confidence-intervals-and-tests-for-regression-coefficients"><i class="fa fa-check"></i>Confidence intervals and tests for regression coefficients</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-lines"><i class="fa fa-check"></i>y~x vs x~y vs principle component line</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-determination"><i class="fa fa-check"></i>Partitioning variance and the coefficient of determination.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#calculating-sums-of-squares."><i class="fa fa-check"></i>Calculating sums of squares.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-significance"><i class="fa fa-check"></i>Significance of linear relationship.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-slope."><i class="fa fa-check"></i>Significance of slope.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-pairwise-correlation"><i class="fa fa-check"></i>Significance of pairwise correlation</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-variance-partition."><i class="fa fa-check"></i>Significance of variance partition.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#isomorphism-with-one-response-and-one-predictor"><i class="fa fa-check"></i>Isomorphism with one response and one predictor</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-prediction"><i class="fa fa-check"></i>Regression prediction.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#predicting-mean-y-given-x."><i class="fa fa-check"></i>Predicting mean y given x.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#predicting-new-y-given-x."><i class="fa fa-check"></i>Predicting new y given x.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#visualizing-the-difference"><i class="fa fa-check"></i>Visualizing the difference</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-ols-diagnostics"><i class="fa fa-check"></i>Regression Diagnostics</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-relationship-between-y-and-x-is-well-described-by-a-line."><i class="fa fa-check"></i>Assumption: relationship between y and x is well described by a line.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-out-estimates-are-not-driven-by-a-few-huge-outliers"><i class="fa fa-check"></i>Assumption: out estimates are not driven by a few huge outliers</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-errors-are-independent-identically-distributed-normal."><i class="fa fa-check"></i>Assumption: errors are independent, identically distributed, normal.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#testing-assumptions"><i class="fa fa-check"></i>Testing assumptions</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">UCSD Psyc 201ab / CSS 205 / Psyc 193</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-cleaning" class="section level1">
+<h1>Data cleaning – worked example</h1>
+<p>We will practice reading and cleaning data using the published race data for the California “10 20” running event (10 miles, 20 bands). These data were scraped from the official race website, then fixed up a bit and saved as a <em>tab delimited text file</em>. This text file can be found <a href="http://vulstats.ucsd.edu/data/cal10202.txt">here</a>.</p>
+<p>We will use the various tidyverse packages to carry out this cleaning.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="data-cleaning.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div id="read-file-with-readr" class="section level2">
+<h2>Read file with readr</h2>
+<p>First, let’s read the data in using <code>readr::read_tsv</code>, creating a data-frame saved as <code>cal1020</code>. “tsv” generally refers to “tab separated values,” which is what we have.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data-cleaning.html#cb5-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="ot">=</span> readr<span class="sc">::</span><span class="fu">read_tsv</span>(<span class="st">&#39;http://vulstats.ucsd.edu/data/cal10202.txt&#39;</span>)</span></code></pre></div>
+<p>The <code>readr</code> functions (such as read_csv, read_tsv, etc.) are very similar to the base R functions (read.csv), but they have more sensible defaults, and also save the data as a “tibble,” which works just like a data frame, but has a few added bells and whistles.</p>
+</div>
+<div id="first-glimpse-at-the-data." class="section level2">
+<h2>First glimpse at the data.</h2>
+<p>What’s in this data frame? We can check with <code>str()</code>, or a slightly neater display using the <code>dplyr::glimpse()</code> function.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-cleaning.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cal1020)</span></code></pre></div>
+<pre><code>## Rows: 3,252
+## Columns: 22
+## $ time.gun         &lt;time&gt; 00:48:00, 00:48:05, 00:49:30, 00:51:03, 00:51:24, 00:53:26, 00:53:43, 00:54:09, 00:54:49, 00:58:49, 00:55…
+## $ time.chip        &lt;time&gt; 00:48:00, 00:48:05, 00:49:30, 00:51:02, 00:51:23, 00:53:26, 00:53:42, 00:54:01, 00:54:49, 00:55:18, 00:55…
+## $ bib              &lt;dbl&gt; 1205, 9, 13, 15, 1303, 1213, 3, 1055, 12, 1351, 1054, 1216, 1352, 1218, 6, 1220, 1304, 18, 1353, 1305, 101…
+## $ name.first       &lt;chr&gt; &quot;Jordan&quot;, &quot;Macdonard&quot;, &quot;Sergio&quot;, &quot;Jamesom&quot;, &quot;Darren&quot;, &quot;Okwaro&quot;, &quot;Steven&quot;, &quot;Edwin&quot;, &quot;Lindsey&quot;, &quot;Derek&quot;, &quot;Ra…
+## $ name.last        &lt;chr&gt; &quot;Chipangama&quot;, &quot;Ondara&quot;, &quot;Reyes&quot;, &quot;Mora&quot;, &quot;Brown&quot;, &quot;Raura&quot;, &quot;Underwood&quot;, &quot;Figueroa&quot;, &quot;Scherf&quot;, &quot;Bradley&quot;, &quot;…
+## $ City             &lt;chr&gt; &quot;Flagstaff&quot;, &quot;Grand Prairie&quot;, &quot;Palmdale&quot;, &quot;Arroyo Grande&quot;, &quot;Solana Beach&quot;, &quot;Oceanside&quot;, &quot;Encinitas&quot;, &quot;Comm…
+## $ State            &lt;chr&gt; &quot;AZ&quot;, &quot;TX&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;NY&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;AZ&quot;, &quot;?&quot;,…
+## $ Division         &lt;chr&gt; &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile M …
+## $ Class.Position   &lt;dbl&gt; 1, 2, 3, 4, 5, 1, 1, 1, 1, 1, 1, 2, 3, 2, 2, 4, 1, 3, 2, 3, 1, 4, 1, 2, 1, 2, 5, 1, 1, 1, 5, 3, 1, 3, 1, 2…
+## $ Overall.Place    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 1, 8, 9, 2, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 2…
+## $ Age              &lt;chr&gt; &quot;25&quot;, &quot;29&quot;, &quot;32&quot;, &quot;30&quot;, &quot;28&quot;, &quot;39&quot;, &quot;26&quot;, &quot;42&quot;, &quot;27&quot;, &quot;33&quot;, &quot;60&quot;, &quot;34&quot;, &quot;33&quot;, &quot;39&quot;, &quot;26&quot;, &quot;32&quot;, &quot;41&quot;, &quot;24&quot;…
+## $ Zip              &lt;chr&gt; &quot;86004&quot;, &quot;75054&quot;, &quot;93551&quot;, &quot;93420&quot;, &quot;92075&quot;, &quot;92057&quot;, &quot;92024&quot;, &quot;90040&quot;, &quot;12440&quot;, &quot;92024&quot;, &quot;91016&quot;, &quot;92078&quot;…
+## $ Sex.place        &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 1, 1, 8, 2, 9, 10, 11, 2, 12, 13, 3, 14, 15, 16, 4, 17, 18, 19, 20, 5, 6, 7, 8, 21, 2…
+## $ Div.tot          &lt;dbl&gt; 3239, 3239, 3239, 3239, 3239, 3239, 3239, 13, 3239, 3239, 13, 3239, 3239, 3239, 3239, 3239, 3239, 3239, 32…
+## $ Sex.tot          &lt;dbl&gt; 1179, 1179, 1179, 1179, 1179, 1179, 1179, 11, 2060, 1179, 11, 1179, 1179, 1179, 2060, 1179, 1179, 2060, 11…
+## $ AG.tot           &lt;dbl&gt; 5, 5, 5, 5, 5, 118, 85, 1, 5, 139, 1, 139, 139, 118, 5, 139, 3, 5, 3, 3, 167, 5, 178, 167, 191, 191, 5, 81…
+## $ `5.25.mile.rank` &lt;chr&gt; &quot;3&quot;, &quot;2&quot;, &quot;4&quot;, &quot;6&quot;, &quot;5&quot;, &quot;7&quot;, &quot;8&quot;, &quot;1&quot;, &quot;9&quot;, &quot;10&quot;, &quot;INC&quot;, &quot;11&quot;, &quot;13&quot;, &quot;15&quot;, &quot;12&quot;, &quot;16&quot;, &quot;19&quot;, &quot;14&quot;, &quot;18&quot;, …
+## $ `5.25.mile.time` &lt;chr&gt; &quot;25:12:00&quot;, &quot;25:12:00&quot;, &quot;25:31:00&quot;, &quot;26:47:00&quot;, &quot;26:46:00&quot;, &quot;27:41:00&quot;, &quot;27:54:00&quot;, &quot;29:10:00&quot;, &quot;28:41:00&quot;…
+## $ `5.25.mile.pace` &lt;chr&gt; &quot;4:48/M&quot;, &quot;4:48/M&quot;, &quot;4:52/M&quot;, &quot;5:06/M&quot;, &quot;5:06/M&quot;, &quot;5:16/M&quot;, &quot;5:19/M&quot;, &quot;5:33/M&quot;, &quot;5:28/M&quot;, &quot;5:28/M&quot;, NA, &quot;5…
+## $ `10.mile.rank`   &lt;chr&gt; &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;1&quot;, &quot;8&quot;, &quot;9&quot;, &quot;13&quot;, &quot;10&quot;, &quot;12&quot;, &quot;15&quot;, &quot;16&quot;, &quot;13&quot;, &quot;11&quot;, &quot;25&quot;, &quot;18&quot;, &quot;1…
+## $ `10.mile.time`   &lt;chr&gt; &quot;22:47&quot;, &quot;22:52&quot;, &quot;23:58&quot;, &quot;24:14:00&quot;, &quot;24:36:00&quot;, &quot;25:44:00&quot;, &quot;25:47:00&quot;, &quot;24:50:00&quot;, &quot;26:07:00&quot;, &quot;26:35:…
+## $ `10.mile.pace`   &lt;chr&gt; &quot;2:17/M&quot;, &quot;2:17/M&quot;, &quot;2:24/M&quot;, &quot;2:25/M&quot;, &quot;2:28/M&quot;, &quot;2:34/M&quot;, &quot;2:35/M&quot;, &quot;2:29/M&quot;, &quot;2:37/M&quot;, &quot;2:40/M&quot;, &quot;5:32/…</code></pre>
+<p>From this we learn lots of things, the most immediately relevant are:</p>
+<ol style="list-style-type: decimal">
+<li><p>the names of the variables (columns); we could have gotten just this part by running <code>names(cal1020)</code>)</p></li>
+<li><p>cal1020 is a data frame with 22 variables (columns) and 3252 observations (rows); we could have gotten just this part by running <code>dim(cal1020)</code></p></li>
+<li><p>all the variables are saved as either a “chr” (a character string), an “int” (an integer), or a “time” variable. (if we had used the base R read.tsv, many of the strings would have been converted to factors, and the variables recognized as “time” would have been treated as strings as well).</p></li>
+</ol>
+<p>Before we work on fixing this, let’s look at some of the rows in the data. Looking at 3252 observations at once is silly, so let’s just look at the first 10 using the <code>head()</code> command. Because there are 22 variables, the printout doesn’t fit. In R markdown we get a fancy scrollable table, but in the console you would just get a truncated list (this behavior differs slightly between data frames and “tibbles,” with tibbles yielding more legible console output).</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data-cleaning.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cal1020, <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 22
+##    time.gun time.chip   bib name.first name.last  City    State Division   Class.Position Overall.Place Age   Zip   Sex.place Div.tot
+##    &lt;time&gt;   &lt;time&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;               &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+##  1 48&#39;00&quot;   48&#39;00&quot;     1205 Jordan     Chipangama Flagst… AZ    10 Mile O…              1             1 25    86004         1    3239
+##  2 48&#39;05&quot;   48&#39;05&quot;        9 Macdonard  Ondara     Grand … TX    10 Mile O…              2             2 29    75054         2    3239
+##  3 49&#39;30&quot;   49&#39;30&quot;       13 Sergio     Reyes      Palmda… CA    10 Mile O…              3             3 32    93551         3    3239
+##  4 51&#39;03&quot;   51&#39;02&quot;       15 Jamesom    Mora       Arroyo… CA    10 Mile O…              4             4 30    93420         4    3239
+##  5 51&#39;24&quot;   51&#39;23&quot;     1303 Darren     Brown      Solana… CA    10 Mile O…              5             5 28    92075         5    3239
+##  6 53&#39;26&quot;   53&#39;26&quot;     1213 Okwaro     Raura      Oceans… CA    10 Mile M…              1             6 39    92057         6    3239
+##  7 53&#39;43&quot;   53&#39;42&quot;        3 Steven     Underwood  Encini… CA    10 Mile M…              1             7 26    92024         7    3239
+##  8 54&#39;09&quot;   54&#39;01&quot;     1055 Edwin      Figueroa   Commer… CA    Wheelchai…              1             1 42    90040         1      13
+##  9 54&#39;49&quot;   54&#39;49&quot;       12 Lindsey    Scherf     High F… NY    10 Mile O…              1             8 27    12440         1    3239
+## 10 58&#39;49&quot;   55&#39;18&quot;     1351 Derek      Bradley    Encini… CA    10 Mile M…              1             9 33    92024         8    3239
+## # … with 8 more variables: Sex.tot &lt;dbl&gt;, AG.tot &lt;dbl&gt;, 5.25.mile.rank &lt;chr&gt;, 5.25.mile.time &lt;chr&gt;, 5.25.mile.pace &lt;chr&gt;,
+## #   10.mile.rank &lt;chr&gt;, 10.mile.time &lt;chr&gt;, 10.mile.pace &lt;chr&gt;</code></pre>
+</div>
+<div id="what-we-want-to-do" class="section level2">
+<h2>What we want to do</h2>
+<ol style="list-style-type: decimal">
+<li><p>rename some poorly named columns</p></li>
+<li><p>convert variables saved as time objects into numbers (in seconds)</p></li>
+<li><p>extract the runner’s sex from the “Division” string, or other clues</p></li>
+<li><p>extract the runner’s “corral” number from the bib number</p></li>
+<li><p>fix the age column, which, for some reason is a “character,” which means that some entries could not be parsed as numbers.</p></li>
+<li><p>get time out of the somewhat mangled 5.25 and 10.mile columns (the pace columns are really mangled for 10 miles, so we will recalculate them ourselves).</p></li>
+<li><p>get rid of unnecessary columns.</p></li>
+<li><p>calculate any other convenience variables</p></li>
+</ol>
+</div>
+<div id="rename-columns" class="section level2">
+<h2>rename columns</h2>
+<p>To rename columns, we will use the dplyr <code>rename</code> function.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data-cleaning.html#cb10-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="ot">&lt;-</span> <span class="fu">rename</span>(cal1020, </span>
+<span id="cb10-2"><a href="data-cleaning.html#cb10-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">time.mile.5.25 =</span> <span class="st">`</span><span class="at">5.25.mile.time</span><span class="st">`</span>,</span>
+<span id="cb10-3"><a href="data-cleaning.html#cb10-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">time.mile.10 =</span> <span class="st">`</span><span class="at">10.mile.time</span><span class="st">`</span>)</span></code></pre></div>
+<p>There’s lots more columns to rename, but let’s worry about those later, after we drop all the columns we won’t use. I wanted to rename these now, to avoid dealing working with the backticks when converting these two columns into seconds.</p>
+</div>
+<div id="convert-time-columns-into-seconds." class="section level2">
+<h2>convert time columns into seconds.</h2>
+<p>The time.gun and time.chip columns seem to have been correctly parsed into time objects, so we can just cast them as.numeric to get the number of seconds they measure.</p>
+<p>We will use the <code>dplyr::mutate</code> function to change these columns (if we used a new column name, this command would just make a new column, but since those names exist, it assigns new values to them).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data-cleaning.html#cb11-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(cal1020, </span>
+<span id="cb11-2"><a href="data-cleaning.html#cb11-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">time.gun =</span> <span class="fu">as.numeric</span>(time.gun),</span>
+<span id="cb11-3"><a href="data-cleaning.html#cb11-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">time.chip =</span> <span class="fu">as.numeric</span>(time.chip))</span></code></pre></div>
+<p>The times recorded part of the way through the race are kind of messed up, so they could not be parsed into time objects automatically. Let’s try to figure out exactly how they are messed up.</p>
+<p>Three asides here:</p>
+<ol style="list-style-type: decimal">
+<li><p>we use the dplyr <code>%&gt;%</code> pipe operator to pass the output of one command as the first input into the next command. so the command above is equivalent to <code>glimpse(select(cal1020, starts_with("time.mile")))</code>, but is much easier to read.</p></li>
+<li><p>we use the dplyr <code>select()</code> function to choose a subset of columns, by name.</p></li>
+<li><p>we use the dplyr <code>starts_with()</code> command to identify column names that start with “time.mile”</p></li>
+</ol>
+<p>So, this allows us to just look at those two columns of interest.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="data-cleaning.html#cb12-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;time.mile&quot;</span>)) <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>## Rows: 3,252
+## Columns: 2
+## $ time.mile.5.25 &lt;chr&gt; &quot;25:12:00&quot;, &quot;25:12:00&quot;, &quot;25:31:00&quot;, &quot;26:47:00&quot;, &quot;26:46:00&quot;, &quot;27:41:00&quot;, &quot;27:54:00&quot;, &quot;29:10:00&quot;, &quot;28:41:00&quot;, …
+## $ time.mile.10   &lt;chr&gt; &quot;22:47&quot;, &quot;22:52&quot;, &quot;23:58&quot;, &quot;24:14:00&quot;, &quot;24:36:00&quot;, &quot;25:44:00&quot;, &quot;25:47:00&quot;, &quot;24:50:00&quot;, &quot;26:07:00&quot;, &quot;26:35:00…</code></pre>
+<p>So, the 5.25 mile time measurement seems to have recorded minutes in the first part, then seconds, then zeros. the 10 mile time measurement seems to have done something similar, but dropped the zeros for some cases.</p>
+<p>However, these are just the first few people we are looking at, if we look at the <code>tail()</code> of the data, we see that this coding seems to change for people who took more than an hour!</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="data-cleaning.html#cb14-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;time.mile&quot;</span>)) <span class="sc">%&gt;%</span> <span class="fu">tail</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   time.mile.5.25 time.mile.10
+##   &lt;chr&gt;          &lt;chr&gt;       
+## 1 1:31:59        1:36:12     
+## 2 ?              3:08:42     
+## 3 1:46:27        1:30:38     
+## 4 1:34:21        1:55:48     
+## 5 1:34:21        1:55:54     
+## 6 ?              3:30:18</code></pre>
+<p>So, to these strings are sometimes “?” (missing data), sometimes in a “mm:ss:00” format, sometimes in a “mm:ss” format, and sometimes in a “hh:mm:ss” format. To convert these into seconds, we will need to detect whether the string is missing, which format is being used, and do the appropriate calculation. We do this in a later section, as it is a bit more complicated than everything else we are undertaking…</p>
+</div>
+<div id="extract-sex-from-division-and-other-clues" class="section level2">
+<h2>Extract sex from division, and other clues</h2>
+<p>We do not yet have an explicit coding of runner sex, but the division column gives us a pretty big hint. Let’s look at the unique division names:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="data-cleaning.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(cal1020<span class="sc">$</span>Division)</span></code></pre></div>
+<pre><code>##  [1] &quot;10 Mile Overall&quot;    &quot;10 Mile M 35-39&quot;    &quot;10 Mile M 25-29&quot;    &quot;Wheelchair Top Fin&quot; &quot;10 Mile M 30-34&quot;    &quot;10 Mile Masters&quot;   
+##  [7] &quot;10 Mile M 50-54&quot;    &quot;10 Mile M 45-49&quot;    &quot;10 Mile M 40-44&quot;    &quot;10 Mile F 20-24&quot;    &quot;10 Mile F 35-39&quot;    &quot;10 Mile F 30-34&quot;   
+## [13] &quot;10 Mile F 25-29&quot;    &quot;10 Mile M 15-19&quot;    &quot;10 Mile M 55-59&quot;    &quot;10 Mile F 15-19&quot;    &quot;10 Mile F 40-44&quot;    &quot;10 Mile F 50-54&quot;   
+## [19] &quot;10 Mile M 20-24&quot;    &quot;10 Mile F 45-49&quot;    &quot;10 Mile M 12-14&quot;    &quot;10 Mile M 60-64&quot;    &quot;10 Mile F 55-59&quot;    &quot;10 Mile M 65-69&quot;   
+## [25] &quot;10 Mile F 60-64&quot;    &quot;Wheelchair M 1-99&quot;  &quot;10 Mile M 0- 0&quot;     &quot;10 Mile M 70-74&quot;    &quot;Wheelchair F 1-99&quot;  &quot;10 Mile F 65-69&quot;   
+## [31] &quot;10 Mile F 12-14&quot;    &quot;10 Mile M 75-79&quot;    &quot;10 Mile F 70-74&quot;    &quot;10 Mile F 75-79&quot;    &quot;10 Mile M 80-99&quot;</code></pre>
+<p>It seems that if the Division name includes " M " (with spaces!), we are talking about a male. If it includes " F ", we are talking about a female. We can use the <code>stringr::str_detect</code> command to do this. We will assign these two values independently, to make sure we didn’t overlook something, before merging them into one column.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="data-cleaning.html#cb18-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="data-cleaning.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is.male =</span> stringr<span class="sc">::</span><span class="fu">str_detect</span>(cal1020<span class="sc">$</span>Division, <span class="st">&quot; M &quot;</span>),</span>
+<span id="cb18-3"><a href="data-cleaning.html#cb18-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">is.female =</span> stringr<span class="sc">::</span><span class="fu">str_detect</span>(cal1020<span class="sc">$</span>Division, <span class="st">&quot; F &quot;</span>),</span>
+<span id="cb18-4"><a href="data-cleaning.html#cb18-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb18-5"><a href="data-cleaning.html#cb18-5" aria-hidden="true" tabindex="-1"></a>           is.male <span class="sc">&amp;</span> is.female <span class="sc">~</span> <span class="st">&quot;both&quot;</span>,</span>
+<span id="cb18-6"><a href="data-cleaning.html#cb18-6" aria-hidden="true" tabindex="-1"></a>           is.male <span class="sc">~</span> <span class="st">&quot;male&quot;</span>,</span>
+<span id="cb18-7"><a href="data-cleaning.html#cb18-7" aria-hidden="true" tabindex="-1"></a>           is.female <span class="sc">~</span> <span class="st">&quot;female&quot;</span>, </span>
+<span id="cb18-8"><a href="data-cleaning.html#cb18-8" aria-hidden="true" tabindex="-1"></a>           <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;neither&quot;</span>))</span></code></pre></div>
+<p>Now let’s see how many of each category we have. In theory, we should have only “male” and “female” labels (not because of some claim about transgender folks in the world at large, but because that’s how the division sex categorization works in this data set). We use the <code>dplyr::count(X)</code> command, which is a shortcut for <code>group_by(X) %&gt;% summarize(n=n())</code>.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="data-cleaning.html#cb19-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="sc">%&gt;%</span> <span class="fu">count</span>(sex)</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##   sex         n
+##   &lt;chr&gt;   &lt;int&gt;
+## 1 female   2054
+## 2 male     1180
+## 3 neither    18</code></pre>
+<p>Ok, so we don’t have any folks who were categorized as both male and female, but we have 18 folks who were not categorized as either based on division name. Who are they, and can we figure out their sex?</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-cleaning.html#cb21-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="data-cleaning.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&#39;neither&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="data-cleaning.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Overall.Place, name.first, Division, Sex.tot) <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="data-cleaning.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">18</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 18 x 4
+##    Overall.Place name.first Division           Sex.tot
+##            &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;                &lt;dbl&gt;
+##  1             1 Jordan     10 Mile Overall       1179
+##  2             2 Macdonard  10 Mile Overall       1179
+##  3             3 Sergio     10 Mile Overall       1179
+##  4             4 Jamesom    10 Mile Overall       1179
+##  5             5 Darren     10 Mile Overall       1179
+##  6             1 Edwin      Wheelchair Top Fin      11
+##  7             8 Lindsey    10 Mile Overall       2060
+##  8             2 Ralph      Wheelchair Top Fin      11
+##  9            13 Natasha    10 Mile Overall       2060
+## 10            15 Jeff       10 Mile Masters       1179
+## 11            16 Sarah      10 Mile Overall       2060
+## 12            17 Brian      10 Mile Masters       1179
+## 13            18 Robert     10 Mile Masters       1179
+## 14            20 Ariana     10 Mile Overall       2060
+## 15            25 Tori       10 Mile Overall       2060
+## 16            40 Deeann     10 Mile Masters       2060
+## 17            43 Theresa    10 Mile Masters       2060
+## 18            46 Celestine  10 Mile Masters       2060</code></pre>
+<p>These people all have really high placements, and Division names that reflect that they were in a special Division (professionals, masters, etc). We can try to guess their sex based on their name, but we can also notice that the “Sex.tot” column seems to be correlated with sex. It should, since it should tell us exactly how many competitors there were of the same sex as a particular runner. Let’s check:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-cleaning.html#cb23-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="sc">%&gt;%</span> <span class="fu">count</span>(sex,Sex.tot)</span></code></pre></div>
+<pre><code>## # A tibble: 8 x 3
+##   sex     Sex.tot     n
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt;
+## 1 female        2     2
+## 2 female     2060  2052
+## 3 male          5     5
+## 4 male         11     9
+## 5 male       1179  1166
+## 6 neither      11     2
+## 7 neither    1179     8
+## 8 neither    2060     8</code></pre>
+<p>So, those that were labeled as female (based on division name), have either 2 or 2060 as Sex.tot, and males have either 5, 11, or 1179. This is a bit weird. Let’s try to figure out what these different Sex.tot groups mean.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data-cleaning.html#cb25-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="data-cleaning.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Sex.tot <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">11</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="data-cleaning.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sex.tot, name.first, Division, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="data-cleaning.html#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Sex.tot) <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="data-cleaning.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">20</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 18 x 4
+##    Sex.tot name.first  Division           sex    
+##      &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;  
+##  1       2 Lauren      Wheelchair F 1-99  female 
+##  2       2 Karen       Wheelchair F 1-99  female 
+##  3       5 Unknown     10 Mile M 0- 0     male   
+##  4       5 Unknown     10 Mile M 0- 0     male   
+##  5       5 Unknown     10 Mile M 0- 0     male   
+##  6       5 Unknown     10 Mile M 0- 0     male   
+##  7       5 Unknown     10 Mile M 0- 0     male   
+##  8      11 Edwin       Wheelchair Top Fin neither
+##  9      11 Ralph       Wheelchair Top Fin neither
+## 10      11 N. Mauricio Wheelchair M 1-99  male   
+## 11      11 Chuck       Wheelchair M 1-99  male   
+## 12      11 Laird       Wheelchair M 1-99  male   
+## 13      11 Riley       Wheelchair M 1-99  male   
+## 14      11 James       Wheelchair M 1-99  male   
+## 15      11 David       Wheelchair M 1-99  male   
+## 16      11 Jake        Wheelchair M 1-99  male   
+## 17      11 Randy       Wheelchair M 1-99  male   
+## 18      11 Douglas     Wheelchair M 1-99  male</code></pre>
+<p>Ok, so Sex.tot=2 are the female Wheelchair racers, Sex.tot=11 are the male Wheelchair racers, Sex.tot=5 are some class of weird male runners who are missing a bunch of information, sex.tot=1179 is just male runners, and Sex.tot 2060 is female runners. Let’s assign a new sex column based on Sex.tot, and compare the two, to make sure we didn’t mess anything up.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="data-cleaning.html#cb27-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="data-cleaning.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex.2 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb27-3"><a href="data-cleaning.html#cb27-3" aria-hidden="true" tabindex="-1"></a>Sex.tot <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2060</span>) <span class="sc">~</span> <span class="st">&#39;female&#39;</span>,</span>
+<span id="cb27-4"><a href="data-cleaning.html#cb27-4" aria-hidden="true" tabindex="-1"></a>Sex.tot <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">5</span>, <span class="dv">1179</span>) <span class="sc">~</span> <span class="st">&#39;male&#39;</span>,</span>
+<span id="cb27-5"><a href="data-cleaning.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&#39;neither&#39;</span>))</span>
+<span id="cb27-6"><a href="data-cleaning.html#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="data-cleaning.html#cb27-7" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="sc">%&gt;%</span> <span class="fu">count</span>(sex, sex<span class="fl">.2</span>, <span class="at">match=</span>sex<span class="sc">==</span>sex<span class="fl">.2</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   sex     sex.2  match     n
+##   &lt;chr&gt;   &lt;chr&gt;  &lt;lgl&gt; &lt;int&gt;
+## 1 female  female TRUE   2054
+## 2 male    male   TRUE   1180
+## 3 neither female FALSE     8
+## 4 neither male   FALSE    10</code></pre>
+<p>So: we get exactly the same categorization from Sex.tot, except we can also correctly classify the folks who could not be identified from the Division name. Great, let’s reassign the sex.2 column to sex. While we are at it, let’s make a column that tells us whether someone was a wheelchair racer.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-cleaning.html#cb29-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="data-cleaning.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> sex<span class="fl">.2</span>,</span>
+<span id="cb29-3"><a href="data-cleaning.html#cb29-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">wheelchair =</span> stringr<span class="sc">::</span><span class="fu">str_detect</span>(Division, <span class="st">&quot;Wheelchair&quot;</span>))</span></code></pre></div>
+</div>
+<div id="get-corral-from-bib-number" class="section level2">
+<h2>Get corral from bib number</h2>
+<p>We are told that bib numbers correspond to starting corral, such that numbers 0-999 are in the first corral, 1000-1999 are in the second, etc. Let’s make a new column indicating corral number:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="data-cleaning.html#cb30-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(cal1020, <span class="at">corral =</span> <span class="fu">as.integer</span>(<span class="fu">floor</span>(cal1020<span class="sc">$</span>bib<span class="sc">/</span><span class="dv">1000</span>)))</span></code></pre></div>
+</div>
+<div id="fix-the-age-column-which-is-a-string-for-some-reason" class="section level2">
+<h2>fix the age column (which is a string for some reason)</h2>
+<p>Let’s see what’s happening with the age column, because it is a character, that means that at least some elements could not be interpreted as a number. If we force the age column to be a number, they will show up as NAs. So let’s see what information we would be throwing out by converting to NA:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data-cleaning.html#cb31-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(<span class="fu">as.numeric</span>(Age))) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Age, name.first)</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 2
+##   Age   name.first
+##   &lt;chr&gt; &lt;chr&gt;     
+## 1 ?     Unknown   
+## 2 ?     Unknown   
+## 3 ?     Unknown   
+## 4 ?     Unknown   
+## 5 ?     Unknown</code></pre>
+<p>Ah, so the only problem are the missing values, so we can just convert age to a number, since we want the “?” cells to be NA.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-cleaning.html#cb33-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(cal1020, <span class="at">Age =</span> <span class="fu">as.numeric</span>(Age))</span></code></pre></div>
+</div>
+<div id="get-time-out-of-the-mangled-5.25-and-10-mile-columns." class="section level2">
+<h2>Get time out of the mangled 5.25 and 10 mile columns.</h2>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="data-cleaning.html#cb34-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;time.mile&quot;</span>)) <span class="sc">%&gt;%</span> <span class="fu">tail</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   time.mile.5.25 time.mile.10
+##   &lt;chr&gt;          &lt;chr&gt;       
+## 1 1:31:59        1:36:12     
+## 2 ?              3:08:42     
+## 3 1:46:27        1:30:38     
+## 4 1:34:21        1:55:48     
+## 5 1:34:21        1:55:54     
+## 6 ?              3:30:18</code></pre>
+<p>Remember, these strings are in a weird format: either “?” (missing data), “mm:ss:00” , “mm:ss,” or “hh:mm:ss.” We need to detect the format, and do the appropriate calculation. The function below does exactly that.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="data-cleaning.html#cb36-1" aria-hidden="true" tabindex="-1"></a>parseWeirdTime <span class="ot">&lt;-</span> <span class="cf">function</span>(string){</span>
+<span id="cb36-2"><a href="data-cleaning.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(string <span class="sc">==</span> <span class="st">&quot;?&quot;</span>){</span>
+<span id="cb36-3"><a href="data-cleaning.html#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NA</span>)</span>
+<span id="cb36-4"><a href="data-cleaning.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb36-5"><a href="data-cleaning.html#cb36-5" aria-hidden="true" tabindex="-1"></a>    sub.strings <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(stringr<span class="sc">::</span><span class="fu">str_split</span>(string, <span class="st">&quot;:&quot;</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb36-6"><a href="data-cleaning.html#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>((<span class="fu">length</span>(sub.strings) <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">||</span> (sub.strings[<span class="dv">3</span>]<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> sub.strings[<span class="dv">1</span>]<span class="sc">&gt;</span><span class="dv">15</span>)){</span>
+<span id="cb36-7"><a href="data-cleaning.html#cb36-7" aria-hidden="true" tabindex="-1"></a>      <span class="co"># we are either in &quot;mm:ss&quot; or &quot;mm:ss:00&quot; format</span></span>
+<span id="cb36-8"><a href="data-cleaning.html#cb36-8" aria-hidden="true" tabindex="-1"></a>      hours <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb36-9"><a href="data-cleaning.html#cb36-9" aria-hidden="true" tabindex="-1"></a>      minutes <span class="ot">&lt;-</span> sub.strings[<span class="dv">1</span>]</span>
+<span id="cb36-10"><a href="data-cleaning.html#cb36-10" aria-hidden="true" tabindex="-1"></a>      seconds <span class="ot">&lt;-</span> sub.strings[<span class="dv">2</span>]</span>
+<span id="cb36-11"><a href="data-cleaning.html#cb36-11" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span>(sub.strings[<span class="dv">1</span>] <span class="sc">&lt;</span> <span class="dv">5</span>) {</span>
+<span id="cb36-12"><a href="data-cleaning.html#cb36-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># we are in &quot;hh:mm:ss&quot; format</span></span>
+<span id="cb36-13"><a href="data-cleaning.html#cb36-13" aria-hidden="true" tabindex="-1"></a>      hours <span class="ot">&lt;-</span> sub.strings[<span class="dv">1</span>]</span>
+<span id="cb36-14"><a href="data-cleaning.html#cb36-14" aria-hidden="true" tabindex="-1"></a>      minutes <span class="ot">&lt;-</span> sub.strings[<span class="dv">2</span>]</span>
+<span id="cb36-15"><a href="data-cleaning.html#cb36-15" aria-hidden="true" tabindex="-1"></a>      seconds <span class="ot">&lt;-</span> sub.strings[<span class="dv">3</span>]</span>
+<span id="cb36-16"><a href="data-cleaning.html#cb36-16" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb36-17"><a href="data-cleaning.html#cb36-17" aria-hidden="true" tabindex="-1"></a>      <span class="co"># if we see a number like 07:34:00, </span></span>
+<span id="cb36-18"><a href="data-cleaning.html#cb36-18" aria-hidden="true" tabindex="-1"></a>      <span class="co"># it doesn&#39;t make sense as either hh:mm:ss (too much time)</span></span>
+<span id="cb36-19"><a href="data-cleaning.html#cb36-19" aria-hidden="true" tabindex="-1"></a>      <span class="co"># nor as mm:ss (too short for running ~5 miles)</span></span>
+<span id="cb36-20"><a href="data-cleaning.html#cb36-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;string format doesn&#39;t make sense: &quot;</span>, string))</span>
+<span id="cb36-21"><a href="data-cleaning.html#cb36-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="cn">NA</span>)</span>
+<span id="cb36-22"><a href="data-cleaning.html#cb36-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb36-23"><a href="data-cleaning.html#cb36-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(hours<span class="sc">*</span><span class="dv">60</span><span class="sc">*</span><span class="dv">60</span> <span class="sc">+</span> minutes<span class="sc">*</span><span class="dv">60</span> <span class="sc">+</span> seconds)</span>
+<span id="cb36-24"><a href="data-cleaning.html#cb36-24" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb36-25"><a href="data-cleaning.html#cb36-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-26"><a href="data-cleaning.html#cb36-26" aria-hidden="true" tabindex="-1"></a><span class="fu">parseWeirdTime</span>(<span class="st">&quot;?&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data-cleaning.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parseWeirdTime</span>(<span class="st">&quot;30:44:00&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 1844</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="data-cleaning.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parseWeirdTime</span>(<span class="st">&quot;30:44&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 1844</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="data-cleaning.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parseWeirdTime</span>(<span class="st">&quot;2:30:44&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 9044</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="data-cleaning.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parseWeirdTime</span>(<span class="st">&quot;14:30:00&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;string format doesn&#39;t make sense: 14:30:00&quot;</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>How does this work?<br />
+1. it takes a string, and checks if it is equal to “?” if so, it returns <code>NA</code>, which is a special R data type that means “not available,” and indicates that the data are missing.<br />
+2. <code>stringr::str_split(string, ":")</code> splits strings into vectors of strings using “:” as a separator.<br />
+3. however, that function returns a list of vectors, and we just want the first element of that list with <code>[[1]]</code> (since our function is written to operate on just one string at a time)<br />
+4. <code>as.numeric</code> converts the individual strings to numbers.<br />
+5. we check if those numbers make sense as either “mm:ss” or as “hh:mm:ss,” and assign hours/minutes/second accordingly.<br />
+6. we then calculate seconds from the hours, minutes, seconds, and return it.</p>
+<p>Now we want to run this function on each element of the “time.mile” columns. However, this function is not “vectorized,” so we have to apply it to each element in isolation. the various “map” and “apply” functions are very well suited for this task. we use purr::map_dbl, to apply our function to a particular column, and return a list of numbers.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="data-cleaning.html#cb47-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(cal1020, </span>
+<span id="cb47-2"><a href="data-cleaning.html#cb47-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">time.mile.5.25 =</span> <span class="fu">map_dbl</span>(cal1020<span class="sc">$</span>time.mile.<span class="fl">5.25</span>, parseWeirdTime),</span>
+<span id="cb47-3"><a href="data-cleaning.html#cb47-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">time.mile.10 =</span> <span class="fu">map_dbl</span>(cal1020<span class="sc">$</span>time.mile<span class="fl">.10</span>, parseWeirdTime))</span>
+<span id="cb47-4"><a href="data-cleaning.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cal1020)</span></code></pre></div>
+<pre><code>## Rows: 3,252
+## Columns: 28
+## $ time.gun         &lt;dbl&gt; 2880, 2885, 2970, 3063, 3084, 3206, 3223, 3249, 3289, 3529, 3323, 3575, 3600, 3625, 3421, 3648, 3659, 3485…
+## $ time.chip        &lt;dbl&gt; 2880, 2885, 2970, 3062, 3083, 3206, 3222, 3241, 3289, 3318, 3320, 3363, 3388, 3413, 3421, 3435, 3445, 3485…
+## $ bib              &lt;dbl&gt; 1205, 9, 13, 15, 1303, 1213, 3, 1055, 12, 1351, 1054, 1216, 1352, 1218, 6, 1220, 1304, 18, 1353, 1305, 101…
+## $ name.first       &lt;chr&gt; &quot;Jordan&quot;, &quot;Macdonard&quot;, &quot;Sergio&quot;, &quot;Jamesom&quot;, &quot;Darren&quot;, &quot;Okwaro&quot;, &quot;Steven&quot;, &quot;Edwin&quot;, &quot;Lindsey&quot;, &quot;Derek&quot;, &quot;Ra…
+## $ name.last        &lt;chr&gt; &quot;Chipangama&quot;, &quot;Ondara&quot;, &quot;Reyes&quot;, &quot;Mora&quot;, &quot;Brown&quot;, &quot;Raura&quot;, &quot;Underwood&quot;, &quot;Figueroa&quot;, &quot;Scherf&quot;, &quot;Bradley&quot;, &quot;…
+## $ City             &lt;chr&gt; &quot;Flagstaff&quot;, &quot;Grand Prairie&quot;, &quot;Palmdale&quot;, &quot;Arroyo Grande&quot;, &quot;Solana Beach&quot;, &quot;Oceanside&quot;, &quot;Encinitas&quot;, &quot;Comm…
+## $ State            &lt;chr&gt; &quot;AZ&quot;, &quot;TX&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;NY&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;AZ&quot;, &quot;?&quot;,…
+## $ Division         &lt;chr&gt; &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile M …
+## $ Class.Position   &lt;dbl&gt; 1, 2, 3, 4, 5, 1, 1, 1, 1, 1, 1, 2, 3, 2, 2, 4, 1, 3, 2, 3, 1, 4, 1, 2, 1, 2, 5, 1, 1, 1, 5, 3, 1, 3, 1, 2…
+## $ Overall.Place    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 1, 8, 9, 2, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 2…
+## $ Age              &lt;dbl&gt; 25, 29, 32, 30, 28, 39, 26, 42, 27, 33, 60, 34, 33, 39, 26, 32, 41, 24, 42, 48, 51, 33, 46, 50, 44, 44, 26…
+## $ Zip              &lt;chr&gt; &quot;86004&quot;, &quot;75054&quot;, &quot;93551&quot;, &quot;93420&quot;, &quot;92075&quot;, &quot;92057&quot;, &quot;92024&quot;, &quot;90040&quot;, &quot;12440&quot;, &quot;92024&quot;, &quot;91016&quot;, &quot;92078&quot;…
+## $ Sex.place        &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 1, 1, 8, 2, 9, 10, 11, 2, 12, 13, 3, 14, 15, 16, 4, 17, 18, 19, 20, 5, 6, 7, 8, 21, 2…
+## $ Div.tot          &lt;dbl&gt; 3239, 3239, 3239, 3239, 3239, 3239, 3239, 13, 3239, 3239, 13, 3239, 3239, 3239, 3239, 3239, 3239, 3239, 32…
+## $ Sex.tot          &lt;dbl&gt; 1179, 1179, 1179, 1179, 1179, 1179, 1179, 11, 2060, 1179, 11, 1179, 1179, 1179, 2060, 1179, 1179, 2060, 11…
+## $ AG.tot           &lt;dbl&gt; 5, 5, 5, 5, 5, 118, 85, 1, 5, 139, 1, 139, 139, 118, 5, 139, 3, 5, 3, 3, 167, 5, 178, 167, 191, 191, 5, 81…
+## $ `5.25.mile.rank` &lt;chr&gt; &quot;3&quot;, &quot;2&quot;, &quot;4&quot;, &quot;6&quot;, &quot;5&quot;, &quot;7&quot;, &quot;8&quot;, &quot;1&quot;, &quot;9&quot;, &quot;10&quot;, &quot;INC&quot;, &quot;11&quot;, &quot;13&quot;, &quot;15&quot;, &quot;12&quot;, &quot;16&quot;, &quot;19&quot;, &quot;14&quot;, &quot;18&quot;, …
+## $ time.mile.5.25   &lt;dbl&gt; 1512, 1512, 1531, 1607, 1606, 1661, 1674, 1750, 1721, 1722, NA, 1752, 1754, 1760, 1753, 1790, 1816, 1758, …
+## $ `5.25.mile.pace` &lt;chr&gt; &quot;4:48/M&quot;, &quot;4:48/M&quot;, &quot;4:52/M&quot;, &quot;5:06/M&quot;, &quot;5:06/M&quot;, &quot;5:16/M&quot;, &quot;5:19/M&quot;, &quot;5:33/M&quot;, &quot;5:28/M&quot;, &quot;5:28/M&quot;, NA, &quot;5…
+## $ `10.mile.rank`   &lt;chr&gt; &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;1&quot;, &quot;8&quot;, &quot;9&quot;, &quot;13&quot;, &quot;10&quot;, &quot;12&quot;, &quot;15&quot;, &quot;16&quot;, &quot;13&quot;, &quot;11&quot;, &quot;25&quot;, &quot;18&quot;, &quot;1…
+## $ time.mile.10     &lt;dbl&gt; 1367, 1372, 1438, 1454, 1476, 1544, 1547, 1490, 1567, 1595, 3320, 1610, 1633, 1652, 1667, 1644, 1628, 1726…
+## $ `10.mile.pace`   &lt;chr&gt; &quot;2:17/M&quot;, &quot;2:17/M&quot;, &quot;2:24/M&quot;, &quot;2:25/M&quot;, &quot;2:28/M&quot;, &quot;2:34/M&quot;, &quot;2:35/M&quot;, &quot;2:29/M&quot;, &quot;2:37/M&quot;, &quot;2:40/M&quot;, &quot;5:32/…
+## $ is.male          &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, F…
+## $ is.female        &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
+## $ sex              &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, …
+## $ sex.2            &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, …
+## $ wheelchair       &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FAL…
+## $ corral           &lt;int&gt; 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1…</code></pre>
+<p>Let’s now check if this gave us sensible results. In theory, time for the first 5.25 miles, and the time between mile 5.25 and mile 10, should add up to the total time (time.chip; modulo some rounding error). If they do not, something is wrong.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data-cleaning.html#cb49-1" aria-hidden="true" tabindex="-1"></a>off.by<span class="fl">.2</span>sec <span class="ot">=</span> <span class="fu">abs</span>((cal1020<span class="sc">$</span>time.mile.<span class="fl">5.25</span> <span class="sc">+</span> cal1020<span class="sc">$</span>time.mile<span class="fl">.10</span>) <span class="sc">-</span> cal1020<span class="sc">$</span>time.chip) <span class="sc">&gt;</span> <span class="dv">2</span></span>
+<span id="cb49-2"><a href="data-cleaning.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(off.by<span class="fl">.2</span>sec)) <span class="co"># number of rows with missing data which precluded calculation</span></span></code></pre></div>
+<pre><code>## [1] 66</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-cleaning.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="sc">!</span>(off.by<span class="fl">.2</span>sec), <span class="at">na.rm=</span>T)     <span class="co"># number of rows where we were not off by more than 2 seconds</span></span></code></pre></div>
+<pre><code>## [1] 3186</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-cleaning.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((off.by<span class="fl">.2</span>sec), <span class="at">na.rm=</span>T)     <span class="co"># number of rows where we were off by more than 2 seconds</span></span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>So it looks like everything worked out!</p>
+</div>
+<div id="get-rid-of-some-unnecessary-columns" class="section level2">
+<h2>Get rid of some unnecessary columns</h2>
+<p>So, here’s where we are now:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data-cleaning.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cal1020)</span></code></pre></div>
+<pre><code>## Rows: 3,252
+## Columns: 28
+## $ time.gun         &lt;dbl&gt; 2880, 2885, 2970, 3063, 3084, 3206, 3223, 3249, 3289, 3529, 3323, 3575, 3600, 3625, 3421, 3648, 3659, 3485…
+## $ time.chip        &lt;dbl&gt; 2880, 2885, 2970, 3062, 3083, 3206, 3222, 3241, 3289, 3318, 3320, 3363, 3388, 3413, 3421, 3435, 3445, 3485…
+## $ bib              &lt;dbl&gt; 1205, 9, 13, 15, 1303, 1213, 3, 1055, 12, 1351, 1054, 1216, 1352, 1218, 6, 1220, 1304, 18, 1353, 1305, 101…
+## $ name.first       &lt;chr&gt; &quot;Jordan&quot;, &quot;Macdonard&quot;, &quot;Sergio&quot;, &quot;Jamesom&quot;, &quot;Darren&quot;, &quot;Okwaro&quot;, &quot;Steven&quot;, &quot;Edwin&quot;, &quot;Lindsey&quot;, &quot;Derek&quot;, &quot;Ra…
+## $ name.last        &lt;chr&gt; &quot;Chipangama&quot;, &quot;Ondara&quot;, &quot;Reyes&quot;, &quot;Mora&quot;, &quot;Brown&quot;, &quot;Raura&quot;, &quot;Underwood&quot;, &quot;Figueroa&quot;, &quot;Scherf&quot;, &quot;Bradley&quot;, &quot;…
+## $ City             &lt;chr&gt; &quot;Flagstaff&quot;, &quot;Grand Prairie&quot;, &quot;Palmdale&quot;, &quot;Arroyo Grande&quot;, &quot;Solana Beach&quot;, &quot;Oceanside&quot;, &quot;Encinitas&quot;, &quot;Comm…
+## $ State            &lt;chr&gt; &quot;AZ&quot;, &quot;TX&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;NY&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;AZ&quot;, &quot;?&quot;,…
+## $ Division         &lt;chr&gt; &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile M …
+## $ Class.Position   &lt;dbl&gt; 1, 2, 3, 4, 5, 1, 1, 1, 1, 1, 1, 2, 3, 2, 2, 4, 1, 3, 2, 3, 1, 4, 1, 2, 1, 2, 5, 1, 1, 1, 5, 3, 1, 3, 1, 2…
+## $ Overall.Place    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 1, 8, 9, 2, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 2…
+## $ Age              &lt;dbl&gt; 25, 29, 32, 30, 28, 39, 26, 42, 27, 33, 60, 34, 33, 39, 26, 32, 41, 24, 42, 48, 51, 33, 46, 50, 44, 44, 26…
+## $ Zip              &lt;chr&gt; &quot;86004&quot;, &quot;75054&quot;, &quot;93551&quot;, &quot;93420&quot;, &quot;92075&quot;, &quot;92057&quot;, &quot;92024&quot;, &quot;90040&quot;, &quot;12440&quot;, &quot;92024&quot;, &quot;91016&quot;, &quot;92078&quot;…
+## $ Sex.place        &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 1, 1, 8, 2, 9, 10, 11, 2, 12, 13, 3, 14, 15, 16, 4, 17, 18, 19, 20, 5, 6, 7, 8, 21, 2…
+## $ Div.tot          &lt;dbl&gt; 3239, 3239, 3239, 3239, 3239, 3239, 3239, 13, 3239, 3239, 13, 3239, 3239, 3239, 3239, 3239, 3239, 3239, 32…
+## $ Sex.tot          &lt;dbl&gt; 1179, 1179, 1179, 1179, 1179, 1179, 1179, 11, 2060, 1179, 11, 1179, 1179, 1179, 2060, 1179, 1179, 2060, 11…
+## $ AG.tot           &lt;dbl&gt; 5, 5, 5, 5, 5, 118, 85, 1, 5, 139, 1, 139, 139, 118, 5, 139, 3, 5, 3, 3, 167, 5, 178, 167, 191, 191, 5, 81…
+## $ `5.25.mile.rank` &lt;chr&gt; &quot;3&quot;, &quot;2&quot;, &quot;4&quot;, &quot;6&quot;, &quot;5&quot;, &quot;7&quot;, &quot;8&quot;, &quot;1&quot;, &quot;9&quot;, &quot;10&quot;, &quot;INC&quot;, &quot;11&quot;, &quot;13&quot;, &quot;15&quot;, &quot;12&quot;, &quot;16&quot;, &quot;19&quot;, &quot;14&quot;, &quot;18&quot;, …
+## $ time.mile.5.25   &lt;dbl&gt; 1512, 1512, 1531, 1607, 1606, 1661, 1674, 1750, 1721, 1722, NA, 1752, 1754, 1760, 1753, 1790, 1816, 1758, …
+## $ `5.25.mile.pace` &lt;chr&gt; &quot;4:48/M&quot;, &quot;4:48/M&quot;, &quot;4:52/M&quot;, &quot;5:06/M&quot;, &quot;5:06/M&quot;, &quot;5:16/M&quot;, &quot;5:19/M&quot;, &quot;5:33/M&quot;, &quot;5:28/M&quot;, &quot;5:28/M&quot;, NA, &quot;5…
+## $ `10.mile.rank`   &lt;chr&gt; &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;1&quot;, &quot;8&quot;, &quot;9&quot;, &quot;13&quot;, &quot;10&quot;, &quot;12&quot;, &quot;15&quot;, &quot;16&quot;, &quot;13&quot;, &quot;11&quot;, &quot;25&quot;, &quot;18&quot;, &quot;1…
+## $ time.mile.10     &lt;dbl&gt; 1367, 1372, 1438, 1454, 1476, 1544, 1547, 1490, 1567, 1595, 3320, 1610, 1633, 1652, 1667, 1644, 1628, 1726…
+## $ `10.mile.pace`   &lt;chr&gt; &quot;2:17/M&quot;, &quot;2:17/M&quot;, &quot;2:24/M&quot;, &quot;2:25/M&quot;, &quot;2:28/M&quot;, &quot;2:34/M&quot;, &quot;2:35/M&quot;, &quot;2:29/M&quot;, &quot;2:37/M&quot;, &quot;2:40/M&quot;, &quot;5:32/…
+## $ is.male          &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, F…
+## $ is.female        &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
+## $ sex              &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, …
+## $ sex.2            &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, …
+## $ wheelchair       &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FAL…
+## $ corral           &lt;int&gt; 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1…</code></pre>
+<p>Let’s get rid of the redundant columns, to make this more manageable. Here are the columns I don’t think we need:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-cleaning.html#cb57-1" aria-hidden="true" tabindex="-1"></a>drop <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;time.gun&#39;</span>,</span>
+<span id="cb57-2"><a href="data-cleaning.html#cb57-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;bib&#39;</span>,</span>
+<span id="cb57-3"><a href="data-cleaning.html#cb57-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;Class.Position&#39;</span>,</span>
+<span id="cb57-4"><a href="data-cleaning.html#cb57-4" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;Overall.Place&#39;</span>,</span>
+<span id="cb57-5"><a href="data-cleaning.html#cb57-5" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;Sex.place&#39;</span>,</span>
+<span id="cb57-6"><a href="data-cleaning.html#cb57-6" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;Div.tot&#39;</span>,</span>
+<span id="cb57-7"><a href="data-cleaning.html#cb57-7" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;Sex.tot&#39;</span>,</span>
+<span id="cb57-8"><a href="data-cleaning.html#cb57-8" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;AG.tot&#39;</span>,</span>
+<span id="cb57-9"><a href="data-cleaning.html#cb57-9" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;5.25.mile.rank&#39;</span>,</span>
+<span id="cb57-10"><a href="data-cleaning.html#cb57-10" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;5.25.mile.pace&#39;</span>,</span>
+<span id="cb57-11"><a href="data-cleaning.html#cb57-11" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;10.mile.rank&#39;</span>,</span>
+<span id="cb57-12"><a href="data-cleaning.html#cb57-12" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;10.mile.pace&#39;</span>,</span>
+<span id="cb57-13"><a href="data-cleaning.html#cb57-13" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;is.male&#39;</span>,</span>
+<span id="cb57-14"><a href="data-cleaning.html#cb57-14" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;is.female&#39;</span>,</span>
+<span id="cb57-15"><a href="data-cleaning.html#cb57-15" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;sex.2&#39;</span>)</span>
+<span id="cb57-16"><a href="data-cleaning.html#cb57-16" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">one_of</span>(drop))</span></code></pre></div>
+<p>Let’s also convert all the names to lower case.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-cleaning.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cal1020) <span class="ot">&lt;-</span> <span class="fu">tolower</span>(<span class="fu">names</span>(cal1020))</span>
+<span id="cb58-2"><a href="data-cleaning.html#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="data-cleaning.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cal1020)</span></code></pre></div>
+<pre><code>## Rows: 3,252
+## Columns: 13
+## $ time.chip      &lt;dbl&gt; 2880, 2885, 2970, 3062, 3083, 3206, 3222, 3241, 3289, 3318, 3320, 3363, 3388, 3413, 3421, 3435, 3445, 3485, …
+## $ name.first     &lt;chr&gt; &quot;Jordan&quot;, &quot;Macdonard&quot;, &quot;Sergio&quot;, &quot;Jamesom&quot;, &quot;Darren&quot;, &quot;Okwaro&quot;, &quot;Steven&quot;, &quot;Edwin&quot;, &quot;Lindsey&quot;, &quot;Derek&quot;, &quot;Ralp…
+## $ name.last      &lt;chr&gt; &quot;Chipangama&quot;, &quot;Ondara&quot;, &quot;Reyes&quot;, &quot;Mora&quot;, &quot;Brown&quot;, &quot;Raura&quot;, &quot;Underwood&quot;, &quot;Figueroa&quot;, &quot;Scherf&quot;, &quot;Bradley&quot;, &quot;Pi…
+## $ city           &lt;chr&gt; &quot;Flagstaff&quot;, &quot;Grand Prairie&quot;, &quot;Palmdale&quot;, &quot;Arroyo Grande&quot;, &quot;Solana Beach&quot;, &quot;Oceanside&quot;, &quot;Encinitas&quot;, &quot;Commer…
+## $ state          &lt;chr&gt; &quot;AZ&quot;, &quot;TX&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;NY&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;AZ&quot;, &quot;?&quot;, &quot;…
+## $ division       &lt;chr&gt; &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile M 35…
+## $ age            &lt;dbl&gt; 25, 29, 32, 30, 28, 39, 26, 42, 27, 33, 60, 34, 33, 39, 26, 32, 41, 24, 42, 48, 51, 33, 46, 50, 44, 44, 26, …
+## $ zip            &lt;chr&gt; &quot;86004&quot;, &quot;75054&quot;, &quot;93551&quot;, &quot;93420&quot;, &quot;92075&quot;, &quot;92057&quot;, &quot;92024&quot;, &quot;90040&quot;, &quot;12440&quot;, &quot;92024&quot;, &quot;91016&quot;, &quot;92078&quot;, …
+## $ time.mile.5.25 &lt;dbl&gt; 1512, 1512, 1531, 1607, 1606, 1661, 1674, 1750, 1721, 1722, NA, 1752, 1754, 1760, 1753, 1790, 1816, 1758, 18…
+## $ time.mile.10   &lt;dbl&gt; 1367, 1372, 1438, 1454, 1476, 1544, 1547, 1490, 1567, 1595, 3320, 1610, 1633, 1652, 1667, 1644, 1628, 1726, …
+## $ sex            &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;m…
+## $ wheelchair     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE…
+## $ corral         &lt;int&gt; 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</code></pre>
+</div>
+<div id="getting-new-columns-from-simple-transformations" class="section level2">
+<h2>Getting new columns from simple transformations</h2>
+<p>Let’s specify that time is in seconds in the column name, and calculate the pace and speed for the total race, and each half.</p>
+<p><strong>min/mile from time in seconds</strong> We can get total pace over the 10 miles via division:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="data-cleaning.html#cb60-1" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span> </span>
+<span id="cb60-2"><a href="data-cleaning.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time.sec =</span> time.chip,</span>
+<span id="cb60-3"><a href="data-cleaning.html#cb60-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">speed.mph =</span> <span class="dv">10</span><span class="sc">/</span>(time.sec<span class="sc">/</span><span class="dv">60</span><span class="sc">/</span><span class="dv">60</span>),</span>
+<span id="cb60-4"><a href="data-cleaning.html#cb60-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">pace.min =</span> (time.sec<span class="sc">/</span><span class="dv">60</span>)<span class="sc">/</span><span class="dv">10</span>,</span>
+<span id="cb60-5"><a href="data-cleaning.html#cb60-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">speed.mph.first =</span> <span class="fl">5.25</span><span class="sc">/</span>(time.mile.<span class="fl">5.25</span><span class="sc">/</span><span class="dv">60</span><span class="sc">/</span><span class="dv">60</span>),</span>
+<span id="cb60-6"><a href="data-cleaning.html#cb60-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">speed.mph.second=</span> (<span class="dv">10</span><span class="fl">-5.25</span>)<span class="sc">/</span>(time.mile<span class="fl">.10</span><span class="sc">/</span><span class="dv">60</span><span class="sc">/</span><span class="dv">60</span>),</span>
+<span id="cb60-7"><a href="data-cleaning.html#cb60-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">pace.min.first =</span> (time.mile.<span class="fl">5.25</span><span class="sc">/</span><span class="dv">60</span>)<span class="sc">/</span><span class="fl">5.25</span>,</span>
+<span id="cb60-8"><a href="data-cleaning.html#cb60-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">pace.min.second =</span> (time.mile<span class="fl">.10</span><span class="sc">/</span><span class="dv">60</span>)<span class="sc">/</span>(<span class="dv">10</span><span class="fl">-5.25</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb60-9"><a href="data-cleaning.html#cb60-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>time.chip)</span>
+<span id="cb60-10"><a href="data-cleaning.html#cb60-10" aria-hidden="true" tabindex="-1"></a>                   </span>
+<span id="cb60-11"><a href="data-cleaning.html#cb60-11" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cal1020)</span></code></pre></div>
+<pre><code>## Rows: 3,252
+## Columns: 19
+## $ name.first       &lt;chr&gt; &quot;Jordan&quot;, &quot;Macdonard&quot;, &quot;Sergio&quot;, &quot;Jamesom&quot;, &quot;Darren&quot;, &quot;Okwaro&quot;, &quot;Steven&quot;, &quot;Edwin&quot;, &quot;Lindsey&quot;, &quot;Derek&quot;, &quot;Ra…
+## $ name.last        &lt;chr&gt; &quot;Chipangama&quot;, &quot;Ondara&quot;, &quot;Reyes&quot;, &quot;Mora&quot;, &quot;Brown&quot;, &quot;Raura&quot;, &quot;Underwood&quot;, &quot;Figueroa&quot;, &quot;Scherf&quot;, &quot;Bradley&quot;, &quot;…
+## $ city             &lt;chr&gt; &quot;Flagstaff&quot;, &quot;Grand Prairie&quot;, &quot;Palmdale&quot;, &quot;Arroyo Grande&quot;, &quot;Solana Beach&quot;, &quot;Oceanside&quot;, &quot;Encinitas&quot;, &quot;Comm…
+## $ state            &lt;chr&gt; &quot;AZ&quot;, &quot;TX&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;NY&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;AZ&quot;, &quot;?&quot;,…
+## $ division         &lt;chr&gt; &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile M …
+## $ age              &lt;dbl&gt; 25, 29, 32, 30, 28, 39, 26, 42, 27, 33, 60, 34, 33, 39, 26, 32, 41, 24, 42, 48, 51, 33, 46, 50, 44, 44, 26…
+## $ zip              &lt;chr&gt; &quot;86004&quot;, &quot;75054&quot;, &quot;93551&quot;, &quot;93420&quot;, &quot;92075&quot;, &quot;92057&quot;, &quot;92024&quot;, &quot;90040&quot;, &quot;12440&quot;, &quot;92024&quot;, &quot;91016&quot;, &quot;92078&quot;…
+## $ time.mile.5.25   &lt;dbl&gt; 1512, 1512, 1531, 1607, 1606, 1661, 1674, 1750, 1721, 1722, NA, 1752, 1754, 1760, 1753, 1790, 1816, 1758, …
+## $ time.mile.10     &lt;dbl&gt; 1367, 1372, 1438, 1454, 1476, 1544, 1547, 1490, 1567, 1595, 3320, 1610, 1633, 1652, 1667, 1644, 1628, 1726…
+## $ sex              &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, …
+## $ wheelchair       &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FAL…
+## $ corral           &lt;int&gt; 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+## $ time.sec         &lt;dbl&gt; 2880, 2885, 2970, 3062, 3083, 3206, 3222, 3241, 3289, 3318, 3320, 3363, 3388, 3413, 3421, 3435, 3445, 3485…
+## $ speed.mph        &lt;dbl&gt; 12.500000, 12.478336, 12.121212, 11.757022, 11.676938, 11.228946, 11.173184, 11.107683, 10.945576, 10.8499…
+## $ pace.min         &lt;dbl&gt; 4.800000, 4.808333, 4.950000, 5.103333, 5.138333, 5.343333, 5.370000, 5.401667, 5.481667, 5.530000, 5.5333…
+## $ speed.mph.first  &lt;dbl&gt; 12.500000, 12.500000, 12.344873, 11.761045, 11.768369, 11.378688, 11.290323, 10.800000, 10.981987, 10.9756…
+## $ speed.mph.second &lt;dbl&gt; 12.509144, 12.463557, 11.891516, 11.760660, 11.585366, 11.075130, 11.053652, 11.476510, 10.912572, 10.7210…
+## $ pace.min.first   &lt;dbl&gt; 4.800000, 4.800000, 4.860317, 5.101587, 5.098413, 5.273016, 5.314286, 5.555556, 5.463492, 5.466667, NA, 5.…
+## $ pace.min.second  &lt;dbl&gt; 4.796491, 4.814035, 5.045614, 5.101754, 5.178947, 5.417544, 5.428070, 5.228070, 5.498246, 5.596491, 11.649…</code></pre>
+</div>
+<div id="fixing-states." class="section level2">
+<h2>Fixing states.</h2>
+<p>There are a few puzzling things remaining; the states look weird.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="data-cleaning.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(cal1020<span class="sc">$</span>state))</span></code></pre></div>
+<pre><code>##  [1] &quot;?&quot;          &quot;AB&quot;         &quot;AL&quot;         &quot;AP&quot;         &quot;ARIZONA&quot;    &quot;AZ&quot;         &quot;B.C.N&quot;      &quot;BC&quot;         &quot;CA&quot;        
+## [10] &quot;CALIFORNIA&quot; &quot;CO&quot;         &quot;CT&quot;         &quot;DC&quot;         &quot;EUR&quot;        &quot;FL&quot;         &quot;FLORIDA&quot;    &quot;GA&quot;         &quot;HI&quot;        
+## [19] &quot;ID&quot;         &quot;IL&quot;         &quot;KY&quot;         &quot;MA&quot;         &quot;MD&quot;         &quot;ME&quot;         &quot;MEXICO&quot;     &quot;MI&quot;         &quot;MN&quot;        
+## [28] &quot;MO&quot;         &quot;MT&quot;         &quot;ND&quot;         &quot;NE&quot;         &quot;NEBRASKA&quot;   &quot;NEVADA&quot;     &quot;NEW JERSEY&quot; &quot;NJ&quot;         &quot;NL&quot;        
+## [37] &quot;NV&quot;         &quot;NY&quot;         &quot;OH&quot;         &quot;OK&quot;         &quot;ON&quot;         &quot;OR&quot;         &quot;SD&quot;         &quot;TX&quot;         &quot;UT&quot;        
+## [46] &quot;UTAH&quot;       &quot;VA&quot;         &quot;VIRGINIA&quot;   &quot;WA&quot;         &quot;WASHINGTON&quot; &quot;WI&quot;         &quot;WV&quot;</code></pre>
+<p>We can clearly have some redundant coding, and a few mysterious things like “AP” and “B.C.N.” Let’s make a dictionary to remap these values. BCN is likely Baja – let’s call it MEXICO. BC is likely british columbia – call it CANADA. AB is probably alberta, ON is ontario, NL is newfoundland/labrador (zip code makes sense), “AP” is us military in the pacific… let’s call that NA.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="data-cleaning.html#cb64-1" aria-hidden="true" tabindex="-1"></a>state.rename <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;ARIZONA&quot;</span> <span class="ot">=</span> <span class="st">&quot;AZ&quot;</span>,</span>
+<span id="cb64-2"><a href="data-cleaning.html#cb64-2" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;CALIFORNIA&quot;</span> <span class="ot">=</span> <span class="st">&quot;CA&quot;</span>,</span>
+<span id="cb64-3"><a href="data-cleaning.html#cb64-3" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;FLORIDA&quot;</span> <span class="ot">=</span> <span class="st">&quot;FL&quot;</span>,</span>
+<span id="cb64-4"><a href="data-cleaning.html#cb64-4" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;NEBRASKA&quot;</span> <span class="ot">=</span> <span class="st">&quot;NE&quot;</span>,</span>
+<span id="cb64-5"><a href="data-cleaning.html#cb64-5" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;NEVADA&quot;</span> <span class="ot">=</span> <span class="st">&quot;NV&quot;</span>,</span>
+<span id="cb64-6"><a href="data-cleaning.html#cb64-6" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;NEW JERSEY&quot;</span> <span class="ot">=</span> <span class="st">&quot;NJ&quot;</span>,</span>
+<span id="cb64-7"><a href="data-cleaning.html#cb64-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;VIRGINIA&quot;</span> <span class="ot">=</span> <span class="st">&quot;VA&quot;</span>,</span>
+<span id="cb64-8"><a href="data-cleaning.html#cb64-8" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;WASHINGTON&quot;</span> <span class="ot">=</span> <span class="st">&quot;WA&quot;</span>,  <span class="co"># could be DC, but zipcode indicates WA state.</span></span>
+<span id="cb64-9"><a href="data-cleaning.html#cb64-9" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;B.C.N&quot;</span> <span class="ot">=</span> <span class="st">&quot;MEXICO&quot;</span>,</span>
+<span id="cb64-10"><a href="data-cleaning.html#cb64-10" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;BC&quot;</span> <span class="ot">=</span> <span class="st">&quot;CANADA&quot;</span>,</span>
+<span id="cb64-11"><a href="data-cleaning.html#cb64-11" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;AB&quot;</span> <span class="ot">=</span> <span class="st">&quot;CANADA&quot;</span>,</span>
+<span id="cb64-12"><a href="data-cleaning.html#cb64-12" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;NL&quot;</span> <span class="ot">=</span> <span class="st">&quot;CANADA&quot;</span>,</span>
+<span id="cb64-13"><a href="data-cleaning.html#cb64-13" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;ON&quot;</span> <span class="ot">=</span> <span class="st">&quot;CANADA&quot;</span>,</span>
+<span id="cb64-14"><a href="data-cleaning.html#cb64-14" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;AP&quot;</span> <span class="ot">=</span> <span class="cn">NA</span>,</span>
+<span id="cb64-15"><a href="data-cleaning.html#cb64-15" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;UTAH&quot;</span> <span class="ot">=</span> <span class="st">&quot;UT&quot;</span>,</span>
+<span id="cb64-16"><a href="data-cleaning.html#cb64-16" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;EUR&quot;</span> <span class="ot">=</span> <span class="st">&quot;EUROPE&quot;</span>,</span>
+<span id="cb64-17"><a href="data-cleaning.html#cb64-17" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;?&quot;</span> <span class="ot">=</span> <span class="cn">NA</span>)</span>
+<span id="cb64-18"><a href="data-cleaning.html#cb64-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-19"><a href="data-cleaning.html#cb64-19" aria-hidden="true" tabindex="-1"></a>cal1020 <span class="ot">&lt;-</span> cal1020 <span class="sc">%&gt;%</span> </span>
+<span id="cb64-20"><a href="data-cleaning.html#cb64-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="fu">ifelse</span>(state <span class="sc">%in%</span> <span class="fu">names</span>(state.rename),</span>
+<span id="cb64-21"><a href="data-cleaning.html#cb64-21" aria-hidden="true" tabindex="-1"></a>                        state.rename[state],</span>
+<span id="cb64-22"><a href="data-cleaning.html#cb64-22" aria-hidden="true" tabindex="-1"></a>                        state))</span>
+<span id="cb64-23"><a href="data-cleaning.html#cb64-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-24"><a href="data-cleaning.html#cb64-24" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(cal1020<span class="sc">$</span>state))</span></code></pre></div>
+<pre><code>##  [1] &quot;AL&quot;     &quot;AZ&quot;     &quot;CA&quot;     &quot;CANADA&quot; &quot;CO&quot;     &quot;CT&quot;     &quot;DC&quot;     &quot;EUROPE&quot; &quot;FL&quot;     &quot;GA&quot;     &quot;HI&quot;     &quot;ID&quot;     &quot;IL&quot;     &quot;KY&quot;    
+## [15] &quot;MA&quot;     &quot;MD&quot;     &quot;ME&quot;     &quot;MEXICO&quot; &quot;MI&quot;     &quot;MN&quot;     &quot;MO&quot;     &quot;MT&quot;     &quot;ND&quot;     &quot;NE&quot;     &quot;NJ&quot;     &quot;NV&quot;     &quot;NY&quot;     &quot;OH&quot;    
+## [29] &quot;OK&quot;     &quot;OR&quot;     &quot;SD&quot;     &quot;TX&quot;     &quot;UT&quot;     &quot;VA&quot;     &quot;WA&quot;     &quot;WI&quot;     &quot;WV&quot;</code></pre>
+<p>Well, we fixed most of them. Perhaps a more thorough check of zipcode-state consistency would make sense if we really cared about state of origin.</p>
+</div>
+<div id="save-the-cleaned-data." class="section level2">
+<h2>Save the cleaned data.</h2>
+<p>So here’s what we have at the end:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="data-cleaning.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cal1020)</span></code></pre></div>
+<pre><code>## Rows: 3,252
+## Columns: 19
+## $ name.first       &lt;chr&gt; &quot;Jordan&quot;, &quot;Macdonard&quot;, &quot;Sergio&quot;, &quot;Jamesom&quot;, &quot;Darren&quot;, &quot;Okwaro&quot;, &quot;Steven&quot;, &quot;Edwin&quot;, &quot;Lindsey&quot;, &quot;Derek&quot;, &quot;Ra…
+## $ name.last        &lt;chr&gt; &quot;Chipangama&quot;, &quot;Ondara&quot;, &quot;Reyes&quot;, &quot;Mora&quot;, &quot;Brown&quot;, &quot;Raura&quot;, &quot;Underwood&quot;, &quot;Figueroa&quot;, &quot;Scherf&quot;, &quot;Bradley&quot;, &quot;…
+## $ city             &lt;chr&gt; &quot;Flagstaff&quot;, &quot;Grand Prairie&quot;, &quot;Palmdale&quot;, &quot;Arroyo Grande&quot;, &quot;Solana Beach&quot;, &quot;Oceanside&quot;, &quot;Encinitas&quot;, &quot;Comm…
+## $ state            &lt;chr&gt; &quot;AZ&quot;, &quot;TX&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;NY&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;AZ&quot;, NA, …
+## $ division         &lt;chr&gt; &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile Overall&quot;, &quot;10 Mile M …
+## $ age              &lt;dbl&gt; 25, 29, 32, 30, 28, 39, 26, 42, 27, 33, 60, 34, 33, 39, 26, 32, 41, 24, 42, 48, 51, 33, 46, 50, 44, 44, 26…
+## $ zip              &lt;chr&gt; &quot;86004&quot;, &quot;75054&quot;, &quot;93551&quot;, &quot;93420&quot;, &quot;92075&quot;, &quot;92057&quot;, &quot;92024&quot;, &quot;90040&quot;, &quot;12440&quot;, &quot;92024&quot;, &quot;91016&quot;, &quot;92078&quot;…
+## $ time.mile.5.25   &lt;dbl&gt; 1512, 1512, 1531, 1607, 1606, 1661, 1674, 1750, 1721, 1722, NA, 1752, 1754, 1760, 1753, 1790, 1816, 1758, …
+## $ time.mile.10     &lt;dbl&gt; 1367, 1372, 1438, 1454, 1476, 1544, 1547, 1490, 1567, 1595, 3320, 1610, 1633, 1652, 1667, 1644, 1628, 1726…
+## $ sex              &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, …
+## $ wheelchair       &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FAL…
+## $ corral           &lt;int&gt; 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+## $ time.sec         &lt;dbl&gt; 2880, 2885, 2970, 3062, 3083, 3206, 3222, 3241, 3289, 3318, 3320, 3363, 3388, 3413, 3421, 3435, 3445, 3485…
+## $ speed.mph        &lt;dbl&gt; 12.500000, 12.478336, 12.121212, 11.757022, 11.676938, 11.228946, 11.173184, 11.107683, 10.945576, 10.8499…
+## $ pace.min         &lt;dbl&gt; 4.800000, 4.808333, 4.950000, 5.103333, 5.138333, 5.343333, 5.370000, 5.401667, 5.481667, 5.530000, 5.5333…
+## $ speed.mph.first  &lt;dbl&gt; 12.500000, 12.500000, 12.344873, 11.761045, 11.768369, 11.378688, 11.290323, 10.800000, 10.981987, 10.9756…
+## $ speed.mph.second &lt;dbl&gt; 12.509144, 12.463557, 11.891516, 11.760660, 11.585366, 11.075130, 11.053652, 11.476510, 10.912572, 10.7210…
+## $ pace.min.first   &lt;dbl&gt; 4.800000, 4.800000, 4.860317, 5.101587, 5.098413, 5.273016, 5.314286, 5.555556, 5.463492, 5.466667, NA, 5.…
+## $ pace.min.second  &lt;dbl&gt; 4.796491, 4.814035, 5.045614, 5.101754, 5.178947, 5.417544, 5.428070, 5.228070, 5.498246, 5.596491, 11.649…</code></pre>
+<p>Note: we save this both as a csv file (to be easy to read by all other software), and as an ‘RData’ file, which is only useful in R, but preserves all the “data types” we defined.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="data-cleaning.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(cal1020, <span class="at">file=</span><span class="st">&quot;cal1020.cleaned.csv&quot;</span>)</span>
+<span id="cb68-2"><a href="data-cleaning.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(<span class="at">list =</span> <span class="st">&quot;cal1020&quot;</span>, <span class="at">file=</span><span class="st">&quot;cal1020.cleaned.Rdata&quot;</span>)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="R-start.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="descriptive.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/notes/data-cleaning.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

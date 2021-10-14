@@ -1,10 +1,4 @@
----
-  output: 
-    html_document
----
-  
-
-# y~x vs x~y vs principle component line
+## y~x vs x~y vs principle component line  {#bivariate-lines}
 
 Let's consider the fake IQ-GPA from our overview of [OLS regression](ols.html) again.
 

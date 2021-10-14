@@ -1,11 +1,6 @@
----
-output: 
-    html_document
----
+## Statistics via the Normal distribution {#NHST-basics-normal}
 
-# Statistics via the Normal distribution
-
-Based on the [central limit theorem](prob-clt-normal.html) and our derivation of the properties of the [sampling distribution of the sample mean](nhst-sampling-distribution.html), we can undertake some classical (frequentist) statistics.
+Based on the [central limit theorem](#prob-clt-normal) and our derivation of the properties of the [sampling distribution of the sample mean](#nhst-sampling-distribution), we can undertake some classical (frequentist) statistics.
 
 When we calculate the mean of $n$ independent samples from a population with mean $\mu_X$ and standard deviation $\sigma_X$, the "sampling distribution of the sample mean" will follow roughly a Normal distribution, centered on the population mean, and with the standard deviation reduced by a factor of $\sqrt{n}$:
 
@@ -17,7 +12,7 @@ $(\bar x^{(n)}-\mu_X) \sim \operatorname{Normal}\left({0, \frac{\sigma_X}{\sqrt{
 
 We use the convenient phrase **standard error of the sample mean** to refer to the standard deviation of the sampling distribution of the sample mean (and also the standard deviation of the sampling distribution of the error -- the deviation of the sample mean from the population mean).  This standard error of the sample mean (or more accurately, its estimate) is something that you will often see as error bars in graphs (and the axis label or figure caption will say something like "mean $\pm$ s.e.m.").
 
-## (Normal) Null hypothesis significance testing (NHST)
+### (Normal) Null hypothesis significance testing (NHST)
  
 Let's say we go back in time to carefully study the case of [Phineas Gage](https://en.wikipedia.org/wiki/Phineas_Gage).  We compose a battery to measure emotional decision-making, assemble a large number of normal/healthy patients, and administer this battery to all of them.  We find that the emotional-decision making scores are distributed in the healthy population as a Normal distribution with mean=50, sd=5.  We then measure Phineas Gage, and find he has a score of 39.  
 
@@ -69,7 +64,7 @@ p.value
 p.value < alpha
 ```
 
-### Two-tailed tests
+#### Two-tailed tests
 
 So far we have done a "one-tailed" test, in the sense that we were only testing whether Gage's score was really low, compared to the normal population.  In general, you should favor two-tailed tests, which can reject the null hypothesis whether the score is too extreme in either the positive or negative direction.  You should favor two-tailed tests when they are possible, since there are few cases when you would actually ignore an extremely high score even though you expected an extremely low one (which is what a one-tailed test presumes). 
 
@@ -119,7 +114,7 @@ So what is this p-value that we've been calculating?  It is the probability that
 
 What a p-value is **not** the probability that the null hypothesis is true (this requires the Bayesian calculation of P(H0 | data), rather than integrating over P(data | H0), as we have done).
 
-## Normal tests with sample means
+### Normal tests with sample means
 
 Imagine that instead of having one Phineas Gage, there was an epidemic of exploding, scull-piercing tamping irons all piercing the frontal lobes of many railroad workers.  You can administer your test to 5 such unlucky "Gages", and you want to compare their average to the population.  To do this, you will need to calculate their mean, and you will need to calculate the sampling distribution of the sample mean under the null hypothesis (that these individuals' scores are samples from the overall population).
 
@@ -168,7 +163,7 @@ p.value
 p.value <= alpha
 ```
 
-## Z-scores and Z-tests
+### Z-scores and Z-tests
 
 As we see, we now have enough machinery in place to do null hypothesis tests with the normal distribution.  However, it is useful to introduce the notion of a **z-score**, as most classical instruction in statistics use such "standardized" statistics (rather than the raw scores and means as we have).
 
@@ -182,7 +177,7 @@ It is critical to note that whenever we calculate a z-score, we do so relative t
 
 Generally, we want to z-score some value relative to the (presumed) *sampling distribution* of that value.  If we have an IQ score, we z-score it to the assumed sampling distribution of IQ.  If we have the mean of 10 IQ scores, we z-score that sample mean to the sampling distribution of the sample mean of 10 IQ scores.  Such z-scores will serve as our "test statistics" for Z-tests, and also will be used to estimate Normal confidence intervals.
 
-## Z-tests
+### Z-tests
 
 To run the "Z-test" to assess whether the mean of our 5 Gages' scores was sufficiently different from the null hypothesis distribution of the mean of 5 regular person scores we would first Z-transform it: subtract the mean of the sampling distribution of the sample mean, and divide by the standard deviation of the sampling distribution of the sample mean:   
 $Z_{\bar x} = (\bar x - \mu_{\bar x})/\sigma_{\bar x}$    
@@ -258,7 +253,7 @@ p.value <= alpha
 
 Hopefully, it is clear at this point that these procedures are all doing the same thing, just with slight mathematical transformations that make some things less transparent, but other things more convenient.  They all yield the same answer.
 
-## (Normal) Confidence intervals on the sample mean
+### (Normal) Confidence intervals on the sample mean
 
 Recall that the sampling distribution of the *deviation of the sample mean from the population mean* -- the sampling distribution of the error of our sample mean -- is given by:
 
@@ -324,7 +319,7 @@ $\bar x \pm \sigma_{\bar x} Z_{\alpha/2}^*$
 
 Thus, we see that if the null hypothesis mean does not fall in the $(1-\alpha)$ confidence interval, then we can reject that null hypothesis mean with a two-tailed significance test with a Type I error rate of $\alpha$.  So, checking whether the p-value for a null hypothesis z-test is less than $\alpha=0.05$ is equivalent to checking whether the null hypothesis mean falls outside of the 95% confidence interval.
 
-## Special critical Z-values
+### Special critical Z-values
 
 Everyone using statistics would benefit from knowing a few special Z-scores, since they make back-of-the-envelope calculations easy when you want to evaluate some results in a talk or a poster.  
 
@@ -338,17 +333,17 @@ Everyone using statistics would benefit from knowing a few special Z-scores, sin
 
 These numbers can all be easily obtained via `pnorm()` and `qnorm()` in R, but often you might benefit from having them in your head.
 
-# Rarity of Z-tests and Z- confidence intervals
+### Rarity of Z-tests and Z- confidence intervals
 
 R doesn't have a z-test function built in (although a few libraries offer one).  This is because z-tests are so rarely done in practice, because carrying out a z-test requires that we **know the population standard deviation**.  Consequently, when we reject the null hypothesis in a z-test, we reject the null of *a particular population mean **and** and a particular population standard deviation*.  This is very rarely what we want, so we use t-tests instead (which assume that we estimate the standard deviation from the sample).
 
 Furthermore, using z-tests to define confidence intervals is even more rare, because when we define a confidence interval, we do not want to assume particular parameters of the population distribution (like its mean, and standard deviation).  In the vast majority of cases, we will use the t-distribution, rather than the Normal Z-distribution for our null hypothesis tests and confidence intervals on the mean.
 
-## What are these percents and probabilities?
+### What are these percents and probabilities?
 
 It is important to consider what these percents and probabilities are.  This interpretation of confidence intervals and probabilities will be the same for every single confidence interval and p value we calculate.  So we will keep reiterating it.
 
-### So what is a p-value?  
+#### So what is a p-value?  
 
 We obtained the p value by calculating the probability with the following logic: we calculated the sampling distribution of the test statistic if we were to take many samples (of the same size as ours) from the null hypothesis population, calculate the test statistic on each of those samples, then look at the histogram of those samples.  The proportion of those samples that are more extreme than the test-statistic we saw in our *actual* sample, is the p-value.   
 

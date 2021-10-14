@@ -1,9 +1,4 @@
----
-  output: 
-    html_document
----
-  
-# Anscombe's quartet
+## Anscombe's quartet {#bivariate-anscombe}
 
 The data for [Anscombe's quartet](https://en.wikipedia.org/wiki/Anscombe%27s_quartet) are built into R, and it is a somewhat useful exercise to reshape the data frame and produce the plot.
 

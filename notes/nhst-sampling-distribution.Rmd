@@ -1,17 +1,12 @@
----
-output: 
-    html_document
----
+## Sampling distributions {#NHST-sampling}
 
-# Sampling distributions
-
-## TL; DR.
+### TL; DR.
 
 - Frequentist statistics are based on the distribution of statistics we might expect to see if we were to run the experiment many times.  These are called 'sampling distributions'.
 
 - The most common one is the "sampling distribution of the sample mean", which is Normal (assuming the central limit theorem holds), has a mean equal to the mean of the underlying population, and has a standard deviation equal to the standard deviation of the underlying population divided by the square root of n (the sample size).  This standard deviation of the sampling distribution of the sample mean is often called the "standard error of the mean".
 
-## Logic
+### Logic
 
 Our data are a sample.  If we were to rerun the experiment, we would get a different sample.  The sampling distribution of something (technically, of a random variable) is the probability distribution describing the probability that this random variable will take on any possible value when we sample it.  For instance, let's consider a measurement of a sampled person's IQ.  Although we actually got some measurement, from the perspective of frequentist statistics, we must consider what other measurements we could have seen -- so we say that the sampling distribution of a measurement of IQ is Normal with a mean of 100 and a standard deviation of 15 (this is how IQ is defined).  
 
@@ -60,7 +55,7 @@ ggplot(df, aes(x=mean.iq, color=as.factor(n), fill=as.factor(n)))+geom_density(a
 
 What this is designed to illustrate is that if we take a step back from the data we *actually have* and consider the data we *could have had*, we see that many different samples are possible, and many different sample means are possible.  Which sample means are more or less likely depends on the size of our sample, and the sampling distribution of the individual data points.  The resulting probability distribution of sample means we could have seen is the "sampling distribution of the sample mean".  Such sampling distributions exist for every statistic we could conjure up (sample standard deviation, sample kurtosis, etc.).
 
-## Expectation about the sampling distribution of the sample mean.
+### Expectation about the sampling distribution of the sample mean.
 
 Formally, we assume that a sample of size $n$ corresponds to $n$ random variables independently and identically distributed according to the sampling distribution of the data:
 
@@ -165,7 +160,7 @@ $\bar x^{(n)} \sim \operatorname{Normal}\left({\mu_X, \frac{\sigma_X}{\sqrt{n}}}
 
 This calculation about the sampling distribution of the sample mean is the basis of many statistical procedures.
 
-## Standard error (of the sample mean)
+### Standard error (of the sample mean)
 
 Often we are interested in how our sample mean ($\bar x^{(n)}$) differs from the population mean ($\mu_X$). What can we say about the distribution of the *error* of our sample mean: $\bar x^{(n)} - \mu_X$?  Well, using our expectation rules for adding a constant, we can see that:
 

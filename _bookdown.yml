@@ -7,13 +7,52 @@ language:
 rmd_files:
   [
     "index.Rmd",
-
     "course-syllabus.Rmd",
     "course-201a.Rmd",
 # "201b.Rmd",
     "course-projects.Rmd",
+    "notes/R-hw.Rmd",
+    # R
+    "notes/config.Rmd",
     "notes/R-start.Rmd",
+    "notes/rmarkdown.Rmd",
+    #descriptive
+    "notes/data-cleaning.Rmd",
+    "notes/descriptive.Rmd",
+    # visualization
     "notes/visualizations.Rmd",
     "notes/vis.ggplot.Rmd",
+    # probability
+    "notes/prob-terms.Rmd",
+    "notes/prob-foundations.Rmd",
+    "notes/prob-conditional.Rmd",
+    "notes/prob-monte-carlo.Rmd",
+    "notes/prob-rv.Rmd",
+    "notes/prob-rv-functions.Rmd",
+    "notes/prob-expectation.Rmd",
+    "notes/prob-clt-normal.Rmd",
+    # NHST 
+    "notes/nhst-simulation.Rmd",
+    "notes/nhst-sampling-distribution.Rmd",
+    "notes/nhst-basics-normal.Rmd",
+    "notes/nhst-theory-normal.Rmd",
+    "notes/theory-binomial.Rmd",
+    "notes/nhst-t-distribution.Rmd",
+    # standard tests
+    "notes/nhst-t-tests.Rmd",
+    "notes/nhst-binomial-test.Rmd",
+    "notes/nhst-chi-squared.Rmd",
+    # bivariate stats
+    "notes/bivariate.Rmd",
+    "notes/bivariate-anscombe.Rmd",
+    "notes/bivariate-covariance.Rmd",
+    "notes/bivariate-correlation.Rmd",
+    "notes/bivariate-ols.Rmd",
+    "notes/bivariate-lines.Rmd",
+    "notes/bivariate-determination.Rmd",
+    "notes/bivariate-significance.Rmd",
+    "notes/bivariate-prediction.Rmd",
+    "notes/bivariate-ols-diagnostics.Rmd",
+    
   ]
 

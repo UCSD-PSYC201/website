@@ -1,9 +1,4 @@
----
-output: 
-    html_document
----
-
-# From probability to statistics with the Binomial
+## From probability to statistics with the Binomial {#theory-binomial}
 
 These notes are (a) very mathy, (b) very optional, and (c) cover a very broad range of material that we will not directly address this term.  I hope that for especially advanced and ambitious folks, this kind of theoretical exposition of what is done, and why, in various statistical methods will be helpful.  For folks who are less comfortable with math, this will be a whole lot of difficult material that is likely to increase, rather than reduce, confusion.
 
@@ -11,7 +6,7 @@ These notes are (a) very mathy, (b) very optional, and (c) cover a very broad ra
 Let's say our data are the outcomes of 10 coin flips obtained by flipping a coin 10 times:  
 $X = \{x_1, x_2, ..., x_10\} = \{H,H,H,H,H,H,H,H,T,T\}$.
 
-## Data description / summary
+### Data description / summary
 
 The first thing we might do is summarize the data.  Whenever we summarize data we inevitably make some assumptions about which aspects of our data are important, and which are not.  Often, these assumptions reflect our hypotheses about how the data were generated, and which aspects of the data ought to be relatively stable across samples.   "Descriptive statistics" is usually used as the opposite of "inferential statistics", suggesting that when we choose some way to summarize the data, we are in no way drawing inferences or attempting to generalize from the sample.  This is true only technically, but not practically, since our data descriptions often tend to coincide with estimators of model parameters.  Hopefully this will become more clear as this section continues.
 
@@ -49,17 +44,17 @@ $\frac{\text{# repeats}}{\text{# consecutive pairs}} = 0.\bar8$, etc.
 
 In short, the choice of which aspects of the data to summarize necessarily reflects some implicit beliefs about the structure that ought to be present in the data.  Similarly, when we decide to present some [graphical summary](../visualization/visualization.html) of the data, we will also need to choose which aspects of the data to emphasize, and which can be obscured. Therefore the choice of which descriptive statistics to report and consider should be done with ample thought and care (like everything else in scientific research)
 
-## Estimation
+### Estimation
 
 Descriptive statistics are somewhat motivated by an (implicitly) assumed model of the data, if we make this process explicit, we will postulate a particular [statistical model](../introduction/uses-of-models.html) of the data.  We usually call this the *population* model, which will have some unknown **parameters**.  For instance, we might suppose that our sequence of coin flips reflect independent, identically distributed outcomes from the flip of a bent coin that comes up heads with probability $\theta$ (theta; note we are now switching to using greek letters for population parameters), and tails with probability $1-\theta$. Thus our model of the data is that the number of heads, $k$, out of $n$ flips is a sample from a Binomial: $k \sim \operatorname{Binomial}(k \mid n, \theta)$, and we need to use our sample of coin flips to estimate the population parameter (obtaining the estimate $\hat\theta$).
 
-### Point Estimates
+#### Point Estimates
 
 Point estimates are a single value, corresponding to our best guess about the latent parameter; these are contrasted with *interval estimates* which provide a range of plausible values that the parameter might be.  We will consider two approaches to estimating parameters, in our case just $\theta$: **Maximum Likelihood** and **Maximum A Posteriori**. 
 
 There are others methods for estimation, but explaining how they work, and the logic behind them, is rather convoluted.  Moreover, there is rarely any reason to prefer them.  Popular alternative approaches include "Method of Moments" and "Minimum squared error" (a.k.a. "Least squares").  Later in the course we will talk about least squares estimates, but this will be in the context of models where least squares error estimates are equivalent to the maximum likelihood estimates, so while we will use the least squares estimation procedure, we can think of it as a convenient way to obtain a maximum likelihood estimate.  (One notable exception is estimators for the variance.)
 
-#### Classical (Maximum Likelihood) estimate
+##### Classical (Maximum Likelihood) estimate
 
 The Maximum Likelihood estimate (ML estimate) aims to find the parameter value $\theta$ which makes the data most likely, thus maximizing the likelihood function.  
 
@@ -103,7 +98,7 @@ thetas[which(lik.theta==max(lik.theta))]
 
 The $\theta$ for which the likelihood is greatest is 0.8.  Thus, our maximum likelihood estimate is $\hat \theta_{ML} = 0.8$.  The hat operator ($\hat \cdot$) is convention for indicating an estimate of a parameter value, the subscript usually denotes the type of estimator used to obtain the estimate (here "ML" for "maximum likelihood").  Note that for many statistical models, the maximum likelihood estimate need not be calculated numerically, but has an analytical solution; we will go over these when appropriate in the future, but for now, I want to convey what the maximum likelihood estimator means.
 
-#### Bayesian (Maximum a posteriori) estimate
+##### Bayesian (Maximum a posteriori) estimate
 
 The maximum a posteriori estimate (MAP estimate) uses Bayes' rule to invert the probability, to obtain $P(\theta|X)$ from $P(X|\theta)$.  Of course, to do so one must specify some sort of prior distribution over the parameter $\theta$ ($P(\theta)$; this need to choose a prior is one reason why some are uneasy about Bayesian estimation).  Let's say we believe that a coin is unlikely to be biased too far away from 0.5, so our prior will be centered on 0.5.  We can express such a prior with a [beta distribution](https://en.wikipedia.org/wiki/Beta_distribution).  
 
@@ -137,19 +132,19 @@ Note that
 
 Here the the maximum a posteriori (MAP) estimate is 0.75; we would write this as $\hat \theta_{MAP} = 0.75$.  (the MAP estimate under a uniform prior gives us the same estimate as the maximum likelihood).
 
-#### Estimators
+##### Estimators
 
 While the two approaches we have described are general, all-purpose methods to obtain ML and MAP estimates, typically, we will not work through all of this.  Instead we will use special types of statistics (again, statistics meaning "functions of the data") which someone else has proven to yield the appropriate estimates: these are called **estimators**.  For instance, $k/n$ is a maximum likelihood estimator for the Bernoulli/Binomial $\theta$, in the sense that it will always give the $\theta$ value which maximizes $\mathcal{L}(D|\theta)$.  The sample mean (which we will get to later) $\bar x = \sum_{i=1}^n x_i / n$ is the maximum likelihood estimator for the mean ($\mu$) when we assume the data come from a Gaussian, because, again, it will always maximize the Gaussian likelihood.  So, estimators are functions of the data that yield useful estimates.  
 
 Not all estimators map neatly on to the ML estimate, and sometimes this is quite desirable.  For instance, the maximum likelihood estimate of the variance is biased because of the skewed shape of the likelihood function for variance.  In this case, a different estimator is used (which can be thought of as a correction to the ML estimate).
 
-### Interval Estimates
+#### Interval Estimates
 
 Our point estimates, $\hat \theta_{ML}$ and $\hat \theta_{MAP}$, are not particularly useful on their own, because they are bound to have some error/uncertainty due to sampling variability.  In other words: if we flip the same coin 10 more times, we will get different outcomes, and the number of heads will not be exactly 8; thus, the 8/10 estimate from our data arises from the idiosyncrasies of our specific sample.  Consequently, instead of providing a single best guess (a point) as an estimate, it is usually preferable to provide a range (interval) of guesses around our best estimate, to indicate the expected precision of our estimate.  Usually these are expressed as a percentage (e.g., a 95\% interval).  And for the general case we will often refer to a $100*q\%$ interval (where $q$ is between 0 and 1).
 
 However, when providing such interval estimate, the difference between frequentist and Bayesian approaches to statistics becomes quite important.
 
-#### Bayesian Credible Intervals
+##### Bayesian Credible Intervals
 
 I will start by describing Bayesian interval estimates, called "credible intervals", because their definition, interpretation, and procedure for calculation is intuitive -- it is what most people think of when they read "95\% interval estimate of men's shoe size is 7 to 11", or other such statements.  
 
@@ -171,7 +166,7 @@ Obviously, the validity of our estimates here is contingent on the granularity o
 
 These credible intervals are constructed from the posterior distribution of the parameter given the data; thus we can make statements like "given the data, (and our prior), the probability that $\theta$ is between 0.46 and 0.91 is 95%". 
 
-#### Frequentist Confidence Intervals
+##### Frequentist Confidence Intervals
 
 Frequentists are not as lucky as Bayesians when it comes to constructing interval estimates.  According to the philosophy of frequentist statistics, there exists a true parameter value in the world.  This value is fixed, and it is meaningless to assign probabilities to different possible parameter values (because probabilities are relative frequencies, and the parameter value will always be the same -- it is fixed).  Consequently, a given interval estimate either includes, or does not include, the true parameter value, and again, we cannot assign a probability to the statement that "the true parameter value is within this interval" (that statement is either true or false, and it will always be either true or false, so we can't assign it a relative frequency).  However, while we cannot make frequentist probability statements about a particular estimate, we can make probability statements about our *procedure*, so we might say, "the procedure that I used for constructing this 95% confidence interval, if repeated many many times in different experiments, will contain the respective true parameter values 95% of the time".
 
@@ -183,7 +178,7 @@ That's all well and good, but how do we actually obtain a confidence interval in
 $\hat\theta \pm Z_{\alpha/2} \sqrt{\frac{\hat\theta(1-\hat\theta)}{n}}$,   
 where $Z_{\alpha/2}$ is the z-score for $(\alpha/2)$ -- the $(\alpha/2)$ quantile of the standard normal distribution (we will discuss this later).  Since we haven't yet talked about the normal distribution, we will not discus this approximate confidence interval further until we are really interested in categorical data; plus, that interval estimate will be inappropriate because of our small sample size).
 
-#### Confidence intervals from null hypothesis tests
+##### Confidence intervals from null hypothesis tests
 
 Instead of using a confidence interval from the normal approximation, we will consider the "exact" frequentist confidence interval, purely for pedagogical (not practical) purposes.  Under this approach, we construct a confidence interval via significance testing.  This yields the second interpretation of a frequentist confidence interval:  "A $100q\%$ confidence interval for a parameter $\theta$ is the range of values that $\theta_0$ (the null hypothesis value of $\theta$) could take on without you being able to reject the null hypothesis with your data at significance level $\alpha = 1-q$".  We will now construct a confidence interval for our Bernoulli $\theta$ in this manner (Although normally this could done analytically, here we will go through the exercise of calculating it numerically).
 
@@ -198,7 +193,7 @@ range(not.rejected.thetas)
 
 So the interval we get out is [0.45 0.96].
 
-## Null Hypothesis Significance testing (NHST)
+### Null Hypothesis Significance testing (NHST)
 
 Hypothesis testing typically follows these steps:
 
@@ -248,7 +243,7 @@ Note that we did a one-tailed test, meaning we only looked for extreme outcomes 
 
 The statistical test we just described is often called the [Binomial test](https://en.wikipedia.org/wiki/Binomial_test) (obviously because it is based on the binomial distribution), which might be run with `binomial.test()` in R.  While it is useful for testing null hypotheses about the probability underlying a bunch of data that comes from Bernoulli trials, it is used more often to test null hypotheses about the [median or sign](https://en.wikipedia.org/wiki/Sign_test).
 
-## Model selection
+### Model selection
 
 Thus far every individual analysis we have done has assumed a particular model for our data: for instance, we assumed that the coin flips are independent, but perhaps biased; or the converse: the coin flips are not independent, but unbiased with respect to heads/tails). How do we decide between these two models?  This is the domain of model selection, and all model selection approaches have a similar structure: they find a tradeoff between how well a given model can fit the data and how complicated the model is.
 
@@ -262,7 +257,7 @@ $M_2$: The data are sequentially dependent samples, the first one is H or with p
 
 Which model is a better description of our data?  
 
-### Penalized (maximum) likelihood selection criteria
+#### Penalized (maximum) likelihood selection criteria
 
 First, let's consider the [Akaike information criterion (AIC)](https://en.wikipedia.org/wiki/Akaike_information_criterion) to choose a model.  AIC is defined as: 
 
@@ -299,7 +294,7 @@ $\operatorname{AIC}_2 = 2(2)-2\log \mathcal{L}_2(D \mid \hat \theta_{ML}) = 4-2 
 
 So of the three models proposed, $M_1$ wins, in the sense that it has the lowest AIC value.  So, our data are best described as sequentially dependent; however, the increase in maximized likelihood obtained from the more complicated $M_2$ does not sufficiently offset the extra parameter.  This is generally how penalized maximum likelihood model selection works (e.g., [BIC](https://en.wikipedia.org/wiki/Bayesian_information_criterion) differs only in that it has a slightly different magnitude of penalty for each additional parameter).
 
-### Bayesian model selection (and Bayes Factors)
+#### Bayesian model selection (and Bayes Factors)
 
 Bayesian model selection works a bit differently than penalized maximum likelihood criteria.  Instead of adopting an ad-hoc penalty for extra parameters, we will calculate the *marginal likelihood* of the model, by marginalizing over parameters.  This requires specifying a *prior* about the parameters for each model.
 
@@ -354,7 +349,7 @@ p.data = sum(p.M*p.data.M)
 
 This kinds of Bayesian model selection is hard because calculating $P(D|M)$ -- the likelihood of the data while marginalizing over possible parameter values under that model -- is hard.  
 
-#### Bayes Factors
+##### Bayes Factors
 
 Often Bayesian model selection is used to compare just two hypotheses: some null $H_0$, which has an assumption of an effect of 0, and some alternative $H_1$ in which the effect size is a parameter.
 

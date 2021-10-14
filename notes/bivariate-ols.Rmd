@@ -1,10 +1,4 @@
----
-  output: 
-    html_document
----
-
-
-# Ordinary Least-Squares (OLS) Regression
+## Ordinary Least-Squares (OLS) Regression  {#bivariate-ols}
 
 In OLS regression we have one numerical response variable ($y$), and one numerical explanatory variable ($x$), and we model the relationship between the two as a line plus some error in ($y$):
 
@@ -38,7 +32,7 @@ Here we show the individual $x,y$ points as black dots, the underlying linear re
 
 (4) Errors are normally distributed.  While this assumption is not necessary for calculating the least squares $B$ values, it is necessary for some of the null hypothesis tests we will be using to assess statistical significance of estimated model parameters.
 
-## Regression terminology
+### Regression terminology
 
 Let's start with some terminology:
 
@@ -52,7 +46,7 @@ The **identity line** is $y=x$ (in other words: $B_0=0$, $B_1=1$).
 
 $\varepsilon_i$ is the **residual**, or **error**, of the $i$th point: how far the real $y$ value differs from the $y$ value we predict using our linear function of $x$.  In all regression, the goal is to estimate $B$ so as to minimize the sum of the squares of these residuals -- the sum of squared errors.
 
-## Estimating the regression line.
+### Estimating the regression line.
 
 Let's generate some fake data, and then fit a line to them.  
 
@@ -68,7 +62,7 @@ g1 = ggplot(iq.gpa, aes(iq,gpa))+
 
 This fit gives us an intercept ($B_0$) and a slope ($B_1$) for the line that minimizes the sum of squared errors.  
 
-### Math behind estimating the regression line
+#### Math behind estimating the regression line
 
 When estimating the regression line we are interested in finding the slope ($B_1$) and intercept ($B_0$) values that will make the predicted y values $\hat y_i = B_0 + B_1 x_i$ as close to actual $y_i$ values as possible.  Formally, we want to find the $B$ values that minimize the sum of squared errors: $\sum (y_i - \hat y_i)^2$.
 
@@ -153,7 +147,7 @@ $s_e = \sqrt{\frac{1}{n-2} \operatorname{SS}[e]}$
 s.e = sqrt(SS.error/(n-2))
 ```
 
-## Standard errors of regression coefficients
+### Standard errors of regression coefficients
 
 We can get the (marginal) standard errors of the slope and intercept using the `summary` function to get further details of the model fit:
 
@@ -161,7 +155,7 @@ We can get the (marginal) standard errors of the slope and intercept using the `
 summary(lm.fit)
 ```
 
-### Math behind regression line errors
+#### Math behind regression line errors
 
 It is worth looking at the equations used to calculate the marginal standard errors for the slope and intercept.  Both standard errors increase with greater standard deviations of the residuals, and decrease with sample size; however, they also change in interesting ways with the standard deviation of $x$, and the mean of $x$.
 
@@ -181,7 +175,7 @@ $s\{B_0\} = \sqrt{\left({\frac{s_e}{\sqrt(n)}}\right)^2 + \left({\bar x s_e \fra
 s.b0 = s.e*sqrt(1/n + m.x^2/s.x^2/(n-1))
 ```
 
-## Confidence intervals and tests for regression coefficients
+### Confidence intervals and tests for regression coefficients
 
 The `summary` function by default returns the t-test statistic and p-values for comparing parameter values to 0, which we can extract via the `coef` function:
 
@@ -202,7 +196,7 @@ confint(lm.fit, "(Intercept)", 0.95)
 confint(lm.fit, "iq", 0.95)
 ```
 
-### Calculating t-tests and intervals
+#### Calculating t-tests and intervals
 
 Just as in the case of all of our t-tests for various mean comparisons, we are going to use the t-distribution to obtain p-values and get confidence intervals.
 

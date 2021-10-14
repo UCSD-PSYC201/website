@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Probability | UCSD Psyc 201ab / CSS 205 / Psyc 193</title>
+  <meta name="description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Probability | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  <meta name="github-repo" content="UCSD-PSYC201/website" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Probability | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  
+  <meta name="twitter:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="visualization.html"/>
+<link rel="next" href="NHST.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html"><i class="fa fa-check"></i>Syllabus</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#instructors"><i class="fa fa-check"></i>Instructors</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#class-meetings"><i class="fa fa-check"></i>Class meetings</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#grading"><i class="fa fa-check"></i>Grading</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#class-resources"><i class="fa fa-check"></i>Class Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html"><i class="fa fa-check"></i>201a Schedule</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-0-introduction"><i class="fa fa-check"></i>Week 0: Introduction</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-1-data"><i class="fa fa-check"></i>Week 1: Data</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-2-visualization"><i class="fa fa-check"></i>Week 2: Visualization</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-3-theoretical-foundations"><i class="fa fa-check"></i>Week 3: Theoretical foundations</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-4-linear-model-regression"><i class="fa fa-check"></i>Week 4: Linear model: Regression</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-5-linear-model-multiple-regression"><i class="fa fa-check"></i>Week 5: Linear model: Multiple regression</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-6-linear-model-categorical-predictors"><i class="fa fa-check"></i>Week 6: Linear model: Categorical predictors</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-7-linear-model-ancova-diagnostics"><i class="fa fa-check"></i>Week 7: Linear model: ANCOVA, diagnostics</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-8-linear-model-linearizing-transforms"><i class="fa fa-check"></i>Week 8: Linear model: Linearizing transforms</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-9-covarying-errors-repeated-measures-random-effects"><i class="fa fa-check"></i>Week 9: Covarying errors (repeated measures / random effects)</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-10-review-and-preview"><i class="fa fa-check"></i>Week 10: Review and preview</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html"><i class="fa fa-check"></i>Projects</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#examples-of-this-sort-of-thing"><i class="fa fa-check"></i>Examples of this sort of thing</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a"><i class="fa fa-check"></i>201a</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-timeline"><i class="fa fa-check"></i>201a Timeline</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#groups"><i class="fa fa-check"></i>Groups</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-project-plan"><i class="fa fa-check"></i>201a Project plan</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-preliminary-data-summaries"><i class="fa fa-check"></i>201a Preliminary data summaries</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-write-ups"><i class="fa fa-check"></i>201a Write-ups</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-presentation"><i class="fa fa-check"></i>201a Presentation</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-group-evaluation"><i class="fa fa-check"></i>201a Group-evaluation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#b"><i class="fa fa-check"></i>201b</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#data-sources"><i class="fa fa-check"></i>Data sources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html"><i class="fa fa-check"></i>R homework</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#grading-1"><i class="fa fa-check"></i>Grading</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#collaboration"><i class="fa fa-check"></i>Collaboration</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#submitting-r-assignments"><i class="fa fa-check"></i>Submitting R Assignments</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#writing-r-scripts"><i class="fa fa-check"></i>Writing R scripts</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#submitting-your-assignment"><i class="fa fa-check"></i>Submitting your assignment</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#additional-resources."><i class="fa fa-check"></i>Additional resources.</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Notes</b></span></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html"><i class="fa fa-check"></i>Getting started with R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#R-install"><i class="fa fa-check"></i>Installing R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#R-intro"><i class="fa fa-check"></i>Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#better-data-analysis-code."><i class="fa fa-check"></i>Better data analysis code.</a></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#using-r-markdown"><i class="fa fa-check"></i>Using R-markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i>Data cleaning – worked example</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#read-file-with-readr"><i class="fa fa-check"></i>Read file with readr</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#first-glimpse-at-the-data."><i class="fa fa-check"></i>First glimpse at the data.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#what-we-want-to-do"><i class="fa fa-check"></i>What we want to do</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#rename-columns"><i class="fa fa-check"></i>rename columns</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#convert-time-columns-into-seconds."><i class="fa fa-check"></i>convert time columns into seconds.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#extract-sex-from-division-and-other-clues"><i class="fa fa-check"></i>Extract sex from division, and other clues</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-corral-from-bib-number"><i class="fa fa-check"></i>Get corral from bib number</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#fix-the-age-column-which-is-a-string-for-some-reason"><i class="fa fa-check"></i>fix the age column (which is a string for some reason)</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-time-out-of-the-mangled-5.25-and-10-mile-columns."><i class="fa fa-check"></i>Get time out of the mangled 5.25 and 10 mile columns.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-rid-of-some-unnecessary-columns"><i class="fa fa-check"></i>Get rid of some unnecessary columns</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#getting-new-columns-from-simple-transformations"><i class="fa fa-check"></i>Getting new columns from simple transformations</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#fixing-states."><i class="fa fa-check"></i>Fixing states.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#save-the-cleaned-data."><i class="fa fa-check"></i>Save the cleaned data.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html"><i class="fa fa-check"></i>Descriptive statistics</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#descriptive-statistics-are-implicit-estimators."><i class="fa fa-check"></i>Descriptive statistics are implicit estimators.</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#describing-central-tendency."><i class="fa fa-check"></i>Describing central tendency.</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#describing-dispersion"><i class="fa fa-check"></i>Describing dispersion</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#descriptions-of-shape."><i class="fa fa-check"></i>Descriptions of shape.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i>Visualizations</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#general-rules-for-scientific-data-visualization."><i class="fa fa-check"></i>General rules for scientific data visualization.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#picking-a-plot-whats-convention"><i class="fa fa-check"></i>Picking a plot (what’s convention)</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-0"><i class="fa fa-check"></i>Categorical ~ 0</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#histogram"><i class="fa fa-check"></i>Histogram</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#pie-chart"><i class="fa fa-check"></i>Pie chart</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#stacked-area"><i class="fa fa-check"></i>Stacked area</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-0"><i class="fa fa-check"></i>numerical ~ 0</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#histogram-density"><i class="fa fa-check"></i>Histogram &amp; density</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-categorical"><i class="fa fa-check"></i>numerical ~ categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#bar-plot-with-error-bars"><i class="fa fa-check"></i>Bar plot with error bars</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#jittered-data-points."><i class="fa fa-check"></i>Jittered data points.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#violaviolin-plot"><i class="fa fa-check"></i>Viola/Violin plot</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#box-and-whiskers-plot"><i class="fa fa-check"></i>Box and whiskers plot</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#overlayed-densities"><i class="fa fa-check"></i>Overlayed densities</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#empirical-cumulative-distribution"><i class="fa fa-check"></i>Empirical cumulative distribution</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#comparisons"><i class="fa fa-check"></i>Comparisons</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#recommendations"><i class="fa fa-check"></i>Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-numerical-2-x-numerical-0"><i class="fa fa-check"></i>numerical ~ numerical (2 x numerical ~ 0)</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#scatter-and-heatmap"><i class="fa fa-check"></i>Scatter and heatmap</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#conditional-means"><i class="fa fa-check"></i>Conditional means</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-numerical-categorical"><i class="fa fa-check"></i>numerical ~ numerical + categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-numerical"><i class="fa fa-check"></i>categorical ~ numerical</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#x-categorical-and-categorical-categorical"><i class="fa fa-check"></i>2 x categorical and categorical ~ categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#heatmap"><i class="fa fa-check"></i>Heatmap</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-categorical"><i class="fa fa-check"></i>categorical ~ categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#extra-plot-notes."><i class="fa fa-check"></i>Extra plot notes.</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-2-x-categorical"><i class="fa fa-check"></i>numerical ~ 2 x categorical</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#bin-width-and-bandwidths"><i class="fa fa-check"></i>bin width and bandwidths</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#visualization"><i class="fa fa-check"></i>ggplot</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#installation."><i class="fa fa-check"></i>Installation.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#basic-overview."><i class="fa fa-check"></i>Basic overview.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#changing-labels."><i class="fa fa-check"></i>Changing labels.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#themes-and-elements-and-properties."><i class="fa fa-check"></i>Themes and elements and properties.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#changing-display-properties-of-plotted-elements."><i class="fa fa-check"></i>Changing display properties of plotted elements.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#other-geometric-elements."><i class="fa fa-check"></i>Other geometric elements.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#assembling-multiple-plots-in-one-figure"><i class="fa fa-check"></i>Assembling multiple plots in one figure</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i>Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-terms"><i class="fa fa-check"></i>Probability terms</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#absolute-probability-statements-prob"><i class="fa fa-check"></i>Absolute probability statements {prob}</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-comparisons"><i class="fa fa-check"></i>Probability comparisons</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#proportional-magnitudes-and-confusion"><i class="fa fa-check"></i>Proportional magnitudes and confusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-foundations"><i class="fa fa-check"></i>Foundations of probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#set-notation-for-combinations-of-outcomes."><i class="fa fa-check"></i>Set notation for combinations of outcomes.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#basic-probability-definition-and-axioms"><i class="fa fa-check"></i>Basic probability definition and axioms</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#events-and-the-rules-of-probability."><i class="fa fa-check"></i>Events and the rules of probability.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-conditional"><i class="fa fa-check"></i>Conditional probability and Bayes</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#chain-rule"><i class="fa fa-check"></i>Chain rule</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#partitions-and-total-probability"><i class="fa fa-check"></i>Partitions and total probability</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#bayes-rule"><i class="fa fa-check"></i>Bayes’ rule</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-simulations"><i class="fa fa-check"></i>Simulation, Sampling and Monte Carlo.</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-long-run-frequency-and-the-law-of-large-numbers."><i class="fa fa-check"></i>Sampling, long-run frequency, and the law of large numbers.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-estimate-event-probabilities."><i class="fa fa-check"></i>Sampling to estimate event probabilities.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-of-a-conjunction-of-events"><i class="fa fa-check"></i>Probability of a conjunction of events</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-get-probability-of-disjunction"><i class="fa fa-check"></i>Sampling to get probability of disjunction</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-calculate-conditional-probability"><i class="fa fa-check"></i>Sampling to calculate conditional probability</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-rv"><i class="fa fa-check"></i>Random variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#joint-conditional-and-marginal-probabilities"><i class="fa fa-check"></i>Joint, conditional, and marginal probabilities</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#bernoulli-distribution"><i class="fa fa-check"></i>Bernoulli distribution</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#combinations-and-the-binomial-distribution"><i class="fa fa-check"></i>Combinations and the binomial distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-rv-functions"><i class="fa fa-check"></i>Distribution functions: PDF, CDF, Quantile</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-distribution-mass-and-density-functions-p.d.f."><i class="fa fa-check"></i>Probability distribution (mass and density) functions (p.d.f.)</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#cumulative-distribution-functions-c.d.f."><i class="fa fa-check"></i>Cumulative distribution functions (c.d.f.)</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#quantile-functions-inverse-cdf."><i class="fa fa-check"></i>Quantile functions (inverse CDF).</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-expectation"><i class="fa fa-check"></i>Expectation and moments</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#there-are-a-few-useful-properties-about-how-the-mean-variance-skewness-and-excess-kurtosis-behave-under-various-operations"><i class="fa fa-check"></i>There are a few useful properties about how the Mean, Variance, Skewness, and Excess Kurtosis behave under various operations:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-clt"><i class="fa fa-check"></i>Central limit theorem and the normal distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#requirements-for-clt-to-hold"><i class="fa fa-check"></i>Requirements for CLT to hold</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#normal-distribution"><i class="fa fa-check"></i>Normal distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html"><i class="fa fa-check"></i>Foundations of Statistics</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-simulation"><i class="fa fa-check"></i>Frequentist statistics via simulation</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#null-hypothesis-significance-testing."><i class="fa fa-check"></i>Null hypothesis significance testing.</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#critical-values-alpha-power"><i class="fa fa-check"></i>Critical values, alpha, power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#setting-up-the-alternate-hypothesis"><i class="fa fa-check"></i>Setting up the “Alternate hypothesis”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-power"><i class="fa fa-check"></i>Figuring out “power”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-alpha"><i class="fa fa-check"></i>Figuring out “alpha”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#showing-alpha-power"><i class="fa fa-check"></i>Showing alpha, power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-the-critical-value."><i class="fa fa-check"></i>Figuring out the critical value.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-sampling"><i class="fa fa-check"></i>Sampling distributions</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#tl-dr."><i class="fa fa-check"></i>TL; DR.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#logic"><i class="fa fa-check"></i>Logic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#expectation-about-the-sampling-distribution-of-the-sample-mean."><i class="fa fa-check"></i>Expectation about the sampling distribution of the sample mean.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#standard-error-of-the-sample-mean"><i class="fa fa-check"></i>Standard error (of the sample mean)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-basics-normal"><i class="fa fa-check"></i>Statistics via the Normal distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-null-hypothesis-significance-testing-nhst"><i class="fa fa-check"></i>(Normal) Null hypothesis significance testing (NHST)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-tests-with-sample-means"><i class="fa fa-check"></i>Normal tests with sample means</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#z-scores-and-z-tests"><i class="fa fa-check"></i>Z-scores and Z-tests</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#z-tests"><i class="fa fa-check"></i>Z-tests</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-confidence-intervals-on-the-sample-mean"><i class="fa fa-check"></i>(Normal) Confidence intervals on the sample mean</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#relationship-between-confidence-intervals-and-null-hypothesis-tests."><i class="fa fa-check"></i>Relationship between confidence intervals and null hypothesis tests.</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#special-critical-z-values"><i class="fa fa-check"></i>Special critical Z-values</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#rarity-of-z-tests-and-z--confidence-intervals"><i class="fa fa-check"></i>Rarity of Z-tests and Z- confidence intervals</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#what-are-these-percents-and-probabilities"><i class="fa fa-check"></i>What are these percents and probabilities?</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#what-does-the-percent-in-a-confidence-interval-mean"><i class="fa fa-check"></i>What does the “percent” in a confidence interval mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#nhst-theory-normal"><i class="fa fa-check"></i>Null hypothesis significance testing with Normal</a>
+<ul>
+<li><a href="NHST.html#type-1-error-rate-alpha-alpha">Type 1 error rate: alpha (<span class="math inline">\(\alpha\)</span>)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#the-alternate-model"><i class="fa fa-check"></i>The “alternate model”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#effect-size"><i class="fa fa-check"></i>Effect size</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#calculating-power-from-effect-size"><i class="fa fa-check"></i>Calculating power from effect size</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#visualizing-alpha-and-power"><i class="fa fa-check"></i>Visualizing alpha and power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#how-power-changes."><i class="fa fa-check"></i>How power changes.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#calculating-n-for-a-desired-level-of-power."><i class="fa fa-check"></i>Calculating n for a desired level of power.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sign-and-magnitude-errors."><i class="fa fa-check"></i>Sign and magnitude errors.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#theory-binomial"><i class="fa fa-check"></i>From probability to statistics with the Binomial</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#data-description-summary"><i class="fa fa-check"></i>Data description / summary</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#estimation"><i class="fa fa-check"></i>Estimation</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#null-hypothesis-significance-testing-nhst"><i class="fa fa-check"></i>Null Hypothesis Significance testing (NHST)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#model-selection"><i class="fa fa-check"></i>Model selection</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#t-distribution"><i class="fa fa-check"></i>t-distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#tl-dr.-1"><i class="fa fa-check"></i>TL; DR.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-sample-variance-and-t-statistic"><i class="fa fa-check"></i>Sampling distribution of sample variance, and t-statistic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sample-variance"><i class="fa fa-check"></i>Sample variance</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-the-sample-variance"><i class="fa fa-check"></i>Sampling distribution of the sample variance</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-t-statistic"><i class="fa fa-check"></i>Sampling distribution of t-statistic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#t-distribution-1"><i class="fa fa-check"></i>T-distribution</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#degrees-of-freedom."><i class="fa fa-check"></i>Degrees of freedom.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#summary."><i class="fa fa-check"></i>Summary.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i>(Student’s) t-tests</a>
+<ul>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-t-test"><i class="fa fa-check"></i>1-sample t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#paired-repeated-measures-t-test"><i class="fa fa-check"></i>Paired / repeated-measures t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-presumed-equal-variance-t-test"><i class="fa fa-check"></i>2-sample, presumed equal variance, t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-unequal-variance-t-test"><i class="fa fa-check"></i>2-sample, unequal variance, t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#power-calculations."><i class="fa fa-check"></i>Power calculations.</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#summary-of-tests-for-the-mean-and-effect-sizes"><i class="fa fa-check"></i>Summary of tests for the mean and effect sizes</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math."><i class="fa fa-check"></i>Math.</a>
+<ul>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math-behind-2-sample-equal-variance-t-test"><i class="fa fa-check"></i>Math behind 2-sample equal variance t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math-behind-unequal-variance-t-test"><i class="fa fa-check"></i>Math behind unequal variance t-test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html"><i class="fa fa-check"></i>Binomial test.</a>
+<ul>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html#estimating-proportions."><i class="fa fa-check"></i>Estimating proportions.</a></li>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html#sign-test-test-for-percentiles"><i class="fa fa-check"></i>Sign test, test for percentiles</a></li>
+</ul></li>
+<li><a href="chi-squared.html#chi-squared">Pearson’s Chi<span class="math inline">\(^2\)</span> (<span class="math inline">\(\chi^2\)</span>) test</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html"><i class="fa fa-check"></i>“Goodness of fit” test</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#implementation-in-r"><i class="fa fa-check"></i>Implementation in R</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#chi-squared-test-calculations"><i class="fa fa-check"></i>Chi-squared test calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#test-for-independence"><i class="fa fa-check"></i>Test for independence</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#implementation-in-r-1"><i class="fa fa-check"></i>Implementation in R</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#independence-test-calculations"><i class="fa fa-check"></i>Independence test calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#more-than-2-way-contingency-table"><i class="fa fa-check"></i>More than 2-way contingency table</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#mathematical-rationale"><i class="fa fa-check"></i>Mathematical rationale</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#limitations"><i class="fa fa-check"></i>Limitations</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#fishers-exact-test"><i class="fa fa-check"></i>Fisher’s “exact” test</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html"><i class="fa fa-check"></i>Bivariate linear relationships</a>
+<ul>
+<li><a href="bivariate.html#linear-relationships"><em>Linear</em> relationships</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#covariance-and-correlation-measuring-the-linear-dependence."><i class="fa fa-check"></i>Covariance and correlation: Measuring the linear dependence.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#covariance"><i class="fa fa-check"></i>Covariance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#correlation-coefficient"><i class="fa fa-check"></i>Correlation coefficient</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#ols-regression-predicting-the-mean-of-y-for-a-given-x"><i class="fa fa-check"></i>(OLS) Regression: Predicting the mean of y for a given x</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#difference-between-yx-xy-and-the-principle-component-line"><i class="fa fa-check"></i>Difference between y~x, x~y, and the principle component line</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#partitioning-variance"><i class="fa fa-check"></i>Partitioning variance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-a-linear-relationship."><i class="fa fa-check"></i>Significance of a linear relationship.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#prediction-from-regression."><i class="fa fa-check"></i>Prediction from regression.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-anscombe"><i class="fa fa-check"></i>Anscombe’s quartet</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-covariance"><i class="fa fa-check"></i>Covariance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#estimating-covariance."><i class="fa fa-check"></i>Estimating covariance.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-correlation"><i class="fa fa-check"></i>Correlation</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#correlation-as-the-slope-of-z-scores"><i class="fa fa-check"></i>Correlation as the slope of z-scores</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#coefficient-of-determination"><i class="fa fa-check"></i>Coefficient of determination</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-ols"><i class="fa fa-check"></i>Ordinary Least-Squares (OLS) Regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#regression-terminology"><i class="fa fa-check"></i>Regression terminology</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#estimating-the-regression-line."><i class="fa fa-check"></i>Estimating the regression line.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#standard-errors-of-regression-coefficients"><i class="fa fa-check"></i>Standard errors of regression coefficients</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#confidence-intervals-and-tests-for-regression-coefficients"><i class="fa fa-check"></i>Confidence intervals and tests for regression coefficients</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-lines"><i class="fa fa-check"></i>y~x vs x~y vs principle component line</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-determination"><i class="fa fa-check"></i>Partitioning variance and the coefficient of determination.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#calculating-sums-of-squares."><i class="fa fa-check"></i>Calculating sums of squares.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-significance"><i class="fa fa-check"></i>Significance of linear relationship.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-slope."><i class="fa fa-check"></i>Significance of slope.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-pairwise-correlation"><i class="fa fa-check"></i>Significance of pairwise correlation</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-variance-partition."><i class="fa fa-check"></i>Significance of variance partition.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#isomorphism-with-one-response-and-one-predictor"><i class="fa fa-check"></i>Isomorphism with one response and one predictor</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-prediction"><i class="fa fa-check"></i>Regression prediction.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#predicting-mean-y-given-x."><i class="fa fa-check"></i>Predicting mean y given x.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#predicting-new-y-given-x."><i class="fa fa-check"></i>Predicting new y given x.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#visualizing-the-difference"><i class="fa fa-check"></i>Visualizing the difference</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-ols-diagnostics"><i class="fa fa-check"></i>Regression Diagnostics</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-relationship-between-y-and-x-is-well-described-by-a-line."><i class="fa fa-check"></i>Assumption: relationship between y and x is well described by a line.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-out-estimates-are-not-driven-by-a-few-huge-outliers"><i class="fa fa-check"></i>Assumption: out estimates are not driven by a few huge outliers</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-errors-are-independent-identically-distributed-normal."><i class="fa fa-check"></i>Assumption: errors are independent, identically distributed, normal.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#testing-assumptions"><i class="fa fa-check"></i>Testing assumptions</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">UCSD Psyc 201ab / CSS 205 / Psyc 193</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="probability" class="section level1">
+<h1>Probability</h1>
+<div id="probability-terms" class="section level2">
+<h2>Probability terms</h2>
+<div id="absolute-probability-statements-prob" class="section level3">
+<h3>Absolute probability statements {prob}</h3>
+<p>A <strong>probability</strong> of something is a number between 0 and 1: <span class="math inline">\(p \in [0,1]\)</span>.</p>
+<p>In epidemilogy probability of some outcome of a particular group/behavior is also called <strong>risk</strong>.<br />
+e.g., if smokers have a 0.125 probability of getting lung cancer, their risk of cancer is 0.125.</p>
+<p>The corresponding <strong>percent</strong> is between 0 and 100 = <span class="math inline">\(p*100\)</span>.<br />
+e.g., a 12.5% chance of lung cancer for smokers.</p>
+<p>The corresponding <strong>odds</strong> are the ratio of the probability of thing happening, and the probability of it not happening: <span class="math inline">\(\mbox{odds} = p/(1-p)\)</span>.<br />
+E.g., odds of a smoker getting lung cancer is 0.125/(1-0.125) = 1/7 (often expressed as 1:7).</p>
+<p>The corresponding <strong>log-odds</strong> are the logarithm of the odds: <span class="math inline">\(\mbox{log-odds} = \log(\mbox{odds})\)</span>.<br />
+e.g., log odds of lung cancer for smokers is -0.845.</p>
+<p>From this we can get a number of relationships:</p>
+<p><span class="math inline">\(p = \mbox{odds}/(1+\mbox{odds})\)</span></p>
+<p><span class="math inline">\(\mbox{odds} = \exp(\mbox{log-odds})\)</span></p>
+<p><span class="math inline">\(\mbox{log-odds} = \log\left({\frac{p}{1-p}}\right)\)</span> (this is known as the <a href="https://en.wikipedia.org/wiki/Logit">logit</a> transform, going from probability to log-odds)</p>
+<p><span class="math inline">\(p = \frac{1}{1+\exp(-\mbox{log-odds})}\)</span> (this is the <a href="https://en.wikipedia.org/wiki/Logistic_function">logistic</a> transform, going from log-odds to probability)</p>
+<p>A <strong>proportion</strong> is a <a href="../introduction/descriptive.html">descriptive statistic</a> if <span class="math inline">\(k\)</span> of my <span class="math inline">\(n\)</span> observations were “fish,” then I can say that the proportion of fish in my sample is <span class="math inline">\(k/n\)</span>. These proportions are also often treated directly as probabilities, risks and converted into percents, odds, etc.</p>
+<p>A <strong>hazard rate</strong> (also failure rate, or hazard function) is a time-varying probability associated with some <a href="https://en.wikipedia.org/wiki/Survival_analysis">survival</a> function: what is the probability that someone will die right now, given that they have survived up to now?</p>
+</div>
+<div id="probability-comparisons" class="section level3">
+<h3>Probability comparisons</h3>
+<p>The <strong>relative risk</strong> is a ratio of two probabilities, usually some “treatment” and some “baseline.” For instance risk of lung cancer for smokers is 0.125, for non-smokers it is 0.003, so the relative risk of lung cancer for smoking is 0.125/0.003 = 41.</p>
+<p>The <strong>odds ratio</strong> is the ratio of odds between some treatment and baseline.<br />
+for instance, the odds ratio of lung cancer for smoking (compared to not) is (0.125/(1-0.125)) / (0.003/(1-0.003)) = 47.5.</p>
+<p>The <strong>log odds ratio</strong> is the same as the difference in log odds:
+log((0.125/(1-0.125)) / (0.003/(1-0.003))) = log(0.125/(1-0.125)) - log(0.003/(1-0.003)) = 1.67</p>
+<p>We might also calculate the linear difference in probabilities (or more often) percent; in this case, we should make it clear that we are talking about a difference in <strong>percentage points</strong>:<br />
+e.g., the chance of lung cancer among smokers (12.5%) is 12.2 percentage points higher than in non-smokers (0.3%).</p>
+</div>
+<div id="proportional-magnitudes-and-confusion" class="section level3">
+<h3>Proportional magnitudes and confusion</h3>
+<p>Unfortunately, we use the language of “proportions” not only to describe the sample statistic corresponding to a probability estimate, but we also use it when describing the relative magnitudes of two quantities. For instance, my dog’s weight is 50 lbs, my weight is 160 lbs. So, proportional to my weight, my dog is 5/16ths, or 0.3 times, or 30% of my weight, we might also say my dog weighs 70% less than me. My weight is 16/5ths, or 3.2 times, or 320% of my dogs weight, and we might say that I weight 220% more than my dog.</p>
+<p>The unfortunate similarities between the words used for probabilities and the words used for proportional magnitude comparisons, along with the natural tendency to compare the proportional magnitudes of probabilities (e.g., relative risk, odds ratio), tends to create a bit of a mess when probabilities are discussed in public. Watch out for confusing statements like “the chance is x% higher.” Does the x% refer to a linear difference in percentage points, or a claim about the magnitude of relative risk?</p>
+
+</div>
+</div>
+<div id="probability-foundations" class="section level2">
+<h2>Foundations of probability</h2>
+<p>Probability theory is the extension of propositional logic to operate over uncertain truth values. If propositions are not either true or false, but are true with some <em>probability</em>, how can we combine multiple propositions to deduce the probability associated with some derived proposition?</p>
+<p>The basic rules of probability are built by assigning probability to “outcomes” of a possible “sample space.” We are interested in “events,” which are subsets of the sample space. Since so much of this formalism is in set notation, so we will start there.</p>
+<div id="set-notation-for-combinations-of-outcomes." class="section level3">
+<h3>Set notation for combinations of outcomes.</h3>
+<p>We can build up sophisticated probability rules by combining the outcomes of the sample space in various ways. These correspond to set operations of <em>union</em>, <em>intersection</em>, and <em>complement</em>.</p>
+<blockquote>
+<p>The <strong>sample space</strong> is the <em>set</em> of all possible <strong>outcomes</strong> of an “experiment.”</p>
+</blockquote>
+<p>Each possible outcome of an experiment is an “elementary event,” in the sense that all the outcomes are mutually exclusive. The sample space is usually denoted as <span class="math inline">\(\Omega\)</span>. So if we consider the roll of a six-sided die, there are six possible <em>outcomes</em> (1, 2, 3, 4, 5, 6), so we would describe the <em>sample space</em> as <span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span>.</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="probability.html#cb181-1" aria-hidden="true" tabindex="-1"></a>outcomes <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;1&#39;</span>, <span class="st">&#39;2&#39;</span>, <span class="st">&#39;3&#39;</span>, <span class="st">&#39;4&#39;</span>, <span class="st">&#39;5&#39;</span>, <span class="st">&#39;6&#39;</span>)</span>
+<span id="cb181-2"><a href="probability.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="co"># writing as characters to make it clear these are symbols corresponding to outcomes.</span></span></code></pre></div>
+<blockquote>
+<p><strong>Set union</strong> corresponds to a <em>disjunction</em> or an <em>OR</em> operation.<br />
+The set union of A and B is the set of elements that appear in either A or B.<br />
+<span class="math inline">\(x \in (A \cup B) \mbox{ if } x \in A \mbox{ or } x \in B\)</span></p>
+</blockquote>
+<p>The set union is denoted with a <span class="math inline">\(\cup\)</span> operator. For instance the union of outcomes a and b is the set that includes both: <span class="math inline">\(a \cup b = \{a,b\}\)</span>. The union of two sets is the set of all elements that appear in <em>either</em> set: <span class="math inline">\(\{a,b,c\} \cup \{b,c,d,e,f\} = \{a,b,c,d,e,f\}\)</span>; note that the union operation returns a set, so elements that appear in both input sets are not “double counted” – each element will appear only once in a set. We will often want to express a union of many sets, which we can write as <span class="math inline">\(\bigcup_{i=1}^n x_i = x_1 \cup x_2 \cup ... \cup x_n\)</span>.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="probability.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(<span class="fu">c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;c&#39;</span>), <span class="fu">c</span>(<span class="st">&#39;b&#39;</span>,<span class="st">&#39;c&#39;</span>,<span class="st">&#39;d&#39;</span>,<span class="st">&#39;e&#39;</span>,<span class="st">&#39;f&#39;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot;</code></pre>
+<blockquote>
+<p><strong>Set intersection</strong> corresponds to a <em>conjunction</em> or an <em>AND</em> operation<br />
+The set intersection of A and B is the set of elements that appear in both A and B.<br />
+<span class="math inline">\(x \in (A \cap B) \mbox{ if and only if } x \in A \mbox{ and } x \in B\)</span></p>
+</blockquote>
+<p>Set intersection is denoted with a <span class="math inline">\(\cap\)</span> operator. The intersection of two sets is the set of elements that appear in both sets. For instance <span class="math inline">\(\{a,b,c\} \cap \{b,c,d,e,f\} = \{b,c\}\)</span>. The intersection of two sets that share no elements is the null, or empty, set <span class="math inline">\(\{a,b,c\} \cap \{d,e,f\} = \emptyset\)</span>, these sets are called <em>disjoint</em>.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="probability.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(<span class="fu">c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;c&#39;</span>), <span class="fu">c</span>(<span class="st">&#39;b&#39;</span>,<span class="st">&#39;c&#39;</span>,<span class="st">&#39;d&#39;</span>,<span class="st">&#39;e&#39;</span>,<span class="st">&#39;f&#39;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;b&quot; &quot;c&quot;</code></pre>
+<blockquote>
+<p><strong>Set complement</strong> is <em>negation</em>: the set of possible elements that are <em>NOT</em> in the set.<br />
+<span class="math inline">\(\neg A = \Omega \setminus A\)</span></p>
+</blockquote>
+<p>Generally, it is clearer to explicitly refer to a <em>relative</em> set complement, or set difference, to specify which “possible” elements to consider, this is denoted <span class="math inline">\(B \setminus A\)</span> – the set of elements in B that are <em>not</em> in A: <span class="math inline">\(\{a,b,c\} \setminus \{b,c,d,e,f\}=\{a\}\)</span>. In our context, we will talk about the <em>absolute</em> set comlement, which we will denote with the logical negation operator <span class="math inline">\(\neg A\)</span> (conventionally this would be written with the superscript c: <span class="math inline">\(A^\complement\)</span>). The absolute set complement has an implicit relative complement to the set of all possible outcomes, in our case <span class="math inline">\(\neg A = \Omega \setminus A\)</span>.</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="probability.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(outcomes, <span class="fu">c</span>(<span class="st">&#39;2&#39;</span>, <span class="st">&#39;4&#39;</span>, <span class="st">&#39;6&#39;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;1&quot; &quot;3&quot; &quot;5&quot;</code></pre>
+<p>It may now be apparent that the set operations we consider also correspond to the basic building blocks of propositional logic: disjunctions, conjunction, and negation. We will see that the rules of probability are effectively the rules of logic extended to apply to uncertain truth values (as probabilities).</p>
+</div>
+<div id="basic-probability-definition-and-axioms" class="section level3">
+<h3>Basic probability definition and axioms</h3>
+<p><strong>Probability</strong> is assigned to each outcome, and usually written as <span class="math inline">\(P(\cdot)\)</span>. So we would write the probability of a particular outcome (say, rolling a 6) as <span class="math inline">\(P(\mbox{&quot;6&quot;})\)</span>, but usually we would just substitute a symbol to stand in for a specific outcome (e.g., <span class="math inline">\(u = \mbox{&quot;6&quot;}\)</span>, so probability of rolling a six would be <span class="math inline">\(P(u)\)</span>). Probability is always <em>non-negative</em> (and as we will see soon, no larger than 1, meaning it falls in the interval <span class="math inline">\([0,1]\)</span>).</p>
+<blockquote>
+<p><strong>Probability</strong> is a number between 0 and 1 assigned to every possible <em>outcome</em> in the <em>sample space</em><br />
+<span class="math inline">\(P(x) \in [0, 1] \mbox{ for all } x \in \Omega\)</span>.</p>
+</blockquote>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="probability.html#cb188-1" aria-hidden="true" tabindex="-1"></a>p.outcomes <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span>
+<span id="cb188-2"><a href="probability.html#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(p.outcomes) <span class="ot">&lt;-</span> outcomes</span>
+<span id="cb188-3"><a href="probability.html#cb188-3" aria-hidden="true" tabindex="-1"></a>p.outcomes</span></code></pre></div>
+<pre><code>##         1         2         3         4         5         6 
+## 0.1666667 0.1666667 0.1666667 0.1666667 0.1666667 0.1666667</code></pre>
+<p>The probability of a union of two outcomes is the sum of their probabilities. This basic axiom of probability allows us to calculate the probability of one of a set of outcomes happening based on the probabilities of the individual elements in that set, from this axiom we can build many of the other laws of probability.</p>
+<blockquote>
+<p><strong>Probability of a union of two outcomes</strong> is the <em>sum of their probabilities</em><br />
+<span class="math inline">\(P(a \cup b) = P(\{a,b\}) = P(a) + P(b)\)</span>.<br />
+Note that this simple addition applies to the union of <em>outcomes</em> because those are necessarily different and non-overlapping isolated elements. This will generally not hold true for disjunctions of <em>events</em>, which may consist of overlapping sets of outcomes.</p>
+</blockquote>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="probability.html#cb190-1" aria-hidden="true" tabindex="-1"></a>p.<span class="fl">1.2</span> <span class="ot">=</span> <span class="fu">sum</span>(p.outcomes[<span class="fu">c</span>(<span class="st">&#39;1&#39;</span>, <span class="st">&#39;2&#39;</span>)])</span></code></pre></div>
+<p>The final axiom of probability is that it sums to 1, meaning that the total probability being distributed over the sample space is 1.</p>
+<blockquote>
+<p><strong>Total probability</strong> of the sample space is 1.0<br />
+<span class="math inline">\(P(\Omega) = P\left( {\bigcup\limits_{x \in \Omega} x }\right) = \sum\limits_{x \in \Omega} P(x) = 1\)</span><br />
+Basically, this means all the probabilities of isolated outcomes have to sum to 1.</p>
+</blockquote>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="probability.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(p.outcomes)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div id="applying-basic-probability-axioms" class="section level4">
+<h4>Applying basic probability axioms</h4>
+<p>So far we have dealt with a <em>uniform</em> probability distribution: each side of the die has the same chance (1/6), or more generally <span class="math inline">\(1/|\Omega|\)</span> where <span class="math inline">\(|x|\)</span> indicates the number of elements in <span class="math inline">\(x\)</span>. We could define such a uniform probability distribution over outcomes more generally as:</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="probability.html#cb193-1" aria-hidden="true" tabindex="-1"></a>p.outcomes <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">length</span>(outcomes), <span class="fu">length</span>(outcomes))</span>
+<span id="cb193-2"><a href="probability.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(p.outcomes) <span class="ot">&lt;-</span> outcomes</span>
+<span id="cb193-3"><a href="probability.html#cb193-3" aria-hidden="true" tabindex="-1"></a>p.outcomes</span></code></pre></div>
+<pre><code>##         1         2         3         4         5         6 
+## 0.1666667 0.1666667 0.1666667 0.1666667 0.1666667 0.1666667</code></pre>
+<p>Of course, this assumes we have a fair die (all sides have equal probability). Instead, our die might be biased. Let’s say it is biased so that 1 is twice as likely to come up as any of the other five outcomes (which all are equally likely). We can do some algebra to figure out what this means about the probabilities assigned to each outcome:
+<span class="math inline">\(P(\mbox{&#39;1&#39;}) = 2*P(\mbox{&#39;other&#39;})\)</span><br />
+And since – all probabilities must sum to 1:<br />
+<span class="math inline">\(P(\mbox{&#39;1&#39;}) + 5*P(\mbox{&#39;other&#39;}) = 1\)</span><br />
+so<br />
+<span class="math inline">\(2 * P(\mbox{other}) + 5 * P(\mbox{other}) = 1\)</span><br />
+<span class="math inline">\(P(\mbox{other}) = 1/7\)</span> and <span class="math inline">\(P(\mbox{1}) = 2/7\)</span>.</p>
+<p>We can also calculate this quickly in R. Here we define “unnormalized” probabilities (which do not sum to 1, but have the appropriate relative relationships). We can normalize a vector of numbers by dividing every element by the sum of all elements, thus returning probabilities with the appropriate relationships that all sum to 1:</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="probability.html#cb195-1" aria-hidden="true" tabindex="-1"></a>unnormalized <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb195-2"><a href="probability.html#cb195-2" aria-hidden="true" tabindex="-1"></a>p.outcomes <span class="ot">=</span> unnormalized<span class="sc">/</span><span class="fu">sum</span>(unnormalized)</span>
+<span id="cb195-3"><a href="probability.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(p.outcomes) <span class="ot">&lt;-</span> outcomes</span>
+<span id="cb195-4"><a href="probability.html#cb195-4" aria-hidden="true" tabindex="-1"></a>p.outcomes</span></code></pre></div>
+<pre><code>##         1         2         3         4         5         6 
+## 0.2857143 0.1428571 0.1428571 0.1428571 0.1428571 0.1428571</code></pre>
+<p>These axioms are sufficient to derive an assortment of probability rules that we are used to for describing <em>events</em>.</p>
+</div>
+</div>
+<div id="events-and-the-rules-of-probability." class="section level3">
+<h3>Events and the rules of probability.</h3>
+<p>Probability becomes useful when we start considering <em>events</em>.</p>
+<blockquote>
+<p>An <strong>event</strong> is a <em>subset of outcomes from the sample space</em>.<br />
+<span class="math inline">\(E \subset \Omega\)</span></p>
+</blockquote>
+<p>For instance, in our die-rolling example, an event might be “rolling an even number” which is a subset of the sample space: <span class="math inline">\(E = \{2, 4, 6\}\)</span>. By our axiom about the probability of a union of outcomes, we know that</p>
+<blockquote>
+<p>The <strong>probability of an event</strong> is the <em>sum of the probabilities of the outcomes</em> included in it:<br />
+<span class="math inline">\(P(E) = \sum\limits_{x \in E} P(x)\)</span>.</p>
+</blockquote>
+<p>For instance, the probability of “even” is P(even) = P(2)+P(4)+P(6).</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="probability.html#cb197-1" aria-hidden="true" tabindex="-1"></a>p.event <span class="ot">=</span> <span class="cf">function</span>(subset){</span>
+<span id="cb197-2"><a href="probability.html#cb197-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(p.outcomes[subset])</span>
+<span id="cb197-3"><a href="probability.html#cb197-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb197-4"><a href="probability.html#cb197-4" aria-hidden="true" tabindex="-1"></a>even <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;2&#39;</span>, <span class="st">&#39;4&#39;</span>, <span class="st">&#39;6&#39;</span>)</span>
+<span id="cb197-5"><a href="probability.html#cb197-5" aria-hidden="true" tabindex="-1"></a><span class="fu">p.event</span>(even)</span></code></pre></div>
+<pre><code>## [1] 0.4285714</code></pre>
+<p>(remember, we are still dealing with the unfair dice roll with a ‘1’ twice as likely as the other outcomes)</p>
+<p>We can combine events with conjunctions and disjunctions. While we will mostly refer to conjunctions and disjunctions using the familiar terms “and” (<span class="math inline">\(\&amp;\)</span>) and “or” (<span class="math inline">\(\lor\)</span>) instead of the set notation “intersection” (<span class="math inline">\(\cap\)</span>) and “union” (<span class="math inline">\(\cup\)</span>), it is useful to flesh out how they are related.</p>
+<p>Consider the events <em>even</em> (<span class="math inline">\(E=\{2,4,6\}\)</span>), and <em>greater than 3</em> (<span class="math inline">\(G=\{4, 5, 6\}\)</span>).</p>
+<p>A <strong>conjunction</strong> (and) of two <em>events</em> is also an event defined as their set <em>intersection</em>. For instance if we consider C to be the conjunction of events E (even, <span class="math inline">\(E=\{2,4,6\}\)</span>) and G (greater than 3, <span class="math inline">\(G = \{4,5,6\}\)</span>), C = E and G = <span class="math inline">\(E \cap G = \{2,4,6\} \cap \{4,5,6\} = \{4,6\}\)</span>.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="probability.html#cb199-1" aria-hidden="true" tabindex="-1"></a>even <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;2&#39;</span>, <span class="st">&#39;4&#39;</span>, <span class="st">&#39;6&#39;</span>)</span>
+<span id="cb199-2"><a href="probability.html#cb199-2" aria-hidden="true" tabindex="-1"></a>greater <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;4&#39;</span>, <span class="st">&#39;5&#39;</span>, <span class="st">&#39;6&#39;</span>)</span>
+<span id="cb199-3"><a href="probability.html#cb199-3" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(even, greater)</span></code></pre></div>
+<pre><code>## [1] &quot;4&quot; &quot;6&quot;</code></pre>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="probability.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">p.event</span>(<span class="fu">intersect</span>(even,greater))</span></code></pre></div>
+<pre><code>## [1] 0.2857143</code></pre>
+<p>A <strong>disjunction</strong> (or) of two <em>events</em> is also an event defined as their set <em>union</em>. For instance even OR “greater than 3”: <span class="math inline">\(B = E \cup G = \{2, 4, 6\} \cup \{4, 5, 6\} = \{2, 4, 5, 6\}\)</span>.</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="probability.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(even,greater)</span></code></pre></div>
+<pre><code>## [1] &quot;2&quot; &quot;4&quot; &quot;6&quot; &quot;5&quot;</code></pre>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="probability.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">p.event</span>(<span class="fu">union</span>(even,greater))</span></code></pre></div>
+<pre><code>## [1] 0.5714286</code></pre>
+<p>A <strong>negation</strong> (not) of an event is the set <em>complement</em> of that event. For instance “not even” is defined as the set of outcomes in the sample space that are not even. <span class="math inline">\(\neg E = \neg \{2,4,6\} = \{1,2,3,4,5,6\} \\ \{2,4,6\} = \{1,3,5\}\)</span>.</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="probability.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(outcomes, even)</span></code></pre></div>
+<pre><code>## [1] &quot;1&quot; &quot;3&quot; &quot;5&quot;</code></pre>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="probability.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">p.event</span>(<span class="fu">setdiff</span>(outcomes, even))</span></code></pre></div>
+<pre><code>## [1] 0.5714286</code></pre>
+<p>Fortunately, we need not always carry out complicated set operations and tabulation to get the probability of an event resulting from these operations.</p>
+<blockquote>
+<p><strong>Probability of a disjunction</strong> (OR)<br />
+The probability of <em>A or B</em> is<br />
+<span class="math inline">\(P(A \lor B) = P(A) + P(B) - P(A \&amp; B)\)</span></p>
+</blockquote>
+<p>Subtracting the <em>conjunction</em> should make sense. Consider for instance “even” OR “greater than 3” = <span class="math inline">\(\{2,4,6\} \cup \{4,5,6\} = \{2,4,5,6\}\)</span>. <span class="math inline">\(P(\{2,4,5,6\}) = 4/7\)</span>. If we don’t subtract the conjunction we get an incorrect answer: <span class="math inline">\(P(\{2,4,6\}) + P(\{4,5,6\}) = 3/7 + 3/7 = 6/7\)</span>. We have to subtract the conjunction (<span class="math inline">\(P(\{4,6\})=2/7\)</span>) to get the correct answer, because otherwise we end up “double counting” the outcomes that appear in both events.</p>
+<p>Note that for <em>disjoint</em> events – meaning events that are mutually exclusive, thus they cannot co-occur – <span class="math inline">\(P(A \&amp; B)=0\)</span>, so we need not subtract it. This is why when we were calculating the probability of a disjunction of <em>outcomes</em> (which are necessarily disjoint) we omitted that part.</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="probability.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">p.event</span>(even) <span class="sc">+</span> <span class="fu">p.event</span>(greater) <span class="sc">-</span> <span class="fu">p.event</span>(<span class="fu">intersect</span>(even,greater))</span></code></pre></div>
+<pre><code>## [1] 0.5714286</code></pre>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="probability.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">p.event</span>(<span class="fu">union</span>(even,greater))</span></code></pre></div>
+<pre><code>## [1] 0.5714286</code></pre>
+<blockquote>
+<p><strong>Probability of negation</strong> (NOT)<br />
+The probability of <em>not A</em> is<br />
+<span class="math inline">\(P(\neg A) = 1-P(A)\)</span>.</p>
+</blockquote>
+<p>This should also make sense: We know that “not A” is the complement of A relative to the sample space. We also know that the total probability of the sample space is 1. Thus, the probability of outcomes not in A (A’s complement) must be 1 less the probability of the outcomes in A. Here we calculate the probability of “not even” two different ways: 1-P(even) and by defining a “not even” event which is the set of outcomes not included in the “even” event. As they should, they give us the same result. (We obtain the outcomes in the “not even” event via the <code>setdiff(outcomes, even)</code> function, which returns all the elements in <code>outcomes</code> that are not in <code>even</code>.)</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="probability.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">p.event</span>(even)</span></code></pre></div>
+<pre><code>## [1] 0.5714286</code></pre>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="probability.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">p.event</span>(<span class="fu">setdiff</span>(outcomes, even))</span></code></pre></div>
+<pre><code>## [1] 0.5714286</code></pre>
+<p>To discuss the probability of a <em>conjunction</em> we need to first start with <a href="probability.html#probability-conditional">Conditional probability</a>.</p>
+
+</div>
+</div>
+<div id="probability-conditional" class="section level2">
+<h2>Conditional probability and Bayes</h2>
+<p>Let’s start by remembering where we were with our unfair die roll.</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="probability.html#cb219-1" aria-hidden="true" tabindex="-1"></a>outcomes <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;1&#39;</span>, <span class="st">&#39;2&#39;</span>, <span class="st">&#39;3&#39;</span>, <span class="st">&#39;4&#39;</span>, <span class="st">&#39;5&#39;</span>, <span class="st">&#39;6&#39;</span>)</span>
+<span id="cb219-2"><a href="probability.html#cb219-2" aria-hidden="true" tabindex="-1"></a>unnormalized <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb219-3"><a href="probability.html#cb219-3" aria-hidden="true" tabindex="-1"></a>p.outcomes <span class="ot">=</span> unnormalized<span class="sc">/</span><span class="fu">sum</span>(unnormalized)</span>
+<span id="cb219-4"><a href="probability.html#cb219-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(p.outcomes) <span class="ot">&lt;-</span> outcomes</span>
+<span id="cb219-5"><a href="probability.html#cb219-5" aria-hidden="true" tabindex="-1"></a>p.outcomes</span></code></pre></div>
+<pre><code>##         1         2         3         4         5         6 
+## 0.2857143 0.1428571 0.1428571 0.1428571 0.1428571 0.1428571</code></pre>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="probability.html#cb221-1" aria-hidden="true" tabindex="-1"></a>p.event <span class="ot">=</span> <span class="cf">function</span>(subset){</span>
+<span id="cb221-2"><a href="probability.html#cb221-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(p.outcomes[subset])</span>
+<span id="cb221-3"><a href="probability.html#cb221-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb221-4"><a href="probability.html#cb221-4" aria-hidden="true" tabindex="-1"></a>even <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;2&#39;</span>, <span class="st">&#39;4&#39;</span>, <span class="st">&#39;6&#39;</span>)</span>
+<span id="cb221-5"><a href="probability.html#cb221-5" aria-hidden="true" tabindex="-1"></a>greater <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;4&#39;</span>, <span class="st">&#39;5&#39;</span>, <span class="st">&#39;6&#39;</span>)</span></code></pre></div>
+<blockquote>
+<p>The <strong>Conditional probability</strong> of event A <em>given</em> that event B has occurred is the probability of A <em>and</em> B divided by the probability of B:<br />
+<span class="math inline">\(P(A \mid B) = \frac{P(A \&amp; B)}{P(B)}\)</span></p>
+</blockquote>
+<p>Which might be read as: of all the ways in which B might occur, how many of them co-occur with A?</p>
+<p>For instance, the probability of “even” given “greater than 3” is asking: of all the ways the dice could come up greater than 3, which of them also yield an even roll?<br />
+<span class="math inline">\(P(\mbox{even} \mid \mbox{greater than 3}) = P(\{2,4,6\} \mid \{4,5,6\}) = \frac{P(\{4,6\})}{P(\{4,5,6\})}\)</span></p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="probability.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probability of even given greater than 3</span></span>
+<span id="cb222-2"><a href="probability.html#cb222-2" aria-hidden="true" tabindex="-1"></a><span class="fu">p.event</span>(<span class="fu">intersect</span>(even,greater)) <span class="sc">/</span> <span class="fu">p.event</span>(greater)</span></code></pre></div>
+<pre><code>## [1] 0.6666667</code></pre>
+<p>From this definition, we can find a general expression for the probability of a conjunction.</p>
+<blockquote>
+<p>The <strong>probability of a conjunction</strong> of two <em>events</em> (A and B):<br />
+<span class="math inline">\(P(A \&amp; B) = P(A \mid B) * P(B) = P(B \mid A) * P(A)\)</span></p>
+</blockquote>
+<p>There are two special cases worth mentioning:</p>
+<blockquote>
+<p>Two events are <strong>disjoint</strong> (mutually exclusive) if their interesction is null:<br />
+<span class="math inline">\(A \cap B = \emptyset\)</span>;<br />
+consequently: <span class="math inline">\(P(A \&amp; B) = P(A \mid B) = P(B \mid A) = 0\)</span>, and <span class="math inline">\(P(A \lor B) = P(A) + P(B)\)</span></p>
+</blockquote>
+<blockquote>
+<p>If two events are <strong>independent</strong> then:<br />
+<span class="math inline">\(P(A \&amp; B) = P(A) * P(B)\)</span>, and <span class="math inline">\(P(A \mid B) = P(A)\)</span>, and <span class="math inline">\(P(B \mid A) = P(B)\)</span></p>
+</blockquote>
+<p>Note that often this special case (of independent events) is described as the rule for the probability of a conjunction, but in most cases, events are not independent.</p>
+<div id="chain-rule" class="section level3">
+<h3>Chain rule</h3>
+<p>We can calculate complex conjunctions by repeating the same process of calculating a conjunction many times via the <em>chain rule</em>:</p>
+<p><span class="math inline">\(P(a \&amp; b \&amp; c \&amp; d) = P(a \mid b \&amp; c \&amp; d) * P(b \mid c \&amp; d) * P(c \mid d) * P(d)\)</span></p>
+</div>
+<div id="partitions-and-total-probability" class="section level3">
+<h3>Partitions and total probability</h3>
+<p>To express Bayes rule as it is commonly used, we first need to introduce two concepts.</p>
+<blockquote>
+<p>A <strong>partition</strong> of sample space <span class="math inline">\(\Omega\)</span> is a set of events that are <em>disjoint</em>, <em>nonempty</em>, and <em>their union is <span class="math inline">\(\Omega\)</span></em>.<br />
+In other words, <span class="math inline">\(A\)</span> is a partition of <span class="math inline">\(\Omega\)</span> if every element of <span class="math inline">\(\Omega\)</span> is in one and only one event in A.<br />
+<span class="math inline">\(\emptyset \not\in A\)</span><br />
+<span class="math inline">\(\bigcup\limits_{E \in A} E = \Omega\)</span><br />
+<span class="math inline">\(E_1 \cap E2 = \emptyset \mbox{ for all } E_1, E_2 \in A \mbox{ and } E_1 \not= E_2\)</span></p>
+</blockquote>
+<p>For instance, the events {“even” and “odd”} form a partition of the sample space of die rolls. In contrast, {“even,” “odd,” and “greater than 3”} do not form a partition, as they include overlapping events (they are not disjoint). Similarly, {“1 or 2,” and “4 or 6”} are not a partition as they do not cover the full sample space (their union is not <span class="math inline">\(\Omega\)</span>).</p>
+<blockquote>
+<p>The <strong>law of total probability</strong> says that if events <span class="math inline">\(A_1,A_2, ..., A_n\)</span> are a partition of <span class="math inline">\(\Omega\)</span>, then<br />
+<span class="math inline">\(P(B) = \sum\limits_{i=1}^n P(B|A_i)P(A_i) = \sum\limits_{i=1}^n P(B \&amp; A_i)\)</span>.</p>
+</blockquote>
+<p>We can confirm that this works in the simple case of B = “greater than 3,” and the partition is “even” and “odd.”<br />
+P(“greater than 3”) = P(“greater than 3”|even) P(even) + P(“greater than 3”|odd) P(odd)<br />
+P(“greater than 3”) = (2/3)(3/7) + (1/4)(4/7) = 3/7</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="probability.html#cb224-1" aria-hidden="true" tabindex="-1"></a>greater <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;4&#39;</span>, <span class="st">&#39;5&#39;</span>, <span class="st">&#39;6&#39;</span>)</span>
+<span id="cb224-2"><a href="probability.html#cb224-2" aria-hidden="true" tabindex="-1"></a>even <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;2&#39;</span>, <span class="st">&#39;4&#39;</span>, <span class="st">&#39;6&#39;</span>)</span>
+<span id="cb224-3"><a href="probability.html#cb224-3" aria-hidden="true" tabindex="-1"></a>odd <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;1&#39;</span>, <span class="st">&#39;3&#39;</span>, <span class="st">&#39;5&#39;</span>)</span>
+<span id="cb224-4"><a href="probability.html#cb224-4" aria-hidden="true" tabindex="-1"></a>p.greater.even <span class="ot">=</span> <span class="fu">p.event</span>(<span class="fu">intersect</span>(even,greater)) <span class="sc">/</span> <span class="fu">p.event</span>(even)</span>
+<span id="cb224-5"><a href="probability.html#cb224-5" aria-hidden="true" tabindex="-1"></a>p.greater.odd <span class="ot">=</span> <span class="fu">p.event</span>(<span class="fu">intersect</span>(odd,greater)) <span class="sc">/</span> <span class="fu">p.event</span>(odd)</span>
+<span id="cb224-6"><a href="probability.html#cb224-6" aria-hidden="true" tabindex="-1"></a>p.even <span class="ot">=</span> <span class="fu">p.event</span>(even)</span>
+<span id="cb224-7"><a href="probability.html#cb224-7" aria-hidden="true" tabindex="-1"></a>p.odd <span class="ot">=</span> <span class="fu">p.event</span>(odd)</span>
+<span id="cb224-8"><a href="probability.html#cb224-8" aria-hidden="true" tabindex="-1"></a>p.greater.even <span class="sc">*</span> p.even <span class="sc">+</span> p.greater.odd <span class="sc">*</span> p.odd</span></code></pre></div>
+<pre><code>## [1] 0.4285714</code></pre>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="probability.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">p.event</span>(greater)</span></code></pre></div>
+<pre><code>## [1] 0.4285714</code></pre>
+</div>
+<div id="bayes-rule" class="section level3">
+<h3>Bayes’ rule</h3>
+<p>You can find an <a href="http://yudkowsky.net/rational/bayes">“excruciatingly gentle” introduction to Bayes’ rule</a>.</p>
+<p>Bayes rule follows directly from our definitions of conjunctions and conditional probabilities</p>
+<p><span class="math inline">\(P(B|A)P(A) = P(A \&amp; B) = P(A|B)P(B)\)</span></p>
+<blockquote>
+<p><strong>Bayes rule</strong> provides a way to <em>invert conditional probabilities</em>: to go from P(B|A) to P(A|B)<br />
+<span class="math inline">\(P(A|B) = \frac{P(B|A)P(A)}{P(B)}\)</span></p>
+</blockquote>
+<p>More often, in practice we substitute the law of total probability for the denominator of the Bayes rule expression:</p>
+<p><span class="math inline">\(P(A|B) = \frac{P(B|A)P(A)}{\sum\limits_{A&#39;}P(B|A&#39;)P(A&#39;)}\)</span>, where <span class="math inline">\(\sum\limits_{A&#39;}\)</span> denotes a sum over all the events in the partition of which A is a member.</p>
+<p>Bayes’ theorem is the basis for an entire branch of statistics, as well as a number of artificial intelligence applications. In statistics, Bayes’ theorem is often written in terms of individual hypotheses <span class="math inline">\(h\)</span> from the hypothesis space <span class="math inline">\(\mathcal{H}\)</span> and data <span class="math inline">\(D\)</span>, yielding:</p>
+<p><span class="math inline">\(P(h|D) = \frac{P(D|h)P(h)}{P(D)} = \frac{P(D|h)P(h)}{\sum\limits_{q \in \mathcal{H}} P(D|q) P(q)}\)</span></p>
+<p>The individual components of this equation have names:</p>
+<p><span class="math inline">\(P(h)\)</span> is the <strong>prior</strong>: how much you believe hypothesis <span class="math inline">\(h\)</span> is true before you saw data <span class="math inline">\(D\)</span>.</p>
+<p><span class="math inline">\(P(D|h)\)</span> is the <strong>likelihood</strong>: how likely are the data <span class="math inline">\(D\)</span> to have been observed if hypothesis <span class="math inline">\(h\)</span> were true.</p>
+<p><span class="math inline">\(P(h|D)\)</span> is the <strong>posterior</strong>: how much you ought to believe hypothesis <span class="math inline">\(h\)</span> is true given that you have seen data <span class="math inline">\(D\)</span>.</p>
+<p><span class="math inline">\(P(D)\)</span> is often called the <strong>normalizing constant</strong> because it is constant regardless of which <span class="math inline">\(h\)</span> you consider.<br />
+Consequently, it is often dropped and Bayes’ theorem is written as a proportionality: <span class="math inline">\(P(h|D) \propto P(D|h)P(h)\)</span></p>
+<p>We will come back to all of these at a later point. In the meantime, we can use Bayes rule to calculate the probability that a published significant finding is truly not null (H1 rather than H0).<br />
+P(‘significant’|H0) = <span class="math inline">\(\alpha\)</span> = 0.05<br />
+P(‘significant’|H1) = “power” = 0.6<br />
+P(H1) = 0.3 = 1-P(H0)</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="probability.html#cb228-1" aria-hidden="true" tabindex="-1"></a>p.sig.H0 <span class="ot">=</span> <span class="fl">0.05</span>   <span class="co"># conventional alpha</span></span>
+<span id="cb228-2"><a href="probability.html#cb228-2" aria-hidden="true" tabindex="-1"></a>p.sig.H1 <span class="ot">=</span> <span class="fl">0.6</span>    <span class="co"># assumption about power.</span></span>
+<span id="cb228-3"><a href="probability.html#cb228-3" aria-hidden="true" tabindex="-1"></a>p.H1 <span class="ot">=</span> <span class="fl">0.3</span>        <span class="co"># assumption about baserate of tested effects</span></span>
+<span id="cb228-4"><a href="probability.html#cb228-4" aria-hidden="true" tabindex="-1"></a>p.H0 <span class="ot">=</span> <span class="dv">1</span><span class="sc">-</span>p.H1</span>
+<span id="cb228-5"><a href="probability.html#cb228-5" aria-hidden="true" tabindex="-1"></a>p.sig <span class="ot">=</span> p.sig.H0<span class="sc">*</span>p.H0 <span class="sc">+</span> p.sig.H1<span class="sc">*</span>p.H1</span>
+<span id="cb228-6"><a href="probability.html#cb228-6" aria-hidden="true" tabindex="-1"></a>p.H1.sig <span class="ot">=</span> p.sig.H1<span class="sc">*</span>p.H1 <span class="sc">/</span> p.sig</span>
+<span id="cb228-7"><a href="probability.html#cb228-7" aria-hidden="true" tabindex="-1"></a>p.H1.sig</span></code></pre></div>
+<pre><code>## [1] 0.8372093</code></pre>
+
+</div>
+</div>
+<div id="probability-simulations" class="section level2">
+<h2>Simulation, Sampling and Monte Carlo.</h2>
+<p>Sampling is a very helpful tool to understand probability.</p>
+<p>When I say that the probability of a die coming up x is P(x), it implies that P(x) is the long-run frequency of the outcome: how often x would happen if we rolled this die many times. So, instead of going through the math to calculate various properties of this die-roll, we can <em>simulate</em> die rolls, and work on those simulations.</p>
+<p>This works on account of various “laws of large numbers,” and in particular, the “Monte Carlo” theorem, which basically says: if you want to calculate the expectation of some function on a random variable, you can calculate it by averaging that function’s output on a bunch of samples drawn with frequency proportional to their probability under the random variable.</p>
+<p>Let’s start by setting up the same die probabilities we worked with when discussing the <a href="prob-foundations.html">foundations of probability</a>:</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="probability.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb230-2"><a href="probability.html#cb230-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb230-3"><a href="probability.html#cb230-3" aria-hidden="true" tabindex="-1"></a>outcomes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;1&#39;</span>, <span class="st">&#39;2&#39;</span>, <span class="st">&#39;3&#39;</span>, <span class="st">&#39;4&#39;</span>, <span class="st">&#39;5&#39;</span>, <span class="st">&#39;6&#39;</span>)</span>
+<span id="cb230-4"><a href="probability.html#cb230-4" aria-hidden="true" tabindex="-1"></a>unnormalized <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb230-5"><a href="probability.html#cb230-5" aria-hidden="true" tabindex="-1"></a>p.outcomes <span class="ot">=</span> unnormalized<span class="sc">/</span><span class="fu">sum</span>(unnormalized)</span>
+<span id="cb230-6"><a href="probability.html#cb230-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(p.outcomes) <span class="ot">&lt;-</span> outcomes</span>
+<span id="cb230-7"><a href="probability.html#cb230-7" aria-hidden="true" tabindex="-1"></a>p.outcomes</span></code></pre></div>
+<pre><code>##         1         2         3         4         5         6 
+## 0.2857143 0.1428571 0.1428571 0.1428571 0.1428571 0.1428571</code></pre>
+<div id="sampling-long-run-frequency-and-the-law-of-large-numbers." class="section level3">
+<h3>Sampling, long-run frequency, and the law of large numbers.</h3>
+<p>Another way to think about this probability is as the long-run frequency of a given outcome. So we can set up a function that rolls a die and returns the side that it landed on. In this case, we can implement such sampling with the <code>sample</code> function.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="probability.html#cb232-1" aria-hidden="true" tabindex="-1"></a>roll.die <span class="ot">=</span> <span class="cf">function</span>(){</span>
+<span id="cb232-2"><a href="probability.html#cb232-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sample</span>(outcomes, <span class="dv">1</span>, <span class="at">replace=</span>T, <span class="at">prob =</span> p.outcomes))</span>
+<span id="cb232-3"><a href="probability.html#cb232-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Every time we roll the die, we get a random outcome, we would call this a <em>sample</em></p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="probability.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll.die</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;1&quot;</code></pre>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="probability.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll.die</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;1&quot;</code></pre>
+<p><a href="https://en.wikipedia.org/wiki/Law_of_large_numbers#Borel.27s_law_of_large_numbers">Borel’s law of large numbers</a> is the intuitive rule that if we repeat a random experiment many many times, the proportion of those times that had a particular outcome occur will match the probability of that outcome occurring in any one run of the experiment. In our case, we can generate many rolls of the die, then calculate what fraction of them yielded a particular outcome:</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="probability.html#cb237-1" aria-hidden="true" tabindex="-1"></a>rolls <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">10000</span>,<span class="fu">roll.die</span>())</span>
+<span id="cb237-2"><a href="probability.html#cb237-2" aria-hidden="true" tabindex="-1"></a>( <span class="at">p.1 =</span> <span class="fu">sum</span>(rolls<span class="sc">==</span><span class="dv">1</span>)<span class="sc">/</span><span class="fu">length</span>(rolls) )</span></code></pre></div>
+<pre><code>## [1] 0.2824</code></pre>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="probability.html#cb239-1" aria-hidden="true" tabindex="-1"></a>( <span class="at">p.4 =</span> <span class="fu">sum</span>(rolls<span class="sc">==</span><span class="dv">4</span>)<span class="sc">/</span><span class="fu">length</span>(rolls) )</span></code></pre></div>
+<pre><code>## [1] 0.1435</code></pre>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="probability.html#cb241-1" aria-hidden="true" tabindex="-1"></a>( <span class="at">p.8 =</span> <span class="fu">sum</span>(rolls<span class="sc">==</span><span class="dv">8</span>)<span class="sc">/</span><span class="fu">length</span>(rolls) )</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="sampling-to-estimate-event-probabilities." class="section level3">
+<h3>Sampling to estimate event probabilities.</h3>
+<p>An event in probability theory is a subset of outcomes. For instance, for our rolled die, we might define an event as “getting an even roll.” It is useful to us to think of an event as a predicate, which we apply to the outcomes to see whether or not they fit into the event. To make these kinds of calculations explicit, we can make a data frame listing all outcomes, their probabilities, and whether or not they are included in a particular event:</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="probability.html#cb243-1" aria-hidden="true" tabindex="-1"></a>is.even <span class="ot">=</span> <span class="cf">function</span>(outcome){</span>
+<span id="cb243-2"><a href="probability.html#cb243-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>((<span class="fu">as.numeric</span>(outcome) <span class="sc">%%</span> <span class="dv">2</span>)<span class="sc">==</span><span class="dv">0</span>)  <span class="co"># x %% y is the modulus operator which returns the remainder after dividing x by y.</span></span>
+<span id="cb243-3"><a href="probability.html#cb243-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Just as we can calculate the probability of a particular outcome from samples, we can do the same with an event. We generate many samples, see which fall in an event, and estimate their relative frequency:</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="probability.html#cb244-1" aria-hidden="true" tabindex="-1"></a>die.samples <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">outcome =</span> <span class="fu">replicate</span>(<span class="dv">10000</span>, <span class="fu">roll.die</span>()), <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb244-2"><a href="probability.html#cb244-2" aria-hidden="true" tabindex="-1"></a>die.samples<span class="sc">$</span>even <span class="ot">=</span> <span class="fu">is.even</span>(die.samples<span class="sc">$</span>outcome)</span>
+<span id="cb244-3"><a href="probability.html#cb244-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(die.samples)</span></code></pre></div>
+<pre><code>##   outcome  even
+## 1       1 FALSE
+## 2       6  TRUE
+## 3       4  TRUE
+## 4       4  TRUE
+## 5       5 FALSE
+## 6       6  TRUE</code></pre>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="probability.html#cb246-1" aria-hidden="true" tabindex="-1"></a>( <span class="at">p.even =</span> <span class="fu">sum</span>(die.samples<span class="sc">$</span>even) <span class="sc">/</span> <span class="fu">nrow</span>(die.samples) )</span></code></pre></div>
+<pre><code>## [1] 0.4275</code></pre>
+<p>Note that this formulation of the explicit probability calculation (data frame of outcomes with associated probabilities, or data frame of samples) makes it clear what the relationship is. Basically, we treat the probability of each sampled outcome as 1/n where n is the number of samples.</p>
+</div>
+<div id="probability-of-a-conjunction-of-events" class="section level3">
+<h3>Probability of a conjunction of events</h3>
+<p>The conjunction of events A and B may be thought of as another event – another subset of the outcomes that is the <em>set intersection</em> of A and B. Alternatively, we can just think of it as a conjunction predicate that returns true if both events are true of this outcome.</p>
+<p>First let’s define a second event “greater than 3” (which is the subset 4,5,6 of dice outcomes).</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="probability.html#cb248-1" aria-hidden="true" tabindex="-1"></a>is.greaterthan3 <span class="ot">=</span> <span class="cf">function</span>(outcome){</span>
+<span id="cb248-2"><a href="probability.html#cb248-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(outcome <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
+<span id="cb248-3"><a href="probability.html#cb248-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb248-4"><a href="probability.html#cb248-4" aria-hidden="true" tabindex="-1"></a>die.samples<span class="sc">$</span>greaterthan3 <span class="ot">=</span> <span class="fu">is.greaterthan3</span>(die.samples<span class="sc">$</span>outcome)</span>
+<span id="cb248-5"><a href="probability.html#cb248-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(die.samples,<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##    outcome  even greaterthan3
+## 1        1 FALSE        FALSE
+## 2        6  TRUE         TRUE
+## 3        4  TRUE         TRUE
+## 4        4  TRUE         TRUE
+## 5        5 FALSE         TRUE
+## 6        6  TRUE         TRUE
+## 7        5 FALSE         TRUE
+## 8        1 FALSE        FALSE
+## 9        6  TRUE         TRUE
+## 10       6  TRUE         TRUE</code></pre>
+<p>Now we can define the conjunction event, which we can calculate in two ways – either by defining a new conjunction predicate, or by simply taking the logical conjunction of our two event columns.</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="probability.html#cb250-1" aria-hidden="true" tabindex="-1"></a>is.even.n.greaterthan3 <span class="ot">=</span> <span class="cf">function</span>(outcome){</span>
+<span id="cb250-2"><a href="probability.html#cb250-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>( <span class="fu">is.even</span>(outcome) <span class="sc">&amp;</span> <span class="fu">is.greaterthan3</span>(outcome) )</span>
+<span id="cb250-3"><a href="probability.html#cb250-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb250-4"><a href="probability.html#cb250-4" aria-hidden="true" tabindex="-1"></a>die.samples<span class="sc">$</span>even.n.greaterthan3 <span class="ot">=</span> <span class="fu">is.even.n.greaterthan3</span>(die.samples<span class="sc">$</span>outcome)</span>
+<span id="cb250-5"><a href="probability.html#cb250-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb250-6"><a href="probability.html#cb250-6" aria-hidden="true" tabindex="-1"></a>( <span class="at">p.even.n.greaterthan3 =</span> <span class="fu">mean</span>(die.samples<span class="sc">$</span>even.n.greaterthan3) )</span></code></pre></div>
+<pre><code>## [1] 0.2831</code></pre>
+<p>Note that here we take the shortcut of taking the mean of the logical vector <code>even.n.greaterthan3</code> to calculate the proportion that is true. This works because true=1, false=0, consequently sum(TF) = n.true, and mean(TF) = n.true/n.total – the proportion that were true.</p>
+</div>
+<div id="sampling-to-get-probability-of-disjunction" class="section level3">
+<h3>Sampling to get probability of disjunction</h3>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="probability.html#cb252-1" aria-hidden="true" tabindex="-1"></a>is.even.or.greaterthan3 <span class="ot">=</span> <span class="cf">function</span>(outcome){</span>
+<span id="cb252-2"><a href="probability.html#cb252-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>( <span class="fu">is.even</span>(outcome) <span class="sc">|</span> <span class="fu">is.greaterthan3</span>(outcome) )</span>
+<span id="cb252-3"><a href="probability.html#cb252-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb252-4"><a href="probability.html#cb252-4" aria-hidden="true" tabindex="-1"></a>die.samples<span class="sc">$</span>even.or.greaterthan3 <span class="ot">=</span> <span class="fu">is.even.or.greaterthan3</span>(die.samples<span class="sc">$</span>outcome)</span>
+<span id="cb252-5"><a href="probability.html#cb252-5" aria-hidden="true" tabindex="-1"></a>( <span class="at">p.even.or.greaterthan3 =</span> <span class="fu">mean</span>(die.samples<span class="sc">$</span>even.or.greaterthan3) )</span></code></pre></div>
+<pre><code>## [1] 0.5666</code></pre>
+</div>
+<div id="sampling-to-calculate-conditional-probability" class="section level3">
+<h3>Sampling to calculate conditional probability</h3>
+<p>We can calculate a conditional probability in two ways (say, P(‘even’ | ‘greater than 3’))</p>
+<ol style="list-style-type: decimal">
+<li>We can make a subset of the samples, for which the condition is true, and do our regular calculations on it.</li>
+</ol>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="probability.html#cb254-1" aria-hidden="true" tabindex="-1"></a>( <span class="at">p.even_greaterthan3 =</span> <span class="fu">filter</span>(die.samples, greaterthan3 <span class="sc">==</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">p.even =</span> <span class="fu">mean</span>(even)) )</span></code></pre></div>
+<pre><code>##      p.even
+## 1 0.6705353</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Or we can take the shortcut from our understanding the definition of conditional probability (P(A|B) = P(A&amp;B)/P(B))</li>
+</ol>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="probability.html#cb256-1" aria-hidden="true" tabindex="-1"></a>( <span class="at">p.even_greaterthan3 =</span> <span class="fu">sum</span>(die.samples<span class="sc">$</span>even.n.greaterthan3)<span class="sc">/</span><span class="fu">sum</span>(die.samples<span class="sc">$</span>greaterthan3) )</span></code></pre></div>
+<pre><code>## [1] 0.6705353</code></pre>
+
+</div>
+</div>
+<div id="probability-rv" class="section level2">
+<h2>Random variables</h2>
+<p>While it is easiest to explain the basic rules of probability in terms of sample spaces, outcomes, and events, in practice, we want to know about probability for describing random variables. A <strong>random variable</strong> is a variable with a value obtained by measuring some stochastic process. We can consider a complicated sample space in which we roll hundreds of dice (that is our stochastic process), but we can define a random variable <span class="math inline">\(X\)</span> as the total number of dots on two specific dice (die A, and die B). This is very useful, since the world we measure is very complicated, but we simplify our lives by only dealing with simple observations of small aspects of it.</p>
+<blockquote>
+<p>A <strong>random variable</strong> is a variable with a value that is subject to random variation.</p>
+</blockquote>
+<p>For instance, if we roll a die twice, and define <span class="math inline">\(X\)</span> to be the sum of the two rolls, <span class="math inline">\(X\)</span> is a random variable.</p>
+<blockquote>
+<p>The set of values the random variable can take on is called its <strong>support</strong>.</p>
+</blockquote>
+<p>The variable <span class="math inline">\(X\)</span> (sum of two dice rolls) can take on integers between 2 and 12, so its support is {2,3,4,5,6,7,8,9,10,11,12}.</p>
+<blockquote>
+<p>The <strong>probability distribution function</strong> of a random variable<br />
+(e.g., <span class="math inline">\(f_X(x)\)</span> or <span class="math inline">\(P(X=x)\)</span> for <span class="math inline">\(X\)</span>),<br />
+describes the probability that the variable will take on any of its possible values.</p>
+</blockquote>
+<p>We can calculate the probability distribution function for the sum of two dice rolls (with our weird, uneven die) using the rules of probability by summing over all the ways that X will take on a particular value.</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="probability.html#cb258-1" aria-hidden="true" tabindex="-1"></a>outcomes <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;1&#39;</span>, <span class="st">&#39;2&#39;</span>, <span class="st">&#39;3&#39;</span>, <span class="st">&#39;4&#39;</span>, <span class="st">&#39;5&#39;</span>, <span class="st">&#39;6&#39;</span>)</span>
+<span id="cb258-2"><a href="probability.html#cb258-2" aria-hidden="true" tabindex="-1"></a>unnormalized <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb258-3"><a href="probability.html#cb258-3" aria-hidden="true" tabindex="-1"></a>p.outcomes <span class="ot">=</span> unnormalized<span class="sc">/</span><span class="fu">sum</span>(unnormalized)</span>
+<span id="cb258-4"><a href="probability.html#cb258-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(p.outcomes) <span class="ot">&lt;-</span> outcomes</span>
+<span id="cb258-5"><a href="probability.html#cb258-5" aria-hidden="true" tabindex="-1"></a>p.outcomes</span></code></pre></div>
+<pre><code>##         1         2         3         4         5         6 
+## 0.2857143 0.1428571 0.1428571 0.1428571 0.1428571 0.1428571</code></pre>
+<p>P(X=2) = P(‘roll-1’ = 1 &amp; ‘roll-2’ = 1) = (2/7)(2/7) = 4/49<br />
+P(X=3) = P(‘roll-1’ = 1 &amp; ‘roll-2’ = 2) + P(‘roll-1’ = 2 &amp; ‘roll-2’ = 1) = (2/7)(1/7) + (1/7)(2/7) = 4/49<br />
+etc.</p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="probability.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb260-2"><a href="probability.html#cb260-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-3"><a href="probability.html#cb260-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this line creates a data frame with every combination of die a and die b outcomes.</span></span>
+<span id="cb260-4"><a href="probability.html#cb260-4" aria-hidden="true" tabindex="-1"></a>joint.outcomes <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">expand</span>(<span class="fu">tibble</span>(<span class="at">die.a =</span> outcomes, <span class="at">die.b =</span> outcomes), die.a, die.b)</span>
+<span id="cb260-5"><a href="probability.html#cb260-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-6"><a href="probability.html#cb260-6" aria-hidden="true" tabindex="-1"></a>joint.outcomes <span class="ot">&lt;-</span> joint.outcomes <span class="sc">%&gt;%</span> </span>
+<span id="cb260-7"><a href="probability.html#cb260-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">X =</span> <span class="fu">as.numeric</span>(die.a) <span class="sc">+</span> <span class="fu">as.numeric</span>(die.b),  <span class="co"># add column for sum of both dice.</span></span>
+<span id="cb260-8"><a href="probability.html#cb260-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">p.die.a =</span> p.outcomes[die.a],  <span class="co"># add columns corresponding to the independent probabilities of die 1 and die 2</span></span>
+<span id="cb260-9"><a href="probability.html#cb260-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">p.die.b =</span> p.outcomes[die.b],</span>
+<span id="cb260-10"><a href="probability.html#cb260-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">p.conjunction =</span> p.die.a<span class="sc">*</span>p.die.b)  <span class="co"># add column corresponding to joint probability (product, given independence)</span></span>
+<span id="cb260-11"><a href="probability.html#cb260-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-12"><a href="probability.html#cb260-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(joint.outcomes)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 6
+##   die.a die.b     X p.die.a p.die.b p.conjunction
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;         &lt;dbl&gt;
+## 1 1     1         2   0.286   0.286        0.0816
+## 2 1     2         3   0.286   0.143        0.0408
+## 3 1     3         4   0.286   0.143        0.0408
+## 4 1     4         5   0.286   0.143        0.0408
+## 5 1     5         6   0.286   0.143        0.0408
+## 6 1     6         7   0.286   0.143        0.0408</code></pre>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="probability.html#cb262-1" aria-hidden="true" tabindex="-1"></a>rv.X <span class="ot">&lt;-</span> joint.outcomes <span class="sc">%&gt;%</span></span>
+<span id="cb262-2"><a href="probability.html#cb262-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(X) <span class="sc">%&gt;%</span>   <span class="co"># group by value of X (sum of the two dice)</span></span>
+<span id="cb262-3"><a href="probability.html#cb262-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">p.X =</span> <span class="fu">sum</span>(p.conjunction)) <span class="co"># sum up the probability of all outcomes that have that sum</span></span>
+<span id="cb262-4"><a href="probability.html#cb262-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb262-5"><a href="probability.html#cb262-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rv.X, <span class="dv">11</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 11 x 2
+##        X    p.X
+##    &lt;dbl&gt;  &lt;dbl&gt;
+##  1     2 0.0816
+##  2     3 0.0816
+##  3     4 0.102 
+##  4     5 0.122 
+##  5     6 0.143 
+##  6     7 0.163 
+##  7     8 0.102 
+##  8     9 0.0816
+##  9    10 0.0612
+## 10    11 0.0408
+## 11    12 0.0204</code></pre>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="probability.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="co"># just to confirm, let&#39;s make sure the probabilities sum to 1, since they ought to</span></span>
+<span id="cb264-2"><a href="probability.html#cb264-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(rv.X<span class="sc">$</span>p.X)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="probability.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb266-2"><a href="probability.html#cb266-2" aria-hidden="true" tabindex="-1"></a>rv.X <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(X, p.X))<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-136-1.png" width="3000" /></p>
+<p>In short, we can obtain the probability distribution of a random variable by applying the rules of probability to a description of the stochastic process presumed to determine the value of that random variable. Notice that the probability distribution <span class="math inline">\(P(X)\)</span> is not <em>uniform</em>: <span class="math inline">\(P(X=12) \neq P(X=7)\)</span>. This will be the case for most distributions we consider.</p>
+<p>We can define lots of other variables from the same sample space (of the outcomes of two dice rolls).<br />
+<span class="math inline">\(A\)</span> might be the number of dots on die A (range <span class="math inline">\(\{1, ..., 6\}\)</span>);<br />
+<span class="math inline">\(B\)</span> could be the number of dots on die B (range <span class="math inline">\(\{1, ..., 6\}\)</span>);<br />
+<span class="math inline">\(Y\)</span> could be <span class="math inline">\(A-B\)</span> (range is <span class="math inline">\(\{-5, -4, ... , 4, 5\})\)</span><br />
+<span class="math inline">\(Z\)</span> could be <span class="math inline">\(A \cdot B\)</span>, etc.</p>
+<p>Each of these variables will have a different probability distribution, and all of them are usually written as <span class="math inline">\(P(\cdot)\)</span>, which can create confusion. One way to make this less confusing is to spell it out, for instance <span class="math inline">\(P(X=x)\)</span> is the probability distribution over the random variable <span class="math inline">\(X\)</span> which assigns probability to all possible outcomes, denoted in the lower case <span class="math inline">\(x\)</span>. This ends up being long-winded, and invariably people fall back to abbreviating to something like <span class="math inline">\(P(x)\)</span>, but this sometimes causes confusion when dealing with multiple variables. I try to deal with this by subscripting the probability functions, so in place of <span class="math inline">\(P(X=x)\)</span>, I would write <span class="math inline">\(P_X(x)\)</span>. This has its own host of problems, but I think it is sometimes useful.</p>
+<div id="joint-conditional-and-marginal-probabilities" class="section level3">
+<h3>Joint, conditional, and marginal probabilities</h3>
+<p>Let’s consider the random variables <span class="math inline">\(X\)</span> (sum of two dice rolls) and <span class="math inline">\(Y\)</span> (difference of roll A minus roll B). The probability distribution of each of these variables in isolation (that is, if we disregard the value of the other variables) is called the <strong>marginal distribution</strong> of that variable (because we are effectively “marginalizing” over the other variable). For instance, the marginal distribution <span class="math inline">\(P(X=x)\)</span> (the sum of two dice rolls) will be the distribution we calculated above when we disregarded the difference between the two rolls.</p>
+<p>If we consider the distribution over one variable (say <span class="math inline">\(X\)</span>) while holding another one fixed, we get the <strong>conditional distribution</strong>. So if we consider the distribution of the sum of the two dice, given that die A - die B = 2, we are interested in the conditional distribution of X given <span class="math inline">\(Y=2\)</span>: <span class="math inline">\(P(X=x|Y = 2)\)</span>. If the variables are <em>not independent</em>, this will be quite different from the marginal distribution <span class="math inline">\(P(X)\)</span>.</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="probability.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let&#39;s add a column for the values of X and Y to our joint outcomes data frame</span></span>
+<span id="cb267-2"><a href="probability.html#cb267-2" aria-hidden="true" tabindex="-1"></a>joint.outcomes <span class="ot">&lt;-</span> joint.outcomes <span class="sc">%&gt;%</span> </span>
+<span id="cb267-3"><a href="probability.html#cb267-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Y =</span> <span class="fu">as.numeric</span>(die.a) <span class="sc">-</span> <span class="fu">as.numeric</span>(die.b)) <span class="co"># make a new column for the value of Y</span></span>
+<span id="cb267-4"><a href="probability.html#cb267-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb267-5"><a href="probability.html#cb267-5" aria-hidden="true" tabindex="-1"></a><span class="co"># now we will do the same &quot;group_by(X) and sum probabilities&quot; procedure, but only for cases where Y==2</span></span>
+<span id="cb267-6"><a href="probability.html#cb267-6" aria-hidden="true" tabindex="-1"></a>rv.X.Y_2 <span class="ot">=</span> joint.outcomes <span class="sc">%&gt;%</span></span>
+<span id="cb267-7"><a href="probability.html#cb267-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Y<span class="sc">==</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="co"># consider only outcomes where Y==2</span></span>
+<span id="cb267-8"><a href="probability.html#cb267-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(X) <span class="sc">%&gt;%</span>   <span class="co"># group by value of X (sum of the two dice)</span></span>
+<span id="cb267-9"><a href="probability.html#cb267-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">sum</span>(p.conjunction)) <span class="co"># sum up the probability of all outcomes that have that sum</span></span>
+<span id="cb267-10"><a href="probability.html#cb267-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb267-11"><a href="probability.html#cb267-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rv.X.Y_2, <span class="dv">11</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##       X      p
+##   &lt;dbl&gt;  &lt;dbl&gt;
+## 1     4 0.0408
+## 2     6 0.0204
+## 3     8 0.0204
+## 4    10 0.0204</code></pre>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="probability.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note that the sum is no longer 1.  Indeed, the sum will be P(Y==2), since those are the only outcomes we are counting</span></span>
+<span id="cb269-2"><a href="probability.html#cb269-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(rv.X.Y_2<span class="sc">$</span>p)</span></code></pre></div>
+<pre><code>## [1] 0.1020408</code></pre>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="probability.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># consequently, we need to divide by P(Y==2) to get the probability P(X|Y==2)</span></span>
+<span id="cb271-2"><a href="probability.html#cb271-2" aria-hidden="true" tabindex="-1"></a>rv.X.Y_2 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(rv.X.Y_2, <span class="at">p=</span>p<span class="sc">/</span><span class="fu">sum</span>(p))</span>
+<span id="cb271-3"><a href="probability.html#cb271-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb271-4"><a href="probability.html#cb271-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rv.X.Y_2, <span class="dv">11</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##       X     p
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     4   0.4
+## 2     6   0.2
+## 3     8   0.2
+## 4    10   0.2</code></pre>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="probability.html#cb273-1" aria-hidden="true" tabindex="-1"></a>rv.X.Y_2 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(X, p))<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-137-1.png" width="3000" /></p>
+<p>Finally, we might consider the <strong>joint distribution</strong> which distributes probability over <em>conjunctions</em> of variables. For instance, the joint distribution <span class="math inline">\(P(X=x, Y=y)\)</span> (which I will often write as <span class="math inline">\(P_{XY}(x,y)\)</span>), distributes probability over the conjunctions of X and Y. So <span class="math inline">\(P_{XY}(x=5,y=-1)\)</span> is the probability that the two die sum to 5 and die A is 1 smaller than die B (which only happens when A = 2, B=3, which has a probability of (1/7)(1/7)=1/49).</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="probability.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now we will do the same &quot;group_by and sum probabilities&quot; procedure, but will group by all combinations of X and Y</span></span>
+<span id="cb274-2"><a href="probability.html#cb274-2" aria-hidden="true" tabindex="-1"></a>rv.XY <span class="ot">=</span> joint.outcomes <span class="sc">%&gt;%</span></span>
+<span id="cb274-3"><a href="probability.html#cb274-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(X,Y) <span class="sc">%&gt;%</span>   <span class="co"># group by value of X and Y</span></span>
+<span id="cb274-4"><a href="probability.html#cb274-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">sum</span>(p.conjunction)) <span class="co"># sum up the probability of all outcomes that have that sum</span></span>
+<span id="cb274-5"><a href="probability.html#cb274-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rv.XY)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+## # Groups:   X [3]
+##       X     Y      p
+##   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1     2     0 0.0816
+## 2     3    -1 0.0408
+## 3     3     1 0.0408
+## 4     4    -2 0.0408
+## 5     4     0 0.0204
+## 6     4     2 0.0408</code></pre>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="probability.html#cb276-1" aria-hidden="true" tabindex="-1"></a>rv.XY <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">fill=</span>p))<span class="sc">+</span></span>
+<span id="cb276-2"><a href="probability.html#cb276-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb276-3"><a href="probability.html#cb276-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>)<span class="sc">+</span></span>
+<span id="cb276-4"><a href="probability.html#cb276-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="sc">-</span><span class="dv">6</span><span class="sc">:</span><span class="dv">6</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-138-1.png" width="3000" /></p>
+<p>Since random variables are <em>partitions</em> over the sample space, we can use the law of total probability to calculate the <em>marginal distribution</em> of X from a joint distribution of X and Y by summing (or integrating for continuously valued variables) over all values of Y:<br />
+<span class="math inline">\(P_X(x) = \sum\limits_{y \in Y}P_{XY}(x,y)\)</span></p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="probability.html#cb277-1" aria-hidden="true" tabindex="-1"></a>rv.XY <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(X) <span class="sc">%&gt;%</span></span>
+<span id="cb277-2"><a href="probability.html#cb277-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">sum</span>(p))</span></code></pre></div>
+<pre><code>## # A tibble: 11 x 2
+##        X      p
+##    &lt;dbl&gt;  &lt;dbl&gt;
+##  1     2 0.0816
+##  2     3 0.0816
+##  3     4 0.102 
+##  4     5 0.122 
+##  5     6 0.143 
+##  6     7 0.163 
+##  7     8 0.102 
+##  8     9 0.0816
+##  9    10 0.0612
+## 10    11 0.0408
+## 11    12 0.0204</code></pre>
+<p>It is possible for two sets of variables to have very different joint distributions while having the same marginal distributions. Consider two scenarios with identical marginal distributions:</p>
+<ol style="list-style-type: decimal">
+<li><p>We roll two fair dice, A and B, and these dice are independent. The marginal distributions of <span class="math inline">\(P(A)\)</span> and <span class="math inline">\(P(B)\)</span> are uniform over the integers 1 through 6 (assigning each one 1/6 probability). The joint distribution <span class="math inline">\(P(A,B)\)</span> is uniform over all 36 conjunctions (assigning each one 1/36 probability), consequently the conditional distributions show independence in that they are equal to the marginal distributions: <span class="math inline">\(P(A|B)=P(A)\)</span> and <span class="math inline">\(P(B|A)=P(B)\)</span>.</p></li>
+<li><p>We roll two magical magnetic dice, A and B, which always come up equal, but are equally likely to come up as any integer. The marginal distributions <span class="math inline">\(P(A)\)</span> and <span class="math inline">\(P(B)\)</span> are the same as in (1), they are uniform over the integers 1 through 6. However, the joint distribution <span class="math inline">\(P(A,B)\)</span> is not uniform: it assigns 0 probability to every conjunction where <span class="math inline">\(A \neq B\)</span>, and the six outcomes where <span class="math inline">\(A=B\)</span> (<span class="math inline">\(\{(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)\}\)</span>) each have probability 1/6. In this scenario, the variables are not independent, and the conditional distributions are not equal to the marginal distributions: <span class="math inline">\(P(A|B=3)\)</span> is not uniform over the integers 1 through 6, but assigns 100% probability to <span class="math inline">\(A=3\)</span> and 0 probability to all other outcomes.</p></li>
+</ol>
+</div>
+<div id="bernoulli-distribution" class="section level3">
+<h3>Bernoulli distribution</h3>
+<p>Let’s consider a single flip of a bent coin. If it comes up heads, we will say random variable <span class="math inline">\(y=1\)</span>, if it is tails, <span class="math inline">\(y=0\)</span>.</p>
+<p>The coin is bent, and comes up heads with probability <span class="math inline">\(p\)</span>.</p>
+<p>Using the various rules of probability, we can show that:
+<span class="math inline">\(P(y=1) = p\)</span>
+<span class="math inline">\(P(y=0) = (1-p)\)</span></p>
+<p>If we write down a function of <span class="math inline">\(y\)</span> that returns these probabilities when we give it a particular value of y, we have written down the probability distribution function of y. Usually we would write this as <span class="math inline">\(f(y)\)</span>.</p>
+<p>In this case, <span class="math inline">\(f(y)\)</span> is the “Bernoulli” distribution, typically written as:</p>
+<p><span class="math inline">\(f(Y) = \operatorname{Bernoulli}(y|p) = \{p \mbox{ if } y = 0 \mbox{ and } (1-p) \mbox{ if } y=0 \}\)</span></p>
+<p>This trivial example shows that the probability distribution function of a random variable is obtained by using the rules of probability. Rather than writing out a long description about how coin flips determine the value of <span class="math inline">\(y\)</span>, it is much more convenient to simply write out the probability distribution function of <span class="math inline">\(y\)</span>, as we did above. Moreover, since the Bernoulli distribution is widely known, we could just refer to it by name, and informed people will know that it means the function spelled out above.</p>
+<p><span class="math inline">\(f(y \mid p) = \operatorname{Bernoulli}(p)\)</span></p>
+<p>It is even more convenient to write this out in “sampling” notation:</p>
+<p><span class="math inline">\(y \sim \operatorname{Bernoulli}(p)\)</span></p>
+<p>This basically says “random variable y is a random draw from a Bernoulli distribution with parameter p”; in other words, random variable y takes on values with probability given by Bernoulli(p).</p>
+</div>
+<div id="combinations-and-the-binomial-distribution" class="section level3">
+<h3>Combinations and the binomial distribution</h3>
+<p>If we flip a coin that comes up heads with probability <span class="math inline">\(p=0.8\)</span>, and tails with probability <span class="math inline">\((1-p)=0.2\)</span>, the probability of getting HHT after three independent flips is (under the justifiable assumption that the different flips are independent):<br />
+<span class="math inline">\(P(H)P(H)P(T) = p \cdot p \cdot (1-p) = 0.8 \cdot 0.8 \cdot 0.2 = 0.128\)</span>.</p>
+<p>What is the probability of getting 2 heads out of 3 flips? To answer this question, we must sum up all the different ways in which we can get 2 out of 3 heads: HHT, HTH, THH:<br />
+<span class="math inline">\(P(2\mbox{ H out of } 3) = P(\mbox{HHT}) + P(\mbox{HTH}) + P(\mbox{THH})\)</span></p>
+<p>We should be able to convince ourselves that: <span class="math inline">\(P(\mbox{HHT}) = P(\mbox{HTH}) = P(\mbox{THH}) = p^2 \cdot (1-p)\)</span>.</p>
+<p>In general, we see that the probability of any particular sequence with n heads (and therefore, necessarily, 3-n tails) will be <span class="math inline">\(p^n * (1-p)^{3-n}\)</span>.</p>
+<p>So <span class="math inline">\(P(2\mbox{ H out of } 3) = (3)\cdot p^2 \cdot (1-p)\)</span>, which we can partition into the constant <span class="math inline">\((3)\)</span>, which indicates how many 3-flip outcomes result in two heads, and the probability of any one such outcome occurring.</p>
+<p>Now, let’s say define <span class="math inline">\(x\)</span> to be a random variable equal to the number of heads in our sequence of 3 coin flips. <span class="math inline">\(x\)</span> can have 4 values (0, 1, 2, 3). The probability of <span class="math inline">\(x\)</span> taking on any particular value is the probability of the disjunction of the outcomes (sequences) that have that number of heads.
+<span class="math inline">\(P(x=0) = P(\mbox{TTT})\)</span>
+<span class="math inline">\(P(x=1) = P(\mbox{HTH} \lor \mbox{THT} \lor \mbox{TTH})\)</span>
+<span class="math inline">\(P(x=2) = P(\mbox{HHT} \lor \mbox{HTH} \lor \mbox{THH})\)</span>
+<span class="math inline">\(P(x=3) = P(\mbox{HHH})\)</span></p>
+<p>And we can use our disjunction rule to calculate the probabilities (with the understanding that the unique sequences are disjoint; i.e., <span class="math inline">\(P(\mbox{HTH} \land \mbox{HHT})=0\)</span>).
+<span class="math inline">\(P(x=0) = P(\mbox{TTT}) = (1-p)^3\)</span>
+<span class="math inline">\(P(x=1) = P(\mbox{HTH} \lor \mbox{THT} \lor \mbox{TTH}) = P(\mbox{HTH}) + P(\mbox{THT}) + P(\mbox{TTH}) = 3 * p * (1-p)^2\)</span>
+<span class="math inline">\(P(x=2) = P(\mbox{HHT} \lor \mbox{HTH} \lor \mbox{THH}) = P(\mbox{HHT}) + P(\mbox{HTH}) + P(\mbox{THH}) = 3 * p^2 * (1-p)^1\)</span>
+<span class="math inline">\(P(x=3) = P(\mbox{HHH}) = p^3\)</span></p>
+<p>In general, if we define <span class="math inline">\(x\)</span> to be the number of coins that were heads out of a sequence of <span class="math inline">\(n\)</span> flips, each coming up heads with probability <span class="math inline">\(p\)</span>, the probability that <span class="math inline">\(x=k\)</span> will be given by<br />
+<span class="math inline">\(\mbox{(number of unique sequences that give k out of n heads)} * p^k * (1-p)^{n-k}\)</span></p>
+<p>We can enumerate all the ways in which we would get <span class="math inline">\(k\)</span> of <span class="math inline">\(n\)</span>, and count, but let’s try to come up with a faster, general scheme for doing so.<br />
+The number of unique sequences that have <span class="math inline">\(k\)</span> out of <span class="math inline">\(n\)</span> heads is given by the <a href="https://en.wikipedia.org/wiki/Binomial_coefficient">binomial coefficient</a>. This is generally written as <span class="math inline">\({n \choose k}\)</span>, which reads as “n choose k,” and describes the number of different, but order invariant, combinations of <span class="math inline">\(k\)</span> objects selected from a set of <span class="math inline">\(n\)</span>.</p>
+<p><span class="math inline">\({n \choose k} = \frac{n!}{k!(n-k)!}\)</span></p>
+<p>(The exclamation mark is the factorial operation: <span class="math inline">\(x! = x \cdot (x-1) \cdot (x-2) \cdot ... \cdot (1)\)</span>.)</p>
+<p>So we can write a general expression for the probability that <span class="math inline">\(x\)</span> will take on a particular value <span class="math inline">\(k\)</span>:</p>
+<p><span class="math inline">\(P(x \mid p,n) = f(x \mid p,n) = {n \choose k}p^k(1-p)^{n-k}\)</span></p>
+<p>This is the binomial distribution, which distributes probability over <span class="math inline">\(k\)</span> – the number of successes – given two parameters: <span class="math inline">\(n\)</span> (the number of attempts), and <span class="math inline">\(p\)</span> (the probability of a success on any one attempt). Since this distribution is widely known, we would typically abbreviate it as</p>
+<p><span class="math inline">\(P(x \mid p,n) = \operatorname{Binomial}(p,n)\)</span></p>
+<p>or in sampling notation</p>
+<p><span class="math inline">\(x \sim \operatorname{Binomial}(p,n)\)</span>.</p>
+
+</div>
+</div>
+<div id="probability-rv-functions" class="section level2">
+<h2>Distribution functions: PDF, CDF, Quantile</h2>
+<blockquote>
+<p>tl;dr;<br />
+<code>d*</code> gives the probability mass/density, (e.g., <code>dnorm</code>)<br />
+<code>p*</code> gives the cumulative probability, (e.g., <code>pnorm</code>)<br />
+<code>q*</code> gives the quantile (inverse cdf) (e.g., <code>qnorm</code>)</p>
+</blockquote>
+<p><a href="prob-rv.html">Random variables</a> are defined by their probability distributions which describe the probability with which that variable will take on any of its possible values. Random variables may be categorized by which values they can take on: <strong>discrete</strong> random variables take on only a countable number of values (e.g., integers: 1, 2, 3, 4), while <strong>continuous</strong> random variables take on an uncountable number of values (e.g., rational numbers: 1, 1.01, 1.001, 1.0001, …).</p>
+<div id="probability-distribution-mass-and-density-functions-p.d.f." class="section level3">
+<h3>Probability distribution (mass and density) functions (p.d.f.)</h3>
+<p><em>Discrete</em> random variables have <strong>probability mass functions</strong> which assign some amount of probability to each possible value: <span class="math inline">\(P(X=x) = f_X(x)\)</span>. In <code>R</code> these are prefixed with <code>d</code>, as in <code>dbinom</code>.</p>
+<p>In contrast, <em>Continuous</em> random variables have infinitely many possible values, and the probability associated with each one of them is effectively nil. Consequently, they have <strong>probability density functions</strong> (PDF) which describe the <em>density</em> of probability at each value. Consequently, probability can only be defined for a possible <em>interval</em> of values, which is calculated by integrating the probability density within that interval <span class="math inline">\(P(a &lt; X &lt; b) = \int_a^b f_X(x) dx\)</span>. In <code>R</code> these are also prefixed with <code>d</code>, as in <code>dnorm</code>.</p>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="probability.html#cb279-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="at">by=</span><span class="fl">0.001</span>)</span>
+<span id="cb279-2"><a href="probability.html#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb279-3"><a href="probability.html#cb279-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span>x, <span class="at">dens=</span><span class="fu">dnorm</span>(x,<span class="dv">0</span>,<span class="dv">1</span>)), <span class="fu">aes</span>(x,dens))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">&#39;Probability density function of standard normal&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-140-1.png" width="3000" /></p>
+<p>For discrete variables, each candidate value has some non-zero probability assigned to it; hence we talk about the probability “mass” at each value. However, continuous variables do not take on a countable number of alternatives. For instance, the interval <span class="math inline">\([0,1]\)</span> has uncountably many alternatives: 0.8, 0.83, 0.836, 0.8362, … etc. If we distribute probability over each of these alternatives, each one will get infinitesimally little probability mass (0). So, it doesn’t make sense to talk about the distribution of probability mass over these alternatives. Instead, we talk about the <em>density</em> of probability at a given point. Actual probability values are obtained by integrating the density over some interval. (Usually, it is most convenient to deal with the cumulative distribution of a continuous variable.)</p>
+</div>
+<div id="cumulative-distribution-functions-c.d.f." class="section level3">
+<h3>Cumulative distribution functions (c.d.f.)</h3>
+<p>The <strong>cumulative distribution function</strong> (CDF) at <span class="math inline">\(x\)</span> gives the probability that the random variable is less than or equal to <span class="math inline">\(x\)</span>: <span class="math inline">\(F_X(x) = P(X \leq x)\)</span>, calculated as the sum of the <em>probability mass function</em> (for discrete variables) or integral of the <em>probability density function</em> (for continuous variables) from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(x\)</span>.<br />
+For discrete: <span class="math inline">\(F_X(x) = \sum_{x&#39; \leq x} f_X(x&#39;)\)</span>.<br />
+For continuous: <span class="math inline">\(F_X(x) = \int_{-\infty}^x f_X(t)dt\)</span>.</p>
+<p>In <code>R</code> CDFs are prefixed with <code>p</code>, as in <code>pnorm</code>.</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="probability.html#cb280-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="at">by=</span><span class="fl">0.001</span>)</span>
+<span id="cb280-2"><a href="probability.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span>x, <span class="at">cumulative=</span><span class="fu">pnorm</span>(x,<span class="dv">0</span>,<span class="dv">1</span>)), <span class="fu">aes</span>(x,cumulative))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">&#39;Cumulative distribution function of standard normal&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-141-1.png" width="3000" /></p>
+<p>For instance, IQ is normally distributed with mean 100 and standard deviation 15. The cumulative distribution of IQ at 100 is 0.50, because half of the IQ scores are less than or equal to 100, by definition. We can assess the cumulative distribution of such normal variables with <code>pnorm()</code>, for instance, the cumulative probability at IQ=120 is given by <code>pnorm(120,100,15)</code>=0.9087888. This tells us that 120 is the 90.878878th percentile of IQ. In other words the percentile of <span class="math inline">\(x\)</span> is <span class="math inline">\(100\cdot P(X \leq x) \%\)</span>, or <span class="math inline">\(100 \cdot F_X(x) \%\)</span>.</p>
+<div id="slight-technicality-for-discrete-random-variables" class="section level4">
+<h4>Slight technicality for discrete random variables</h4>
+<p>By our basic rules of probability, we should see that <span class="math inline">\(P(X \geq x) = 1 - P(X &lt; x)\)</span> (since all X values that are not greater or equal to x must be smaller than x).</p>
+<p>For continuous random variables, we can take a bit of a shortcut, and calculate <span class="math inline">\(P(X \geq x) = 1 - P(X \leq x)\)</span>, because for continuous variables <span class="math inline">\(P(X=x)\)</span> is infinitesimally small, so the fact that we are counting <span class="math inline">\(X=x\)</span> (rather than counting only <span class="math inline">\(X&lt;x\)</span>) makes no difference, since exactly x has zero probability. Consequently, we can calculate the probability that IQ will be greater or equal to 120 as <code>1-pnorm(120,100,15)</code>.</p>
+<p>In contrast, for discrete variables, <span class="math inline">\(P(X = x)\)</span> has some non-zero probability, so we cannot simply calculate <span class="math inline">\(P(X \geq x)\)</span> as <span class="math inline">\(1-P(X \leq x)\)</span>. For instance, if we consider the number of coins that come up heads out of 10 fair flips (which is given by the binomial(10,0.5) distribution). The probability of getting 7 or more heads can be calculated as <code>sum(dbinom(seq(7,10),10,0.5))</code>=0.171875. However, we get the wrong answer if we try to calculate it as <code>1-pbinom(7,10,0.5)</code> = 0.0546875. Instead, we must calculate it as <span class="math inline">\(P(X \geq x) = 1-P(X &lt; x)\)</span>: <code>1-pbinom(6,10,0.5)</code> = 0.171875.<br />
+Put another way: <span class="math inline">\(P(X \leq 7)=0.95\)</span> and <span class="math inline">\(P(X \geq 7)=0.17\)</span> sum to more than 1.0 because they double-count <span class="math inline">\(P(X=7)=0.12\)</span>. <span class="math inline">\(P(X &lt; 7)=P(X \leq 6)=0.83\)</span> and <span class="math inline">\(P(X \geq 7)=0.17\)</span> do sum to 1.0.</p>
+<p>In short: be careful when calculating the <em>upper</em> cumulative distribution tail of discrete distributions.</p>
+</div>
+</div>
+<div id="quantile-functions-inverse-cdf." class="section level3">
+<h3>Quantile functions (inverse CDF).</h3>
+<p>If we want to know what IQ score one would need to have to be in the 95th percentile, we want to find the IQ score such that the cumulative probability at that score is 0.95. These sorts of questions ask about the <em>inverse cumulative distribution function</em>, or the <strong>quantile</strong> function. In R we can calculate this with <code>q*</code> functions. For instance, to get the 95th percentile IQ: <code>qnorm(0.95, 100, 15)</code> = 124.6728044. We generally write the quantile function as <span class="math inline">\(F^{-1}_X(q)\)</span>, and this quantile function is defined in terms of the cumulative probability: <span class="math inline">\(F^{-1}_X(q) = x \mbox{ iff } F_X(x)=q\)</span>. Thus the <code>q*</code> (quantile) and <code>p*</code> (cumulative probability) functions are inverses of each other:<br />
+<code>pnorm(qnorm(0.8, 100, 15), 100, 15)</code>=0.8 and<br />
+<code>qnorm(pnorm(75, 100, 15), 100, 15)</code>=75</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="probability.html#cb281-1" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.001</span>,<span class="fl">0.999</span>,<span class="at">by=</span><span class="fl">0.001</span>)</span>
+<span id="cb281-2"><a href="probability.html#cb281-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">cumulative=</span>q, <span class="at">x=</span><span class="fu">qnorm</span>(q,<span class="dv">0</span>,<span class="dv">1</span>)), <span class="fu">aes</span>(cumulative,x))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">&#39;Quantile function of standard normal&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-142-1.png" width="3000" /></p>
+<div id="special-named-quantiles." class="section level4">
+<h4>Special named quantiles.</h4>
+<p>Quantiles place points evenly along the c.d.f., effectively dividing the c.d.f. into even intervals. The <span class="math inline">\(q\)</span>-quantiles tesselate the full c.d.f. range (0 to 1) in intervals of <span class="math inline">\(1/q\)</span>. The kth q-quantile refers to the value of <span class="math inline">\(x\)</span> such that <span class="math inline">\(F_X(x)=k/q\)</span>. For instance, a 4-quantile (usually called a quartile) places four points along the c.d.f., the first at 0.25, the second at 0.5, the third at 0.75, the fourth at 1.0. There are names for various common quantile splits. ‘quartiles’ (<span class="math inline">\(q=4\)</span>), ‘quintiles’ (<span class="math inline">\(q=5\)</span>), ‘deciles’ (<span class="math inline">\(q=10\)</span>), ‘percentiles’ (<span class="math inline">\(q=100\)</span>). You will see these special names in the literature, but we will tend to just refer to quantiles by their corresponding probability.</p>
+<p>While a given quantile typically refers to the exact <span class="math inline">\(x\)</span> value, it is often used to refer to the interval below that point. For instance, I might say that I scored in the “bottom” quartile, meaning that my score was somewhere between the lowest score and the score that corresponds to the first quartile (my percentile is somewhere between 0 and 25). Or that I was in the third quartile (my percentile was somewhere between 50 and 75), etc.</p>
+</div>
+<div id="quantiles-for-discrete-variables." class="section level4">
+<h4>Quantiles for discrete variables.</h4>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="probability.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">cdf=</span><span class="fu">pbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.5</span>))</span></code></pre></div>
+<pre><code>##     x          cdf
+## 1   0 0.0009765625
+## 2   1 0.0107421875
+## 3   2 0.0546875000
+## 4   3 0.1718750000
+## 5   4 0.3769531250
+## 6   5 0.6230468750
+## 7   6 0.8281250000
+## 8   7 0.9453125000
+## 9   8 0.9892578125
+## 10  9 0.9990234375
+## 11 10 1.0000000000</code></pre>
+<p>For discrete variables, it may be the case that a particular quantile cannot be specified exactly . For instance, the 0.5th quantile in the distribution of coin flips above falls somewhere between 5 and 6. There are a number of ways to interpolate between 5 and 6 to produce an estimate of what that quantile “really” is. Generally if you need to find a given quantile and you can’t specify it exactly, be conservative (i.e., pick the number that is less favorable to whatever it is you are trying to do).</p>
+
+</div>
+</div>
+</div>
+<div id="probability-expectation" class="section level2">
+<h2>Expectation and moments</h2>
+<p>Let’s consider some discrete random variable, X:</p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="probability.html#cb284-1" aria-hidden="true" tabindex="-1"></a>( rv.X <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">p.x =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.25</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>, <span class="fl">0.05</span>, <span class="fl">0.05</span>)) )</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 2
+##        x   p.x
+##    &lt;int&gt; &lt;dbl&gt;
+##  1     1  0.05
+##  2     2  0.05
+##  3     3  0.1 
+##  4     4  0.1 
+##  5     5  0.2 
+##  6     6  0.25
+##  7     7  0.1 
+##  8     8  0.05
+##  9     9  0.05
+## 10    10  0.05</code></pre>
+<p>The <strong>expected value</strong>, <strong>EV</strong>, or <strong>expectation</strong> (<span class="math inline">\(\mathbb{E}\left[\cdot\right]\)</span>) of some random variable <span class="math inline">\(X\)</span> is the probability-weighted average of the values.</p>
+<p>For discrete random variables this is calculated as the probability-weighted sum of the values:<br />
+<span class="math inline">\(\mathbb{E}\left[X\right] = \sum\limits_{x}x P(x)\)</span>.</p>
+<p>For continuous random variables as the probability-weighted ingral of the values:<br />
+<span class="math inline">\(\mathbb{E}\left[X\right] = \int\limits_{-\infty}^{\infty}x f_X(x)dx\)</span>.</p>
+<p>The <strong>mean</strong> of a random variable is just its expected value:<br />
+<span class="math inline">\(\mu_X = \operatorname{Mean}\left[X\right] = \mathbb{E}\left[X\right]\)</span>.</p>
+<p>So, our variable <span class="math inline">\(X\)</span> has an expected value / mean of 5.4:<br />
+<span class="math inline">\(\operatorname{Mean}\left[X\right] = \mathbb{E}[X] = 1*0.05 + 2*0.05 + 3*0.1 + 4*0.1 + 5 *0.2 + 6*0.25 + 7*0.1 + 8*0.05 + 9*0.05 + 10*0.05 = 5.4\)</span>.</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="probability.html#cb286-1" aria-hidden="true" tabindex="-1"></a>( mu.X <span class="ot">&lt;-</span> <span class="fu">sum</span>(rv.X<span class="sc">$</span>x <span class="sc">*</span> rv.X<span class="sc">$</span>p.x) )</span></code></pre></div>
+<pre><code>## [1] 5.4</code></pre>
+<p>More generally, we can calculate the expected value of some function of a random variable <span class="math inline">\(g(X)\)</span> in the same way: e.g., <span class="math inline">\(\mathbb{E}\left[g(X)\right] = \int\limits_{-\infty}^{\infty}g(x)f_X(x)dx\)</span>. (or a sum for discrete random variables)</p>
+<p>The <strong>variance</strong> of a random variable is the expected value of the squared distance of <span class="math inline">\(x\)</span> from its mean:<br />
+<span class="math inline">\(\sigma_X^2 = \operatorname{Var}\left[X\right] = \mathbb{E}\left[(X-\mu_X)^2\right]\)</span>.</p>
+<p>Sometimes it is useful to consider the equivalence:<br />
+<span class="math inline">\(\mathbb{E}\left[(X-\mu_X)^2\right] = \mathbb{E}\left[X^2\right]-\mu_X^2\)</span>.</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="probability.html#cb288-1" aria-hidden="true" tabindex="-1"></a>( var.X <span class="ot">&lt;-</span> <span class="fu">sum</span>((rv.X<span class="sc">$</span>x <span class="sc">-</span> mu.X)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> rv.X<span class="sc">$</span>p.x) )</span></code></pre></div>
+<pre><code>## [1] 4.74</code></pre>
+<p>The <strong><em>standard deviation</em></strong> is the square root of the variance: <span class="math inline">\(\sigma_X = \sqrt{\sigma_X^2}\)</span>.</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="probability.html#cb290-1" aria-hidden="true" tabindex="-1"></a>( sigma.X <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(var.X) )</span></code></pre></div>
+<pre><code>## [1] 2.177154</code></pre>
+<p><strong>Standardizing</strong> a random variable means subtracting the mean and dividing by the standard deviation. This is often called “z-scoring,” so we will refer to it with the function <span class="math inline">\(\operatorname{z}_X(x) = \frac{x-\mu_X}{\sigma_X}\)</span>.</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="probability.html#cb292-1" aria-hidden="true" tabindex="-1"></a>( rv.X <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(rv.X, <span class="at">z.x =</span> (x<span class="sc">-</span>mu.X)<span class="sc">/</span>sigma.X) )</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 3
+##        x   p.x    z.x
+##    &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1     1  0.05 -2.02 
+##  2     2  0.05 -1.56 
+##  3     3  0.1  -1.10 
+##  4     4  0.1  -0.643
+##  5     5  0.2  -0.184
+##  6     6  0.25  0.276
+##  7     7  0.1   0.735
+##  8     8  0.05  1.19 
+##  9     9  0.05  1.65 
+## 10    10  0.05  2.11</code></pre>
+<p>The <strong>skewness</strong> of a random variable is the expected value of the cubed standardized score of <span class="math inline">\(X\)</span> (<span class="math inline">\(\frac{X-\mu_X}{\sigma_X}^3\)</span>). <span class="math inline">\(\gamma_X = \operatorname{Skew}\left[X\right] = \mathbb{E}\left[\operatorname{z}_X(x)^3\right] = \mathbb{E}\left[\left(\frac{X-\mu_X}{\sigma_X}\right)^3\right]\)</span>.</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="probability.html#cb294-1" aria-hidden="true" tabindex="-1"></a>( skewness.X <span class="ot">&lt;-</span> <span class="fu">sum</span>(rv.X<span class="sc">$</span>z.x<span class="sc">^</span><span class="dv">3</span> <span class="sc">*</span> rv.X<span class="sc">$</span>p.x) )</span></code></pre></div>
+<pre><code>## [1] 0.06279246</code></pre>
+<p>The <strong>kurtosis</strong> of a random variable is the expected value of the standardized score of <span class="math inline">\(X\)</span> raised to the 4th power (<span class="math inline">\(\mathbb{E}\left[\left(\frac{X-\mu_X}{\sigma_X}\right)^4\right]\)</span>). Typically, however, we consider the <strong>excess kurtosis</strong>, which subtracts 3 making it <span class="math inline">\(0\)</span> for the Normal distribution. So we define <span class="math inline">\(\kappa_X = \operatorname{Kurt}\left[X\right] = \mathbb{E}\left[\operatorname{z}_X(x)^4\right]-3 = \mathbb{E}\left[\left(\frac{X-\mu_X}{\sigma_X}\right)^4\right]-3\)</span>.</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="probability.html#cb296-1" aria-hidden="true" tabindex="-1"></a>( ex.kurtosis.X <span class="ot">&lt;-</span> <span class="fu">sum</span>(rv.X<span class="sc">$</span>z.x<span class="sc">^</span><span class="dv">4</span> <span class="sc">*</span> rv.X<span class="sc">$</span>p.x)<span class="sc">-</span><span class="dv">3</span> )</span></code></pre></div>
+<pre><code>## [1] -0.2009827</code></pre>
+<p>The <span class="math inline">\(n\)</span>th <strong>moment</strong> of a random variable is the expectations of a function of <span class="math inline">\(X\)</span> of the form <span class="math inline">\(g_n(x) = \left(\frac{x-a}{b}\right)^n\)</span>. Typically,<br />
+“first moment” refers to the mean: the first <em>raw</em> moment where <span class="math inline">\(g_1(x) = x\)</span>;<br />
+“second moment” refers to the variance: the second <em>central</em> moment where <span class="math inline">\(g_2(x)=(x-\mu_X)^2\)</span>;<br />
+“third/fourth moment” refer to skewness/kurtosis: the third/fourth <em>standardized</em> moments where <span class="math inline">\(g_3(x)=\operatorname{z}_X(x)^3\)</span>, and <span class="math inline">\(g_4(X)=\operatorname{z}_X(x)^4\)</span>.</p>
+<div id="there-are-a-few-useful-properties-about-how-the-mean-variance-skewness-and-excess-kurtosis-behave-under-various-operations" class="section level3">
+<h3>There are a few useful properties about how the Mean, Variance, Skewness, and Excess Kurtosis behave under various operations:</h3>
+<div id="adding-a-constant" class="section level4">
+<h4>Adding a constant</h4>
+<p><span class="math inline">\(\operatorname{Mean}\left[X+a\right]=\operatorname{Mean}\left[X\right]+a\)</span></p>
+<p><span class="math inline">\(\operatorname{Var}\left[X+a\right]=\operatorname{Var}\left[X\right]\)</span></p>
+<p><span class="math inline">\(\operatorname{Skew}\left[X+a\right]=\operatorname{Skew}\left[X\right]\)</span></p>
+<p><span class="math inline">\(\operatorname{Kurt}\left[X+a\right]=\operatorname{Kurt}\left[X\right]\)</span>.</p>
+</div>
+<div id="multiplying-by-a-constant" class="section level4">
+<h4>Multiplying by a constant</h4>
+<p><span class="math inline">\(\operatorname{Mean}\left[a X\right]=a \operatorname{Mean}\left[X\right]\)</span></p>
+<p><span class="math inline">\(\operatorname{Var}\left[a X\right]=a^2 \operatorname{Var}\left[X\right]\)</span></p>
+<p><span class="math inline">\(\operatorname{Skew}\left[a X\right]=\operatorname{sgn}(a) \operatorname{Skew}\left[X\right]\)</span>, where <span class="math inline">\(\operatorname{sgn}(\cdot)\)</span> is the <a href="https://en.wikipedia.org/wiki/Sign_function">sign function</a></p>
+<p><span class="math inline">\(\operatorname{Kurt}\left[a X\right]=\operatorname{Kurt}\left[X\right]\)</span>.</p>
+</div>
+<div id="adding-an-independent-random-variable-y" class="section level4">
+<h4>Adding an <em>independent</em> random variable <span class="math inline">\(Y\)</span>:</h4>
+<p><span class="math inline">\(\operatorname{Mean}\left[X+Y\right]=\operatorname{Mean}\left[X\right]+\operatorname{Mean}\left[Y\right]\)</span></p>
+<p><span class="math inline">\(\operatorname{Var}\left[X+Y\right]=\operatorname{Var}\left[X\right] + \operatorname{Var}\left[Y\right]\)</span></p>
+<p><span class="math inline">\(\operatorname{Skew}\left[X+Y\right]=\frac{\operatorname{Skew}\left[X\right] + \operatorname{Skew}\left[Y\right]}{(\sigma_X^2 + \sigma_Y^2)^{3/2}}\)</span></p>
+<p><span class="math inline">\(\operatorname{Kurt}\left[X+Y\right]=\frac{\sigma_X^4 \operatorname{Kurt}\left[X\right]+\sigma_Y^4 \operatorname{Kurt}\left[Y\right]}{(\sigma_X^2 + \sigma_Y^2)^2}\)</span>.</p>
+<p>It’s also useful to know what happens to the variance of X+Y when X and Y are <em>not independent</em>: <span class="math inline">\(\textbf{Var}[X+Y] = \textbf{Var}[X] + \textbf{Var}[Y] + 2*\textbf{Cov}[X,Y]\)</span>, (where <span class="math inline">\(\textbf{Cov}[X,Y]\)</span> denotes the covariance of X and Y; which is 0 for independent random variables)</p>
+</div>
+<div id="sum-of-n-independent-random-variables-x_1-...-x_n-all-identically-distributed-as-x" class="section level4">
+<h4>Sum of <span class="math inline">\(n\)</span> <em>independent</em> random variables <span class="math inline">\({X_1, ..., X_n}\)</span> all <em>identically distributed</em> as <span class="math inline">\(X\)</span>:</h4>
+<p><span class="math inline">\(\operatorname{Mean}\left[\sum_{i=1}^n X_i\right]=n \operatorname{Mean}\left[X\right]\)</span></p>
+<p><span class="math inline">\(\operatorname{Var}\left[\sum_{i=1}^n X_i\right]=n \operatorname{Var}\left[X\right]\)</span></p>
+<p><span class="math inline">\(\operatorname{Skew}\left[\sum_{i=1}^n X_i\right]=\frac{1}{\sqrt{n}}\operatorname{Skew}\left[X\right]\)</span></p>
+<p><span class="math inline">\(\operatorname{Kurt}\left[\sum_{i=1}^n X_i\right]=\frac{1}{n^2}\operatorname{Kurt}\left[X\right]\)</span>.</p>
+<p>note that these properties of the sum of independent, identically distributed random variables are symptoms of the <a href="prob-clt-normal.html">central limit theorem</a> in action.</p>
+
+</div>
+</div>
+</div>
+<div id="probability-clt" class="section level2">
+<h2>Central limit theorem and the normal distribution</h2>
+<p>The <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">central limit theorem</a> shows that the mean of many independent (and roughly identically) distributed random variables will be (roughly) normally distributed. We are not going to prove this, but we can get a sense for it.</p>
+<p>Here we take the mean of 1, 2, 4, 8, … 256 samples from distributions with very different shapes (chosen to have the same mean and standard deviation, for graphical convenience), and plot a histogram of those sample means. As we see, when the sample size increases, they all converge to a normal-looking distribution of sample means.</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="probability.html#cb298-1" aria-hidden="true" tabindex="-1"></a>samplers<span class="ot">=</span> <span class="fu">list</span>()</span>
+<span id="cb298-2"><a href="probability.html#cb298-2" aria-hidden="true" tabindex="-1"></a>samplers[[<span class="st">&#39;beta&#39;</span>]] <span class="ot">=</span> <span class="cf">function</span>(n){(<span class="fu">rbeta</span>(n, <span class="fl">0.2</span>, <span class="fl">0.2</span>)<span class="sc">-</span><span class="fl">0.5</span>)<span class="sc">/</span><span class="fl">0.423</span>}</span>
+<span id="cb298-3"><a href="probability.html#cb298-3" aria-hidden="true" tabindex="-1"></a>samplers[[<span class="st">&#39;unif&#39;</span>]] <span class="ot">=</span> <span class="cf">function</span>(n){(<span class="fu">runif</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">-</span><span class="fl">0.5</span>)<span class="sc">/</span><span class="fl">0.29</span>}</span>
+<span id="cb298-4"><a href="probability.html#cb298-4" aria-hidden="true" tabindex="-1"></a>samplers[[<span class="st">&#39;exp&#39;</span>]] <span class="ot">=</span> <span class="cf">function</span>(n){(<span class="fu">rexp</span>(n, <span class="dv">2</span>)<span class="sc">-</span><span class="fl">0.5</span>)<span class="sc">/</span><span class="fl">0.5</span>}</span>
+<span id="cb298-5"><a href="probability.html#cb298-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb298-6"><a href="probability.html#cb298-6" aria-hidden="true" tabindex="-1"></a>ns <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">16</span>, <span class="dv">32</span>, <span class="dv">64</span>, <span class="dv">128</span>, <span class="dv">256</span>)</span>
+<span id="cb298-7"><a href="probability.html#cb298-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb298-8"><a href="probability.html#cb298-8" aria-hidden="true" tabindex="-1"></a>k <span class="ot">=</span><span class="dv">10000</span></span>
+<span id="cb298-9"><a href="probability.html#cb298-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb298-10"><a href="probability.html#cb298-10" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>()</span>
+<span id="cb298-11"><a href="probability.html#cb298-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(dist <span class="cf">in</span> <span class="fu">names</span>(samplers)){</span>
+<span id="cb298-12"><a href="probability.html#cb298-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(n <span class="cf">in</span> ns){</span>
+<span id="cb298-13"><a href="probability.html#cb298-13" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">=</span> <span class="fu">rbind</span>(df, <span class="fu">data.frame</span>(<span class="at">dist=</span>dist, </span>
+<span id="cb298-14"><a href="probability.html#cb298-14" aria-hidden="true" tabindex="-1"></a>                              <span class="at">n=</span>n, </span>
+<span id="cb298-15"><a href="probability.html#cb298-15" aria-hidden="true" tabindex="-1"></a>                              <span class="at">mean=</span><span class="fu">replicate</span>(k, <span class="fu">mean</span>(samplers[[dist]](n)))))</span>
+<span id="cb298-16"><a href="probability.html#cb298-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb298-17"><a href="probability.html#cb298-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb298-18"><a href="probability.html#cb298-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb298-19"><a href="probability.html#cb298-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb298-20"><a href="probability.html#cb298-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>mean, <span class="at">color=</span>dist, <span class="at">fill=</span>dist))<span class="sc">+</span></span>
+<span id="cb298-21"><a href="probability.html#cb298-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>n, <span class="at">scales =</span><span class="st">&quot;free&quot;</span>)<span class="sc">+</span></span>
+<span id="cb298-22"><a href="probability.html#cb298-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.2</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-151-1.png" width="3000" /></p>
+<p>A similar intuition can be obtained from our handy <a href="prob-expectation.html">expectation</a> identities. The mean of <span class="math inline">\(n\)</span> <em>independent</em> random variables <span class="math inline">\({X_1, ..., X_n}\)</span> all <em>identically distributed</em> as <span class="math inline">\(X\)</span>: will have the following properties:</p>
+<p><span class="math inline">\(\operatorname{Mean}\left[\frac{1}{n}\sum_{i=1}^n X_i\right]= \operatorname{Mean}\left[X\right]\)</span></p>
+<p><span class="math inline">\(\operatorname{SD}\left[\frac{1}{n}\sum_{i=1}^n X_i\right]=\frac{1}{\sqrt{n}} \operatorname{SD}\left[X\right]\)</span></p>
+<p><span class="math inline">\(\operatorname{Skew}\left[\frac{1}{n}\sum_{i=1}^n X_i\right]=\frac{1}{\sqrt{n}}\operatorname{Skew}\left[X\right]\)</span></p>
+<p><span class="math inline">\(\operatorname{Kurt}\left[\frac{1}{n}\sum_{i=1}^n X_i\right]=\frac{1}{n^2}\operatorname{Kurt}\left[X\right]\)</span>.</p>
+<p>What this tells us is that as <span class="math inline">\(n\)</span> (the number of variables that go into our mean) increases, the mean stays the same, the standard deviation decreases with <span class="math inline">\(\sqrt{n}\)</span>, the skew decreases with <span class="math inline">\(n\)</span> (towards 0 – the skew of a normal), and the (excess) kurtosis decreases with <span class="math inline">\(n^2\)</span> (towards 0 – the kurtosis of a normal). Thus, the various higher-order parameters of the shape decrease toward the values of the Normal as sample size increases.</p>
+<p>All in all: as sample size goes up, the distribution of the arithmetic mean goes to a Normal (provided the original distributions have finite variance).</p>
+<div id="requirements-for-clt-to-hold" class="section level3">
+<h3>Requirements for CLT to hold</h3>
+<p>A few things must hold for the central limit theorem to apply to specific measurements.</p>
+<p>First, for the CLT to hold, the measurement has to arise from the <em>sum</em> of lots of little, roughly homogenous, perturbations. For instance, lots of little genetic and environmental factors contribute additively to height, and (within gender) the distribution of heights is very close to being Normal. However, this is not true of everything. Many natural properties are not the sum of little perturbations, but rather the <em>product</em>. For instance, if you consider the worth of your variable-rate savings account, every time period it grows by some variable percentage (your interest rate). Your account balance is not the sum of all the interest rates, but the product: it grows exponentially (geometrically), not additively, and therefore it will not follow a Normal distribution. Lots of processes in finance, nature, etc. are actually exponential growth processes, and they end up being distributed not as a Normal distribution, but as a Log-Normal. (Note that the product of many perturbations is equivalent to the sum of the logarithms of those perturbations – hence log-normal. Note also that one way that <a href="https://en.wikipedia.org/wiki/Benford%27s_law">Benford’s law</a> might arise is from such random exponential growth processes.)</p>
+<p>Second, for the CLT to hold, the measurement has to arise from the sum of lots of little <em>roughly homogenous</em> perturbations. If we look at height within gender, no one factor contributes a disproportionately large amount of the variance; so the CLT holds and the distribution of within-gender heights is Normal. However, if we look at the distribution of heights <em>across</em> genders, we see that one factor contributes a huge amount of the variance: the gender of the person – men are quite a bit taller than women on average. Consequently, the distribution of heights across genders is not normally distributed, because that distribution is dominated by the gender variance. (One could describe the across-gender height distribution as a mixture model of two Normal distributions – we will talk about mixture models much later).</p>
+<p>When we take the <em>sample mean</em> of a bunch of measurements, both of the properties above always hold; thus the central limit theorem always applies to the sample mean, so many of our statistical procedures (which assume a Gaussian distribution of the sample mean) will work in many situations.</p>
+<p>However, another word of caution: while the central limit theorem always applies for the sample mean, it does not guarantee that <span class="math inline">\(n\)</span> will be large enough for the mean to really be sufficiently close to Normal. In the previous section we described how quickly the Skew and Kurtosis decline to 0, but sometimes the starting Skew is very large indeed, and even a reasonably large <span class="math inline">\(n\)</span> does not yield a normal distribution. The log-normal distribution, for instance, can have a very large skew, and in those cases, rarely is <span class="math inline">\(n\)</span> large enough for the sample mean to end up Normal. In those cases, it is often advisable to transform the data to get rid of some of the skew. (We will talk about these sort of transformations and link functions later).</p>
+<p>Caveats aside, the CLT applies often enough that most conventional statistical procedures are based on it. We will spend a great deal of time on Z-tests, t-tests, linear regression, ANOVA, etc, all of which assume either that the errors, or that the sample means, are normally distributed, and this assumption is often valid because of the CLT.</p>
+</div>
+<div id="normal-distribution" class="section level3">
+<h3>Normal distribution</h3>
+<p>Since in so many cases the mean from a sufficiently large sample will be normally distributed, much of classical statistics relies on this asymptotic normality of sample means.</p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="probability.html#cb299-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb299-2"><a href="probability.html#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span>x, <span class="at">dens=</span><span class="fu">dnorm</span>(x,<span class="dv">0</span>,<span class="dv">1</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>dens))<span class="sc">+</span><span class="fu">geom_area</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-152-1.png" width="2400" /></p>
+<p>In R, we would get the probability density function of a normal with <code>dnorm</code>, its cumulative probability function with <code>pnorm</code>, and the quantile function with <code>qnorm</code>.</p>
+<div id="properties-of-normal-distribution" class="section level4">
+<h4>Properties of normal distribution</h4>
+<p>Let’s say <span class="math inline">\(X \sim \operatorname{Normal}(\mu_x, \sigma_x)\)</span>. For instance, <span class="math inline">\(X\)</span> may be IQ scores from the population, in which case <span class="math inline">\(X \sim \operatorname{Normal}(100,15)\)</span>.</p>
+<p>The basic properties of a Normal distribution include:</p>
+<ol style="list-style-type: decimal">
+<li>the mean, median, and mode are all the same<br />
+</li>
+<li>the mean (<span class="math inline">\(\mu\)</span>) is the location parameter which slides the distribution along the X axis<br />
+</li>
+<li>the standard deviation (<span class="math inline">\(\sigma\)</span>) is the scale/dispersion parameter.</li>
+</ol>
+<p>The basic rules of expectations apply to the means and standard deviations of transformations of Normal variables:</p>
+<p>If <span class="math inline">\(X \sim \operatorname{Normal}(\mu_x, \sigma_x)\)</span>, the following identities hold:</p>
+<ul>
+<li>if <span class="math inline">\(Y = a+X\)</span>, then <span class="math inline">\(Y \sim \operatorname{Normal}(\mu_x+a, \sigma_x)\)</span><br />
+</li>
+<li>if <span class="math inline">\(Y = aX\)</span>, then <span class="math inline">\(Y \sim \operatorname{Normal}(a \mu_x, a \sigma_x)\)</span><br />
+</li>
+<li>so if <span class="math inline">\(Y = aX+b\)</span>, then <span class="math inline">\(Y \sim \operatorname{Normal}(a \mu_x+b, a \sigma_x)\)</span></li>
+</ul>
+<p>From these rules, we can easily see that if <span class="math inline">\(X \sim \operatorname{Normal}(\mu, \sigma)\)</span>, and we define Z as <span class="math inline">\(Z = (X-\mu)/\sigma\)</span>, then <span class="math inline">\(Z \sim \operatorname{Normal}(0,1)\)</span>. If this is not obvious, convince yourself using the rules above that this will be true. This is the very common, and very useful “z-transformation,” which will take any normally distributed variable and convert it to have a “standard normal distribution” (which just means it is a normal distribution with mean = 0, and standard deviation = 1).</p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="visualization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="NHST.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/notes/prob-terms.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

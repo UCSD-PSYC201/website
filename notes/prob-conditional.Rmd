@@ -1,9 +1,4 @@
----
-output: 
-    html_document
----
-
-# Conditional probability and Bayes
+## Conditional probability and Bayes {#probability-conditional}
 
 Let's start by remembering where we were with our unfair die roll.
 
@@ -51,14 +46,14 @@ There are two special cases worth mentioning:
 
 Note that often this special case (of independent events) is described as the rule for the probability of a conjunction, but in most cases, events are not independent.
 
-## Chain rule
+### Chain rule
 
 We can calculate complex conjunctions by repeating the same process of calculating a conjunction many times via the *chain rule*:
 
 $P(a \& b \& c \& d) = P(a \mid b \& c \& d) * P(b \mid c \& d) * P(c \mid d) * P(d)$
 
 
-## Partitions and total probability
+### Partitions and total probability
 
 To express Bayes rule as it is commonly used, we first need to introduce two concepts.
 
@@ -89,7 +84,7 @@ p.greater.even * p.even + p.greater.odd * p.odd
 p.event(greater)
 ````
 
-## Bayes' rule
+### Bayes' rule
 
 You can find an ["excruciatingly gentle" introduction to Bayes' rule](http://yudkowsky.net/rational/bayes).
 

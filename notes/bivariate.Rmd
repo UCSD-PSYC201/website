@@ -1,11 +1,6 @@
----
-  output: 
-    html_document
----
-  
-# Bivariate linear relationships
+# Bivariate linear relationships {#bivariate}
 
-When we have two variables measured per "unit" (e.g., measure height and weight for each person), we can refer to this as "bivariate" data.  We already discussed how to analyze [contingency tables](nhst-chi-squared.html) when dealing with bivariate categorical data, here we are concerned with bivariate numerical data that may have a *linear relationship*.
+When we have two variables measured per "unit" (e.g., measure height and weight for each person), we can refer to this as "bivariate" data.  We already discussed how to analyze [contingency tables](#nhst-chi-squared) when dealing with bivariate categorical data, here we are concerned with bivariate numerical data that may have a *linear relationship*.
 
 To play with these measures, we will consider Karl Pearson's data on the heights of fathers and their sons.  (In 1895 Pearson worked out the formula for calculating what we now call the correlation coefficient.)  Generally, we will look at a bivariate numerical relationship in a scatterplot, like the one below.
 
@@ -25,7 +20,7 @@ Everything we discuss in this section is specific to measuring a *linear* relati
 
 ![](https://upload.wikimedia.org/wikipedia/commons/d/d4/Correlation_examples2.svg)
 
-(2) Many different patterns of data might yield exactly the same line, and line statistics, and our simple measures of a linear relationship will not be able to distinguish among them.  The canonical example of this is Anscombe's quartet (below; [graph it yourself](bivariate-anscombe.html)), which shows 4 sets of data with obviously very different relationships, but which have the same correlation, covariance, linear slope, as well as marginal means and standard deviations of x and y.
+(2) Many different patterns of data might yield exactly the same line, and line statistics, and our simple measures of a linear relationship will not be able to distinguish among them.  The canonical example of this is Anscombe's quartet (below; [graph it yourself](#bivariate-anscombe)), which shows 4 sets of data with obviously very different relationships, but which have the same correlation, covariance, linear slope, as well as marginal means and standard deviations of x and y.
 
 ```{r, echo=FALSE, fig.width=8, fig.height=2.5}
 anscombe.tidy = mutate(anscombe, observation=seq_len(n())) %>%
@@ -67,7 +62,7 @@ In R we can calculate the covariance with the `cov` function:
 cov(heights$Father, heights$Son)
 ```
 
-Here are a few more [detailed notes on the covariance](bivariate-covariance.html).
+Here are a few more [detailed notes on the covariance](#bivariate-covariance).
 
 ### Correlation coefficient
 
@@ -90,7 +85,7 @@ cor(heights$Father, heights$Son)
 cor.test(heights$Father, heights$Son)
 ```
 
-For more details on the correlation, here are some [detailed notes](bivariate-corelation.html).
+For more details on the correlation, here are some [detailed notes](#bivariate-corelation).
 
 ## (OLS) Regression: Predicting the mean of y for a given x
 
@@ -103,7 +98,7 @@ heights %>%
   geom_smooth(method="lm")
 ```
 
-In the [detailed notes](bivariate-ols.html) we go through the mathematical definitions, but here, let's just sort out what the different words in the sentence above mean.
+In the [detailed notes](#bivariate-ols) we go through the mathematical definitions, but here, let's just sort out what the different words in the sentence above mean.
 
 - Regression line of y~x estimates the **conditional mean** of y for a given x.  Therefore, the y value of the line at a given x is the estimated mean of the y values with that paired x.  For instance, the Son ~ Father line shown above has y=72.4 at x=75.  This indicates that we estimate the mean height of Son, whose fathers are 75" tall, to be 72.4" tall.
 
@@ -155,13 +150,13 @@ Blue: the **y~x line**.
 Red: the **x~y line**.    
 Black: the **principle component line**. 
 
-Why is the "best looking" line not the "best fitting" y~x line?  While we're at it, why is the y~x line different from the x~y line?  The answer to all of these is that when we do a regression predicting y from x, we *only care about error in y*.  We minimize the squared deviations of each data point from the line in y, while keeping x constant.  Consider this a teaser explanation, and go read the more [detailed explanation](bivariate-lines.html).
+Why is the "best looking" line not the "best fitting" y~x line?  While we're at it, why is the y~x line different from the x~y line?  The answer to all of these is that when we do a regression predicting y from x, we *only care about error in y*.  We minimize the squared deviations of each data point from the line in y, while keeping x constant.  Consider this a teaser explanation, and go read the more [detailed explanation](#bivariate-lines).
 
 ## Partitioning variance
 
 As we move toward more complicated data, and away from simply comparing means between groups, it is useful to consider our analysis goals as *partitioning variance*.  We want to separate variability in some response variable into different sources.  In the simple linear regression case, we are just going to separate out the variability of y into the linear 'signal' (variability in y which we can explain via a linear relationship with x), and 'noise' (all other variability).  When we move on to more complicated regression setups, we will be using more explanatory variables, and thus will be partitioning variability into more sources.  It is important to keep in mind that 'noise' depends very much on the model we are considering.  Perhaps all the variability in sons' heights we can't explain with fathers' heights might be explained by 'volume of breast milk consumed in the first year of life', or some other variable we don't have access to.  Thus, the 'noise', is just *unexplained/unmodeled variance*.
 
-We have some detailed notes on [partitioning variance](bivariate-determination.html), but briefly.  When we partition variance, we mostly just consider the partitioning of the "sums of squares", which we can get in R via the `anova` (analysis of variance) command, which tells us the variability in y attributable to our explanatory variable, and that which is left unexplained (residuals).  
+We have some detailed notes on [partitioning variance](#bivariate-determination), but briefly.  When we partition variance, we mostly just consider the partitioning of the "sums of squares", which we can get in R via the `anova` (analysis of variance) command, which tells us the variability in y attributable to our explanatory variable, and that which is left unexplained (residuals).  
 
 ```{r}
 lm.son.father <- lm(data=heights, Son~Father)
@@ -181,7 +176,7 @@ That 'Multiple R-squared' number is "the coefficient of determination", which is
 We have seen a few p values above.  One in `cor.test`, that told us the the correlation between fathers' and sons' heights is larger than expected by chance.  One in `anova(lm(...))` which told us that a linear model of sons~fathers explained more variance in sons heights than we would expect by chance.  Another in `summary(lm(...))` which told us that the father coefficient in the linear model we fit ($\mbox{son} = \hat \beta_{\mbox{father}} \cdot \mbox{father} + \hat \beta_0$) is significantly greater than zero.
 
 For the simple linear regression case, these are all the same *by definition*!  They are all asking "is there more of a linear relationship than we expect from chance?"  In the case of *multiple regression* these will all be different, and will all be asking different questions.  
-(In this father-son data, all these p-values are so small, that they are past the limit of our computer's ability to represent tiny numbers.  Thus, even if they were different, we wouldn't be able to tell.  To see a case in which they are less tiny, [look here](bivariate-significance.html).
+(In this father-son data, all these p-values are so small, that they are past the limit of our computer's ability to represent tiny numbers.  Thus, even if they were different, we wouldn't be able to tell.  To see a case in which they are less tiny, [look here](#bivariate-significance).
 
 ## Prediction from regression.
 
@@ -200,5 +195,5 @@ However, the confidence interval on the mean doesn't give us a good idea of what
 predict.lm(m, newdata = data.frame(Father=72), interval='prediction')
 ```
 
-This interval is much broader because, although we can estimate the best fitting line (and thus the mean) very well, the individual heights have a lot of variability around that line.  For more on these intervals, [read here](bivariate-prediction.html)
+This interval is much broader because, although we can estimate the best fitting line (and thus the mean) very well, the individual heights have a lot of variability around that line.  For more on these intervals, [read here](#bivariate-prediction)
 

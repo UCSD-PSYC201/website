@@ -1,17 +1,11 @@
----
-  output: 
-    html_document
----
-  
-
-# Regression Diagnostics
+## Regression Diagnostics  {#bivariate-ols-diagnostics}
 
 When we fit a line to some data using ordinary least squares regression and then interpret the coefficients, corresponding t-tests, etc. we are making quite a few assumptions.  When some of these are violated, we will git a misleading answer from the regression.  In this section, we will conjure up various plots and tests to check some of these assumptions.
 
 Some of the most important assumptions we make cannot be tested by looking at the data, instead they require domain knowledge.  The most important assumption is that we are measuring the things we want to be.  Usually we use some observable proxy variables for unobservable latent properties we are interested in.  For instance, we might use GDP/capita of a country as a proxy for income of  its citizens, but, this measure does not consider cost of living, income distributions, etc.  Domain knowledge and critical thought is requires to guess whether the difference between the measurable proxy and the latent variable is a big deal with respect to our question of interest.
 
 
-## Assumption: relationship between y and x is well described by a line.
+### Assumption: relationship between y and x is well described by a line.
 
 We can always fit a line, that doesn't mean it's a good idea.  The simplest, and most important way to check if it's a good idea to fit a line is to look at the scatterplot.  If it looks clearly non-linear, don't fit a line to it!
 
@@ -46,7 +40,7 @@ plot(lm(data=quadratic.data, y~x), which = 1)
 
 All of these plots are basically showing us what was obvious from the get-go: the line misses the really big quadratic component we built into our data.  So we probably shouldn't be fitting a line.
 
-## Assumption: out estimates are not driven by a few huge outliers
+### Assumption: out estimates are not driven by a few huge outliers
 
 ```{r}
 n = 99
@@ -80,12 +74,12 @@ plot(lm(data=outlier.data, y~x), which = 4)
 
 If you have data points with very large Cook's distances, it means that the regression line you have estimated is largely reflecting the influence of a few data points, rather than the bulk of your data.
 
-## Assumption: errors are independent, identically distributed, normal.
+### Assumption: errors are independent, identically distributed, normal.
 
 There is also a set of assumptions about the behavior of the errors/residuals.  They should be normal (so that we are justified in using t and F statistics), they should be identically distributed, and they should be independent.  
 
 
-### Errors are independent: independent of x, fitted y, order, each other.
+#### Errors are independent: independent of x, fitted y, order, each other.
 
 
 Probably the most important of these assumptions is that the errors are independent, but not being independent can mean a few different things.   
@@ -96,7 +90,7 @@ Probably the most important of these assumptions is that the errors are independ
 
 - Errors might correlate with each other -- this is what happens when we incorrectly specify a nested / hierarchical model.  For instance, if I measure the weight and height of 10 people, each 5 times, I will get 50 measurements; however, I only really have 10 independent units (people) -- all measurements of the same person will have a correlated error with repsect to the overall weight~height relationship.  We really need to avoid this kind of non-independence in errors, as it will lead to really wrong conclusions; but this is not something we can easily check for; we just need to understand the structure of our data, and specify the appropriate model for the error correlation (with `lmer` or `aov`, etc).  
 
-### Errors are identically distributed
+#### Errors are identically distributed
 
 Typically, 'identically distributed' for errors refers to them being 'homoscedastic', or 'equal variance' -- meaning that the magnitude of the residuals is roughly consistent across our regression (rather than 'heteroscedastic', in which there is more variability in y for some values of x than others).  
 
@@ -119,7 +113,7 @@ Sometimes such heteroscedasticity arises from our model being wrong.  For instan
 
 So, if we see very large, blatant, heteroscedasticity, we should carefully evaluate if we are measuring something that we really believe should have linear, additive errors.  If not, we should use an appropriate non-linear transform (like a logarithm), to get a measure of something that we *do* believe is linear and additive.  However, if we have a variable that seems to us should be linear, and otherwise seems to behave linearly, a slight amount of heteroscedasticity is not that big of a deal, in the grand scheme of things.
 
-### Errors are normal
+#### Errors are normal
 
 The last technical assumption is that the errors (residuals) are normally distributed.  Just as in the case of heteroscedasticity, if they clearly are not, we should think hard if we are specifying the correct model; however, slight deviations from normality are practically guaranteed, and are largely irrelevant.
 
@@ -141,6 +135,6 @@ ggplot(non.normal, aes(x=residuals))+geom_density(fill='gray')
 
 If the histogram of the residuals looks really skewed, then it's worth trying to figure out how to transform the y variable to get the data to behave more sensibly.  Slight deviations from normality won't matter much.
 
-## Testing assumptions
+### Testing assumptions
 
 There are assorted null hypothesis tests to see if these assumptions are violated.  With enough (real) data, the answer will almost certainly be yes.  With too little data, glaringly obvious violations might not reach statistical significance.  So, in practice, I find the null hypothesis tests for assumption violations to not be especially useful, and the diagnostic plots to be far more practical.

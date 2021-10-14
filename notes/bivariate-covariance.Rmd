@@ -1,9 +1,3 @@
----
-  output: 
-    html_document
----
-
-
 ```{r, echo=F, fig.width=6, fig.height=6}
 # library(MASS) # for the mvrnorm() function
 library(ggplot2)
@@ -15,7 +9,7 @@ names(df.cm) <- c('height', 'foot')
 ggplot(df.cm, aes(x=height, y=foot))+geom_point()
 ```
 
-# Covariance
+## Covariance {#bivariate-covariance}
 
 Generally, bivariate numerical data are often summarized in terms of their mean and [*covariance matrix*](https://en.wikipedia.org/wiki/Covariance_matrix).  Since we are avoiding dealing with linear algebra in this class, we will not deal with this matrix directly.  Instead we will consider the different components of a covariance matrix for a bivariate distribution.
 

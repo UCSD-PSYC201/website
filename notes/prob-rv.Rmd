@@ -1,9 +1,4 @@
----
-output: 
-    html_document
----
-
-# Random variables
+## Random variables {#probability-rv}
 
 While it is easiest to explain the basic rules of probability in terms of sample spaces, outcomes, and events, in practice, we want to know about probability for describing random variables.  A **random variable** is a variable with a value obtained by measuring some stochastic process.  We can consider a complicated sample space in which we roll hundreds of dice (that is our stochastic process), but we can define a random variable $X$ as the total number of dots on two specific dice (die A, and die B).  This is very useful, since the world we measure is very complicated, but we simplify our lives by only dealing with simple observations of small aspects of it.
 
@@ -69,7 +64,7 @@ $Z$ could be $A \cdot B$, etc.
 
 Each of these variables will have a different probability distribution, and all of them are usually written as $P(\cdot)$, which can create confusion.  One way to make this less confusing is to spell it out, for instance $P(X=x)$ is the probability distribution over the random variable $X$ which assigns probability to all possible outcomes, denoted in the lower case $x$.  This ends up being long-winded, and invariably people fall back to abbreviating to something like $P(x)$, but this sometimes causes confusion when dealing with multiple variables.  I try to deal with this by subscripting the probability functions, so in place of $P(X=x)$, I would write $P_X(x)$.  This has its own host of problems, but I think it is sometimes useful. 
 
-## Joint, conditional, and marginal probabilities
+### Joint, conditional, and marginal probabilities
 
 Let's consider the random variables $X$ (sum of two dice rolls) and $Y$ (difference of roll A minus roll B).  The probability distribution of each of these variables in isolation (that is, if we disregard the value of the other variables) is called the **marginal distribution** of that variable (because we are effectively "marginalizing" over the other variable).  For instance, the marginal distribution $P(X=x)$ (the sum of two dice rolls) will be the distribution we calculated above when we disregarded the difference between the two rolls.  
 
@@ -128,7 +123,7 @@ It is possible for two sets of variables to have very different joint distributi
 
 (2) We roll two magical magnetic dice, A and B, which always come up equal, but are equally likely to come up as any integer.  The marginal distributions $P(A)$ and $P(B)$ are the same as in (1), they are uniform over the integers 1 through 6.  However, the joint distribution $P(A,B)$ is not uniform: it assigns 0 probability to every conjunction where $A \neq B$, and the six outcomes where $A=B$ ($\{(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)\}$) each have probability 1/6.  In this scenario, the variables are not independent, and the conditional distributions are not equal to the marginal distributions: $P(A|B=3)$ is not uniform over the integers 1 through 6, but assigns 100\% probability to $A=3$ and 0 probability to all other outcomes.
 
-## Bernoulli distribution
+### Bernoulli distribution
 
 Let's consider a single flip of a bent coin.  If it comes up heads, we will say random variable $y=1$, if it is tails, $y=0$.
 
@@ -154,7 +149,7 @@ $y \sim \operatorname{Bernoulli}(p)$
 
 This basically says "random variable y is a random draw from a Bernoulli distribution with parameter p"; in other words, random variable y takes on values with probability given by Bernoulli(p).
 
-## Combinations and the binomial distribution
+### Combinations and the binomial distribution
 
 If we flip a coin that comes up heads with probability $p=0.8$, and tails with probability $(1-p)=0.2$, the probability of getting HHT after three independent flips is (under the justifiable assumption that the different flips are independent):   
 $P(H)P(H)P(T) = p \cdot p \cdot (1-p) = 0.8 \cdot 0.8 \cdot 0.2 = 0.128$.

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>(Student’s) t-tests | UCSD Psyc 201ab / CSS 205 / Psyc 193</title>
+  <meta name="description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="(Student’s) t-tests | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  <meta name="github-repo" content="UCSD-PSYC201/website" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="(Student’s) t-tests | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  
+  <meta name="twitter:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="NHST.html"/>
+<link rel="next" href="binomial-test.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html"><i class="fa fa-check"></i>Syllabus</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#instructors"><i class="fa fa-check"></i>Instructors</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#class-meetings"><i class="fa fa-check"></i>Class meetings</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#grading"><i class="fa fa-check"></i>Grading</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus.html"><a href="course-syllabus.html#class-resources"><i class="fa fa-check"></i>Class Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html"><i class="fa fa-check"></i>201a Schedule</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-0-introduction"><i class="fa fa-check"></i>Week 0: Introduction</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-1-data"><i class="fa fa-check"></i>Week 1: Data</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-2-visualization"><i class="fa fa-check"></i>Week 2: Visualization</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-3-theoretical-foundations"><i class="fa fa-check"></i>Week 3: Theoretical foundations</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-4-linear-model-regression"><i class="fa fa-check"></i>Week 4: Linear model: Regression</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-5-linear-model-multiple-regression"><i class="fa fa-check"></i>Week 5: Linear model: Multiple regression</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-6-linear-model-categorical-predictors"><i class="fa fa-check"></i>Week 6: Linear model: Categorical predictors</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-7-linear-model-ancova-diagnostics"><i class="fa fa-check"></i>Week 7: Linear model: ANCOVA, diagnostics</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-8-linear-model-linearizing-transforms"><i class="fa fa-check"></i>Week 8: Linear model: Linearizing transforms</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-9-covarying-errors-repeated-measures-random-effects"><i class="fa fa-check"></i>Week 9: Covarying errors (repeated measures / random effects)</a></li>
+<li class="chapter" data-level="" data-path="course-201a.html"><a href="course-201a.html#week-10-review-and-preview"><i class="fa fa-check"></i>Week 10: Review and preview</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html"><i class="fa fa-check"></i>Projects</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#examples-of-this-sort-of-thing"><i class="fa fa-check"></i>Examples of this sort of thing</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a"><i class="fa fa-check"></i>201a</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-timeline"><i class="fa fa-check"></i>201a Timeline</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#groups"><i class="fa fa-check"></i>Groups</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-project-plan"><i class="fa fa-check"></i>201a Project plan</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-preliminary-data-summaries"><i class="fa fa-check"></i>201a Preliminary data summaries</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-write-ups"><i class="fa fa-check"></i>201a Write-ups</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-presentation"><i class="fa fa-check"></i>201a Presentation</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#a-group-evaluation"><i class="fa fa-check"></i>201a Group-evaluation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#b"><i class="fa fa-check"></i>201b</a></li>
+<li class="chapter" data-level="" data-path="course-projects.html"><a href="course-projects.html#data-sources"><i class="fa fa-check"></i>Data sources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html"><i class="fa fa-check"></i>R homework</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#grading-1"><i class="fa fa-check"></i>Grading</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#collaboration"><i class="fa fa-check"></i>Collaboration</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#submitting-r-assignments"><i class="fa fa-check"></i>Submitting R Assignments</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#writing-r-scripts"><i class="fa fa-check"></i>Writing R scripts</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#submitting-your-assignment"><i class="fa fa-check"></i>Submitting your assignment</a></li>
+<li class="chapter" data-level="" data-path="r-homework.html"><a href="r-homework.html#additional-resources."><i class="fa fa-check"></i>Additional resources.</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Notes</b></span></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html"><i class="fa fa-check"></i>Getting started with R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#R-install"><i class="fa fa-check"></i>Installing R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#R-intro"><i class="fa fa-check"></i>Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#better-data-analysis-code."><i class="fa fa-check"></i>Better data analysis code.</a></li>
+<li class="chapter" data-level="" data-path="R-start.html"><a href="R-start.html#using-r-markdown"><i class="fa fa-check"></i>Using R-markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i>Data cleaning – worked example</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#read-file-with-readr"><i class="fa fa-check"></i>Read file with readr</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#first-glimpse-at-the-data."><i class="fa fa-check"></i>First glimpse at the data.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#what-we-want-to-do"><i class="fa fa-check"></i>What we want to do</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#rename-columns"><i class="fa fa-check"></i>rename columns</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#convert-time-columns-into-seconds."><i class="fa fa-check"></i>convert time columns into seconds.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#extract-sex-from-division-and-other-clues"><i class="fa fa-check"></i>Extract sex from division, and other clues</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-corral-from-bib-number"><i class="fa fa-check"></i>Get corral from bib number</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#fix-the-age-column-which-is-a-string-for-some-reason"><i class="fa fa-check"></i>fix the age column (which is a string for some reason)</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-time-out-of-the-mangled-5.25-and-10-mile-columns."><i class="fa fa-check"></i>Get time out of the mangled 5.25 and 10 mile columns.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#get-rid-of-some-unnecessary-columns"><i class="fa fa-check"></i>Get rid of some unnecessary columns</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#getting-new-columns-from-simple-transformations"><i class="fa fa-check"></i>Getting new columns from simple transformations</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#fixing-states."><i class="fa fa-check"></i>Fixing states.</a></li>
+<li class="chapter" data-level="" data-path="data-cleaning.html"><a href="data-cleaning.html#save-the-cleaned-data."><i class="fa fa-check"></i>Save the cleaned data.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html"><i class="fa fa-check"></i>Descriptive statistics</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#descriptive-statistics-are-implicit-estimators."><i class="fa fa-check"></i>Descriptive statistics are implicit estimators.</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#describing-central-tendency."><i class="fa fa-check"></i>Describing central tendency.</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#describing-dispersion"><i class="fa fa-check"></i>Describing dispersion</a></li>
+<li class="chapter" data-level="" data-path="descriptive.html"><a href="descriptive.html#descriptions-of-shape."><i class="fa fa-check"></i>Descriptions of shape.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i>Visualizations</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#general-rules-for-scientific-data-visualization."><i class="fa fa-check"></i>General rules for scientific data visualization.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#picking-a-plot-whats-convention"><i class="fa fa-check"></i>Picking a plot (what’s convention)</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-0"><i class="fa fa-check"></i>Categorical ~ 0</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#histogram"><i class="fa fa-check"></i>Histogram</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#pie-chart"><i class="fa fa-check"></i>Pie chart</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#stacked-area"><i class="fa fa-check"></i>Stacked area</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-0"><i class="fa fa-check"></i>numerical ~ 0</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#histogram-density"><i class="fa fa-check"></i>Histogram &amp; density</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-categorical"><i class="fa fa-check"></i>numerical ~ categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#bar-plot-with-error-bars"><i class="fa fa-check"></i>Bar plot with error bars</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#jittered-data-points."><i class="fa fa-check"></i>Jittered data points.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#violaviolin-plot"><i class="fa fa-check"></i>Viola/Violin plot</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#box-and-whiskers-plot"><i class="fa fa-check"></i>Box and whiskers plot</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#overlayed-densities"><i class="fa fa-check"></i>Overlayed densities</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#empirical-cumulative-distribution"><i class="fa fa-check"></i>Empirical cumulative distribution</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#comparisons"><i class="fa fa-check"></i>Comparisons</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#recommendations"><i class="fa fa-check"></i>Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-numerical-2-x-numerical-0"><i class="fa fa-check"></i>numerical ~ numerical (2 x numerical ~ 0)</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#scatter-and-heatmap"><i class="fa fa-check"></i>Scatter and heatmap</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#conditional-means"><i class="fa fa-check"></i>Conditional means</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-numerical-categorical"><i class="fa fa-check"></i>numerical ~ numerical + categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-numerical"><i class="fa fa-check"></i>categorical ~ numerical</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#x-categorical-and-categorical-categorical"><i class="fa fa-check"></i>2 x categorical and categorical ~ categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#heatmap"><i class="fa fa-check"></i>Heatmap</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#categorical-categorical"><i class="fa fa-check"></i>categorical ~ categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#extra-plot-notes."><i class="fa fa-check"></i>Extra plot notes.</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#numerical-2-x-categorical"><i class="fa fa-check"></i>numerical ~ 2 x categorical</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#bin-width-and-bandwidths"><i class="fa fa-check"></i>bin width and bandwidths</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#visualization"><i class="fa fa-check"></i>ggplot</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#installation."><i class="fa fa-check"></i>Installation.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#basic-overview."><i class="fa fa-check"></i>Basic overview.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#changing-labels."><i class="fa fa-check"></i>Changing labels.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#themes-and-elements-and-properties."><i class="fa fa-check"></i>Themes and elements and properties.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#changing-display-properties-of-plotted-elements."><i class="fa fa-check"></i>Changing display properties of plotted elements.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#other-geometric-elements."><i class="fa fa-check"></i>Other geometric elements.</a></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#assembling-multiple-plots-in-one-figure"><i class="fa fa-check"></i>Assembling multiple plots in one figure</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i>Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-terms"><i class="fa fa-check"></i>Probability terms</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#absolute-probability-statements-prob"><i class="fa fa-check"></i>Absolute probability statements {prob}</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-comparisons"><i class="fa fa-check"></i>Probability comparisons</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#proportional-magnitudes-and-confusion"><i class="fa fa-check"></i>Proportional magnitudes and confusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-foundations"><i class="fa fa-check"></i>Foundations of probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#set-notation-for-combinations-of-outcomes."><i class="fa fa-check"></i>Set notation for combinations of outcomes.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#basic-probability-definition-and-axioms"><i class="fa fa-check"></i>Basic probability definition and axioms</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#events-and-the-rules-of-probability."><i class="fa fa-check"></i>Events and the rules of probability.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-conditional"><i class="fa fa-check"></i>Conditional probability and Bayes</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#chain-rule"><i class="fa fa-check"></i>Chain rule</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#partitions-and-total-probability"><i class="fa fa-check"></i>Partitions and total probability</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#bayes-rule"><i class="fa fa-check"></i>Bayes’ rule</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-simulations"><i class="fa fa-check"></i>Simulation, Sampling and Monte Carlo.</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-long-run-frequency-and-the-law-of-large-numbers."><i class="fa fa-check"></i>Sampling, long-run frequency, and the law of large numbers.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-estimate-event-probabilities."><i class="fa fa-check"></i>Sampling to estimate event probabilities.</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-of-a-conjunction-of-events"><i class="fa fa-check"></i>Probability of a conjunction of events</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-get-probability-of-disjunction"><i class="fa fa-check"></i>Sampling to get probability of disjunction</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#sampling-to-calculate-conditional-probability"><i class="fa fa-check"></i>Sampling to calculate conditional probability</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-rv"><i class="fa fa-check"></i>Random variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#joint-conditional-and-marginal-probabilities"><i class="fa fa-check"></i>Joint, conditional, and marginal probabilities</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#bernoulli-distribution"><i class="fa fa-check"></i>Bernoulli distribution</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#combinations-and-the-binomial-distribution"><i class="fa fa-check"></i>Combinations and the binomial distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-rv-functions"><i class="fa fa-check"></i>Distribution functions: PDF, CDF, Quantile</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-distribution-mass-and-density-functions-p.d.f."><i class="fa fa-check"></i>Probability distribution (mass and density) functions (p.d.f.)</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#cumulative-distribution-functions-c.d.f."><i class="fa fa-check"></i>Cumulative distribution functions (c.d.f.)</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#quantile-functions-inverse-cdf."><i class="fa fa-check"></i>Quantile functions (inverse CDF).</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-expectation"><i class="fa fa-check"></i>Expectation and moments</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#there-are-a-few-useful-properties-about-how-the-mean-variance-skewness-and-excess-kurtosis-behave-under-various-operations"><i class="fa fa-check"></i>There are a few useful properties about how the Mean, Variance, Skewness, and Excess Kurtosis behave under various operations:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#probability-clt"><i class="fa fa-check"></i>Central limit theorem and the normal distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#requirements-for-clt-to-hold"><i class="fa fa-check"></i>Requirements for CLT to hold</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#normal-distribution"><i class="fa fa-check"></i>Normal distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html"><i class="fa fa-check"></i>Foundations of Statistics</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-simulation"><i class="fa fa-check"></i>Frequentist statistics via simulation</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#null-hypothesis-significance-testing."><i class="fa fa-check"></i>Null hypothesis significance testing.</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#critical-values-alpha-power"><i class="fa fa-check"></i>Critical values, alpha, power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#setting-up-the-alternate-hypothesis"><i class="fa fa-check"></i>Setting up the “Alternate hypothesis”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-power"><i class="fa fa-check"></i>Figuring out “power”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-alpha"><i class="fa fa-check"></i>Figuring out “alpha”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#showing-alpha-power"><i class="fa fa-check"></i>Showing alpha, power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#figuring-out-the-critical-value."><i class="fa fa-check"></i>Figuring out the critical value.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-sampling"><i class="fa fa-check"></i>Sampling distributions</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#tl-dr."><i class="fa fa-check"></i>TL; DR.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#logic"><i class="fa fa-check"></i>Logic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#expectation-about-the-sampling-distribution-of-the-sample-mean."><i class="fa fa-check"></i>Expectation about the sampling distribution of the sample mean.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#standard-error-of-the-sample-mean"><i class="fa fa-check"></i>Standard error (of the sample mean)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#NHST-basics-normal"><i class="fa fa-check"></i>Statistics via the Normal distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-null-hypothesis-significance-testing-nhst"><i class="fa fa-check"></i>(Normal) Null hypothesis significance testing (NHST)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-tests-with-sample-means"><i class="fa fa-check"></i>Normal tests with sample means</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#z-scores-and-z-tests"><i class="fa fa-check"></i>Z-scores and Z-tests</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#z-tests"><i class="fa fa-check"></i>Z-tests</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-confidence-intervals-on-the-sample-mean"><i class="fa fa-check"></i>(Normal) Confidence intervals on the sample mean</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#relationship-between-confidence-intervals-and-null-hypothesis-tests."><i class="fa fa-check"></i>Relationship between confidence intervals and null hypothesis tests.</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#special-critical-z-values"><i class="fa fa-check"></i>Special critical Z-values</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#rarity-of-z-tests-and-z--confidence-intervals"><i class="fa fa-check"></i>Rarity of Z-tests and Z- confidence intervals</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#what-are-these-percents-and-probabilities"><i class="fa fa-check"></i>What are these percents and probabilities?</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#what-does-the-percent-in-a-confidence-interval-mean"><i class="fa fa-check"></i>What does the “percent” in a confidence interval mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#nhst-theory-normal"><i class="fa fa-check"></i>Null hypothesis significance testing with Normal</a>
+<ul>
+<li><a href="NHST.html#type-1-error-rate-alpha-alpha">Type 1 error rate: alpha (<span class="math inline">\(\alpha\)</span>)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#the-alternate-model"><i class="fa fa-check"></i>The “alternate model”</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#effect-size"><i class="fa fa-check"></i>Effect size</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#calculating-power-from-effect-size"><i class="fa fa-check"></i>Calculating power from effect size</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#visualizing-alpha-and-power"><i class="fa fa-check"></i>Visualizing alpha and power</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#how-power-changes."><i class="fa fa-check"></i>How power changes.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#calculating-n-for-a-desired-level-of-power."><i class="fa fa-check"></i>Calculating n for a desired level of power.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sign-and-magnitude-errors."><i class="fa fa-check"></i>Sign and magnitude errors.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#theory-binomial"><i class="fa fa-check"></i>From probability to statistics with the Binomial</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#data-description-summary"><i class="fa fa-check"></i>Data description / summary</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#estimation"><i class="fa fa-check"></i>Estimation</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#null-hypothesis-significance-testing-nhst"><i class="fa fa-check"></i>Null Hypothesis Significance testing (NHST)</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#model-selection"><i class="fa fa-check"></i>Model selection</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#t-distribution"><i class="fa fa-check"></i>t-distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#tl-dr.-1"><i class="fa fa-check"></i>TL; DR.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-sample-variance-and-t-statistic"><i class="fa fa-check"></i>Sampling distribution of sample variance, and t-statistic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sample-variance"><i class="fa fa-check"></i>Sample variance</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-the-sample-variance"><i class="fa fa-check"></i>Sampling distribution of the sample variance</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sampling-distribution-of-t-statistic"><i class="fa fa-check"></i>Sampling distribution of t-statistic</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#t-distribution-1"><i class="fa fa-check"></i>T-distribution</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#degrees-of-freedom."><i class="fa fa-check"></i>Degrees of freedom.</a></li>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#summary."><i class="fa fa-check"></i>Summary.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i>(Student’s) t-tests</a>
+<ul>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-t-test"><i class="fa fa-check"></i>1-sample t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#paired-repeated-measures-t-test"><i class="fa fa-check"></i>Paired / repeated-measures t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-presumed-equal-variance-t-test"><i class="fa fa-check"></i>2-sample, presumed equal variance, t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#sample-unequal-variance-t-test"><i class="fa fa-check"></i>2-sample, unequal variance, t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#power-calculations."><i class="fa fa-check"></i>Power calculations.</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#summary-of-tests-for-the-mean-and-effect-sizes"><i class="fa fa-check"></i>Summary of tests for the mean and effect sizes</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math."><i class="fa fa-check"></i>Math.</a>
+<ul>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math-behind-2-sample-equal-variance-t-test"><i class="fa fa-check"></i>Math behind 2-sample equal variance t-test</a></li>
+<li class="chapter" data-level="" data-path="t-tests.html"><a href="t-tests.html#math-behind-unequal-variance-t-test"><i class="fa fa-check"></i>Math behind unequal variance t-test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html"><i class="fa fa-check"></i>Binomial test.</a>
+<ul>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html#estimating-proportions."><i class="fa fa-check"></i>Estimating proportions.</a></li>
+<li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html#sign-test-test-for-percentiles"><i class="fa fa-check"></i>Sign test, test for percentiles</a></li>
+</ul></li>
+<li><a href="chi-squared.html#chi-squared">Pearson’s Chi<span class="math inline">\(^2\)</span> (<span class="math inline">\(\chi^2\)</span>) test</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html"><i class="fa fa-check"></i>“Goodness of fit” test</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#implementation-in-r"><i class="fa fa-check"></i>Implementation in R</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#chi-squared-test-calculations"><i class="fa fa-check"></i>Chi-squared test calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#test-for-independence"><i class="fa fa-check"></i>Test for independence</a>
+<ul>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#implementation-in-r-1"><i class="fa fa-check"></i>Implementation in R</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#independence-test-calculations"><i class="fa fa-check"></i>Independence test calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#more-than-2-way-contingency-table"><i class="fa fa-check"></i>More than 2-way contingency table</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#mathematical-rationale"><i class="fa fa-check"></i>Mathematical rationale</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#limitations"><i class="fa fa-check"></i>Limitations</a></li>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#fishers-exact-test"><i class="fa fa-check"></i>Fisher’s “exact” test</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html"><i class="fa fa-check"></i>Bivariate linear relationships</a>
+<ul>
+<li><a href="bivariate.html#linear-relationships"><em>Linear</em> relationships</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#covariance-and-correlation-measuring-the-linear-dependence."><i class="fa fa-check"></i>Covariance and correlation: Measuring the linear dependence.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#covariance"><i class="fa fa-check"></i>Covariance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#correlation-coefficient"><i class="fa fa-check"></i>Correlation coefficient</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#ols-regression-predicting-the-mean-of-y-for-a-given-x"><i class="fa fa-check"></i>(OLS) Regression: Predicting the mean of y for a given x</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#difference-between-yx-xy-and-the-principle-component-line"><i class="fa fa-check"></i>Difference between y~x, x~y, and the principle component line</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#partitioning-variance"><i class="fa fa-check"></i>Partitioning variance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-a-linear-relationship."><i class="fa fa-check"></i>Significance of a linear relationship.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#prediction-from-regression."><i class="fa fa-check"></i>Prediction from regression.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-anscombe"><i class="fa fa-check"></i>Anscombe’s quartet</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-covariance"><i class="fa fa-check"></i>Covariance</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#estimating-covariance."><i class="fa fa-check"></i>Estimating covariance.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-correlation"><i class="fa fa-check"></i>Correlation</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#correlation-as-the-slope-of-z-scores"><i class="fa fa-check"></i>Correlation as the slope of z-scores</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#coefficient-of-determination"><i class="fa fa-check"></i>Coefficient of determination</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-ols"><i class="fa fa-check"></i>Ordinary Least-Squares (OLS) Regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#regression-terminology"><i class="fa fa-check"></i>Regression terminology</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#estimating-the-regression-line."><i class="fa fa-check"></i>Estimating the regression line.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#standard-errors-of-regression-coefficients"><i class="fa fa-check"></i>Standard errors of regression coefficients</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#confidence-intervals-and-tests-for-regression-coefficients"><i class="fa fa-check"></i>Confidence intervals and tests for regression coefficients</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-lines"><i class="fa fa-check"></i>y~x vs x~y vs principle component line</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-determination"><i class="fa fa-check"></i>Partitioning variance and the coefficient of determination.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#calculating-sums-of-squares."><i class="fa fa-check"></i>Calculating sums of squares.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-significance"><i class="fa fa-check"></i>Significance of linear relationship.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-slope."><i class="fa fa-check"></i>Significance of slope.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-pairwise-correlation"><i class="fa fa-check"></i>Significance of pairwise correlation</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#significance-of-variance-partition."><i class="fa fa-check"></i>Significance of variance partition.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#isomorphism-with-one-response-and-one-predictor"><i class="fa fa-check"></i>Isomorphism with one response and one predictor</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-prediction"><i class="fa fa-check"></i>Regression prediction.</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#predicting-mean-y-given-x."><i class="fa fa-check"></i>Predicting mean y given x.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#predicting-new-y-given-x."><i class="fa fa-check"></i>Predicting new y given x.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#visualizing-the-difference"><i class="fa fa-check"></i>Visualizing the difference</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#bivariate-ols-diagnostics"><i class="fa fa-check"></i>Regression Diagnostics</a>
+<ul>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-relationship-between-y-and-x-is-well-described-by-a-line."><i class="fa fa-check"></i>Assumption: relationship between y and x is well described by a line.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-out-estimates-are-not-driven-by-a-few-huge-outliers"><i class="fa fa-check"></i>Assumption: out estimates are not driven by a few huge outliers</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#assumption-errors-are-independent-identically-distributed-normal."><i class="fa fa-check"></i>Assumption: errors are independent, identically distributed, normal.</a></li>
+<li class="chapter" data-level="" data-path="bivariate.html"><a href="bivariate.html#testing-assumptions"><i class="fa fa-check"></i>Testing assumptions</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">UCSD Psyc 201ab / CSS 205 / Psyc 193</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="t-tests" class="section level1">
+<h1>(Student’s) t-tests</h1>
+<p>We use t-tests when we calculate the standard error based on the sample standard deviation. The logic of why we must use the t-distribution in these cases is described when we consider the <a href="nhst-t-distribution.html">sampling distribution of the sample variance, and the t statistic</a>. Read that first, and then we can quickly cover the slightly different t-test varieties we can use to compare sample means.</p>
+<div id="sample-t-test" class="section level2">
+<h2>1-sample t-test</h2>
+<p>So if we have a sample, which we assume to be normally distributed with unknown population mean and variance, and want to test whether that sample has a mean different from some null hypothesis mean (<span class="math inline">\(\mu_0\)</span>). We would proceed as follows: estimate the sample mean and sample variance, and then compute a t-statistic:</p>
+<p><span class="math inline">\(t_x = (\bar x - \mu_0) / (s_x / \sqrt n)\)</span></p>
+<p>Under the null hypothesis this t statistic will follow a t distribution with one parameter, the degrees of freedom: <span class="math inline">\(df = n-1\)</span>.</p>
+<p>The degrees of freedom parameter changes the t-distribution depending on our certainty in our estimated sample variance. If <span class="math inline">\(n\)</span> is very large, then we should be very certain that our estimated sample variance will not be very different from the population variance. Consequently, the t-statistic when <span class="math inline">\(n\)</span> is large will be distributed no differently than a z-statistic: it will follow a normal distribution. However, when <span class="math inline">\(n\)</span> is small, we have substantial uncertainty about the estimated sample variance, so the distribution of the t-statistic will take on a different shape. Specifically, it will have heavier tails (it will have greater kurtosis), this should be intuitive because if we underestimate the population standard deviation, our t-statistic (which has estimated standard deviation in the denominator) might be quite large by chance – hence the heavier tails.</p>
+<p>Anyway, so to compute a p-value for a t-test, you would look up your t-statistic in the cumulative t-distribution (just as p-values for a z-test are obtained from a cumulative standard normal distribution), with <span class="math inline">\(n-1\)</span> degrees of freedom:</p>
+<p>For a conventional two-tailed test, we would calculate the p-value as:</p>
+<p><code>2*pt(-abs(tx),n-1)</code> (notice that we are merely substituting <code>pt</code> for <code>pnorm</code>)</p>
+<p>If the degrees of freedom are small, the p value from the t distribution may be considerably larger than for a normal distribution:</p>
+<p><code>2*pt(-abs(3),2)</code>=0.095466<br />
+compare to<br />
+<code>2*pnorm(-abs(3))</code>=0.0026998</p>
+<p>However, in <code>R</code> we can do this quickly using the <code>t.test</code> command.</p>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="t-tests.html#cb441-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">our.iqs =</span> <span class="fu">rnorm</span>(<span class="dv">15</span>, <span class="dv">103</span>,<span class="dv">15</span>))</span>
+<span id="cb441-2"><a href="t-tests.html#cb441-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">test.results =</span> <span class="fu">t.test</span>(df<span class="sc">$</span>our.iqs, <span class="at">mu =</span> <span class="dv">100</span>))</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  df$our.iqs
+## t = 0.69038, df = 14, p-value = 0.5012
+## alternative hypothesis: true mean is not equal to 100
+## 95 percent confidence interval:
+##   92.81427 114.00755
+## sample estimates:
+## mean of x 
+##  103.4109</code></pre>
+<p>We can access the various aspects of the test result as:</p>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="t-tests.html#cb443-1" aria-hidden="true" tabindex="-1"></a>test.results<span class="sc">$</span>statistic <span class="co"># the t statistic</span></span></code></pre></div>
+<pre><code>##         t 
+## 0.6903765</code></pre>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="t-tests.html#cb445-1" aria-hidden="true" tabindex="-1"></a>test.results<span class="sc">$</span>parameter <span class="co"># the degrees of freedom</span></span></code></pre></div>
+<pre><code>## df 
+## 14</code></pre>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="t-tests.html#cb447-1" aria-hidden="true" tabindex="-1"></a>test.results<span class="sc">$</span>p.value   <span class="co"># the p-value</span></span></code></pre></div>
+<pre><code>## [1] 0.5012433</code></pre>
+</div>
+<div id="paired-repeated-measures-t-test" class="section level2">
+<h2>Paired / repeated-measures t-test</h2>
+<p>In other cases we might have two measurements from a single source. The canonical example of this would be “before” and “after” measurements. e.g., for each person we measure their weight before they go on our new-fangled diet, and after 3 months of being on the diet, so for each person we have two measurements: before and after the 3 months of dieting. We might then want to see whether people lost weight, or gained weight, or didn’t change between the two tests.</p>
+<p>This scenario offers us an opportunity to reduce person-to-person variability by calculating the difference of before and after scores, and then calculating a 1-sample t-test on the difference, comparing them to a mean of 0:</p>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="t-tests.html#cb449-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">170</span>, <span class="dv">10</span>)</span>
+<span id="cb449-2"><a href="t-tests.html#cb449-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">before =</span> x<span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">2</span>),</span>
+<span id="cb449-3"><a href="t-tests.html#cb449-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">after =</span> x<span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
+<span id="cb449-4"><a href="t-tests.html#cb449-4" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>difference <span class="ot">=</span> df<span class="sc">$</span>after <span class="sc">-</span> df<span class="sc">$</span>before</span>
+<span id="cb449-5"><a href="t-tests.html#cb449-5" aria-hidden="true" tabindex="-1"></a>(<span class="at">test.results =</span> <span class="fu">t.test</span>(df<span class="sc">$</span>difference, <span class="at">mu=</span><span class="dv">0</span>))</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  df$difference
+## t = -6.029, df = 9, p-value = 0.0001954
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  -6.967487 -3.165466
+## sample estimates:
+## mean of x 
+## -5.066477</code></pre>
+<p>By calculating the before-after difference, we can effectively get rid of the across-subject variation, which will be manugest in both the before and after weights. This is the virtue of repeated-measures designs in general. For t-tests, such a design only makes sense if we have a “paired” design (such that our data come in pairs; here: before/after).</p>
+</div>
+<div id="sample-presumed-equal-variance-t-test" class="section level2">
+<h2>2-sample, presumed equal variance, t-test</h2>
+<p>Another setting is that we have two independent samples (<span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>) and want to know if they differ in their means, under the assumption that they have the same standard deviation. This kind of setting may arise if we have a sample of males and a sample of females, and want to see if their heights are systematically different:</p>
+<p>In R this can be run quickly as:</p>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="t-tests.html#cb451-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">rbind</span>(<span class="fu">data.frame</span>(<span class="at">height =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">70</span>, <span class="dv">5</span>), <span class="at">sex=</span><span class="st">&quot;male&quot;</span>),</span>
+<span id="cb451-2"><a href="t-tests.html#cb451-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">data.frame</span>(<span class="at">height =</span> <span class="fu">rnorm</span>(<span class="dv">18</span>, <span class="dv">65</span>, <span class="dv">5</span>), <span class="at">sex=</span><span class="st">&quot;female&quot;</span>))</span>
+<span id="cb451-3"><a href="t-tests.html#cb451-3" aria-hidden="true" tabindex="-1"></a>(<span class="at">test.results =</span> <span class="fu">t.test</span>(df<span class="sc">$</span>height[df<span class="sc">$</span>sex<span class="sc">==</span><span class="st">&quot;male&quot;</span>], </span>
+<span id="cb451-4"><a href="t-tests.html#cb451-4" aria-hidden="true" tabindex="-1"></a>                       df<span class="sc">$</span>height[df<span class="sc">$</span>sex<span class="sc">==</span><span class="st">&quot;female&quot;</span>], </span>
+<span id="cb451-5"><a href="t-tests.html#cb451-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">var.equal =</span> T))</span></code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  df$height[df$sex == &quot;male&quot;] and df$height[df$sex == &quot;female&quot;]
+## t = 3.0701, df = 26, p-value = 0.004961
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##   2.12556 10.73818
+## sample estimates:
+## mean of x mean of y 
+##  72.29764  65.86577</code></pre>
+<p>Note that:</p>
+<ol style="list-style-type: lower-alpha">
+<li>we must specify that we assume the variances are equal (the <code>var.equal=T</code> portion)<br />
+</li>
+<li>the degrees of freedom are equal to <span class="math inline">\(n_x + n_y -2\)</span>.<br />
+</li>
+<li>the standard error is calculated by pooling variance around the mean of x and the mean of y.</li>
+</ol>
+</div>
+<div id="sample-unequal-variance-t-test" class="section level2">
+<h2>2-sample, unequal variance, t-test</h2>
+<p>The final model we might have of our 2 samples of data is that they come from normal distributions with different means and (<em>potentially</em>) different variances, and we are interested in testing whether their means are equal.</p>
+<p>If we do not assume equal variances, we can run the “Welch’s t-test.” This is the default behavior of R’s t.test function:</p>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="t-tests.html#cb453-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">rbind</span>(<span class="fu">data.frame</span>(<span class="at">val =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">105</span>, <span class="dv">20</span>), <span class="at">variable=</span><span class="st">&quot;x&quot;</span>),</span>
+<span id="cb453-2"><a href="t-tests.html#cb453-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">data.frame</span>(<span class="at">val =</span> <span class="fu">rnorm</span>(<span class="dv">18</span>, <span class="dv">98</span>, <span class="dv">10</span>), <span class="at">variable=</span><span class="st">&quot;y&quot;</span>))</span>
+<span id="cb453-3"><a href="t-tests.html#cb453-3" aria-hidden="true" tabindex="-1"></a>(<span class="at">test.results =</span> <span class="fu">t.test</span>(df<span class="sc">$</span>val[df<span class="sc">$</span>variable<span class="sc">==</span><span class="st">&quot;x&quot;</span>], df<span class="sc">$</span>val[df<span class="sc">$</span>variable<span class="sc">==</span><span class="st">&quot;y&quot;</span>]))</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  df$val[df$variable == &quot;x&quot;] and df$val[df$variable == &quot;y&quot;]
+## t = 1.8044, df = 13.851, p-value = 0.09296
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1.754139 20.230843
+## sample estimates:
+## mean of x mean of y 
+## 109.08624  99.84789</code></pre>
+<p>Note that:</p>
+<ol style="list-style-type: lower-alpha">
+<li>we must specify that the default is to <em>not</em> assume the variances are equal (default is <code>var.equal=F</code>; this is the deault behavior in R)<br />
+</li>
+<li>the degrees of freedom is some weird non-integer value</li>
+</ol>
+<p>It is worth getting an intuition for what the degrees of freedom are doing in a Welch’s t-test:<br />
+The unequal variance degrees of freedom are somewhere between <span class="math inline">\(n - 1\)</span> and <span class="math inline">\(n_x + n_y -2\)</span>, where <span class="math inline">\(n\)</span> is the size of the sample with the larger standard error of the mean). What this does is return roughly the two-sample equal-variance degrees of freedom (<span class="math inline">\(df = n_x + n_y -2\)</span>) when the standard errors are approximately equal (since in that case you are essentially doing an equal-variance t-test), and returns the one-sample degrees of freedom (<span class="math inline">\(n-1\)</span>), when one variance is much larger than the other. The latter should make sense: one sample is much more variable than another, there is no sampling variability in the precise sample, so we are effectively comparing the noisy sample to a determinate value – a one-sample t-test.</p>
+</div>
+<div id="power-calculations." class="section level2">
+<h2>Power calculations.</h2>
+<p>Instead of doing algebra to calculate power for a t-test, as we did for a normal, we will just use the <code>pwr::</code> library.</p>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="t-tests.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pwr)</span>
+<span id="cb455-2"><a href="t-tests.html#cb455-2" aria-hidden="true" tabindex="-1"></a><span class="co"># get power for a particular sample size...</span></span>
+<span id="cb455-3"><a href="t-tests.html#cb455-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb455-4"><a href="t-tests.html#cb455-4" aria-hidden="true" tabindex="-1"></a><span class="co"># for a 1 sample (or repeated measures) t-test</span></span>
+<span id="cb455-5"><a href="t-tests.html#cb455-5" aria-hidden="true" tabindex="-1"></a>pwr<span class="sc">::</span><span class="fu">pwr.t.test</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">d=</span><span class="fl">0.5</span>, <span class="at">sig.level=</span><span class="fl">0.05</span>, <span class="at">type =</span> <span class="st">&#39;one&#39;</span>)</span></code></pre></div>
+<pre><code>## 
+##      One-sample t test power calculation 
+## 
+##               n = 20
+##               d = 0.5
+##       sig.level = 0.05
+##           power = 0.5645044
+##     alternative = two.sided</code></pre>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="t-tests.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for a 2 sample t-test (equal sample sizes, each group has sample size n)</span></span>
+<span id="cb457-2"><a href="t-tests.html#cb457-2" aria-hidden="true" tabindex="-1"></a>pwr<span class="sc">::</span><span class="fu">pwr.t.test</span>(<span class="at">d=</span><span class="fl">0.5</span>, <span class="at">n=</span><span class="dv">10</span>, <span class="at">sig.level=</span><span class="fl">0.05</span>, <span class="at">type=</span><span class="st">&#39;two&#39;</span>)</span></code></pre></div>
+<pre><code>## 
+##      Two-sample t test power calculation 
+## 
+##               n = 10
+##               d = 0.5
+##       sig.level = 0.05
+##           power = 0.1850957
+##     alternative = two.sided
+## 
+## NOTE: n is number in *each* group</code></pre>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="t-tests.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for a 2 sample t-test (unequal sample sizes)</span></span>
+<span id="cb459-2"><a href="t-tests.html#cb459-2" aria-hidden="true" tabindex="-1"></a>pwr<span class="sc">::</span><span class="fu">pwr.t2n.test</span>(<span class="at">d=</span><span class="fl">0.5</span>, <span class="at">n1=</span><span class="dv">10</span>, <span class="at">n2=</span><span class="dv">10</span>, <span class="at">sig.level=</span><span class="fl">0.05</span>)</span></code></pre></div>
+<pre><code>## 
+##      t test power calculation 
+## 
+##              n1 = 10
+##              n2 = 10
+##               d = 0.5
+##       sig.level = 0.05
+##           power = 0.1850957
+##     alternative = two.sided</code></pre>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="t-tests.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get sample size for a particular level of power</span></span>
+<span id="cb461-2"><a href="t-tests.html#cb461-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb461-3"><a href="t-tests.html#cb461-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fir a 1 sample (or repeated measures) t-test</span></span>
+<span id="cb461-4"><a href="t-tests.html#cb461-4" aria-hidden="true" tabindex="-1"></a>pwr<span class="sc">::</span><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">power =</span> <span class="fl">0.8</span>, <span class="at">sig.level=</span><span class="fl">0.05</span>, <span class="at">type =</span> <span class="st">&#39;one&#39;</span>)</span></code></pre></div>
+<pre><code>## 
+##      One-sample t test power calculation 
+## 
+##               n = 33.36713
+##               d = 0.5
+##       sig.level = 0.05
+##           power = 0.8
+##     alternative = two.sided</code></pre>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="t-tests.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for a 2 sample t-test (find one sample size for both groups)</span></span>
+<span id="cb463-2"><a href="t-tests.html#cb463-2" aria-hidden="true" tabindex="-1"></a>pwr<span class="sc">::</span><span class="fu">pwr.t.test</span>(<span class="at">d=</span><span class="fl">0.5</span>, <span class="at">power=</span><span class="fl">0.8</span>, <span class="at">sig.level=</span><span class="fl">0.05</span>, <span class="at">type=</span><span class="st">&#39;two&#39;</span>)</span></code></pre></div>
+<pre><code>## 
+##      Two-sample t test power calculation 
+## 
+##               n = 63.76561
+##               d = 0.5
+##       sig.level = 0.05
+##           power = 0.8
+##     alternative = two.sided
+## 
+## NOTE: n is number in *each* group</code></pre>
+</div>
+<div id="summary-of-tests-for-the-mean-and-effect-sizes" class="section level2">
+<h2>Summary of tests for the mean and effect sizes</h2>
+<table>
+<colgroup>
+<col width="28%" />
+<col width="24%" />
+<col width="24%" />
+<col width="24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Test</th>
+<th align="center">test statistic</th>
+<th align="center">d.f.</th>
+<th align="center">effect size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Z-test</td>
+<td align="center"><span class="math inline">\(z = \frac{\bar x - \mu_0}{\sigma_0 / \sqrt n}\)</span></td>
+<td align="center">na</td>
+<td align="center"><span class="math inline">\(\hat d = \frac{\bar x - \mu_0}{\sigma_0}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">t-test</td>
+<td align="center"><span class="math inline">\(t = \frac{\bar x - \mu_0}{s_x / \sqrt n}\)</span></td>
+<td align="center"><span class="math inline">\(n-1\)</span></td>
+<td align="center"><span class="math inline">\(\hat d = \frac{\bar x - \mu_0}{s_x}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">paired t-test</td>
+<td align="center"><span class="math inline">\(t = \frac{\bar d - \mu_0}{s_d / \sqrt n}\)</span></td>
+<td align="center">n-1</td>
+<td align="center"><span class="math inline">\(\hat d = \frac{\bar d - \mu_0}{s_d}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">eq. var t-test</td>
+<td align="center"><span class="math inline">\(t = \frac{\bar y - \bar x}{s_p \sqrt{1/n_x + 1/n_y}}\)</span></td>
+<td align="center"><span class="math inline">\(n_x+n_y-2\)</span></td>
+<td align="center"><span class="math inline">\(\hat d = \frac{\bar y - \bar x}{s_p}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">uneq. var t-test</td>
+<td align="center"><span class="math inline">\(t = \frac{\bar y - \bar x}{\sqrt{s_x^2/n_x + s_y^2/n_y}}\)</span></td>
+<td align="center">**</td>
+<td align="center"><span class="math inline">\(\hat d = \frac{\bar y - \bar x}{\sqrt{s_x^2 + s_y^2}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>** The degrees of freedom for an unequal variance t-test are given by the following long expression (which you should not try to learn):<br />
+<span class="math inline">\(df = \frac{(s_x^2/n_x + s_y^2 / n_y)^2}{sx^4/(n_x^2(n_x-1)) + s_y^4/(n_y^2(n_y-1))}\)</span></p>
+</div>
+<div id="math." class="section level2">
+<h2>Math.</h2>
+<p>This section is here for thoroughness, but there is no particularly good reason to commit this stuff to memory.</p>
+<div id="math-behind-2-sample-equal-variance-t-test" class="section level3">
+<h3>Math behind 2-sample equal variance t-test</h3>
+<p>Specifically, our model is:</p>
+<p><span class="math inline">\(x \sim \text{Normal}(\mu_x, \sigma)\)</span><br />
+<span class="math inline">\(y \sim \text{Normal}(\mu_y, \sigma)\)</span></p>
+<p>Note that here we have assumed that x and y have the same standard deviation. For reasons that become clear later, this assumption is usually made when running a t-test, especially when calculating one by hand.</p>
+<p>Under this assumption, our expected distributions for the sample means will be:<br />
+<span class="math inline">\(\bar x \sim \text{Normal}(\mu_x, \sigma / (\sqrt n_x))\)</span><br />
+<span class="math inline">\(\bar y \sim \text{Normal}(\mu_y, \sigma / (\sqrt n_y))\)</span></p>
+<p>And the distribution of the difference between the means (<span class="math inline">\(\bar y - \bar x\)</span>), will be:<br />
+<span class="math inline">\((\bar y - \bar x) \sim \text{Normal}(\mu_y - \mu_x, \sqrt{\frac{\sigma^2}{n_x} + \frac{\sigma^2}{n_y}})\)</span><br />
+(the random variable corresponding to the difference of <span class="math inline">\(\bar x\)</span> and <span class="math inline">\(\bar y\)</span> will have a variance equal to the sum of the variances <span class="math inline">\(\sigma^2_{\bar x} = \sigma^2/n_x\)</span> and <span class="math inline">\(\sigma^2_{\bar y} = \sigma^2/n_x\)</span>)</p>
+<p>The standard deviation of the sampling distribution of the difference of the means (this is the “standard error” of the difference between two means), <span class="math inline">\(\sqrt{\frac{\sigma^2}{n_x} + \frac{\sigma^2}{n_y}}\)</span>, can be simplified to: <span class="math inline">\(\sigma \sqrt{1/n_x + 1/n_y}\)</span>.</p>
+<p>In this case, as usual, we want to test a null hypothesis, and here the null hypothesis is specified as the difference between the two means <span class="math inline">\(H_0 = (\mu_{y_0} - \mu_{x_0})\)</span>. This is usually 0: our null hypothesis is usually that the two means do not differ.</p>
+<p>Since we do not know the shared standard deviation, <span class="math inline">\(\sigma\)</span>, we have to estimate it. To do so, we have to “pool” information from both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, since they should both inform our estimate of the shared <span class="math inline">\(\sigma\)</span>.</p>
+<p>We can compute <span class="math inline">\(\bar x\)</span> and <span class="math inline">\(\bar y\)</span>, as well as <span class="math inline">\(s_x\)</span> and <span class="math inline">\(s_y\)</span>, however, our estimate of the common <span class="math inline">\(\sigma\)</span> must pool <span class="math inline">\(s_x\)</span> and <span class="math inline">\(s_y\)</span>. This pooled estimate is usually written as <span class="math inline">\(s_p\)</span>, and is a <em>weighted average</em> of sample variances:</p>
+<p><span class="math inline">\(s_p^2 = \frac{\sum_i (n_i - 1) s_i^2}{\sum_i (n_i -1)}\)</span></p>
+<p>Since we only have two groups here, this general statement about how to pool variances boils down to:</p>
+<p><span class="math inline">\(s_p^2 = \frac{(n_x-1) s^2_x + (n_y-1) s^2_y}{n_x + n_y - 2}\)</span></p>
+<p>(Note that these equations refer to pooled <em>variance</em>, so the pooled standard deviation would be the square root of these!)</p>
+<p>Since this is our estimated variance, we can use the standard error formula we derived before to compute the estimated standard error of the difference between two means:</p>
+<p><span class="math inline">\(s_{\bar y - \bar x} = s_p \sqrt{1/n_x + 1/n_y}\)</span>.</p>
+<p>Once we have obtained a standard error, we can compute a t-statistic.</p>
+<p><span class="math inline">\(t_{\bar y - \bar x} = \frac{(\bar y - \bar x) - (\mu_{y0} - \mu_{x0})}{s_{\bar y - \bar x}}\)</span></p>
+<p>Sometimes, for clarity, this is written out as the equivalent expression:</p>
+<p><span class="math inline">\(t_{\bar y - \bar x} = \frac{(\bar y - \bar x) - (\mu_{y0} - \mu_{x0})}{s_p \sqrt{1/n_x + 1/n_y}}\)</span></p>
+<p>Usually, the null hypothesis <span class="math inline">\((\mu_{y0} - \mu_{x0})\)</span> is 0: meaning that the difference between the means ought to be 0, so the t-statistic ends up being shortened to:</p>
+<p><span class="math inline">\(t_{\bar y - \bar x} = \frac{(\bar y - \bar x)}{s_p \sqrt{1/n_x + 1/n_y}}\)</span></p>
+<p>This t-statistic will follow the t-distribution with degrees of freedom matching the denominator in the pooled sample variance calculation:</p>
+<p><span class="math inline">\(df = n_x + n_y -2\)</span></p>
+<div id="special-case-of-equal-sample-sizes" class="section level5">
+<h5>Special case of equal sample sizes</h5>
+<p>Sometimes textbooks present special formulas for cases where <span class="math inline">\(n=n_x=n_y\)</span> (where the sample sizes are equal), but those formulas can be calculated directly from the more general formulas that assume unequal sample sizes by plugging <span class="math inline">\(n\)</span> in for both <span class="math inline">\(n_x\)</span> and <span class="math inline">\(n_y\)</span>:<br />
+<span class="math inline">\(df = 2n-2\)</span><br />
+<span class="math inline">\(s_p^2 = (s_x^2 + s_y^2)/2\)</span><br />
+<span class="math inline">\(s_{\bar y - \bar x} = s_p \sqrt{2/n}\)</span></p>
+</div>
+</div>
+<div id="math-behind-unequal-variance-t-test" class="section level3">
+<h3>Math behind unequal variance t-test</h3>
+<p>Specifically, the model we consider is:</p>
+<p><span class="math inline">\(x \sim \text{Normal}(\mu_x, \sigma_x)\)</span><br />
+<span class="math inline">\(y \sim \text{Normal}(\mu_y, \sigma_y)\)</span></p>
+<p>Under this assumption, our expected distributions for the sample means will be:<br />
+<span class="math inline">\(\bar x \sim \text{Normal}(\mu_x, \sigma_x / (\sqrt n_x))\)</span><br />
+<span class="math inline">\(\bar y \sim \text{Normal}(\mu_y, \sigma_y / (\sqrt n_y))\)</span></p>
+<p>And the distribution of the difference between the means (<span class="math inline">\(\bar y - \bar x\)</span>), will be:<br />
+<span class="math inline">\((\bar y - \bar x) \sim \text{Normal}(\mu_y - \mu_x, \sqrt{\frac{\sigma_x^2}{n_x} + \frac{\sigma_y^2}{n_y}})\)</span></p>
+<p>So we can proceed to calculate <span class="math inline">\(\bar x\)</span>, <span class="math inline">\(\bar y\)</span>, <span class="math inline">\(s_x\)</span>, <span class="math inline">\(s_y\)</span>, and plug these in to get a t-statistic:</p>
+<p><span class="math inline">\(t_{\bar y - \bar x} = \frac{(\bar y - \bar x)}{\sqrt{s_x^2/n_x + s_y^2/n_y}}\)</span>.</p>
+<p>(Again we have dropped the $ - (<span class="math inline">\(\mu_{y0} - \mu_{x0}\)</span>)$ from the numerator because in most cases in which this test is applied <span class="math inline">\((\mu_{y0} - \mu_{x0})=0\)</span>.)</p>
+<p>However, the trickiness comes in defining the degrees of freedom for this t-test. The trickiness arises from the fact that we have two estimated standard deviations; how do we represent the sampling variability associated with both?</p>
+<p>This was a hairy problem when folks were first dealing with t-tests, until the reasonably accurate approximation via ``Welch’s t-test", which defines the degrees of freedom for this test statistic as:</p>
+<p><span class="math inline">\(df = \frac{(s_x^2/n_x + s_y^2 / n_y)^2}{sx^4/(n_x^2(n_x-1)) + s_y^4/(n_y^2(n_y-1))}\)</span></p>
+<p>This unwieldy definition of the degrees of freedom generates all the desirable properties for the t-test. Intuitively, what this formula does is return<br />
+<span class="math inline">\(n -1 \leq df \leq n_x + n_y -2\)</span><br />
+(where <span class="math inline">\(n\)</span> is the size of the sample with the larger sample variance). Intuitively, what this does is return roughly <span class="math inline">\(df = n_x + n_y -2\)</span> when <span class="math inline">\(s_x\)</span> and <span class="math inline">\(s_y\)</span> are approximately equal (since in that case you are essentially doing an equal-variance t-test), and this formula returns <span class="math inline">\(n_x-1\)</span> when <span class="math inline">\(s_x\)</span> is much larger than <span class="math inline">\(s_y\)</span> (and vice versa; this should make sense: when <span class="math inline">\(s_x\)</span> is really big compared to <span class="math inline">\(s_y\)</span>, this t-test is equivalent to doing a 1-sample t-test of <span class="math inline">\(x\)</span> vs the point-null hypothesis of <span class="math inline">\(\mu_0 = \mu_y\)</span>).</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="NHST.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="binomial-test.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/notes/nhst-t-tests.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
