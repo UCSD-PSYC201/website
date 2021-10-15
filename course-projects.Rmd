@@ -35,22 +35,22 @@ The full project will span both 201a and 201b (previously I had it only in 201b,
 
 Figure out groups as soon as possible, so we can assist if folks are group-less.
 
-2020-10-20: Groups due  
-2020-10-27: Project plan due  
-2020-11-10: Preliminary data summaries due  
-2020-12-17: (before final) Write-ups due  
-2020-12-17: (during final) Project presentations  
-2020-12-18: Group-evaluation due
+2021-10-20: Groups due  
+2021-10-27: Project plan due  
+2021-11-10: Preliminary data summaries due  
+2021-12-09: (before final) Write-ups due  
+2021-12-09: (during final) Project presentations  
+2021-12-10: Group-evaluation due
 
 ### Groups
 
 You will be in groups of ~3-5 (5 if group includes an undergrad).  Undergrads should not be in a group together (should join a group of grad students).  Hopefully you can self-assemble into groups, but I will help if need be.
 
-**Due: 2020-10-20** Create a Slack channel titled "project-[groupname]" (can be either public or private).  Invite Ed and James into the channel.  Upload a CSV file about your group makeup in the channel: 1 row per group member, and columns: last_name, first_name, email, group_name.
+**Due: 2021-10-20** Create a Slack channel titled "project-[groupname]" (can be either public or private).  Invite Ed and James into the channel.  Upload a CSV file about your group makeup in the channel: 1 row per group member, and columns: last_name, first_name, email, group_name.
 
 ### 201a Project plan
 
-**Due: 2020-10-27**
+**Due: 2021-10-27**
 
 This is just a message including the following:
 
@@ -59,7 +59,7 @@ This is just a message including the following:
 
 ### 201a Preliminary data summaries
 
-**Due: 2020-11-10**
+**Due: 2021-11-10**
 
 This is an R script (ideally an R markdown file), and output showing coarse summaries of the data (histograms, scatterplots, etc).  This should include various validity checks to figure out if any of the data are corrupted, if co-registration of different data sources was done accurately, etc.  Send the R script and output in the Slack channel.
 
@@ -67,7 +67,7 @@ The only goal here is to force you to look over the data to make sure you find p
 
 ### 201a Write-ups
 
-**Due: 2020-12-17, before class**
+**Due: 2021-12-09, before class**
 
 This should be less than 2000 words, and should include:  
 
@@ -79,7 +79,7 @@ This should be less than 2000 words, and should include:
 
 ### 201a Presentation
 
-**Due: 2020-12-17, during final time**
+**Due: 2021-12-09, during final time**
 
 Tell us about your results.
 
@@ -103,7 +103,7 @@ The goals here are:
 
 ### 201a Group-evaluation
 
-**Due: 2020-12-18**
+**Due: 2021-12-10**
 
 After you completed your presentation, each student should independently DM Ed on Slack: your group name, and your estimate as to what percentage of the total work each member of your group did.  Basically, I want to know if someone single-handedly carried your group, or if someone was a free-rider and let the rest of the group do all the work.  I'm hoping that there will not be such an uneven distribution of effort, and that the mere fact that these evaluations will be sent will motivate your group not to leave you hanging.
 

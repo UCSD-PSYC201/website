@@ -346,15 +346,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#z-scores-and-z-tests"><i class="fa fa-check"></i>Z-scores and Z-tests</a></li>
 <li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#z-tests"><i class="fa fa-check"></i>Z-tests</a></li>
 <li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#normal-confidence-intervals-on-the-sample-mean"><i class="fa fa-check"></i>(Normal) Confidence intervals on the sample mean</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#relationship-between-confidence-intervals-and-null-hypothesis-tests."><i class="fa fa-check"></i>Relationship between confidence intervals and null hypothesis tests.</a>
-<ul>
-<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#special-critical-z-values"><i class="fa fa-check"></i>Special critical Z-values</a></li>
-<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#rarity-of-z-tests-and-z--confidence-intervals"><i class="fa fa-check"></i>Rarity of Z-tests and Z- confidence intervals</a></li>
 <li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#what-are-these-percents-and-probabilities"><i class="fa fa-check"></i>What are these percents and probabilities?</a></li>
-<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#what-does-the-percent-in-a-confidence-interval-mean"><i class="fa fa-check"></i>What does the “percent” in a confidence interval mean?</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#nhst-theory-normal"><i class="fa fa-check"></i>Null hypothesis significance testing with Normal</a>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#nhst-theory-normal"><i class="fa fa-check"></i>Null hypothesis significance testing</a>
 <ul>
 <li><a href="NHST.html#type-1-error-rate-alpha-alpha">Type 1 error rate: alpha (<span class="math inline">\(\alpha\)</span>)</a></li>
 <li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#the-alternate-model"><i class="fa fa-check"></i>The “alternate model”</a></li>
@@ -365,7 +359,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#calculating-n-for-a-desired-level-of-power."><i class="fa fa-check"></i>Calculating n for a desired level of power.</a></li>
 <li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#sign-and-magnitude-errors."><i class="fa fa-check"></i>Sign and magnitude errors.</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#theory-binomial"><i class="fa fa-check"></i>From probability to statistics with the Binomial</a>
+<li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#theory-binomial"><i class="fa fa-check"></i>Binomial: Probability to statistics</a>
 <ul>
 <li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#data-description-summary"><i class="fa fa-check"></i>Data description / summary</a></li>
 <li class="chapter" data-level="" data-path="NHST.html"><a href="NHST.html#estimation"><i class="fa fa-check"></i>Estimation</a></li>
@@ -1052,10 +1046,8 @@ This procedure is also very general, and can be used to define bootstrapped conf
 <p>In short, we can define the (z-score) confidence interval on the sample mean as:</p>
 <p><span class="math display">\[\bar x \pm Z_{\alpha/2}^*\sigma_{\bar x}\]</span></p>
 <p>Where <span class="math inline">\(\alpha = 1-q\)</span>, and <span class="math inline">\(q\)</span> is the confidence interval percentile; <span class="math inline">\(Z_{\alpha/2}^*=\)</span> <code>abs(qnorm(alpha/2,0,1))</code>. So for a 99% confidence interval, <span class="math inline">\(q=0.99\)</span>, <span class="math inline">\(\alpha=0.01\)</span>, and <span class="math inline">\(Z_{\alpha/2}^*=\)</span> <code>abs(qnorm(0.01/2,0,1))</code> = 2.5758293.</p>
-</div>
-</div>
-<div id="relationship-between-confidence-intervals-and-null-hypothesis-tests." class="section level2">
-<h2>Relationship between confidence intervals and null hypothesis tests.</h2>
+<div id="relationship-between-confidence-intervals-and-null-hypothesis-tests." class="section level4">
+<h4>Relationship between confidence intervals and null hypothesis tests.</h4>
 <p>The use of <span class="math inline">\(\alpha\)</span> as the critical value in a null hypothesis test, and as the interim calculation in confidence intervals is no accident.</p>
 <p>We declare a (2-tailed) z-test as significant when the p-value is lower than <span class="math inline">\(\alpha\)</span>, in other words, when (the absolute value of) the difference between the sample mean and the null mean, in units of standard errors of the mean, is greater than <span class="math inline">\(Z_{\alpha/2}^*\)</span>:</p>
 <p><span class="math inline">\(\lvert\frac{\bar x - \mu_X^{H0}}{\sigma_{\bar x}}\rvert \geq Z_{\alpha/2}^*\)</span></p>
@@ -1065,8 +1057,9 @@ This procedure is also very general, and can be used to define bootstrapped conf
 <p>And as we recall, the limits of a q% confidence interval are given by:</p>
 <p><span class="math inline">\(\bar x \pm \sigma_{\bar x} Z_{\alpha/2}^*\)</span></p>
 <p>Thus, we see that if the null hypothesis mean does not fall in the <span class="math inline">\((1-\alpha)\)</span> confidence interval, then we can reject that null hypothesis mean with a two-tailed significance test with a Type I error rate of <span class="math inline">\(\alpha\)</span>. So, checking whether the p-value for a null hypothesis z-test is less than <span class="math inline">\(\alpha=0.05\)</span> is equivalent to checking whether the null hypothesis mean falls outside of the 95% confidence interval.</p>
-<div id="special-critical-z-values" class="section level3">
-<h3>Special critical Z-values</h3>
+</div>
+<div id="special-critical-z-values" class="section level4">
+<h4>Special critical Z-values</h4>
 <p>Everyone using statistics would benefit from knowing a few special Z-scores, since they make back-of-the-envelope calculations easy when you want to evaluate some results in a talk or a poster.</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(P(Z \leq -1.96) = P(Z \geq 1.96) = 0.025\)</span>. In other words, 95% of the normal distribution is less than 1.96 standard deviations away from the mean. This means that a 95% confidence interval on a mean is <span class="math inline">\(\bar x \pm 1.96 \sigma_{\bar x}\)</span>. This also means that to pass a two-tailed Z-test with <span class="math inline">\(\alpha = 0.05\)</span>, the sample mean has to be more than 1.96 standard errors away from the null hypothesis mean.</p></li>
@@ -1076,10 +1069,11 @@ This procedure is also very general, and can be used to define bootstrapped conf
 </ol>
 <p>These numbers can all be easily obtained via <code>pnorm()</code> and <code>qnorm()</code> in R, but often you might benefit from having them in your head.</p>
 </div>
-<div id="rarity-of-z-tests-and-z--confidence-intervals" class="section level3">
-<h3>Rarity of Z-tests and Z- confidence intervals</h3>
+<div id="rarity-of-z-tests-and-z--confidence-intervals" class="section level4">
+<h4>Rarity of Z-tests and Z- confidence intervals</h4>
 <p>R doesn’t have a z-test function built in (although a few libraries offer one). This is because z-tests are so rarely done in practice, because carrying out a z-test requires that we <strong>know the population standard deviation</strong>. Consequently, when we reject the null hypothesis in a z-test, we reject the null of <em>a particular population mean <strong>and</strong> and a particular population standard deviation</em>. This is very rarely what we want, so we use t-tests instead (which assume that we estimate the standard deviation from the sample).</p>
 <p>Furthermore, using z-tests to define confidence intervals is even more rare, because when we define a confidence interval, we do not want to assume particular parameters of the population distribution (like its mean, and standard deviation). In the vast majority of cases, we will use the t-distribution, rather than the Normal Z-distribution for our null hypothesis tests and confidence intervals on the mean.</p>
+</div>
 </div>
 <div id="what-are-these-percents-and-probabilities" class="section level3">
 <h3>What are these percents and probabilities?</h3>
@@ -1127,9 +1121,8 @@ This procedure is also very general, and can be used to define bootstrapped conf
 <p>Of course, when we do a z-test, we generally do this analytically, rather than numerically as we have here (by literally simulating a bunch of possible samples from the null hypothesis), which eliminates the need for sluggish computation. However, the logic of what we did is the same: we calculated the p-value as the proportion of samples from the null hypothesis that would be at least as extreme as the one we saw.</p>
 <p>So what does the p-value mean? It tells us what fraction of null hypothesis samples would be at least as extreme as ours, given our test statistic. It is a calculation based on <span class="math inline">\(P(\mbox{data} \mid \mbox{H0})\)</span>. More generally, it tells us something about how this procedure is expected to behave when applied to the null hypothesis: if this procedure were applied to samples from some null hypothesis model, this is what we expect to see. Similarly, <span class="math inline">\(\alpha\)</span> tells us: if we reject the null based on this significance procedure, we expect the procedure to reject samples from the null hypothesis <span class="math inline">\((100*\alpha)\)</span>% of the time.</p>
 </div>
-</div>
-<div id="what-does-the-percent-in-a-confidence-interval-mean" class="section level3">
-<h3>What does the “percent” in a confidence interval mean?</h3>
+<div id="what-does-the-percent-in-a-confidence-interval-mean" class="section level4">
+<h4>What does the “percent” in a confidence interval mean?</h4>
 <p>We calculated a confidence interval based on the sampling distribution of the error of the mean from the population mean.</p>
 <p>Let’s simulate this procedure by picking some random <em>true</em> population mean, <em>true</em> population sd, and some sample size. Then we simulate a sample from that population, and calculate a confidence interval from that sample.</p>
 <div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="NHST.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a function to get the critical z value for a 100q% interval</span></span>
@@ -1209,8 +1202,9 @@ This procedure is also very general, and can be used to define bootstrapped conf
 
 </div>
 </div>
+</div>
 <div id="nhst-theory-normal" class="section level2">
-<h2>Null hypothesis significance testing with Normal</h2>
+<h2>Null hypothesis significance testing</h2>
 <p>In <a href="#nhst-basics-normal">statistics via the Normal</a> we covered the basic logic and application of the <a href="#nhst-sampling-distribution.html">sampling distribution of the sample mean</a> to the problem of testing a null hypothesis about the population.</p>
 <p>Null hypothesis testing follows this procedure:</p>
 <ol style="list-style-type: decimal">
@@ -1608,7 +1602,7 @@ This procedure is also very general, and can be used to define bootstrapped conf
 </div>
 </div>
 <div id="theory-binomial" class="section level2">
-<h2>From probability to statistics with the Binomial</h2>
+<h2>Binomial: Probability to statistics</h2>
 <p>These notes are (a) very mathy, (b) very optional, and (c) cover a very broad range of material that we will not directly address this term. I hope that for especially advanced and ambitious folks, this kind of theoretical exposition of what is done, and why, in various statistical methods will be helpful. For folks who are less comfortable with math, this will be a whole lot of difficult material that is likely to increase, rather than reduce, confusion.</p>
 <p>Let’s say our data are the outcomes of 10 coin flips obtained by flipping a coin 10 times:<br />
 <span class="math inline">\(X = \{x_1, x_2, ..., x_10\} = \{H,H,H,H,H,H,H,H,T,T\}\)</span>.</p>

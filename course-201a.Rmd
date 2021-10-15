@@ -1,6 +1,6 @@
 # 201a Schedule  {#course-201a  .unnumbered}
 
-## Week 0: Introduction {-}
+## Week 0: Introduction 
 
 In which we will cover the goals of this class, and where the class materials fit into the broader landscape of quantitative / computational / data skills.
 
@@ -10,33 +10,34 @@ In which we will cover the goals of this class, and where the class materials fi
 
 #### Homework
 
-[Pre-survey](https://forms.gle/2LEtUqjDGUfGhjHg7)
-
-[HW00: Swirl](https://vulstats.ucsd.edu/hw/) (due 9/30)
+[HW00: Swirl](https://vulstats.ucsd.edu/hw/)
 
 #### Thursday
 
 Overview: [slides](slides/L00.pdf)
 
-## Week 1: Data  {-}
+
+
+
+## Week 1: Data 
 
 In which we cover data organization, cleaning, and basic summaries, while getting acquainted with R syntax.
 
 #### Readings
 
 **Working with data**: R4DS Sections: [5](http://r4ds.had.co.nz/transform.html), [7](http://r4ds.had.co.nz/exploratory-data-analysis.html), [11](http://r4ds.had.co.nz/data-import.html), [12](http://r4ds.had.co.nz/tidy-data.html)   
-<!--- **Descriptive stats**: [[notes](notes/descriptive.html)]   
-**Cleaning data example (code)**: [[notes](notes/data-cleaning.html)]  -->
+
+**Notes**:  [Descriptive statistics](#descriptive), [Data cleaning example](#data-cleaning)   
 
 #### Homework
 
-[HW01: Data cleaning](https://vulstats.ucsd.edu/hw/) (due 10/11)
+[HW01: Data cleaning](https://vulstats.ucsd.edu/hw/) 
 
 #### Tuesday   
 
 Data overview: [slides](slides/L01.pdf) [live code](code/live/L01.R)
 
-#### Wednesday 9/29
+#### Wednesday 
 
 R basics (continued) [[files](labs/201a-2021/01/lab1.tar.gz)]
 
@@ -44,56 +45,46 @@ R basics (continued) [[files](labs/201a-2021/01/lab1.tar.gz)]
 
 Data summaries, data frames, and dplyr: [slides](slides/L02.pdf) [live code](code/live/L02.R)
 
-## Week 2: Visualization {-}
+## Week 2: Visualization
 
 In which we cover how to make scientifically useful graphs.
 
 #### Readings
-[[notes](notes/visualizations.html)]   
+[Visualization notes](#visualization)   
+
 R4DS: [2](http://r4ds.had.co.nz/explore-intro.html), [3](http://r4ds.had.co.nz/data-visualisation.html)    
+
 socviz: [make a plot](https://socviz.co/makeplot.html) (the rest of this book may also be useful, but we don't have time for a thorough treatment.)
 
 #### Homework
 
-[HW02: Data visualization](https://vulstats.ucsd.edu/hw/) (due 10/15)
+[HW02: Data visualization](https://vulstats.ucsd.edu/hw/) 
 
 #### Tuesday   
 
 visualization, ggplot #1: [slides](slides/L03.pdf) , [code](code/live/L03.R)
 
-#### Wednesday 10/6
+#### Wednesday 
 
 Data visualization [[code](labs/201a-2021/02/lab2.Rmd)] [[answers](labs/201a-2021/02/lab2-ans.Rmd)]
 
 #### Thursday   
+(continuing with slides from Tuesday)
 
 
-
-## Week 3: Theoretical foundations {-}
+## Week 3: Theoretical foundations 
 
 In which we cover probability theory, and the logic of classical statistical methods.
 
 #### Readings
 
-**Probability notes:**   
-[terms](notes/prob-terms.html)   
-[basics](notes/prob-foundations.html)   
-[conditional](notes/prob-conditional.html) [monte-carlo](notes/prob-monte-carlo.html)   
-[random-variables](notes/prob-rv.html)   
-[distribution functions](notes/prob-rv-functions.html)  
-[expectation](notes/prob-expectation.html)   
-[central limit theorem, normal](notes/prob-clt-normal.html) 
+[**Probability notes**](#probability)   
 
-**NHST notes:**   
-[via simulation](notes/nhst-simulation.html)    
-[sampling distribution](notes/nhst-sampling-distribution.html)   
-[basic NHST via normal](notes/nhst-basics-normal.html)     
-[power, effects](notes/nhst-theory-normal.html)     
-[bonus: via binomial](notes/theory-binomial.html) 
+[**NHST notes**](#NHST):  Particularly: statistics via simulation, sampling distributions,  Statistics via Normal, Null hypothesis significance testing.  (Binomial probability to statistics is mathier, may be of interest, but is optional.)  
 
 #### Homework
 
-[HW03: NHST probability](https://vulstats.ucsd.edu/hw/) (due 10/22)
+[HW03: NHST probability](https://vulstats.ucsd.edu/hw/) 
 
 #### Tuesday   
 [slides: probability](slides/L05.pdf)   
@@ -103,100 +94,79 @@ In which we cover probability theory, and the logic of classical statistical met
 Probability [[code](labs/201a-2021/03/lab3.Rmd)] [[answers](labs/201a-2021/03/lab3-ans.Rmd)]
 
 #### Thursday
-[slides: NHST](slides/L05.classical-stats.pdf)   
+[slides: NHST](slides/L06.pdf)   
 
-## Week 4: Linear model: Regression {-}
-
+## Week 4: Linear model: Regression
 
 #### Notes
-[t-distribution](notes/nhst-t-distribution.html)   
-[t-tests](notes/nhst-t-tests.html) (*note: some of this will be covered in week 6 and week 10*)    
-[bivariate data](notes/bivariate.html)    
-[anscombe's quartet](notes/bivariate-anscombe.html)    
-[covariance](notes/bivariate-covariance.html)   
-[correlation](notes/bivariate-correlation.html)   
-[ordinary least-squares regression](notes/bivariate-ols.html)   
-[y~x,x~y,pca](notes/bivariate-lines.html)   
-[coefficient of determination](notes/bivariate-determination.html)    
-[significance testing of these measures](notes/bivariate-significance.html)
-[prediction](notes/bivariate-prediction.html)   
-[regression diagnostics](notes/bivariate-ols-diagnostics.html)   
+
+[t-distribution](#t-distribution)   
+
+[t-tests](#t-tests)  
+
+[**bivariate linear relationships**](#bivariate)    
 
 #### Homework
 
-[Regression](http://vulstats.ucsd.edu/hw/) Due: 2020-11-04
+[Regression](http://vulstats.ucsd.edu/hw/)
 
 #### Tuesday   
-[slides](slides/L-regression-1.pdf)
 
 #### Wednesday
-
-Regression [[code](labs/201a-2020/04/lab4.Rmd)] [[answers](labs/201a-2020/04/lab4-ans.Rmd)]
 
 #### Thursday   
-[slides](slides/L-regression-2.pdf)
 
-## Week 5: Linear model: Multiple regression {-}
+
+## Week 5: Linear model: Multiple regression 
 
 #### Notes  
-[multiple regression](notes/multiple-regression.html)  
+
+multiple regression  
 
 #### Tuesday
-[slides](slides/L-mr-a.pdf)   
-[code](code/live/L-mr.R)
 
 #### Wednesday
 
-Multiple regression [[code](labs/201a-2020/05/lab5.Rmd)] [[answers](labs/201a-2020/05/lab5-ans.Rmd)]
-
 #### Thursday
-[slides](slides/L-mr-b.pdf)   
 
-## Week 6: Linear model: Categorical predictors {-}
+## Week 6: Linear model: Categorical predictors 
 
 #### Readings / Notes
 [Notes on t-tests](notes/nhst-t-tests.html)   
-[[howell ch.13 on ANOVA](pdf/howell.ch-13.pdf)]
+[[howell ch.13 on ANOVA](pdf/howell.ch-13.pdf)]   
 [[howell ch.16 on ANCOVA](pdf/howell.ch-16.pdf)]   
 
 #### Homework
 
-[Multiple regression](http://vulstats.ucsd.edu/hw/) Due: 2020-11-20
+[Multiple regression](http://vulstats.ucsd.edu/hw/)
 
 #### Tuesday
-[slides](slides/L-lm-cat-a.pdf)   
-
 
 #### Thursday
-[slides](slides/L-lm-cat-b.pdf)   
 
 
-## Week 7: Linear model: ANCOVA, diagnostics {-}
+## Week 7: Linear model: ANCOVA, diagnostics 
 
 #### Homework
 
-[ANOVA & ANCOVA](http://vulstats.ucsd.edu/hw/) Due: 2020-11-30
+[ANOVA & ANCOVA](http://vulstats.ucsd.edu/hw/) 
 
 #### Tuesday
-[slides](slides/L-lm-ancova.pdf)   
 
 #### Wednesday
-ANOVA [[code](labs/201a-2020/06/Lab6.Rmd)] [[answers](labs/201a-2020/06/Lab6-ans.Rmd)]
 
-#### Thursday
-[slides](slides/L-lm-diagnostics.pdf)   
+#### Thursday: Veteran's Day -- no class
 
 
-## Week 8: Linear model: Linearizing transforms {-}
+## Week 8: Linear model: Linearizing transforms 
 
 #### Homework
 
-[Linearizing transforms](http://vulstats.ucsd.edu/hw/) Due: 2020-12-03
+[Linearizing transforms](http://vulstats.ucsd.edu/hw/) 
 
 #### Tuesday
-[slides](slides/L-lm-transforms.pdf)   
 
-## Week 9: Covarying errors (repeated measures / random effects) {-}
+## Week 9: Covarying errors (repeated measures / random effects) 
 
 #### Readings:  
 I don't like either of these.... I am still on the hunt for a pithy conceptual overview of repeated measures designs and analyses:   
@@ -205,26 +175,16 @@ This is mathier:  [Kutner ch. 27](pdf/Kutner.ch-27.repeated-measures.pdf)
 
 
 #### Tuesday
-[slides](slides/L-repeated-measures.pdf)   
 
-#### Wednesday
+#### Wednesday -- Thanksgiving, no lab
 
-Repeated measures [[code](labs/201a-2020/07/lab7.Rmd)] [[answers](labs/201a-2020/07/lab7-ans.Rmd)]
+#### Thursday -- Thanksgiving, no lab
 
-#### Readings
-[[Howell (basic)](pdf/Howell.ch-14.repeated-measures.pdf)]    
-[[Kutner (mathy)](pdf/Kutner.ch-27.repeated-measures.pdf)] 
-
-## Week 10: Review and preview {-}
+## Week 10: Review and preview 
 
 #### Tuesday
-- Mixed effects model brief    
-- Project Q&A, Review Q&A
-[slides](slides/L-lmer.pdf)
 
 #### Wednesday
-- R Review (for final)   
 
 #### Thursday
-- Review
 

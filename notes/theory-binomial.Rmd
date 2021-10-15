@@ -1,4 +1,4 @@
-## From probability to statistics with the Binomial {#theory-binomial}
+## Binomial: Probability to statistics {#theory-binomial}
 
 These notes are (a) very mathy, (b) very optional, and (c) cover a very broad range of material that we will not directly address this term.  I hope that for especially advanced and ambitious folks, this kind of theoretical exposition of what is done, and why, in various statistical methods will be helpful.  For folks who are less comfortable with math, this will be a whole lot of difficult material that is likely to increase, rather than reduce, confusion.
 

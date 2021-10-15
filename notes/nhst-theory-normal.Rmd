@@ -1,4 +1,4 @@
-## Null hypothesis significance testing with Normal {#nhst-theory-normal}
+## Null hypothesis significance testing {#nhst-theory-normal}
 
 In [statistics via the Normal](#nhst-basics-normal) we covered the basic logic and application of the [sampling distribution of the sample mean](#nhst-sampling-distribution.html) to the problem of testing a null hypothesis about the population.  
 
