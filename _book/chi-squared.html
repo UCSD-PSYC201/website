@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Pearson’s Chi\(^2\) (\(\chi^2\)) test | UCSD Psyc 201ab / CSS 205 / Psyc 193</title>
+  <title>Pearson’s Chi-squared test | UCSD Psyc 201ab / CSS 205 / Psyc 193</title>
   <meta name="description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Pearson’s Chi\(^2\) (\(\chi^2\)) test | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  <meta property="og:title" content="Pearson’s Chi-squared test | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="UCSD-PSYC201/website" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Pearson’s Chi\(^2\) (\(\chi^2\)) test | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
+  <meta name="twitter:title" content="Pearson’s Chi-squared test | UCSD Psyc 201ab / CSS 205 / Psyc 193" />
   
   <meta name="twitter:description" content="This is the class website and lecture notes for psyc 201ab and CSS 205" />
   
@@ -404,9 +404,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html#estimating-proportions."><i class="fa fa-check"></i>Estimating proportions.</a></li>
 <li class="chapter" data-level="" data-path="binomial-test.html"><a href="binomial-test.html#sign-test-test-for-percentiles"><i class="fa fa-check"></i>Sign test, test for percentiles</a></li>
 </ul></li>
-<li><a href="chi-squared.html#chi-squared">Pearson’s Chi<span class="math inline">\(^2\)</span> (<span class="math inline">\(\chi^2\)</span>) test</a>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html"><i class="fa fa-check"></i>Pearson’s Chi-squared test</a>
 <ul>
-<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html"><i class="fa fa-check"></i>“Goodness of fit” test</a>
+<li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#goodness-of-fit-test"><i class="fa fa-check"></i>“Goodness of fit” test</a>
 <ul>
 <li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#implementation-in-r"><i class="fa fa-check"></i>Implementation in R</a></li>
 <li class="chapter" data-level="" data-path="chi-squared.html"><a href="chi-squared.html#chi-squared-test-calculations"><i class="fa fa-check"></i>Chi-squared test calculations</a></li>
@@ -495,8 +495,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="chi-squared" class="section level1">
-<h1>Pearson’s Chi<span class="math inline">\(^2\)</span> (<span class="math inline">\(\chi^2\)</span>) test</h1>
-<p>If we have counts in two categories (e.g. heads or tails; women or men; democrat or republican; etc.) we can test whether the distribution of observations deviates from a null hypothesis distribution via a <a href="nhst-binomial-test.html">Binomial test</a> (where the null hypothesis specifies the probability/proportion of “success” (e.g., heads/women/democrats/whatever): the parameter <span class="math inline">\(\theta\)</span> or <span class="math inline">\(p\)</span>).</p>
+<h1>Pearson’s Chi-squared test</h1>
+<p>If we have counts in two categories (e.g. heads or tails; women or men; democrat or republican; etc.) we can test whether the distribution of observations deviates from a null hypothesis distribution via a <a href="#nhst-binomial-test">Binomial test</a> (where the null hypothesis specifies the probability/proportion of “success” (e.g., heads/women/democrats/whatever): the parameter <span class="math inline">\(\theta\)</span> or <span class="math inline">\(p\)</span>).</p>
 <p>But what if we have counts in more than two categories? For instance, if we don’t have a bipartisan system, but have, say “Tory,” “Labour,” and “Liberal democrats” (as in the UK some time ago), and want to test the distribution of these political parties to some null hypothesis about the proportion of each that we expect to see (e.g., p=1/3 for all three). I this case, we can no longer do a Binomial test, and we turn instead to (Karl) Pearson’s Chi-squared test (which I will often write as <span class="math inline">\(\chi^2\)</span>).</p>
 <p>There are two ways that the Chi-squared test is used:</p>
 <ol style="list-style-type: decimal">

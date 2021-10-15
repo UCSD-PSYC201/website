@@ -1,7 +1,7 @@
 
-# Pearson's Chi$^2$ ($\chi^2$) test {#chi-squared}
+# Pearson's Chi-squared test {#chi-squared}
 
-If we have counts in two categories (e.g. heads or tails; women or men; democrat or republican; etc.) we can test whether the distribution of observations deviates from a null hypothesis distribution via a [Binomial test](nhst-binomial-test.html) (where the null hypothesis specifies the probability/proportion of "success"  (e.g., heads/women/democrats/whatever): the parameter $\theta$ or $p$).
+If we have counts in two categories (e.g. heads or tails; women or men; democrat or republican; etc.) we can test whether the distribution of observations deviates from a null hypothesis distribution via a [Binomial test](#nhst-binomial-test) (where the null hypothesis specifies the probability/proportion of "success"  (e.g., heads/women/democrats/whatever): the parameter $\theta$ or $p$).
 
 But what if we have counts in more than two categories?  For instance, if we don't have a bipartisan system, but have, say "Tory", "Labour", and "Liberal democrats" (as in the UK some time ago), and want to test the distribution of these political parties to some null hypothesis about the proportion of each that we expect to see (e.g., p=1/3 for all three).  I this case, we can no longer do a Binomial test, and we turn instead to (Karl) Pearson's Chi-squared test (which I will often write as $\chi^2$).
 
