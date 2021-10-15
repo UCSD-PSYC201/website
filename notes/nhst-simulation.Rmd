@@ -4,8 +4,6 @@
 
 The logic of null hypothesis testing is based on the sampling distribution of our test statistic under the null hypothesis.  I.e., what test statistics do we expect to see if our sample came from some null model?  While in general we will use various analytical expressions for these sampling distributions, it may be clearer to generate them ourselves by sampling, to see what exactly we are doing.
 
-## Null hypothesis significance testing.
-
 Let's use a coin flipping example to illustrate this logic.  
 
 1) We have some data.  Here: a sequence of coin flips that are either heads (H) or tails (T). 
