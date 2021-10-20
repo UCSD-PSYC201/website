@@ -17,17 +17,17 @@ rmd_files:
     "notes/R-start.Rmd",
     "notes/rmarkdown.Rmd",
     #descriptive
-    "notes/data-cleaning.Rmd",
-    "notes/descriptive.Rmd",
+    # "notes/data-cleaning.Rmd",
+    # "notes/descriptive.Rmd",
     # visualization
     "notes/visualizations.Rmd",
-    "notes/vis.ggplot.Rmd",
+    # "notes/vis.ggplot.Rmd",
     # probability
     "notes/prob-terms.Rmd",
     "notes/prob-foundations.Rmd",
     "notes/prob-conditional.Rmd",
     "notes/prob-monte-carlo.Rmd",
-    "notes/prob-rv.Rmd",
+    # "notes/prob-rv.Rmd",
     "notes/prob-rv-functions.Rmd",
     "notes/prob-expectation.Rmd",
     "notes/prob-clt-normal.Rmd",
