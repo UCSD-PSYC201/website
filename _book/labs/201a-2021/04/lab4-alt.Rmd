@@ -1,0 +1,218 @@
+---
+title: "Lab4"
+author: "Isabella DeStefano"
+date: "10/29/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+very useful pwr vignette:  https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html
+Alternatively:  vignette('pwr-vignette')
+
+Load libraries and load data
+```{r, message = F}
+library(tidyverse)
+library(pwr) 
+load(url("http://vulstats.ucsd.edu/labs/04/lab4.RData"))
+```
+
+# Problem 1
+I want to compare the effects of weird online "testing to criterion" homework compared with traditional "do this problem set once" homework on statistical understanding. I have two classes, and administer a pre-test to each one.   
+Class A I teach with the 'criterion' homework, Class B I teach with the 'traditional' homework, at the end of the class, I administer a post-test. 	
+
+The results for Class A (criterion) are stored in `class.a.pre` and `class.a.post`.	Likewise, the results for Class B (traditional) are stored in `class.b.pre` and `class.b.post`
+
+```{r}
+class.a.pre	
+class.a.post	
+
+class.b.pre	
+class.b.post
+```
+
+### a)
+Did the 'criterion' class show any improvement from pre- to post- test? 
+
+```{r}
+class.a.test = t.test(class.a.post - class.a.pre)
+class.a.test$statistic
+class.a.test$p.value
+```
+or
+```{r, eval=F}
+t.test(class.a.post, class.a.pre, paired = T)
+```
+
+What is the power for this test to detect... 
+ a "large" effect? (d >= .8)   
+ a "medium" effect (.5 <= d < .8)   
+ a "small" effect (.2 <= d < .5)  
+(for all power calculations, use alpha = .05, the default)
+
+```{r}
+class.a.pwr = pwr.t.test(n = length(class.a.post), d = c(.2,.5,.8), type = 'paired')
+class.a.pwr$d
+class.a.pwr$power
+```
+
+### b)  
+Did the 'traditional' class show any improvement from pre- to post- test? 
+
+```{r}
+class.b.test = t.test(class.b.post-class.b.pre)
+class.b.test$statistic
+class.b.test$p.value
+```
+
+What sample size would you need to detect a small effect with .8 power?
+
+```{r}
+class.b.n80 = pwr.t.test(d = .2, type = 'paired', power = .8)
+class.b.n80$n
+```
+
+### c)
+Did the 'criterion' class show more of an improvement than the 'traditional' class? 
+
+```{r}
+a.vs.b.test = t.test(class.a.post-class.a.pre,class.b.post-class.b.pre)
+```
+
+Lets pull out all the values for this test
+
+```{r}
+a.vs.b.test$p.value
+a.vs.b.test$statistic
+a.vs.b.test$parameter # df
+a.vs.b.test$conf.int
+a.vs.b.test$estimate 
+```
+
+# Problem 2
+
+For this problem, let's take a look at the `nat.nurt` dataset. The dataset contains information about adopted children. The fields relevant to us today are:	
+ * IQ.5yrs-The child's IQ at 5 years	
+ * IQ.16yrs-The child's IQ at 16 years	
+ * PrivateSchool-Whether the child attended private school	
+ * HeadStart-Whether the child was a "HeadStart" accelerator program	
+ * Income.AdoptedParents-The income of the children's adopted parents	
+ 	
+Lets test a few hypotheses about how intelligence might vary with some factors.
+
+### a)
+Is there any evidence that 5-year-olds in the Headstart program have **HIGHER** IQs than those that are not? 
+```{r}
+HeadStart = nat.nurt %>% filter(HeadStart) %>% .$IQ.5yrs
+noHeadStart = nat.nurt %>% filter(!HeadStart) %>% .$IQ.5yrs
+
+hs.test = t.test(HeadStart, noHeadStart, alternative = "greater")
+hs.test$statistic
+hs.test$p.value
+```
+
+What is the smallest detectable effect size at 80% power?
+```{r}
+hs.pwr = pwr.t2n.test(n1 = length(HeadStart),
+                      n2 = length(noHeadStart),
+                      power = .8,
+                      alternative = 'greater')
+hs.pwr$d
+```
+
+### b)
+Do children who are in private school show a greater increase in IQ from 5 to 16 years of age than children who are not? 
+
+```{r}
+nat.nurt$IQ.increase = nat.nurt$IQ.16yrs - nat.nurt$IQ.5yrs
+private = nat.nurt %>% filter(PrivateSchool)
+not.private = nat.nurt %>% filter(!PrivateSchool)
+
+priv.test = t.test(private$IQ.increase, not.private$IQ.increase)
+priv.test.formula = t.test(IQ.increase ~ PrivateSchool, nat.nurt) #just a way around filtering
+
+priv.test$statistic
+priv.test$p.value
+
+priv.test.formula$statistic
+```
+
+### c)
+What is the 90% confidence interval on the difference between the increase in IQ of private school vs. not private school students? 
+
+```{r}
+priv.CI = t.test(private$IQ.increase, 
+                not.private$IQ.increase, conf.level = .9)$conf.int
+```
+
+### d)
+Test whether being raised in a well-off family leads to smarter children. To examine this test whether children whose adoptive parents made more than $200,000 have a higher IQ at age 16 than those without rich adoptive parents.
+
+```{r}
+rich.test = t.test(filter(nat.nurt, Income.AdoptedParents > 200000)$IQ.16yrs,
+                filter(nat.nurt, Income.AdoptedParents <= 200000)$IQ.16yrs)
+rich.test$statistic
+rich.test$p.value
+```
+
+# Problem 3
+A professor adopts a new grading policy to convey to students the futility  of life: grades will be determined by 4 flips of a bent coin. The coin is bent such that it has a .6 probabilty of coming up heads.  	
+ -If the coin is heads 4/4 times, the student gets an A.  	
+ -If the coin is heads 3/4 times, the student gets a B.  	
+ -If the coin is heads 2/4 times, the student gets a C.  	
+ -If the coin is heads 1/4 times, the student gets a D.  	
+ -If the coin is heads 0/4 times, the student gets an F.  	
+ 	
+However, you suspect that the prof is in fact using this as a facade to cover up giving bad grades to students of certain religious affiliations, and is not honestly flipping the coins! You want to report the prof, but you need some quantitative evidence first. 
+
+Use the grade distribution stored in `relig.grade` for different religions in his class to figure out what is going on.  
+
+### a)
+Aggregating over all religions, test the goodness of fit of the model that the professor is honestly flipping coins.
+
+```{r}
+relig.grade.tbl = table(relig.grade)
+
+grades = colSums(relig.grade.tbl)
+expected = dbinom(4:0,4,.6)
+honestFlip.test = chisq.test(grades, p=expected)
+
+honestFlip.test$statistic
+honestFlip.test$p.value
+
+```
+What is the power of this test to detect an effect that emerged from flipping a coin that was only half as bent (ie. P(heads) = .55)?
+
+```{r}
+vs.Fair.w = ES.w1(expected, dbinom(4:0,4,.55)) # this gets the effect size w
+df.relig = length(levels(relig.grade$Religion)) - 1
+
+honestFlip.pwr = pwr.chisq.test(w = vs.Fair.w, 
+                                N = sum(nrow(relig.grade)),
+                                df = df.relig)
+
+honestFlip.pwr$power
+```
+
+### b)
+Test whether the grade distributions are independent of religion. 
+
+```{r}
+indpdt.test = chisq.test(relig.grade.tbl)
+
+indpdt.test$statistic
+indpdt.test$parameter #df
+indpdt.test$p.value
+
+```
+
+How many observations would get you a power of .9 to detect a tiny effect of w = .05
+```{r}
+df.grade = length(levels(relig.grade$Grade)) - 1
+df.relig.grade = df.relig * df.grade
+indpdt.n = pwr.chisq.test(w = .05, 
+                          df = df.relig.grade,
+                          power = .9)
+indpdt.n$N
+```
