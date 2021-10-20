@@ -1,0 +1,192 @@
+---
+title: "PSYC 201A Lab 04: Correlation & regression"
+author: "Wenhao (James) Qi"
+date: "2021-10-20"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+load(url("https://vulstats.ucsd.edu/labs/201a-2021/04/lab4.RData"))
+```
+
+# Problem 1
+
+We will use one of R's built-in datasets called `iris` (again).
+
+```{r}
+glimpse(iris)
+```
+
+It's a set of width and length measurements of the petals and sepals of three species of iris (a genus of flowers).
+
+## 1.1 (3 min)
+
+What is the correlation between petal length and petal width for all the species?  Use `cor`.
+
+```{r}
+
+```
+
+Is this correlation significant?  Use `cor.test`.
+
+```{r}
+
+```
+
+Is there a significant correlation between petal length and sepal length for all the species?  Use `lm` (predict sepal length from petal length).  (hint: `summary.lm`)
+
+```{r}
+
+```
+
+## 1.2 (5 min)
+
+In general, save your model as a variable before indexing -- this lets R make suggestions.
+
+Extract the regression coefficients from the `lm` model.
+
+```{r}
+
+```
+
+Extract the t-statistic and p-value of the slope from the `lm` model.
+
+```{r}
+
+```
+
+Use `pt` to verify that the t-statistic and p-value match.
+
+```{r}
+
+```
+
+What are the 95% confidence intervals of the coefficients?  (hint: `confint`)
+
+```{r}
+
+```
+
+Now use `cor.test` to look for a correlation between petal length and sepal length.  How do the results compare to the results using `lm`?
+
+```{r}
+
+```
+
+## 1.3 (5 min)
+
+Plot Sepal.Length ~ Petal.Length with color coding for species, and a regression line.
+
+```{r}
+
+```
+
+Is there a significant correlation between petal length and sepal length *for each species*?  Use `lm` (predict sepal length from petal length).
+
+```{r}
+
+```
+
+Plot Sepal.Length ~ Petal.Length in 3 panels, with regression lines.
+
+```{r}
+
+```
+
+# Problem 2 (5 min)
+
+Walking around Balboa Park, I found some iris petals, but I don't know what species they are.  I measured the length of each petal, stored in `fabricola`.  Use our linear model to predict the sepal lengths of the flowers that each sample petal came from.  Include 95% confidence intervals for each point estimate.  (hint: `predict.lm`)
+
+```{r}
+
+```
+
+Add these predicted values to a version of the first plot (single panel), but remove the regression line.  Also plot the 95% confidence interval on your estimates.  (hint: `geom_ribbon`)
+
+```{r}
+
+```
+
+# Problem 3
+
+---- Start: Isabella's stuff that I don't endorse ----
+
+Let's go back to petal width ~ petal length, using `lm` this time.
+
+```{r}
+lm(Petal.Width ~ Petal.Length, iris)
+```
+
+Make a plot of the data with the regression lines.
+
+```{r}
+ggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +
+  geom_point(aes(color = Species), alpha = .5) +
+  geom_smooth(size = .5, color = "black", method = "lm") +
+  xlim(0, NA) +
+  ylim(0, NA) +
+  theme_bw()
+```
+
+Is anything weird about this model? If so, can we fix it?
+
+Our intercept is negative (although it's fairly close to 0).  The interpretation of this coefficient is the predicted value of y when x is 0.  But, for many physical quantities (and in other cases), we have a fairly strong a priori conviction that when x = 0, y = 0 too.  This is true of petals: If a petal has 0 length, it doesn't exist, so it has 0 width as well.  We can assert to `lm` that the intercept must be 0.  We do this by explicitly referring to the intercept term when building our model:
+
+```{r}
+iris.lm.noint <- lm(Petal.Width ~ Petal.Length + 0, iris)
+```
+
+`lm` normally implicitly adds this constant 1 to your linear models.  That is `lm(y ~ x)` is equivalent to `y ~ 1 + x`. You can remove the intercept term by either subtracting 1: `lm(y ~ x - 1)` (either before or after x, doesn't matter), or by explicitly adding 0 as in: `lm(y ~ x + 0)`.
+
+```{r}
+summary(iris.lm.noint)
+```
+
+Plot this model:
+
+```{r}
+ggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +
+  geom_point(aes(color = Species), alpha = .5) +
+  geom_smooth(size = .5, color = "black", method = "lm", formula = y ~ 0 + x) +
+  xlim(0, NA) +
+  ylim(0, NA) +
+  theme_bw()
+```
+
+Make a 3-panel plot that fits a linear model without intercept to each species:
+
+```{r}
+ggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +
+  geom_point(alpha = .5) +
+  geom_smooth(size = .5, color = "black", method = "lm", formula = y ~ 0 + x) +
+  facet_wrap(vars(Species), scales = "free") +
+  xlim(0, NA) +
+  ylim(0, NA) +
+  theme_bw()
+```
+
+Notice how all regression lines now point directly to 0!
+
+---- End: Isabella's stuff that I don't endorse ----
+
+Reasons I don't endorse these:
+
+- **Don't extrapolate.**  We're interested in local linear relationships, not global ones.  If you REALLY want to extrapolate to the origin, try log transforms.
+- Significance in the slope doesn't tell us anything.
+- Under the assumptions of this model, data points farther from the origin naturally have larger variance, so homoscedasticity is violated.  Adjustments to the model are required.
+- Easier for residuals to get weird.
+
+```{r}
+plot(lm(Petal.Width ~ Petal.Length, data = iris %>% filter(Species == "virginica")), 1)
+plot(lm(Petal.Width ~ Petal.Length + 0, data = iris %>% filter(Species == "virginica")), 1)
+```
+
+# Problem 4 (preview of multiple regression)
+
+What if we wanted to predict sepal length from petal length AND petal width?  What might that look like in `lm`?
+
+```{r}
+
+```
+

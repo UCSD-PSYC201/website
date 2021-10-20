@@ -108,11 +108,13 @@ Probability [[code](labs/201a-2021/03/lab3.Rmd)] [[answers](labs/201a-2021/03/la
 
 #### Homework
 
-[Regression](http://vulstats.ucsd.edu/hw/)
+[HW04: Regression](https://vulstats.ucsd.edu/hw/)
 
 #### Tuesday   
 
 #### Wednesday
+
+Regression [[code](labs/201a-2021/04/lab4.Rmd)] [[answers](labs/201a-2021/04/lab4-ans.Rmd)]
 
 #### Thursday   
 
