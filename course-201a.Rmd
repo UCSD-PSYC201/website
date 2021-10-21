@@ -123,6 +123,7 @@ t-test and chi-squared test [[code](labs/201a-2021/04/lab4.Rmd)]
 #### Thursday   
 
 [slides: regression](slides/L08.pdf)   
+[code: chi squared](code/live/L08.R)
 
 
 ## Week 5: Linear model, miderm
