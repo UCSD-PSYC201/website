@@ -114,7 +114,7 @@ Probability [[code](labs/201a-2021/03/lab3.Rmd)] [[answers](labs/201a-2021/03/la
 
 #### Wednesday
 
-Regression [[code](labs/201a-2021/04/lab4-alt.Rmd)] [[answers](labs/201a-2021/04/lab4-alt-ans.Rmd)]
+t-test and chi-squared test [[code](labs/201a-2021/04/lab4.Rmd)]
 
 #### Thursday   
 
