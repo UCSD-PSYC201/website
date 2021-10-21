@@ -1,5 +1,5 @@
 ---
-title: "PSYC 201A Lab 04: Correlation & regression"
+title: "PSYC 201A Lab 04: t-test and chi-squared test"
 author: "Wenhao (James) Qi"
 date: "2021-10-20"
 output: html_document
@@ -7,186 +7,241 @@ output: html_document
 
 ```{r}
 library(tidyverse)
+library(pwr)
 load(url("https://vulstats.ucsd.edu/labs/201a-2021/04/lab4.RData"))
 ```
 
+Very useful pwr vignette: https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html
+
+Alternatively: vignette('pwr-vignette')
+
+In this lab, we assume equal variance for all two-sample t-tests.
+
 # Problem 1
 
-We will use one of R's built-in datasets called `iris` (again).
+I want to compare the effects of weird online "testing to criterion" homework compared with traditional "do this problem set once" homework on statistical understanding. I have two classes, and administer a pre-test to each one. Class A I teach with the "criterion" homework, Class B I teach with the "traditional" homework, at the end of the class, I administer a post-test.
+
+The results for Class A (criterion) are stored in `class.a.pre` and `class.a.post`.	Likewise, the results for Class B (traditional) are stored in `class.b.pre` and `class.b.post`.
 
 ```{r}
-glimpse(iris)
+class.a.pre
+class.a.post
+
+class.b.pre
+class.b.post
 ```
 
-It's a set of width and length measurements of the petals and sepals of three species of iris (a genus of flowers).
+## 1.1
 
-## 1.1 (3 min)
-
-What is the correlation between petal length and petal width for all the species?  Use `cor`.
+Did the "criterion" class show any improvement from pre- to post- test?
 
 ```{r}
+class.a.test <- t.test(class.a.post - class.a.pre)
+class.a.test$statistic
+class.a.test$p.value
 
+# equivalently
+t.test(class.a.post, class.a.pre, paired = T)
 ```
 
-Is this correlation significant?  Use `cor.test`.
+What is the power for this test to detect...
+
+- a "large" effect? (d >= .8)
+- a "medium" effect (.5 <= d < .8)
+- a "small" effect (.2 <= d < .5)
+
+(for all power calculations, use alpha = .05, the default)
 
 ```{r}
-
+class.a.pwr <- pwr.t.test(n = length(class.a.post), d = c(.2, .5, .8), type = "paired")
+class.a.pwr$d
+class.a.pwr$power
 ```
 
-Is there a significant correlation between petal length and sepal length for all the species?  Use `lm` (predict sepal length from petal length).  (hint: `summary.lm`)
+## 1.2
+
+Did the "traditional" class show any improvement from pre- to post- test?
 
 ```{r}
-
+class.b.test <- t.test(class.b.post - class.b.pre)
+class.b.test$statistic
+class.b.test$p.value
 ```
 
-## 1.2 (5 min)
-
-In general, save your model as a variable before indexing -- this lets R make suggestions.
-
-Extract the regression coefficients from the `lm` model.
+What sample size would you need to detect a small effect with .8 power?
 
 ```{r}
-
+class.b.n80 <- pwr.t.test(d = .2, type = "paired", power = .8)
+class.b.n80$n
 ```
 
-Extract the t-statistic and p-value of the slope from the `lm` model.
+## 1.3
+
+Did the "criterion" class show more of an improvement than the "traditional" class?
 
 ```{r}
-
+a.vs.b.test <- t.test(class.a.post - class.a.pre, class.b.post - class.b.pre, var.equal = T)
 ```
 
-Use `pt` to verify that the t-statistic and p-value match.
+Lets pull out all the values for this test
 
 ```{r}
-
+a.vs.b.test$p.value
+a.vs.b.test$statistic
+a.vs.b.test$parameter # df
+a.vs.b.test$conf.int
+a.vs.b.test$estimate # means
 ```
 
-What are the 95% confidence intervals of the coefficients?  (hint: `confint`)
+# Problem 2
+
+For this problem, let's take a look at the `nat.nurt` dataset. The dataset contains information about adopted children. The fields relevant to us today are:
+
+- `IQ.5yrs`: The child's IQ at 5 years
+- `IQ.16yrs`: The child's IQ at 16 years
+- `PrivateSchool`: Whether the child attended private school
+- `HeadStart`: Whether the child was in a "HeadStart" accelerator program
+- `Income.AdoptedParents`: The income of the children's adopted parents
+
+Let's test a few hypotheses about how intelligence might vary with some factors.
+
+## 2.1
+
+Is there any evidence that 5-year-olds in the HeadStart program have **HIGHER** IQs than those that are not?
 
 ```{r}
+HeadStart <- nat.nurt %>%
+  filter(HeadStart) %>%
+  pull(IQ.5yrs)
+noHeadStart <- nat.nurt %>%
+  filter(!HeadStart) %>%
+  pull(IQ.5yrs)
 
+hs.test <- t.test(HeadStart, noHeadStart, alternative = "greater", var.equal = T)
+hs.test$statistic
+hs.test$p.value
 ```
 
-Now use `cor.test` to look for a correlation between petal length and sepal length.  How do the results compare to the results using `lm`?
+What is the smallest detectable effect size at 80% power?
 
 ```{r}
-
+hs.pwr <- pwr.t2n.test(
+  n1 = length(HeadStart),
+  n2 = length(noHeadStart),
+  power = .8,
+  alternative = "greater"
+)
+hs.pwr$d
 ```
 
-## 1.3 (5 min)
+## 2.2
 
-Plot Sepal.Length ~ Petal.Length with color coding for species, and a regression line.
+Do children who are in private school show a greater increase in IQ from 5 to 16 years of age than children who are not?
 
 ```{r}
+nat.nurt <- nat.nurt %>%
+  mutate(IQ.increase = IQ.16yrs - IQ.5yrs)
+private <- nat.nurt %>%
+  filter(PrivateSchool) %>%
+  pull(IQ.increase)
+not.private <- nat.nurt %>%
+  filter(!PrivateSchool) %>%
+  pull(IQ.increase)
 
+priv.test <- t.test(private, not.private, var.equal = T)
+priv.test.formula <- t.test(IQ.increase ~ PrivateSchool, nat.nurt, var.equal = T) # just a way around filtering
+
+priv.test$statistic
+priv.test$p.value
+
+priv.test.formula$statistic
 ```
 
-Is there a significant correlation between petal length and sepal length *for each species*?  Use `lm` (predict sepal length from petal length).
+## 2.3
+
+What is the 90% confidence interval on the difference between the increase in IQ of private school vs. not private school students?
 
 ```{r}
-
+priv.CI <- t.test(private, not.private, conf.level = .9)$conf.int
 ```
 
-Plot Sepal.Length ~ Petal.Length in 3 panels, with regression lines.
+### d)
+Test whether being raised in a well-off family leads to smarter children. To examine this test whether children whose adoptive parents made more than $200,000 have a higher IQ at age 16 than those without rich adoptive parents.
 
 ```{r}
-
-```
-
-# Problem 2 (5 min)
-
-Walking around Balboa Park, I found some iris petals, but I don't know what species they are.  I measured the length of each petal, stored in `fabricola`.  Use our linear model to predict the sepal lengths of the flowers that each sample petal came from.  Include 95% confidence intervals for each point estimate.  (hint: `predict.lm`)
-
-```{r}
-
-```
-
-Add these predicted values to a version of the first plot (single panel), but remove the regression line.  Also plot the 95% confidence interval on your estimates.  (hint: `geom_ribbon`)
-
-```{r}
-
+rich.test <- t.test(
+  filter(nat.nurt, Income.AdoptedParents > 200000)$IQ.16yrs,
+  filter(nat.nurt, Income.AdoptedParents <= 200000)$IQ.16yrs
+)
+rich.test$statistic
+rich.test$p.value
 ```
 
 # Problem 3
 
----- Start: Isabella's stuff that I don't endorse ----
+A professor adopts a new grading policy to convey to students the futility of life: grades will be determined by 4 flips of a bent coin. The coin is bent such that it has a .6 probabilty of coming up heads.
 
-Let's go back to petal width ~ petal length, using `lm` this time.
+- If the coin is heads 4/4 times, the student gets an A.
+- If the coin is heads 3/4 times, the student gets a B.
+- If the coin is heads 2/4 times, the student gets a C.
+- If the coin is heads 1/4 times, the student gets a D.
+- If the coin is heads 0/4 times, the student gets an F.
 
-```{r}
-lm(Petal.Width ~ Petal.Length, iris)
-```
+However, you suspect that the prof is in fact using this as a facade to cover up giving bad grades to students of certain religious affiliations, and is not honestly flipping the coins! You want to report the prof, but you need some quantitative evidence first.
 
-Make a plot of the data with the regression lines.
+Use the grade distribution stored in `relig.grade` for different religions in his class to figure out what is going on.
 
-```{r}
-ggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +
-  geom_point(aes(color = Species), alpha = .5) +
-  geom_smooth(size = .5, color = "black", method = "lm") +
-  xlim(0, NA) +
-  ylim(0, NA) +
-  theme_bw()
-```
+## 3.1
 
-Is anything weird about this model? If so, can we fix it?
-
-Our intercept is negative (although it's fairly close to 0).  The interpretation of this coefficient is the predicted value of y when x is 0.  But, for many physical quantities (and in other cases), we have a fairly strong a priori conviction that when x = 0, y = 0 too.  This is true of petals: If a petal has 0 length, it doesn't exist, so it has 0 width as well.  We can assert to `lm` that the intercept must be 0.  We do this by explicitly referring to the intercept term when building our model:
+Aggregating over all religions, test the goodness of fit of the model that the professor is honestly flipping coins.
 
 ```{r}
-iris.lm.noint <- lm(Petal.Width ~ Petal.Length + 0, iris)
+relig.grade.tbl <- table(relig.grade)
+
+grades <- colSums(relig.grade.tbl)
+expected <- dbinom(4:0, 4, .6)
+honestFlip.test <- chisq.test(grades, p = expected)
+
+honestFlip.test$statistic
+honestFlip.test$p.value
 ```
 
-`lm` normally implicitly adds this constant 1 to your linear models.  That is `lm(y ~ x)` is equivalent to `y ~ 1 + x`. You can remove the intercept term by either subtracting 1: `lm(y ~ x - 1)` (either before or after x, doesn't matter), or by explicitly adding 0 as in: `lm(y ~ x + 0)`.
+What is the power of this test to detect an effect that emerged from flipping a coin that was only half as bent (i.e., P(heads) = .55)?
 
 ```{r}
-summary(iris.lm.noint)
+vs.Fair.w <- ES.w1(expected, dbinom(4:0, 4, .55)) # this gets the effect size w
+df.relig <- length(levels(relig.grade$Religion)) - 1
+
+honestFlip.pwr <- pwr.chisq.test(
+  w = vs.Fair.w,
+  N = nrow(relig.grade),
+  df = df.relig
+)
+
+honestFlip.pwr$power
 ```
 
-Plot this model:
+## 3.2
+
+Test whether the grade distributions are independent of religion.
 
 ```{r}
-ggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +
-  geom_point(aes(color = Species), alpha = .5) +
-  geom_smooth(size = .5, color = "black", method = "lm", formula = y ~ 0 + x) +
-  xlim(0, NA) +
-  ylim(0, NA) +
-  theme_bw()
+indpdt.test <- chisq.test(relig.grade.tbl)
+
+indpdt.test$statistic
+indpdt.test$parameter # df
+indpdt.test$p.value
 ```
 
-Make a 3-panel plot that fits a linear model without intercept to each species:
+How many observations would get you a power of .9 to detect a tiny effect of w = .05?
 
 ```{r}
-ggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +
-  geom_point(alpha = .5) +
-  geom_smooth(size = .5, color = "black", method = "lm", formula = y ~ 0 + x) +
-  facet_wrap(vars(Species), scales = "free") +
-  xlim(0, NA) +
-  ylim(0, NA) +
-  theme_bw()
+df.grade <- length(levels(relig.grade$Grade)) - 1
+df.relig.grade <- df.relig * df.grade
+indpdt.n <- pwr.chisq.test(
+  w = .05,
+  df = df.relig.grade,
+  power = .9
+)
+indpdt.n$N
 ```
-
-Notice how all regression lines now point directly to 0!
-
----- End: Isabella's stuff that I don't endorse ----
-
-Reasons I don't endorse these:
-
-- **Don't extrapolate.**  We're interested in local linear relationships, not global ones.  If you REALLY want to extrapolate to the origin, try log transforms.
-- Significance in the slope doesn't tell us anything.
-- Under the assumptions of this model, data points farther from the origin naturally have larger variance, so homoscedasticity is violated.  Adjustments to the model are required.
-- Easier for residuals to get weird.
-
-```{r}
-plot(lm(Petal.Width ~ Petal.Length, data = iris %>% filter(Species == "virginica")), 1)
-plot(lm(Petal.Width ~ Petal.Length + 0, data = iris %>% filter(Species == "virginica")), 1)
-```
-
-# Problem 4 (preview of multiple regression)
-
-What if we wanted to predict sepal length from petal length AND petal width?  What might that look like in `lm`?
-
-```{r}
-
-```
-
