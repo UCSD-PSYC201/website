@@ -104,6 +104,8 @@ Probability [[code](labs/201a-2021/03/lab3.Rmd)] [[answers](labs/201a-2021/03/la
 
 [t-tests](#t-tests)  
 
+[chi-squared tests](#chi-squared)  
+
 [**bivariate linear relationships**](#bivariate)    
 
 #### Homework
@@ -112,18 +114,20 @@ Probability [[code](labs/201a-2021/03/lab3.Rmd)] [[answers](labs/201a-2021/03/la
 
 #### Tuesday   
 
+[slides: t-test, chi-squared](slides/L07.pdf)   
+
 #### Wednesday
 
 Regression [[code](labs/201a-2021/04/lab4-alt.Rmd)] [[answers](labs/201a-2021/04/lab4-alt-ans.Rmd)]
 
 #### Thursday   
 
+[slides: regression](slides/L08.pdf)   
 
-## Week 5: Linear model: Multiple regression 
+
+## Week 5: Linear model, miderm
 
 #### Notes  
-
-multiple regression  
 
 #### Tuesday
 
