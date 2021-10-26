@@ -125,21 +125,26 @@ t-test and chi-squared test [[code](labs/201a-2021/04/lab4.Rmd)]
 [slides: regression](slides/L08.pdf)   
 [code: chi squared](code/live/L08.R)
 
-
-## Week 5: Linear model, miderm
+## Week 5: Linear model, midterm
 
 #### Notes  
 
+[**bivariate linear relationships**](#bivariate)    
+
 #### Tuesday
+[slides: regression 2](slides/L09.pdf)   
 
 #### Wednesday
 
 #### Thursday
+Review and midterm catchup.
+
+**Midterm out thursday evening**
 
 ## Week 6: Linear model: Categorical predictors 
 
 #### Readings / Notes
-[Notes on t-tests](notes/nhst-t-tests.html)   
+[t-tests](#t-tests)  
 [[howell ch.13 on ANOVA](pdf/howell.ch-13.pdf)]   
 [[howell ch.16 on ANCOVA](pdf/howell.ch-16.pdf)]   
 
@@ -150,7 +155,6 @@ t-test and chi-squared test [[code](labs/201a-2021/04/lab4.Rmd)]
 #### Tuesday
 
 #### Thursday
-
 
 ## Week 7: Linear model: ANCOVA, diagnostics 
 
