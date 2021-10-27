@@ -137,6 +137,8 @@ t-test and chi-squared test [[code](labs/201a-2021/04/lab4.Rmd)]
 
 #### Wednesday
 
+Correlation & regression [[code](labs/201a-2021/05/lab5.Rmd)] [[answers](labs/201a-2021/05/lab5-ans.Rmd)]
+
 #### Thursday
 Review and midterm catchup.
 
