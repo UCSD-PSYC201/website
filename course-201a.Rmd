@@ -133,6 +133,7 @@ t-test and chi-squared test [[code](labs/201a-2021/04/lab4.Rmd)]
 
 #### Tuesday
 [slides: regression 2](slides/L09.pdf)   
+[code: regression](code/live/L09.R)
 
 #### Wednesday
 
