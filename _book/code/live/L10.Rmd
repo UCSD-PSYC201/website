@@ -1,0 +1,12 @@
+---
+title: "midterm review"
+author: "Ed"
+date: "10/28/2021"
+output: html_document
+---
+
+# Heading 
+
+## Heading
+
+### 3rd heading

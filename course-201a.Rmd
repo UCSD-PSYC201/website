@@ -156,8 +156,12 @@ Review and midterm catchup.
 [Multiple regression](http://vulstats.ucsd.edu/hw/)
 
 #### Tuesday
+[multiple regression](slides/L10.pdf)   
+
+#### Wednesday
 
 #### Thursday
+
 
 ## Week 7: Linear model: ANCOVA, diagnostics 
 
@@ -166,6 +170,8 @@ Review and midterm catchup.
 [ANOVA & ANCOVA](http://vulstats.ucsd.edu/hw/) 
 
 #### Tuesday
+
+
 
 #### Wednesday
 
