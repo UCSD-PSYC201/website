@@ -153,12 +153,15 @@ Review and midterm catchup.
 
 #### Homework
 
-[Multiple regression](http://vulstats.ucsd.edu/hw/)
+[HW05: Multiple regression](http://vulstats.ucsd.edu/hw/)
 
 #### Tuesday
+
 [multiple regression](slides/L10.pdf)   
 
 #### Wednesday
+
+Multiple regression [[code](labs/201a-2021/06/lab6.Rmd)] [[answers](labs/201a-2021/06/lab6-ans.Rmd)]
 
 #### Thursday
 
