@@ -1,0 +1,183 @@
+---
+title: "PSYC 201A Lab 5: Multiple regression"
+author: "Wenhao (James) Qi"
+date: "2021-11-03"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+load(url("https://vulstats.ucsd.edu/labs/201a-2021/06/lab6.RData"))
+```
+
+Using `states`, we will build and compare a series of nested models predicting the 2016 Clinton - Trump `margin` of the percentage of popular votes for each state.
+
+```{r}
+glimpse(states)
+states <- states %>% select(!state)
+```
+
+# 1 (10 min)
+
+Which of the existing numeric predictors individually explains the most variance?
+
+Hint for approach 1: `summary(...)$r.squared`, `colnames`, `formula`, `paste`
+
+Hint for approach 2: `add1`
+
+```{r}
+m0 <- lm(margin ~ 1, states)
+add1(m0, lm(margin ~ ., states))
+
+get.rsq1 <- function(cname) summary(lm(formula(paste('margin ~', cname)), states))$r.squared
+cnames1 <- discard(colnames(states), ~ . == 'margin') # equivalent to: function(x) x == 'margin'
+tibble(
+  cname = cnames1,
+  rsq = map_dbl(cname, get.rsq1)
+) %>% arrange(desc(rsq))
+```
+
+Confirm the R^2 value with the `anova` table.
+
+```{r}
+m1 <- lm(margin ~ pct.grad.advanced, states)
+a1 <- anova(m1)
+a1[1, 2] / (a1[1, 2] + a1[2, 2])
+```
+
+# 2 (10 min)
+
+Let the single best predictor be x1.  Given a model including only x1, what's the highest R^2 we can achieve by adding another predictor x2?  Which one?  (Two approaches)
+
+```{r}
+add1(m1, lm(margin ~ ., states))
+
+get.rsq2 <- function(cname) summary(lm(formula(paste('margin ~ pct.grad.advanced +', cname)), states))$r.squared
+cnames2 <- discard(cnames1, ~ . == 'pct.grad.advanced')
+tibble(
+  cname = cnames2,
+  rsq = map_dbl(cname, get.rsq2)
+) %>% arrange(desc(rsq))
+```
+
+How much more of the variance is explained (in terms of sum of squares)?
+
+```{r}
+m2 <- lm(margin ~ pct.grad.advanced + pct.non.hispanic.white, states)
+a2 <- anova(m2)
+a2[2, 2]
+```
+
+Is this a significant improvement?  (also verify the F-statistic and p-value with the sum of squares)
+
+```{r}
+# (SSX / dfx) / (SSE / dfe)
+f2 <- a2[2, 2] / (a2[3, 2] / a2[3, 1])
+pf(f2, 1, a2[3, 1], lower.tail = F)
+anova(m1, m2)
+```
+
+# 3 (3 min)
+
+Using the second model, predict the margin (with the 95% CI) from a new state that has x1 = 12 and x2 = 60 (first look at the regression coefficients to make a qualitative prediction).
+
+```{r}
+summary(states)
+# x1: 2.2 above mean
+# x2: 11.4 below mean
+# margin: -5.8
+# contrib x1: 12
+# contrib x2: 5
+m2
+
+predict(m2, tibble(pct.grad.advanced = 12, pct.non.hispanic.white = 60), interval = 'prediction')
+```
+
+# 4 (10 min)
+
+Partitioning of variance in multiple regression.
+
+Find the SST using three methods.
+
+```{r}
+a0 <- anova(m0)
+a0[1, 2]
+
+a1[1,2]+a1[2,2]
+sum(a1[,2])
+
+sum(a2[,2])
+```
+
+Find SSR[x1,x2].
+
+```{r}
+a2[1,2]+a2[2,2]
+```
+
+Now let's make a model, m3, that has only x2 as a predictor of `margin`.  Use this to find SSR[x2].
+
+```{r}
+m3 <- lm(margin ~ pct.non.hispanic.white, states)
+a3 <- anova(m3)
+a3[1,2]
+```
+
+Find SSR[x1|x2].
+
+```{r}
+# SSR[x1|x2] = SSR[x1,x2] - SSR[x2]
+a2[1,2]+a2[2,2]-a3[1,2]
+```
+
+Verify that changing the order of predictors doesn't change SSR[x1,x2].
+
+```{r}
+
+```
+
+# 5 (5 min)
+
+Examine multicollinearity among the predictors.
+
+```{r}
+states %>%
+  select(!margin) %>%
+  cor() %>%
+  as_tibble(rownames = "x1") %>%
+  pivot_longer(!x1, names_to = "x2", values_to = "r") %>%
+  ggplot(aes(x = x1, y = x2, fill = r)) +
+  geom_tile() +
+  scale_fill_gradient2() +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+# 6 (5 min)
+
+Now, build the best model you can (without inventing new variables), using adjusted R^2, AIC or BIC as the criterion.
+
+```{r}
+pred.sets <- flatten(map(1:length(cnames1), ~ combn(cnames1, ., simplify = F)))
+model.from.set <- function(pred.set) lm(formula(paste("margin ~", paste(pred.set, collapse = "+"))), states)
+
+# get.rsq <- function(pred.set) summary(model.from.set(pred.set))$r.squared
+# rsqs <- map_dbl(pred.sets, get.rsq)
+# best.set.rsq <- pred.sets[[which.max(rsqs)]]
+
+get.adj.rsq <- function(pred.set) summary(model.from.set(pred.set))$adj.r.squared
+adj.rsqs <- map_dbl(pred.sets, get.adj.rsq)
+best.set.adj.rsq <- pred.sets[[which.max(adj.rsqs)]]
+
+get.aic <- function(pred.set) AIC(model.from.set(pred.set))
+aics <- map_dbl(pred.sets, get.aic)
+best.set.aic <- pred.sets[[which.min(aics)]]
+
+get.bic <- function(pred.set) BIC(model.from.set(pred.set))
+bics <- map_dbl(pred.sets, get.bic)
+best.set.bic <- pred.sets[[which.min(bics)]]
+
+m.adj.rsq <- model.from.set(best.set.adj.rsq)
+summary(m.adj.rsq)
+```
+
