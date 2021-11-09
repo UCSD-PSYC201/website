@@ -175,7 +175,9 @@ Multiple regression [[code](labs/201a-2021/06/lab6.Rmd)] [[answers](labs/201a-20
 
 #### Tuesday
 
+[ancova slides](slides/L14.pdf)   
 
+if we have time: [lm diagnostics](slides/L13.pdf)
 
 #### Wednesday
 
@@ -189,6 +191,11 @@ Multiple regression [[code](labs/201a-2021/06/lab6.Rmd)] [[answers](labs/201a-20
 [Linearizing transforms](http://vulstats.ucsd.edu/hw/) 
 
 #### Tuesday
+
+#### Wednesday
+
+#### Thursday
+
 
 ## Week 9: Covarying errors (repeated measures / random effects) 
 
