@@ -171,7 +171,7 @@ Multiple regression [[code](labs/201a-2021/06/lab6.Rmd)] [[answers](labs/201a-20
 
 #### Homework
 
-[ANOVA & ANCOVA](http://vulstats.ucsd.edu/hw/) 
+[HW06: ANOVA & ANCOVA](http://vulstats.ucsd.edu/hw/) 
 
 #### Tuesday
 
@@ -180,6 +180,8 @@ Multiple regression [[code](labs/201a-2021/06/lab6.Rmd)] [[answers](labs/201a-20
 if we have time: [lm diagnostics](slides/L13.pdf)
 
 #### Wednesday
+
+ANOVA & ANCOVA [[code](labs/201a-2021/07/lab7.Rmd)] [[answers](labs/201a-2021/07/lab7-ans.Rmd)]
 
 #### Thursday: Veteran's Day -- no class
 

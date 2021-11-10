@@ -1,5 +1,5 @@
 ---
-title: "PSYC 201A Lab 5: Multiple regression"
+title: "PSYC 201A Lab 6: Multiple regression"
 author: "Wenhao (James) Qi"
 date: "2021-11-03"
 output: html_document
