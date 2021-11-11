@@ -1,0 +1,200 @@
+---
+title: "PSYC 201A Lab 7: ANOVA & ANCOVA"
+author: "Wenhao (James) Qi"
+date: "2021-11-10"
+output: html_document
+---
+  
+```{r}
+library(tidyverse)
+theme_set(theme_bw())
+```
+
+We will look at the `CO2` builtin dataset.
+
+```{r}
+?CO2
+glimpse(CO2)
+CO2 %>%
+  ggplot(aes(conc, uptake, color = Plant)) +
+  geom_line()
+df1 <- CO2 %>% filter(conc >= 250)
+```
+
+# Problem 1
+
+Does CO2 uptake differ across Type?
+
+```{r}
+df1 %>%
+  ggplot(aes(Type, uptake)) +
+  geom_violin() +
+  geom_jitter(width = .1)
+```
+
+# 1.1 (10 min)
+
+Do an ANOVA manually.  (Calculate the SSR, SSE, F-statistic, and p-value)
+
+```{r}
+df2 <- df1 %>%
+  mutate(overall.mean = mean(uptake)) %>%
+  group_by(Type) %>%
+  mutate(
+    group.mean = mean(uptake),
+    sr = (group.mean - overall.mean)^2,
+    se = (uptake - group.mean)^2
+  ) %>%
+  ungroup()
+ssr <- sum(df2$sr)
+sse <- sum(df2$se)
+dfe <- nrow(df2) - 2
+f <- ssr / (sse / dfe)
+p <- pf(f, 1, dfe, lower.tail = F)
+```
+
+Confirm your calculation with `anova`.
+
+```{r}
+anova(lm(uptake ~ Type, df1))
+```
+
+# 1.2 (5 min)
+
+Visualize the ANOVA.
+
+```{r}
+df2 %>%
+  arrange(Type) %>%
+  mutate(obs = 1:n()) %>%
+  ggplot() +
+  geom_point(aes(obs, uptake)) +
+  geom_segment(aes(obs - .5, overall.mean, xend = obs + .5, yend = overall.mean, color = "overall mean"), size = 1) +
+  geom_segment(aes(obs - .5, group.mean, xend = obs + .5, yend = group.mean, color = "group mean"), size = 1) +
+  geom_segment(aes(obs - .3, overall.mean, xend = obs - .3, yend = group.mean, color = "regression")) +
+  geom_segment(aes(obs, group.mean, xend = obs, yend = uptake, color = "error")) +
+  scale_color_discrete(breaks = c("overall mean", "group mean", "regression", "error")) +
+  labs(color = "line type")
+```
+
+# Problem 2
+
+Does CO2 uptake differ across Type and Treatment?
+
+# 2.1 (3 min)
+
+Look at whether the two main effects and the interaction are significant. Extract the p-value of the interaction.
+
+```{r}
+(a2 <- anova(lm(uptake ~ Type * Treatment, df1)))
+a2[3, 5]
+```
+
+# 2.2 (5 min)
+
+Visualize the ANOVA (without the interaction).
+
+```{r}
+df3 <- df1 %>%
+  mutate(overall.mean = mean(uptake)) %>%
+  group_by(Type) %>%
+  mutate(type.mean = mean(uptake)) %>%
+  group_by(Treatment) %>%
+  mutate(
+    treatment.mean = mean(uptake),
+    type.treatment.mean = type.mean + treatment.mean - overall.mean
+  ) %>%
+  ungroup()
+df3 %>%
+  arrange(Type, Treatment) %>%
+  mutate(obs = 1:n()) %>%
+  ggplot() +
+  geom_point(aes(obs, uptake)) +
+  geom_segment(aes(obs - .5, overall.mean, xend = obs + .5, yend = overall.mean, color = "overall mean"), size = 1) +
+  geom_segment(aes(obs - .5, type.mean, xend = obs + .5, yend = type.mean, color = "type mean"), size = 1) +
+  geom_segment(aes(obs - .5, type.treatment.mean, xend = obs + .5, yend = type.treatment.mean, color = "type + treatment mean"), size = 1) +
+  geom_segment(aes(obs - .3, overall.mean, xend = obs - .3, yend = type.mean, color = "regression type")) +
+  geom_segment(aes(obs + .3, type.mean, xend = obs + .3, yend = type.treatment.mean, color = "regression treatment")) +
+  geom_segment(aes(obs, type.treatment.mean, xend = obs, yend = uptake, color = "error")) +
+  scale_color_discrete(breaks = c("overall mean", "type mean", "type + treatment mean", "regression type", "regression treatment", "error")) +
+  labs(color = "line type")
+df3 %>%
+  arrange(Type, Treatment) %>%
+  mutate(obs = 1:n()) %>%
+  ggplot() +
+  geom_point(aes(obs, uptake)) +
+  geom_segment(aes(obs - .5, overall.mean, xend = obs + .5, yend = overall.mean, color = "overall mean"), size = 1) +
+  geom_segment(aes(obs - .5, treatment.mean, xend = obs + .5, yend = treatment.mean, color = "treatment mean"), size = 1) +
+  geom_segment(aes(obs - .5, type.treatment.mean, xend = obs + .5, yend = type.treatment.mean, color = "treatment + type mean"), size = 1) +
+  geom_segment(aes(obs - .3, overall.mean, xend = obs - .3, yend = treatment.mean, color = "regression treatment")) +
+  geom_segment(aes(obs + .3, treatment.mean, xend = obs + .3, yend = type.treatment.mean, color = "regression type")) +
+  geom_segment(aes(obs, type.treatment.mean, xend = obs, yend = uptake, color = "error")) +
+  scale_color_discrete(breaks = c("overall mean", "treatment mean", "treatment + type mean", "regression treatment", "regression type", "error")) +
+  labs(color = "line type")
+```
+
+# 2.3 (5 min)
+
+Does changing the order of the predictors change the SSR (and F-statistic and p-value) of each main effect?
+
+```{r}
+anova(lm(uptake ~ Type + Treatment, df1))
+anova(lm(uptake ~ Treatment + Type, df1))
+```
+
+If you drop the plant "Qn1" from the dataset, does changing the order of the predictors change the SSR (and F-statistic and p-value) of each main effect?
+
+```{r}
+df4 <- df1 %>% filter(Plant != "Qn1")
+anova(lm(uptake ~ Type + Treatment, df4))
+anova(lm(uptake ~ Treatment + Type, df4))
+```
+
+How to explain this?
+
+```{r}
+df1 %>% count(Type, Treatment)
+df1 %>%
+  ggplot(aes(Type, Treatment)) +
+  geom_jitter(width = .1, height = .1)
+cor(as.numeric(as.factor(df1$Type)), as.numeric(as.factor(df1$Treatment)))
+
+df4 %>% count(Type, Treatment)
+df4 %>%
+  ggplot(aes(Type, Treatment)) +
+  geom_jitter(width = .1, height = .1)
+cor(as.numeric(as.factor(df4$Type)), as.numeric(as.factor(df4$Treatment)))
+```
+
+# Problem 3
+
+## 1.1 (3 min)
+
+Run a full ANCOVA with `conc` as the covariate.
+
+```{r}
+m.anc <- lm(uptake ~ conc + Type * Treatment, df1)
+anova(m.anc)
+```
+
+## 1.2 (5 min)
+
+Visualize the ANCOVA, with `conc` on the x axis and a line for each cell.
+
+Hint: `predict`
+
+```{r}
+df1 %>%
+  mutate(pred = predict(m.anc, df1)) %>%
+  ggplot(aes(conc, color = paste(Type, Treatment))) +
+  geom_point(aes(y = uptake), alpha = .5) +
+  geom_line(aes(y = pred))
+```
+
+## 1.3 (3 min)
+
+Test the interaction between the covariate and the categorical predictors.
+
+```{r}
+anova(lm(uptake ~ conc * Type * Treatment, df1))
+```
