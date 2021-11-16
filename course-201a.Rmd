@@ -194,6 +194,8 @@ ANOVA & ANCOVA [[code](labs/201a-2021/07/lab7.Rmd)] [[answers](labs/201a-2021/07
 
 #### Tuesday
 
+[log-linear slides](slides/L15.pdf)   
+
 #### Wednesday
 
 #### Thursday
