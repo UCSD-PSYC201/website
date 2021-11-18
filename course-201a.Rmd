@@ -202,6 +202,7 @@ Linearizing transforms [[code](labs/201a-2021/08/lab8.Rmd)] [[answers](labs/201a
 
 #### Thursday
 
+[repeated measures](slides/L16.pdf)   
 
 ## Week 9: Covarying errors (repeated measures / random effects) 
 

@@ -1,0 +1,24 @@
+# Mixed Effects models 
+
+## Why mixed effects modeling.
+
+Whenever you measure the same *thing* multiple times, you are not getting independent measurements.  
+Consequently, you cannot use variability over those measurements to estimate dispersion.
+Since, we often aim to figure out how some measurement changes relative to its variability, it is important that we estimate that variability correctly.
+
+### Extreme example
+
+Let's suppose I measure my own height 10 times, in millimeters:  1764 1747 1766 1730 1749.   
+The average of these is 1751.2 mm, with a standard error of 6.5 mm.  
+It would be silly to try to use these measurements to define a confidence interval on the mean height of males.
+That's because the variability across many measurements of one person, has nothing to do with the variability across people, and the variability across different males is what is relevant for putting confidence intervals on the mean of male height.  
+In effect, despite our five measurements, we have only sampled one male, so we don't know how to generalize from that one male to the population of interest.
+
+### Subtle example
+
+
+
+
+### How mixed effects help
+
+Mixed effects models solve these problems by allowing us to specify multiple sources of variability, that might operate at different scales: there might be some variability of measurements of an individual person, as well as some variability across individuals; there might be variability in the slope 
