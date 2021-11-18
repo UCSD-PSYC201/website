@@ -1,0 +1,154 @@
+---
+title: "PSYC 201A Lab 8: Linearizing transforms"
+author: "Wenhao (James) Qi"
+date: "2021-11-17"
+output: html_document
+---
+  
+```{r}
+library(tidyverse)
+theme_set(theme_bw())
+```
+
+```{r}
+bls <- read_csv("https://vulstats.ucsd.edu/data/BLS.2016.csv")
+glimpse(bls)
+```
+
+For each `Occupation` it shows the occupation `Category`, how many people have this occupation `*.n` (in 1000s), median weekly earnings `*.earn`, and std. err of earnings `*.earn.se`, for everyone (`all.*`), females (`f.*`), and males (`m.*`).
+
+# 1 (10 min)
+
+Which of the following processes mostly likely generated the data? Does it happen on the raw scale or on the log scale?
+
+1. The weekly wages are (independently) sampled from a normal distribution.
+2. Female and male weekly wages have different means.  Within each sex, the weekly wages are sampled from a normal distribution with the same SD across sexes.
+3. The occupation means are sampled from a normal distribution.  Within each occupation, the weekly wages are sampled from a normal distribution with the same SD across occupations.
+4. The occupation means are sampled from a normal distribution.  Within each occupation, the female and male means are the occupation mean plus/minus a constant offset.  Within each occupation/sex combination, the weekly wages are sampled from a normal distribution with the same SD across occupation/sex combinations.
+
+```{r}
+# first test for log scale
+bls %>%
+  ggplot(aes(all.earn)) +
+  geom_histogram()
+bls %>%
+  ggplot(aes(log(all.earn))) +
+  geom_histogram()
+# test for 1 and 2
+bls %>%
+  ggplot(aes(log(m.earn), log(f.earn))) +
+  geom_point()
+# test for 1 and 3
+bls %>%
+  ggplot(aes(log(f.earn) - log(m.earn))) +
+  geom_histogram()
+# second test for log scale
+bls %>%
+  mutate(all.sd = all.earn.se * sqrt(all.n)) %>%
+  ggplot(aes(all.earn, all.sd)) +
+  geom_point()
+
+# visualize log-normal distribution
+expand_grid(
+  x = seq(-1, 5, .01),
+  mu = 1:3
+) %>%
+  mutate(y = dnorm(x, mu, .5)) %>%
+  ggplot(aes(x, y, color = as.factor(mu))) +
+  geom_line()
+expand_grid(
+  x = seq(0, 100, .1),
+  mu = 1:3
+) %>%
+  mutate(y = dlnorm(x, mu, .5)) %>%
+  ggplot(aes(x, y, color = as.factor(mu))) +
+  geom_line()
+
+# get SDs on the log scale
+get.sigma <- function(mu, sd.lnorm) {
+  if (is.na(sd.lnorm)) {
+    NA
+  } else {
+    f <- function(s) (exp(s^2) - 1) * exp(2 * mu + s^2) - sd.lnorm^2
+    uniroot(f, c(.1, 1.2))$root
+  }
+}
+df1 <- bls %>%
+  mutate(
+    all.mu = log(all.earn),
+    all.sd = all.earn.se * sqrt(all.n),
+    all.sigma = map2_dbl(all.mu, all.sd, get.sigma),
+    f.mu = log(f.earn),
+    f.sd = f.earn.se * sqrt(f.n),
+    f.sigma = map2_dbl(f.mu, f.sd, get.sigma),
+    m.mu = log(m.earn),
+    m.sd = m.earn.se * sqrt(m.n),
+    m.sigma = map2_dbl(m.mu, m.sd, get.sigma)
+  )
+
+# check uniform SDs on the log scale
+df1 %>%
+  ggplot(aes(all.mu, all.sigma)) +
+  geom_point()
+```
+
+# 2 (5 min)
+
+If you were to come up with just one number, of the form "women make x% of what men make", how would you do it?
+
+```{r}
+df2 <- df1 %>% mutate(diff = f.mu - m.mu)
+df2 %>%
+  pull(diff) %>%
+  mean(na.rm = T) %>%
+  exp()
+df2 %>%
+  filter(!is.na(diff)) %>%
+  mutate(weighted.diff = diff * all.n / sum(all.n)) %>%
+  pull(weighted.diff) %>%
+  sum() %>%
+  exp()
+df2 %>%
+  filter(!is.na(diff)) %>%
+  mutate(weighted.diff = diff * sqrt(all.n) / sum(sqrt(all.n))) %>%
+  pull(weighted.diff) %>%
+  sum() %>%
+  exp()
+```
+
+# 3 (5 min)
+
+Do a linear regression of female ~ male wages (with appropriate transforms). What do the slope and intercept mean? Should the intercept be free to vary? What happens if you fix it?
+
+```{r}
+lm(f.mu ~ m.mu, df2)
+df2 %>%
+  ggplot(aes(m.mu, f.mu)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+# 4 (5 min)
+
+Is there any problem with the linear regression? What's a better way to do the regression?
+
+Hint: Think about the data generation process we are assuming and the question we want to answer.
+
+```{r}
+df3 <- tibble(
+  occ.mu = rnorm(200),
+  f.mu = rnorm(200, occ.mu, sd = .5),
+  m.mu = rnorm(200, occ.mu, sd = .5)
+)
+df3 %>%
+  ggplot(aes(m.mu, f.mu)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+lm(f.mu ~ m.mu, df3)
+
+df2 %>%
+  ggplot(aes(all.mu, diff)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+lm(diff ~ all.mu, df2)
+```
