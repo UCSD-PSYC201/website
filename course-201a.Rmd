@@ -214,6 +214,10 @@ This is mathier:  [Kutner ch. 27](pdf/Kutner.ch-27.repeated-measures.pdf)
 
 #### Tuesday
 
+[aov code](code/live/L17.R) 
+
+[randomization slides](slides/L17.pdf)
+
 #### Wednesday -- Thanksgiving, no lab
 
 #### Thursday -- Thanksgiving, no lab
